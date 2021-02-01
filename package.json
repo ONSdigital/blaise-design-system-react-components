@@ -5,10 +5,10 @@
   "main": "build/index.js",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
+  "files": ["build"],
   "scripts": {
     "build": "rollup -c",
-    "test": "jest",
-    "build-react": "react-scripts build"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,8 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^26.0.20",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-test-renderer": "^17.0.0",
