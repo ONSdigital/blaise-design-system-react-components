@@ -12,7 +12,7 @@ declare module "blaise-design-system-react-components" {
 
     export function NotProductionWarning(): ReactElement
     export function Footer(): ReactElement
-    export function Header(props: HeaderProps): ReactElement
+    export function Header(props: HeaderProps): ReactElement<HeaderProps>
 
 }
 // declare namespace NotProductionWarning {
