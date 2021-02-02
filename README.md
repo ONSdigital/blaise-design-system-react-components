@@ -1,1 +1,1 @@
-# blaise-design-system-react-components-
+# blaise-design-system-react-components
