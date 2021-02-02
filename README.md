@@ -7,7 +7,7 @@
 React component implementations of the [ONS Design system components](https://ons-design-system.netlify.app).
 
 ## Usage
-In your React project add this repository as a dependency, specifying a release version after the # at the end for example:
+In your own React project add this repository as a dependency, specifying a release version after the # at the end for example:
 ```shell
 yarn add ONSdigital/blaise-design-system-react-components#0.0.3
 ```
@@ -56,6 +56,12 @@ function SimplePage(): ReactElement {
 ## Component Development
 
 ### Setup
+First clone the repository to you local machine 
+```shell
+git clone https://github.com/ONSdigital/blaise-design-system-react-components.git
+```
+
+Then open the project in and IDE of your choice and from the terminal run: 
 To install required dependencies run:
 ```shell
 yarn install
@@ -67,7 +73,7 @@ To run the tests with coverage results run:
 yarn run tests
 ```
 
-### Create new version
+### Create and release a new version
 After making your changes you will need to compile the Typescript components, locally run:   
 ```shell
 yarn run build
