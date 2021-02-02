@@ -6,9 +6,13 @@ import Footer from "./Footer"
 declare module "blaise-design-system-react-components" {
     // declare function NotProductionWarning  React.ReactElement<{ }, { }>;
     // declare function Footer React.ReactElement<{ }, { }>;
+    interface HeaderProps {
+        title: string;
+    }
 
     export function NotProductionWarning(): ReactElement
     export function Footer(): ReactElement
+    export function Header(props: HeaderProps): ReactElement
 
 }
 // declare namespace NotProductionWarning {
