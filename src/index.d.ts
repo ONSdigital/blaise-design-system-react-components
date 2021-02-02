@@ -1,12 +1,14 @@
 import React = require("react");
 import {ReactElement} from "react";
+import NotProductionWarning from "./NotProductionWarning"
+import Footer from "./Footer"
 
 declare module "blaise-design-system-react-components" {
     // declare function NotProductionWarning  React.ReactElement<{ }, { }>;
     // declare function Footer React.ReactElement<{ }, { }>;
 
-    const NotProductionWarning: React.ReactElement
-    const Footer: React.ReactElement
+    export function NotProductionWarning(): ReactElement
+    export function Footer(): ReactElement
 
 }
 // declare namespace NotProductionWarning {
