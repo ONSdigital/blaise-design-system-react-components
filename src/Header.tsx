@@ -1,6 +1,6 @@
 import React, {ReactElement} from "react";
 
-interface Props {
+export interface Props {
     title: string
 }
 
