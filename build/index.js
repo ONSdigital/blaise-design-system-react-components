@@ -29,6 +29,24 @@ function Footer() {
                                 React__default['default'].createElement("img", { src: "https://ons-design-system.netlify.app/img/ons-logo-black-en.svg", alt: "Office for National Statistics" })))))))));
 }
 
+function Header(props) {
+    return (React__default['default'].createElement(React__default['default'].Fragment, null,
+        React__default['default'].createElement("header", { className: "header header--internal" },
+            React__default['default'].createElement("div", { className: "header__top", role: "banner" },
+                React__default['default'].createElement("div", { className: "container" },
+                    React__default['default'].createElement("div", { className: "header__grid-top grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap " },
+                        React__default['default'].createElement("div", { className: "grid__col col-auto" },
+                            React__default['default'].createElement("a", { className: "header__logo-link", href: "/" },
+                                React__default['default'].createElement("picture", null,
+                                    React__default['default'].createElement("img", { className: "header__logo", src: "https://ons-design-system.netlify.app/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
+            React__default['default'].createElement("div", { className: "header__main" },
+                React__default['default'].createElement("div", { className: "container" },
+                    React__default['default'].createElement("div", { className: "grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap" },
+                        React__default['default'].createElement("div", { className: "grid__col col-auto u-flex-shrink" },
+                            React__default['default'].createElement("div", { className: "header__title" }, props.title))))))));
+}
+
 exports.Footer = Footer;
+exports.Header = Header;
 exports.NotProductionWarning = NotProductionWarning;
 //# sourceMappingURL=index.js.map
