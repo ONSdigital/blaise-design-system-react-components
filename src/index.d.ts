@@ -1,10 +1,10 @@
 import React = require("react");
 import {ReactElement} from "react";
-import {Props as HeaderProps} from "./Header"
-import {Props as ExternalLinkProps} from "./ExternalLink"
-import {Props as ButtonProps} from "./ONSButton"
-import {Props as PanelProps} from "./ONSPanel"
-import {Props as UploadProps} from "./ONSUpload"
+import {Props as HeaderProps} from "./components/Header"
+import {Props as ExternalLinkProps} from "./components/ExternalLink"
+import {Props as ButtonProps} from "./components/ONSButton"
+import {Props as PanelProps} from "./components/ONSPanel"
+import {Props as UploadProps} from "./components/ONSUpload"
 
 
 declare module "blaise-design-system-react-components" {
