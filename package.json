@@ -51,5 +51,6 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.12.7"
-  }
+  },
+  "types": "src/index.d.ts"
 }
