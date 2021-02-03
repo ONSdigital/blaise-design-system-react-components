@@ -9,7 +9,6 @@ export interface Props {
     loading?: boolean,
     marginRight?: number,
     onClick?: (...props: any[]) => void
-    exportExcelBtn?: boolean
     disabled?: boolean
     action?: boolean
     testid?: string
@@ -19,7 +18,7 @@ export interface Props {
 export const ONSButton = (props: Props) => {
 
     const spacing = () => {
-        if(props.hidden) return {display: "none"};
+        if (props.hidden) return {display: "none"};
         return {
             marginRight: String(props.marginRight) + "px"
         };
@@ -32,21 +31,16 @@ export const ONSButton = (props: Props) => {
         return "button";
     };
 
-    let className = "btn ";
-    if (props.exportExcelBtn) {
-        className = className + " " + (props.loading ? "btn--secondary btn--loader is-loading  " : " btn--excel btn--secondary");
-    } else {
-        className = className +
-            (props.action ? "btn--link " : "") +
-            (props.loading ? "btn--loader is-loading " : "") +
-            (props.field ? "field " : "") +
-            (props.primary ? "" : "btn--secondary ") +
-            (props.small ? "btn--small " : "") +
-            (props.disabled ? "btn--disabled " : "");
-    }
+    const className = "btn " +
+        (props.action ? "btn--link " : "") +
+        (props.loading ? "btn--loader is-loading " : "") +
+        (props.field ? "field " : "") +
+        (props.primary ? "" : "btn--secondary ") +
+        (props.small ? "btn--small " : "") +
+        (props.disabled ? "btn--disabled " : "");
     return (
         <button id={props.id} style={spacing()} type="button" disabled={props.loading || props.disabled}
-            className={className} onClick={props.onClick} data-testid={test_id()}>
+                className={className} onClick={props.onClick} data-testid={test_id()}>
             <span className="btn__inner">
                 {props.label}
                 {

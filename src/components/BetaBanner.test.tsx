@@ -1,15 +1,19 @@
 import React from "react";
-import Enzyme, {shallow, render} from "enzyme";
-
-import Adapter from "enzyme-adapter-react-16";
+import {cleanup, render, screen} from "@testing-library/react";
 import BetaBanner from "./BetaBanner";
 
 describe("ONS In Dev Banner Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
+    afterEach(() => {
+        cleanup();
+    });
 
     it("matches Snapshot", () => {
         expect(render(<BetaBanner/>)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(shallow(<BetaBanner/>).exists()).toEqual(true));
+    it("should render correctly", () => {
+        const wrapper = render(<BetaBanner/>)
+        expect(screen.getByText(/This is a new service/i)).toBeDefined();
+        expect(screen.getByText(/BETA/i)).toBeDefined();
+    });
 });

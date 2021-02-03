@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, {mount, shallow} from "enzyme";
+import Enzyme, {shallow} from "enzyme";
 import {ONSUpload} from "./ONSUpload";
 import Adapter from "enzyme-adapter-react-16";
 
@@ -15,15 +15,6 @@ describe("ONS Upload Test", () => {
         fileID: "file",
         accept: "yes?",
         onChange: jest.fn()
-    };
-
-    const undefinedChangeProps = {
-        label: "Upload",
-        description: "This is the upload",
-        fileName: "file.csv",
-        fileID: "file",
-        accept: "yes?",
-        onChange: undefined
     };
 
     function wrapper(render: any, props: any) {
@@ -45,15 +36,9 @@ describe("ONS Upload Test", () => {
 
     it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
 
-    it.skip("should handle a change", () => {
-        //defined onchange
-        wrapper(mount, changeProps).find("input").simulate("change");
-        expect(changeProps.onChange).toHaveBeenCalled();
-
-        //undefined onchange
-        wrapper(mount, undefinedChangeProps).find("input").simulate("change");
-        expect(undefinedChangeProps.onChange).toBeUndefined();
-
+    it("should handle a change", () => {
+        const input = wrapper(shallow, changeProps)
+        input.find("input").simulate('change', {target: {value: 'abc'}});
+        expect(changeProps.onChange).toHaveBeenCalled()
     });
-
 });

@@ -1,11 +1,11 @@
 import React from "react";
-import Enzyme, { render, shallow} from "enzyme";
-
-import Adapter from "enzyme-adapter-react-16";
+import {cleanup, render} from "@testing-library/react";
 import Header from "./Header";
 
 describe("Header Test", () => {
-    Enzyme.configure({adapter: new Adapter()});
+    afterEach(() => {
+        cleanup();
+    });
 
     const Props = {
         title: "App Title"
@@ -17,12 +17,12 @@ describe("Header Test", () => {
     });
 
     it("should render correctly", () => {
-        const wrapper = shallow(<Header title={Props.title}/>);
-        expect(wrapper.exists()).toEqual(true);
+        const wrapper = render(<Header title={Props.title}/>);
+        expect(wrapper).toBeDefined();
     });
 
     it("should render with the title displayed", () => {
-        const wrapper = shallow(<Header title={Props.title}/>);
-        expect(wrapper.html()).toContain(Props.title);
+        const wrapper = render(<Header title={Props.title}/>);
+        expect(wrapper.getByText(Props.title)).toBeDefined();
     });
 });
