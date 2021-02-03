@@ -4,6 +4,9 @@ import {Props as HeaderProps} from "./components/Header"
 import {Props as ExternalLinkProps} from "./components/ExternalLink"
 import {Props as ButtonProps} from "./components/ONSButton"
 import {Props as PanelProps} from "./components/ONSPanel"
+import {Props as ONSPasswordInputProps} from "./components/ONSPasswordInput";
+import {Props as ONSSelectProps} from "./components/ONSSelect";
+import {Props as ONSTextInputProps} from "./components/ONSTextInput";
 import {Props as UploadProps} from "./components/ONSUpload"
 
 
@@ -23,6 +26,12 @@ declare module "blaise-design-system-react-components" {
     export function ONSButton(props: ButtonProps): ReactElement<ButtonProps>
 
     export function ONSPanel(props: PanelProps): ReactElement<PanelProps>
+
+    export function ONSPasswordInput(props: ONSPasswordInputProps): ReactElement<ONSPasswordInputProps>
+
+    export function ONSSelect(props: ONSSelectProps): ReactElement<ONSSelectProps>
+
+    export function ONSTextInput(props: ONSTextInputProps): ReactElement<ONSTextInputProps>
 
     export function ONSUpload(props: UploadProps): ReactElement<UploadProps>
 }

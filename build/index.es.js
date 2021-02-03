@@ -82,19 +82,13 @@ var ONSButton = function (props) {
         }
         return "button";
     };
-    var className = "btn ";
-    if (props.exportExcelBtn) {
-        className = className + " " + (props.loading ? "btn--secondary btn--loader is-loading  " : " btn--excel btn--secondary");
-    }
-    else {
-        className = className +
-            (props.action ? "btn--link " : "") +
-            (props.loading ? "btn--loader is-loading " : "") +
-            (props.field ? "field " : "") +
-            (props.primary ? "" : "btn--secondary ") +
-            (props.small ? "btn--small " : "") +
-            (props.disabled ? "btn--disabled " : "");
-    }
+    var className = "btn " +
+        (props.action ? "btn--link " : "") +
+        (props.loading ? "btn--loader is-loading " : "") +
+        (props.field ? "field " : "") +
+        (props.primary ? "" : "btn--secondary ") +
+        (props.small ? "btn--small " : "") +
+        (props.disabled ? "btn--disabled " : "");
     return (React.createElement("button", { id: props.id, style: spacing(), type: "button", disabled: props.loading || props.disabled, className: className, onClick: props.onClick, "data-testid": test_id() },
         React.createElement("span", { className: "btn__inner" },
             props.label,
@@ -161,12 +155,102 @@ var extendStatics = function(d, b) {
 };
 
 function __extends(d, b) {
-    if (typeof b !== "function" && b !== null)
-        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
     extendStatics(d, b);
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
+
+var ONSPasswordInput = /** @class */ (function (_super) {
+    __extends(ONSPasswordInput, _super);
+    function ONSPasswordInput(props) {
+        var _this = _super.call(this, props) || this;
+        _this.togglePassword = function () {
+            _this.setState({ password: !_this.state.password });
+        };
+        _this.handleChange = function (e) {
+            if (_this.props.onChange !== undefined) {
+                _this.props.onChange(e, _this.props.value);
+            }
+        };
+        _this.spacing = function () {
+            var buttonStyle = {
+                marginTop: String(_this.props.marginTop) + "px",
+            };
+            return buttonStyle;
+        };
+        _this.state = { password: true };
+        return _this;
+    }
+    ONSPasswordInput.prototype.render = function () {
+        var _this = this;
+        return (React.createElement("p", { className: "field" },
+            React.createElement("label", { className: "label", htmlFor: "password" }, this.props.label),
+            React.createElement("span", { className: "checkbox checkbox--toggle", style: this.spacing() },
+                React.createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "checkbox__input", name: "show-password", onClick: this.togglePassword }),
+                React.createElement("label", { id: "password-toggle-label", className: "checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
+            React.createElement("input", { type: this.state.password ? "password" : "text", id: "password", className: "input input--text input-type__input u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
+    };
+    return ONSPasswordInput;
+}(Component));
+
+var ONSSelect = /** @class */ (function (_super) {
+    __extends(ONSSelect, _super);
+    function ONSSelect(props) {
+        var _this = _super.call(this, props) || this;
+        _this.value = _this.props.value !== undefined ? _this.props.value : "";
+        _this.handleChange = function (e) {
+            if (_this.props.onChange !== undefined) {
+                _this.props.onChange(e);
+            }
+            _this.value = e.target.value;
+            _this.setState({ value: e.target.value });
+        };
+        _this.state = { value: props.value !== undefined ? _this.props.value : "" };
+        return _this;
+    }
+    ONSSelect.prototype.defaultValue = function () {
+        if (this.props.defaultValue)
+            return this.props.defaultValue;
+        return "";
+    };
+    ONSSelect.prototype.render = function () {
+        var _this = this;
+        return (React.createElement("div", null,
+            this.props.label !== undefined &&
+                React.createElement("label", { className: "label", htmlFor: this.props.id },
+                    this.props.label,
+                    " "),
+            React.createElement("select", { id: this.props.id, name: "select", defaultValue: this.defaultValue(), className: "input ", onChange: function (e) { return _this.handleChange(e); } },
+                React.createElement("option", { value: "", disabled: true, "data-testid": "select-" + this.props.id }, "Select an option"),
+                this.props.options.map(function (option, index) {
+                    return React.createElement("option", { value: option.value, key: index, id: option.id, "data-testid": "option-" + _this.props.id + "-" + option.value }, option.label);
+                }))));
+    };
+    return ONSSelect;
+}(Component));
+
+var ONSTextInput = /** @class */ (function (_super) {
+    __extends(ONSTextInput, _super);
+    function ONSTextInput(props) {
+        var _this = _super.call(this, props) || this;
+        _this.value = "";
+        _this.handleChange = function (e) {
+            if (_this.props.onChange !== undefined)
+                _this.props.onChange(e, _this.props.label);
+            _this.value = e.target.value;
+        };
+        _this.state = { value: "" };
+        return _this;
+    }
+    ONSTextInput.prototype.render = function () {
+        var _this = this;
+        return (React.createElement("p", { className: "field" },
+            this.props.label !== undefined &&
+                React.createElement("label", { className: "label", htmlFor: this.props.id }, this.props.label),
+            React.createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "" }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.props.password === true ? "password" : "text", id: this.props.id, className: "input input--text input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": "text-input" })));
+    };
+    return ONSTextInput;
+}(Component));
 
 var ONSUpload = /** @class */ (function (_super) {
     __extends(ONSUpload, _super);
@@ -195,5 +279,5 @@ var ONSUpload = /** @class */ (function (_super) {
     return ONSUpload;
 }(Component));
 
-export { BetaBanner, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSPanel, ONSUpload };
+export { BetaBanner, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload };
 //# sourceMappingURL=index.es.js.map

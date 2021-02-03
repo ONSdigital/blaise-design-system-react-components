@@ -56,6 +56,9 @@ function SimplePage(): ReactElement {
 | ONSButton             | [Button](https://ons-design-system.netlify.app/components/button/)                    |                                                                                            |
 | ONSErrorPanel         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/)        | This is a Standard Panel with an error status, with a prepared message "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."  |
 | ONSPanel              | [Panel](https://ons-design-system.netlify.app/components/panel/)                      |                                                                                            |
+| ONSPasswordInput      | [Password](https://ons-design-system.netlify.app/components/password/)                |                                                                                            |
+| ONSSelect             | [Select](https://ons-design-system.netlify.app/components/select/)                    |                                                                                            |
+| ONSTextInput          | [Input](https://ons-design-system.netlify.app/components/input/)                      |                                                                                            |
 | ONSUpload             | [Upload](https://ons-design-system.netlify.app/components/upload/)                    |                                                                                            |
 
 ## Component Development

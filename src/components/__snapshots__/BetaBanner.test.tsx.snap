@@ -1,470 +1,136 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ONS In Dev Banner Test matches Snapshot 1`] = `
-initialize {
-  "0": Node {
-    "attribs": Object {
-      "class": "phase-banner",
-    },
-    "children": Array [
-      Node {
-        "attribs": Object {
-          "class": "container ",
-        },
-        "children": Array [
-          Node {
-            "attribs": Object {
-              "class": "grid grid--flex grid--gutterless grid--vertical-center grid--no-wrap",
-            },
-            "children": Array [
-              Node {
-                "attribs": Object {
-                  "class": "grid__col col-auto u-flex-no-grow",
-                },
-                "children": Array [
-                  Node {
-                    "attribs": Object {
-                      "class": "phase-banner__badge",
-                    },
-                    "children": Array [
-                      Node {
-                        "data": "BETA",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "h3",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                ],
-                "name": "div",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Node {
-                  "attribs": Object {
-                    "class": "grid__col col-auto u-flex-shrink",
-                  },
-                  "children": Array [
-                    Node {
-                      "attribs": Object {
-                        "class": "phase-banner__desc u-fs-s u-mb-no",
-                      },
-                      "children": Array [
-                        Node {
-                          "data": "This is a new service – your ",
-                          "next": Node {
-                            "attribs": Object {
-                              "href": "https://ons.service-now.com/",
-                            },
-                            "children": Array [
-                              Node {
-                                "data": "feedback",
-                                "next": null,
-                                "parent": [Circular],
-                                "prev": null,
-                                "type": "text",
-                              },
-                            ],
-                            "name": "a",
-                            "namespace": "http://www.w3.org/1999/xhtml",
-                            "next": Node {
-                              "data": " will help us improve it.",
-                              "next": null,
-                              "parent": [Circular],
-                              "prev": [Circular],
-                              "type": "text",
-                            },
-                            "parent": [Circular],
-                            "prev": [Circular],
-                            "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "href": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "href": undefined,
-                            },
-                          },
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                        Node {
-                          "attribs": Object {
-                            "href": "https://ons.service-now.com/",
-                          },
-                          "children": Array [
-                            Node {
-                              "data": "feedback",
-                              "next": null,
-                              "parent": [Circular],
-                              "prev": null,
-                              "type": "text",
-                            },
-                          ],
-                          "name": "a",
-                          "namespace": "http://www.w3.org/1999/xhtml",
-                          "next": Node {
-                            "data": " will help us improve it.",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": [Circular],
-                            "type": "text",
-                          },
-                          "parent": [Circular],
-                          "prev": Node {
-                            "data": "This is a new service – your ",
-                            "next": [Circular],
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "text",
-                          },
-                          "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "href": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "href": undefined,
-                          },
-                        },
-                        Node {
-                          "data": " will help us improve it.",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": Node {
-                            "attribs": Object {
-                              "href": "https://ons.service-now.com/",
-                            },
-                            "children": Array [
-                              Node {
-                                "data": "feedback",
-                                "next": null,
-                                "parent": [Circular],
-                                "prev": null,
-                                "type": "text",
-                              },
-                            ],
-                            "name": "a",
-                            "namespace": "http://www.w3.org/1999/xhtml",
-                            "next": [Circular],
-                            "parent": [Circular],
-                            "prev": Node {
-                              "data": "This is a new service – your ",
-                              "next": [Circular],
-                              "parent": [Circular],
-                              "prev": null,
-                              "type": "text",
-                            },
-                            "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "href": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "href": undefined,
-                            },
-                          },
-                          "type": "text",
-                        },
-                      ],
-                      "name": "p",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "class": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "class": undefined,
-                      },
-                    },
-                  ],
-                  "name": "div",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": [Circular],
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
-              Node {
-                "attribs": Object {
-                  "class": "grid__col col-auto u-flex-shrink",
-                },
-                "children": Array [
-                  Node {
-                    "attribs": Object {
-                      "class": "phase-banner__desc u-fs-s u-mb-no",
-                    },
-                    "children": Array [
-                      Node {
-                        "data": "This is a new service – your ",
-                        "next": Node {
-                          "attribs": Object {
-                            "href": "https://ons.service-now.com/",
-                          },
-                          "children": Array [
-                            Node {
-                              "data": "feedback",
-                              "next": null,
-                              "parent": [Circular],
-                              "prev": null,
-                              "type": "text",
-                            },
-                          ],
-                          "name": "a",
-                          "namespace": "http://www.w3.org/1999/xhtml",
-                          "next": Node {
-                            "data": " will help us improve it.",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": [Circular],
-                            "type": "text",
-                          },
-                          "parent": [Circular],
-                          "prev": [Circular],
-                          "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "href": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "href": undefined,
-                          },
-                        },
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                      Node {
-                        "attribs": Object {
-                          "href": "https://ons.service-now.com/",
-                        },
-                        "children": Array [
-                          Node {
-                            "data": "feedback",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "text",
-                          },
-                        ],
-                        "name": "a",
-                        "namespace": "http://www.w3.org/1999/xhtml",
-                        "next": Node {
-                          "data": " will help us improve it.",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": [Circular],
-                          "type": "text",
-                        },
-                        "parent": [Circular],
-                        "prev": Node {
-                          "data": "This is a new service – your ",
-                          "next": [Circular],
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                        "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "href": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "href": undefined,
-                        },
-                      },
-                      Node {
-                        "data": " will help us improve it.",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": Node {
-                          "attribs": Object {
-                            "href": "https://ons.service-now.com/",
-                          },
-                          "children": Array [
-                            Node {
-                              "data": "feedback",
-                              "next": null,
-                              "parent": [Circular],
-                              "prev": null,
-                              "type": "text",
-                            },
-                          ],
-                          "name": "a",
-                          "namespace": "http://www.w3.org/1999/xhtml",
-                          "next": [Circular],
-                          "parent": [Circular],
-                          "prev": Node {
-                            "data": "This is a new service – your ",
-                            "next": [Circular],
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "text",
-                          },
-                          "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "href": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "href": undefined,
-                          },
-                        },
-                        "type": "text",
-                      },
-                    ],
-                    "name": "p",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                ],
-                "name": "div",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": Node {
-                  "attribs": Object {
-                    "class": "grid__col col-auto u-flex-no-grow",
-                  },
-                  "children": Array [
-                    Node {
-                      "attribs": Object {
-                        "class": "phase-banner__badge",
-                      },
-                      "children": Array [
-                        Node {
-                          "data": "BETA",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                      ],
-                      "name": "h3",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "class": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "class": undefined,
-                      },
-                    },
-                  ],
-                  "name": "div",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
-            ],
-            "name": "div",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-            },
-          },
-        ],
-        "name": "div",
-        "namespace": "http://www.w3.org/1999/xhtml",
-        "next": null,
-        "parent": [Circular],
-        "prev": null,
-        "type": "tag",
-        "x-attribsNamespace": Object {
-          "class": undefined,
-        },
-        "x-attribsPrefix": Object {
-          "class": undefined,
-        },
-      },
-    ],
-    "name": "div",
-    "namespace": "http://www.w3.org/1999/xhtml",
-    "next": null,
-    "parent": Node {
-      "children": Array [
-        [Circular],
-      ],
-      "name": "root",
-      "next": null,
-      "parent": null,
-      "prev": null,
-      "type": "root",
-    },
-    "prev": null,
-    "type": "tag",
-    "x-attribsNamespace": Object {
-      "class": undefined,
-    },
-    "x-attribsPrefix": Object {
-      "class": undefined,
-    },
-  },
-  "_root": [Circular],
-  "length": 1,
-  "options": Object {
-    "decodeEntities": true,
-    "xml": false,
-  },
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="phase-banner"
+      >
+        <div
+          class="container "
+        >
+          <div
+            class="grid grid--flex grid--gutterless grid--vertical-center grid--no-wrap"
+          >
+            <div
+              class="grid__col col-auto u-flex-no-grow"
+            >
+              <h3
+                class="phase-banner__badge"
+              >
+                BETA
+              </h3>
+            </div>
+            <div
+              class="grid__col col-auto u-flex-shrink"
+            >
+              <p
+                class="phase-banner__desc u-fs-s u-mb-no"
+              >
+                This is a new service – your 
+                <a
+                  href="https://ons.service-now.com/"
+                >
+                  feedback
+                </a>
+                 will help us improve it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="phase-banner"
+    >
+      <div
+        class="container "
+      >
+        <div
+          class="grid grid--flex grid--gutterless grid--vertical-center grid--no-wrap"
+        >
+          <div
+            class="grid__col col-auto u-flex-no-grow"
+          >
+            <h3
+              class="phase-banner__badge"
+            >
+              BETA
+            </h3>
+          </div>
+          <div
+            class="grid__col col-auto u-flex-shrink"
+          >
+            <p
+              class="phase-banner__desc u-fs-s u-mb-no"
+            >
+              This is a new service – your 
+              <a
+                href="https://ons.service-now.com/"
+              >
+                feedback
+              </a>
+               will help us improve it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
 }
 `;

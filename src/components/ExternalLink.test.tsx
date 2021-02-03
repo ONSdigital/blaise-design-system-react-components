@@ -1,11 +1,14 @@
 import React from "react";
-import Enzyme, {render, shallow} from "enzyme";
-
-import Adapter from "enzyme-adapter-react-16";
+import {cleanup, render, screen} from "@testing-library/react";
 import ExternalLink from "./ExternalLink";
+import Enzyme, {shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
-describe("External Link Test", () => {
+describe("External Link Test",  () => {
     Enzyme.configure({adapter: new Adapter()});
+    afterEach(() => {
+        cleanup();
+    });
 
     const Props = {
         text: "Click Me",
@@ -19,14 +22,13 @@ describe("External Link Test", () => {
     });
 
     it("should render correctly", () => {
-        const wrapper = shallow(<ExternalLink {...Props}/>);
-        expect(wrapper.exists()).toEqual(true);
+        const wrapper = render(<ExternalLink {...Props}/>);
+        expect(wrapper).toBeDefined();
     });
 
     it("should render with the correct text displayed", () => {
-        const wrapper = shallow(<ExternalLink {...Props}/>);
-        const children = wrapper.find("a");
-        expect(children.html()).toContain(Props.text);
+        render(<ExternalLink {...Props}/>);
+        expect(screen.getByText(/Click Me/i)).toBeDefined();
     });
 
     it("should render with the correct href passed in", () => {
@@ -40,6 +42,4 @@ describe("External Link Test", () => {
         const ariaLabel = wrapper.find("a").props()["aria-label"];
         expect(ariaLabel).toEqual(Props.ariaLabel);
     });
-
-
 });
