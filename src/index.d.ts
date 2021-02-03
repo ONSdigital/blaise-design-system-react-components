@@ -27,11 +27,11 @@ declare module "blaise-design-system-react-components" {
 
     export function ONSPanel(props: PanelProps): ReactElement<PanelProps>
 
-    export function ONSPasswordInput(props: PanelProps): ReactElement<ONSPasswordInputProps>
+    export function ONSPasswordInput(props: ONSPasswordInputProps): ReactElement<ONSPasswordInputProps>
 
-    export function ONSSelect(props: PanelProps): ReactElement<ONSSelectProps>
+    export function ONSSelect(props: ONSSelectProps): ReactElement<ONSSelectProps>
 
-    export function ONSTextInput(props: PanelProps): ReactElement<ONSTextInputProps>
+    export function ONSTextInput(props: ONSTextInputProps): ReactElement<ONSTextInputProps>
 
     export function ONSUpload(props: UploadProps): ReactElement<UploadProps>
 }
