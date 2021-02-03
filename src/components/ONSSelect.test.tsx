@@ -3,7 +3,6 @@ import Enzyme, {shallow} from "enzyme";
 import {ONSSelect} from "./ONSSelect";
 import Adapter from "enzyme-adapter-react-16";
 import {render, screen} from "@testing-library/react";
-jest.mock("./ONSSelect.css");
 
 describe("ONS Select Test", () => {
     Enzyme.configure({adapter: new Adapter()});
