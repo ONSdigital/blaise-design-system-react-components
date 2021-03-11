@@ -13,6 +13,7 @@ export interface Props {
     action?: boolean
     testid?: string
     hidden?: boolean
+    submit?: boolean
 }
 
 export const ONSButton = (props: Props) => {
@@ -39,7 +40,7 @@ export const ONSButton = (props: Props) => {
         (props.small ? "btn--small " : "") +
         (props.disabled ? "btn--disabled " : "");
     return (
-        <button id={props.id} style={spacing()} type="button" disabled={props.loading || props.disabled}
+        <button id={props.id} style={spacing()} type={props.submit ? "submit" : "button"} disabled={props.loading || props.disabled}
                 className={className} onClick={props.onClick} data-testid={test_id()}>
             <span className="btn__inner">
                 {props.label}
