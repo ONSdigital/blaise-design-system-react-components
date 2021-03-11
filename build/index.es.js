@@ -89,7 +89,7 @@ var ONSButton = function (props) {
         (props.primary ? "" : "btn--secondary ") +
         (props.small ? "btn--small " : "") +
         (props.disabled ? "btn--disabled " : "");
-    return (React.createElement("button", { id: props.id, style: spacing(), type: "button", disabled: props.loading || props.disabled, className: className, onClick: props.onClick, "data-testid": test_id() },
+    return (React.createElement("button", { id: props.id, style: spacing(), type: props.submit ? "submit" : "button", disabled: props.loading || props.disabled, className: className, onClick: props.onClick, "data-testid": test_id() },
         React.createElement("span", { className: "btn__inner" },
             props.label,
             props.loading &&
