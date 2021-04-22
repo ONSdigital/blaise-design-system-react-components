@@ -2,6 +2,7 @@ import React from "react";
 import Enzyme, {mount, shallow} from "enzyme";
 import {ONSPanel} from "./ONSPanel";
 import Adapter from "enzyme-adapter-react-16";
+import {render, waitFor, cleanup} from "@testing-library/react";
 
 describe("ONS Panel Test", () => {
     Enzyme.configure({ adapter: new Adapter() });
@@ -36,7 +37,11 @@ describe("ONS Panel Test", () => {
                         >{props.children}</ONSPanel>)}
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, panelProps)).toMatchSnapshot()
+        expect(wrapper(render, panelProps)).toMatchSnapshot()
+    });
+
+    it("success panel matches Snapshot", () => {
+        expect(wrapper(render, statusPanelProps)).toMatchSnapshot()
     });
 
     it("should render correctly", () => expect(wrapper(shallow, panelProps).exists()).toEqual(true));
@@ -60,6 +65,6 @@ describe("ONS Panel Test", () => {
     })
 
     it("matches Snapshot a big success icon", () => {
-        expect(wrapper(shallow, bigIconStatusPanelProps)).toMatchSnapshot();
+        expect(wrapper(render, bigIconStatusPanelProps)).toMatchSnapshot();
     })
 })
