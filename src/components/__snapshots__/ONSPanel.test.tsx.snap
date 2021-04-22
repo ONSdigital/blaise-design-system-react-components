@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ONS Panel Test matches Snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`ONS Panel Test matches Snapshot a big success icon 1`] = `ShallowWrapper {}`;

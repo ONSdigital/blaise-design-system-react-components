@@ -22,13 +22,17 @@ describe("ONS Panel Test", () => {
         spacious: true,
         id: "spacious"
     }
+
+    const bigIconStatusPanelProps = {
+        children: <p>Statusssss</p>,
+        status: "success",
+        bigIcon: true
+        // spacious: false
+    };
     
     function wrapper (render: any, props: any) {
         return render(
-            <ONSPanel   status={props.status}
-                        spacious={props.spacious} 
-                        id={props.id}
-                        hidden = {props.hidden}
+            <ONSPanel   {...props}
                         >{props.children}</ONSPanel>)}
 
     it("matches Snapshot", () => {
@@ -50,4 +54,12 @@ describe("ONS Panel Test", () => {
         expect(wrapper(shallow, spaciousPanelProps).find('div.panel').hasClass('panel--spacious')).toEqual(true)
     })
 
+    it("should render the big success tick", () => {
+        expect(wrapper(shallow, bigIconStatusPanelProps).find("svg.svg-icon").hasClass('svg-icon--xl')).toEqual(true)
+        expect(wrapper(shallow, bigIconStatusPanelProps).find("div.panel__body").hasClass('svg-icon-margin--xl')).toEqual(true)
+    })
+
+    it("matches Snapshot a big success icon", () => {
+        expect(wrapper(shallow, bigIconStatusPanelProps)).toMatchSnapshot();
+    })
 })
