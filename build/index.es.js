@@ -31,7 +31,7 @@ function Header(_a) {
                         React.createElement("div", { className: "grid__col col-auto" },
                             React.createElement("a", { className: "header__logo-link", href: "/" },
                                 React.createElement("picture", null,
-                                    React.createElement("img", { className: "header__logo", src: "https://ons-design-system.netlify.app/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
+                                    React.createElement("img", { className: "header__logo", src: "https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
             React.createElement("div", { className: "header__main" },
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: "grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap" },

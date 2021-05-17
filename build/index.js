@@ -39,7 +39,7 @@ function Header(_a) {
                         React__default['default'].createElement("div", { className: "grid__col col-auto" },
                             React__default['default'].createElement("a", { className: "header__logo-link", href: "/" },
                                 React__default['default'].createElement("picture", null,
-                                    React__default['default'].createElement("img", { className: "header__logo", src: "https://ons-design-system.netlify.app/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
+                                    React__default['default'].createElement("img", { className: "header__logo", src: "https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
             React__default['default'].createElement("div", { className: "header__main" },
                 React__default['default'].createElement("div", { className: "container" },
                     React__default['default'].createElement("div", { className: "grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap" },
