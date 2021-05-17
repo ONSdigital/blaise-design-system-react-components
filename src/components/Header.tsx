@@ -21,7 +21,7 @@ function Header({title, signOutButton, signOutFunction}: Props): ReactElement {
                                         {/*<source media="(max-width: 499px)" srcSet="/img/ons-logo-stacked-neg-en.svg"*/}
                                         {/*        alt="Office for National Statistics logo"/>*/}
                                         <img className="header__logo"
-                                             src="https://ons-design-system.netlify.app/img/ons-logo-neg-en.svg"
+                                             src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
                                              alt="Office for National Statistics logo"/>
                                     </picture>
                                 </a>
