@@ -11,6 +11,7 @@ export interface Props {
     value?: string
     autoComplete?: string
     onClick?: any
+    zIndex: number
 }
 
 export class ONSTextInput extends Component <Props> {
@@ -33,7 +34,7 @@ export class ONSTextInput extends Component <Props> {
                 {this.props.label !== undefined &&
                 <label className="label" htmlFor={this.props.id}>{this.props.label}</label>}
                 <input value={this.props.value}
-                       style={{width: this.props.fit === true ? "unset" : ""}}
+                       style={{width: this.props.fit === true ? "unset" : "", "zIndex": this.props.zIndex ? this.props.zIndex : 0}}
                        autoFocus={this.props.autoFocus === true}
                        autoComplete={this.props.autoComplete}
                        type={this.props.password === true ? "password" : "text"}
