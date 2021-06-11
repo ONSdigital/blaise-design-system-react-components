@@ -25,6 +25,48 @@ test('error appears on submit of empty form',  async () => {
     });
 });
 
+test('only one error appears on submit of one incorrect field',  async () => {
+    render(<ExampleForm/>);
+
+    fireEvent.input(screen.getByLabelText(/Name/i), {
+        target: {
+            value:
+                "ricer"
+        }
+    });
+
+    fireEvent.input(screen.getByLabelText(/Email/i), {
+        target: {
+            value:
+                "invalidEmail123"
+        }
+    });
+
+    fireEvent.input(screen.getByLabelText(/Password/i), {
+        target: {
+            value:
+                "ricer123"
+        }
+    });
+
+    const submitButton = screen.getByTestId(/submit-btn/i);
+    fireEvent.click(submitButton)
+
+    await waitFor(() => {
+        const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
+        expect(errorMessage).toBeInTheDocument();
+
+        const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
+        expect(nameErrorMessage).toHaveLength(0);
+        const passwordErrorMessage = screen.queryAllByText(/Enter a password/i);
+        expect(passwordErrorMessage).toHaveLength(0);
+
+
+        const emailErrorMessage = screen.queryAllByText(/Enter an email address in the correct format, such as name@example.com/i);
+        expect(emailErrorMessage).toHaveLength(2);
+    });
+});
+
 
 test('submit function is called when form is valid', async () => {
     render(<ExampleForm/>);
