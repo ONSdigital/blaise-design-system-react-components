@@ -60,8 +60,7 @@ function SimplePage(): ReactElement {
 | ONSSelect             | [Select](https://ons-design-system.netlify.app/components/select/)                    |                                                                                            |
 | ONSTextInput          | [Input](https://ons-design-system.netlify.app/components/input/)                      |                                                                                            |
 | ONSUpload             | [Upload](https://ons-design-system.netlify.app/components/upload/)                    |                                                                                            |
-
-[Styled Form](./docs/StyledForms.MD)
+| StyledForm            | [Correct errors pattern](https://ons-design-system.netlify.app/patterns/error-validation) | Easily add ONS styled forms to React application. [Detailed documentation and example](./docs/StyledForms.MD)                                                                                         |
 
 ## Component Development
 
