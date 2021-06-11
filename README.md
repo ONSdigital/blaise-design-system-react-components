@@ -61,6 +61,8 @@ function SimplePage(): ReactElement {
 | ONSTextInput          | [Input](https://ons-design-system.netlify.app/components/input/)                      |                                                                                            |
 | ONSUpload             | [Upload](https://ons-design-system.netlify.app/components/upload/)                    |                                                                                            |
 
+[Styled Form](./docs/StyledForms.MD)
+
 ## Component Development
 
 ### Setup
