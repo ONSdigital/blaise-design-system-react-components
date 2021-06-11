@@ -49,11 +49,13 @@ function FormPage() {
 }
 ```
 
-This example will produce the following 
+This example will produce the following:
+
 ![Simple form example](simple_form.png)
 
 
-With errors appearing when you click submit.
+With errors appearing when you click submit:
+
 ![Simple form example showing error](simple_form_error.png)
 
 This repository contains a [detailed example with more fields](../src/components/forms/ExampleForm/ExampleForm.tsx).
