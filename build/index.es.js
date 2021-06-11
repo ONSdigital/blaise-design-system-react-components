@@ -4701,18 +4701,6 @@ var Form = /*#__PURE__*/forwardRef(function (props, ref) {
 });
 Form.displayName = 'Form';
 
-function toUpperCase(string) {
-    return string.trim().replace(/^\w/, function (c) { return c.toUpperCase(); });
-}
-var ONSInputField = function (_a) {
-    var field = _a.field; _a.form; var description = _a.description, props = __rest(_a, ["field", "form", "description"]);
-    return React.createElement(React.Fragment, null,
-        React.createElement("div", { className: "field" },
-            React.createElement("label", { className: "label " + (description ? "label--with-description" : ""), htmlFor: field.name }, toUpperCase(field.name)),
-            description &&
-                React.createElement("span", { id: "description-hint", className: "label__description  input--with-description" }, description),
-            React.createElement("input", __assign({ id: field.name, className: "input input--text input-type__input " }, field, props))));
-};
 /**
  * Error summary list
  *  - Displayed when isValid is false.
@@ -4723,7 +4711,7 @@ var ONSInputField = function (_a) {
  * @param {FormikErrors<FormikValues>} errors List of errors for all field
  * @constructor
  */
-function FormErrorSummary(isValid, errors) {
+function ErrorSummary(isValid, errors) {
     var errorFocus;
     useEffect(function () {
         errorFocus === null || errorFocus === void 0 ? void 0 : errorFocus.focus();
@@ -4743,6 +4731,28 @@ function FormErrorSummary(isValid, errors) {
                         errors[field]));
                 })))));
 }
+
+function toUpperCase(string) {
+    return string.trim().replace(/^\w/, function (c) { return c.toUpperCase(); });
+}
+var ONSInputField = function (_a) {
+    var field = _a.field; _a.form; var description = _a.description, props = __rest(_a, ["field", "form", "description"]);
+    return React.createElement(React.Fragment, null,
+        React.createElement("div", { className: "field" },
+            React.createElement("label", { className: "label " + (description ? "label--with-description" : ""), htmlFor: field.name }, toUpperCase(field.name)),
+            description &&
+                React.createElement("span", { id: "description-hint", className: "label__description  input--with-description" }, description),
+            React.createElement("input", __assign({ id: field.name, className: "input input--text input-type__input " }, field, props))));
+};
+function InputErrorPanel(fieldError, fieldName, field) {
+    return (React.createElement("div", { className: "panel panel--error panel--no-title u-mb-s", id: fieldName + "-error" },
+        React.createElement("span", { className: "u-vh" }, "Error: "),
+        React.createElement("div", { className: "panel__body" },
+            React.createElement("p", { className: "panel__error" },
+                React.createElement("strong", null, fieldError)),
+            field)));
+}
+
 /**
  * Formik form styled to ONS design guide with form error panel
  *
@@ -4753,14 +4763,6 @@ function FormErrorSummary(isValid, errors) {
  */
 function StyledForm(_a) {
     var fields = _a.fields, onSubmitFunction = _a.onSubmitFunction;
-    function InputErrorPanel(fieldError, fieldName, field) {
-        return (React.createElement("div", { className: "panel panel--error panel--no-title u-mb-s", id: fieldName + "-error" },
-            React.createElement("span", { className: "u-vh" }, "Error: "),
-            React.createElement("div", { className: "panel__body" },
-                React.createElement("p", { className: "panel__error" },
-                    React.createElement("strong", null, fieldError)),
-                field)));
-    }
     var initialFieldValues = {};
     fields.forEach(function (_a) {
         var name = _a.name;
@@ -4772,7 +4774,7 @@ function StyledForm(_a) {
         } }, function (_a) {
         var errors = _a.errors, isSubmitting = _a.isSubmitting, isValid = _a.isValid;
         return (React.createElement(Form, null,
-            FormErrorSummary(isValid, errors),
+            ErrorSummary(isValid, errors),
             fields.map(function (field, index) {
                 field.autoFocus = (index === 0);
                 return (React.createElement(Fragment$1, { key: field.name }, 
