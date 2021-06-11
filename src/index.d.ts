@@ -8,7 +8,7 @@ import {Props as ONSPasswordInputProps} from "./components/ONSPasswordInput";
 import {Props as ONSSelectProps} from "./components/ONSSelect";
 import {Props as ONSTextInputProps} from "./components/ONSTextInput";
 import {Props as UploadProps} from "./components/ONSUpload"
-import {StyledFormProps, FormField} from "./components/forms/StyledForm";
+import {StyledFormProps, FormFieldObject} from "./components/forms/StyledForm";
 
 
 declare module "blaise-design-system-react-components" {
@@ -37,4 +37,7 @@ declare module "blaise-design-system-react-components" {
     export function ONSUpload(props: UploadProps): ReactElement<UploadProps>
 
     export function StyledForm(props: StyledFormProps): ReactElement<StyledFormProps>
+
+    export type FormField = FormFieldObject;
+
 }

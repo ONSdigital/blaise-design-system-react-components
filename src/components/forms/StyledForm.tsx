@@ -1,7 +1,7 @@
 import React, {Fragment, ReactElement, useEffect} from 'react';
 import {Field, Form, Formik, FormikErrors, FormikValues} from "formik";
 
-export interface FormField {
+export interface FormFieldObject {
     name: string
     description?: string
     type: string
@@ -10,7 +10,7 @@ export interface FormField {
 }
 
 export interface StyledFormProps {
-    fields: FormField[]
+    fields: FormFieldObject[]
     onSubmitFunction: (values: any, setSubmitting: (isSubmitting: boolean) => void) => void
 }
 

@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {validateEmail, validateName, validatePassword} from "./FormValidation";
-import StyledForm, {FormField} from "../StyledForm";
+import StyledForm, {FormFieldObject} from "../StyledForm";
 
 function ExampleForm() {
 
     const [formStatus, setFormStatus] = useState<string>("");
 
     /** List of fields in order for form generation */
-    const formElements: FormField[] = [
+    const formElements: FormFieldObject[] = [
         {
             name: "name",
             description: "Name must be longer than 2 characters",
