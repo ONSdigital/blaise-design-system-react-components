@@ -17,10 +17,10 @@ The StyledForm only needs two things, a list of fields, and the function to call
 This is a simple example with one field called `Name` with a validation function (`validateName`) checking the value is not blank or less than 3 characters.  
 
 ```.tsx
+import {FormField, StyledForm } from "blaise-design-system-react-components";
 
 function FormPage() {
-
-    export function validateName(value: string) {
+    function validateName(value: string) {
         let error;
         if (!value) {
             error = 'Enter a name';
@@ -32,7 +32,7 @@ function FormPage() {
         return error
     }
 
-    const formElements: FormFieldObject[] = [
+    const formElements: FormField[] = [
         {
             name: "name",
             description: "Name must be longer than 2 characters",
@@ -40,13 +40,20 @@ function FormPage() {
             validate: validateName
         }
     ]
-    
+
+    function onFormSubmission(formValues: any, setSubmitting: (isSubmitting: boolean) => void): void {
+        console.warn(`Form submitted for user ${formValues.name}`)
+        setSubmitting(false);
+    }
+
     return (
         <>
             <StyledForm fields={formElements} onSubmitFunction={onFormSubmission}/>
         </>
-    )    
+    )
 }
+
+export default FormPage;
 ```
 
 This example will produce the following:
