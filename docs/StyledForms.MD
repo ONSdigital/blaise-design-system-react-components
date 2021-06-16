@@ -71,10 +71,10 @@ This repository contains a [detailed example with more fields](../src/components
 
 The prop `fields` requires a list with the following properties.
 
-| Property    | Required? | Description                                                              |
-|-------------|-----------|--------------------------------------------------------------------------|
-| name        | Yes       | All fields required a label.                                             |
-| description | No        | Description to be added below the label.                                 |
-| type        | No        | Will default to Type `text` when one is not provided.                    |
-| validate    | No        | No validation for this field, can be left blank by the user in this case |
+| Property    | Type | Required? | Description                                                              |
+|-------------|-----------|-----------|--------------------------------------------------------------------------|
+| name        | `string`  | Yes       | All fields required a label.                                             |
+| description | `string`  | No        | Description to be added below the label.                                 |
+| type        | `string`  | No        | Will default to Type `text` when one is not provided.                    |
+| validate    | Function returning `null` if valid and a validation message `string` if invalid   | No        | If not provided then there will be no validation for this field, can be left blank by the user in this case |
 
