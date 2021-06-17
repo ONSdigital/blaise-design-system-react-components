@@ -10,7 +10,7 @@ import {ONSPasswordInput} from "./components/ONSPasswordInput";
 import {ONSSelect} from "./components/ONSSelect";
 import {ONSTextInput} from "./components/ONSTextInput";
 import {ONSUpload} from "./components/ONSUpload";
-
+import StyledForm from "./components/forms/StyledForm";
 
 export {
     NotProductionWarning,
@@ -24,5 +24,6 @@ export {
     ONSUpload,
     ONSSelect,
     ONSPasswordInput,
-    ONSTextInput
+    ONSTextInput,
+    StyledForm
 }
