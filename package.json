@@ -64,4 +64,4 @@
     "formik": "^2.2.9"
   },
   "types": "src/index.d.ts"
-},
+}
