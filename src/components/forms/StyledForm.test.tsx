@@ -7,7 +7,7 @@ import ExampleForm from "./ExampleForm/ExampleForm";
 test('error appears on submit of empty form',  async () => {
     render(<ExampleForm/>);
 
-    const submitButton = screen.getByTestId(/submit-btn/i);
+    const submitButton = screen.getByTestId(/submit-button/i);
     fireEvent.click(submitButton)
     expect(screen.getByText(/Password must be longer than 6 characters/i)).toBeInTheDocument();
 
@@ -49,7 +49,7 @@ test('only one error appears on submit of one incorrect field',  async () => {
         }
     });
 
-    const submitButton = screen.getByTestId(/submit-btn/i);
+    const submitButton = screen.getByTestId(/submit-button/i);
     fireEvent.click(submitButton)
 
     await waitFor(() => {
@@ -92,7 +92,7 @@ test('submit function is called when form is valid', async () => {
         }
     });
 
-    const submitButton = screen.getByTestId(/submit-btn/i);
+    const submitButton = screen.getByTestId(/submit-button/i);
     fireEvent.click(submitButton)
 
     await waitFor(() => {

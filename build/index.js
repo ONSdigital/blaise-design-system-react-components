@@ -407,8 +407,7 @@ function StyledForm(_a) {
                         React__default['default'].createElement(formik.Field, __assign({}, field, { component: ONSInputField }))));
             }),
             React__default['default'].createElement("br", null),
-            React__default['default'].createElement("button", { type: "submit", className: "btn", disabled: isSubmitting, "data-testid": "submit-btn" },
-                React__default['default'].createElement("span", { className: "btn__inner" }, "Save and continue"))));
+            React__default['default'].createElement(ONSButton, { submit: true, label: "Save and continue ", primary: true, testid: "submit", loading: isSubmitting, disabled: isSubmitting })));
     }));
 }
 
