@@ -11,7 +11,7 @@ export interface Props {
     value?: string
     autoComplete?: string
     onClick?: any
-    zIndex: number
+    zIndex?: number
 }
 
 export class ONSTextInput extends Component <Props> {
