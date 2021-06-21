@@ -31,7 +31,8 @@
   "dependencies": {
     "formik": "^2.2.9",
     "react": "^17.0.1",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-loader-spinner": "^4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -54,7 +55,6 @@
     "jest": "^26.6.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-loader-spinner": "^4.0.0",
     "react-test-renderer": "^17.0.1",
     "rollup": "^2.38.3",
     "rollup-plugin-commonjs": "^10.1.0",

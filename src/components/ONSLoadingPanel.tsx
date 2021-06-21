@@ -3,7 +3,7 @@ import Loader from "react-loader-spinner";
 import {ONSPanel} from "./ONSPanel";
 
 export interface Props {
-    hidden: boolean
+    hidden?: boolean
 }
 
 export const ONSLoadingPanel = ({hidden}: Props) => {
