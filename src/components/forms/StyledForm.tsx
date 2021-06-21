@@ -81,8 +81,7 @@ function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
                         label={"Save and continue "}
                         primary={true}
                         testid={"submit"}
-                        loading={isSubmitting}
-                        disabled={isSubmitting}/>
+                        loading={isSubmitting}/>
                 </Form>
             )}
         </Formik>

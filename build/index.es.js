@@ -399,7 +399,7 @@ function StyledForm(_a) {
                         React.createElement(Field, __assign({}, field, { component: ONSInputField }))));
             }),
             React.createElement("br", null),
-            React.createElement(ONSButton, { submit: true, label: "Save and continue ", primary: true, testid: "submit", loading: isSubmitting, disabled: isSubmitting })));
+            React.createElement(ONSButton, { submit: true, label: "Save and continue ", primary: true, testid: "submit", loading: isSubmitting })));
     }));
 }
 
