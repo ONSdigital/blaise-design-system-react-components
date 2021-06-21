@@ -399,8 +399,7 @@ function StyledForm(_a) {
                         React.createElement(Field, __assign({}, field, { component: ONSInputField }))));
             }),
             React.createElement("br", null),
-            React.createElement("button", { type: "submit", className: "btn", disabled: isSubmitting, "data-testid": "submit-btn" },
-                React.createElement("span", { className: "btn__inner" }, "Save and continue"))));
+            React.createElement(ONSButton, { submit: true, label: "Save and continue ", primary: true, testid: "submit", loading: isSubmitting })));
     }));
 }
 

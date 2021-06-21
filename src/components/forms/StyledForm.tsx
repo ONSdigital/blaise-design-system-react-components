@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {Field, Form, Formik} from "formik";
 import ErrorSummary from './ErrorSummary';
 import {ONSInputField, InputErrorPanel} from "./InputField";
+import {ONSButton} from "../ONSButton";
 
 
 export interface FormFieldObject {
@@ -75,9 +76,12 @@ function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
 
                     <br/>
 
-                    <button type="submit" className="btn" disabled={isSubmitting} data-testid={"submit-btn"}>
-                        <span className="btn__inner">Save and continue</span>
-                    </button>
+                    <ONSButton
+                        submit={true}
+                        label={"Save and continue "}
+                        primary={true}
+                        testid={"submit"}
+                        loading={isSubmitting}/>
                 </Form>
             )}
         </Formik>
