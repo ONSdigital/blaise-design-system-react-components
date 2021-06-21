@@ -55,12 +55,13 @@ function SimplePage(): ReactElement {
 | NoneProductionWarning | [Warning branded Panel](https://ons-design-system.netlify.app/components/panel/#warning-branded) | This one is not an 'Official' component. But is based on the Branded Census warning panel    |
 | ONSButton             | [Button](https://ons-design-system.netlify.app/components/button/)                    |                                                                                            |
 | ONSErrorPanel         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/)        | This is a Standard Panel with an error status, with a prepared message "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."  |
+| ONSLoadingPanel       | [Panel](https://ons-design-system.netlify.app/components/panel/)                      | This is a Standard Panel with an info status, with a loading spinner and "Loading" message. Uses [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) for the loading spinner. |
 | ONSPanel              | [Panel](https://ons-design-system.netlify.app/components/panel/)                      |                                                                                            |
 | ONSPasswordInput      | [Password](https://ons-design-system.netlify.app/components/password/)                |                                                                                            |
 | ONSSelect             | [Select](https://ons-design-system.netlify.app/components/select/)                    |                                                                                            |
 | ONSTextInput          | [Input](https://ons-design-system.netlify.app/components/input/)                      |                                                                                            |
 | ONSUpload             | [Upload](https://ons-design-system.netlify.app/components/upload/)                    |                                                                                            |
-| StyledForm            | [Correct errors pattern](https://ons-design-system.netlify.app/patterns/error-validation) | Easily add ONS styled forms to React application. [Detailed documentation and example](./docs/StyledForms.MD)                                                                                         |
+| StyledForm            | [Correct errors pattern](https://ons-design-system.netlify.app/patterns/error-validation) | Easily add ONS styled forms to React application. [Detailed documentation and example](./docs/StyledForms.MD) |
 
 ## Component Development
 
