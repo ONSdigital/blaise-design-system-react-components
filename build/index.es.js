@@ -357,7 +357,7 @@ var ONSRadioFieldset = function (_a) {
                         React.createElement("p", { className: "radios__item" },
                             React.createElement("span", { className: "radio" },
                                 React.createElement(Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props)),
-                                React.createElement("label", { className: "radio__label", htmlFor: radioOption.value, id: radioOption.id + "-label" }, radioOption.label))),
+                                React.createElement("label", { className: "radio__label", htmlFor: radioOption.id, id: radioOption.id + "-label" }, radioOption.label))),
                         React.createElement("br", null)));
                 })))));
 };

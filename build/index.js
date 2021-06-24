@@ -365,7 +365,7 @@ var ONSRadioFieldset = function (_a) {
                         React__default['default'].createElement("p", { className: "radios__item" },
                             React__default['default'].createElement("span", { className: "radio" },
                                 React__default['default'].createElement(formik.Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props)),
-                                React__default['default'].createElement("label", { className: "radio__label", htmlFor: radioOption.value, id: radioOption.id + "-label" }, radioOption.label))),
+                                React__default['default'].createElement("label", { className: "radio__label", htmlFor: radioOption.id, id: radioOption.id + "-label" }, radioOption.label))),
                         React__default['default'].createElement("br", null)));
                 })))));
 };
