@@ -27,7 +27,7 @@ export const ONSRadioFieldset = ({field, name, form, description, radioOptions, 
                                                value={radioOption.value}
                                                className="radio__input js-radio" {...props}/>
                                         <label className="radio__label"
-                                               htmlFor={radioOption.value}
+                                               htmlFor={radioOption.id}
                                                id={`${radioOption.id}-label`}>{radioOption.label}
                                       </label>
                                     </span>
