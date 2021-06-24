@@ -1,8 +1,14 @@
 import React, {Fragment} from 'react';
 import {Field, Form, Formik} from "formik";
 import ErrorSummary from './ErrorSummary';
-import {ONSInputField, InputErrorPanel} from "./InputField";
+import {ONSInputField, InputErrorPanel, ONSRadioFieldset} from "./InputField";
 import {ONSButton} from "../ONSButton";
+
+export interface RadioFieldsetObject {
+    value: string
+    id: string
+    label: string
+}
 
 
 export interface FormFieldObject {
@@ -11,6 +17,7 @@ export interface FormFieldObject {
     type: string
     validate?: (value: string) => string | undefined
     autoFocus?: boolean
+    radioOptions?: RadioFieldsetObject[]
 }
 
 export interface StyledFormProps {
@@ -54,6 +61,14 @@ function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
                     {
                         fields.map((field, index) => {
                             field.autoFocus = (index === 0)
+                            let newField: JSX.Element
+
+                            if (field.type === "radio") {
+                                newField = <ONSRadioFieldset {...field}/>
+                            } else {
+                                newField = <Field {...field} component={ONSInputField}/>
+                            }
+
                             return (
                                 <Fragment key={field.name}>
                                     {
@@ -64,10 +79,10 @@ function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
                                                 // @ts-ignore
                                                 errors[field.name],
                                                 "name",
-                                                <Field {...field} component={ONSInputField}/>
+                                                newField
                                             )
                                             :
-                                            <Field {...field} component={ONSInputField}/>
+                                            newField
                                     }
                                 </Fragment>
                             )

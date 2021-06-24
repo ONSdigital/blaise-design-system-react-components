@@ -1,5 +1,5 @@
 import React from "react";
-import {validateEmail, validateName, validatePassword} from "./FormValidation";
+import {validateEmail, validateName, validatePassword, validateRadio} from "./FormValidation";
 
 test('name length validation',  () => {
     let errorMessage = validateName("Ma");
@@ -37,5 +37,16 @@ test('email validation',  () => {
     expect(errorMessage).toEqual(invalidEmailMessage)
 
     errorMessage = validateEmail("matthew@email.com");
+    expect(errorMessage).toEqual(undefined)
+});
+
+test('radio validation',  () => {
+    // @ts-ignore
+    let errorMessage = validateRadio(undefined);
+
+    expect(errorMessage).toEqual("Select an option")
+
+    errorMessage = validateRadio("Bcaon");
+
     expect(errorMessage).toEqual(undefined)
 });
