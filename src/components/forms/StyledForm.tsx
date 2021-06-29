@@ -1,13 +1,24 @@
 import React, {Fragment} from 'react';
 import {Field, Form, Formik} from "formik";
-import ErrorSummary from './ErrorSummary';
-import {ONSInputField, InputErrorPanel, ONSRadioFieldset} from "./InputField";
+import StyledFormErrorSummary from './StyledFormErrorSummary';
+import {ONSInputField} from "./FormElements/Fields";
 import {ONSButton} from "../ONSButton";
+import {StyledFormField} from "./FormElements/StyledFormFields";
+
+export interface RadioSpecifyOption {
+    id: string
+    name: string
+    min?: string
+    description?: string
+    type: string
+    validate?: (value: string) => string | undefined
+}
 
 export interface RadioFieldsetObject {
     value: string
     id: string
     label: string
+    specifyOption: RadioSpecifyOption
 }
 
 
@@ -52,38 +63,44 @@ function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
         >
             {({
                   errors,
-                  isSubmitting,
-                  isValid
+                  isSubmitting
               }) => (
                 <Form>
-                    {ErrorSummary(isValid, errors)}
+                    <StyledFormErrorSummary/>
 
                     {
                         fields.map((field, index) => {
                             field.autoFocus = (index === 0)
-                            let newField: JSX.Element
+                            let NewField: JSX.Element
 
-                            if (field.type === "radio") {
-                                newField = <ONSRadioFieldset {...field}/>
-                            } else {
-                                newField = <Field {...field} component={ONSInputField}/>
-                            }
 
-                            return (
-                                <Fragment key={field.name}>
-                                    {
-                                        // @ts-ignore
-                                        errors[field.name] ?
-                                            // @ts-ignore
-                                            InputErrorPanel(
-                                                // @ts-ignore
-                                                errors[field.name],
-                                                "name",
-                                                newField
-                                            )
-                                            :
-                                            newField
+                            NewField = <Field {...field} component={ONSInputField}/>
+
+
+
+
+                            return (<Fragment key={field.name}>
+                                    {// @ts-ignore
+                                        <StyledFormField {...field}/>
                                     }
+                                    {/*{*/}
+                                    {/*    (field.type === "radio") ?*/}
+                                    {/*        // @ts-ignore*/}
+                                    {/*        <StyledFormRadioFieldset {...field}/>*/}
+                                    {/*        :*/}
+                                    {/*        // @ts-ignore*/}
+                                    {/*        errors[field.name] ?*/}
+                                    {/*            // @ts-ignore*/}
+                                    {/*            StyledFormInputErrorWrapper(*/}
+                                    {/*                // @ts-ignore*/}
+                                    {/*                errors[field.name],*/}
+                                    {/*                "name",*/}
+                                    {/*                NewField*/}
+                                    {/*            )*/}
+                                    {/*            :*/}
+                                    {/*            NewField*/}
+
+                                    {/*}*/}
                                 </Fragment>
                             )
                         })
