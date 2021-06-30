@@ -2,7 +2,7 @@ import React from "react";
 
 export interface Props {
     children: any,
-    status?: string,
+    status?: "success" | "error" | "info" | "warn",
     spacious?: boolean,
     id?: string,
     hidden?: boolean,
@@ -11,7 +11,7 @@ export interface Props {
 }
 
 export const ONSPanel = (props: Props) => {
-    const className = "panel panel--" + (props.status === "success" ? "success" : props.status === "error" ? "error" : "info") + " panel--no-title " + (props.spacious ? "panel--spacious" : "") + " u-mt-m";
+    const className = "panel panel--" + (props.status ? props.status : "info") + " panel--no-title " + (props.spacious ? "panel--spacious" : "") + " u-mt-m";
     return (
         <div data-testid={props.testID} id={props.id} className={className} hidden={props.hidden}>
             {
@@ -24,10 +24,13 @@ export const ONSPanel = (props: Props) => {
                 </svg>
                 </span>
             }
+            {
+                props.status === "warn" &&
+                <span className="panel__icon" aria-hidden="true">!</span>
+            }
             <div className={`panel__body ${props.bigIcon === true ? "svg-icon-margin--xl" : ""}`}>
                 {props.children}
             </div>
         </div>
     );
 };
-

@@ -30,6 +30,11 @@ describe("ONS Panel Test", () => {
         bigIcon: true
         // spacious: false
     };
+
+    const warnStatusPanelProps = {
+        children: <p>Statusssss</p>,
+        status: "warn",
+    };
     
     function wrapper (render: any, props: any) {
         return render(
@@ -66,5 +71,9 @@ describe("ONS Panel Test", () => {
 
     it("matches Snapshot a big success icon", () => {
         expect(wrapper(render, bigIconStatusPanelProps)).toMatchSnapshot();
+    })
+
+    it("matches Snapshot for warning panel", () => {
+        expect(wrapper(render, warnStatusPanelProps)).toMatchSnapshot();
     })
 })
