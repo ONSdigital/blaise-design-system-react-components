@@ -69,11 +69,11 @@ export function RadioFieldset({description, name, radioOptions, ...props}: Props
 }
 
 
-
 export const ONSInputField = ({field, form, description, ...props}: any) => {
+    const id = (props.id ? props.id : field.name);
     return <>
         <div className="field">
-            <label className={`label ${(description ? "label--with-description" : "")}`} htmlFor={field.name}>
+            <label className={`label ${(description ? "label--with-description" : "")}`} htmlFor={id}>
                 {toUpperCase(field.name)}
             </label>
             {
@@ -82,7 +82,7 @@ export const ONSInputField = ({field, form, description, ...props}: any) => {
                     {description}
                 </span>
             }
-            <input id={field.name}
+            <input id={id}
                    className="input input--text input-type__input "
                    {...field}
                    {...props}/>

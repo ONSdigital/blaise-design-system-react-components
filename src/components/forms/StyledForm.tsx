@@ -26,6 +26,7 @@ export interface FormFieldObject {
     name: string
     description?: string
     type: string
+    id?: string
     validate?: (value: string) => string | undefined
     autoFocus?: boolean
     radioOptions?: RadioFieldsetObject[]
