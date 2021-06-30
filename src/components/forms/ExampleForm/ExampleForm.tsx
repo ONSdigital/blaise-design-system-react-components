@@ -16,6 +16,7 @@ function ExampleForm() {
         },
         {
             name: "Email",
+            id: "email-field",
             description: "This will not be stored and only used once to send your confirmation",
             type: "email",
             validate: validateEmail

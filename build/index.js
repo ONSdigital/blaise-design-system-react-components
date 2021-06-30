@@ -375,12 +375,13 @@ function RadioFieldset(_a) {
 }
 var ONSInputField = function (_a) {
     var field = _a.field; _a.form; var description = _a.description, props = __rest(_a, ["field", "form", "description"]);
+    var id = (props.id ? props.id : field.name);
     return React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement("div", { className: "field" },
-            React__default['default'].createElement("label", { className: "label " + (description ? "label--with-description" : ""), htmlFor: field.name }, toUpperCase(field.name)),
+            React__default['default'].createElement("label", { className: "label " + (description ? "label--with-description" : ""), htmlFor: id }, toUpperCase(field.name)),
             description &&
                 React__default['default'].createElement("span", { id: "description-hint", className: "label__description  input--with-description" }, description),
-            React__default['default'].createElement("input", __assign({ id: field.name, className: "input input--text input-type__input " }, field, props))));
+            React__default['default'].createElement("input", __assign({ id: id, className: "input input--text input-type__input " }, field, props))));
 };
 
 var StyledFormField = function (_a) {
