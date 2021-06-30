@@ -212,6 +212,11 @@ Object {
         >
           !
         </span>
+        <span
+          class="u-vh"
+        >
+          Warning: 
+        </span>
         <div
           class="panel__body "
         >
@@ -231,6 +236,11 @@ Object {
         class="panel__icon"
       >
         !
+      </span>
+      <span
+        class="u-vh"
+      >
+        Warning: 
       </span>
       <div
         class="panel__body "
