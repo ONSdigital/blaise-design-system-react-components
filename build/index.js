@@ -423,12 +423,11 @@ function StyledForm(_a) {
             var setSubmitting = _a.setSubmitting;
             onSubmitFunction(values, setSubmitting);
         } }, function (_a) {
-        _a.errors; var isSubmitting = _a.isSubmitting;
+        var isValid = _a.isValid, isSubmitting = _a.isSubmitting;
         return (React__default['default'].createElement(formik.Form, null,
             React__default['default'].createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
-                field.autoFocus = (index === 0);
-                React__default['default'].createElement(formik.Field, __assign({}, field, { component: ONSInputField }));
+                field.autoFocus = (isValid && index === 0);
                 return (React__default['default'].createElement(React.Fragment, { key: field.name }, // @ts-ignore
                 React__default['default'].createElement(StyledFormField, __assign({}, field))));
             }),

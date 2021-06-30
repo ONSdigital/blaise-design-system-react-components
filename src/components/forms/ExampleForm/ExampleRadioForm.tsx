@@ -17,6 +17,20 @@ function ExampleForm() {
                 {id: "bacon", value: "bacon", label: "Bacon"},
                 {id: "cheese", value: "cheese", label: "Cheese"}
             ]
+        },
+        {
+            name: "options",
+            description: "Select a radio option",
+            type: "radio",
+            radioOptions: [
+                {id: "firstOption", value: "firstOption", label: "First Option"},
+                {
+                    id: "other",
+                    value: "other",
+                    label: "other",
+                    specifyOption: {id: "other-text", name: "other-text", description: "Please specify", type: "text"}
+                }
+            ]
         }
     ]
 

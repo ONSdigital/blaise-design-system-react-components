@@ -18,7 +18,7 @@ export interface RadioFieldsetObject {
     value: string
     id: string
     label: string
-    specifyOption: RadioSpecifyOption
+    specifyOption?: RadioSpecifyOption
 }
 
 
@@ -62,7 +62,7 @@ function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
             }}
         >
             {({
-                  errors,
+                isValid,
                   isSubmitting
               }) => (
                 <Form>
@@ -70,37 +70,13 @@ function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
 
                     {
                         fields.map((field, index) => {
-                            field.autoFocus = (index === 0)
-                            let NewField: JSX.Element
+                            field.autoFocus = (isValid && index === 0)
 
-
-                            NewField = <Field {...field} component={ONSInputField}/>
-
-
-
-
-                            return (<Fragment key={field.name}>
+                            return (
+                                <Fragment key={field.name}>
                                     {// @ts-ignore
                                         <StyledFormField {...field}/>
                                     }
-                                    {/*{*/}
-                                    {/*    (field.type === "radio") ?*/}
-                                    {/*        // @ts-ignore*/}
-                                    {/*        <StyledFormRadioFieldset {...field}/>*/}
-                                    {/*        :*/}
-                                    {/*        // @ts-ignore*/}
-                                    {/*        errors[field.name] ?*/}
-                                    {/*            // @ts-ignore*/}
-                                    {/*            StyledFormInputErrorWrapper(*/}
-                                    {/*                // @ts-ignore*/}
-                                    {/*                errors[field.name],*/}
-                                    {/*                "name",*/}
-                                    {/*                NewField*/}
-                                    {/*            )*/}
-                                    {/*            :*/}
-                                    {/*            NewField*/}
-
-                                    {/*}*/}
                                 </Fragment>
                             )
                         })
