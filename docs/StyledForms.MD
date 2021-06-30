@@ -14,7 +14,8 @@ The StyledForm only needs two things, a list of fields, and the function to call
 
 ### Example
 
-This is a simple example with one field called `Name` with a validation function (`validateName`) checking the value is not blank or less than 3 characters.  
+This is a simple example with one field called `Name` with a validation function (`validateName`) checking the value is
+not blank or less than 3 characters.
 
 ```.tsx
 import {FormField, StyledForm } from "blaise-design-system-react-components";
@@ -60,7 +61,6 @@ This example will produce the following:
 
 ![Simple form example](simple_form.png)
 
-
 With errors appearing when you click submit:
 
 ![Simple form example showing error](simple_form_error.png)
@@ -81,8 +81,25 @@ The prop `fields` requires a list with the following properties.
 
 #### `radioOptions` item properties
 
-| Property    | Type | Required? | Description                                                              |
-|-------------|-----------|-----------|--------------------------------------------------------------------------|
-| value       | `string`  | Yes       | All fields required a label.                                             |
-| id          | `string`  | Yes       | To associate the label with the radio input                                |
-| label       | `string`  | Yes       | Label to be displayed in UI for option.                    |
+![Radio option](radio_option.png)
+
+| Property       | Type      | Required? | Description                                                |
+|--------------- |-----------|-----------|------------------------------------------------------------|
+| value          | `string`  | Yes       | All fields required a label.                               |
+| id             | `string`  | Yes       | To associate the label with the radio input                |
+| label          | `string`  | Yes       | Label to be displayed in UI for option.                    |
+| specifyOption  | `string`  | Yes       | Label to be displayed in UI for option.                    |
+
+#### `specifyOption` item properties
+
+You also have the ability to add an extra field within a radio option as seen below.
+![Radio option wth second field](radio_option_wth_second_field.png)
+
+| Property             |  Type     | Required? | Description                                               |
+| -------------------- | --------- | --------- | --------------------------------------------------------- |
+| id                   | `string`  | Yes       | To associate the label with the input                     |
+| min                  | `string`  | No        | Optional to set minimum value for date field for example  |
+| description?: string | `string`  | No        | Description to appear above field                         |
+| type: string         | `string`  | Yes       | Field type, for example `text` or `date`                  |
+| validate             | `Function` returning `null` if valid and a validation message `string` if invalid | No   |  |
+
