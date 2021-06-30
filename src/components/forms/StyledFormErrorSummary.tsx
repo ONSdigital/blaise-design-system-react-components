@@ -1,22 +1,19 @@
-import {FormikErrors, FormikValues} from "formik";
-import React, {useEffect} from "react";
+import {useFormikContext, FormikContextType} from "formik";
+import React, {ReactElement, useEffect} from "react";
 
 /**
  * Error summary list
  *  - Displayed when isValid is false.
  *  - Focuses div when error lists changes.
  *
- *
- * @param {boolean} isValid Whether the form is valid or not
- * @param {FormikErrors<FormikValues>} errors List of errors for all field
- * @constructor
  */
-function ErrorSummary(isValid: boolean, errors: FormikErrors<FormikValues>) {
+function StyledFormErrorSummary(): ReactElement {
+    const {errors, isValid}: FormikContextType<unknown> = useFormikContext();
     let errorFocus: HTMLDivElement | null;
 
     useEffect(() => {
         errorFocus?.focus();
-    }, [errors, isValid])
+    }, [errors, isValid]);
 
     return <>
         {
@@ -30,7 +27,7 @@ function ErrorSummary(isValid: boolean, errors: FormikErrors<FormikValues>) {
                         {
                             (
                                 Object.keys(errors).length === 1 ?
-                                    `There is 1 problem with your answer`
+                                    "There is 1 problem with your answer"
                                     :
                                     `There are ${Object.keys(errors).length} problems with your answer`
                             )
@@ -43,6 +40,7 @@ function ErrorSummary(isValid: boolean, errors: FormikErrors<FormikValues>) {
                             <li key={index} className="list__item ">
                                 <a href={`#${field}`} className="list__link js-inpagelink">
                                     {
+                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                                         // @ts-ignore
                                         errors[field]
                                     }
@@ -57,4 +55,4 @@ function ErrorSummary(isValid: boolean, errors: FormikErrors<FormikValues>) {
     </>;
 }
 
-export default ErrorSummary
+export default StyledFormErrorSummary;

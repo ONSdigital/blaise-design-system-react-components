@@ -46,3 +46,12 @@ export function validateEmail(value: string) {
     }
     return error;
 }
+
+
+export function validateRadio(value: string) {
+    let error;
+    if (!value) {
+        error = 'Select an option';
+    }
+    return error;
+}

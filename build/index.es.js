@@ -1,5 +1,5 @@
 import React, { Component, useEffect, Fragment as Fragment$1 } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { useFormikContext, Field, Formik, Form } from 'formik';
 
 function NotProductionWarning() {
     return (React.createElement(React.Fragment, null,
@@ -317,12 +317,9 @@ var ONSUpload = /** @class */ (function (_super) {
  *  - Displayed when isValid is false.
  *  - Focuses div when error lists changes.
  *
- *
- * @param {boolean} isValid Whether the form is valid or not
- * @param {FormikErrors<FormikValues>} errors List of errors for all field
- * @constructor
  */
-function ErrorSummary(isValid, errors) {
+function StyledFormErrorSummary() {
+    var _a = useFormikContext(), errors = _a.errors, isValid = _a.isValid;
     var errorFocus;
     useEffect(function () {
         errorFocus === null || errorFocus === void 0 ? void 0 : errorFocus.focus();
@@ -338,6 +335,7 @@ function ErrorSummary(isValid, errors) {
                 React.createElement("ol", { className: "list" }, Object.keys(errors).map(function (field, index) {
                     return React.createElement("li", { key: index, className: "list__item " },
                         React.createElement("a", { href: "#" + field, className: "list__link js-inpagelink" }, 
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         errors[field]));
                 })))));
@@ -345,6 +343,23 @@ function ErrorSummary(isValid, errors) {
 
 function toUpperCase(string) {
     return string.trim().replace(/^\w/, function (c) { return c.toUpperCase(); });
+}
+function RadioFieldset(_a) {
+    var description = _a.description, name = _a.name, radioOptions = _a.radioOptions, props = __rest(_a, ["description", "name", "radioOptions"]);
+    return React.createElement("fieldset", { className: "fieldset" },
+        React.createElement("legend", { className: "fieldset__legend" }, description),
+        React.createElement("div", { className: "radios__items", id: name }, (radioOptions && radioOptions.length > 0 &&
+            radioOptions.map(function (radioOption) {
+                return (React.createElement(Fragment$1, { key: radioOption.id },
+                    React.createElement("p", { className: "radios__item" },
+                        React.createElement("span", { className: "radio" },
+                            React.createElement(Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props)),
+                            React.createElement("label", { className: "radio__label", htmlFor: radioOption.id, id: radioOption.id + "-label" }, radioOption.label),
+                            radioOption.specifyOption && (React.createElement("span", { className: "radio__other radio__other--open", id: "other-radio-other-wrap" },
+                                React.createElement("label", { className: "label u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
+                                React.createElement(Field, { type: radioOption.specifyOption.type, id: radioOption.specifyOption.id, name: radioOption.specifyOption.name, validate: radioOption.specifyOption.validate, min: radioOption.specifyOption.min, className: "input input--text input-type__input input--w-auto" }))))),
+                    React.createElement("br", null)));
+            }))));
 }
 var ONSInputField = function (_a) {
     var field = _a.field; _a.form; var description = _a.description, props = __rest(_a, ["field", "form", "description"]);
@@ -355,7 +370,24 @@ var ONSInputField = function (_a) {
                 React.createElement("span", { id: "description-hint", className: "label__description  input--with-description" }, description),
             React.createElement("input", __assign({ id: field.name, className: "input input--text input-type__input " }, field, props))));
 };
-function InputErrorPanel(fieldError, fieldName, field) {
+
+var StyledFormField = function (_a) {
+    var name = _a.name, description = _a.description, _b = _a.radioOptions, radioOptions = _b === void 0 ? [] : _b, props = __rest(_a, ["name", "description", "radioOptions"]);
+    var errors = useFormikContext().errors;
+    var newField;
+    // @ts-ignore
+    if (props.type === "radio") {
+        newField = React.createElement(RadioFieldset, __assign({ description: description, name: name, radioOptions: radioOptions }, props));
+    }
+    else {
+        newField = React.createElement(Field, __assign({ name: name, description: description }, props, { component: ONSInputField }));
+    }
+    return (React.createElement(Fragment$1, { key: name }, errors[name] ?
+        StyledFormFieldErrorWrapper(errors[name], "name", newField)
+        :
+            newField));
+};
+function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
     return (React.createElement("div", { className: "panel panel--error panel--no-title u-mb-s", id: fieldName + "-error" },
         React.createElement("span", { className: "u-vh" }, "Error: "),
         React.createElement("div", { className: "panel__body" },
@@ -383,20 +415,13 @@ function StyledForm(_a) {
             var setSubmitting = _a.setSubmitting;
             onSubmitFunction(values, setSubmitting);
         } }, function (_a) {
-        var errors = _a.errors, isSubmitting = _a.isSubmitting, isValid = _a.isValid;
+        var isValid = _a.isValid, isSubmitting = _a.isSubmitting;
         return (React.createElement(Form, null,
-            ErrorSummary(isValid, errors),
+            React.createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
-                field.autoFocus = (index === 0);
-                return (React.createElement(Fragment$1, { key: field.name }, 
-                // @ts-ignore
-                errors[field.name] ?
-                    // @ts-ignore
-                    InputErrorPanel(
-                    // @ts-ignore
-                    errors[field.name], "name", React.createElement(Field, __assign({}, field, { component: ONSInputField })))
-                    :
-                        React.createElement(Field, __assign({}, field, { component: ONSInputField }))));
+                field.autoFocus = (isValid && index === 0);
+                return (React.createElement(Fragment$1, { key: field.name }, // @ts-ignore
+                React.createElement(StyledFormField, __assign({}, field))));
             }),
             React.createElement("br", null),
             React.createElement(ONSButton, { submit: true, label: "Save and continue ", primary: true, testid: "submit", loading: isSubmitting })));
@@ -3181,5 +3206,5 @@ var ONSLoadingPanel = function (_a) {
             "Loading")));
 };
 
-export { BetaBanner, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm };
+export { BetaBanner, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField };
 //# sourceMappingURL=index.es.js.map

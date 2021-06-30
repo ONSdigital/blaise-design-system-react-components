@@ -12,6 +12,8 @@ import {ONSTextInput} from "./components/ONSTextInput";
 import {ONSUpload} from "./components/ONSUpload";
 import StyledForm from "./components/forms/StyledForm";
 import {ONSLoadingPanel} from "./components/ONSLoadingPanel";
+import StyledFormErrorSummary from "./components/forms/StyledFormErrorSummary";
+import { StyledFormField } from "./components/forms/FormElements/StyledFormFields";
 
 export {
     NotProductionWarning,
@@ -27,5 +29,7 @@ export {
     ONSSelect,
     ONSPasswordInput,
     ONSTextInput,
-    StyledForm
+    StyledForm,
+    StyledFormErrorSummary,
+    StyledFormField
 }
