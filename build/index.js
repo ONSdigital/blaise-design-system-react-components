@@ -3212,11 +3212,11 @@ Loader.defaultProps = {
 var Loader = unwrapExports(dist);
 
 var ONSLoadingPanel = function (_a) {
-    var hidden = _a.hidden;
+    var hidden = _a.hidden, message = _a.message;
     return (React__default['default'].createElement(ONSPanel, { hidden: hidden },
         React__default['default'].createElement("div", { style: { textAlign: "center" } },
             React__default['default'].createElement(Loader, { type: "TailSpin", color: "#064868", height: 30, width: 30 }),
-            "Loading")));
+            message ? message : "Loading")));
 };
 
 exports.BetaBanner = BetaBanner;

@@ -4,9 +4,10 @@ import {ONSPanel} from "./ONSPanel";
 
 export interface Props {
     hidden?: boolean
+    message?: string
 }
 
-export const ONSLoadingPanel = ({hidden}: Props) => {
+export const ONSLoadingPanel = ({hidden, message}: Props) => {
     return (
         <ONSPanel hidden={hidden}>
             <div style={{textAlign: "center"}}>
@@ -16,7 +17,9 @@ export const ONSLoadingPanel = ({hidden}: Props) => {
                     height={30}
                     width={30}
                 />
-                Loading
+                {
+                    message ?  message : "Loading"
+                }
             </div>
         </ONSPanel>
     );
