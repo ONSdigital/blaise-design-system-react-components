@@ -3204,11 +3204,11 @@ Loader.defaultProps = {
 var Loader = unwrapExports(dist);
 
 var ONSLoadingPanel = function (_a) {
-    var hidden = _a.hidden;
+    var hidden = _a.hidden, message = _a.message;
     return (React.createElement(ONSPanel, { hidden: hidden },
         React.createElement("div", { style: { textAlign: "center" } },
             React.createElement(Loader, { type: "TailSpin", color: "#064868", height: 30, width: 30 }),
-            "Loading")));
+            message ? message : "Loading")));
 };
 
 export { BetaBanner, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField };
