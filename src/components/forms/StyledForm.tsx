@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
-import {Field, Form, Formik} from "formik";
+import {Form, Formik} from "formik";
 import StyledFormErrorSummary from './StyledFormErrorSummary';
-import {ONSInputField} from "./FormElements/Fields";
 import {ONSButton} from "../ONSButton";
 import {StyledFormField} from "./FormElements/StyledFormFields";
 
