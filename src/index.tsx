@@ -14,6 +14,7 @@ import StyledForm from "./components/forms/StyledForm";
 import {ONSLoadingPanel} from "./components/ONSLoadingPanel";
 import StyledFormErrorSummary from "./components/forms/StyledFormErrorSummary";
 import { StyledFormField } from "./components/forms/FormElements/StyledFormFields";
+import Collapsible from "./components/Collapsible";
 
 export {
     NotProductionWarning,
@@ -31,5 +32,6 @@ export {
     ONSTextInput,
     StyledForm,
     StyledFormErrorSummary,
-    StyledFormField
+    StyledFormField,
+    Collapsible
 }

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, Fragment as Fragment$1 } from 'react';
+import React, { Component, useEffect, Fragment as Fragment$1, useState } from 'react';
 import { useFormikContext, Field, Formik, Form } from 'formik';
 
 function NotProductionWarning() {
@@ -3211,5 +3211,23 @@ var ONSLoadingPanel = function (_a) {
             message ? message : "Loading")));
 };
 
-export { BetaBanner, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField };
+function Collapsible(_a) {
+    var children = _a.children, title = _a.title;
+    var _b = useState(false), panelOpen = _b[0], setPanelOpen = _b[1];
+    return (React.createElement(React.Fragment, null,
+        React.createElement("div", { id: "collapsible-with-save", className: "collapsible js-collapsible collapsible--initialised " + (panelOpen && "collapsible--open") + " u-mt-l", "data-btn-close": "Hide this", "data-save-state": "true", role: "group" },
+            React.createElement("div", { className: "collapsible__heading js-collapsible-heading", role: "link", "data-testid": "collapsible-heading", onClick: function () { return setPanelOpen(!panelOpen); }, onKeyPress: function () { return setPanelOpen(!panelOpen); }, tabIndex: 0, "aria-expanded": panelOpen ? "true" : "false", "aria-controls": "collapsible-with-save", "data-ga-action": "Close panel" },
+                React.createElement("div", { className: "collapsible__controls" },
+                    React.createElement("div", { className: "collapsible__title" }, title),
+                    React.createElement("span", { className: "collapsible__icon" },
+                        React.createElement("svg", { className: "svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
+                            React.createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
+            React.createElement("div", { id: "collapsible-with-save-content", className: "collapsible__content js-collapsible-content", "aria-hidden": (panelOpen ? "false" : "true"), "data-testid": "collapsible-content" },
+                children,
+                React.createElement("button", { type: "button", className: "btn btn--small js-collapsible-button btn--secondary u-mt-m", "aria-hidden": "true", "aria-controls": "collapsible-with-save", "data-ga-action": "Close panel", onClick: function () { return setPanelOpen(false); } },
+                    React.createElement("span", { className: "btn__inner js-collapsible-button-inner" }, "Hide this"),
+                    React.createElement("span", { className: "btn__context u-vh" }, title))))));
+}
+
+export { BetaBanner, Collapsible, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField };
 //# sourceMappingURL=index.es.js.map
