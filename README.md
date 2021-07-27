@@ -1,7 +1,11 @@
 # Blaise design system react components
 
 [![codecov](https://codecov.io/gh/ONSdigital/blaise-design-system-react-components/branch/main/graph/badge.svg)](https://codecov.io/gh/ONSdigital/blaise-design-system-react-components)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/ONSdigital/telephone-operations-blaise-interface.svg)](https://github.com/ONSdigital/telephone-operations-blaise-interface/pulls)
+[![Github last commit](https://img.shields.io/github/last-commit/ONSdigital/blaise-design-system-react-components.svg)](https://github.com/ONSdigital/blaise-design-system-react-components/commits)
+[![Github contributors](https://img.shields.io/github/contributors/ONSdigital/blaise-design-system-react-components.svg)](https://github.com/ONSdigital/blaise-design-system-react-components/graphs/contributors)
 <img src="https://img.shields.io/github/release/ONSdigital/blaise-design-system-react-components.svg?style=flat-square" alt="">
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/ONSdigital/blaise-design-system-react-components.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ONSdigital/blaise-design-system-react-components/alerts/)
 
 React component implementations of the [ONS Design system components](https://ons-design-system.netlify.app).
 
