@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapsible Test matches Snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="collapsible js-collapsible collapsible--initialised false u-mt-l"
+        data-btn-close="Hide this"
+        data-save-state="true"
+        id="collapsible-with-save"
+        role="group"
+      >
+        <div
+          aria-controls="collapsible-with-save"
+          aria-expanded="false"
+          class="collapsible__heading js-collapsible-heading"
+          data-ga-action="Close panel"
+          data-testid="collapsible-heading"
+          role="link"
+          tabindex="0"
+        >
+          <div
+            class="collapsible__controls"
+          >
+            <div
+              class="collapsible__title"
+            >
+              What is the Collapsible title?
+            </div>
+            <span
+              class="collapsible__icon"
+            >
+              <svg
+                class="svg-icon"
+                focusable="false"
+                viewBox="0 0 7.5 12.85"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+                  transform="translate(-5.02 -1.59)"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          class="collapsible__content js-collapsible-content"
+          data-testid="collapsible-content"
+          id="collapsible-with-save-content"
+        >
+          <p>
+            Inside the Collapsible
+          </p>
+          <button
+            aria-controls="collapsible-with-save"
+            aria-hidden="true"
+            class="btn btn--small js-collapsible-button btn--secondary u-mt-m"
+            data-ga-action="Close panel"
+            type="button"
+          >
+            <span
+              class="btn__inner js-collapsible-button-inner"
+            >
+              Hide this
+            </span>
+            <span
+              class="btn__context u-vh"
+            >
+              What is the Collapsible title?
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="collapsible js-collapsible collapsible--initialised false u-mt-l"
+      data-btn-close="Hide this"
+      data-save-state="true"
+      id="collapsible-with-save"
+      role="group"
+    >
+      <div
+        aria-controls="collapsible-with-save"
+        aria-expanded="false"
+        class="collapsible__heading js-collapsible-heading"
+        data-ga-action="Close panel"
+        data-testid="collapsible-heading"
+        role="link"
+        tabindex="0"
+      >
+        <div
+          class="collapsible__controls"
+        >
+          <div
+            class="collapsible__title"
+          >
+            What is the Collapsible title?
+          </div>
+          <span
+            class="collapsible__icon"
+          >
+            <svg
+              class="svg-icon"
+              focusable="false"
+              viewBox="0 0 7.5 12.85"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+                transform="translate(-5.02 -1.59)"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="collapsible__content js-collapsible-content"
+        data-testid="collapsible-content"
+        id="collapsible-with-save-content"
+      >
+        <p>
+          Inside the Collapsible
+        </p>
+        <button
+          aria-controls="collapsible-with-save"
+          aria-hidden="true"
+          class="btn btn--small js-collapsible-button btn--secondary u-mt-m"
+          data-ga-action="Close panel"
+          type="button"
+        >
+          <span
+            class="btn__inner js-collapsible-button-inner"
+          >
+            Hide this
+          </span>
+          <span
+            class="btn__context u-vh"
+          >
+            What is the Collapsible title?
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
