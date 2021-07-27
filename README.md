@@ -1,7 +1,7 @@
 # Blaise design system react components
 
 [![codecov](https://codecov.io/gh/ONSdigital/blaise-design-system-react-components/branch/main/graph/badge.svg)](https://codecov.io/gh/ONSdigital/blaise-design-system-react-components)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/ONSdigital/telephone-operations-blaise-interface.svg)](https://github.com/ONSdigital/telephone-operations-blaise-interface/pulls)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/ONSdigital/blaise-design-system-react-components.svg)](https://github.com/ONSdigital/blaise-design-system-react-components/pulls)
 [![Github last commit](https://img.shields.io/github/last-commit/ONSdigital/blaise-design-system-react-components.svg)](https://github.com/ONSdigital/blaise-design-system-react-components/commits)
 [![Github contributors](https://img.shields.io/github/contributors/ONSdigital/blaise-design-system-react-components.svg)](https://github.com/ONSdigital/blaise-design-system-react-components/graphs/contributors)
 <img src="https://img.shields.io/github/release/ONSdigital/blaise-design-system-react-components.svg?style=flat-square" alt="">
