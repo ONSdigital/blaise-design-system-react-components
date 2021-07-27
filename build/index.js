@@ -276,15 +276,12 @@ var ONSSelect = /** @class */ (function (_super) {
 
 var ONSTextInput = /** @class */ (function (_super) {
     __extends(ONSTextInput, _super);
-    function ONSTextInput(props) {
-        var _this = _super.call(this, props) || this;
-        _this.value = "";
+    function ONSTextInput() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.handleChange = function (e) {
             if (_this.props.onChange !== undefined)
                 _this.props.onChange(e, _this.props.label);
-            _this.value = e.target.value;
         };
-        _this.state = { value: "" };
         return _this;
     }
     ONSTextInput.prototype.render = function () {
@@ -299,16 +296,13 @@ var ONSTextInput = /** @class */ (function (_super) {
 
 var ONSUpload = /** @class */ (function (_super) {
     __extends(ONSUpload, _super);
-    function ONSUpload(props) {
-        var _this = _super.call(this, props) || this;
-        _this.value = "";
+    function ONSUpload() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.handleChange = function (e) {
             if (_this.props.onChange !== undefined) {
                 _this.props.onChange(e);
             }
-            _this.value = e.target.value;
         };
-        _this.state = { value: "" };
         return _this;
     }
     ONSUpload.prototype.render = function () {

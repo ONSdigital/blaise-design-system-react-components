@@ -1,5 +1,5 @@
 import React, {Fragment, ReactElement} from "react";
-import {Field, useFormikContext} from "formik";
+import {Field} from "formik";
 import {RadioFieldsetObject} from "../StyledForm";
 
 function toUpperCase(string: string): string {

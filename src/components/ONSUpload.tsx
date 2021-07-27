@@ -12,19 +12,10 @@ export interface Props {
 }
 
 export class ONSUpload extends Component <Props> {
-
-    value = "";
-
-    constructor(props: Props) {
-        super(props);
-        this.state = {value: ""};
-    }
-
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (this.props.onChange !== undefined) {
             this.props.onChange(e);
         }
-        this.value = e.target.value;
     };
 
     render() {

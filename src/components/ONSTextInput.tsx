@@ -15,17 +15,8 @@ export interface Props {
 }
 
 export class ONSTextInput extends Component <Props> {
-    value = "";
-
-    constructor(props: Props) {
-        super(props);
-        this.state = {value: ""};
-    }
-
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (this.props.onChange !== undefined) this.props.onChange(e, this.props.label);
-
-        this.value = e.target.value;
     };
 
     render() {
