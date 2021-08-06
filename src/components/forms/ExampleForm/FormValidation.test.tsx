@@ -1,5 +1,19 @@
 import React from "react";
-import {validateEmail, validateName, validatePassword, validateRadio} from "./FormValidation";
+import {validateEmail, validateInstrumentName, validateName, validatePassword, validateRadio} from "./FormValidation";
+
+test('Instrument name length validation',  () => {
+    let errorMessage = validateInstrumentName("");
+
+    expect(errorMessage).toEqual("Enter a valid instrument name")
+
+    errorMessage = validateInstrumentName("OPN210");
+
+    expect(errorMessage).toEqual("Enter a valid instrument name (longer than 7 characters)")
+
+    errorMessage = validateName("OPN2101");
+
+    expect(errorMessage).toEqual(undefined)
+});
 
 test('name length validation',  () => {
     let errorMessage = validateName("Ma");
