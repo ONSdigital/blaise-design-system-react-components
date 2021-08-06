@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {validateEmail, validateInstrumentName, validateName, validatePassword} from "./FormValidation";
 import StyledForm, {FormFieldObject} from "../StyledForm";
+import {ONSTextInput} from "../../ONSTextInput"
 
 function ExampleForm() {
 
@@ -50,7 +51,6 @@ function ExampleForm() {
     return (
         <>
             <p>{formStatus}</p>
-
             <StyledForm fields={formElements} onSubmitFunction={onFormSubmission}/>
         </>
     )
