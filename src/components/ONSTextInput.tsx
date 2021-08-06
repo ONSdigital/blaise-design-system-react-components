@@ -5,7 +5,6 @@ export interface Props {
     id?: string
     password?: boolean
     onChange?: (e: ChangeEvent<HTMLInputElement>, ...args: any[]) => void
-    validate?: (value: string) => string | undefined
     placeholder?: string
     fit?: boolean
     autoFocus?: boolean
