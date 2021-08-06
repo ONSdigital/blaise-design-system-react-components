@@ -4,6 +4,7 @@ import {cleanup, render, screen} from "@testing-library/react";
 
 import {ONSTextInput} from "./ONSTextInput";
 import Adapter from "enzyme-adapter-react-16";
+import {validateInstrumentName} from "../components/forms/ExampleForm/FormValidation"
 
 describe("ONS Text Input Test", () => {
     Enzyme.configure({adapter: new Adapter()});
@@ -42,7 +43,8 @@ describe("ONS Text Input Test", () => {
                 autoFocus={props.autoFocus}
                 value={props.value}
                 autoComplete={props.autoComplete}
-                onClick={props.onClick}>
+                onClick={props.onClick}
+                validate={validateInstrumentName}>
             </ONSTextInput>
         )
     }

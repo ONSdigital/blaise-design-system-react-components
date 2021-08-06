@@ -12,9 +12,11 @@ test('error appears on submit of empty form',  async () => {
     expect(screen.getByText(/Password must be longer than 6 characters/i)).toBeInTheDocument();
 
     await waitFor(() => {
-        const errorMessage = screen.getByText(/There are 3 problems with your answer/i);
+        const errorMessage = screen.getByText(/There are 4 problems with your answer/i);
         expect(errorMessage).toBeInTheDocument();
 
+        const instrumentErrorMessage = screen.queryAllByText(/Enter a valid instrument name/i);
+        expect(instrumentErrorMessage).toHaveLength(2);
         const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
         expect(nameErrorMessage).toHaveLength(2);
         const emailErrorMessage = screen.queryAllByText(/Enter a email/i);
@@ -28,7 +30,14 @@ test('error appears on submit of empty form',  async () => {
 test('only one error appears on submit of one incorrect field',  async () => {
     render(<ExampleForm/>);
 
-    fireEvent.input(screen.getByLabelText(/Name/i), {
+    fireEvent.input(screen.getByLabelText(/Instrument/i), {
+        target: {
+            value:
+                "OPN2101A"
+        }
+    });
+
+    fireEvent.input(screen.getByLabelText(/name/i), {
         target: {
             value:
                 "ricer"
@@ -56,6 +65,8 @@ test('only one error appears on submit of one incorrect field',  async () => {
         const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
         expect(errorMessage).toBeInTheDocument();
 
+        const instrumentNameErrorMessage = screen.queryAllByText(/Enter a valid instrument name/i);
+        expect(instrumentNameErrorMessage).toHaveLength(0);
         const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
         expect(nameErrorMessage).toHaveLength(0);
         const passwordErrorMessage = screen.queryAllByText(/Enter a password/i);
@@ -71,7 +82,14 @@ test('only one error appears on submit of one incorrect field',  async () => {
 test('submit function is called when form is valid', async () => {
     render(<ExampleForm/>);
 
-    fireEvent.input(screen.getByLabelText(/Name/i), {
+    fireEvent.input(screen.getByLabelText(/Instrument/i), {
+        target: {
+            value:
+                "OPN2101A"
+        }
+    });
+
+    fireEvent.input(screen.getByLabelText(/name/i), {
         target: {
             value:
                 "ricer"

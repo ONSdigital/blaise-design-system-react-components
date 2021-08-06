@@ -1,4 +1,21 @@
 /**
+ * Validate instrument Name field
+ *
+ * @param {string} value Field value to validate
+ */
+export function validateInstrumentName(value: string) {
+    let error;
+    if (!value) {
+        error = 'Enter a valid instrument name';
+    } else if (
+        value.length < 7
+    ) {
+        error = 'Enter a valid instrument name (longer than 7 characters)';
+    }
+    return error
+}
+
+/**
  * Validate Name field
  *
  * @param {string} value Field value to validate

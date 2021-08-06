@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {validateEmail, validateName, validatePassword} from "./FormValidation";
+import {validateEmail, validateInstrumentName, validateName, validatePassword} from "./FormValidation";
 import StyledForm, {FormFieldObject} from "../StyledForm";
 
 function ExampleForm() {
@@ -8,6 +8,12 @@ function ExampleForm() {
 
     /** List of fields in order for form generation */
     const formElements: FormFieldObject[] = [
+        {
+            name: "Instrument",
+            description: "Instrument Name must be longer than 7 characters",
+            type: "text",
+            validate: validateInstrumentName
+        },
         {
             name: "name",
             description: "Name must be longer than 2 characters",
