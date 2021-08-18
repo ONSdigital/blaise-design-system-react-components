@@ -17,6 +17,7 @@ export interface RadioFieldsetObject {
     value: string
     id: string
     label: string
+    description?: string
     specifyOption?: RadioSpecifyOption
 }
 

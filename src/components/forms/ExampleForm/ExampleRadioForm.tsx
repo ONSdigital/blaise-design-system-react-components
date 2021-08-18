@@ -15,7 +15,7 @@ function ExampleForm() {
             validate: validateRadio,
             radioOptions: [
                 {id: "bacon", value: "bacon", label: "Bacon"},
-                {id: "cheese", value: "cheese", label: "Cheese"}
+                {id: "cheese", value: "cheese", label: "Cheese", description: "This includes all types of cheese"}
             ]
         },
         {

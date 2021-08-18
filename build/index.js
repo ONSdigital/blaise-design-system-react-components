@@ -360,7 +360,10 @@ function RadioFieldset(_a) {
                     React__default['default'].createElement("p", { className: "radios__item" },
                         React__default['default'].createElement("span", { className: "radio" },
                             React__default['default'].createElement(formik.Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props)),
-                            React__default['default'].createElement("label", { className: "radio__label", htmlFor: radioOption.id, id: radioOption.id + "-label" }, radioOption.label),
+                            React__default['default'].createElement("label", { className: "radio__label " + (radioOption.description !== undefined ? "label--with-description" : ""), htmlFor: radioOption.id, id: radioOption.id + "-label" },
+                                radioOption.label,
+                                radioOption.description !== undefined &&
+                                    React__default['default'].createElement("span", { id: "white-label-description-hint", className: "label__description radio__label--with-description" }, radioOption.description)),
                             radioOption.specifyOption && (React__default['default'].createElement("span", { className: "radio__other radio__other--open", id: "other-radio-other-wrap" },
                                 React__default['default'].createElement("label", { className: "label u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
                                 React__default['default'].createElement(formik.Field, { type: radioOption.specifyOption.type, id: radioOption.specifyOption.id, name: radioOption.specifyOption.name, validate: radioOption.specifyOption.validate, min: radioOption.specifyOption.min, className: "input input--text input-type__input input--w-auto" }))))),
