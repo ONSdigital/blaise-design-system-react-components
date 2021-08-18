@@ -352,7 +352,10 @@ function RadioFieldset(_a) {
                     React.createElement("p", { className: "radios__item" },
                         React.createElement("span", { className: "radio" },
                             React.createElement(Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props)),
-                            React.createElement("label", { className: "radio__label", htmlFor: radioOption.id, id: radioOption.id + "-label" }, radioOption.label),
+                            React.createElement("label", { className: "radio__label " + (radioOption.description !== undefined ? "label--with-description" : ""), htmlFor: radioOption.id, id: radioOption.id + "-label" },
+                                radioOption.label,
+                                radioOption.description !== undefined &&
+                                    React.createElement("span", { id: "white-label-description-hint", className: "label__description radio__label--with-description" }, radioOption.description)),
                             radioOption.specifyOption && (React.createElement("span", { className: "radio__other radio__other--open", id: "other-radio-other-wrap" },
                                 React.createElement("label", { className: "label u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
                                 React.createElement(Field, { type: radioOption.specifyOption.type, id: radioOption.specifyOption.id, name: radioOption.specifyOption.name, validate: radioOption.specifyOption.validate, min: radioOption.specifyOption.min, className: "input input--text input-type__input input--w-auto" }))))),

@@ -88,7 +88,8 @@ The prop `fields` requires a list with the following properties.
 | value          | `string`  | Yes       | All fields required a label.                               |
 | id             | `string`  | Yes       | To associate the label with the radio input                |
 | label          | `string`  | Yes       | Label to be displayed in UI for option.                    |
-| specifyOption  | `string`  | Yes       | Label to be displayed in UI for option.                    |
+| description    | `string`  | No        | Optional description to be displayed in UI for option.                    |
+| specifyOption  | `specifyOption`  | No       | Add an extra field within a radio option, see below.                    |
 
 #### `specifyOption` item properties
 

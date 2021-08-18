@@ -33,9 +33,16 @@ export function RadioFieldset({description, name, radioOptions, ...props}: Props
                                                name={name}
                                                value={radioOption.value}
                                                className="radio__input js-radio" {...props}/>
-                                        <label className="radio__label"
+                                        <label className={`radio__label ${radioOption.description !== undefined ? "label--with-description" : ""}`}
                                                htmlFor={radioOption.id}
                                                id={`${radioOption.id}-label`}>{radioOption.label}
+                                            {
+                                                radioOption.description !== undefined &&
+                                                <span id="white-label-description-hint"
+                                                      className="label__description radio__label--with-description">
+                                                    {radioOption.description}
+                                                </span>
+                                            }
                                       </label>
                                         {
                                             radioOption.specifyOption && (
