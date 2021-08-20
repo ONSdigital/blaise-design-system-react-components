@@ -407,11 +407,11 @@ function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
  *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
 function StyledForm(_a) {
-    var fields = _a.fields, onSubmitFunction = _a.onSubmitFunction;
+    var fields = _a.fields, onSubmitFunction = _a.onSubmitFunction, submitLabel = _a.submitLabel;
     var initialFieldValues = {};
     fields.forEach(function (_a) {
-        var name = _a.name;
-        initialFieldValues[name] = "";
+        var name = _a.name, initial_value = _a.initial_value;
+        initialFieldValues[name] = initial_value;
     });
     return (React.createElement(Formik, { validateOnBlur: false, validateOnChange: false, initialValues: initialFieldValues, onSubmit: function (values, _a) {
             var setSubmitting = _a.setSubmitting;
@@ -426,7 +426,7 @@ function StyledForm(_a) {
                 React.createElement(StyledFormField, __assign({}, field))));
             }),
             React.createElement("br", null),
-            React.createElement(ONSButton, { submit: true, label: "Save and continue ", primary: true, testid: "submit", loading: isSubmitting })));
+            React.createElement(ONSButton, { submit: true, label: (submitLabel ? submitLabel : "Save and continue"), primary: true, testid: "submit", loading: isSubmitting })));
     }));
 }
 
