@@ -67,6 +67,14 @@ With errors appearing when you click submit:
 
 This repository contains a [detailed example with more fields](../src/components/forms/ExampleForm/ExampleForm.tsx).
 
+### Custom submit button label
+
+By default, the submit button will have a label of `Save and continue`, to overwrite this pass in a `submitLabel` to the styled form.
+
+```.tsx
+<StyledForm fields={formElements} onSubmitFunction={onFormSubmission} submitLabel="Press for bacon"/>
+```
+
 ### Form properties
 
 The prop `fields` requires a list with the following properties.
@@ -77,6 +85,7 @@ The prop `fields` requires a list with the following properties.
 | description | `string`  | No        | Description to be added below the label.                                 |
 | type        | `string`  | No        | Will default to Type `text` when one is not provided.                    |
 | validate    | `Function` returning `null` if valid and a validation message `string` if invalid   | No        | If not provided then there will be no validation for this field, can be left blank by the user in this case. |
+| initial_value  | `string`   | No        | Set a initial value for the field. |
 | radioOptions | List of Options for radio items, see table below  | No        | List of options for a Radio field, only used when type is set to `radio`. |
 
 #### `radioOptions` item properties

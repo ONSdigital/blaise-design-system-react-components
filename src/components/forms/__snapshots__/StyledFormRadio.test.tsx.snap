@@ -163,7 +163,7 @@ Object {
           <span
             class="btn__inner"
           >
-            Save and continue 
+            Save and continue
           </span>
         </button>
       </form>
@@ -328,7 +328,7 @@ Object {
         <span
           class="btn__inner"
         >
-          Save and continue 
+          Save and continue
         </span>
       </button>
     </form>

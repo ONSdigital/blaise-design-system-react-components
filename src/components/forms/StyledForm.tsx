@@ -30,11 +30,13 @@ export interface FormFieldObject {
     validate?: (value: string) => string | undefined
     autoFocus?: boolean
     radioOptions?: RadioFieldsetObject[]
+    initial_value?: string
 }
 
 export interface StyledFormProps {
     fields: FormFieldObject[]
     onSubmitFunction: (values: any, setSubmitting: (isSubmitting: boolean) => void) => void
+    submitLabel?: string
 }
 
 /**
@@ -45,12 +47,11 @@ export interface StyledFormProps {
  *  - fields: List of fields to display on form.
  *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
-function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
-
+function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
 
     let initialFieldValues: any = {};
-    fields.forEach(({name}) => {
-        initialFieldValues[name] = "";
+    fields.forEach(({name, initial_value}) => {
+        initialFieldValues[name] = initial_value;
     });
 
     return (
@@ -87,7 +88,7 @@ function StyledForm({fields, onSubmitFunction}: StyledFormProps) {
 
                     <ONSButton
                         submit={true}
-                        label={"Save and continue "}
+                        label={(submitLabel ? submitLabel : "Save and continue")}
                         primary={true}
                         testid={"submit"}
                         loading={isSubmitting}/>

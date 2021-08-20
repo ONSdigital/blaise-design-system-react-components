@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import ExampleForm from "./ExampleForm/ExampleForm";
-
+import StyledForm from "./StyledForm";
 
 
 test('error appears on submit of empty form',  async () => {
@@ -115,6 +115,38 @@ test('submit function is called when form is valid', async () => {
 
     await waitFor(() => {
         const successMessage = screen.getByText(/Form submitted for user ricer/i);
+        expect(successMessage).toBeInTheDocument()
+    });
+});
+
+test('custom submit button label can be set', async () => {
+    const fields = [
+        {
+            name: "Name",
+            type: "text"
+        }
+    ]
+
+    render(<StyledForm fields={fields} onSubmitFunction={() => console.log("")} submitLabel={"Press for bacon"}/>);
+
+    await waitFor(() => {
+        const successMessage = screen.getByText(/Press for bacon/i);
+        expect(successMessage).toBeInTheDocument()
+    });
+});
+
+test('default submit button label is used when no label is passed in', async () => {
+    const fields = [
+        {
+            name: "Name",
+            type: "text"
+        }
+    ]
+
+    render(<StyledForm fields={fields} onSubmitFunction={() => console.log("")}/>);
+
+    await waitFor(() => {
+        const successMessage = screen.getByText(/Save and continue/i);
         expect(successMessage).toBeInTheDocument()
     });
 });
