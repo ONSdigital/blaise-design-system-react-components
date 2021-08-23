@@ -3226,5 +3226,56 @@ function Collapsible(_a) {
                     React.createElement("span", { className: "btn__context u-vh" }, title))))));
 }
 
-export { BetaBanner, Collapsible, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField };
+var ErrorBoundary = /** @class */ (function (_super) {
+    __extends(ErrorBoundary, _super);
+    function ErrorBoundary() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = { errorInfo: { componentStack: "Fine" } };
+        return _this;
+    }
+    ErrorBoundary.prototype.componentDidCatch = function (_, errorInfo) {
+        this.setState({
+            errorInfo: errorInfo
+        });
+    };
+    ErrorBoundary.prototype.render = function () {
+        if (this.state.errorInfo.componentStack !== "Fine") {
+            return (React.createElement(React.Fragment, null,
+                React.createElement("div", { className: "panel panel--error panel--simple u-mt-m" },
+                    React.createElement("div", { className: "panel__body" },
+                        React.createElement("p", null, this.props.errorMessageText)))));
+        }
+        return this.props.children;
+    };
+    return ErrorBoundary;
+}(React.Component));
+
+var DefaultErrorBoundary = /** @class */ (function (_super) {
+    __extends(DefaultErrorBoundary, _super);
+    function DefaultErrorBoundary() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = { errorInfo: { componentStack: "Fine" } };
+        return _this;
+    }
+    DefaultErrorBoundary.prototype.componentDidCatch = function (error, errorInfo) {
+        this.setState({
+            errorInfo: errorInfo
+        });
+    };
+    DefaultErrorBoundary.prototype.render = function () {
+        if (this.state.errorInfo.componentStack !== "Fine") {
+            return (React.createElement(React.Fragment, null,
+                React.createElement("h1", null, "Sorry, there is a problem with the service"),
+                React.createElement("p", null, "Try again later."),
+                React.createElement("p", null, "If you have started a survey, your answers have been saved."),
+                React.createElement("p", null,
+                    React.createElement("a", { href: "https://ons.service-now.com/" }, "Contact us"),
+                    " if you need to speak to someone about your survey.")));
+        }
+        return this.props.children;
+    };
+    return DefaultErrorBoundary;
+}(React.Component));
+
+export { BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField };
 //# sourceMappingURL=index.es.js.map

@@ -3234,8 +3234,61 @@ function Collapsible(_a) {
                     React__default['default'].createElement("span", { className: "btn__context u-vh" }, title))))));
 }
 
+var ErrorBoundary = /** @class */ (function (_super) {
+    __extends(ErrorBoundary, _super);
+    function ErrorBoundary() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = { errorInfo: { componentStack: "Fine" } };
+        return _this;
+    }
+    ErrorBoundary.prototype.componentDidCatch = function (_, errorInfo) {
+        this.setState({
+            errorInfo: errorInfo
+        });
+    };
+    ErrorBoundary.prototype.render = function () {
+        if (this.state.errorInfo.componentStack !== "Fine") {
+            return (React__default['default'].createElement(React__default['default'].Fragment, null,
+                React__default['default'].createElement("div", { className: "panel panel--error panel--simple u-mt-m" },
+                    React__default['default'].createElement("div", { className: "panel__body" },
+                        React__default['default'].createElement("p", null, this.props.errorMessageText)))));
+        }
+        return this.props.children;
+    };
+    return ErrorBoundary;
+}(React__default['default'].Component));
+
+var DefaultErrorBoundary = /** @class */ (function (_super) {
+    __extends(DefaultErrorBoundary, _super);
+    function DefaultErrorBoundary() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = { errorInfo: { componentStack: "Fine" } };
+        return _this;
+    }
+    DefaultErrorBoundary.prototype.componentDidCatch = function (error, errorInfo) {
+        this.setState({
+            errorInfo: errorInfo
+        });
+    };
+    DefaultErrorBoundary.prototype.render = function () {
+        if (this.state.errorInfo.componentStack !== "Fine") {
+            return (React__default['default'].createElement(React__default['default'].Fragment, null,
+                React__default['default'].createElement("h1", null, "Sorry, there is a problem with the service"),
+                React__default['default'].createElement("p", null, "Try again later."),
+                React__default['default'].createElement("p", null, "If you have started a survey, your answers have been saved."),
+                React__default['default'].createElement("p", null,
+                    React__default['default'].createElement("a", { href: "https://ons.service-now.com/" }, "Contact us"),
+                    " if you need to speak to someone about your survey.")));
+        }
+        return this.props.children;
+    };
+    return DefaultErrorBoundary;
+}(React__default['default'].Component));
+
 exports.BetaBanner = BetaBanner;
 exports.Collapsible = Collapsible;
+exports.DefaultErrorBoundary = DefaultErrorBoundary;
+exports.ErrorBoundary = ErrorBoundary;
 exports.ExternalLink = ExternalLink;
 exports.Footer = Footer;
 exports.Header = Header;

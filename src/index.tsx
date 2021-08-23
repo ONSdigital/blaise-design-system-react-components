@@ -15,6 +15,8 @@ import {ONSLoadingPanel} from "./components/ONSLoadingPanel";
 import StyledFormErrorSummary from "./components/forms/StyledFormErrorSummary";
 import { StyledFormField } from "./components/forms/FormElements/StyledFormFields";
 import Collapsible from "./components/Collapsible";
+import ErrorBoundary from "./components/ErrorHandling/ErrorBoundary";
+import DefaultErrorBoundary from "./components/ErrorHandling/DefaultErrorBoundary";
 
 export {
     NotProductionWarning,
@@ -33,5 +35,7 @@ export {
     StyledForm,
     StyledFormErrorSummary,
     StyledFormField,
-    Collapsible
+    Collapsible,
+    ErrorBoundary,
+    DefaultErrorBoundary
 }
