@@ -54,15 +54,9 @@ declare module "blaise-design-system-react-components" {
 
     export function Collapsible(props: CollapsibleProps): ReactElement<CollapsibleProps>
 
-    export class ErrorBoundary {
-        constructor(props: ErrorBoundaryProps);
-
-        render(): ReactElement
+    declare class ErrorBoundary extends React.Component<ErrorBoundaryProps, any> {
     }
 
-    export class DefaultErrorBoundary {
-        constructor(props: DefaultErrorBoundaryProps);
-
-        render(): ReactElement
+    declare class ErrorBoundaryProps extends React.Component<DefaultErrorBoundaryProps, any> {
     }
 }
