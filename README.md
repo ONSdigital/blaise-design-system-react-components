@@ -51,25 +51,46 @@ function SimplePage(): ReactElement {
 
 ## Available components
 
+### Standard design system components
+
+Components from the design system replicated as React components.
+
 | Component             | Link to Design System Component                                                       | Notes                                                                                      |
 |-----------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
 | BetaBanner            | [Phase banner](https://ons-design-system.netlify.app/components/phase-banner/)        |                                                                                            |
 | ExternalLink          | [Link with external link icon](https://ons-design-system.netlify.app/styles/typography/#link-with-external-link-icon) |                                                                                            |
 | Footer                | [Footer](https://ons-design-system.netlify.app/components/footer/)                    |                                                                                            |
 | Header                | [Internal Header](https://ons-design-system.netlify.app/components/header/#internal)  |                                                                                            |
-| NoneProductionWarning | [Warning branded Panel](https://ons-design-system.netlify.app/components/panel/#warning-branded) | This one is not an 'Official' component. But is based on the Branded Census warning panel    |
 | ONSButton             | [Button](https://ons-design-system.netlify.app/components/button/)                    |                                                                                            |
-| ONSErrorPanel         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/)        | This is a Standard Panel with an error status, with a prepared message "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."  |
-| ONSLoadingPanel       | [Panel](https://ons-design-system.netlify.app/components/panel/)                      | This is a Standard Panel with an info status, with a loading spinner and "Loading" message. Uses [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) for the loading spinner. |
 | ONSPanel              | [Panel](https://ons-design-system.netlify.app/components/panel/)                      |                                                                                            |
 | ONSPasswordInput      | [Password](https://ons-design-system.netlify.app/components/password/)                |                                                                                            |
 | ONSSelect             | [Select](https://ons-design-system.netlify.app/components/select/)                    |                                                                                            |
 | ONSTextInput          | [Input](https://ons-design-system.netlify.app/components/input/)                      |                                                                                            |
 | ONSUpload             | [Upload](https://ons-design-system.netlify.app/components/upload/)                    |                                                                                            |
+| Collapsible           | [Collapsible](https://ons-design-system.netlify.app/components/collapsible/)          |                                                                                            |
+
+### Custom designed components based off design system
+
+Based off design system components but modified slightly, either to suit our needs or to make a simple reusable
+component for example the `ONSErrorPanel` is simply a ONSPanel with a message already provided.
+
+| Component             | Link to Design System Component                                                       | Notes                                                                                      |
+|-----------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| NoneProductionWarning | [Warning branded Panel](https://ons-design-system.netlify.app/components/panel/#warning-branded) | This one is not an 'Official' component. But is based on the Branded Census warning panel    |
+| ONSErrorPanel         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/)        | This is a Standard Panel with an error status, with a prepared message "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."  |
+| ONSLoadingPanel       | [Panel](https://ons-design-system.netlify.app/components/panel/)                      | This is a Standard Panel with an info status, with a loading spinner and "Loading" message. Uses [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) for the loading spinner. |
+
+### Custom React designed components
+
+React components to simply development across multiple repositories. These are still based off the design system, for
+example the `StyledForm` is a reusable implementation of [Formik](https://formik.org/) but the fields and errors are set
+up like standard ONS design system fields.
+
+| Component             | Link to Design System Component                                                       | Notes                                                                                      |
+|-----------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
 | StyledForm            | [Correct errors pattern](https://ons-design-system.netlify.app/patterns/error-validation) | Easily add ONS styled forms to React application. [Detailed documentation and example](./docs/StyledForms.MD) |
 | ErrorBoundary         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/) | React render UI error wrapper. [Detailed documentation and examples](./docs/ErrorBoundary.MD) |
 | DefaultErrorBoundary  | [Service unavailable errors](https://ons-design-system.netlify.app/patterns/error-status-pages/#service-unavailable-errors) | React render UI error wrapper. [Detailed documentation and examples](./docs/ErrorBoundary.MD) |
-| Collapsible           | [Collapsible](https://ons-design-system.netlify.app/components/collapsible/)          |                                                                                            |
 
 ## Component Development
 
