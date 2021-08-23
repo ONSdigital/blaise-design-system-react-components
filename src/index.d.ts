@@ -11,6 +11,8 @@ import {Props as ONSTextInputProps} from "./components/ONSTextInput";
 import {Props as UploadProps} from "./components/ONSUpload"
 import {Props as StyledFormField} from "./components/forms/FormElements/Fields"
 import {Props as CollapsibleProps} from "./components/Collapsible"
+import {Props as ErrorBoundaryProps} from "./components/ErrorHandling/ErrorBoundary"
+import {Props as DefaultErrorBoundaryProps} from "./components/ErrorHandling/DefaultErrorBoundary"
 import {StyledFormProps, FormFieldObject} from "./components/forms/StyledForm";
 import {StyledFormField} from "./components/forms/FormElements/StyledFormFields";
 
@@ -51,4 +53,10 @@ declare module "blaise-design-system-react-components" {
     export type FormField = FormFieldObject;
 
     export function Collapsible(props: CollapsibleProps): ReactElement<CollapsibleProps>
+
+    declare class ErrorBoundary extends React.Component<ErrorBoundaryProps, any> {
+    }
+
+    declare class DefaultErrorBoundary extends React.Component<DefaultErrorBoundaryProps, any> {
+    }
 }
