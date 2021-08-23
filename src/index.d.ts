@@ -56,9 +56,13 @@ declare module "blaise-design-system-react-components" {
 
     export class ErrorBoundary {
         constructor(props: ErrorBoundaryProps);
+
+        render(): ReactElement
     }
 
     export class DefaultErrorBoundary {
         constructor(props: DefaultErrorBoundaryProps);
+
+        render(): ReactElement
     }
 }
