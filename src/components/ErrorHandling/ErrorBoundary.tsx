@@ -1,4 +1,5 @@
 import React, {ErrorInfo, ReactNode} from "react";
+import { ONSPanel } from "../ONSPanel";
 
 export interface Props {
     errorMessageText: string,
@@ -22,15 +23,11 @@ export default class ErrorBoundary extends React.Component<Props, State> {
     render(): ReactNode {
         if (this.state.errorInfo.componentStack !== "Fine") {
             return (
-                <>
-                    <div className="panel panel--error panel--simple u-mt-m">
-                        <div className="panel__body">
-                            <p>
-                                {this.props.errorMessageText}
-                            </p>
-                        </div>
-                    </div>
-                </>
+                <ONSPanel status="error">
+                    <p>
+                        {this.props.errorMessageText}
+                    </p>
+                </ONSPanel>
             );
         }
 

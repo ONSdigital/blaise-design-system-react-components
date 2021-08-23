@@ -3248,10 +3248,8 @@ var ErrorBoundary = /** @class */ (function (_super) {
     };
     ErrorBoundary.prototype.render = function () {
         if (this.state.errorInfo.componentStack !== "Fine") {
-            return (React__default['default'].createElement(React__default['default'].Fragment, null,
-                React__default['default'].createElement("div", { className: "panel panel--error panel--simple u-mt-m" },
-                    React__default['default'].createElement("div", { className: "panel__body" },
-                        React__default['default'].createElement("p", null, this.props.errorMessageText)))));
+            return (React__default['default'].createElement(ONSPanel, { status: "error" },
+                React__default['default'].createElement("p", null, this.props.errorMessageText)));
         }
         return this.props.children;
     };
