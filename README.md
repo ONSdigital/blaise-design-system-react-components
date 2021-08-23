@@ -16,7 +16,7 @@ In your own React project add this repository as a dependency, specifying a rele
 example:
 
 ```shell
-yarn add ONSdigital/blaise-design-system-react-components#0.0.3
+yarn add git+https://github.com/ONSdigital/blaise-design-system-react-components#v0.8.0
 ```
 
 With this imported, you can add the components to your page, like the example below, where we use the Header,
