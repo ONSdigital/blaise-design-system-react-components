@@ -57,6 +57,6 @@ declare module "blaise-design-system-react-components" {
     declare class ErrorBoundary extends React.Component<ErrorBoundaryProps, any> {
     }
 
-    declare class ErrorBoundaryProps extends React.Component<DefaultErrorBoundaryProps, any> {
+    declare class DefaultErrorBoundary extends React.Component<DefaultErrorBoundaryProps, any> {
     }
 }
