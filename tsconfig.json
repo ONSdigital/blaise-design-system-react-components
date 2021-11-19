@@ -22,10 +22,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "declaration": true
   },
   "include": [
     "src"
   ],
-  "exclude": ["*.test.tsx"]
+  "exclude": ["**/*.test.tsx"]
 }
