@@ -28,5 +28,8 @@
   "include": [
     "src"
   ],
-  "exclude": ["**/*.test.tsx"]
+  "exclude": [
+    "**/*.test.tsx",
+    "node_modules"
+  ]
 }

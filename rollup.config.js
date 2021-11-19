@@ -29,7 +29,11 @@ export default {
             exclude: ["**/__tests__", "**/*.test.tsx"],
             clean: true,
             tsconfigOverride: {
+                declaration: true,
                 exclude: ["**/__tests__", "**/*.test.tsx"]
+            },
+            tsconfigDefaults: {
+                declaration: true
             }
         }),
         commonjs({
