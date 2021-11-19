@@ -3283,12 +3283,60 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
     return DefaultErrorBoundary;
 }(React__default['default'].Component));
 
+function replaceUnderscoreWithSpaces(text) {
+    return text.split("_").join(" ");
+}
+function FormatTitle(text) {
+    text = replaceUnderscoreWithSpaces(text);
+    return TitleCase(text);
+}
+function TitleCase(stringToConvert) {
+    var firstCharacter = stringToConvert.substring(0, 1);
+    var restString = stringToConvert.substring(1);
+    return firstCharacter.toUpperCase() + restString;
+}
+
+function GroupedSummaryAsCSV(groupedSummary) {
+    var records = [];
+    var row = {};
+    for (var _i = 0, groupedSummary_1 = groupedSummary; _i < groupedSummary_1.length; _i++) {
+        var group = groupedSummary_1[_i];
+        for (var record in group.records) {
+            row[record] = group.records[record];
+        }
+    }
+    records.push(row);
+    return records;
+}
+function SummaryItemRow(props) {
+    return (React__default['default'].createElement("tbody", { className: "summary__item" },
+        React__default['default'].createElement("tr", { className: "summary__row summary__row--has-values" },
+            React__default['default'].createElement("td", { className: "summary__item-title" },
+                React__default['default'].createElement("div", { className: "summary__item--text" }, FormatTitle(props.fieldName))),
+            React__default['default'].createElement("td", { className: "summary__values", colSpan: 2 }, props.fieldValue))));
+}
+function SummaryGroupTable(props) {
+    var elementList = [];
+    for (var _i = 0, _a = props.groupedSummary; _i < _a.length; _i++) {
+        var group = _a[_i];
+        elementList.push(React__default['default'].createElement("h3", { className: "summary__group-title" }, group.title));
+        var tableFieldsList = [];
+        for (var field in group.records) {
+            tableFieldsList.push(React__default['default'].createElement(SummaryItemRow, { fieldName: field, fieldValue: group.records[field] }));
+        }
+        elementList.push(React__default['default'].createElement("table", { className: "summary__items" }, tableFieldsList));
+    }
+    return (React__default['default'].createElement(React__default['default'].Fragment, null, elementList));
+}
+
 exports.BetaBanner = BetaBanner;
 exports.Collapsible = Collapsible;
 exports.DefaultErrorBoundary = DefaultErrorBoundary;
 exports.ErrorBoundary = ErrorBoundary;
 exports.ExternalLink = ExternalLink;
 exports.Footer = Footer;
+exports.FormatTitle = FormatTitle;
+exports.GroupedSummaryAsCSV = GroupedSummaryAsCSV;
 exports.Header = Header;
 exports.NotProductionWarning = NotProductionWarning;
 exports.ONSButton = ONSButton;
@@ -3302,4 +3350,7 @@ exports.ONSUpload = ONSUpload;
 exports.StyledForm = StyledForm;
 exports.StyledFormErrorSummary = StyledFormErrorSummary;
 exports.StyledFormField = StyledFormField;
+exports.SummaryGroupTable = SummaryGroupTable;
+exports.SummaryItemRow = SummaryItemRow;
+exports.TitleCase = TitleCase;
 //# sourceMappingURL=index.js.map

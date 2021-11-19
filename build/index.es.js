@@ -3275,5 +3275,51 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
     return DefaultErrorBoundary;
 }(React.Component));
 
-export { BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField };
+function replaceUnderscoreWithSpaces(text) {
+    return text.split("_").join(" ");
+}
+function FormatTitle(text) {
+    text = replaceUnderscoreWithSpaces(text);
+    return TitleCase(text);
+}
+function TitleCase(stringToConvert) {
+    var firstCharacter = stringToConvert.substring(0, 1);
+    var restString = stringToConvert.substring(1);
+    return firstCharacter.toUpperCase() + restString;
+}
+
+function GroupedSummaryAsCSV(groupedSummary) {
+    var records = [];
+    var row = {};
+    for (var _i = 0, groupedSummary_1 = groupedSummary; _i < groupedSummary_1.length; _i++) {
+        var group = groupedSummary_1[_i];
+        for (var record in group.records) {
+            row[record] = group.records[record];
+        }
+    }
+    records.push(row);
+    return records;
+}
+function SummaryItemRow(props) {
+    return (React.createElement("tbody", { className: "summary__item" },
+        React.createElement("tr", { className: "summary__row summary__row--has-values" },
+            React.createElement("td", { className: "summary__item-title" },
+                React.createElement("div", { className: "summary__item--text" }, FormatTitle(props.fieldName))),
+            React.createElement("td", { className: "summary__values", colSpan: 2 }, props.fieldValue))));
+}
+function SummaryGroupTable(props) {
+    var elementList = [];
+    for (var _i = 0, _a = props.groupedSummary; _i < _a.length; _i++) {
+        var group = _a[_i];
+        elementList.push(React.createElement("h3", { className: "summary__group-title" }, group.title));
+        var tableFieldsList = [];
+        for (var field in group.records) {
+            tableFieldsList.push(React.createElement(SummaryItemRow, { fieldName: field, fieldValue: group.records[field] }));
+        }
+        elementList.push(React.createElement("table", { className: "summary__items" }, tableFieldsList));
+    }
+    return (React.createElement(React.Fragment, null, elementList));
+}
+
+export { BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, FormatTitle, GroupedSummaryAsCSV, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField, SummaryGroupTable, SummaryItemRow, TitleCase };
 //# sourceMappingURL=index.es.js.map
