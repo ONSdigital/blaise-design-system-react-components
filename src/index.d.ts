@@ -1,5 +1,6 @@
 import React = require("react");
 import {ReactElement} from "react";
+import {Data} from "react-csv/components/CommonPropTypes";
 import {Props as HeaderProps} from "./components/Header"
 import {Props as ExternalLinkProps} from "./components/ExternalLink"
 import {Props as ButtonProps} from "./components/ONSButton"
@@ -15,10 +16,12 @@ import {Props as ErrorBoundaryProps} from "./components/ErrorHandling/ErrorBound
 import {Props as DefaultErrorBoundaryProps} from "./components/ErrorHandling/DefaultErrorBoundary"
 import {StyledFormProps, FormFieldObject} from "./components/forms/StyledForm";
 import {StyledFormField} from "./components/forms/FormElements/StyledFormFields";
-import {SummaryGroupTableProps, SummaryItemProps} from "./components/ONSSummary"
+import {SummaryGroupTableProps, SummaryItemProps, GroupedSummary} from "./components/ONSSummary"
 
 
 declare module "blaise-design-system-react-components" {
+    export function GroupedSummaryAsCSV(groupedSummary: GroupedSummary): Data
+
     export function SummaryGroupTable(props: SummaryGroupTableProps): ReactElement<SummaryGroupTableProps>
 
     export function SummaryItemRow(props: SummaryItemProps): ReactElement<SummaryItemProps>
