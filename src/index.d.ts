@@ -16,10 +16,15 @@ import {Props as ErrorBoundaryProps} from "./components/ErrorHandling/ErrorBound
 import {Props as DefaultErrorBoundaryProps} from "./components/ErrorHandling/DefaultErrorBoundary"
 import {StyledFormProps, FormFieldObject} from "./components/forms/StyledForm";
 import {StyledFormField} from "./components/forms/FormElements/StyledFormFields";
-import {SummaryGroupTableProps, SummaryItemProps, GroupedSummary} from "./components/ONSSummary"
+import {SummaryGroupTableProps, SummaryItemProps, GroupedSummary, Group} from "./components/ONSSummary"
+import {FormatTitle, TitleCase} from "./utilities/TextFormatting";
 
 
 declare module "blaise-design-system-react-components" {
+    export function FormatTitle(text: string): string
+
+    export function TitleCase(text: string): string
+
     export function GroupedSummaryAsCSV(groupedSummary: GroupedSummary): Data
 
     export function SummaryGroupTable(props: SummaryGroupTableProps): ReactElement<SummaryGroupTableProps>
@@ -67,4 +72,6 @@ declare module "blaise-design-system-react-components" {
 
     declare class DefaultErrorBoundary extends React.Component<DefaultErrorBoundaryProps, any> {
     }
+    
+    export type {GroupedSummary, Group}
 }
