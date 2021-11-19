@@ -3308,17 +3308,19 @@ function GroupedSummaryAsCSV(groupedSummary) {
     records.push(row);
     return records;
 }
-function SummaryItemRow(props) {
+function SummaryItemRow(_a) {
+    var fieldName = _a.fieldName, fieldValue = _a.fieldValue;
     return (React__default['default'].createElement("tbody", { className: "summary__item" },
         React__default['default'].createElement("tr", { className: "summary__row summary__row--has-values" },
             React__default['default'].createElement("td", { className: "summary__item-title" },
-                React__default['default'].createElement("div", { className: "summary__item--text" }, FormatTitle(props.fieldName))),
-            React__default['default'].createElement("td", { className: "summary__values", colSpan: 2 }, props.fieldValue))));
+                React__default['default'].createElement("div", { className: "summary__item--text" }, FormatTitle(fieldName))),
+            React__default['default'].createElement("td", { className: "summary__values", colSpan: 2 }, fieldValue))));
 }
-function SummaryGroupTable(props) {
+function SummaryGroupTable(_a) {
+    var groupedSummary = _a.groupedSummary;
     var elementList = [];
-    for (var _i = 0, _a = props.groupedSummary; _i < _a.length; _i++) {
-        var group = _a[_i];
+    for (var _i = 0, groupedSummary_2 = groupedSummary; _i < groupedSummary_2.length; _i++) {
+        var group = groupedSummary_2[_i];
         elementList.push(React__default['default'].createElement("h3", { className: "summary__group-title" }, group.title));
         var tableFieldsList = [];
         for (var field in group.records) {

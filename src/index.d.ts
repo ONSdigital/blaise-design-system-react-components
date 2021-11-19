@@ -15,9 +15,14 @@ import {Props as ErrorBoundaryProps} from "./components/ErrorHandling/ErrorBound
 import {Props as DefaultErrorBoundaryProps} from "./components/ErrorHandling/DefaultErrorBoundary"
 import {StyledFormProps, FormFieldObject} from "./components/forms/StyledForm";
 import {StyledFormField} from "./components/forms/FormElements/StyledFormFields";
+import {SummaryGroupTableProps, SummaryItemProps} from "./components/ONSSummary"
 
 
 declare module "blaise-design-system-react-components" {
+    export function SummaryGroupTable(props: SummaryGroupTableProps): ReactElement<SummaryGroupTableProps>
+
+    export function SummaryItemRow(props: SummaryItemProps): ReactElement<SummaryItemProps>
+
     export function NotProductionWarning(): ReactElement
 
     export function Footer(): ReactElement

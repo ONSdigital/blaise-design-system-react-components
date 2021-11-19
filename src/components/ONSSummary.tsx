@@ -21,26 +21,35 @@ function GroupedSummaryAsCSV(groupedSummary: GroupedSummary): Data {
     return records;
 }
 
-function SummaryItemRow(props: { fieldName: string, fieldValue: any }) {
+interface SummaryItemProps {
+    fieldName: string
+    fieldValue: any
+}
+
+function SummaryItemRow({fieldName, fieldValue}: SummaryItemProps): ReactElement {
     return (
         <tbody className="summary__item">
         <tr className="summary__row summary__row--has-values">
             <td className="summary__item-title">
                 <div className="summary__item--text">
-                    {FormatTitle(props.fieldName)}
+                    {FormatTitle(fieldName)}
                 </div>
             </td>
             <td className="summary__values" colSpan={2}>
-                {props.fieldValue}
+                {fieldValue}
             </td>
         </tr>
         </tbody>
     );
 }
 
-function SummaryGroupTable(props: { groupedSummary: GroupedSummary}) {
+interface SummaryGroupTableProps {
+    groupedSummary: GroupedSummary
+}
+
+function SummaryGroupTable({groupedSummary}: SummaryGroupTableProps): ReactElement {
     const elementList: ReactElement[] = [];
-    for (const group of props.groupedSummary) {
+    for (const group of groupedSummary) {
         elementList.push(
             <h3 className="summary__group-title">{group.title}</h3>
         );
@@ -63,5 +72,5 @@ function SummaryGroupTable(props: { groupedSummary: GroupedSummary}) {
     );
 }
 
-export type {GroupedSummary, Group};
+export type {GroupedSummary, Group, SummaryItemProps, SummaryGroupTableProps};
 export {GroupedSummaryAsCSV, SummaryItemRow, SummaryGroupTable};
