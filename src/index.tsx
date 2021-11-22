@@ -20,7 +20,7 @@ import DefaultErrorBoundary from "./components/ErrorHandling/DefaultErrorBoundar
 import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
 import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
 
-export type { GroupedSummary, Group };
+export type { Group };
 
 export {
     NotProductionWarning,
@@ -44,6 +44,7 @@ export {
     DefaultErrorBoundary,
     SummaryItemRow,
     SummaryGroupTable,
+    GroupedSummary,
     FormatTitle,
     TitleCase
 };

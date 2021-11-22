@@ -3288,6 +3288,24 @@ function TitleCase(stringToConvert) {
     return firstCharacter.toUpperCase() + restString;
 }
 
+var GroupedSummary = /** @class */ (function () {
+    function GroupedSummary(groups) {
+        this.groups = groups;
+    }
+    GroupedSummary.prototype.csv = function () {
+        var records = [];
+        var row = {};
+        for (var _i = 0, _a = this.groups; _i < _a.length; _i++) {
+            var group = _a[_i];
+            for (var record in group.records) {
+                row[record] = group.records[record];
+            }
+        }
+        records.push(row);
+        return records;
+    };
+    return GroupedSummary;
+}());
 function SummaryItemRow(_a) {
     var fieldName = _a.fieldName, fieldValue = _a.fieldValue;
     return (React.createElement("tbody", { className: "summary__item" },
@@ -3311,5 +3329,5 @@ function SummaryGroupTable(_a) {
     return (React.createElement(React.Fragment, null, elementList));
 }
 
-export { BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, FormatTitle, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField, SummaryGroupTable, SummaryItemRow, TitleCase };
+export { BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, FormatTitle, GroupedSummary, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField, SummaryGroupTable, SummaryItemRow, TitleCase };
 //# sourceMappingURL=index.es.js.map

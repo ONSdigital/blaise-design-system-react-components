@@ -3296,6 +3296,24 @@ function TitleCase(stringToConvert) {
     return firstCharacter.toUpperCase() + restString;
 }
 
+var GroupedSummary = /** @class */ (function () {
+    function GroupedSummary(groups) {
+        this.groups = groups;
+    }
+    GroupedSummary.prototype.csv = function () {
+        var records = [];
+        var row = {};
+        for (var _i = 0, _a = this.groups; _i < _a.length; _i++) {
+            var group = _a[_i];
+            for (var record in group.records) {
+                row[record] = group.records[record];
+            }
+        }
+        records.push(row);
+        return records;
+    };
+    return GroupedSummary;
+}());
 function SummaryItemRow(_a) {
     var fieldName = _a.fieldName, fieldValue = _a.fieldValue;
     return (React__default['default'].createElement("tbody", { className: "summary__item" },
@@ -3326,6 +3344,7 @@ exports.ErrorBoundary = ErrorBoundary;
 exports.ExternalLink = ExternalLink;
 exports.Footer = Footer;
 exports.FormatTitle = FormatTitle;
+exports.GroupedSummary = GroupedSummary;
 exports.Header = Header;
 exports.NotProductionWarning = NotProductionWarning;
 exports.ONSButton = ONSButton;
