@@ -1,3 +1,4 @@
 declare function FormatTitle(text: string): string;
 declare function TitleCase(stringToConvert: string): string;
-export { FormatTitle, TitleCase };
+declare function FormatKey(text: string): string;
+export { FormatTitle, TitleCase, FormatKey };

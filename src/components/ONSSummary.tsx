@@ -1,5 +1,5 @@
 import { Data } from "react-csv/components/CommonPropTypes";
-import { FormatTitle } from "../utilities/TextFormatting";
+import { FormatTitle, FormatKey } from "../utilities/TextFormatting";
 import React, { ReactElement } from "react";
 
 type Group = {
@@ -56,16 +56,16 @@ function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): ReactEle
     const elementList: ReactElement[] = [];
     for (const group of groupedSummary.groups) {
         elementList.push(
-            <h3 className="summary__group-title">{group.title}</h3>
+            <h3 key={`summary-group-heading-${FormatKey(group.title)}`} className="summary__group-title">{group.title}</h3>
         );
         const tableFieldsList: ReactElement[] = [];
         for (const field in group.records) {
             tableFieldsList.push(
-                <SummaryItemRow fieldName={field} fieldValue={group.records[field]} />
+                <SummaryItemRow key={`summary-table-row-${FormatKey(field)}`} fieldName={field} fieldValue={group.records[field]} />
             );
         }
         elementList.push(
-            <table className="summary__items">
+            <table key={`summary-table-group-${FormatKey(group.title)}`} className="summary__items">
                 {tableFieldsList}
             </table>
         );

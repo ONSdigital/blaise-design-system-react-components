@@ -14,4 +14,8 @@ function TitleCase(stringToConvert: string): string {
     return firstCharacter.toUpperCase() + restString;
 }
 
-export {FormatTitle, TitleCase};
+function FormatKey(text: string): string {
+    return text.split(" ").join("-")
+}
+
+export {FormatTitle, TitleCase, FormatKey};

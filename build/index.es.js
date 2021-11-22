@@ -3287,6 +3287,9 @@ function TitleCase(stringToConvert) {
     var restString = stringToConvert.substring(1);
     return firstCharacter.toUpperCase() + restString;
 }
+function FormatKey(text) {
+    return text.split(" ").join("-");
+}
 
 var GroupedSummary = /** @class */ (function () {
     function GroupedSummary(groups) {
@@ -3319,12 +3322,12 @@ function SummaryGroupTable(_a) {
     var elementList = [];
     for (var _i = 0, _b = groupedSummary.groups; _i < _b.length; _i++) {
         var group = _b[_i];
-        elementList.push(React.createElement("h3", { className: "summary__group-title" }, group.title));
+        elementList.push(React.createElement("h3", { key: "summary-group-heading-" + FormatKey(group.title), className: "summary__group-title" }, group.title));
         var tableFieldsList = [];
         for (var field in group.records) {
-            tableFieldsList.push(React.createElement(SummaryItemRow, { fieldName: field, fieldValue: group.records[field] }));
+            tableFieldsList.push(React.createElement(SummaryItemRow, { key: "summary-table-row-" + FormatKey(field), fieldName: field, fieldValue: group.records[field] }));
         }
-        elementList.push(React.createElement("table", { className: "summary__items" }, tableFieldsList));
+        elementList.push(React.createElement("table", { key: "summary-table-group-" + FormatKey(group.title), className: "summary__items" }, tableFieldsList));
     }
     return (React.createElement(React.Fragment, null, elementList));
 }
