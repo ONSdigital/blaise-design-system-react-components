@@ -17,7 +17,7 @@ import { StyledFormField } from "./components/forms/FormElements/StyledFormField
 import Collapsible from "./components/Collapsible";
 import ErrorBoundary from "./components/ErrorHandling/ErrorBoundary";
 import DefaultErrorBoundary from "./components/ErrorHandling/DefaultErrorBoundary";
-import { GroupedSummaryAsCSV, SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
+import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
 import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
 export type { GroupedSummary, Group };
-export { NotProductionWarning, Footer, Header, BetaBanner, ExternalLink, ONSErrorPanel, ONSButton, ONSPanel, ONSLoadingPanel, ONSUpload, ONSSelect, ONSPasswordInput, ONSTextInput, StyledForm, StyledFormErrorSummary, StyledFormField, Collapsible, ErrorBoundary, DefaultErrorBoundary, GroupedSummaryAsCSV, SummaryItemRow, SummaryGroupTable, FormatTitle, TitleCase };
+export { NotProductionWarning, Footer, Header, BetaBanner, ExternalLink, ONSErrorPanel, ONSButton, ONSPanel, ONSLoadingPanel, ONSUpload, ONSSelect, ONSPasswordInput, ONSTextInput, StyledForm, StyledFormErrorSummary, StyledFormField, Collapsible, ErrorBoundary, DefaultErrorBoundary, SummaryItemRow, SummaryGroupTable, FormatTitle, TitleCase };

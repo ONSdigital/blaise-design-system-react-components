@@ -3296,18 +3296,6 @@ function TitleCase(stringToConvert) {
     return firstCharacter.toUpperCase() + restString;
 }
 
-function GroupedSummaryAsCSV(groupedSummary) {
-    var records = [];
-    var row = {};
-    for (var _i = 0, groupedSummary_1 = groupedSummary; _i < groupedSummary_1.length; _i++) {
-        var group = groupedSummary_1[_i];
-        for (var record in group.records) {
-            row[record] = group.records[record];
-        }
-    }
-    records.push(row);
-    return records;
-}
 function SummaryItemRow(_a) {
     var fieldName = _a.fieldName, fieldValue = _a.fieldValue;
     return (React__default['default'].createElement("tbody", { className: "summary__item" },
@@ -3319,8 +3307,8 @@ function SummaryItemRow(_a) {
 function SummaryGroupTable(_a) {
     var groupedSummary = _a.groupedSummary;
     var elementList = [];
-    for (var _i = 0, groupedSummary_2 = groupedSummary; _i < groupedSummary_2.length; _i++) {
-        var group = groupedSummary_2[_i];
+    for (var _i = 0, _b = groupedSummary.groups; _i < _b.length; _i++) {
+        var group = _b[_i];
         elementList.push(React__default['default'].createElement("h3", { className: "summary__group-title" }, group.title));
         var tableFieldsList = [];
         for (var field in group.records) {
@@ -3338,7 +3326,6 @@ exports.ErrorBoundary = ErrorBoundary;
 exports.ExternalLink = ExternalLink;
 exports.Footer = Footer;
 exports.FormatTitle = FormatTitle;
-exports.GroupedSummaryAsCSV = GroupedSummaryAsCSV;
 exports.Header = Header;
 exports.NotProductionWarning = NotProductionWarning;
 exports.ONSButton = ONSButton;
