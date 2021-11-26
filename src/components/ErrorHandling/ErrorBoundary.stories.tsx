@@ -14,14 +14,14 @@ const DodgyComponent = () => {
 
 export default {
     component: ErrorBoundary,
-    title: 'Components/Panel Error Boundary'
+    title: 'Components/Error Boundary/Panel'
 } as Meta;
 
 const Template: ComponentStory<typeof ErrorBoundary> = (args) => <ErrorBoundary {...args}/>;
 
-export const Default = Template.bind({});
+export const Panel = Template.bind({});
 
-Default.args = {
+Panel.args = {
     children: <DodgyComponent/>,
     errorMessageText: "Bloody things broken again!"
 };

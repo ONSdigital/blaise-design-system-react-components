@@ -14,7 +14,7 @@ const DodgyComponent = () => {
 
 export default {
     component: DefaultErrorBoundary,
-    title: 'Components/Default Error Boundary'
+    title: 'Components/Error Boundary/Default'
 } as Meta;
 
 const Template: ComponentStory<typeof DefaultErrorBoundary> = (args) => <DefaultErrorBoundary {...args}/>;
