@@ -7,6 +7,10 @@ export interface Props {
     message?: string
 }
 
+/**
+ * This is a Standard Panel with an info status, with a loading spinner and "Loading" message.
+ * Uses [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) for the loading spinner.
+ */
 export const ONSLoadingPanel = ({hidden, message}: Props) => {
     return (
         <ONSPanel hidden={hidden}>
@@ -18,7 +22,7 @@ export const ONSLoadingPanel = ({hidden, message}: Props) => {
                     width={30}
                 />
                 {
-                    message ?  message : "Loading"
+                    message ? message : "Loading"
                 }
             </div>
         </ONSPanel>

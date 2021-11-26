@@ -2,6 +2,9 @@ import React, {ReactElement, useState} from 'react';
 
 
 export interface Props {
+    /**
+     * Render any standard HTML (or other React components) within the Collapsible
+     */
     children: ReactElement
     title: string
 }
