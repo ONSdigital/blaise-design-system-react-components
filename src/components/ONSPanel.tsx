@@ -10,6 +10,9 @@ export interface Props {
     id?: string,
     hidden?: boolean,
     testID?: string
+    /**
+     * Uses a bigger tick icon for the success panel only.
+     */
     bigIcon?: boolean
 }
 
