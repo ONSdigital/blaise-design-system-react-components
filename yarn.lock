@@ -1737,7 +1737,7 @@
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
-"@storybook/addon-actions@6.4.4", "@storybook/addon-actions@^6.3.12":
+"@storybook/addon-actions@6.4.4", "@storybook/addon-actions@^6.4.0":
   version "6.4.4"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.4.4.tgz#de21efe24331c05e835616c2702fa71116a19944"
   integrity sha512-TM11xSGw5tHbOyWzgQNmvpSJbZCssFExtcwu5sWbib0y1w3/gBg6QDfEqRHE5F+dqmPwp6XFeziIt0fVGTu3mg==
@@ -1850,7 +1850,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-essentials@^6.3.12":
+"@storybook/addon-essentials@^6.4.0":
   version "6.4.4"
   resolved "https://registry.yarnpkg.com/@storybook/addon-essentials/-/addon-essentials-6.4.4.tgz#e6250bbbafd64f9f252302261c2bd080e11e8229"
   integrity sha512-Pdu3FFxte2klgW/5wkpEXscsIzeuY4RG1nysbK8f91iKWtlgLk2V8TFXL9dLTS8znjkE1G8TnsRt2D1bnLnAig==
@@ -1870,7 +1870,7 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-links@^6.3.12":
+"@storybook/addon-links@^6.4.0":
   version "6.4.4"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.4.4.tgz#5487d71a535d31da1d6b64aa3b09248519aa9bd3"
   integrity sha512-mvBs2/P2BjWFVJhEUdo0umMfTAqklmHewVa7HRNsos+XYdrpUrBP9SD2oP2a9U4woR2XQDAZVUUO54JxqrrcNw==
@@ -2429,7 +2429,7 @@
     react-docgen-typescript "^2.0.0"
     tslib "^2.0.0"
 
-"@storybook/react@^6.3.12":
+"@storybook/react@^6.4.0":
   version "6.4.4"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.4.4.tgz#810c00e5956b58b0579cb9b02032d60a1aaacf84"
   integrity sha512-AJmD55OFUBEDERR3Zjo1OlwzL0jxj6x7pKbqE4I2V2HGsIOCIGVp6LvWq4nh8JpS/nDu9KHSCtPyVaQcltXwSA==
