@@ -1,12 +1,99 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Example/Introduction" />
+<Meta title="Blaise/Introduction" />
 
-# Welcome to Storybook
+# Welcome to Blaise design system react components
 
-Storybook helps you build UI components in isolation from your app's business logic, data, and context.
-That makes it easy to develop hard-to-reach states. Save these UI states as **stories** to revisit during development, testing, or QA.
+React component implementations of the [ONS Design system components](https://ons-design-system.netlify.app).
 
-Browse example stories now by navigating to them in the sidebar.
-View their code in the `src/stories` directory to learn how they work.
-We recommend building UIs with a [**component-driven**](https://componentdriven.org) process starting with atomic components and ending with pages.
+## Viewing the documentation
+
+There is a GitHub action that on merge to `main`, will build the new documentation and push to this URL in GitHub pages.
+
+For viewing them locally you can run:
+
+```bash
+yarn run storybook
+```
+
+Which will start the documentation to auto reload on changes, running on `localhost:6006`.
+
+## Creating documentation
+
+You can build component documentation by creating a new `.stories.tsx` file.
+
+First we import the component into a default statement, the title is where in the documentation the story will be,
+so below the panel will be under the label `Components`.
+You can also add a sub folder by adding a extra layer in the / for example `'Components/Error Boundary/Panel'`,
+creates a `Error Boundary` group.
+```tsx
+export default {
+    component: ONSPanel,
+    title: 'Components/Panel'
+} as Meta;
+```
+
+Create the standard template, which passes any arguments to the component. Then create a story so different type of the component,
+like below you have a Info, Success and Error variant of the Panel component
+```tsx
+//👇 We create a "template" of how args map to rendering
+const Template: ComponentStory<typeof ONSPanel> = (args) => <ONSPanel {...args}/>;
+
+//👇 Each story then reuses that template
+export const Info = Template.bind({});
+export const Success = Template.bind({});
+export const Error = Template.bind({});
+```
+
+Then for each variant of the component, pass in default arguments that you want the variant to have, like below the
+different status's are passed into each variant
+
+```tsx
+Info.args = {
+    children: <p>Some message in a panel</p>
+};
+
+Success.args = {
+    status: "success",
+    bigIcon: true,
+    children: <div><h1>Title in a panel</h1><p>And then some text</p></div>
+};
+
+
+Error.args = {
+    status: "error",
+    children: <p>Some message in a panel</p>
+};
+```
+
+## Add additional information to the Docs section
+
+Storybook is clever and will pull in any standard JSDocs from your files into the docs tab for each component.
+For example you can set a component description by adding a doc tag above the component.
+
+```tsx
+/**
+ * This is a Standard Panel with an error status, with a prepared message.
+ */
+function ONSErrorPanel(): ReactElement {
+```
+
+You can also add more info to component properties as well
+
+```tsx
+export interface Props {
+    /**
+     * Render any standard HTML (or other React components) within the panel
+     */
+    children: any,
+    status?: "success" | "error" | "info" | "warn",
+    spacious?: boolean,
+    id?: string,
+    hidden?: boolean,
+    testID?: string
+    /**
+     * Uses a bigger tick icon for the success panel only.
+     */
+    bigIcon?: boolean
+}
+```
