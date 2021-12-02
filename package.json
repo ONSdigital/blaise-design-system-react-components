@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "test": "jest --coverage --watchAll=false"
+    "test": "jest --coverage --watchAll=false",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -o docs-build"
   },
   "repository": {
     "type": "git",
@@ -40,6 +42,10 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
+    "@storybook/addon-actions": "^6.4.0",
+    "@storybook/addon-essentials": "^6.4.0",
+    "@storybook/addon-links": "^6.4.0",
+    "@storybook/react": "^6.4.0",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.4",
     "@types/enzyme-adapter-react-16": "^1.0.6",
@@ -49,6 +55,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-test-renderer": "^17.0.0",
     "@types/sinon": "^10.0.0",
+    "babel-loader": "^8.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",

@@ -10,6 +10,11 @@
 
 React component implementations of the [ONS Design system components](https://ons-design-system.netlify.app).
 
+## Documentation
+
+[Link to storybook documentation](https://onsdigital.github.io/blaise-design-system-react-components)
+Created using [Storybook](https://storybook.js.org/docs/react/get-started/introduction).
+
 ## Usage
 
 In your own React project add this repository as a dependency, specifying a release version after the # at the end for
@@ -88,9 +93,9 @@ up like standard ONS design system fields.
 
 | Component             | Link to Design System Component                                                       | Notes                                                                                      |
 |-----------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| StyledForm            | [Correct errors pattern](https://ons-design-system.netlify.app/patterns/error-validation) | Easily add ONS styled forms to React application. [Detailed documentation and example](./docs/StyledForms.MD) |
-| ErrorBoundary         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/) | React render UI error wrapper. [Detailed documentation and examples](./docs/ErrorBoundary.MD) |
-| DefaultErrorBoundary  | [Service unavailable errors](https://ons-design-system.netlify.app/patterns/error-status-pages/#service-unavailable-errors) | React render UI error wrapper. [Detailed documentation and examples](./docs/ErrorBoundary.MD) |
+| StyledForm            | [Correct errors pattern](https://ons-design-system.netlify.app/patterns/error-validation) | Easily add ONS styled forms to React application. [Detailed documentation and example](documentation/StyledForms.MD) |
+| ErrorBoundary         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/) | React render UI error wrapper. [Detailed documentation and examples](documentation/ErrorBoundary.MD) |
+| DefaultErrorBoundary  | [Service unavailable errors](https://ons-design-system.netlify.app/patterns/error-status-pages/#service-unavailable-errors) | React render UI error wrapper. [Detailed documentation and examples](documentation/ErrorBoundary.MD) |
 
 ## Component Development
 
