@@ -7,6 +7,9 @@ export interface Props {
     field?: boolean;
     loading?: boolean;
     marginRight?: number;
+    /**
+     * Optional click handler
+     */
     onClick?: (...props: any[]) => void;
     disabled?: boolean;
     action?: boolean;

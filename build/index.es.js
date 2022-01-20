@@ -1,6 +1,10 @@
 import React, { Component, useEffect, Fragment as Fragment$1, useState } from 'react';
 import { useFormikContext, Field, Formik, Form } from 'formik';
 
+/**
+ * This one is not an 'Official' component. But is based on the Branded Census warning panel.
+ * Shown at the top of a page, above the header to warn users.
+ */
 function NotProductionWarning() {
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "census-warning", style: { background: "#222", color: "#222" } },
@@ -71,6 +75,9 @@ function ExternalLink(props) {
                 React.createElement("path", { d: "M8.83,7.88a.51.51,0,0,0,.71,0l2.31-2.32,1.28,1.28A.51.51,0,0,0,14,6.49v-4a.52.52,0,0,0-.5-.5h-4A.51.51,0,0,0,9,2.52a.58.58,0,0,0,.14.33l1.28,1.28L8.12,6.46a.51.51,0,0,0,0,.71Z", transform: "translate(-2 -1.99)" })))));
 }
 
+/**
+ * This is a Standard Panel with an error status, with a prepared message.
+ */
 function ONSErrorPanel() {
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "panel panel--error panel--no-title" },
@@ -169,6 +176,8 @@ var extendStatics = function(d, b) {
 };
 
 function __extends(d, b) {
+    if (typeof b !== "function" && b !== null)
+        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
     extendStatics(d, b);
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -3200,6 +3209,10 @@ Loader.defaultProps = {
 
 var Loader = unwrapExports(dist);
 
+/**
+ * This is a Standard Panel with an info status, with a loading spinner and "Loading" message.
+ * Uses [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) for the loading spinner.
+ */
 var ONSLoadingPanel = function (_a) {
     var hidden = _a.hidden, message = _a.message;
     return (React.createElement(ONSPanel, { hidden: hidden },
@@ -3226,6 +3239,14 @@ function Collapsible(_a) {
                     React.createElement("span", { className: "btn__context u-vh" }, title))))));
 }
 
+/**
+ * If an issue occurs in the render function of a React component, if not handled then the UI will fall over.
+ * Wrappers will catch any error then display something else instead so if part of the page fails the
+ * whole application does not break.
+ *
+ * Catches any issues and displays a error panel with a custom message provided. For example, you can wrap this around a
+ * table, so if it fails to render this panel will show in its place on the page.
+ */
 var ErrorBoundary = /** @class */ (function (_super) {
     __extends(ErrorBoundary, _super);
     function ErrorBoundary() {
@@ -3248,6 +3269,13 @@ var ErrorBoundary = /** @class */ (function (_super) {
     return ErrorBoundary;
 }(React.Component));
 
+/**
+ * If an issue occurs in the render function of a React component, if not handled then the UI will fall over.
+ * Wrappers will catch any error then display something else instead so if part of the page fails the
+ * whole application does not break.
+ *
+ * This is useful for wrapping around the entire page to display a generic `Sorry, there is a problem with the service` message.
+ */
 var DefaultErrorBoundary = /** @class */ (function (_super) {
     __extends(DefaultErrorBoundary, _super);
     function DefaultErrorBoundary() {

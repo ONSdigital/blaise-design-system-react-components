@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ONSTable renders a formatted table 1`] = `
+<table
+  class="table"
+  data-testid="my-test-table"
+  id="my-test-table"
+>
+  <thead
+    class="table__head"
+  >
+    <tr
+      class="table__row"
+    >
+      <th
+        class="table__header"
+        scope="col"
+      >
+        column1
+      </th>
+      <th
+        class="table__header"
+        scope="col"
+      >
+        column2
+      </th>
+      <th
+        class="table__header"
+        scope="col"
+      >
+        column3
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    class="table__body"
+  >
+    <tr>
+      <td>
+        Value column 1
+      </td>
+      <td>
+        Value column 2
+      </td>
+      <td>
+        Value column 3
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

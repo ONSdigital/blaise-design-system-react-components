@@ -17,6 +17,7 @@ import { StyledFormField } from "./components/forms/FormElements/StyledFormField
 import Collapsible from "./components/Collapsible";
 import ErrorBoundary from "./components/ErrorHandling/ErrorBoundary";
 import DefaultErrorBoundary from "./components/ErrorHandling/DefaultErrorBoundary";
+import ONSTable from "./components/ONSTable";
 import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
 import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
 
