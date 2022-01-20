@@ -3311,6 +3311,16 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
     return DefaultErrorBoundary;
 }(React__default['default'].Component));
 
+function ONSTable(_a) {
+    var columns = _a.columns, children = _a.children, tableCaption = _a.tableCaption, tableID = _a.tableID;
+    return (React__default['default'].createElement(React__default['default'].Fragment, null,
+        React__default['default'].createElement("table", { className: "table", "data-testid": tableID, id: tableID },
+            tableCaption && React__default['default'].createElement("caption", { className: "table__caption" }, tableCaption),
+            React__default['default'].createElement("thead", { className: "table__head" },
+                React__default['default'].createElement("tr", { className: "table__row" }, columns.map(function (title, index) { return (React__default['default'].createElement("th", { scope: "col", className: "table__header", key: title + "-" + index }, title)); }))),
+            React__default['default'].createElement("tbody", { className: "table__body" }, children))));
+}
+
 function replaceUnderscoreWithSpaces(text) {
     return text.split("_").join(" ");
 }
@@ -3384,6 +3394,7 @@ exports.ONSLoadingPanel = ONSLoadingPanel;
 exports.ONSPanel = ONSPanel;
 exports.ONSPasswordInput = ONSPasswordInput;
 exports.ONSSelect = ONSSelect;
+exports.ONSTable = ONSTable;
 exports.ONSTextInput = ONSTextInput;
 exports.ONSUpload = ONSUpload;
 exports.StyledForm = StyledForm;

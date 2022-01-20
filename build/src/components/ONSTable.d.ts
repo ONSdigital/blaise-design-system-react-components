@@ -5,5 +5,5 @@ interface ONSTable {
     tableID?: string;
     tableCaption?: string;
 }
-export declare const ONSTable: ({ columns, children, tableCaption, tableID }: ONSTable) => ReactElement;
+declare function ONSTable({ columns, children, tableCaption, tableID }: ONSTable): ReactElement;
 export default ONSTable;

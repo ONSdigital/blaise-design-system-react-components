@@ -3303,6 +3303,16 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
     return DefaultErrorBoundary;
 }(React.Component));
 
+function ONSTable(_a) {
+    var columns = _a.columns, children = _a.children, tableCaption = _a.tableCaption, tableID = _a.tableID;
+    return (React.createElement(React.Fragment, null,
+        React.createElement("table", { className: "table", "data-testid": tableID, id: tableID },
+            tableCaption && React.createElement("caption", { className: "table__caption" }, tableCaption),
+            React.createElement("thead", { className: "table__head" },
+                React.createElement("tr", { className: "table__row" }, columns.map(function (title, index) { return (React.createElement("th", { scope: "col", className: "table__header", key: title + "-" + index }, title)); }))),
+            React.createElement("tbody", { className: "table__body" }, children))));
+}
+
 function replaceUnderscoreWithSpaces(text) {
     return text.split("_").join(" ");
 }
@@ -3360,5 +3370,5 @@ function SummaryGroupTable(_a) {
     return (React.createElement(React.Fragment, null, elementList));
 }
 
-export { BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, FormatTitle, GroupedSummary, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField, SummaryGroupTable, SummaryItemRow, TitleCase };
+export { BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, FormatTitle, GroupedSummary, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTable, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField, SummaryGroupTable, SummaryItemRow, TitleCase };
 //# sourceMappingURL=index.es.js.map

@@ -37,6 +37,7 @@ export {
     ONSSelect,
     ONSPasswordInput,
     ONSTextInput,
+    ONSTable,
     StyledForm,
     StyledFormErrorSummary,
     StyledFormField,

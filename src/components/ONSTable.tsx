@@ -7,7 +7,7 @@ interface ONSTable {
   tableCaption?: string
 }
 
-export const ONSTable = ({ columns, children, tableCaption, tableID }: ONSTable): ReactElement => {
+function ONSTable({ columns, children, tableCaption, tableID }: ONSTable): ReactElement {
   return (
     <>
       <table
