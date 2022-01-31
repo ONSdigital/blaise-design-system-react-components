@@ -20,6 +20,7 @@ import DefaultErrorBoundary from "./components/ErrorHandling/DefaultErrorBoundar
 import ONSTable from "./components/ONSTable";
 import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
 import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
+import LoginForm, { LoginPage } from "./components/LoginForm";
 
 export type { Group };
 
@@ -48,5 +49,7 @@ export {
     SummaryGroupTable,
     GroupedSummary,
     FormatTitle,
-    TitleCase
+    TitleCase,
+    LoginForm,
+    LoginPage
 };

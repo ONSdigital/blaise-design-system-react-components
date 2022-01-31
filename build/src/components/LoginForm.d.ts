@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { Component } from "react";
+export declare function LoginPage(token: any, setToken: (token: any) => void): ReactElement;
 declare type LoginFormProps = {
     setToken: (token: any) => void;
 };

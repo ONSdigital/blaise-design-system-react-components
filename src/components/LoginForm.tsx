@@ -3,6 +3,13 @@ import { ONSPanel, StyledForm } from "blaise-design-system-react-components";
 import { Component } from "react";
 import { getUser, validatePassword } from "blaise-login-react";
 
+export function LoginPage(token: any, setToken: (token: any) => void): ReactElement {
+  if (token) {
+    return <></>
+  }
+  return <LoginForm setToken={setToken} />
+}
+
 type LoginFormProps = {
   setToken: (token: any) => void
 }
