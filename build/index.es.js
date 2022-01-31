@@ -27,7 +27,11 @@ function Footer() {
 }
 
 function Header(_a) {
-    var title = _a.title, signOutButton = _a.signOutButton, signOutFunction = _a.signOutFunction;
+    var title = _a.title, signOutButton = _a.signOutButton, noSave = _a.noSave, signOutFunction = _a.signOutFunction;
+    var signOutText = "Save and sign out";
+    if (noSave) {
+        signOutText = "Sign out";
+    }
     return (React.createElement(React.Fragment, null,
         React.createElement("header", { className: "header header--internal" },
             React.createElement("div", { className: "header__top", role: "banner" },
@@ -46,7 +50,7 @@ function Header(_a) {
                             React.createElement("div", { className: "grid__col col-auto u-flex-no-shrink u-d-no@xxs@m" },
                                 React.createElement("button", { className: "btn btn--ghost u-d-no@xxs@m btn--exit", onClick: function () { return signOutFunction && signOutFunction(); } },
                                     React.createElement("span", { className: "btn__inner" },
-                                        "Save and sign out",
+                                        signOutText,
                                         React.createElement("svg", { className: "svg-icon", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
                                             React.createElement("path", { d: "M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z", transform: "translate(-2 -2)" }),
                                             React.createElement("path", { d: "M8.5,14h-6a.5.5,0,0,1-.5-.5V2.5A.5.5,0,0,1,2.5,2h6a.5.5,0,0,1,.5.5V3a.5.5,0,0,1-.5.5h-5v9h5A.5.5,0,0,1,9,13v.5A.5.5,0,0,1,8.5,14Z", transform: "translate(-2 -2)" }))))))))))));
