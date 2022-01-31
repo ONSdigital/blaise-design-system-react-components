@@ -4648,7 +4648,7 @@ bindings@^1.5.0:
 
 "blaise-login-react@https://github.com/ONSDigital/blaise-login-react":
   version "0.0.1"
-  resolved "https://github.com/ONSDigital/blaise-login-react#dda77d4f337de5c2829b75112ff17fd848ea7e15"
+  resolved "https://github.com/ONSDigital/blaise-login-react#3da7744c53c751414ac98e957922c2d24ef391c4"
   dependencies:
     "@babel/preset-env" "^7.14.7"
     axios "^0.21.1"
