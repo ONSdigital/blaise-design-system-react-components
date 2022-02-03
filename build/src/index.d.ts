@@ -10,7 +10,7 @@ import { ONSPasswordInput } from "./components/ONSPasswordInput";
 import { ONSSelect } from "./components/ONSSelect";
 import { ONSTextInput } from "./components/ONSTextInput";
 import { ONSUpload } from "./components/ONSUpload";
-import StyledForm from "./components/forms/StyledForm";
+import StyledForm, { FormFieldObject } from "./components/forms/StyledForm";
 import { ONSLoadingPanel } from "./components/ONSLoadingPanel";
 import StyledFormErrorSummary from "./components/forms/StyledFormErrorSummary";
 import { StyledFormField } from "./components/forms/FormElements/StyledFormFields";
@@ -20,5 +20,5 @@ import DefaultErrorBoundary from "./components/ErrorHandling/DefaultErrorBoundar
 import ONSTable from "./components/ONSTable";
 import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
 import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
-export type { Group };
+export type { Group, FormFieldObject };
 export { NotProductionWarning, Footer, Header, BetaBanner, ExternalLink, ONSErrorPanel, ONSButton, ONSPanel, ONSLoadingPanel, ONSUpload, ONSSelect, ONSPasswordInput, ONSTextInput, ONSTable, StyledForm, StyledFormErrorSummary, StyledFormField, Collapsible, ErrorBoundary, DefaultErrorBoundary, SummaryItemRow, SummaryGroupTable, GroupedSummary, FormatTitle, TitleCase };
