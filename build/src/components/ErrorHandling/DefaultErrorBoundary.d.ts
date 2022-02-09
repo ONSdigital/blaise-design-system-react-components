@@ -1,6 +1,6 @@
-import React, { ErrorInfo, ReactNode } from "react";
+import React, { ErrorInfo, ReactElement } from "react";
 export interface Props {
-    children: React.ReactNode;
+    children: React.ReactChild;
 }
 interface State {
     error?: Error;
@@ -20,6 +20,6 @@ export default class DefaultErrorBoundary extends React.Component<Props, State> 
         };
     };
     componentDidCatch(error: Error, errorInfo: ErrorInfo): void;
-    render(): ReactNode;
+    render(): ReactElement;
 }
 export {};

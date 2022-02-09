@@ -1,7 +1,7 @@
-import React, {ErrorInfo, ReactNode} from "react";
+import React, { ErrorInfo, ReactElement } from "react";
 
 export interface Props {
-    children: React.ReactNode
+    children: React.ReactChild
 }
 
 interface State {
@@ -16,8 +16,8 @@ interface State {
  *
  * This is useful for wrapping around the entire page to display a generic `Sorry, there is a problem with the service` message.
  */
-export default class DefaultErrorBoundary extends React.Component <Props, State> {
-    state = {errorInfo: {componentStack: "Fine"}};
+export default class DefaultErrorBoundary extends React.Component<Props, State> {
+    state = { errorInfo: { componentStack: "Fine" } };
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         this.setState({
@@ -25,7 +25,7 @@ export default class DefaultErrorBoundary extends React.Component <Props, State>
         });
     }
 
-    render(): ReactNode {
+    render(): ReactElement {
         if (this.state.errorInfo.componentStack !== "Fine") {
             return (
                 <>
@@ -38,6 +38,6 @@ export default class DefaultErrorBoundary extends React.Component <Props, State>
             );
         }
 
-        return this.props.children;
+        return <>{this.props.children}</>;
     }
 }

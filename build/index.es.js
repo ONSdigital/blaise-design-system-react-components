@@ -3268,7 +3268,7 @@ var ErrorBoundary = /** @class */ (function (_super) {
             return (React.createElement(ONSPanel, { status: "error" },
                 React.createElement("p", null, this.props.errorMessageText)));
         }
-        return this.props.children;
+        return React.createElement(React.Fragment, null, this.props.children);
     };
     return ErrorBoundary;
 }(React.Component));
@@ -3302,7 +3302,7 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
                     React.createElement("a", { href: "https://ons.service-now.com/" }, "Contact us"),
                     " if you need to speak to someone about your survey.")));
         }
-        return this.props.children;
+        return React.createElement(React.Fragment, null, this.props.children);
     };
     return DefaultErrorBoundary;
 }(React.Component));

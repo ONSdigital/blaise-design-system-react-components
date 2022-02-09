@@ -1,7 +1,7 @@
-import React, { ErrorInfo, ReactNode } from "react";
+import React, { ErrorInfo, ReactChild, ReactElement } from "react";
 export interface Props {
     errorMessageText: string;
-    children: ReactNode;
+    children: ReactChild;
 }
 interface State {
     errorInfo: ErrorInfo;
@@ -21,6 +21,6 @@ export default class ErrorBoundary extends React.Component<Props, State> {
         };
     };
     componentDidCatch(_: Error, errorInfo: ErrorInfo): void;
-    render(): ReactNode;
+    render(): ReactElement;
 }
 export {};

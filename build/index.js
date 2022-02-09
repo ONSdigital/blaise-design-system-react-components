@@ -3276,7 +3276,7 @@ var ErrorBoundary = /** @class */ (function (_super) {
             return (React__default['default'].createElement(ONSPanel, { status: "error" },
                 React__default['default'].createElement("p", null, this.props.errorMessageText)));
         }
-        return this.props.children;
+        return React__default['default'].createElement(React__default['default'].Fragment, null, this.props.children);
     };
     return ErrorBoundary;
 }(React__default['default'].Component));
@@ -3310,7 +3310,7 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
                     React__default['default'].createElement("a", { href: "https://ons.service-now.com/" }, "Contact us"),
                     " if you need to speak to someone about your survey.")));
         }
-        return this.props.children;
+        return React__default['default'].createElement(React__default['default'].Fragment, null, this.props.children);
     };
     return DefaultErrorBoundary;
 }(React__default['default'].Component));
