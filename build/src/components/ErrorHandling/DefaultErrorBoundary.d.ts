@@ -1,6 +1,6 @@
 import React, { ErrorInfo, ReactElement } from "react";
 export interface Props {
-    children: React.ReactChild;
+    children: React.ReactChild[];
 }
 interface State {
     error?: Error;
