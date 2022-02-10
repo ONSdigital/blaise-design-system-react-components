@@ -1,7 +1,7 @@
 import React, { ErrorInfo, ReactChild, ReactElement } from "react";
 export interface Props {
     errorMessageText: string;
-    children: ReactChild[];
+    children: ReactChild[] | ReactChild;
 }
 interface State {
     errorInfo: ErrorInfo;

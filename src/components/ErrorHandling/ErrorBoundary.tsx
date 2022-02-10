@@ -3,7 +3,7 @@ import { ONSPanel } from "../ONSPanel";
 
 export interface Props {
     errorMessageText: string,
-    children: ReactChild[]
+    children: ReactChild[] | ReactChild
 }
 
 interface State {
