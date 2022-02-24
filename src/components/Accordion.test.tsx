@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "./Accordion";
-import {render, fireEvent} from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 describe("Accordion tests", () => {
     describe("when show all is enabled", () => {
@@ -36,12 +36,10 @@ describe("Accordion tests", () => {
         })
 
         it("expands a single element when 'Show' on that element is clicked", async () => {
-            const wrapper = render(<Accordion Expandables={[{title: "Foo", content: <p>bar</p>}]} />)
+            const wrapper = render(<Accordion Expandables={[{ title: "Foo", content: <p>bar</p> }]} />)
 
             expect(wrapper.getByTestId("accordion-0-content")).toHaveAttribute("aria-hidden", "true")
-            expect(wrapper.getByTestId("accordion-0-content")).not.toBeVisible()
             fireEvent.click(wrapper.getByTestId("accordion-0-heading"))
-            expect(wrapper.getByTestId("accordion-0-content")).toBeVisible()
             expect(wrapper.getByTestId("accordion-0-content")).toHaveAttribute("aria-hidden", "false")
             expect(wrapper.getByTestId("accordion-0-content")).toHaveTextContent("bar")
         })
