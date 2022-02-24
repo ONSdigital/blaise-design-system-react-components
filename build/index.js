@@ -56,7 +56,7 @@ function Header(_a) {
                             React__default['default'].createElement("div", { className: "header__title" }, title)),
                         (signOutButton &&
                             React__default['default'].createElement("div", { className: "grid__col col-auto u-flex-no-shrink u-d-no@xxs@m" },
-                                React__default['default'].createElement("button", { className: "btn btn--ghost u-d-no@xxs@m btn--exit", onClick: function () { return signOutFunction && signOutFunction(); } },
+                                React__default['default'].createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "btn btn--ghost u-d-no@xxs@m btn--exit", onClick: function () { return signOutFunction && signOutFunction(); } },
                                     React__default['default'].createElement("span", { className: "btn__inner" },
                                         signOutText,
                                         React__default['default'].createElement("svg", { className: "svg-icon", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
