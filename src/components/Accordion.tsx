@@ -86,8 +86,6 @@ export default function Accordion({ ShowAllEnabled, Expandables }: AccordionProp
     }
     const [panelsOpen, setPanelsOpen] = useState<boolean[]>(expandableStates);
 
-
-
     function ShowAll(): ReactElement {
         if (ShowAllEnabled) {
             let expandableStates: boolean[]
