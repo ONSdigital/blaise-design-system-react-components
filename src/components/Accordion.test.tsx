@@ -6,7 +6,10 @@ describe("Accordion tests", () => {
     describe("when show all is enabled", () => {
 
         it("displays a 'Show all' button", async () => {
+            const wrapper = render(<Accordion ShowAllEnabled={true} Expandables={[{ title: "Foo", content: <p>bar</p> }]} />)
 
+            expect(wrapper.getByTestId("accordion-show-all")).toBeDefined()
+            expect(wrapper.getByTestId("accordion-0-button")).toHaveTextContent("Show")
         })
 
         it("expands a single element when 'Show' on that element is clicked", async () => {
