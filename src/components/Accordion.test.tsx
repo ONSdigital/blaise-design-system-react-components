@@ -17,7 +17,7 @@ describe("Accordion tests", () => {
             expandableIsClosed("Foo", 0, wrapper)
             expandableIsClosed("Foo Bar", 1, wrapper)
 
-            clickShowOnASingleElement(0, wrapper)
+            clickShowOnASingleExpandable(0, wrapper)
 
             expandableIsOpen("Foo", 0, wrapper)
             expandableIsClosed("Foo Bar", 1, wrapper)
@@ -51,7 +51,7 @@ describe("Accordion tests", () => {
                 showAllButtonIsDefined(wrapper)
                 clickShowAll(wrapper)
                 hideAllButtonIsDefined(wrapper)
-                clickHideOnASingleElement(0, wrapper)
+                clickHideOnASingleExpandable(0, wrapper)
                 expandableIsClosed("Foo", 0, wrapper)
                 showAllButtonIsDefined(wrapper)
             })
@@ -75,7 +75,7 @@ describe("Accordion tests", () => {
 
         it("expands a single expandable when 'Show' on that expandable is clicked", async () => {
             expandableIsClosed("Foo", 0, wrapper)
-            clickShowOnASingleElement(0, wrapper)
+            clickShowOnASingleExpandable(0, wrapper)
             expandableIsOpen("Foo", 0, wrapper)
         })
     })
@@ -109,11 +109,11 @@ function clickHideAll(wrapper: RenderResult){
     fireEvent.click(wrapper.getByTestId("accordion-show-all"))
 }
 
-function clickShowOnASingleElement(id: number, wrapper: RenderResult){
+function clickShowOnASingleExpandable(id: number, wrapper: RenderResult){
     fireEvent.click(wrapper.getByTestId(`accordion-${id}-button`))
 }
 
-function clickHideOnASingleElement(id: number, wrapper: RenderResult){
+function clickHideOnASingleExpandable(id: number, wrapper: RenderResult){
     fireEvent.click(wrapper.getByTestId(`accordion-${id}-button`))
 }
 
@@ -139,6 +139,6 @@ function expandableIsClosed(title: string, id: number, wrapper: RenderResult) {
 
 function expandableIsOpen(title: string, id: number, wrapper: RenderResult) {
     expect(wrapper.getByTestId(`accordion-${id}-heading`)).toHaveTextContent(title)
-    expect(wrapper.getByTestId("accordion-0-button")).toHaveTextContent("Hide")
-    expect(wrapper.getByTestId("accordion-0-content")).toHaveAttribute("aria-hidden", "false")
+    expect(wrapper.getByTestId(`accordion-${id}-button`)).toHaveTextContent("Hide")
+    expect(wrapper.getByTestId(`accordion-${id}-content`)).toHaveAttribute("aria-hidden", "false")
 }
