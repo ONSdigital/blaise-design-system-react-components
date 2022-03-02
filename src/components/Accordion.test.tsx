@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "./Accordion";
-import {render, fireEvent, RenderResult} from "@testing-library/react";
+import { render, fireEvent, RenderResult } from "@testing-library/react";
 
 describe("Accordion tests", () => {
     describe("when show all is enabled", () => {
@@ -101,20 +101,24 @@ function renderAccordionWithShowAllDisabledAndTwoExpandables(): RenderResult {
         } />)
 }
 
-function clickShowAll(wrapper: RenderResult){
+function clickShowAll(wrapper: RenderResult) {
     fireEvent.click(wrapper.getByText("Show all"))
 }
 
-function clickHideAll(wrapper: RenderResult){
+function clickHideAll(wrapper: RenderResult) {
     fireEvent.click(wrapper.getByText("Hide all"))
 }
 
-function clickShowOnASingleExpandable(id: number, wrapper: RenderResult){
-    fireEvent.click(wrapper.getByTestId(`accordion-${id}-button`))
+function clickShowOnASingleExpandable(id: number, wrapper: RenderResult) {
+    const showButton = wrapper.getByTestId(`accordion-${id}-button`)
+    expect(showButton.textContent).toEqual("Show")
+    fireEvent.click(showButton)
 }
 
-function clickHideOnASingleExpandable(id: number, wrapper: RenderResult){
-    fireEvent.click(wrapper.getByTestId(`accordion-${id}-button`))
+function clickHideOnASingleExpandable(id: number, wrapper: RenderResult) {
+    const hideButton = wrapper.getByTestId(`accordion-${id}-button`)
+    expect(hideButton.textContent).toEqual("Hide")
+    fireEvent.click(hideButton)
 }
 
 function expectShowAllButtonToBeDefined(wrapper: RenderResult) {
