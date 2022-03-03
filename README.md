@@ -73,6 +73,7 @@ Components from the design system replicated as React components.
 | ONSTextInput          | [Input](https://ons-design-system.netlify.app/components/input/)                      |                                                                                            |
 | ONSUpload             | [Upload](https://ons-design-system.netlify.app/components/upload/)                    |                                                                                            |
 | Collapsible           | [Collapsible](https://ons-design-system.netlify.app/components/collapsible/)          |                                                                                            |
+| Accordion           | [Accordion](https://ons-design-system.netlify.app/components/accordion/)          |                                                                                            |
 
 ### Custom designed components based off design system
 
@@ -119,7 +120,7 @@ yarn install
 To run the tests with coverage results run:
 
 ```shell
-yarn run tests
+yarn run test
 ```
 
 ### Create and release a new version
@@ -133,4 +134,4 @@ yarn run build
 This will add all the exported components into the `build/index.js` file which will be imported by other React projects.
 Commit these changes.
 
-Once merged into main in Github, create a new release, adding an appropriate version number. 
+Once merged into main, create a new release, adding an appropriate version number. 

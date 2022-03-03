@@ -23,5 +23,5 @@ export const Panel = Template.bind({});
 
 Panel.args = {
     children: <DodgyComponent/>,
-    errorMessageText: "Bloody things broken again!"
+    errorMessageText: "D'oh!"
 };
