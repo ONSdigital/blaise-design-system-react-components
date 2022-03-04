@@ -15,9 +15,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-        run: | # Install npm packages and build the Storybook files
-          yarn install
-          yarn build-storybook
+      - run: yarn install
+      - run: yarn build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
