@@ -1,20 +1,27 @@
-import React, {Fragment, ReactElement} from "react";
+import React, {Fragment, ReactElement, useState} from "react";
 import {Field} from "formik";
-import {RadioFieldsetObject} from "../StyledForm";
+import {RadioFieldsetObject, CheckboxFieldsetObject} from "../StyledForm";
 
 function toUpperCase(string: string): string {
     return string.trim().replace(/^\w/, (c: string) => c.toUpperCase())
 }
 
 
-interface Props {
+interface RadioFieldsetProps {
     description?: string,
     name: string,
     radioOptions?: any[],
     props: Pick<any, string | number | symbol>
 }
 
-export function RadioFieldset({description, name, radioOptions, ...props}: Props): ReactElement {
+interface CheckboxesProps{
+    description?: string,
+    checkboxOptions?: any[],
+    name: string,
+    props: Pick<any, string | number | symbol>
+}
+
+export function RadioFieldset({description, name, radioOptions, ...props}: RadioFieldsetProps): ReactElement {
     return <fieldset className="fieldset">
         <legend className="fieldset__legend">
             {description}
@@ -75,6 +82,48 @@ export function RadioFieldset({description, name, radioOptions, ...props}: Props
     </fieldset>;
 }
 
+export function CheckboxesFieldset({ description, checkboxOptions, name, ...props }: CheckboxesProps): ReactElement {
+    return <fieldset className="fieldset">
+        <legend className="fieldset__legend">
+            {description}
+        </legend>
+        <div className="checkboxes__items" id={name}>
+            {
+                (
+                    checkboxOptions && checkboxOptions.length > 0 &&
+                    checkboxOptions.map((checkboxOption: CheckboxFieldsetObject) => {
+                        return (
+                            <Fragment key={checkboxOption.id}>
+                                <p className="checkboxes__items">
+                                    <span className="checkbox">
+                                        <Field type="checkbox"
+                                               id={checkboxOption.id}
+                                               name={name}
+                                               value={checkboxOption.value}
+                                               className="checkbox__input js-checkbox" {...props}
+                                               />
+                                        <label className={`checkbox__label ${checkboxOption.description !== undefined ? "label--with-description" : ""}`}
+                                               htmlFor={checkboxOption.id}
+                                               id={`${checkboxOption.id}-label`}>{checkboxOption.label}
+                                            {
+                                                checkboxOption.description !== undefined &&
+                                                <span id="white-label-description-hint"
+                                                      className="label__description checkbox__label--with-description">
+                                                    {checkboxOption.description}
+                                                </span>
+                                            }
+                                      </label>
+                                    </span>
+                                </p>
+                                <br/>
+                            </Fragment>
+                        );
+                    })
+                )
+            }
+        </div>
+    </fieldset>;
+}
 
 export const ONSInputField = ({field, form, description, ...props}: any) => {
     const id = (props.id ? props.id : field.name);
@@ -97,3 +146,4 @@ export const ONSInputField = ({field, form, description, ...props}: any) => {
     </>
 };
 
+export default CheckboxesFieldset;

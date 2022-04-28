@@ -1,21 +1,27 @@
 import React, {Fragment, ReactElement} from "react";
 import {Field, useFormikContext} from "formik";
-import {ONSInputField, RadioFieldset} from "./Fields";
+import {ONSInputField, RadioFieldset, CheckboxesFieldset} from "./Fields";
 
 interface Props {
     description?: string,
     name: string,
     radioOptions?: any[],
+    checkboxOptions?: any[],
     props: Pick<any, string | number | symbol>
 }
 
-export const StyledFormField = ({name, description, radioOptions = [], ...props}: Props): ReactElement => {
+export const StyledFormField = ({name, description, radioOptions = [], checkboxOptions = [], ...props}: Props): ReactElement => {
     const {errors}: any = useFormikContext();
     let newField: ReactElement;
 
     // @ts-ignore
     if (props.type === "radio") {
         newField = <RadioFieldset description={description} name={name} radioOptions={radioOptions}
+                                  {...props}/>
+    } 
+    // @ts-ignore
+    else if (props.type === "checkbox") {
+        newField = <CheckboxesFieldset description={description} name={name} checkboxOptions={checkboxOptions}
                                   {...props}/>
     } else {
         newField = <Field name={name} description={description} {...props} component={ONSInputField}/>
