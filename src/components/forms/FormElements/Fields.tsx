@@ -1,6 +1,7 @@
-import React, {Fragment, ReactElement, useState} from "react";
-import {Field} from "formik";
+import React, {Fragment, ReactElement} from "react";
+import {Field, useFormikContext} from "formik";
 import {RadioFieldsetObject, CheckboxFieldsetObject} from "../StyledForm";
+import { isObjectWithProperty } from "../../../utilities/Types";
 
 function toUpperCase(string: string): string {
     return string.trim().replace(/^\w/, (c: string) => c.toUpperCase())
@@ -14,12 +15,14 @@ interface RadioFieldsetProps {
     props: Pick<any, string | number | symbol>
 }
 
+
 interface CheckboxesProps{
     description?: string,
-    checkboxOptions?: any[],
+    checkboxOptions?: CheckboxFieldsetObject[],
     name: string,
     props: Pick<any, string | number | symbol>
 }
+
 
 export function RadioFieldset({description, name, radioOptions, ...props}: RadioFieldsetProps): ReactElement {
     return <fieldset className="fieldset">
@@ -83,10 +86,53 @@ export function RadioFieldset({description, name, radioOptions, ...props}: Radio
 }
 
 export function CheckboxesFieldset({ description, checkboxOptions, name, ...props }: CheckboxesProps): ReactElement {
+    const {values, setFieldValue} = useFormikContext();
+    const allValues = (checkboxOptions || []).map(checkboxOption => checkboxOption.value);
+    
+    function areArraysEqual(array1: any[], array2: any[]) {
+        if (array1.length != array2.length) {
+            return false;
+        } else {
+            return array1.every(item => array2.includes(item));
+        }
+    }
+
+    function isAllSelected() {
+        if (!isObjectWithProperty(values, name)) {
+            return [];
+        }
+        return areArraysEqual(values[name] || [], allValues);
+    }
+    
+    function handleSelectAll() {
+        if (isAllSelected()) {
+            setFieldValue(name, []);
+        } else {
+            setFieldValue(name, allValues);
+        }
+    }
+
     return <fieldset className="fieldset">
         <legend className="fieldset__legend">
             {description}
         </legend>
+
+        <button type="button" className="btn u-mb-s js-auto-selector btn--small btn--secondary"
+            onClick={handleSelectAll}>
+            {
+                isAllSelected() ?
+                    <span className="btn__inner">
+                        <span className="js-button-text">Unselect All</span>
+                        <span className="u-vh"> following checkboxes</span>
+                    </span>
+                :
+                    <span className="btn__inner">
+                        <span className="js-button-text">Select all</span>
+                        <span className="u-vh"> following checkboxes</span>
+                    </span>
+            }
+        </button>
+
         <div className="checkboxes__items" id={name}>
             {
                 (
@@ -97,25 +143,25 @@ export function CheckboxesFieldset({ description, checkboxOptions, name, ...prop
                                 <p className="checkboxes__items">
                                     <span className="checkbox">
                                         <Field type="checkbox"
-                                               id={checkboxOption.id}
-                                               name={name}
-                                               value={checkboxOption.value}
-                                               className="checkbox__input js-checkbox" {...props}
-                                               />
+                                            id={checkboxOption.id}
+                                            name={name}
+                                            value={checkboxOption.value}
+                                            className="checkbox__input js-checkbox" {...props}
+                                        />
                                         <label className={`checkbox__label ${checkboxOption.description !== undefined ? "label--with-description" : ""}`}
-                                               htmlFor={checkboxOption.id}
-                                               id={`${checkboxOption.id}-label`}>{checkboxOption.label}
+                                            htmlFor={checkboxOption.id}
+                                            id={`${checkboxOption.id}-label`}>{checkboxOption.label}
                                             {
                                                 checkboxOption.description !== undefined &&
                                                 <span id="white-label-description-hint"
-                                                      className="label__description checkbox__label--with-description">
+                                                    className="label__description checkbox__label--with-description">
                                                     {checkboxOption.description}
                                                 </span>
                                             }
-                                      </label>
+                                        </label>
                                     </span>
                                 </p>
-                                <br/>
+                                <br />
                             </Fragment>
                         );
                     })

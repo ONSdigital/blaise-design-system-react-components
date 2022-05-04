@@ -38,7 +38,7 @@ export interface FormFieldObject {
     autoFocus?: boolean
     radioOptions?: RadioFieldsetObject[]
     checkboxOptions?: CheckboxFieldsetObject[]
-    initial_value?: string
+    initial_value?: string | string[]
 }
 
 export interface StyledFormProps {
