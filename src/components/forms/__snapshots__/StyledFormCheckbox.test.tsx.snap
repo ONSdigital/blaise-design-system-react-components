@@ -41,7 +41,7 @@ Object {
             id="questionnaire"
           >
             <p
-              class="checkboxes__items"
+              class="checkboxes__item"
             >
               <span
                 class="checkbox"
@@ -64,7 +64,7 @@ Object {
             </p>
             <br />
             <p
-              class="checkboxes__items"
+              class="checkboxes__item"
             >
               <span
                 class="checkbox"
@@ -140,7 +140,7 @@ Object {
           id="questionnaire"
         >
           <p
-            class="checkboxes__items"
+            class="checkboxes__item"
           >
             <span
               class="checkbox"
@@ -163,7 +163,7 @@ Object {
           </p>
           <br />
           <p
-            class="checkboxes__items"
+            class="checkboxes__item"
           >
             <span
               class="checkbox"

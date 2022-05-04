@@ -430,7 +430,7 @@ function CheckboxesFieldset(_a) {
         React__default['default'].createElement("div", { className: "checkboxes__items", id: name }, (checkboxOptions && checkboxOptions.length > 0 &&
             checkboxOptions.map(function (checkboxOption) {
                 return (React__default['default'].createElement(React.Fragment, { key: checkboxOption.id },
-                    React__default['default'].createElement("p", { className: "checkboxes__items" },
+                    React__default['default'].createElement("p", { className: "checkboxes__item" },
                         React__default['default'].createElement("span", { className: "checkbox" },
                             React__default['default'].createElement(formik.Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "checkbox__input js-checkbox" }, props)),
                             React__default['default'].createElement("label", { className: "checkbox__label " + (checkboxOption.description !== undefined ? "label--with-description" : ""), htmlFor: checkboxOption.id, id: checkboxOption.id + "-label" },

@@ -422,7 +422,7 @@ function CheckboxesFieldset(_a) {
         React.createElement("div", { className: "checkboxes__items", id: name }, (checkboxOptions && checkboxOptions.length > 0 &&
             checkboxOptions.map(function (checkboxOption) {
                 return (React.createElement(Fragment$1, { key: checkboxOption.id },
-                    React.createElement("p", { className: "checkboxes__items" },
+                    React.createElement("p", { className: "checkboxes__item" },
                         React.createElement("span", { className: "checkbox" },
                             React.createElement(Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "checkbox__input js-checkbox" }, props)),
                             React.createElement("label", { className: "checkbox__label " + (checkboxOption.description !== undefined ? "label--with-description" : ""), htmlFor: checkboxOption.id, id: checkboxOption.id + "-label" },

@@ -133,7 +133,7 @@ export function CheckboxesFieldset({ description, checkboxOptions, name, ...prop
                     checkboxOptions.map((checkboxOption: CheckboxFieldsetObject) => {
                         return (
                             <Fragment key={checkboxOption.id}>
-                                <p className="checkboxes__items">
+                                <p className="checkboxes__item">
                                     <span className="checkbox">
                                         <Field type="checkbox"
                                             id={checkboxOption.id}
