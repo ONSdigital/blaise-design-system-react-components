@@ -29,17 +29,28 @@ export interface CheckboxFieldsetObject {
     description?: string
 }
 
-export interface FormFieldObject {
+export interface BaseFormFieldObject {
     name: string
     description?: string
     type: string
     id?: string
-    validate?: (value: string) => string | undefined
+    validate?: (value: any) => string | undefined
     autoFocus?: boolean
-    radioOptions?: RadioFieldsetObject[]
-    checkboxOptions?: CheckboxFieldsetObject[]
     initial_value?: string | string[]
 }
+
+export interface RadioFormFieldObject extends BaseFormFieldObject {
+    type: "radio"
+    radioOptions: RadioFieldsetObject[]
+}
+
+export interface CheckboxFormFieldObject extends BaseFormFieldObject {
+    type: "checkbox"
+    validate?: (value: string[]) => string | undefined
+    checkboxOptions: CheckboxFieldsetObject[]
+}
+
+export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
 
 export interface StyledFormProps {
     fields: FormFieldObject[]

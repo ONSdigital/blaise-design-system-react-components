@@ -11,7 +11,7 @@ function toUpperCase(string: string): string {
 interface RadioFieldsetProps {
     description?: string,
     name: string,
-    radioOptions?: any[],
+    radioOptions?: RadioFieldsetObject[],
     props: Pick<any, string | number | symbol>
 }
 
@@ -100,8 +100,9 @@ export function CheckboxesFieldset({ description, checkboxOptions, name, ...prop
     function isAllSelected() {
         if (!isObjectWithProperty(values, name)) {
             return [];
+        } else {
+            return areArraysEqual(values[name] || [], allValues);
         }
-        return areArraysEqual(values[name] || [], allValues);
     }
     
     function handleSelectAll() {
@@ -119,18 +120,10 @@ export function CheckboxesFieldset({ description, checkboxOptions, name, ...prop
 
         <button type="button" className="btn u-mb-s js-auto-selector btn--small btn--secondary"
             onClick={handleSelectAll}>
-            {
-                isAllSelected() ?
-                    <span className="btn__inner">
-                        <span className="js-button-text">Unselect All</span>
-                        <span className="u-vh"> following checkboxes</span>
-                    </span>
-                :
-                    <span className="btn__inner">
-                        <span className="js-button-text">Select all</span>
-                        <span className="u-vh"> following checkboxes</span>
-                    </span>
-            }
+                <span className="btn__inner">
+                    <span className="js-button-text">{isAllSelected() ? "Unselect All" : "Select All"}</span>
+                    <span className="u-vh"> following checkboxes</span>
+                </span>
         </button>
 
         <div className="checkboxes__items" id={name}>

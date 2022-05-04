@@ -13,8 +13,7 @@ test('it matches snapshots', async () => {
 test('error appears on submit of empty form', async () => {
     render(<ExampleCheckboxForm/>);
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton)
+    fireEvent.click(screen.getByTestId(/submit-button/i));
 
     await waitFor(() => {
         const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
@@ -30,10 +29,9 @@ test('error appears on submit of empty form', async () => {
 test('submit function is called when one checkbox is selected', async () => {
     render(<ExampleCheckboxForm/>);
 
-    fireEvent.click(screen.getByLabelText(/LMS/i),);
+    fireEvent.click(screen.getByLabelText(/LMS/i));
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton)
+    fireEvent.click(screen.getByTestId(/submit-button/i));
 
     await waitFor(() => {
         const successMessage = screen.getByText(/Form submitted, questionnaires chosen lms/i);
@@ -47,8 +45,7 @@ test('submit function is called when multiple checkboxes are selected', async ()
     fireEvent.click(screen.getByLabelText(/LMS/i),);
     fireEvent.click(screen.getByLabelText(/OPN/i),);
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton)
+    fireEvent.click(screen.getByTestId(/submit-button/i));
 
     await waitFor(() => {
         const successMessage = screen.getByText(/Form submitted, questionnaires chosen lms,opn/i);
@@ -75,8 +72,7 @@ test('setting initial value', async () => {
 
     render(<StyledForm fields={fields} onSubmitFunction={submitFunction}/>);
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton)
+    fireEvent.click(screen.getByTestId(/submit-button/i));
 
     await waitFor(() => {
         expect(submitFunction).toBeCalledWith(
@@ -91,8 +87,7 @@ test('all checkboxes are selected when select all button is clicked', async () =
 
     fireEvent.click(screen.getByText(/Select all/i),);
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton)
+    fireEvent.click(screen.getByTestId(/submit-button/i));
 
     await waitFor(() => {
         const successMessage = screen.getByText(/Form submitted, questionnaires chosen lms,opn/i);
@@ -105,8 +100,8 @@ test('all checkboxes are deselected when unselect all button is clicked', async 
 
     fireEvent.click(screen.getByText(/Select all/i),);
     fireEvent.click(screen.getByText(/Unselect all/i),);
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton)
+    
+    fireEvent.click(screen.getByTestId(/submit-button/i));
 
     await waitFor(() => {
         const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
