@@ -13,6 +13,7 @@ export interface RadioSpecifyOption {
     validate?: (value: string) => string | undefined
 }
 
+
 export interface RadioFieldsetObject {
     value: string
     id: string
@@ -21,17 +22,35 @@ export interface RadioFieldsetObject {
     specifyOption?: RadioSpecifyOption
 }
 
+export interface CheckboxFieldsetObject {
+    value: string
+    id: string
+    label: string
+    description?: string
+}
 
-export interface FormFieldObject {
+export interface BaseFormFieldObject {
     name: string
     description?: string
     type: string
     id?: string
-    validate?: (value: string) => string | undefined
+    validate?: (value: any) => string | undefined
     autoFocus?: boolean
-    radioOptions?: RadioFieldsetObject[]
-    initial_value?: string
+    initial_value?: string | string[]
 }
+
+export interface RadioFormFieldObject extends BaseFormFieldObject {
+    type: "radio"
+    radioOptions: RadioFieldsetObject[]
+}
+
+export interface CheckboxFormFieldObject extends BaseFormFieldObject {
+    type: "checkbox"
+    validate?: (value: string[]) => string | undefined
+    checkboxOptions: CheckboxFieldsetObject[]
+}
+
+export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
 
 export interface StyledFormProps {
     fields: FormFieldObject[]

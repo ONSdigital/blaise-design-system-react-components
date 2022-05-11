@@ -23,3 +23,4 @@ export declare function validatePassword(value: string): string | undefined;
  */
 export declare function validateEmail(value: string): string | undefined;
 export declare function validateRadio(value: string): string | undefined;
+export declare function validateCheckbox(value: string[]): string | undefined;
