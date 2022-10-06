@@ -25,7 +25,6 @@ interface CheckboxesProps{
 }
 
 export function RadioFieldset({description, name, radioOptions, ...props}: RadioFieldsetProps): ReactElement {
-
     return <fieldset className="fieldset">
         <legend className="fieldset__legend">
             {description}
