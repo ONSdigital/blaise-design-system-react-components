@@ -82,13 +82,9 @@ function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
                 onSubmitFunction(values, setSubmitting);
             }}
         >
-            {({
-                isValid,
-                  isSubmitting
-              }) => (
+            {({isValid, isSubmitting}) => (
                 <Form>
                     <StyledFormErrorSummary/>
-
                     {
                         fields.map((field, index) => {
                             field.autoFocus = (isValid && index === 0)
@@ -102,9 +98,7 @@ function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
                             )
                         })
                     }
-
                     <br/>
-
                     <ONSButton
                         submit={true}
                         label={(submitLabel ? submitLabel : "Save and continue")}

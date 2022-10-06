@@ -7,6 +7,7 @@ interface Props {
     name: string,
     radioOptions?: any[],
     checkboxOptions?: any[],
+    autoFocus: boolean,
     props: Pick<any, string | number | symbol>
 }
 

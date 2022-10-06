@@ -12,6 +12,7 @@ interface RadioFieldsetProps {
     description?: string,
     name: string,
     radioOptions?: RadioFieldsetObject[],
+    autoFocus: boolean,
     props: Pick<any, string | number | symbol>
 }
 
@@ -20,11 +21,13 @@ interface CheckboxesProps{
     description?: string,
     checkboxOptions?: CheckboxFieldsetObject[],
     name: string,
+    autoFocus: boolean,
     props: Pick<any, string | number | symbol>
 }
 
 
 export function RadioFieldset({description, name, radioOptions, ...props}: RadioFieldsetProps): ReactElement {
+
     return <fieldset className="fieldset">
         <legend className="fieldset__legend">
             {description}
@@ -33,7 +36,7 @@ export function RadioFieldset({description, name, radioOptions, ...props}: Radio
             {
                 (
                     radioOptions && radioOptions.length > 0 &&
-                    radioOptions.map((radioOption: RadioFieldsetObject) => {
+                    radioOptions.map((radioOption: RadioFieldsetObject, radioOptionIndex: number) => {
                         return (
                             <Fragment key={radioOption.id}>
                                 <p className="radios__item">
@@ -42,7 +45,10 @@ export function RadioFieldset({description, name, radioOptions, ...props}: Radio
                                                id={radioOption.id}
                                                name={name}
                                                value={radioOption.value}
-                                               className="radio__input js-radio" {...props}/>
+                                               className="radio__input js-radio" {...props}
+                                               // NOTE: On load, focus on the initial option
+                                                autoFocus={(props.autoFocus) && (radioOptionIndex === 0)}
+                                        />
                                         <label className={`radio__label ${radioOption.description !== undefined ? "label--with-description" : ""}`}
                                                htmlFor={radioOption.id}
                                                id={`${radioOption.id}-label`}>{radioOption.label}
@@ -85,7 +91,7 @@ export function RadioFieldset({description, name, radioOptions, ...props}: Radio
     </fieldset>;
 }
 
-export function CheckboxesFieldset({ description, checkboxOptions, name, ...props }: CheckboxesProps): ReactElement {
+export function CheckboxesFieldset({description, checkboxOptions, name, ...props}: CheckboxesProps): ReactElement {
     const {values, setFieldValue} = useFormikContext();
     const allValues = (checkboxOptions || []).map(checkboxOption => checkboxOption.value);
     
@@ -130,7 +136,7 @@ export function CheckboxesFieldset({ description, checkboxOptions, name, ...prop
             {
                 (
                     checkboxOptions && checkboxOptions.length > 0 &&
-                    checkboxOptions.map((checkboxOption: CheckboxFieldsetObject) => {
+                    checkboxOptions.map((checkboxOption: CheckboxFieldsetObject, checkboxIndex: number) => {
                         return (
                             <Fragment key={checkboxOption.id}>
                                 <p className="checkboxes__item">
@@ -140,6 +146,8 @@ export function CheckboxesFieldset({ description, checkboxOptions, name, ...prop
                                             name={name}
                                             value={checkboxOption.value}
                                             className="checkbox__input js-checkbox" {...props}
+                                            // NOTE: On load, focus on the initial option
+                                            autoFocus={(props.autoFocus) && (checkboxIndex === 0)}
                                         />
                                         <label className={`checkbox__label ${checkboxOption.description !== undefined ? "label--with-description" : ""}`}
                                             htmlFor={checkboxOption.id}
