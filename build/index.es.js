@@ -374,9 +374,7 @@ function RadioFieldset(_a) {
                 return (React.createElement(Fragment$1, { key: radioOption.id },
                     React.createElement("p", { className: "radios__item" },
                         React.createElement("span", { className: "radio" },
-                            React.createElement(Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props, { 
-                                // NOTE: On load, focus on the initial option
-                                autoFocus: (props.autoFocus) && (radioOptionIndex === 0) })),
+                            React.createElement(Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props, { autoFocus: props.autoFocus && radioOptionIndex === 0 })),
                             React.createElement("label", { className: "radio__label " + (radioOption.description !== undefined ? "label--with-description" : ""), htmlFor: radioOption.id, id: radioOption.id + "-label" },
                                 radioOption.label,
                                 radioOption.description !== undefined &&
@@ -426,9 +424,7 @@ function CheckboxesFieldset(_a) {
                 return (React.createElement(Fragment$1, { key: checkboxOption.id },
                     React.createElement("p", { className: "checkboxes__item" },
                         React.createElement("span", { className: "checkbox" },
-                            React.createElement(Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "checkbox__input js-checkbox" }, props, { 
-                                // NOTE: On load, focus on the initial option
-                                autoFocus: (props.autoFocus) && (checkboxIndex === 0) })),
+                            React.createElement(Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "checkbox__input js-checkbox" }, props, { autoFocus: props.autoFocus && checkboxIndex === 0 })),
                             React.createElement("label", { className: "checkbox__label " + (checkboxOption.description !== undefined ? "label--with-description" : ""), htmlFor: checkboxOption.id, id: checkboxOption.id + "-label" },
                                 checkboxOption.label,
                                 checkboxOption.description !== undefined &&

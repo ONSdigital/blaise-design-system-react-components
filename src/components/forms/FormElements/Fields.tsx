@@ -25,7 +25,6 @@ interface CheckboxesProps{
     props: Pick<any, string | number | symbol>
 }
 
-
 export function RadioFieldset({description, name, radioOptions, ...props}: RadioFieldsetProps): ReactElement {
 
     return <fieldset className="fieldset">
@@ -44,10 +43,9 @@ export function RadioFieldset({description, name, radioOptions, ...props}: Radio
                                         <Field type="radio"
                                                id={radioOption.id}
                                                name={name}
-                                               value={radioOption.value}
-                                               className="radio__input js-radio" {...props}
-                                               // NOTE: On load, focus on the initial option
-                                                autoFocus={(props.autoFocus) && (radioOptionIndex === 0)}
+                                                value={radioOption.value}
+                                                className="radio__input js-radio" {...props}
+                                                autoFocus={props.autoFocus && radioOptionIndex === 0}
                                         />
                                         <label className={`radio__label ${radioOption.description !== undefined ? "label--with-description" : ""}`}
                                                htmlFor={radioOption.id}
@@ -146,8 +144,7 @@ export function CheckboxesFieldset({description, checkboxOptions, name, ...props
                                             name={name}
                                             value={checkboxOption.value}
                                             className="checkbox__input js-checkbox" {...props}
-                                            // NOTE: On load, focus on the initial option
-                                            autoFocus={(props.autoFocus) && (checkboxIndex === 0)}
+                                            autoFocus={props.autoFocus && checkboxIndex === 0}
                                         />
                                         <label className={`checkbox__label ${checkboxOption.description !== undefined ? "label--with-description" : ""}`}
                                             htmlFor={checkboxOption.id}
