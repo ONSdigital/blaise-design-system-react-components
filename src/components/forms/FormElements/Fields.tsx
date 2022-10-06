@@ -16,7 +16,6 @@ interface RadioFieldsetProps {
     props: Pick<any, string | number | symbol>
 }
 
-
 interface CheckboxesProps{
     description?: string,
     checkboxOptions?: CheckboxFieldsetObject[],
