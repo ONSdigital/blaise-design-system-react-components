@@ -4,6 +4,7 @@ interface Props {
     name: string;
     radioOptions?: any[];
     checkboxOptions?: any[];
+    autoFocus: boolean;
     props: Pick<any, string | number | symbol>;
 }
 export declare const StyledFormField: ({ name, description, radioOptions, checkboxOptions, ...props }: Props) => ReactElement;

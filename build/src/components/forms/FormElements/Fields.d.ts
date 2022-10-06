@@ -4,12 +4,14 @@ interface RadioFieldsetProps {
     description?: string;
     name: string;
     radioOptions?: RadioFieldsetObject[];
+    autoFocus: boolean;
     props: Pick<any, string | number | symbol>;
 }
 interface CheckboxesProps {
     description?: string;
     checkboxOptions?: CheckboxFieldsetObject[];
     name: string;
+    autoFocus: boolean;
     props: Pick<any, string | number | symbol>;
 }
 export declare function RadioFieldset({ description, name, radioOptions, ...props }: RadioFieldsetProps): ReactElement;
