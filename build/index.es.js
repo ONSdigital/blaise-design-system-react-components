@@ -370,11 +370,11 @@ function RadioFieldset(_a) {
     return React.createElement("fieldset", { className: "fieldset" },
         React.createElement("legend", { className: "fieldset__legend" }, description),
         React.createElement("div", { className: "radios__items", id: name }, (radioOptions && radioOptions.length > 0 &&
-            radioOptions.map(function (radioOption) {
+            radioOptions.map(function (radioOption, radioOptionIndex) {
                 return (React.createElement(Fragment$1, { key: radioOption.id },
                     React.createElement("p", { className: "radios__item" },
                         React.createElement("span", { className: "radio" },
-                            React.createElement(Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props)),
+                            React.createElement(Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props, { autoFocus: props.autoFocus && radioOptionIndex === 0 })),
                             React.createElement("label", { className: "radio__label " + (radioOption.description !== undefined ? "label--with-description" : ""), htmlFor: radioOption.id, id: radioOption.id + "-label" },
                                 radioOption.label,
                                 radioOption.description !== undefined &&
@@ -420,11 +420,11 @@ function CheckboxesFieldset(_a) {
                 React.createElement("span", { className: "js-button-text" }, isAllSelected() ? "Unselect All" : "Select All"),
                 React.createElement("span", { className: "u-vh" }, " following checkboxes"))),
         React.createElement("div", { className: "checkboxes__items", id: name }, (checkboxOptions && checkboxOptions.length > 0 &&
-            checkboxOptions.map(function (checkboxOption) {
+            checkboxOptions.map(function (checkboxOption, checkboxIndex) {
                 return (React.createElement(Fragment$1, { key: checkboxOption.id },
                     React.createElement("p", { className: "checkboxes__item" },
                         React.createElement("span", { className: "checkbox" },
-                            React.createElement(Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "checkbox__input js-checkbox" }, props)),
+                            React.createElement(Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "checkbox__input js-checkbox" }, props, { autoFocus: props.autoFocus && checkboxIndex === 0 })),
                             React.createElement("label", { className: "checkbox__label " + (checkboxOption.description !== undefined ? "label--with-description" : ""), htmlFor: checkboxOption.id, id: checkboxOption.id + "-label" },
                                 checkboxOption.label,
                                 checkboxOption.description !== undefined &&
