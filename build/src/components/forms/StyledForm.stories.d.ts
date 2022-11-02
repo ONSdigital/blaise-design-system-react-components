@@ -1,3 +1,6 @@
-declare const _default: import("@storybook/csf").ComponentAnnotations<import("@storybook/react").ReactFramework, import("@storybook/react").Args>;
+import { ComponentStory } from "@storybook/react";
+import { Meta } from '@storybook/react';
+import StyledForm from "./StyledForm";
+declare const _default: Meta<import("@storybook/react").Args>;
 export default _default;
-export declare const Default: import("@storybook/csf").AnnotatedStoryFn<import("@storybook/react").ReactFramework, import("./StyledForm").StyledFormProps>;
+export declare const Default: ComponentStory<typeof StyledForm>;

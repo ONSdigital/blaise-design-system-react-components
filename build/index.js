@@ -155,13 +155,13 @@ var ONSPanel = function (props) {
     return (React__default['default'].createElement("div", { "data-testid": props.testID, id: props.id, className: className, hidden: props.hidden },
         props.status === "success" &&
             React__default['default'].createElement("span", { className: "panel__icon" },
-                React__default['default'].createElement("svg", { className: "svg-icon " + (props.bigIcon === true ? "svg-icon--xl" : ""), viewBox: "0 0 13 10", xmlns: "http://www.w3.org/2000/svg" },
+                React__default['default'].createElement("svg", { className: "svg-icon ".concat(props.bigIcon === true ? "svg-icon--xl" : ""), viewBox: "0 0 13 10", xmlns: "http://www.w3.org/2000/svg" },
                     React__default['default'].createElement("path", { d: "M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z", transform: "translate(-1.51 -3.04)" }))),
         props.status === "warn" &&
             React__default['default'].createElement(React__default['default'].Fragment, null,
                 React__default['default'].createElement("span", { className: "panel__icon", "aria-hidden": "true" }, "!"),
                 React__default['default'].createElement("span", { className: "u-vh" }, "Warning: ")),
-        React__default['default'].createElement("div", { className: "panel__body " + (props.bigIcon === true ? "svg-icon-margin--xl" : "") }, props.children)));
+        React__default['default'].createElement("div", { className: "panel__body ".concat(props.bigIcon === true ? "svg-icon-margin--xl" : "") }, props.children)));
 };
 
 /*! *****************************************************************************
@@ -349,11 +349,11 @@ function StyledFormErrorSummary() {
                 React__default['default'].createElement("h2", { id: "error-summary-title", "data-qa": "error-header", className: "panel__title u-fs-r--b" }, (Object.keys(errors).length === 1 ?
                     "There is 1 problem with your answer"
                     :
-                        "There are " + Object.keys(errors).length + " problems with your answer"))),
+                        "There are ".concat(Object.keys(errors).length, " problems with your answer")))),
             React__default['default'].createElement("div", { className: "panel__body" },
                 React__default['default'].createElement("ol", { className: "list" }, Object.keys(errors).map(function (field, index) {
                     return React__default['default'].createElement("li", { key: index, className: "list__item " },
-                        React__default['default'].createElement("a", { href: "#" + field, className: "list__link js-inpagelink" }, 
+                        React__default['default'].createElement("a", { href: "#".concat(field), className: "list__link js-inpagelink" }, 
                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         errors[field]));
@@ -383,7 +383,7 @@ function RadioFieldset(_a) {
                     React__default['default'].createElement("p", { className: "radios__item" },
                         React__default['default'].createElement("span", { className: "radio" },
                             React__default['default'].createElement(formik.Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props, { autoFocus: props.autoFocus && radioOptionIndex === 0 })),
-                            React__default['default'].createElement("label", { className: "radio__label " + (radioOption.description !== undefined ? "label--with-description" : ""), htmlFor: radioOption.id, id: radioOption.id + "-label" },
+                            React__default['default'].createElement("label", { className: "radio__label ".concat(radioOption.description !== undefined ? "label--with-description" : ""), htmlFor: radioOption.id, id: "".concat(radioOption.id, "-label") },
                                 radioOption.label,
                                 radioOption.description !== undefined &&
                                     React__default['default'].createElement("span", { id: "white-label-description-hint", className: "label__description radio__label--with-description" }, radioOption.description)),
@@ -433,7 +433,7 @@ function CheckboxesFieldset(_a) {
                     React__default['default'].createElement("p", { className: "checkboxes__item" },
                         React__default['default'].createElement("span", { className: "checkbox" },
                             React__default['default'].createElement(formik.Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "checkbox__input js-checkbox" }, props, { autoFocus: props.autoFocus && checkboxIndex === 0 })),
-                            React__default['default'].createElement("label", { className: "checkbox__label " + (checkboxOption.description !== undefined ? "label--with-description" : ""), htmlFor: checkboxOption.id, id: checkboxOption.id + "-label" },
+                            React__default['default'].createElement("label", { className: "checkbox__label ".concat(checkboxOption.description !== undefined ? "label--with-description" : ""), htmlFor: checkboxOption.id, id: "".concat(checkboxOption.id, "-label") },
                                 checkboxOption.label,
                                 checkboxOption.description !== undefined &&
                                     React__default['default'].createElement("span", { id: "white-label-description-hint", className: "label__description checkbox__label--with-description" }, checkboxOption.description)))),
@@ -445,7 +445,7 @@ var ONSInputField = function (_a) {
     var id = (props.id ? props.id : field.name);
     return React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement("div", { className: "field" },
-            React__default['default'].createElement("label", { className: "label " + (description ? "label--with-description" : ""), htmlFor: id }, toUpperCase(field.name)),
+            React__default['default'].createElement("label", { className: "label ".concat((description ? "label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
             description &&
                 React__default['default'].createElement("span", { id: "description-hint", className: "label__description  input--with-description" }, description),
             React__default['default'].createElement("input", __assign({ id: id, className: "input input--text input-type__input " }, field, props))));
@@ -455,11 +455,9 @@ var StyledFormField = function (_a) {
     var name = _a.name, description = _a.description, _b = _a.radioOptions, radioOptions = _b === void 0 ? [] : _b, _c = _a.checkboxOptions, checkboxOptions = _c === void 0 ? [] : _c, props = __rest(_a, ["name", "description", "radioOptions", "checkboxOptions"]);
     var errors = formik.useFormikContext().errors;
     var newField;
-    // @ts-ignore
     if (props.type === "radio") {
         newField = React__default['default'].createElement(RadioFieldset, __assign({ description: description, name: name, radioOptions: radioOptions }, props));
     }
-    // @ts-ignore
     else if (props.type === "checkbox") {
         newField = React__default['default'].createElement(CheckboxesFieldset, __assign({ description: description, name: name, checkboxOptions: checkboxOptions }, props));
     }
@@ -472,7 +470,7 @@ var StyledFormField = function (_a) {
             newField));
 };
 function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
-    return (React__default['default'].createElement("div", { className: "panel panel--error panel--no-title u-mb-s", id: fieldName + "-error" },
+    return (React__default['default'].createElement("div", { className: "panel panel--error panel--no-title u-mb-s", id: "".concat(fieldName, "-error") },
         React__default['default'].createElement("span", { className: "u-vh" }, "Error: "),
         React__default['default'].createElement("div", { className: "panel__body" },
             React__default['default'].createElement("p", { className: "panel__error" },
@@ -3298,7 +3296,7 @@ function Collapsible(_a) {
     var children = _a.children, title = _a.title;
     var _b = React.useState(false), panelOpen = _b[0], setPanelOpen = _b[1];
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("div", { id: "collapsible-with-save", className: "collapsible js-collapsible collapsible--initialised " + (panelOpen && "collapsible--open") + " u-mt-l", "data-btn-close": "Hide this", "data-save-state": "true", role: "group" },
+        React__default['default'].createElement("div", { id: "collapsible-with-save", className: "collapsible js-collapsible collapsible--initialised ".concat((panelOpen && "collapsible--open"), " u-mt-l"), "data-btn-close": "Hide this", "data-save-state": "true", role: "group" },
             React__default['default'].createElement("div", { className: "collapsible__heading js-collapsible-heading", role: "link", "data-testid": "collapsible-heading", onClick: function () { return setPanelOpen(!panelOpen); }, onKeyPress: function () { return setPanelOpen(!panelOpen); }, tabIndex: 0, "aria-expanded": panelOpen ? "true" : "false", "aria-controls": "collapsible-with-save", "data-ga-action": "Close panel" },
                 React__default['default'].createElement("div", { className: "collapsible__controls" },
                     React__default['default'].createElement("div", { className: "collapsible__title" }, title),
@@ -3382,7 +3380,7 @@ function ONSTable(_a) {
         React__default['default'].createElement("table", { className: "table", "data-testid": tableID, id: tableID },
             tableCaption && React__default['default'].createElement("caption", { className: "table__caption" }, tableCaption),
             React__default['default'].createElement("thead", { className: "table__head" },
-                React__default['default'].createElement("tr", { className: "table__row" }, columns.map(function (title, index) { return (React__default['default'].createElement("th", { scope: "col", className: "table__header", key: title + "-" + index }, title)); }))),
+                React__default['default'].createElement("tr", { className: "table__row" }, columns.map(function (title, index) { return (React__default['default'].createElement("th", { scope: "col", className: "table__header", key: "".concat(title, "-").concat(index) }, title)); }))),
             React__default['default'].createElement("tbody", { className: "table__body" }, children))));
 }
 
@@ -3433,12 +3431,12 @@ function SummaryGroupTable(_a) {
     var elementList = [];
     for (var _i = 0, _b = groupedSummary.groups; _i < _b.length; _i++) {
         var group = _b[_i];
-        elementList.push(React__default['default'].createElement("h3", { key: "summary-group-heading-" + FormatKey(group.title), className: "summary__group-title" }, group.title));
+        elementList.push(React__default['default'].createElement("h3", { key: "summary-group-heading-".concat(FormatKey(group.title)), className: "summary__group-title" }, group.title));
         var tableFieldsList = [];
         for (var field in group.records) {
-            tableFieldsList.push(React__default['default'].createElement(SummaryItemRow, { key: "summary-table-row-" + FormatKey(field), fieldName: field, fieldValue: group.records[field] }));
+            tableFieldsList.push(React__default['default'].createElement(SummaryItemRow, { key: "summary-table-row-".concat(FormatKey(field)), fieldName: field, fieldValue: group.records[field] }));
         }
-        elementList.push(React__default['default'].createElement("table", { key: "summary-table-group-" + FormatKey(group.title), className: "summary__items" }, tableFieldsList));
+        elementList.push(React__default['default'].createElement("table", { key: "summary-table-group-".concat(FormatKey(group.title)), className: "summary__items" }, tableFieldsList));
     }
     return (React__default['default'].createElement(React__default['default'].Fragment, null, elementList));
 }

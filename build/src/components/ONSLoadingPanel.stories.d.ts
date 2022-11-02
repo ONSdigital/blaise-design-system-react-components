@@ -1,5 +1,8 @@
-declare const _default: import("@storybook/csf").ComponentAnnotations<import("@storybook/react").ReactFramework, import("@storybook/react").Args>;
+/// <reference types="react" />
+import { ComponentStory } from "@storybook/react";
+import { Meta } from '@storybook/react';
+declare const _default: Meta<import("@storybook/react").Args>;
 export default _default;
-export declare const DefaultMessage: import("@storybook/csf").AnnotatedStoryFn<import("@storybook/react").ReactFramework, import("./ONSLoadingPanel").Props>;
-export declare const CustomMessage: import("@storybook/csf").AnnotatedStoryFn<import("@storybook/react").ReactFramework, import("./ONSLoadingPanel").Props>;
-export declare const Hidden: import("@storybook/csf").AnnotatedStoryFn<import("@storybook/react").ReactFramework, import("./ONSLoadingPanel").Props>;
+export declare const DefaultMessage: ComponentStory<({ hidden, message }: import("./ONSLoadingPanel").Props) => JSX.Element>;
+export declare const CustomMessage: ComponentStory<({ hidden, message }: import("./ONSLoadingPanel").Props) => JSX.Element>;
+export declare const Hidden: ComponentStory<({ hidden, message }: import("./ONSLoadingPanel").Props) => JSX.Element>;

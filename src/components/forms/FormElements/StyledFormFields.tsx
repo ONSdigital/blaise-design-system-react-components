@@ -8,6 +8,7 @@ interface Props {
     radioOptions?: any[],
     checkboxOptions?: any[],
     autoFocus: boolean,
+    type?: string,
     props: Pick<any, string | number | symbol>
 }
 
@@ -15,13 +16,10 @@ export const StyledFormField = ({name, description, radioOptions = [], checkboxO
     const {errors}: any = useFormikContext();
     let newField: ReactElement;
 
-    // @ts-ignore
     if (props.type === "radio") {
         newField = <RadioFieldset description={description} name={name} radioOptions={radioOptions}
                                   {...props}/>
-    } 
-    // @ts-ignore
-    else if (props.type === "checkbox") {
+    } else if (props.type === "checkbox") {
         newField = <CheckboxesFieldset description={description} name={name} checkboxOptions={checkboxOptions}
                                   {...props}/>
     } else {
