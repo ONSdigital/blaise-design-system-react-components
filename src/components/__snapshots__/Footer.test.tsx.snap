@@ -4,33 +4,33 @@ exports[`Footer Test matches Snapshot 1`] = `
 initialize {
   "0": Node {
     "attribs": Object {
-      "class": "footer",
+      "class": "ons-footer",
     },
     "children": Array [
       Node {
         "attribs": Object {
-          "class": "footer__body",
+          "class": "ons-footer__body",
           "data-analytics": "footer",
         },
         "children": Array [
           Node {
             "attribs": Object {
-              "class": "container ",
+              "class": "ons-container ",
             },
             "children": Array [
               Node {
                 "attribs": Object {
-                  "class": "grid grid--flex grid--between",
+                  "class": "ons-grid ons-grid--flex ons-grid--between",
                 },
                 "children": Array [
                   Node {
                     "attribs": Object {
-                      "class": "grid__col",
+                      "class": "ons-grid__col",
                     },
                     "children": Array [
                       Node {
                         "attribs": Object {
-                          "class": "u-mt-m u-mb-s",
+                          "class": "ons-u-mt-m ons-u-mb-s",
                         },
                         "children": Array [
                           Node {

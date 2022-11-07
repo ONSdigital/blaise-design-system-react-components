@@ -10,32 +10,32 @@ Object {
         action="#"
       >
         <fieldset
-          class="fieldset"
+          class="ons-fieldset"
         >
           <legend
-            class="fieldset__legend"
+            class="ons-fieldset__legend"
           >
             Select your favorite topping
           </legend>
           <div
-            class="radios__items"
+            class="ons-radios__items"
             id="topping"
           >
             <p
-              class="radios__item"
+              class="ons-radios__item"
             >
               <span
-                class="radio"
+                class="ons-radio"
               >
                 <input
-                  class="radio__input js-radio"
+                  class="ons-radio__input js-radio"
                   id="bacon"
                   name="topping"
                   type="radio"
                   value="bacon"
                 />
                 <label
-                  class="radio__label "
+                  class="ons-radio__label "
                   for="bacon"
                   id="bacon-label"
                 >
@@ -45,26 +45,26 @@ Object {
             </p>
             <br />
             <p
-              class="radios__item"
+              class="ons-radios__item"
             >
               <span
-                class="radio"
+                class="ons-radio"
               >
                 <input
-                  class="radio__input js-radio"
+                  class="ons-radio__input js-radio"
                   id="cheese"
                   name="topping"
                   type="radio"
                   value="cheese"
                 />
                 <label
-                  class="radio__label label--with-description"
+                  class="ons-radio__label ons-label--with-description"
                   for="cheese"
                   id="cheese-label"
                 >
                   Cheese
                   <span
-                    class="label__description radio__label--with-description"
+                    class="ons-label__description ons-radio__label--with-description"
                     id="white-label-description-hint"
                   >
                     This includes all types of cheese
@@ -76,32 +76,32 @@ Object {
           </div>
         </fieldset>
         <fieldset
-          class="fieldset"
+          class="ons-fieldset"
         >
           <legend
-            class="fieldset__legend"
+            class="ons-fieldset__legend"
           >
             Select a radio option
           </legend>
           <div
-            class="radios__items"
+            class="ons-radios__items"
             id="options"
           >
             <p
-              class="radios__item"
+              class="ons-radios__item"
             >
               <span
-                class="radio"
+                class="ons-radio"
               >
                 <input
-                  class="radio__input js-radio"
+                  class="ons-radio__input js-radio"
                   id="firstOption"
                   name="options"
                   type="radio"
                   value="firstOption"
                 />
                 <label
-                  class="radio__label "
+                  class="ons-radio__label "
                   for="firstOption"
                   id="firstOption-label"
                 >
@@ -111,27 +111,27 @@ Object {
             </p>
             <br />
             <p
-              class="radios__item"
+              class="ons-radios__item"
             >
               <span
-                class="radio"
+                class="ons-radio"
               >
                 <input
-                  class="radio__input js-radio"
+                  class="ons-radio__input js-radio"
                   id="other"
                   name="options"
                   type="radio"
                   value="other"
                 />
                 <label
-                  class="radio__label "
+                  class="ons-radio__label "
                   for="other"
                   id="other-label"
                 >
                   other
                 </label>
                 <span
-                  class="radio__other radio__other--open"
+                  class="ons-radio__other ons-radio__other--open"
                   id="other-radio-other-wrap"
                 >
                   <label
@@ -142,7 +142,7 @@ Object {
                     Please specify
                   </label>
                   <input
-                    class="input input--text input-type__input input--w-auto"
+                    class="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
                     id="other-text"
                     name="other-text"
                     type="text"
@@ -156,12 +156,12 @@ Object {
         </fieldset>
         <br />
         <button
-          class="btn "
+          class="ons-btn "
           data-testid="submit-button"
           type="submit"
         >
           <span
-            class="btn__inner"
+            class="ons-btn__inner"
           >
             Save and continue
           </span>
@@ -175,32 +175,32 @@ Object {
       action="#"
     >
       <fieldset
-        class="fieldset"
+        class="ons-fieldset"
       >
         <legend
-          class="fieldset__legend"
+          class="ons-fieldset__legend"
         >
           Select your favorite topping
         </legend>
         <div
-          class="radios__items"
+          class="ons-radios__items"
           id="topping"
         >
           <p
-            class="radios__item"
+            class="ons-radios__item"
           >
             <span
-              class="radio"
+              class="ons-radio"
             >
               <input
-                class="radio__input js-radio"
+                class="ons-radio__input js-radio"
                 id="bacon"
                 name="topping"
                 type="radio"
                 value="bacon"
               />
               <label
-                class="radio__label "
+                class="ons-radio__label "
                 for="bacon"
                 id="bacon-label"
               >
@@ -210,26 +210,26 @@ Object {
           </p>
           <br />
           <p
-            class="radios__item"
+            class="ons-radios__item"
           >
             <span
-              class="radio"
+              class="ons-radio"
             >
               <input
-                class="radio__input js-radio"
+                class="ons-radio__input js-radio"
                 id="cheese"
                 name="topping"
                 type="radio"
                 value="cheese"
               />
               <label
-                class="radio__label label--with-description"
+                class="ons-radio__label ons-label--with-description"
                 for="cheese"
                 id="cheese-label"
               >
                 Cheese
                 <span
-                  class="label__description radio__label--with-description"
+                  class="ons-label__description ons-radio__label--with-description"
                   id="white-label-description-hint"
                 >
                   This includes all types of cheese
@@ -241,32 +241,32 @@ Object {
         </div>
       </fieldset>
       <fieldset
-        class="fieldset"
+        class="ons-fieldset"
       >
         <legend
-          class="fieldset__legend"
+          class="ons-fieldset__legend"
         >
           Select a radio option
         </legend>
         <div
-          class="radios__items"
+          class="ons-radios__items"
           id="options"
         >
           <p
-            class="radios__item"
+            class="ons-radios__item"
           >
             <span
-              class="radio"
+              class="ons-radio"
             >
               <input
-                class="radio__input js-radio"
+                class="ons-radio__input js-radio"
                 id="firstOption"
                 name="options"
                 type="radio"
                 value="firstOption"
               />
               <label
-                class="radio__label "
+                class="ons-radio__label "
                 for="firstOption"
                 id="firstOption-label"
               >
@@ -276,27 +276,27 @@ Object {
           </p>
           <br />
           <p
-            class="radios__item"
+            class="ons-radios__item"
           >
             <span
-              class="radio"
+              class="ons-radio"
             >
               <input
-                class="radio__input js-radio"
+                class="ons-radio__input js-radio"
                 id="other"
                 name="options"
                 type="radio"
                 value="other"
               />
               <label
-                class="radio__label "
+                class="ons-radio__label "
                 for="other"
                 id="other-label"
               >
                 other
               </label>
               <span
-                class="radio__other radio__other--open"
+                class="ons-radio__other ons-radio__other--open"
                 id="other-radio-other-wrap"
               >
                 <label
@@ -307,7 +307,7 @@ Object {
                   Please specify
                 </label>
                 <input
-                  class="input input--text input-type__input input--w-auto"
+                  class="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
                   id="other-text"
                   name="other-text"
                   type="text"
@@ -321,12 +321,12 @@ Object {
       </fieldset>
       <br />
       <button
-        class="btn "
+        class="ons-btn "
         data-testid="submit-button"
         type="submit"
       >
         <span
-          class="btn__inner"
+          class="ons-btn__inner"
         >
           Save and continue
         </span>

@@ -1,4 +1,4 @@
-import React, {ReactElement, useState} from 'react';
+import React, { ReactElement, useState } from 'react';
 
 
 export interface Props {
@@ -14,10 +14,13 @@ function Collapsible({children, title}: Props) {
 
     return (
         <>
-            <div id="collapsible-with-save"
-                 className={`collapsible js-collapsible collapsible--initialised ${(panelOpen && "collapsible--open")} u-mt-l`}
-                 data-btn-close="Hide this" data-save-state="true" role="group">
-                <div className="collapsible__heading js-collapsible-heading"
+            <details id="collapsible-with-save"
+                className={`ons-collapsible ons-js-collapsible ons-u-mt-l`}
+                data-btn-close="Hide this" data-save-state="true" role="group"
+                data-group="collapsible"
+                open={panelOpen}
+            >
+                <summary className="ons-collapsible__heading ons-js-collapsible-heading"
                      role="link"
                      data-testid="collapsible-heading"
                      onClick={() => setPanelOpen(!panelOpen)}
@@ -25,11 +28,12 @@ function Collapsible({children, title}: Props) {
                      tabIndex={0}
                      aria-expanded={panelOpen ? "true": "false"}
                      aria-controls="collapsible-with-save"
-                     data-ga-action="Close panel">
-                    <div className="collapsible__controls">
-                        <div className="collapsible__title">{title}</div>
-                        <span className="collapsible__icon">
-                            <svg className="svg-icon"
+                     data-ga-action={`${panelOpen ? "Open" : "Close"} panel`}
+                >
+                    <div className="ons-collapsible__controls">
+                        <h2 className="ons-collapsible__title">{title}</h2>
+                        <span className="ons-collapsible__icon">
+                            <svg className="ons-svg-icon"
                                  viewBox="0 0 7.5 12.85"
                                  xmlns="http://www.w3.org/2000/svg"
                                  focusable="false">
@@ -39,20 +43,20 @@ function Collapsible({children, title}: Props) {
                             </svg>
                         </span>
                     </div>
-                </div>
-                <div id="collapsible-with-save-content" className="collapsible__content js-collapsible-content"
+                </summary>
+                <div id="collapsible-with-save-content" className="ons-collapsible__content ons-js-collapsible-content"
                      aria-hidden={(panelOpen ? "false" : "true")} data-testid="collapsible-content">
-
                     {children}
-
-                    <button type="button" className="btn btn--small js-collapsible-button btn--secondary u-mt-m"
-                            aria-hidden="true" aria-controls="collapsible-with-save" data-ga-action="Close panel"
-                            onClick={() => setPanelOpen(false)}>
-                        <span className="btn__inner js-collapsible-button-inner">Hide this</span>
-                        <span className="btn__context u-vh">{title}</span>
+                    <button type="button" className="ons-btn ons-btn--small ons-js-collapsible-button ons-btn--secondary ons-u-mt-m"
+                        aria-hidden="true" aria-controls="collapsible-with-save" 
+                        data-ga-action="Close panel"
+                        onClick={() => setPanelOpen(false)}
+                    >
+                        <span className="ons-btn__inner ons-js-collapsible-button-inner">Hide this</span>
+                        <span className="ons-btn__context ons-u-vh">{title}</span>
                     </button>
                 </div>
-            </div>
+            </details>
         </>
     );
 }

@@ -15,17 +15,17 @@ function Header({ title, signOutButton, noSave, signOutFunction }: Props): React
     }
     return (
         <>
-            <header className="header header--internal">
-                <div className="header__top" role="banner">
-                    <div className="container">
+            <header className="ons-header ons-header--internal">
+                <div className="ons-header__top" role="banner">
+                    <div className="ons-container">
                         <div
-                            className="header__grid-top grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap ">
-                            <div className="grid__col col-auto">
+                            className="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap ">
+                            <div className="ons-grid__col ons-col-auto">
                                 <a className="header__logo-link" href="/">
                                     <picture>
                                         {/*<source media="(max-width: 499px)" srcSet="/img/ons-logo-stacked-neg-en.svg"*/}
                                         {/*        alt="Office for National Statistics logo"/>*/}
-                                        <img className="header__logo"
+                                        <img className="ons-header__logo"
                                             src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
                                             alt="Office for National Statistics logo" />
                                     </picture>
@@ -34,24 +34,24 @@ function Header({ title, signOutButton, noSave, signOutFunction }: Props): React
                         </div>
                     </div>
                 </div>
-                <div className="header__main">
-                    <div className="container">
+                <div className="ons-header__main">
+                    <div className="ons-container">
                         <div
-                            className="grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap">
-                            <div className="grid__col col-auto u-flex-shrink">
-                                <div className="header__title">{title}</div>
+                            className="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap">
+                            <div className="ons-grid__col ons-col-auto ons-u-flex-shrink">
+                                <div className="ons-header__title">{title}</div>
                             </div>
                             {
                                 (
                                     signOutButton &&
-                                    <div className="grid__col col-auto u-flex-no-shrink u-d-no@xxs@m">
+                                    <div className="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m">
                                         <button
                                             id="signout-button"
                                             data-test-id="signout-button"
-                                            className="btn btn--ghost u-d-no@xxs@m btn--exit"
+                                            className="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
                                             onClick={() => signOutFunction && signOutFunction()}>
-                                            <span className="btn__inner">{signOutText}
-                                                <svg className="svg-icon" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"
+                                            <span className="ons-btn__inner">{signOutText}
+                                                <svg className="ons-svg-icon" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"
                                                     focusable="false">
                                                     <path
                                                         d="M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z"

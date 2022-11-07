@@ -6,28 +6,28 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="phase-banner"
+        class="ons-phase-banner"
       >
         <div
-          class="container "
+          class="ons-container "
         >
           <div
-            class="grid grid--flex grid--gutterless grid--vertical-center grid--no-wrap"
+            class="ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap"
           >
             <div
-              class="grid__col col-auto u-flex-no-grow"
+              class="ons-grid__col ons-col-auto ons-u-flex-no-grow"
             >
               <h3
-                class="phase-banner__badge"
+                class="ons-phase-banner__badge"
               >
                 BETA
               </h3>
             </div>
             <div
-              class="grid__col col-auto u-flex-shrink"
+              class="ons-grid__col ons-col-auto ons-u-flex-shrink"
             >
               <p
-                class="phase-banner__desc u-fs-s u-mb-no"
+                class="ons-phase-banner__desc ons-u-fs-s ons-u-mb-no"
               >
                 This is a new service – your 
                 <a
@@ -45,28 +45,28 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="phase-banner"
+      class="ons-phase-banner"
     >
       <div
-        class="container "
+        class="ons-container "
       >
         <div
-          class="grid grid--flex grid--gutterless grid--vertical-center grid--no-wrap"
+          class="ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap"
         >
           <div
-            class="grid__col col-auto u-flex-no-grow"
+            class="ons-grid__col ons-col-auto ons-u-flex-no-grow"
           >
             <h3
-              class="phase-banner__badge"
+              class="ons-phase-banner__badge"
             >
               BETA
             </h3>
           </div>
           <div
-            class="grid__col col-auto u-flex-shrink"
+            class="ons-grid__col ons-col-auto ons-u-flex-shrink"
           >
             <p
-              class="phase-banner__desc u-fs-s u-mb-no"
+              class="ons-phase-banner__desc ons-u-fs-s ons-u-mb-no"
             >
               This is a new service – your 
               <a

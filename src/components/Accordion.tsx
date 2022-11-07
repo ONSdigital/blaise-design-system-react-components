@@ -30,10 +30,12 @@ function Expandable({ title, content, id, panelsOpen, setPanelsOpen }: Expandabl
     }, [panelsOpen])
 
     return (
-        <div id={`accordion-${id}`}
-            className={`collapsible js-collapsible collapsible--accordion collapsible--initialised ${(panelIsOpen() && "collapsible--open")}`}
-            data-btn-close="Hide" data-group="accordion">
-            <div className="collapsible__heading js-collapsible-heading"
+        <details id={`accordion-${id}`}
+            className={`ons-collapsible js-collapsible ons-collapsible--accordion collapsible--initialised ${(panelIsOpen() && "collapsible--open")}`}
+            data-btn-close="Hide" data-group="accordion"
+            open={panelOpen}    
+        >
+            <summary className="ons-collapsible__heading js-collapsible-heading"
                 role="link"
                 data-testid={`accordion-${id}-heading`}
                 onClick={() => togglePanel()}
@@ -43,10 +45,10 @@ function Expandable({ title, content, id, panelsOpen, setPanelsOpen }: Expandabl
                 data-ga-action={panelIsOpen() ? "Close panel" : "Open panel"}
                 tabIndex={0}
             >
-                <div className="collapsible__controls">
-                    <h2 className="collapsible__title">{title}</h2>
-                    <span className="collapsible__icon">
-                        <svg className="svg-icon"
+                <div className="ons-collapsible__controls">
+                    <h2 className="ons-collapsible__title">{title}</h2>
+                    <span className="ons-collapsible__icon">
+                        <svg className="ons-svg-icon"
                             viewBox="0 0 7.5 12.85"
                             xmlns="http://www.w3.org/2000/svg"
                             focusable="false">
@@ -57,20 +59,20 @@ function Expandable({ title, content, id, panelsOpen, setPanelsOpen }: Expandabl
                     </span>
                     <button type="button"
                         data-testid={`accordion-${id}-button`}
-                        className="btn collapsible__btn js-collapsible-button u-d-no@xxs@s btn--secondary btn--small"
+                        className="ons-btn ons-collapsible__btn js-collapsible-button ons-u-d-no@xxs@s ons-btn--secondary ons-btn--small"
                         onClick={() => togglePanel()}
                         data-ga-action={panelIsOpen() ? "Close panel" : "Open panel"}>
-                        <span className="btn__inner js-collapsible-button-inner">{panelIsOpen() ? "Hide" : "Show"}</span>
+                        <span className="ons-btn__inner js-collapsible-button-inner">{panelIsOpen() ? "Hide" : "Show"}</span>
                     </button>
                 </div>
-            </div>
+            </summary>
             <div id={`accordion-${id}-content`}
                 data-testid={`accordion-${id}-content`}
-                className="collapsible__content js-collapsible-content"
+                className="ons-collapsible__content js-collapsible-content"
                 aria-hidden={(panelIsOpen() ? "false" : "true")}>
                 {content}
             </div>
-        </div>
+        </details>
     )
 }
 
@@ -98,9 +100,9 @@ export default function Accordion({ ShowAllEnabled, Expandables }: AccordionProp
                 showing = true
             }
             return (
-                <button data-testid="accordion-show-all" type="button" className="btn js-collapsible-all u-mb-s btn--secondary btn--small" data-close-all="Hide all" data-group="accordion"
+                <button data-testid="accordion-show-all" type="button" className="ons-btn js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small" data-close-all="Hide all" data-group="accordion"
                     onClick={() => setPanelsOpen(expandableStates)}>
-                    <span className="btn__inner js-collapsible-all-inner">{showing ? "Hide all" : "Show all"}</span>
+                    <span className="ons-btn__inner js-collapsible-all-inner">{showing ? "Hide all" : "Show all"}</span>
                 </button>
             )
         }
@@ -108,7 +110,7 @@ export default function Accordion({ ShowAllEnabled, Expandables }: AccordionProp
     }
 
     return (
-        <div id="accordion" className="accordion">
+        <div id="accordion" className="ons-accordion">
             <ShowAll />
             {
                 Expandables.map((expandable: ExpandableContent, index: number) => {

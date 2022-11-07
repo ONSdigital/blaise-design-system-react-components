@@ -10,19 +10,19 @@ Object {
         action="#"
       >
         <fieldset
-          class="fieldset"
+          class="ons-fieldset"
         >
           <legend
-            class="fieldset__legend"
+            class="ons-fieldset__legend"
           >
             Select questionnaires
           </legend>
           <button
-            class="btn u-mb-s js-auto-selector btn--small btn--secondary"
+            class="ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary"
             type="button"
           >
             <span
-              class="btn__inner"
+              class="ons-btn__inner"
             >
               <span
                 class="js-button-text"
@@ -30,7 +30,7 @@ Object {
                 Select All
               </span>
               <span
-                class="u-vh"
+                class="ons-u-vh"
               >
                  following checkboxes
               </span>
@@ -41,20 +41,20 @@ Object {
             id="questionnaire"
           >
             <p
-              class="checkboxes__item"
+              class="ons-checkboxes__item"
             >
               <span
-                class="checkbox"
+                class="ons-checkbox"
               >
                 <input
-                  class="checkbox__input js-checkbox"
+                  class="ons-checkbox__input js-checkbox"
                   id="lms"
                   name="questionnaire"
                   type="checkbox"
                   value="lms"
                 />
                 <label
-                  class="checkbox__label "
+                  class="ons-checkbox__label "
                   for="lms"
                   id="lms-label"
                 >
@@ -64,20 +64,20 @@ Object {
             </p>
             <br />
             <p
-              class="checkboxes__item"
+              class="ons-checkboxes__item"
             >
               <span
-                class="checkbox"
+                class="ons-checkbox"
               >
                 <input
-                  class="checkbox__input js-checkbox"
+                  class="ons-checkbox__input js-checkbox"
                   id="opn"
                   name="questionnaire"
                   type="checkbox"
                   value="opn"
                 />
                 <label
-                  class="checkbox__label "
+                  class="ons-checkbox__label "
                   for="opn"
                   id="opn-label"
                 >
@@ -90,12 +90,12 @@ Object {
         </fieldset>
         <br />
         <button
-          class="btn "
+          class="ons-btn "
           data-testid="submit-button"
           type="submit"
         >
           <span
-            class="btn__inner"
+            class="ons-btn__inner"
           >
             Save and continue
           </span>
@@ -109,19 +109,19 @@ Object {
       action="#"
     >
       <fieldset
-        class="fieldset"
+        class="ons-fieldset"
       >
         <legend
-          class="fieldset__legend"
+          class="ons-fieldset__legend"
         >
           Select questionnaires
         </legend>
         <button
-          class="btn u-mb-s js-auto-selector btn--small btn--secondary"
+          class="ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary"
           type="button"
         >
           <span
-            class="btn__inner"
+            class="ons-btn__inner"
           >
             <span
               class="js-button-text"
@@ -129,7 +129,7 @@ Object {
               Select All
             </span>
             <span
-              class="u-vh"
+              class="ons-u-vh"
             >
                following checkboxes
             </span>
@@ -140,20 +140,20 @@ Object {
           id="questionnaire"
         >
           <p
-            class="checkboxes__item"
+            class="ons-checkboxes__item"
           >
             <span
-              class="checkbox"
+              class="ons-checkbox"
             >
               <input
-                class="checkbox__input js-checkbox"
+                class="ons-checkbox__input js-checkbox"
                 id="lms"
                 name="questionnaire"
                 type="checkbox"
                 value="lms"
               />
               <label
-                class="checkbox__label "
+                class="ons-checkbox__label "
                 for="lms"
                 id="lms-label"
               >
@@ -163,20 +163,20 @@ Object {
           </p>
           <br />
           <p
-            class="checkboxes__item"
+            class="ons-checkboxes__item"
           >
             <span
-              class="checkbox"
+              class="ons-checkbox"
             >
               <input
-                class="checkbox__input js-checkbox"
+                class="ons-checkbox__input js-checkbox"
                 id="opn"
                 name="questionnaire"
                 type="checkbox"
                 value="opn"
               />
               <label
-                class="checkbox__label "
+                class="ons-checkbox__label "
                 for="opn"
                 id="opn-label"
               >
@@ -189,12 +189,12 @@ Object {
       </fieldset>
       <br />
       <button
-        class="btn "
+        class="ons-btn "
         data-testid="submit-button"
         type="submit"
       >
         <span
-          class="btn__inner"
+          class="ons-btn__inner"
         >
           Save and continue
         </span>

@@ -35,21 +35,21 @@ export const ONSButton = (props: Props) => {
         return "button";
     };
 
-    const className = "btn " +
-        (props.action ? "btn--link " : "") +
-        (props.loading ? "btn--loader is-loading " : "") +
-        (props.field ? "field " : "") +
-        (props.primary ? "" : "btn--secondary ") +
-        (props.small ? "btn--small " : "") +
-        (props.disabled ? "btn--disabled " : "");
+    const className = "ons-btn " +
+        (props.action ? "ons-btn--link " : "") +
+        (props.loading ? "ons-btn--loader ons-is-loading " : "") +
+        (props.field ? "ons-field " : "") +
+        (props.primary ? "" : "ons-btn--secondary ") +
+        (props.small ? "ons-btn--small " : "") +
+        (props.disabled ? "ons-btn--disabled " : "");
     return (
         <button id={props.id} style={spacing()} type={props.submit ? "submit" : "button"} disabled={props.loading || props.disabled}
                 className={className} onClick={props.onClick} data-testid={test_id()}>
-            <span className="btn__inner">
+            <span className="ons-btn__inner">
                 {props.label}
                 {
                     props.loading &&
-                    <svg className="svg-icon uil-default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                    <svg className="ons-svg-icon uil-default" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
                          preserveAspectRatio="xMidYMid">
                         <rect x="0" y="0" width="100" height="100" fill="none" className="bk"></rect>
                         <rect x='46.5' y='40' width='7' height='20' rx='5' ry='5'

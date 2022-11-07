@@ -44,11 +44,11 @@ export const StyledFormField = ({name, description, radioOptions = [], checkboxO
 
 export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement) {
     return (
-        <div className="panel panel--error panel--no-title u-mb-s"
+        <div className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
              id={`${fieldName}-error`}>
-            <span className="u-vh">Error: </span>
-            <div className="panel__body">
-                <p className="panel__error">
+            <span className="ons-u-vh">Error: </span>
+            <div className="ons-panel__body">
+                <p className="ons-panel__error">
                     <strong>{fieldError}</strong>
                 </p>
                 {field}

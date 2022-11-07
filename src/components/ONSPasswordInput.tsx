@@ -39,25 +39,25 @@ export class ONSPasswordInput extends Component <Props, State> {
 
     render() {
         return (
-            <p className="field">
-                <label className="label" htmlFor="password">{this.props.label}</label>
-                <span className="checkbox checkbox--toggle" style={this.spacing()}>
+            <p className="ons-field">
+                <label className="ons-label" htmlFor="password">{this.props.label}</label>
+                <span className="ons-checkbox ons-checkbox--toggle" style={this.spacing()}>
                     <input
                         autoFocus={this.props.autoFocus}
                         autoComplete={"new-password"}
                         type="checkbox"
                         id="password-toggle"
-                        className="checkbox__input"
+                        className="ons-checkbox__input"
                         name="show-password"
                         onClick={this.togglePassword}
                     />
-                    <label id="password-toggle-label" className="checkbox__label " htmlFor="password-toggle">
+                    <label id="password-toggle-label" className="ons-checkbox__label " htmlFor="password-toggle">
                         Show password
                     </label>
                 </span>
                 <input
                     type={this.state.password ? "password" : "text"} id="password"
-                    className="input input--text input-type__input u-mt-xs"
+                    className="ons-input ons-input--text ons-input-type__input ons-u-mt-xs"
                     value={this.props.value}
                     onChange={(e) => this.handleChange(e)}
                     data-testid="login-password-input"
