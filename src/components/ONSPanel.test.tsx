@@ -53,20 +53,19 @@ describe("ONS Panel Test", () => {
 
 
     it("should render the correct children", () => {
-        expect(wrapper(shallow, panelProps).find("div.panel__body").getElement().props.children).toEqual(panelProps.children)
+        expect(wrapper(shallow, panelProps).find("div.ons-panel__body").getElement().props.children).toEqual(panelProps.children)
     })
 
     it("should render the correct status", () => {
-        expect(wrapper(shallow, statusPanelProps).find("div.panel").hasClass('panel--success')).toEqual(true)
+        expect(wrapper(shallow, statusPanelProps).find("div.ons-panel").hasClass('ons-panel--success')).toEqual(true)
     })
     
     it('displays a spacious panel button', () => {
-        expect(wrapper(shallow, spaciousPanelProps).find('div.panel').hasClass('panel--spacious')).toEqual(true)
+        expect(wrapper(shallow, spaciousPanelProps).find('div.ons-panel').hasClass('ons-panel--spacious')).toEqual(true)
     })
 
     it("should render the big success tick", () => {
-        expect(wrapper(shallow, bigIconStatusPanelProps).find("svg.svg-icon").hasClass('svg-icon--xl')).toEqual(true)
-        expect(wrapper(shallow, bigIconStatusPanelProps).find("div.panel__body").hasClass('svg-icon-margin--xl')).toEqual(true)
+        expect(wrapper(shallow, bigIconStatusPanelProps).find("div.ons-panel__body").hasClass('ons-svg-icon-margin--xl')).toEqual(true)
     })
 
     it("matches Snapshot a big success icon", () => {

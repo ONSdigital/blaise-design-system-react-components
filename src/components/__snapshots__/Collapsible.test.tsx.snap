@@ -7,8 +7,6 @@ Object {
     <div>
       <details
         class="ons-collapsible ons-js-collapsible ons-u-mt-l"
-        data-btn-close="Hide this"
-        data-group="collapsible"
         data-save-state="true"
         id="collapsible-with-save"
         role="group"
@@ -17,7 +15,7 @@ Object {
           aria-controls="collapsible-with-save"
           aria-expanded="false"
           class="ons-collapsible__heading ons-js-collapsible-heading"
-          data-ga-action="Close panel"
+          data-ga-action="Open panel"
           data-testid="collapsible-heading"
           role="link"
           tabindex="0"
@@ -56,24 +54,6 @@ Object {
           <p>
             Inside the Collapsible
           </p>
-          <button
-            aria-controls="collapsible-with-save"
-            aria-hidden="true"
-            class="ons-btn ons-btn--small ons-js-collapsible-button ons-btn--secondary ons-u-mt-m"
-            data-ga-action="Close panel"
-            type="button"
-          >
-            <span
-              class="ons-btn__inner ons-js-collapsible-button-inner"
-            >
-              Hide this
-            </span>
-            <span
-              class="ons-btn__context ons-u-vh"
-            >
-              What is the Collapsible title?
-            </span>
-          </button>
         </div>
       </details>
     </div>
@@ -81,8 +61,6 @@ Object {
   "container": <div>
     <details
       class="ons-collapsible ons-js-collapsible ons-u-mt-l"
-      data-btn-close="Hide this"
-      data-group="collapsible"
       data-save-state="true"
       id="collapsible-with-save"
       role="group"
@@ -91,7 +69,7 @@ Object {
         aria-controls="collapsible-with-save"
         aria-expanded="false"
         class="ons-collapsible__heading ons-js-collapsible-heading"
-        data-ga-action="Close panel"
+        data-ga-action="Open panel"
         data-testid="collapsible-heading"
         role="link"
         tabindex="0"
@@ -130,24 +108,6 @@ Object {
         <p>
           Inside the Collapsible
         </p>
-        <button
-          aria-controls="collapsible-with-save"
-          aria-hidden="true"
-          class="ons-btn ons-btn--small ons-js-collapsible-button ons-btn--secondary ons-u-mt-m"
-          data-ga-action="Close panel"
-          type="button"
-        >
-          <span
-            class="ons-btn__inner ons-js-collapsible-button-inner"
-          >
-            Hide this
-          </span>
-          <span
-            class="ons-btn__context ons-u-vh"
-          >
-            What is the Collapsible title?
-          </span>
-        </button>
       </div>
     </details>
   </div>,

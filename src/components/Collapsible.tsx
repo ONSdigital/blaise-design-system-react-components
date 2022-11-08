@@ -16,9 +16,8 @@ function Collapsible({children, title}: Props) {
         <>
             <details id="collapsible-with-save"
                 className={`ons-collapsible ons-js-collapsible ons-u-mt-l`}
-                data-btn-close="Hide this" data-save-state="true" role="group"
-                data-group="collapsible"
-                open={panelOpen}
+                data-save-state="true" 
+                role="group"
             >
                 <summary className="ons-collapsible__heading ons-js-collapsible-heading"
                      role="link"
@@ -28,7 +27,7 @@ function Collapsible({children, title}: Props) {
                      tabIndex={0}
                      aria-expanded={panelOpen ? "true": "false"}
                      aria-controls="collapsible-with-save"
-                     data-ga-action={`${panelOpen ? "Open" : "Close"} panel`}
+                     data-ga-action={`${panelOpen ? "Close" : "Open"} panel`}
                 >
                     <div className="ons-collapsible__controls">
                         <h2 className="ons-collapsible__title">{title}</h2>
@@ -44,17 +43,12 @@ function Collapsible({children, title}: Props) {
                         </span>
                     </div>
                 </summary>
-                <div id="collapsible-with-save-content" className="ons-collapsible__content ons-js-collapsible-content"
-                     aria-hidden={(panelOpen ? "false" : "true")} data-testid="collapsible-content">
+                <div id="collapsible-with-save-content" 
+                    className="ons-collapsible__content ons-js-collapsible-content"
+                    aria-hidden={!panelOpen} 
+                    data-testid="collapsible-content"
+                >
                     {children}
-                    <button type="button" className="ons-btn ons-btn--small ons-js-collapsible-button ons-btn--secondary ons-u-mt-m"
-                        aria-hidden="true" aria-controls="collapsible-with-save" 
-                        data-ga-action="Close panel"
-                        onClick={() => setPanelOpen(false)}
-                    >
-                        <span className="ons-btn__inner ons-js-collapsible-button-inner">Hide this</span>
-                        <span className="ons-btn__context ons-u-vh">{title}</span>
-                    </button>
                 </div>
             </details>
         </>

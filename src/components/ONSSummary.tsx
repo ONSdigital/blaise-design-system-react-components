@@ -33,14 +33,14 @@ interface SummaryItemProps {
 
 function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): ReactElement {
     return (
-        <tbody className="summary__item">
-            <tr className="summary__row summary__row--has-values">
-                <td className="summary__item-title">
-                    <div className="summary__item--text">
+        <tbody className="ons-summary__item">
+            <tr className="ons-summary__row ons-summary__row--has-values">
+                <td className="ons-summary__item-title">
+                    <div className="ons-summary__item--text">
                         {FormatTitle(fieldName)}
                     </div>
                 </td>
-                <td className="summary__values" colSpan={2}>
+                <td className="ons-summary__values" colSpan={2}>
                     {fieldValue}
                 </td>
             </tr>
@@ -56,7 +56,7 @@ function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): ReactEle
     const elementList: ReactElement[] = [];
     for (const group of groupedSummary.groups) {
         elementList.push(
-            <h3 key={`summary-group-heading-${FormatKey(group.title)}`} className="summary__group-title">{group.title}</h3>
+            <h3 key={`summary-group-heading-${FormatKey(group.title)}`} className="ons-summary__group-title">{group.title}</h3>
         );
         const tableFieldsList: ReactElement[] = [];
         for (const field in group.records) {
@@ -65,7 +65,7 @@ function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): ReactEle
             );
         }
         elementList.push(
-            <table key={`summary-table-group-${FormatKey(group.title)}`} className="summary__items">
+            <table key={`summary-table-group-${FormatKey(group.title)}`} className="ons-summary__items">
                 {tableFieldsList}
             </table>
         );

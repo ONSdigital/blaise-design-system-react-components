@@ -13,11 +13,11 @@ describe("Accordion tests", () => {
             expectShowAllButtonToBeDefined(wrapper)
         })
 
-        it("expands a single expandable when 'Show' on that expandable is clicked", async () => {
+        it("expands a single expandable when that expandable is clicked", async () => {
             expectExpandableToBeClosed("Foo", 0, wrapper)
             expectExpandableToBeClosed("Foo Bar", 1, wrapper)
 
-            clickShowOnASingleExpandable(0, wrapper)
+            clickOnASingleExpandable(0, wrapper)
 
             expectExpandableToBeOpen("Foo", 0, wrapper)
             expectExpandableToBeClosed("Foo Bar", 1, wrapper)
@@ -47,11 +47,11 @@ describe("Accordion tests", () => {
                 expectHideAllButtonToBeDefined(wrapper)
             })
 
-            it("hides a single expandable when 'Hide' on that expandable is clicked", async () => {
+            it("hides a single expandable when that expandable is clicked", async () => {
                 expectShowAllButtonToBeDefined(wrapper)
                 clickShowAll(wrapper)
                 expectHideAllButtonToBeDefined(wrapper)
-                clickHideOnASingleExpandable(0, wrapper)
+                clickOnASingleExpandable(0, wrapper)
                 expectExpandableToBeClosed("Foo", 0, wrapper)
                 expectShowAllButtonToBeDefined(wrapper)
             })
@@ -75,7 +75,7 @@ describe("Accordion tests", () => {
 
         it("expands a single expandable when 'Show' on that expandable is clicked", async () => {
             expectExpandableToBeClosed("Foo", 0, wrapper)
-            clickShowOnASingleExpandable(0, wrapper)
+            clickOnASingleExpandable(0, wrapper)
             expectExpandableToBeOpen("Foo", 0, wrapper)
         })
     })
@@ -109,16 +109,9 @@ function clickHideAll(wrapper: RenderResult) {
     fireEvent.click(wrapper.getByText("Hide all"))
 }
 
-function clickShowOnASingleExpandable(id: number, wrapper: RenderResult) {
-    const showButton = wrapper.getByTestId(`accordion-${id}-button`)
-    expect(showButton.textContent).toEqual("Show")
-    fireEvent.click(showButton)
-}
-
-function clickHideOnASingleExpandable(id: number, wrapper: RenderResult) {
-    const hideButton = wrapper.getByTestId(`accordion-${id}-button`)
-    expect(hideButton.textContent).toEqual("Hide")
-    fireEvent.click(hideButton)
+function clickOnASingleExpandable(id: number, wrapper: RenderResult) {
+    const expandable = wrapper.getByTestId(`accordion-${id}-heading`)
+    fireEvent.click(expandable)
 }
 
 function expectShowAllButtonToBeDefined(wrapper: RenderResult) {
@@ -137,12 +130,10 @@ function expectHideAllButtonToBeDefined(wrapper: RenderResult) {
 
 function expectExpandableToBeClosed(title: string, id: number, wrapper: RenderResult) {
     expect(wrapper.getByTestId(`accordion-${id}-heading`)).toHaveTextContent(title)
-    expect(wrapper.getByTestId(`accordion-${id}-button`)).toHaveTextContent("Show")
     expect(wrapper.getByTestId(`accordion-${id}-content`)).toHaveAttribute("aria-hidden", "true")
 }
 
 function expectExpandableToBeOpen(title: string, id: number, wrapper: RenderResult) {
     expect(wrapper.getByTestId(`accordion-${id}-heading`)).toHaveTextContent(title)
-    expect(wrapper.getByTestId(`accordion-${id}-button`)).toHaveTextContent("Hide")
     expect(wrapper.getByTestId(`accordion-${id}-content`)).toHaveAttribute("aria-hidden", "false")
 }

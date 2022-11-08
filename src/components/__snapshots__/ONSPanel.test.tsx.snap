@@ -97,7 +97,7 @@ Object {
           class="ons-panel__icon"
         >
           <svg
-            class="ons-svg-icon svg-icon--xl"
+            class="ons-svg-icon ons-svg-icon--xl"
             viewBox="0 0 13 10"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -125,7 +125,7 @@ Object {
         class="ons-panel__icon"
       >
         <svg
-          class="ons-svg-icon svg-icon--xl"
+          class="ons-svg-icon ons-svg-icon--xl"
           viewBox="0 0 13 10"
           xmlns="http://www.w3.org/2000/svg"
         >

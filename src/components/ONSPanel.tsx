@@ -23,7 +23,7 @@ export const ONSPanel = (props: Props) => {
             {
                 props.status === "success" &&
                 <span className="ons-panel__icon">
-                <svg className={`ons-svg-icon ${props.bigIcon === true ? "svg-icon--xl" : ""}`}
+                <svg className={`ons-svg-icon ${props.bigIcon === true ? "ons-svg-icon--xl" : ""}`}
                      viewBox="0 0 13 10"
                      xmlns="http://www.w3.org/2000/svg">
                 <path
