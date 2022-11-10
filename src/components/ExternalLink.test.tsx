@@ -1,11 +1,11 @@
 import React from "react";
-import {cleanup, render, screen} from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import ExternalLink from "./ExternalLink";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-describe("External Link Test",  () => {
-    Enzyme.configure({adapter: new Adapter()});
+describe("External Link Test", () => {
+    Enzyme.configure({ adapter: new Adapter() });
     afterEach(() => {
         cleanup();
     });
@@ -13,7 +13,7 @@ describe("External Link Test",  () => {
     const Props = {
         text: "Click Me",
         link: "/link",
-        ariaLabel: "Aria label description"
+        ariaLabel: "Aria label description",
     };
 
     it("matches Snapshot", () => {

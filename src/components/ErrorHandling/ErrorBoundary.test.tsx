@@ -1,6 +1,8 @@
-import {cleanup, render, waitFor, screen, fireEvent} from "@testing-library/react";
-import {act} from "react-dom/test-utils";
-import React, {useState} from "react";
+import {
+    cleanup, render, waitFor, screen, fireEvent,
+} from "@testing-library/react";
+import { act } from "react-dom/test-utils";
+import React, { useState } from "react";
 import ErrorBoundary from "./ErrorBoundary";
 
 describe("Error Boundary", () => {
@@ -8,7 +10,7 @@ describe("Error Boundary", () => {
         render(
             <ErrorBoundary errorMessageText="Super dodgy component has failed">
                 <p>Simple text</p>
-            </ErrorBoundary>
+            </ErrorBoundary>,
         );
 
         await waitFor(() => {
@@ -29,7 +31,7 @@ describe("Error Boundary", () => {
         render(
             <ErrorBoundary errorMessageText="Super dodgy component has failed">
                 <DodgyComponent/>
-            </ErrorBoundary>
+            </ErrorBoundary>,
         );
 
         await act(async () => {

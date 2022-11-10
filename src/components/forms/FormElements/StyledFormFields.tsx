@@ -1,6 +1,6 @@
-import React, {Fragment, ReactElement} from "react";
-import {Field, useFormikContext} from "formik";
-import {ONSInputField, RadioFieldset, CheckboxesFieldset} from "./Fields";
+import React, { Fragment, ReactElement } from "react";
+import { Field, useFormikContext } from "formik";
+import { ONSInputField, RadioFieldset, CheckboxesFieldset } from "./Fields";
 
 interface Props {
     description?: string,
@@ -12,31 +12,34 @@ interface Props {
     props: Pick<any, string | number | symbol>
 }
 
-export const StyledFormField = ({name, description, radioOptions = [], checkboxOptions = [], ...props}: Props): ReactElement => {
-    const {errors}: any = useFormikContext();
+export const StyledFormField = ({
+    name, description, radioOptions = [], checkboxOptions = [], ...props
+}: Props): ReactElement => {
+    const { errors }: any = useFormikContext();
     let newField: ReactElement;
 
     if (props.type === "radio") {
-        newField = <RadioFieldset description={description} name={name} radioOptions={radioOptions}
-                                  {...props}/>
+        newField = <RadioFieldset
+            description={description} name={name} radioOptions={radioOptions}
+            {...props}/>;
     } else if (props.type === "checkbox") {
-        newField = <CheckboxesFieldset description={description} name={name} checkboxOptions={checkboxOptions}
-                                  {...props}/>
+        newField = <CheckboxesFieldset
+            description={description} name={name} checkboxOptions={checkboxOptions}
+            {...props}/>;
     } else {
-        newField = <Field name={name} description={description} {...props} component={ONSInputField}/>
+        newField = <Field name={name} description={description} {...props} component={ONSInputField}/>;
     }
 
     return (
         <Fragment key={name}>
             {
-                errors[name] ?
-                    StyledFormFieldErrorWrapper(
+                errors[name]
+                    ? StyledFormFieldErrorWrapper(
                         errors[name],
                         "name",
-                        newField
+                        newField,
                     )
-                    :
-                    newField
+                    : newField
             }
         </Fragment>
     );
@@ -44,8 +47,9 @@ export const StyledFormField = ({name, description, radioOptions = [], checkboxO
 
 export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement) {
     return (
-        <div className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
-             id={`${fieldName}-error`}>
+        <div
+            className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
+            id={`${fieldName}-error`}>
             <span className="ons-u-vh">Error: </span>
             <div className="ons-panel__body">
                 <p className="ons-panel__error">

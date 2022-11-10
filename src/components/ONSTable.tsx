@@ -1,36 +1,37 @@
 import React, { ReactElement } from "react";
 
 interface ONSTable {
-  columns: string[]
-  children: ReactElement
-  tableID?: string
-  tableCaption?: string
+    columns: string[]
+    children: ReactElement
+    tableID?: string
+    tableCaption?: string
 }
 
-function ONSTable({ columns, children, tableCaption, tableID }: ONSTable): ReactElement {
-  return (
-    <>
-      <table
-        className="ons-table"
-        data-testid={tableID}
-        id={tableID}>
-        {tableCaption && <caption className="table__caption">{tableCaption}</caption>}
-        <thead className="ons-table__head">
-          <tr className="ons-table__row">
-            {
-              columns.map((title: string, index: number) => (
-                <th scope="col" className="ons-table__header" key={`${title}-${index}`}>{title}</th>
-              ))
-            }
-          </tr>
-        </thead>
-        <tbody className="ons-table__body">
-          {children}
-        </tbody>
-      </table>
-    </>
-  );
-};
-
+function ONSTable({
+    columns, children, tableCaption, tableID,
+}: ONSTable): ReactElement {
+    return (
+        <>
+            <table
+                className="ons-table"
+                data-testid={tableID}
+                id={tableID}>
+                {tableCaption && <caption className="table__caption">{tableCaption}</caption>}
+                <thead className="ons-table__head">
+                    <tr className="ons-table__row">
+                        {
+                            columns.map((title: string, index: number) => (
+                                <th scope="col" className="ons-table__header" key={`${title}-${index}`}>{title}</th>
+                            ))
+                        }
+                    </tr>
+                </thead>
+                <tbody className="ons-table__body">
+                    {children}
+                </tbody>
+            </table>
+        </>
+    );
+}
 
 export default ONSTable;

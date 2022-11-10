@@ -1,5 +1,4 @@
-import {FormatTitle} from "./TextFormatting";
-
+import { FormatTitle } from "./TextFormatting";
 
 describe("Text formatting", () => {
     const testCases = [

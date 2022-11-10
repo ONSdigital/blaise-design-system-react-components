@@ -3,7 +3,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 export type ExpandableContent = {
     content: ReactElement
     title: string
-}
+};
 
 export interface ExpandableProps extends ExpandableContent {
     id: number
@@ -11,27 +11,31 @@ export interface ExpandableProps extends ExpandableContent {
     setPanelsOpen: (panelsOpen: boolean[]) => void
 }
 
-function Expandable({ title, content, id, panelsOpen, setPanelsOpen }: ExpandableProps): ReactElement {
+function Expandable({
+    title, content, id, panelsOpen, setPanelsOpen,
+}: ExpandableProps): ReactElement {
     function togglePanel(event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
-        const newPanelsOpen = [...panelsOpen]
-        newPanelsOpen[id] = !newPanelsOpen[id]
-        setPanelsOpen(newPanelsOpen)
+        const newPanelsOpen = [...panelsOpen];
+        newPanelsOpen[id] = !newPanelsOpen[id];
+        setPanelsOpen(newPanelsOpen);
 
         event.preventDefault();
     }
 
     function panelIsOpen(): boolean {
-        return panelsOpen[id]
+        return panelsOpen[id];
     }
 
     return (
-        <details id={`accordion-${id}`}
-            className={`ons-collapsible ons-js-collapsible ons-collapsible--accordion `}
-            data-btn-close="Hide" 
+        <details
+            id={`accordion-${id}`}
+            className={"ons-collapsible ons-js-collapsible ons-collapsible--accordion "}
+            data-btn-close="Hide"
             data-group="accordion"
             open={panelIsOpen()}
         >
-            <summary className="ons-collapsible__heading ons-js-collapsible-heading"
+            <summary
+                className="ons-collapsible__heading ons-js-collapsible-heading"
                 role="link"
                 data-testid={`accordion-${id}-heading`}
                 onClick={togglePanel}
@@ -44,7 +48,8 @@ function Expandable({ title, content, id, panelsOpen, setPanelsOpen }: Expandabl
                 <div className="ons-collapsible__controls">
                     <h2 className="ons-collapsible__title">{title}</h2>
                     <span className="ons-collapsible__icon">
-                        <svg className="ons-svg-icon"
+                        <svg
+                            className="ons-svg-icon"
                             viewBox="0 0 7.5 12.85"
                             xmlns="http://www.w3.org/2000/svg"
                             focusable="false">
@@ -55,7 +60,8 @@ function Expandable({ title, content, id, panelsOpen, setPanelsOpen }: Expandabl
                     </span>
                 </div>
             </summary>
-            <div id={`accordion-${id}-content`}
+            <div
+                id={`accordion-${id}-content`}
                 data-testid={`accordion-${id}-content`}
                 className="ons-collapsible__content ons-js-collapsible-content"
                 aria-hidden={(panelIsOpen() ? "false" : "true")}
@@ -63,7 +69,7 @@ function Expandable({ title, content, id, panelsOpen, setPanelsOpen }: Expandabl
                 {content}
             </div>
         </details>
-    )
+    );
 }
 
 interface AccordionProps {
@@ -82,28 +88,29 @@ function ShowAll({ showAllEnabled, panelsOpen, setPanelsOpen }: ShowAllProps): R
 
     useEffect(() => {
         if (panelsOpen.includes(false)) {
-            setShowing(false)
+            setShowing(false);
         } else {
-            setShowing(true)
+            setShowing(true);
         }
-    }, [panelsOpen, setShowing])
+    }, [panelsOpen, setShowing]);
 
     if (showAllEnabled) {
         return (
-            <button data-testid="accordion-show-all" type="button" className="ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small" data-close-all="Hide all" data-group="accordion"
+            <button
+                data-testid="accordion-show-all" type="button" className="ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small" data-close-all="Hide all" data-group="accordion"
                 onClick={() => setPanelsOpen(new Array(panelsOpen.length).fill(!showing))}
             >
                 <span className="ons-btn__inner ons-js-collapsible-all-inner">{showing ? "Hide all" : "Show all"}</span>
             </button>
-        )
+        );
     }
-    return <></>
+    return <></>;
 }
 
 export default function Accordion({ ShowAllEnabled, Expandables }: AccordionProps): ReactElement {
-    const expandableStates = []
+    const expandableStates = [];
     for (let i = 0; i < Expandables.length; i++) {
-        expandableStates.push(false)
+        expandableStates.push(false);
     }
     const [panelsOpen, setPanelsOpen] = useState<boolean[]>(expandableStates);
 
@@ -115,12 +122,12 @@ export default function Accordion({ ShowAllEnabled, Expandables }: AccordionProp
                     return <Expandable
                         key={`accordion-${index}`}
                         content={expandable.content}
-                        title={expandable.title} 
+                        title={expandable.title}
                         id={index}
                         setPanelsOpen={setPanelsOpen}
-                        panelsOpen={panelsOpen} />
+                        panelsOpen={panelsOpen} />;
                 })
             }
         </div>
-    )
+    );
 }

@@ -1,5 +1,5 @@
 function replaceUnderscoreWithSpaces(text: string): string {
-    return text.split("_").join(" ")
+    return text.split("_").join(" ");
 }
 
 function FormatTitle(text: string): string {
@@ -15,7 +15,7 @@ function TitleCase(stringToConvert: string): string {
 }
 
 function FormatKey(text: string): string {
-    return text.split(" ").join("-")
+    return text.split(" ").join("-");
 }
 
-export {FormatTitle, TitleCase, FormatKey};
+export { FormatTitle, TitleCase, FormatKey };

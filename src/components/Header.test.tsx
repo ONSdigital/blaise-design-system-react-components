@@ -10,7 +10,7 @@ describe("Header Test", () => {
     });
 
     const Props = {
-        title: "App Title"
+        title: "App Title",
     };
 
     it("matches Snapshot", () => {
@@ -22,7 +22,6 @@ describe("Header Test", () => {
         const wrapper = render(<Header title={Props.title} signOutButton={true} signOutFunction={jest.fn()} />);
         expect(wrapper).toMatchSnapshot();
     });
-
 
     it("should not show the signout button by default", () => {
         const wrapper = render(<Header title={Props.title} />);
@@ -45,13 +44,11 @@ describe("Header Test", () => {
         const mockFunction = sinon.spy();
         const wrapper = render(<Header title={Props.title} signOutButton={true} signOutFunction={mockFunction} />);
         act(() => {
-            fireEvent.click(wrapper.getByText(/Save and sign out/))
+            fireEvent.click(wrapper.getByText(/Save and sign out/));
         });
 
-        expect(mockFunction).toHaveProperty('callCount', 1);
+        expect(mockFunction).toHaveProperty("callCount", 1);
     });
-
-
 
     it("should render correctly", () => {
         const wrapper = render(<Header title={Props.title} />);

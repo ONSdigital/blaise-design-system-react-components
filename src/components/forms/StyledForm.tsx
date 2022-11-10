@@ -1,8 +1,8 @@
-import React, {Fragment} from 'react';
-import {Form, Formik} from "formik";
-import StyledFormErrorSummary from './StyledFormErrorSummary';
-import {ONSButton} from "../ONSButton";
-import {StyledFormField} from "./FormElements/StyledFormFields";
+import React, { Fragment } from "react";
+import { Form, Formik } from "formik";
+import StyledFormErrorSummary from "./StyledFormErrorSummary";
+import { ONSButton } from "../ONSButton";
+import { StyledFormField } from "./FormElements/StyledFormFields";
 
 export interface RadioSpecifyOption {
     id: string
@@ -12,7 +12,6 @@ export interface RadioSpecifyOption {
     type: string
     validate?: (value: string) => string | undefined
 }
-
 
 export interface RadioFieldsetObject {
     value: string
@@ -66,10 +65,9 @@ export interface StyledFormProps {
  *  - fields: List of fields to display on form.
  *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
-function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
-
+function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) {
     let initialFieldValues: any = {};
-    fields.forEach(({name, initial_value}) => {
+    fields.forEach(({ name, initial_value }) => {
         initialFieldValues[name] = initial_value;
     });
 
@@ -78,16 +76,16 @@ function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
             validateOnBlur={false}
             validateOnChange={false}
             initialValues={initialFieldValues}
-            onSubmit={(values, {setSubmitting}) => {
+            onSubmit={(values, { setSubmitting }) => {
                 onSubmitFunction(values, setSubmitting);
             }}
         >
-            {({isValid, isSubmitting}) => (
+            {({ isValid, isSubmitting }) => (
                 <Form>
                     <StyledFormErrorSummary/>
                     {
                         fields.map((field, index) => {
-                            field.autoFocus = (isValid && index === 0)
+                            field.autoFocus = (isValid && index === 0);
 
                             return (
                                 <Fragment key={field.name}>
@@ -95,7 +93,7 @@ function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
                                         <StyledFormField {...field}/>
                                     }
                                 </Fragment>
-                            )
+                            );
                         })
                     }
                     <br/>
@@ -108,7 +106,7 @@ function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
                 </Form>
             )}
         </Formik>
-    )
+    );
 }
 
 export default StyledForm;

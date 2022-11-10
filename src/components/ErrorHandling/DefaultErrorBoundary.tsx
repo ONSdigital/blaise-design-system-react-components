@@ -21,7 +21,7 @@ export default class DefaultErrorBoundary extends React.Component<Props, State> 
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         this.setState({
-            errorInfo: errorInfo
+            errorInfo: errorInfo,
         });
     }
 

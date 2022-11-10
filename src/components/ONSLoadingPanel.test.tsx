@@ -1,6 +1,6 @@
 import React from "react";
-import {cleanup, render} from "@testing-library/react";
-import {ONSLoadingPanel} from "./ONSLoadingPanel";
+import { cleanup, render } from "@testing-library/react";
+import { ONSLoadingPanel } from "./ONSLoadingPanel";
 
 describe("Header Test", () => {
     afterEach(() => {
@@ -22,4 +22,3 @@ describe("Header Test", () => {
         expect(wrapper.getByText(/A different message for loading/)).toBeDefined();
     });
 });
-

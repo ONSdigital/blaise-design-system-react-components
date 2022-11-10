@@ -1,4 +1,4 @@
-import React, {ChangeEvent, Component} from "react";
+import React, { ChangeEvent, Component } from "react";
 
 export interface Props {
     label?: string
@@ -16,11 +16,11 @@ interface State {
 export class ONSPasswordInput extends Component <Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = {password: true};
+        this.state = { password: true };
     }
 
     togglePassword = () => {
-        this.setState({password: !this.state.password});
+        this.setState({ password: !this.state.password });
     };
 
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,8 +34,7 @@ export class ONSPasswordInput extends Component <Props, State> {
             marginTop: String(this.props.marginTop) + "px",
         };
         return buttonStyle;
-    }
-
+    };
 
     render() {
         return (

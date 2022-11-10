@@ -5,7 +5,7 @@ import React, { ReactElement } from "react";
 type Group = {
     title: string
     records: Record<string, any>
-}
+};
 class GroupedSummary {
     groups: Group[];
 
@@ -56,18 +56,18 @@ function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): ReactEle
     const elementList: ReactElement[] = [];
     for (const group of groupedSummary.groups) {
         elementList.push(
-            <h3 key={`summary-group-heading-${FormatKey(group.title)}`} className="ons-summary__group-title">{group.title}</h3>
+            <h3 key={`summary-group-heading-${FormatKey(group.title)}`} className="ons-summary__group-title">{group.title}</h3>,
         );
         const tableFieldsList: ReactElement[] = [];
         for (const field in group.records) {
             tableFieldsList.push(
-                <SummaryItemRow key={`summary-table-row-${FormatKey(field)}`} fieldName={field} fieldValue={group.records[field]} />
+                <SummaryItemRow key={`summary-table-row-${FormatKey(field)}`} fieldName={field} fieldValue={group.records[field]} />,
             );
         }
         elementList.push(
             <table key={`summary-table-group-${FormatKey(group.title)}`} className="ons-summary__items">
                 {tableFieldsList}
-            </table>
+            </table>,
         );
     }
     return (

@@ -1,4 +1,4 @@
-import React, {ReactElement} from "react";
+import React, { ReactElement } from "react";
 
 /**
  * This is a Standard Panel with an error status, with a prepared message.

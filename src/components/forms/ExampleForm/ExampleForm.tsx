@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
-import {validateEmail, validateInstrumentName, validateName, validatePassword} from "./FormValidation";
-import StyledForm, {FormFieldObject} from "../StyledForm";
+import React, { useState } from "react";
+import {
+    validateEmail, validateInstrumentName, validateName, validatePassword,
+} from "./FormValidation";
+import StyledForm, { FormFieldObject } from "../StyledForm";
 
 function ExampleForm() {
-
     const [formStatus, setFormStatus] = useState<string>("");
 
     /** List of fields in order for form generation */
@@ -12,28 +13,28 @@ function ExampleForm() {
             name: "Instrument",
             description: "Instrument Name must be longer than 7 characters",
             type: "text",
-            validate: validateInstrumentName
+            validate: validateInstrumentName,
         },
         {
             name: "name",
             description: "Name must be longer than 2 characters",
             type: "text",
-            validate: validateName
+            validate: validateName,
         },
         {
             name: "Email",
             id: "email-field",
             description: "This will not be stored and only used once to send your confirmation",
             type: "email",
-            validate: validateEmail
+            validate: validateEmail,
         },
         {
             name: "Password",
             description: "Password must be longer than 6 characters",
             type: "password",
-            validate: validatePassword
-        }
-    ]
+            validate: validatePassword,
+        },
+    ];
 
     /**
      * Function is called after submit of form and all field validation is valid
@@ -43,7 +44,7 @@ function ExampleForm() {
      */
     function onFormSubmission(formValues: any, setSubmitting: (isSubmitting: boolean) => void): void {
         console.warn(formValues);
-        setFormStatus(`Form submitted for user ${formValues.name}`)
+        setFormStatus(`Form submitted for user ${formValues.name}`);
         setSubmitting(false);
     }
 
@@ -52,8 +53,7 @@ function ExampleForm() {
             <p>{formStatus}</p>
             <StyledForm fields={formElements} onSubmitFunction={onFormSubmission}/>
         </>
-    )
+    );
 }
-
 
 export default ExampleForm;

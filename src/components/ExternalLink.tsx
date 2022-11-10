@@ -1,5 +1,4 @@
-import React, {ReactElement} from "react";
-
+import React, { ReactElement } from "react";
 
 export interface Props {
     text: string
@@ -8,20 +7,21 @@ export interface Props {
     id?: string
 }
 
-
 function ExternalLink(props: Props): ReactElement {
     return (
         <>
-            <a href={props.link}
-               id={props.id}
-               aria-label={props.ariaLabel}
-               className="ons-external-link"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a
+                href={props.link}
+                id={props.id}
+                aria-label={props.ariaLabel}
+                className="ons-external-link"
+                target="_blank"
+                rel="noopener noreferrer">
                 {props.text}
-                <svg className="ons-svg-icon"
-                     viewBox="0 0 12 12"
-                     xmlns="http://www.w3.org/2000/svg">
+                <svg
+                    className="ons-svg-icon"
+                    viewBox="0 0 12 12"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M13.5,9H13a.5.5,0,0,0-.5.5v3h-9v-9h3A.5.5,0,0,0,7,3V2.5A.5.5,0,0,0,6.5,2h-4a.5.5,0,0,0-.5.5v11a.5.5,0,0,0,.5.5h11a.5.5,0,0,0,.5-.5v-4A.5.5,0,0,0,13.5,9Z"
                         transform="translate(-2 -1.99)"/>
