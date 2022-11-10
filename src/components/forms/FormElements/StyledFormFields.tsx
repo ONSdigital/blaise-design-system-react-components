@@ -1,5 +1,6 @@
 import React, { Fragment, ReactElement } from "react";
 import { Field, useFormikContext } from "formik";
+// eslint-disable-next-line import/no-cycle
 import { ONSInputField, RadioFieldset, CheckboxesFieldset } from "./Fields";
 
 interface Props {
@@ -10,6 +11,23 @@ interface Props {
     autoFocus: boolean,
     type?: string,
     props: Pick<any, string | number | symbol>
+}
+
+export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement) {
+    return (
+        <div
+            className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
+            id={`${fieldName}-error`}
+        >
+            <span className="ons-u-vh">Error: </span>
+            <div className="ons-panel__body">
+                <p className="ons-panel__error">
+                    <strong>{fieldError}</strong>
+                </p>
+                {field}
+            </div>
+        </div>
+    );
 }
 
 export const StyledFormField = ({
@@ -54,20 +72,3 @@ export const StyledFormField = ({
         </Fragment>
     );
 };
-
-export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement) {
-    return (
-        <div
-            className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
-            id={`${fieldName}-error`}
-        >
-            <span className="ons-u-vh">Error: </span>
-            <div className="ons-panel__body">
-                <p className="ons-panel__error">
-                    <strong>{fieldError}</strong>
-                </p>
-                {field}
-            </div>
-        </div>
-    );
-}

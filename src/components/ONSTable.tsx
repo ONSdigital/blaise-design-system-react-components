@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-interface ONSTable {
+interface ONSTableProps {
     columns: string[]
     children: ReactElement
     tableID?: string
@@ -9,7 +9,7 @@ interface ONSTable {
 
 function ONSTable({
     columns, children, tableCaption, tableID,
-}: ONSTable): ReactElement {
+}: ONSTableProps): ReactElement {
     return (
         <table
             className="ons-table"

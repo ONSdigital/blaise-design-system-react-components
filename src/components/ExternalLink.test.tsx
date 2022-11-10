@@ -33,7 +33,7 @@ describe("External Link Test", () => {
 
     it("should render with the correct href passed in", () => {
         const wrapper = shallow(<ExternalLink {...Props} />);
-        const href = wrapper.find("a").props().href;
+        const { href } = wrapper.find("a").props();
         expect(href).toEqual(Props.link);
     });
 

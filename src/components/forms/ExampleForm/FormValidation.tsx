@@ -74,7 +74,7 @@ export function validateRadio(value: string) {
 
 export function validateCheckbox(value: string[]) {
     let error;
-    if (!value || value.length == 0) {
+    if (!value || value.length === 0) {
         error = "Select an option";
     }
     return error;

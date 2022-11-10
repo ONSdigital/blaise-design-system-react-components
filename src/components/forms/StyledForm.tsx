@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Form, Formik } from "formik";
 import StyledFormErrorSummary from "./StyledFormErrorSummary";
 import { ONSButton } from "../ONSButton";
+// eslint-disable-next-line import/no-cycle
 import { StyledFormField } from "./FormElements/StyledFormFields";
 
 export interface RadioSpecifyOption {
@@ -85,6 +86,7 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
                     <StyledFormErrorSummary />
                     {
                         fields.map((field, index) => {
+                            // eslint-disable-next-line no-param-reassign
                             field.autoFocus = (isValid && index === 0);
 
                             return (
@@ -99,7 +101,7 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
                     <br />
                     <ONSButton
                         submit
-                        label={(submitLabel ? submitLabel : "Save and continue")}
+                        label={(submitLabel || "Save and continue")}
                         primary
                         testid="submit"
                         loading={isSubmitting}

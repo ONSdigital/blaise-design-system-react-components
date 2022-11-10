@@ -1,5 +1,6 @@
 import React, { Fragment, ReactElement } from "react";
 import { Field, useFormikContext } from "formik";
+// eslint-disable-next-line import/no-cycle
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 import { isObjectWithProperty } from "../../../utilities/Types";
 
@@ -109,7 +110,7 @@ export function CheckboxesFieldset({
     const allValues = (checkboxOptions || []).map((checkboxOption) => checkboxOption.value);
 
     function areArraysEqual(array1: any[], array2: any[]) {
-        if (array1.length != array2.length) {
+        if (array1.length !== array2.length) {
             return false;
         }
         return array1.every((item) => array2.includes(item));

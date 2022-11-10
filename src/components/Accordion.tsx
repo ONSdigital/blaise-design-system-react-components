@@ -115,10 +115,8 @@ function ShowAll({ showAllEnabled, panelsOpen, setPanelsOpen }: ShowAllProps): R
 }
 
 export default function Accordion({ ShowAllEnabled, Expandables }: AccordionProps): ReactElement {
-    const expandableStates = [];
-    for (let i = 0; i < Expandables.length; i++) {
-        expandableStates.push(false);
-    }
+    const expandableStates = new Array(Expandables.length).fill(false);
+
     const [panelsOpen, setPanelsOpen] = useState<boolean[]>(expandableStates);
 
     return (

@@ -4,7 +4,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 
 import Adapter from "enzyme-adapter-react-16";
 import { ONSTextInput } from "./ONSTextInput";
-import { validateInstrumentName } from "../components/forms/ExampleForm/FormValidation";
+import { validateInstrumentName } from "./forms/ExampleForm/FormValidation";
 
 describe("ONS Text Input Test", () => {
     Enzyme.configure({ adapter: new Adapter() });

@@ -21,7 +21,7 @@ export const ONSLoadingPanel = ({ hidden, message }: Props) => (
                 width={30}
             />
             {
-                message ? message : "Loading"
+                message || "Loading"
             }
         </div>
     </ONSPanel>
