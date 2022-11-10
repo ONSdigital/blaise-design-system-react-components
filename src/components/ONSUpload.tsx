@@ -22,8 +22,9 @@ export class ONSUpload extends Component <Props> {
         return (
             <div className="ons-field">
                 <p className="ons-field">
-                    <label className="ons-label" htmlFor={this.props.fileID}>{this.props.label}
-                        <br/>
+                    <label className="ons-label" htmlFor={this.props.fileID}>
+                        {this.props.label}
+                        <br />
                         <span className="ons-label__description">{this.props.description}</span>
                     </label>
                     <input
@@ -34,7 +35,8 @@ export class ONSUpload extends Component <Props> {
                         name={this.props.fileName}
                         accept={this.props.accept}
                         onChange={(e) => this.handleChange(e)}
-                        disabled={(this.props.disabled)}/>
+                        disabled={(this.props.disabled)}
+                    />
                 </p>
             </div>
         );

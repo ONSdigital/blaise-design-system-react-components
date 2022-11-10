@@ -6,7 +6,7 @@ import ExampleForm from "./ExampleForm/ExampleForm";
 import StyledForm from "./StyledForm";
 
 test("error appears on submit of empty form", async () => {
-    render(<ExampleForm/>);
+    render(<ExampleForm />);
 
     const submitButton = screen.getByTestId(/submit-button/i);
     fireEvent.click(submitButton);
@@ -28,7 +28,7 @@ test("error appears on submit of empty form", async () => {
 });
 
 test("only one error appears on submit of one incorrect field", async () => {
-    render(<ExampleForm/>);
+    render(<ExampleForm />);
 
     fireEvent.input(screen.getByLabelText(/Instrument/i), {
         target: {
@@ -78,7 +78,7 @@ test("only one error appears on submit of one incorrect field", async () => {
 });
 
 test("submit function is called when form is valid", async () => {
-    render(<ExampleForm/>);
+    render(<ExampleForm />);
 
     fireEvent.input(screen.getByLabelText(/Instrument/i), {
         target: {
@@ -125,7 +125,7 @@ test("custom submit button label can be set", async () => {
         },
     ];
 
-    render(<StyledForm fields={fields} onSubmitFunction={() => console.log("")} submitLabel={"Press for bacon"}/>);
+    render(<StyledForm fields={fields} onSubmitFunction={() => console.log("")} submitLabel="Press for bacon" />);
 
     await waitFor(() => {
         const successMessage = screen.getByText(/Press for bacon/i);
@@ -141,7 +141,7 @@ test("default submit button label is used when no label is passed in", async () 
         },
     ];
 
-    render(<StyledForm fields={fields} onSubmitFunction={() => console.log("")}/>);
+    render(<StyledForm fields={fields} onSubmitFunction={() => console.log("")} />);
 
     await waitFor(() => {
         const successMessage = screen.getByText(/Save and continue/i);

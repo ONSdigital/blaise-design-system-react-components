@@ -8,8 +8,8 @@ describe("ONS Error Panel Test", () => {
     Enzyme.configure({ adapter: new Adapter() });
 
     it("matches Snapshot", () => {
-        expect(render(<ONSErrorPanel/>)).toMatchSnapshot();
+        expect(render(<ONSErrorPanel />)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(shallow(<ONSErrorPanel/>).exists()).toEqual(true));
+    it("should render correctly", () => expect(shallow(<ONSErrorPanel />).exists()).toEqual(true));
 });

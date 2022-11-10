@@ -29,7 +29,7 @@ function Expandable({
     return (
         <details
             id={`accordion-${id}`}
-            className={"ons-collapsible ons-js-collapsible ons-collapsible--accordion "}
+            className="ons-collapsible ons-js-collapsible ons-collapsible--accordion "
             data-btn-close="Hide"
             data-group="accordion"
             open={panelIsOpen()}
@@ -52,10 +52,12 @@ function Expandable({
                             className="ons-svg-icon"
                             viewBox="0 0 7.5 12.85"
                             xmlns="http://www.w3.org/2000/svg"
-                            focusable="false">
+                            focusable="false"
+                        >
                             <path
                                 d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
-                                transform="translate(-5.02 -1.59)" />
+                                transform="translate(-5.02 -1.59)"
+                            />
                         </svg>
                     </span>
                 </div>
@@ -97,13 +99,18 @@ function ShowAll({ showAllEnabled, panelsOpen, setPanelsOpen }: ShowAllProps): R
     if (showAllEnabled) {
         return (
             <button
-                data-testid="accordion-show-all" type="button" className="ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small" data-close-all="Hide all" data-group="accordion"
+                data-testid="accordion-show-all"
+                type="button"
+                className="ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small"
+                data-close-all="Hide all"
+                data-group="accordion"
                 onClick={() => setPanelsOpen(new Array(panelsOpen.length).fill(!showing))}
             >
                 <span className="ons-btn__inner ons-js-collapsible-all-inner">{showing ? "Hide all" : "Show all"}</span>
             </button>
         );
     }
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return <></>;
 }
 
@@ -118,15 +125,16 @@ export default function Accordion({ ShowAllEnabled, Expandables }: AccordionProp
         <div id="accordion" className="ons-accordion">
             <ShowAll showAllEnabled={ShowAllEnabled} panelsOpen={panelsOpen} setPanelsOpen={setPanelsOpen} />
             {
-                Expandables.map((expandable: ExpandableContent, index: number) => {
-                    return <Expandable
+                Expandables.map((expandable: ExpandableContent, index: number) => (
+                    <Expandable
                         key={`accordion-${index}`}
                         content={expandable.content}
                         title={expandable.title}
                         id={index}
                         setPanelsOpen={setPanelsOpen}
-                        panelsOpen={panelsOpen} />;
-                })
+                        panelsOpen={panelsOpen}
+                    />
+                ))
             }
         </div>
     );

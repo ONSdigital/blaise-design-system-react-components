@@ -1,6 +1,5 @@
 import React from "react";
-import { ComponentStory } from "@storybook/react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, Meta } from "@storybook/react";
 import Collapsible from "./Collapsible";
 
 export default {
@@ -9,7 +8,7 @@ export default {
 } as Meta;
 
 // 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof Collapsible> = (args) => <Collapsible {...args}/>;
+const Template: ComponentStory<typeof Collapsible> = (args) => <Collapsible {...args} />;
 
 // 👇 Each story then reuses that template
 export const Default = Template.bind({});

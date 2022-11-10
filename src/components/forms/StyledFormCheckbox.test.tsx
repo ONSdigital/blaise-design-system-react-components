@@ -6,13 +6,13 @@ import ExampleCheckboxForm from "./ExampleForm/ExampleCheckboxForm";
 import StyledForm from "./StyledForm";
 
 test("it matches snapshots", async () => {
-    const formPage = render(<ExampleCheckboxForm/>);
+    const formPage = render(<ExampleCheckboxForm />);
 
     expect(formPage).toMatchSnapshot();
 });
 
 test("error appears on submit of empty form", async () => {
-    render(<ExampleCheckboxForm/>);
+    render(<ExampleCheckboxForm />);
 
     fireEvent.click(screen.getByTestId(/submit-button/i));
 
@@ -26,7 +26,7 @@ test("error appears on submit of empty form", async () => {
 });
 
 test("submit function is called when one checkbox is selected", async () => {
-    render(<ExampleCheckboxForm/>);
+    render(<ExampleCheckboxForm />);
 
     fireEvent.click(screen.getByLabelText(/LMS/i));
 
@@ -39,7 +39,7 @@ test("submit function is called when one checkbox is selected", async () => {
 });
 
 test("submit function is called when multiple checkboxes are selected", async () => {
-    render(<ExampleCheckboxForm/>);
+    render(<ExampleCheckboxForm />);
 
     fireEvent.click(screen.getByLabelText(/LMS/i));
     fireEvent.click(screen.getByLabelText(/OPN/i));
@@ -69,20 +69,20 @@ test("setting initial value", async () => {
 
     const submitFunction = jest.fn();
 
-    render(<StyledForm fields={fields} onSubmitFunction={submitFunction}/>);
+    render(<StyledForm fields={fields} onSubmitFunction={submitFunction} />);
 
     fireEvent.click(screen.getByTestId(/submit-button/i));
 
     await waitFor(() => {
         expect(submitFunction).toBeCalledWith(
-            expect.objectContaining({ "topping": ["bacon", "pineapple"] }),
+            expect.objectContaining({ topping: ["bacon", "pineapple"] }),
             expect.any(Function),
         );
     });
 });
 
 test("all checkboxes are selected when select all button is clicked", async () => {
-    render(<ExampleCheckboxForm/>);
+    render(<ExampleCheckboxForm />);
 
     fireEvent.click(screen.getByText(/Select all/i));
 
@@ -95,7 +95,7 @@ test("all checkboxes are selected when select all button is clicked", async () =
 });
 
 test("all checkboxes are deselected when unselect all button is clicked", async () => {
-    render(<ExampleCheckboxForm/>);
+    render(<ExampleCheckboxForm />);
 
     fireEvent.click(screen.getByText(/Select all/i));
     fireEvent.click(screen.getByText(/Unselect all/i));

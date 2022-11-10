@@ -16,11 +16,11 @@ export default {
     title: "Components/Error Boundary/Panel",
 } as Meta;
 
-const Template: ComponentStory<typeof ErrorBoundary> = (args) => <ErrorBoundary {...args}/>;
+const Template: ComponentStory<typeof ErrorBoundary> = (args) => <ErrorBoundary {...args} />;
 
 export const Panel = Template.bind({});
 
 Panel.args = {
-    children: <DodgyComponent/>,
+    children: <DodgyComponent />,
     errorMessageText: "D'oh!",
 };

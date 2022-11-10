@@ -1,6 +1,6 @@
 import { Data } from "react-csv/components/CommonPropTypes";
-import { FormatTitle, FormatKey } from "../utilities/TextFormatting";
 import React, { ReactElement } from "react";
+import { FormatTitle, FormatKey } from "../utilities/TextFormatting";
 
 type Group = {
     title: string

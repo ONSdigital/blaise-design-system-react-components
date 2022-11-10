@@ -1,6 +1,5 @@
 import React from "react";
-import { ComponentStory } from "@storybook/react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, Meta } from "@storybook/react";
 import { ONSPanel } from "./ONSPanel";
 
 export default {
@@ -9,7 +8,7 @@ export default {
 } as Meta;
 
 // 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSPanel> = (args) => <ONSPanel {...args}/>;
+const Template: ComponentStory<typeof ONSPanel> = (args) => <ONSPanel {...args} />;
 
 // 👇 Each story then reuses that template
 export const Info = Template.bind({});
@@ -25,7 +24,12 @@ Info.args = {
 Success.args = {
     status: "success",
     bigIcon: true,
-    children: <div><h1>Title in a panel</h1><p>And then some text</p></div>,
+    children: (
+        <div>
+            <h1>Title in a panel</h1>
+            <p>And then some text</p>
+        </div>
+    ),
 };
 
 Error.args = {

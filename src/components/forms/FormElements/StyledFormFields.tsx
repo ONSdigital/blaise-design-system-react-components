@@ -19,15 +19,25 @@ export const StyledFormField = ({
     let newField: ReactElement;
 
     if (props.type === "radio") {
-        newField = <RadioFieldset
-            description={description} name={name} radioOptions={radioOptions}
-            {...props}/>;
+        newField = (
+            <RadioFieldset
+                description={description}
+                name={name}
+                radioOptions={radioOptions}
+                {...props}
+            />
+        );
     } else if (props.type === "checkbox") {
-        newField = <CheckboxesFieldset
-            description={description} name={name} checkboxOptions={checkboxOptions}
-            {...props}/>;
+        newField = (
+            <CheckboxesFieldset
+                description={description}
+                name={name}
+                checkboxOptions={checkboxOptions}
+                {...props}
+            />
+        );
     } else {
-        newField = <Field name={name} description={description} {...props} component={ONSInputField}/>;
+        newField = <Field name={name} description={description} {...props} component={ONSInputField} />;
     }
 
     return (
@@ -49,7 +59,8 @@ export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: strin
     return (
         <div
             className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
-            id={`${fieldName}-error`}>
+            id={`${fieldName}-error`}
+        >
             <span className="ons-u-vh">Error: </span>
             <div className="ons-panel__body">
                 <p className="ons-panel__error">

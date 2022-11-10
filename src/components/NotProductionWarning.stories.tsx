@@ -7,4 +7,4 @@ export default {
     title: "Components/Not Production Warning",
 } as Meta;
 
-export const Default = () => <NotProductionWarning/>;
+export const Default = () => <NotProductionWarning />;

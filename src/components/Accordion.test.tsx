@@ -1,6 +1,6 @@
 import React from "react";
-import Accordion from "./Accordion";
 import { render, fireEvent, RenderResult } from "@testing-library/react";
+import Accordion from "./Accordion";
 
 describe("Accordion tests", () => {
     describe("when show all is enabled", () => {
@@ -84,12 +84,14 @@ describe("Accordion tests", () => {
 function renderAccordionWithShowAll(): RenderResult {
     return render(
         <Accordion
-            ShowAllEnabled={true} Expandables={
+            ShowAllEnabled
+            Expandables={
                 [
                     { title: "Foo", content: <p>bar</p> },
                     { title: "Bar", content: <p>bar foo</p> },
                 ]
-            } />,
+            }
+        />,
     );
 }
 
@@ -100,7 +102,8 @@ function renderAccordionWithoutShowAll(): RenderResult {
                 { title: "Foo", content: <p>bar</p> },
                 { title: "Bar", content: <p>bar foo</p> },
             ]
-        } />,
+        }
+        />,
     );
 }
 

@@ -7,4 +7,4 @@ export default {
     title: "Components/Footer",
 } as Meta;
 
-export const Default = () => <Footer/>;
+export const Default = () => <Footer />;

@@ -44,18 +44,32 @@ export class ONSSelect extends Component <Props, State> {
         return (
             <div>
                 {this.props.label !== undefined
-                && <label className="ons-label" htmlFor={this.props.id}>{this.props.label} </label>}
+                && (
+                    <label className="ons-label" htmlFor={this.props.id}>
+                        {this.props.label}
+                        {" "}
+                    </label>
+                )}
                 <select
-                    id={this.props.id} name="select" defaultValue={this.defaultValue()} className={"ons-input "}
-                    onChange={(e) => this.handleChange(e)}>
-                    <option value="" disabled data-testid={"select-" + this.props.id}>
+                    id={this.props.id}
+                    name="select"
+                    defaultValue={this.defaultValue()}
+                    className="ons-input "
+                    onChange={(e) => this.handleChange(e)}
+                >
+                    <option value="" disabled data-testid={`select-${this.props.id}`}>
                         Select an option
                     </option>
-                    {this.props.options.map((option, index) => <option
-                        value={option.value} key={index} id={option.id}
-                        data-testid={"option-" + this.props.id + "-" + option.value}>
-                        {option.label}
-                    </option>)}
+                    {this.props.options.map((option, index) => (
+                        <option
+                            value={option.value}
+                            key={index}
+                            id={option.id}
+                            data-testid={`option-${this.props.id}-${option.value}`}
+                        >
+                            {option.label}
+                        </option>
+                    ))}
                 </select>
             </div>
         );

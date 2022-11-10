@@ -21,7 +21,7 @@ export default class DefaultErrorBoundary extends React.Component<Props, State> 
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         this.setState({
-            errorInfo: errorInfo,
+            errorInfo,
         });
     }
 
@@ -32,12 +32,15 @@ export default class DefaultErrorBoundary extends React.Component<Props, State> 
                     <h1>Sorry, there is a problem with the service</h1>
                     <p>Try again later.</p>
                     <p>If you have started a survey, your answers have been saved.</p>
-                    <p><a href="https://ons.service-now.com/">Contact us</a> if you need to speak to someone about your
-                        survey.</p>
+                    <p>
+                        <a href="https://ons.service-now.com/">Contact us</a>
+                        {" "}
+                        if you need to speak to someone about your
+                        survey.
+                    </p>
                 </>
             );
         }
-
         return <>{this.props.children}</>;
     }
 }

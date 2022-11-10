@@ -1,16 +1,16 @@
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
-import { ONSSelect } from "./ONSSelect";
 import Adapter from "enzyme-adapter-react-16";
 import { render, screen } from "@testing-library/react";
+import { ONSSelect } from "./ONSSelect";
 
 describe("ONS Select Test", () => {
     Enzyme.configure({ adapter: new Adapter() });
 
     const Selection = [
-        { "label": "1", "value": "1" },
-        { "label": "2", "value": "2" },
-        { "label": "3", "value": "3" },
+        { label: "1", value: "1" },
+        { label: "2", value: "2" },
+        { label: "3", value: "3" },
     ];
 
     const Props = {
@@ -34,7 +34,8 @@ describe("ONS Select Test", () => {
                 label={props.label}
                 onChange={props.onChange}
                 value={props.value}
-                options={props.options}>
+                options={props.options}
+            >
             </ONSSelect>,
         );
     }

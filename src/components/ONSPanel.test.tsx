@@ -1,8 +1,8 @@
 import React from "react";
 import Enzyme, { mount, shallow } from "enzyme";
-import { ONSPanel } from "./ONSPanel";
 import Adapter from "enzyme-adapter-react-16";
 import { render, waitFor, cleanup } from "@testing-library/react";
+import { ONSPanel } from "./ONSPanel";
 
 describe("ONS Panel Test", () => {
     Enzyme.configure({ adapter: new Adapter() });
@@ -36,11 +36,13 @@ describe("ONS Panel Test", () => {
         status: "warn",
     };
 
-    function wrapper (render: any, props: any) {
+    function wrapper(render: any, props: any) {
         return render(
-            <ONSPanel {...props}
-            >{props.children}</ONSPanel>,
-        ); }
+            <ONSPanel {...props}>
+                {props.children}
+            </ONSPanel>,
+        );
+    }
 
     it("matches Snapshot", () => {
         expect(wrapper(render, panelProps)).toMatchSnapshot();

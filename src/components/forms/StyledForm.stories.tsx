@@ -1,6 +1,5 @@
 import React from "react";
-import { ComponentStory } from "@storybook/react";
-import { Meta } from "@storybook/react";
+import { ComponentStory, Meta } from "@storybook/react";
 import StyledForm from "./StyledForm";
 
 export default {

@@ -7,4 +7,4 @@ export default {
     title: "Components/BetaBanner",
 } as Meta;
 
-export const Default = () => <BetaBanner/>;
+export const Default = () => <BetaBanner />;

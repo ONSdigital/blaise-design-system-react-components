@@ -16,10 +16,10 @@ export default {
     title: "Components/Error Boundary/Default",
 } as Meta;
 
-const Template: ComponentStory<typeof DefaultErrorBoundary> = (args) => <DefaultErrorBoundary {...args}/>;
+const Template: ComponentStory<typeof DefaultErrorBoundary> = (args) => <DefaultErrorBoundary {...args} />;
 
 export const Default = Template.bind({});
 
 Default.args = {
-    children: <DodgyComponent/>,
+    children: <DodgyComponent />,
 };

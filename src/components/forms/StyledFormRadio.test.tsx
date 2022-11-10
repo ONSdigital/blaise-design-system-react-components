@@ -7,13 +7,13 @@ import StyledForm from "./StyledForm";
 import { validateRadio } from "./ExampleForm/FormValidation";
 
 test("it matches snapshots", async () => {
-    const formPage = render(<ExampleRadioForm/>);
+    const formPage = render(<ExampleRadioForm />);
 
     expect(formPage).toMatchSnapshot();
 });
 
 test("it displays the the radio option description", async () => {
-    render(<ExampleRadioForm/>);
+    render(<ExampleRadioForm />);
 
     await waitFor(() => {
         const errorMessage = screen.getByText(/This includes all types of cheese/i);
@@ -22,7 +22,7 @@ test("it displays the the radio option description", async () => {
 });
 
 test("error appears on submit of empty form", async () => {
-    render(<ExampleRadioForm/>);
+    render(<ExampleRadioForm />);
 
     const submitButton = screen.getByTestId(/submit-button/i);
     fireEvent.click(submitButton);
@@ -37,7 +37,7 @@ test("error appears on submit of empty form", async () => {
 });
 
 test("submit function is called when form is valid", async () => {
-    render(<ExampleRadioForm/>);
+    render(<ExampleRadioForm />);
 
     fireEvent.click(screen.getByLabelText(/Bacon/i));
 
@@ -67,14 +67,14 @@ test("setting initial value", async () => {
 
     const submitFunction = jest.fn();
 
-    render(<StyledForm fields={fields} onSubmitFunction={submitFunction}/>);
+    render(<StyledForm fields={fields} onSubmitFunction={submitFunction} />);
 
     const submitButton = screen.getByTestId(/submit-button/i);
     fireEvent.click(submitButton);
 
     await waitFor(() => {
         expect(submitFunction).toBeCalledWith(
-            expect.objectContaining({ "topping": "cheese" }),
+            expect.objectContaining({ topping: "cheese" }),
             expect.any(Function),
         );
     });

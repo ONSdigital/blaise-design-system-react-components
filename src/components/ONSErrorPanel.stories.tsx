@@ -7,4 +7,4 @@ export default {
     title: "Components/Error Panel",
 } as Meta;
 
-export const Default = () => <ONSErrorPanel/>;
+export const Default = () => <ONSErrorPanel />;

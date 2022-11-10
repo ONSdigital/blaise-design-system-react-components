@@ -53,7 +53,7 @@ function ExampleForm() {
         <>
             <p>{formStatus}</p>
 
-            <StyledForm fields={formElements} onSubmitFunction={onFormSubmission}/>
+            <StyledForm fields={formElements} onSubmitFunction={onFormSubmission} />
         </>
     );
 }

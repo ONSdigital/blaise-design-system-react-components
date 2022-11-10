@@ -31,7 +31,7 @@ export class ONSPasswordInput extends Component <Props, State> {
 
     spacing = () => {
         const buttonStyle = {
-            marginTop: String(this.props.marginTop) + "px",
+            marginTop: `${String(this.props.marginTop)}px`,
         };
         return buttonStyle;
     };
@@ -43,7 +43,7 @@ export class ONSPasswordInput extends Component <Props, State> {
                 <span className="ons-checkbox ons-checkbox--toggle" style={this.spacing()}>
                     <input
                         autoFocus={this.props.autoFocus}
-                        autoComplete={"new-password"}
+                        autoComplete="new-password"
                         type="checkbox"
                         id="password-toggle"
                         className="ons-checkbox__input"
@@ -55,7 +55,8 @@ export class ONSPasswordInput extends Component <Props, State> {
                     </label>
                 </span>
                 <input
-                    type={this.state.password ? "password" : "text"} id="password"
+                    type={this.state.password ? "password" : "text"}
+                    id="password"
                     className="ons-input ons-input--text ons-input-type__input ons-u-mt-xs"
                     value={this.props.value}
                     onChange={(e) => this.handleChange(e)}

@@ -30,7 +30,7 @@ describe("Error Boundary", () => {
 
         render(
             <ErrorBoundary errorMessageText="Super dodgy component has failed">
-                <DodgyComponent/>
+                <DodgyComponent />
             </ErrorBoundary>,
         );
 

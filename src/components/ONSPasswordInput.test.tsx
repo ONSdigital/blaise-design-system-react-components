@@ -31,7 +31,8 @@ describe("ONS Password Input Test", () => {
                 label={props.label}
                 placeholder={props.placeholder}
                 marginTop={props.marginTop}
-                onChange={props.onChange}>
+                onChange={props.onChange}
+            >
             </ONSPasswordInput>,
         );
     }
@@ -58,7 +59,7 @@ describe("ONS Password Input Test", () => {
     });
 
     it("should handle a click on the checkbox", () => {
-        let thisWrapper = wrapper(shallow, undefinedChangeProps);
+        const thisWrapper = wrapper(shallow, undefinedChangeProps);
         thisWrapper.find("input.ons-checkbox__input").simulate("click");
         expect(thisWrapper.state("password")).toBeFalsy();
     });

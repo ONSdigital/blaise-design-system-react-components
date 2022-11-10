@@ -8,12 +8,12 @@ describe("Footer Test", () => {
     Enzyme.configure({ adapter: new Adapter() });
 
     it("matches Snapshot", () => {
-        const wrapper = render(<Footer/>);
+        const wrapper = render(<Footer />);
         expect(wrapper).toMatchSnapshot();
     });
 
     it("should render correctly", () => {
-        const wrapper = shallow(<Footer/>);
+        const wrapper = shallow(<Footer />);
         expect(wrapper.exists()).toEqual(true);
     });
 });

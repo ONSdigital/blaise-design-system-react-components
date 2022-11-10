@@ -30,7 +30,7 @@ describe("Default Error Boundary", () => {
 
         render(
             <DefaultErrorBoundary>
-                <DodgyComponent/>
+                <DodgyComponent />
             </DefaultErrorBoundary>,
         );
 

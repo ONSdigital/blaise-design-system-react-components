@@ -1,7 +1,6 @@
 import React from "react";
+import { ComponentStory, Meta } from "@storybook/react";
 import { ONSButton } from "./ONSButton";
-import { ComponentStory } from "@storybook/react";
-import { Meta } from "@storybook/react";
 
 export default {
     component: ONSButton,
@@ -9,7 +8,7 @@ export default {
 } as Meta;
 
 // 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSButton> = (args) => <ONSButton {...args}/>;
+const Template: ComponentStory<typeof ONSButton> = (args) => <ONSButton {...args} />;
 
 // 👇 Each story then reuses that template
 export const Primary = Template.bind({});

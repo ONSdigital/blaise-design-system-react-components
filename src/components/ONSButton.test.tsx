@@ -90,7 +90,8 @@ describe("ONS Button Test", () => {
                 onClick={props.onButtonClick}
                 disabled={props.disabled}
                 action={props.action}
-                testid={props.testId}/>,
+                testid={props.testId}
+            />,
         );
     }
 
@@ -129,6 +130,6 @@ describe("ONS Button Test", () => {
 
     it("has data-testid set correctly", () => {
         const button = wrapper(shallow, testIdProps).find("button").get(0);
-        expect(button.props["data-testid"]).toEqual(testIdProps.testId + "-button");
+        expect(button.props["data-testid"]).toEqual(`${testIdProps.testId}-button`);
     });
 });

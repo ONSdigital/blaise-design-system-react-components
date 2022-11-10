@@ -66,7 +66,7 @@ export interface StyledFormProps {
  *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
 function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) {
-    let initialFieldValues: any = {};
+    const initialFieldValues: any = {};
     fields.forEach(({ name, initial_value }) => {
         initialFieldValues[name] = initial_value;
     });
@@ -82,7 +82,7 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
         >
             {({ isValid, isSubmitting }) => (
                 <Form>
-                    <StyledFormErrorSummary/>
+                    <StyledFormErrorSummary />
                     {
                         fields.map((field, index) => {
                             field.autoFocus = (isValid && index === 0);
@@ -90,19 +90,20 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
                             return (
                                 <Fragment key={field.name}>
                                     {// @ts-ignore
-                                        <StyledFormField {...field}/>
+                                        <StyledFormField {...field} />
                                     }
                                 </Fragment>
                             );
                         })
                     }
-                    <br/>
+                    <br />
                     <ONSButton
-                        submit={true}
+                        submit
                         label={(submitLabel ? submitLabel : "Save and continue")}
-                        primary={true}
-                        testid={"submit"}
-                        loading={isSubmitting}/>
+                        primary
+                        testid="submit"
+                        loading={isSubmitting}
+                    />
                 </Form>
             )}
         </Formik>

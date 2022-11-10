@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
-import { ONSUpload } from "./ONSUpload";
 import Adapter from "enzyme-adapter-react-16";
+import { ONSUpload } from "./ONSUpload";
 
 describe("ONS Upload Test", () => {
     Enzyme.configure({ adapter: new Adapter() });
@@ -25,7 +25,8 @@ describe("ONS Upload Test", () => {
                 fileName={props.fileName}
                 fileID={props.fileID}
                 accept={props.accept}
-                onChange={props.onChange}>
+                onChange={props.onChange}
+            >
             </ONSUpload>,
         );
     }

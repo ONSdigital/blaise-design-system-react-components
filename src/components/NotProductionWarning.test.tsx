@@ -8,8 +8,8 @@ describe("ONS Not production warning Test", () => {
     Enzyme.configure({ adapter: new Adapter() });
 
     it("matches Snapshot", () => {
-        expect(render(<NotProductionWarning/>)).toMatchSnapshot();
+        expect(render(<NotProductionWarning />)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(shallow(<NotProductionWarning/>).exists()).toEqual(true));
+    it("should render correctly", () => expect(shallow(<NotProductionWarning />).exists()).toEqual(true));
 });
