@@ -11,20 +11,20 @@ function ONSTable({ columns, children, tableCaption, tableID }: ONSTable): React
   return (
     <>
       <table
-        className="table"
+        className="ons-table"
         data-testid={tableID}
         id={tableID}>
         {tableCaption && <caption className="table__caption">{tableCaption}</caption>}
-        <thead className="table__head">
-          <tr className="table__row">
+        <thead className="ons-table__head">
+          <tr className="ons-table__row">
             {
               columns.map((title: string, index: number) => (
-                <th scope="col" className="table__header" key={`${title}-${index}`}>{title}</th>
+                <th scope="col" className="ons-table__header" key={`${title}-${index}`}>{title}</th>
               ))
             }
           </tr>
         </thead>
-        <tbody className="table__body">
+        <tbody className="ons-table__body">
           {children}
         </tbody>
       </table>

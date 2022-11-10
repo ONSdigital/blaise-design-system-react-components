@@ -4,25 +4,24 @@ exports[`ONS Not production warning Test matches Snapshot 1`] = `
 initialize {
   "0": Node {
     "attribs": Object {
-      "class": "census-warning",
       "style": "background:#222;color:#222",
     },
     "children": Array [
       Node {
         "attribs": Object {
-          "class": "container",
+          "class": "ons-container",
         },
         "children": Array [
           Node {
             "attribs": Object {
-              "class": "panel panel--warn-branded panel--no-title",
+              "class": "ons-panel ons-panel--warn-branded ons-panel--no-title",
               "style": "background:#222",
             },
             "children": Array [
               Node {
                 "attribs": Object {
                   "aria-hidden": "true",
-                  "class": "panel__icon",
+                  "class": "ons-panel__icon",
                   "style": "color:#222",
                 },
                 "children": Array [
@@ -38,12 +37,12 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Node {
                   "attribs": Object {
-                    "class": "panel__body",
+                    "class": "ons-panel__body",
                   },
                   "children": Array [
                     Node {
                       "attribs": Object {
-                        "class": "u-mb-no",
+                        "class": "ons-u-mb-no",
                       },
                       "children": Array [
                         Node {
@@ -97,12 +96,12 @@ initialize {
               },
               Node {
                 "attribs": Object {
-                  "class": "panel__body",
+                  "class": "ons-panel__body",
                 },
                 "children": Array [
                   Node {
                     "attribs": Object {
-                      "class": "u-mb-no",
+                      "class": "ons-u-mb-no",
                     },
                     "children": Array [
                       Node {
@@ -134,7 +133,7 @@ initialize {
                 "prev": Node {
                   "attribs": Object {
                     "aria-hidden": "true",
-                    "class": "panel__icon",
+                    "class": "ons-panel__icon",
                     "style": "color:#222",
                   },
                   "children": Array [
@@ -218,11 +217,9 @@ initialize {
     "prev": null,
     "type": "tag",
     "x-attribsNamespace": Object {
-      "class": undefined,
       "style": undefined,
     },
     "x-attribsPrefix": Object {
-      "class": undefined,
       "style": undefined,
     },
   },

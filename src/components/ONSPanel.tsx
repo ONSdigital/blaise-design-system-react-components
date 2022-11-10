@@ -17,13 +17,13 @@ export interface Props {
 }
 
 export const ONSPanel = (props: Props) => {
-    const className = "panel panel--" + (props.status ? props.status : "info") + " panel--no-title " + (props.spacious ? "panel--spacious" : "") + " u-mt-m";
+    const className = "ons-panel ons-panel--" + (props.status ? props.status : "info") + " ons-panel--no-title " + (props.spacious ? "ons-panel--spacious" : "") + " ons-u-mt-m";
     return (
         <div data-testid={props.testID} id={props.id} className={className} hidden={props.hidden}>
             {
                 props.status === "success" &&
-                <span className="panel__icon">
-                <svg className={`svg-icon ${props.bigIcon === true ? "svg-icon--xl" : ""}`}
+                <span className="ons-panel__icon">
+                <svg className={`ons-svg-icon ${props.bigIcon === true ? "ons-svg-icon--xl" : ""}`}
                      viewBox="0 0 13 10"
                      xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -35,11 +35,11 @@ export const ONSPanel = (props: Props) => {
             {
                 props.status === "warn" &&
                 <>
-                    <span className="panel__icon" aria-hidden="true">!</span>
-                    <span className="u-vh">Warning: </span>
+                    <span className="ons-panel__icon" aria-hidden="true">!</span>
+                    <span className="ons-u-vh">Warning: </span>
                 </>
             }
-            <div className={`panel__body ${props.bigIcon === true ? "svg-icon-margin--xl" : ""}`}>
+            <div className={`ons-panel__body ${props.bigIcon === true ? "ons-svg-icon-margin--xl" : ""}`}>
                 {props.children}
             </div>
         </div>

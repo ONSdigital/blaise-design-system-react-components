@@ -45,9 +45,9 @@ export class ONSSelect extends Component <Props, State> {
         return (
             <div>
                 {this.props.label !== undefined &&
-                <label className="label" htmlFor={this.props.id}>{this.props.label} </label>
+                <label className="ons-label" htmlFor={this.props.id}>{this.props.label} </label>
                 }
-                <select id={this.props.id} name="select" defaultValue={this.defaultValue()} className={"input "}
+                <select id={this.props.id} name="select" defaultValue={this.defaultValue()} className={"ons-input "}
                         onChange={(e) => this.handleChange(e)}>
                     <option value="" disabled data-testid={"select-" + this.props.id}>
                         Select an option

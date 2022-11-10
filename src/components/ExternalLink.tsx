@@ -15,11 +15,11 @@ function ExternalLink(props: Props): ReactElement {
             <a href={props.link}
                id={props.id}
                aria-label={props.ariaLabel}
-               className="external-link"
+               className="ons-external-link"
                target="_blank"
                rel="noopener noreferrer">
                 {props.text}
-                <svg className="svg-icon"
+                <svg className="ons-svg-icon"
                      viewBox="0 0 12 12"
                      xmlns="http://www.w3.org/2000/svg">
                     <path

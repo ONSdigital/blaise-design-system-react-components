@@ -49,17 +49,17 @@ describe("ONS Password Input Test", () => {
 
     it("should handle a change", () => {
         //defined onchange
-        wrapper(shallow, changeProps).find('input.input').simulate('change')
+        wrapper(shallow, changeProps).find('input.ons-input').simulate('change')
         expect(changeProps.onChange).toHaveBeenCalled()
 
         //undefined onchange
-        wrapper(shallow, undefinedChangeProps).find('input.input').simulate('change')
+        wrapper(shallow, undefinedChangeProps).find('input.ons-input').simulate('change')
         expect(undefinedChangeProps.onChange).toBeUndefined()
     })
 
     it("should handle a click on the checkbox", () => {
         let thisWrapper = wrapper(shallow, undefinedChangeProps)
-        thisWrapper.find('input.checkbox__input').simulate('click')
+        thisWrapper.find('input.ons-checkbox__input').simulate('click')
         expect(thisWrapper.state('password')).toBeFalsy();
     })
 })

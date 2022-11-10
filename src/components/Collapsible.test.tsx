@@ -19,9 +19,9 @@ describe("Collapsible Test", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it("renders tile", () => {
+    it("renders title", () => {
         const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        expect(wrapper.queryAllByText(Props.title)).toHaveLength(2);
+        expect(wrapper.queryAllByText(Props.title)).toHaveLength(1);
     });
 
     it("renders children inside the Collapsible", () => {
@@ -34,35 +34,21 @@ describe("Collapsible Test", () => {
         expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "true");
     });
 
-    it("should change the to aria-hidden false when title is clicked on", () => {
+    it("should change content div to aria-hidden false when title is clicked on", () => {
         const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
         fireEvent.click(wrapper.getByRole("link"));
         expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
     });
 
-    it("should change the to aria-hidden false when you press the SpaceBar key on the title", () => {
+    it("should change content div to aria-hidden false when you press the SpaceBar key on the title", () => {
         const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
         fireEvent.keyPress(wrapper.getByTestId("collapsible-heading"), { key: "Space", code: 32, charCode: 32 });
         expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
-
     });
 
-    it("should change the to aria-hidden false when you press the enter key on the title", () => {
+    it("should change content div to aria-hidden false when you press the enter key on the title", () => {
         const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
         fireEvent.keyPress(wrapper.getByTestId("collapsible-heading"), { key: "Enter", code: 13, charCode: 13 });
         expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
-
     });
-
-
-    it("should change back to aria-hidden true when inner button 'Hide this' is pressed" , () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.click(wrapper.getByRole("link"));
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
-
-
-        fireEvent.click(wrapper.getByText("Hide this"));
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "true");
-    });
-
 });

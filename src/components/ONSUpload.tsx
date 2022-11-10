@@ -20,16 +20,16 @@ export class ONSUpload extends Component <Props> {
 
     render() {
         return (
-            <div className="field">
-                <p className="field">
-                    <label className="label" htmlFor={this.props.fileID}>{this.props.label}
+            <div className="ons-field">
+                <p className="ons-field">
+                    <label className="ons-label" htmlFor={this.props.fileID}>{this.props.label}
                         <br/>
-                        <span className="label__description">{this.props.description}</span>
+                        <span className="ons-label__description">{this.props.description}</span>
                     </label>
                     <input style={{position: "static"}}
                            type="file"
                            id={this.props.fileID}
-                           className="input input--text input-type__input input--upload"
+                           className="ons-input ons-input--text ons-input-type__input ons-input--upload"
                            name={this.props.fileName}
                            accept={this.props.accept}
                            onChange={(e) => this.handleChange(e)}

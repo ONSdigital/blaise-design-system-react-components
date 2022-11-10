@@ -6,20 +6,20 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="header header--internal"
+        class="ons-header ons-header--internal"
       >
         <div
-          class="header__top"
+          class="ons-header__top"
           role="banner"
         >
           <div
-            class="container"
+            class="ons-container"
           >
             <div
-              class="header__grid-top grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap "
+              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
             >
               <div
-                class="grid__col col-auto"
+                class="ons-grid__col ons-col-auto"
               >
                 <a
                   class="header__logo-link"
@@ -28,7 +28,7 @@ Object {
                   <picture>
                     <img
                       alt="Office for National Statistics logo"
-                      class="header__logo"
+                      class="ons-header__logo"
                       src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
                     />
                   </picture>
@@ -38,19 +38,19 @@ Object {
           </div>
         </div>
         <div
-          class="header__main"
+          class="ons-header__main"
         >
           <div
-            class="container"
+            class="ons-container"
           >
             <div
-              class="grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap"
+              class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
             >
               <div
-                class="grid__col col-auto u-flex-shrink"
+                class="ons-grid__col ons-col-auto ons-u-flex-shrink"
               >
                 <div
-                  class="header__title"
+                  class="ons-header__title"
                 >
                   App Title
                 </div>
@@ -63,20 +63,20 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="header header--internal"
+      class="ons-header ons-header--internal"
     >
       <div
-        class="header__top"
+        class="ons-header__top"
         role="banner"
       >
         <div
-          class="container"
+          class="ons-container"
         >
           <div
-            class="header__grid-top grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap "
+            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
           >
             <div
-              class="grid__col col-auto"
+              class="ons-grid__col ons-col-auto"
             >
               <a
                 class="header__logo-link"
@@ -85,7 +85,7 @@ Object {
                 <picture>
                   <img
                     alt="Office for National Statistics logo"
-                    class="header__logo"
+                    class="ons-header__logo"
                     src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
                   />
                 </picture>
@@ -95,19 +95,19 @@ Object {
         </div>
       </div>
       <div
-        class="header__main"
+        class="ons-header__main"
       >
         <div
-          class="container"
+          class="ons-container"
         >
           <div
-            class="grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap"
+            class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
           >
             <div
-              class="grid__col col-auto u-flex-shrink"
+              class="ons-grid__col ons-col-auto ons-u-flex-shrink"
             >
               <div
-                class="header__title"
+                class="ons-header__title"
               >
                 App Title
               </div>
@@ -177,20 +177,20 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="header header--internal"
+        class="ons-header ons-header--internal"
       >
         <div
-          class="header__top"
+          class="ons-header__top"
           role="banner"
         >
           <div
-            class="container"
+            class="ons-container"
           >
             <div
-              class="header__grid-top grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap "
+              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
             >
               <div
-                class="grid__col col-auto"
+                class="ons-grid__col ons-col-auto"
               >
                 <a
                   class="header__logo-link"
@@ -199,7 +199,7 @@ Object {
                   <picture>
                     <img
                       alt="Office for National Statistics logo"
-                      class="header__logo"
+                      class="ons-header__logo"
                       src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
                     />
                   </picture>
@@ -209,37 +209,41 @@ Object {
           </div>
         </div>
         <div
-          class="header__main"
+          class="ons-header__main"
         >
           <div
-            class="container"
+            class="ons-container"
           >
             <div
-              class="grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap"
+              class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
             >
               <div
-                class="grid__col col-auto u-flex-shrink"
+                class="ons-grid__col ons-col-auto ons-u-flex-shrink"
               >
                 <div
-                  class="header__title"
+                  class="ons-header__title"
                 >
                   App Title
                 </div>
               </div>
               <div
-                class="grid__col col-auto u-flex-no-shrink u-d-no@xxs@m"
+                class="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m"
               >
                 <button
-                  class="btn btn--ghost u-d-no@xxs@m btn--exit"
+                  class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
                   data-test-id="signout-button"
                   id="signout-button"
                 >
                   <span
-                    class="btn__inner"
+                    class="ons-btn__inner"
                   >
-                    Save and sign out
+                    <span
+                      class="ons-btn__text"
+                    >
+                      Save and sign out
+                    </span>
                     <svg
-                      class="svg-icon"
+                      class="ons-svg-icon ons-u-ml-xs"
                       focusable="false"
                       viewBox="0 0 12 12"
                       xmlns="http://www.w3.org/2000/svg"
@@ -264,20 +268,20 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="header header--internal"
+      class="ons-header ons-header--internal"
     >
       <div
-        class="header__top"
+        class="ons-header__top"
         role="banner"
       >
         <div
-          class="container"
+          class="ons-container"
         >
           <div
-            class="header__grid-top grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap "
+            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
           >
             <div
-              class="grid__col col-auto"
+              class="ons-grid__col ons-col-auto"
             >
               <a
                 class="header__logo-link"
@@ -286,7 +290,7 @@ Object {
                 <picture>
                   <img
                     alt="Office for National Statistics logo"
-                    class="header__logo"
+                    class="ons-header__logo"
                     src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
                   />
                 </picture>
@@ -296,37 +300,41 @@ Object {
         </div>
       </div>
       <div
-        class="header__main"
+        class="ons-header__main"
       >
         <div
-          class="container"
+          class="ons-container"
         >
           <div
-            class="grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap"
+            class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
           >
             <div
-              class="grid__col col-auto u-flex-shrink"
+              class="ons-grid__col ons-col-auto ons-u-flex-shrink"
             >
               <div
-                class="header__title"
+                class="ons-header__title"
               >
                 App Title
               </div>
             </div>
             <div
-              class="grid__col col-auto u-flex-no-shrink u-d-no@xxs@m"
+              class="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m"
             >
               <button
-                class="btn btn--ghost u-d-no@xxs@m btn--exit"
+                class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
                 data-test-id="signout-button"
                 id="signout-button"
               >
                 <span
-                  class="btn__inner"
+                  class="ons-btn__inner"
                 >
-                  Save and sign out
+                  <span
+                    class="ons-btn__text"
+                  >
+                    Save and sign out
+                  </span>
                   <svg
-                    class="svg-icon"
+                    class="ons-svg-icon ons-u-ml-xs"
                     focusable="false"
                     viewBox="0 0 12 12"
                     xmlns="http://www.w3.org/2000/svg"

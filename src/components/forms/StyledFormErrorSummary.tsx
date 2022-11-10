@@ -20,10 +20,10 @@ function StyledFormErrorSummary(): ReactElement {
             !isValid &&
             <div aria-labelledby="error-summary-title" role="alert" tabIndex={-1}
                  ref={inputEl => (errorFocus = inputEl)}
-                 className="panel panel--error">
-                <div className="panel__header">
+                 className="ons-panel ons-panel--error">
+                <div className="ons-panel__header">
                     <h2 id="error-summary-title" data-qa="error-header"
-                        className="panel__title u-fs-r--b">
+                        className="ons-panel__title ons-u-fs-r--b">
                         {
                             (
                                 Object.keys(errors).length === 1 ?
@@ -34,11 +34,11 @@ function StyledFormErrorSummary(): ReactElement {
                         }
                     </h2>
                 </div>
-                <div className="panel__body">
-                    <ol className="list">
+                <div className="ons-panel__body">
+                    <ol className="ons-list">
                         {Object.keys(errors).map((field, index) =>
-                            <li key={index} className="list__item ">
-                                <a href={`#${field}`} className="list__link js-inpagelink">
+                            <li key={index} className="ons-list__item ">
+                                <a href={`#${field}`} className="ons-list__link ons-js-inpagelink">
                                     {
                                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                                         // @ts-ignore

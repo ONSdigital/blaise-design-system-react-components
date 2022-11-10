@@ -110,19 +110,19 @@ describe("ONS Button Test", () => {
     });
 
     it("displays loading button", () => {
-        expect(wrapper(shallow, loadingButtonProps).find("button").hasClass("btn--loader")).toEqual(true);
+        expect(wrapper(shallow, loadingButtonProps).find("button").hasClass("ons-btn--loader")).toEqual(true);
     });
 
     it("displays small button", () => {
-        expect(wrapper(shallow, smallButtonProps).find("button").hasClass("btn--small")).toEqual(true);
+        expect(wrapper(shallow, smallButtonProps).find("button").hasClass("ons-btn--small")).toEqual(true);
     });
 
     it("displays disabled button", () => {
-        expect(wrapper(shallow, disabledProps).find("button").hasClass("btn--disabled")).toEqual(true);
+        expect(wrapper(shallow, disabledProps).find("button").hasClass("ons-btn--disabled")).toEqual(true);
     });
 
     it("displays Call to Action button", () => {
-        expect(wrapper(shallow, callToActionProps).find("button").hasClass("btn--link")).toEqual(true);
+        expect(wrapper(shallow, callToActionProps).find("button").hasClass("ons-btn--link")).toEqual(true);
     });
 
     it("has data-testid set correctly", () => {

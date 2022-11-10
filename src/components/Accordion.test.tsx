@@ -6,21 +6,21 @@ describe("Accordion tests", () => {
     describe("when show all is enabled", () => {
         let wrapper: RenderResult
         beforeEach(() => {
-            wrapper = renderAccordionWithShowAllEnabledAndTwoExpandables()
+            wrapper = renderAccordionWithShowAll()
         });
 
         it("displays a 'Show all' button", async () => {
-            expectShowAllButtonToBeDefined(wrapper)
+            expectShowAllButtonToBeVisible(wrapper)
         })
 
-        it("expands a single expandable when 'Show' on that expandable is clicked", async () => {
+        it("expands a single expandable when that expandable is clicked", async () => {
             expectExpandableToBeClosed("Foo", 0, wrapper)
-            expectExpandableToBeClosed("Foo Bar", 1, wrapper)
+            expectExpandableToBeClosed("Bar", 1, wrapper)
 
-            clickShowOnASingleExpandable(0, wrapper)
+            clickOnASingleExpandable("Foo", wrapper)
 
             expectExpandableToBeOpen("Foo", 0, wrapper)
-            expectExpandableToBeClosed("Foo Bar", 1, wrapper)
+            expectExpandableToBeClosed("Bar", 1, wrapper)
         })
 
         describe("and show all is clicked", () => {
@@ -28,7 +28,7 @@ describe("Accordion tests", () => {
                 clickShowAll(wrapper);
 
                 expectExpandableToBeOpen("Foo", 0, wrapper)
-                expectExpandableToBeOpen("Foo Bar", 1, wrapper)
+                expectExpandableToBeOpen("Bar", 1, wrapper)
             })
 
             it("changes 'Show all' to 'Hide all'", async () => {
@@ -41,19 +41,19 @@ describe("Accordion tests", () => {
                 expectHideAllButtonToBeDefined(wrapper)
 
                 clickHideAll(wrapper)
-                expectShowAllButtonToBeDefined(wrapper)
+                expectShowAllButtonToBeVisible(wrapper)
 
                 clickShowAll(wrapper)
                 expectHideAllButtonToBeDefined(wrapper)
             })
 
-            it("hides a single expandable when 'Hide' on that expandable is clicked", async () => {
-                expectShowAllButtonToBeDefined(wrapper)
+            it("hides a single expandable when that expandable is clicked", async () => {
+                expectShowAllButtonToBeVisible(wrapper)
                 clickShowAll(wrapper)
                 expectHideAllButtonToBeDefined(wrapper)
-                clickHideOnASingleExpandable(0, wrapper)
+                clickOnASingleExpandable("Foo", wrapper)
                 expectExpandableToBeClosed("Foo", 0, wrapper)
-                expectShowAllButtonToBeDefined(wrapper)
+                expectShowAllButtonToBeVisible(wrapper)
             })
         })
     })
@@ -61,7 +61,7 @@ describe("Accordion tests", () => {
     describe("when show all is not enabled", () => {
         let wrapper: RenderResult
         beforeEach(() => {
-            wrapper = renderAccordionWithShowAllDisabledAndTwoExpandables()
+            wrapper = renderAccordionWithoutShowAll()
         });
 
         it("does not display a 'Show all' button", async () => {
@@ -70,59 +70,54 @@ describe("Accordion tests", () => {
 
         it("initialises with all expandables closed", async () => {
             expectExpandableToBeClosed("Foo", 0, wrapper)
-            expectExpandableToBeClosed("Foo Bar", 1, wrapper)
+            expectExpandableToBeClosed("Bar", 1, wrapper)
         })
 
         it("expands a single expandable when 'Show' on that expandable is clicked", async () => {
             expectExpandableToBeClosed("Foo", 0, wrapper)
-            clickShowOnASingleExpandable(0, wrapper)
+            clickOnASingleExpandable("Foo", wrapper)
             expectExpandableToBeOpen("Foo", 0, wrapper)
         })
     })
 })
 
-function renderAccordionWithShowAllEnabledAndTwoExpandables(): RenderResult {
+function renderAccordionWithShowAll(): RenderResult {
     return render(
         <Accordion ShowAllEnabled={true} Expandables={
             [
                 { title: "Foo", content: <p>bar</p> },
-                { title: "Foo Bar", content: <p>bar foo</p> }
+                { title: "Bar", content: <p>bar foo</p> }
             ]
         } />)
 }
 
-function renderAccordionWithShowAllDisabledAndTwoExpandables(): RenderResult {
+function renderAccordionWithoutShowAll(): RenderResult {
     return render(
         <Accordion Expandables={
             [
                 { title: "Foo", content: <p>bar</p> },
-                { title: "Foo Bar", content: <p>bar foo</p> }
+                { title: "Bar", content: <p>bar foo</p> }
             ]
         } />)
 }
 
 function clickShowAll(wrapper: RenderResult) {
-    fireEvent.click(wrapper.getByText("Show all"))
+    const showAllBtn = wrapper.getByRole("button", { name: "Show all" });
+    fireEvent.click(showAllBtn)
 }
 
 function clickHideAll(wrapper: RenderResult) {
-    fireEvent.click(wrapper.getByText("Hide all"))
+    const hideAllBtn = wrapper.getByRole("button", { name: "Hide all" });
+    fireEvent.click(hideAllBtn)
 }
 
-function clickShowOnASingleExpandable(id: number, wrapper: RenderResult) {
-    const showButton = wrapper.getByTestId(`accordion-${id}-button`)
-    expect(showButton.textContent).toEqual("Show")
-    fireEvent.click(showButton)
+function clickOnASingleExpandable(summary: string | RegExp, wrapper: RenderResult) {
+    const expandable = wrapper.getByText(summary)
+    fireEvent.click(expandable)
 }
 
-function clickHideOnASingleExpandable(id: number, wrapper: RenderResult) {
-    const hideButton = wrapper.getByTestId(`accordion-${id}-button`)
-    expect(hideButton.textContent).toEqual("Hide")
-    fireEvent.click(hideButton)
-}
-
-function expectShowAllButtonToBeDefined(wrapper: RenderResult) {
-    expect(wrapper.getByTestId("accordion-show-all")).toBeDefined()
+function expectShowAllButtonToBeVisible(wrapper: RenderResult) {
+    expect(wrapper.getByTestId("accordion-show-all")).toBeVisible()
     expect(wrapper.getByTestId("accordion-show-all")).toHaveTextContent("Show all")
 }
 
@@ -137,12 +132,10 @@ function expectHideAllButtonToBeDefined(wrapper: RenderResult) {
 
 function expectExpandableToBeClosed(title: string, id: number, wrapper: RenderResult) {
     expect(wrapper.getByTestId(`accordion-${id}-heading`)).toHaveTextContent(title)
-    expect(wrapper.getByTestId(`accordion-${id}-button`)).toHaveTextContent("Show")
     expect(wrapper.getByTestId(`accordion-${id}-content`)).toHaveAttribute("aria-hidden", "true")
 }
 
 function expectExpandableToBeOpen(title: string, id: number, wrapper: RenderResult) {
     expect(wrapper.getByTestId(`accordion-${id}-heading`)).toHaveTextContent(title)
-    expect(wrapper.getByTestId(`accordion-${id}-button`)).toHaveTextContent("Hide")
     expect(wrapper.getByTestId(`accordion-${id}-content`)).toHaveAttribute("aria-hidden", "false")
 }

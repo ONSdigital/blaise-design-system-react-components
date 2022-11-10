@@ -6,10 +6,10 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="panel panel--info panel--no-title  u-mt-m"
+        class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
       >
         <div
-          class="panel__body "
+          class="ons-panel__body "
         >
           <div
             style="text-align: center;"
@@ -98,10 +98,10 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="panel panel--info panel--no-title  u-mt-m"
+      class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
     >
       <div
-        class="panel__body "
+        class="ons-panel__body "
       >
         <div
           style="text-align: center;"

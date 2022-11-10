@@ -6,10 +6,10 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="panel panel--info panel--no-title  u-mt-m"
+        class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
       >
         <div
-          class="panel__body "
+          class="ons-panel__body "
         >
           <p>
             Succceeesssss
@@ -20,10 +20,10 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="panel panel--info panel--no-title  u-mt-m"
+      class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
     >
       <div
-        class="panel__body "
+        class="ons-panel__body "
       >
         <p>
           Succceeesssss
@@ -91,13 +91,13 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="panel panel--success panel--no-title  u-mt-m"
+        class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
       >
         <span
-          class="panel__icon"
+          class="ons-panel__icon"
         >
           <svg
-            class="svg-icon svg-icon--xl"
+            class="ons-svg-icon ons-svg-icon--xl"
             viewBox="0 0 13 10"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -108,7 +108,7 @@ Object {
           </svg>
         </span>
         <div
-          class="panel__body svg-icon-margin--xl"
+          class="ons-panel__body ons-svg-icon-margin--xl"
         >
           <p>
             Statusssss
@@ -119,13 +119,13 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="panel panel--success panel--no-title  u-mt-m"
+      class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
     >
       <span
-        class="panel__icon"
+        class="ons-panel__icon"
       >
         <svg
-          class="svg-icon svg-icon--xl"
+          class="ons-svg-icon ons-svg-icon--xl"
           viewBox="0 0 13 10"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -136,7 +136,7 @@ Object {
         </svg>
       </span>
       <div
-        class="panel__body svg-icon-margin--xl"
+        class="ons-panel__body ons-svg-icon-margin--xl"
       >
         <p>
           Statusssss
@@ -204,21 +204,21 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="panel panel--warn panel--no-title  u-mt-m"
+        class="ons-panel ons-panel--warn ons-panel--no-title  ons-u-mt-m"
       >
         <span
           aria-hidden="true"
-          class="panel__icon"
+          class="ons-panel__icon"
         >
           !
         </span>
         <span
-          class="u-vh"
+          class="ons-u-vh"
         >
           Warning: 
         </span>
         <div
-          class="panel__body "
+          class="ons-panel__body "
         >
           <p>
             Statusssss
@@ -229,21 +229,21 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="panel panel--warn panel--no-title  u-mt-m"
+      class="ons-panel ons-panel--warn ons-panel--no-title  ons-u-mt-m"
     >
       <span
         aria-hidden="true"
-        class="panel__icon"
+        class="ons-panel__icon"
       >
         !
       </span>
       <span
-        class="u-vh"
+        class="ons-u-vh"
       >
         Warning: 
       </span>
       <div
-        class="panel__body "
+        class="ons-panel__body "
       >
         <p>
           Statusssss
@@ -311,13 +311,13 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="panel panel--success panel--no-title  u-mt-m"
+        class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
       >
         <span
-          class="panel__icon"
+          class="ons-panel__icon"
         >
           <svg
-            class="svg-icon "
+            class="ons-svg-icon "
             viewBox="0 0 13 10"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -328,7 +328,7 @@ Object {
           </svg>
         </span>
         <div
-          class="panel__body "
+          class="ons-panel__body "
         >
           <p>
             Statusssss
@@ -339,13 +339,13 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="panel panel--success panel--no-title  u-mt-m"
+      class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
     >
       <span
-        class="panel__icon"
+        class="ons-panel__icon"
       >
         <svg
-          class="svg-icon "
+          class="ons-svg-icon "
           viewBox="0 0 13 10"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -356,7 +356,7 @@ Object {
         </svg>
       </span>
       <div
-        class="panel__body "
+        class="ons-panel__body "
       >
         <p>
           Statusssss

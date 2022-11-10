@@ -2,30 +2,30 @@
 
 exports[`ONSTable renders a formatted table 1`] = `
 <table
-  class="table"
+  class="ons-table"
   data-testid="my-test-table"
   id="my-test-table"
 >
   <thead
-    class="table__head"
+    class="ons-table__head"
   >
     <tr
-      class="table__row"
+      class="ons-table__row"
     >
       <th
-        class="table__header"
+        class="ons-table__header"
         scope="col"
       >
         column1
       </th>
       <th
-        class="table__header"
+        class="ons-table__header"
         scope="col"
       >
         column2
       </th>
       <th
-        class="table__header"
+        class="ons-table__header"
         scope="col"
       >
         column3
@@ -33,7 +33,7 @@ exports[`ONSTable renders a formatted table 1`] = `
     </tr>
   </thead>
   <tbody
-    class="table__body"
+    class="ons-table__body"
   >
     <tr>
       <td>

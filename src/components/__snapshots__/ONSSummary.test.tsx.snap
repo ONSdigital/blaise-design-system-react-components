@@ -4,7 +4,7 @@ exports[`ONS Summary Group Table test matches Snapshot 1`] = `
 initialize {
   "0": Node {
     "attribs": Object {
-      "class": "summary__group-title",
+      "class": "ons-summary__group-title",
     },
     "children": Array [
       Node {
@@ -19,27 +19,27 @@ initialize {
     "namespace": "http://www.w3.org/1999/xhtml",
     "next": Node {
       "attribs": Object {
-        "class": "summary__items",
+        "class": "ons-summary__items",
       },
       "children": Array [
         Node {
           "attribs": Object {
-            "class": "summary__item",
+            "class": "ons-summary__item",
           },
           "children": Array [
             Node {
               "attribs": Object {
-                "class": "summary__row summary__row--has-values",
+                "class": "ons-summary__row ons-summary__row--has-values",
               },
               "children": Array [
                 Node {
                   "attribs": Object {
-                    "class": "summary__item-title",
+                    "class": "ons-summary__item-title",
                   },
                   "children": Array [
                     Node {
                       "attribs": Object {
-                        "class": "summary__item--text",
+                        "class": "ons-summary__item--text",
                       },
                       "children": Array [
                         Node {
@@ -68,7 +68,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Node {
                     "attribs": Object {
-                      "class": "summary__values",
+                      "class": "ons-summary__values",
                       "colspan": "2",
                     },
                     "children": Array [
@@ -107,7 +107,7 @@ initialize {
                 },
                 Node {
                   "attribs": Object {
-                    "class": "summary__values",
+                    "class": "ons-summary__values",
                     "colspan": "2",
                   },
                   "children": Array [
@@ -125,12 +125,12 @@ initialize {
                   "parent": [Circular],
                   "prev": Node {
                     "attribs": Object {
-                      "class": "summary__item-title",
+                      "class": "ons-summary__item-title",
                     },
                     "children": Array [
                       Node {
                         "attribs": Object {
-                          "class": "summary__item--text",
+                          "class": "ons-summary__item--text",
                         },
                         "children": Array [
                           Node {
@@ -235,27 +235,27 @@ initialize {
         [Circular],
         Node {
           "attribs": Object {
-            "class": "summary__items",
+            "class": "ons-summary__items",
           },
           "children": Array [
             Node {
               "attribs": Object {
-                "class": "summary__item",
+                "class": "ons-summary__item",
               },
               "children": Array [
                 Node {
                   "attribs": Object {
-                    "class": "summary__row summary__row--has-values",
+                    "class": "ons-summary__row ons-summary__row--has-values",
                   },
                   "children": Array [
                     Node {
                       "attribs": Object {
-                        "class": "summary__item-title",
+                        "class": "ons-summary__item-title",
                       },
                       "children": Array [
                         Node {
                           "attribs": Object {
-                            "class": "summary__item--text",
+                            "class": "ons-summary__item--text",
                           },
                           "children": Array [
                             Node {
@@ -284,7 +284,7 @@ initialize {
                       "namespace": "http://www.w3.org/1999/xhtml",
                       "next": Node {
                         "attribs": Object {
-                          "class": "summary__values",
+                          "class": "ons-summary__values",
                           "colspan": "2",
                         },
                         "children": Array [
@@ -323,7 +323,7 @@ initialize {
                     },
                     Node {
                       "attribs": Object {
-                        "class": "summary__values",
+                        "class": "ons-summary__values",
                         "colspan": "2",
                       },
                       "children": Array [
@@ -341,12 +341,12 @@ initialize {
                       "parent": [Circular],
                       "prev": Node {
                         "attribs": Object {
-                          "class": "summary__item-title",
+                          "class": "ons-summary__item-title",
                         },
                         "children": Array [
                           Node {
                             "attribs": Object {
-                              "class": "summary__item--text",
+                              "class": "ons-summary__item--text",
                             },
                             "children": Array [
                               Node {
@@ -454,27 +454,27 @@ initialize {
   },
   "1": Node {
     "attribs": Object {
-      "class": "summary__items",
+      "class": "ons-summary__items",
     },
     "children": Array [
       Node {
         "attribs": Object {
-          "class": "summary__item",
+          "class": "ons-summary__item",
         },
         "children": Array [
           Node {
             "attribs": Object {
-              "class": "summary__row summary__row--has-values",
+              "class": "ons-summary__row ons-summary__row--has-values",
             },
             "children": Array [
               Node {
                 "attribs": Object {
-                  "class": "summary__item-title",
+                  "class": "ons-summary__item-title",
                 },
                 "children": Array [
                   Node {
                     "attribs": Object {
-                      "class": "summary__item--text",
+                      "class": "ons-summary__item--text",
                     },
                     "children": Array [
                       Node {
@@ -503,7 +503,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Node {
                   "attribs": Object {
-                    "class": "summary__values",
+                    "class": "ons-summary__values",
                     "colspan": "2",
                   },
                   "children": Array [
@@ -542,7 +542,7 @@ initialize {
               },
               Node {
                 "attribs": Object {
-                  "class": "summary__values",
+                  "class": "ons-summary__values",
                   "colspan": "2",
                 },
                 "children": Array [
@@ -560,12 +560,12 @@ initialize {
                 "parent": [Circular],
                 "prev": Node {
                   "attribs": Object {
-                    "class": "summary__item-title",
+                    "class": "ons-summary__item-title",
                   },
                   "children": Array [
                     Node {
                       "attribs": Object {
-                        "class": "summary__item--text",
+                        "class": "ons-summary__item--text",
                       },
                       "children": Array [
                         Node {
@@ -649,7 +649,7 @@ initialize {
       "children": Array [
         Node {
           "attribs": Object {
-            "class": "summary__group-title",
+            "class": "ons-summary__group-title",
           },
           "children": Array [
             Node {
@@ -683,7 +683,7 @@ initialize {
     },
     "prev": Node {
       "attribs": Object {
-        "class": "summary__group-title",
+        "class": "ons-summary__group-title",
       },
       "children": Array [
         Node {
@@ -738,22 +738,22 @@ exports[`ONS Summary Item Row test matches Snapshot 1`] = `
 initialize {
   "0": Node {
     "attribs": Object {
-      "class": "summary__item",
+      "class": "ons-summary__item",
     },
     "children": Array [
       Node {
         "attribs": Object {
-          "class": "summary__row summary__row--has-values",
+          "class": "ons-summary__row ons-summary__row--has-values",
         },
         "children": Array [
           Node {
             "attribs": Object {
-              "class": "summary__item-title",
+              "class": "ons-summary__item-title",
             },
             "children": Array [
               Node {
                 "attribs": Object {
-                  "class": "summary__item--text",
+                  "class": "ons-summary__item--text",
                 },
                 "children": Array [
                   Node {
@@ -782,7 +782,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Node {
               "attribs": Object {
-                "class": "summary__values",
+                "class": "ons-summary__values",
                 "colspan": "2",
               },
               "children": Array [
@@ -821,7 +821,7 @@ initialize {
           },
           Node {
             "attribs": Object {
-              "class": "summary__values",
+              "class": "ons-summary__values",
               "colspan": "2",
             },
             "children": Array [
@@ -839,12 +839,12 @@ initialize {
             "parent": [Circular],
             "prev": Node {
               "attribs": Object {
-                "class": "summary__item-title",
+                "class": "ons-summary__item-title",
               },
               "children": Array [
                 Node {
                   "attribs": Object {
-                    "class": "summary__item--text",
+                    "class": "ons-summary__item--text",
                   },
                   "children": Array [
                     Node {

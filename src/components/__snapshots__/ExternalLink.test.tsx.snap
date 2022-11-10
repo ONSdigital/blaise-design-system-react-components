@@ -7,14 +7,14 @@ Object {
     <div>
       <a
         aria-label="Aria label description"
-        class="external-link"
+        class="ons-external-link"
         href="/link"
         rel="noopener noreferrer"
         target="_blank"
       >
         Click Me
         <svg
-          class="svg-icon"
+          class="ons-svg-icon"
           viewBox="0 0 12 12"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -33,14 +33,14 @@ Object {
   "container": <div>
     <a
       aria-label="Aria label description"
-      class="external-link"
+      class="ons-external-link"
       href="/link"
       rel="noopener noreferrer"
       target="_blank"
     >
       Click Me
       <svg
-        class="svg-icon"
+        class="ons-svg-icon"
         viewBox="0 0 12 12"
         xmlns="http://www.w3.org/2000/svg"
       >

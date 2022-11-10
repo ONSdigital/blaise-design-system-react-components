@@ -5,35 +5,34 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="collapsible js-collapsible collapsible--initialised false u-mt-l"
-        data-btn-close="Hide this"
+      <details
+        class="ons-collapsible ons-js-collapsible ons-u-mt-l"
         data-save-state="true"
         id="collapsible-with-save"
         role="group"
       >
-        <div
+        <summary
           aria-controls="collapsible-with-save"
           aria-expanded="false"
-          class="collapsible__heading js-collapsible-heading"
-          data-ga-action="Close panel"
+          class="ons-collapsible__heading ons-js-collapsible-heading"
+          data-ga-action="Open panel"
           data-testid="collapsible-heading"
           role="link"
           tabindex="0"
         >
           <div
-            class="collapsible__controls"
+            class="ons-collapsible__controls"
           >
-            <div
-              class="collapsible__title"
+            <h2
+              class="ons-collapsible__title"
             >
               What is the Collapsible title?
-            </div>
+            </h2>
             <span
-              class="collapsible__icon"
+              class="ons-collapsible__icon"
             >
               <svg
-                class="svg-icon"
+                class="ons-svg-icon"
                 focusable="false"
                 viewBox="0 0 7.5 12.85"
                 xmlns="http://www.w3.org/2000/svg"
@@ -45,68 +44,49 @@ Object {
               </svg>
             </span>
           </div>
-        </div>
+        </summary>
         <div
           aria-hidden="true"
-          class="collapsible__content js-collapsible-content"
+          class="ons-collapsible__content ons-js-collapsible-content"
           data-testid="collapsible-content"
           id="collapsible-with-save-content"
         >
           <p>
             Inside the Collapsible
           </p>
-          <button
-            aria-controls="collapsible-with-save"
-            aria-hidden="true"
-            class="btn btn--small js-collapsible-button btn--secondary u-mt-m"
-            data-ga-action="Close panel"
-            type="button"
-          >
-            <span
-              class="btn__inner js-collapsible-button-inner"
-            >
-              Hide this
-            </span>
-            <span
-              class="btn__context u-vh"
-            >
-              What is the Collapsible title?
-            </span>
-          </button>
         </div>
-      </div>
+      </details>
     </div>
   </body>,
   "container": <div>
-    <div
-      class="collapsible js-collapsible collapsible--initialised false u-mt-l"
-      data-btn-close="Hide this"
+    <details
+      class="ons-collapsible ons-js-collapsible ons-u-mt-l"
       data-save-state="true"
       id="collapsible-with-save"
       role="group"
     >
-      <div
+      <summary
         aria-controls="collapsible-with-save"
         aria-expanded="false"
-        class="collapsible__heading js-collapsible-heading"
-        data-ga-action="Close panel"
+        class="ons-collapsible__heading ons-js-collapsible-heading"
+        data-ga-action="Open panel"
         data-testid="collapsible-heading"
         role="link"
         tabindex="0"
       >
         <div
-          class="collapsible__controls"
+          class="ons-collapsible__controls"
         >
-          <div
-            class="collapsible__title"
+          <h2
+            class="ons-collapsible__title"
           >
             What is the Collapsible title?
-          </div>
+          </h2>
           <span
-            class="collapsible__icon"
+            class="ons-collapsible__icon"
           >
             <svg
-              class="svg-icon"
+              class="ons-svg-icon"
               focusable="false"
               viewBox="0 0 7.5 12.85"
               xmlns="http://www.w3.org/2000/svg"
@@ -118,36 +98,18 @@ Object {
             </svg>
           </span>
         </div>
-      </div>
+      </summary>
       <div
         aria-hidden="true"
-        class="collapsible__content js-collapsible-content"
+        class="ons-collapsible__content ons-js-collapsible-content"
         data-testid="collapsible-content"
         id="collapsible-with-save-content"
       >
         <p>
           Inside the Collapsible
         </p>
-        <button
-          aria-controls="collapsible-with-save"
-          aria-hidden="true"
-          class="btn btn--small js-collapsible-button btn--secondary u-mt-m"
-          data-ga-action="Close panel"
-          type="button"
-        >
-          <span
-            class="btn__inner js-collapsible-button-inner"
-          >
-            Hide this
-          </span>
-          <span
-            class="btn__context u-vh"
-          >
-            What is the Collapsible title?
-          </span>
-        </button>
       </div>
-    </div>
+    </details>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
