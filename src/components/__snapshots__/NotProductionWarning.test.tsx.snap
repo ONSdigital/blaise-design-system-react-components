@@ -4,7 +4,6 @@ exports[`ONS Not production warning Test matches Snapshot 1`] = `
 initialize {
   "0": Node {
     "attribs": Object {
-      "class": "ons-census-warning",
       "style": "background:#222;color:#222",
     },
     "children": Array [
@@ -218,11 +217,9 @@ initialize {
     "prev": null,
     "type": "tag",
     "x-attribsNamespace": Object {
-      "class": undefined,
       "style": undefined,
     },
     "x-attribsPrefix": Object {
-      "class": undefined,
       "style": undefined,
     },
   },

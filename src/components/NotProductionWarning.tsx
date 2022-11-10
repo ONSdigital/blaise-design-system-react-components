@@ -7,7 +7,7 @@ import React, {ReactElement} from "react";
 function NotProductionWarning(): ReactElement {
     return (
         <>
-            <div className="ons-census-warning" style={{background: "#222", color: "#222"}}>
+            <div style={{background: "#222", color: "#222"}}>
                 <div className="ons-container">
                     <div className="ons-panel ons-panel--warn-branded ons-panel--no-title" style={{background: "#222"}}>
                         <span className="ons-panel__icon" aria-hidden="true" style={{color: "#222"}}>!</span>

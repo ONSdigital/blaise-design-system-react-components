@@ -50,8 +50,9 @@ function Header({ title, signOutButton, noSave, signOutFunction }: Props): React
                                             data-test-id="signout-button"
                                             className="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
                                             onClick={() => signOutFunction && signOutFunction()}>
-                                            <span className="ons-btn__inner">{signOutText}
-                                                <svg className="ons-svg-icon" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"
+                                            <span className="ons-btn__inner">
+                                                <span className="ons-btn__text">{signOutText}</span>
+                                                <svg className="ons-svg-icon ons-u-ml-xs" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"
                                                     focusable="false">
                                                     <path
                                                         d="M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z"

@@ -32,7 +32,7 @@ describe("Header Test", () => {
 
     it("shows Sign out button button", () => {
         const wrapper = render(<Header title={Props.title} signOutButton={true} signOutFunction={jest.fn()} />);
-        expect(wrapper.getByText(/Save and sign out/)).toBeDefined();
+        expect(wrapper.getByText(/Save and sign out/)).toBeVisible();
     });
 
     it("shows Sign out button button with special text", () => {
@@ -60,6 +60,6 @@ describe("Header Test", () => {
 
     it("should render with the title displayed", () => {
         const wrapper = render(<Header title={Props.title} />);
-        expect(wrapper.getByText(Props.title)).toBeDefined();
+        expect(wrapper.getByText(Props.title)).toBeVisible();
     });
 });

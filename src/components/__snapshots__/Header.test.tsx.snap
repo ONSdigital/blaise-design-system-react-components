@@ -237,9 +237,13 @@ Object {
                   <span
                     class="ons-btn__inner"
                   >
-                    Save and sign out
+                    <span
+                      class="ons-btn__text"
+                    >
+                      Save and sign out
+                    </span>
                     <svg
-                      class="ons-svg-icon"
+                      class="ons-svg-icon ons-u-ml-xs"
                       focusable="false"
                       viewBox="0 0 12 12"
                       xmlns="http://www.w3.org/2000/svg"
@@ -324,9 +328,13 @@ Object {
                 <span
                   class="ons-btn__inner"
                 >
-                  Save and sign out
+                  <span
+                    class="ons-btn__text"
+                  >
+                    Save and sign out
+                  </span>
                   <svg
-                    class="ons-svg-icon"
+                    class="ons-svg-icon ons-u-ml-xs"
                     focusable="false"
                     viewBox="0 0 12 12"
                     xmlns="http://www.w3.org/2000/svg"

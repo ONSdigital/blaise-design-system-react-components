@@ -28,7 +28,7 @@ describe("External Link Test",  () => {
 
     it("should render with the correct text displayed", () => {
         render(<ExternalLink {...Props}/>);
-        expect(screen.getByText(/Click Me/i)).toBeDefined();
+        expect(screen.getByText(/Click Me/i)).toBeVisible();
     });
 
     it("should render with the correct href passed in", () => {
