@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="ons-panel ons-panel--info ons-panel--no-title  u-mt-m"
+        class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
       >
         <div
           class="ons-panel__body "
@@ -98,7 +98,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="ons-panel ons-panel--info ons-panel--no-title  u-mt-m"
+      class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
     >
       <div
         class="ons-panel__body "
