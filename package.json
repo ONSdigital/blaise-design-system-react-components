@@ -13,7 +13,8 @@
     "test": "jest --coverage --watchAll=false",
     "test-watch": "jest --coverage --watchAll=true",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs-build"
+    "build-storybook": "build-storybook -o docs-build",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
