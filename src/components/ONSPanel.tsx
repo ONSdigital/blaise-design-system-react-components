@@ -17,7 +17,7 @@ export interface Props {
 }
 
 export const ONSPanel = (props: Props) => {
-    const className = "ons-panel ons-panel--" + (props.status ? props.status : "info") + " ons-panel--no-title " + (props.spacious ? "ons-panel--spacious" : "") + " u-mt-m";
+    const className = "ons-panel ons-panel--" + (props.status ? props.status : "info") + " ons-panel--no-title " + (props.spacious ? "ons-panel--spacious" : "") + "ons-u-mt-m";
     return (
         <div data-testid={props.testID} id={props.id} className={className} hidden={props.hidden}>
             {
