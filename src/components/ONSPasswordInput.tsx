@@ -20,7 +20,7 @@ export class ONSPasswordInput extends Component <Props, State> {
     }
 
     togglePassword = () => {
-        this.setState({ password: !this.state.password });
+        this.setState((prevState) => ({ password: !prevState.password }));
     };
 
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +62,6 @@ export class ONSPasswordInput extends Component <Props, State> {
                     onChange={(e) => this.handleChange(e)}
                     data-testid="login-password-input"
                 />
-
             </p>
 
         );
