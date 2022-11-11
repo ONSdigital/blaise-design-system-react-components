@@ -5,5 +5,5 @@ export interface Props {
     noSave?: boolean;
     signOutFunction?: () => void;
 }
-declare function Header({ title, signOutButton, noSave, signOutFunction }: Props): ReactElement;
+declare function Header({ title, signOutButton, noSave, signOutFunction, }: Props): ReactElement;
 export default Header;
