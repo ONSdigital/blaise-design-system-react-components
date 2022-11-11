@@ -34,7 +34,6 @@ function ExampleForm() {
     return (
         <>
             <p>{formStatus}</p>
-
             <StyledForm fields={formElements} onSubmitFunction={onFormSubmission} />
         </>
     );
