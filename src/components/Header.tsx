@@ -55,6 +55,7 @@ function Header({
                                                 data-test-id="signout-button"
                                                 className="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
                                                 onClick={() => signOutFunction && signOutFunction()}
+                                                type="button"
                                             >
                                                 <span className="ons-btn__inner">
                                                     <span className="ons-btn__text">{signOutText}</span>

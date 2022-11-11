@@ -233,6 +233,7 @@ Object {
                   class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
                   data-test-id="signout-button"
                   id="signout-button"
+                  type="button"
                 >
                   <span
                     class="ons-btn__inner"
@@ -324,6 +325,7 @@ Object {
                 class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
                 data-test-id="signout-button"
                 id="signout-button"
+                type="button"
               >
                 <span
                   class="ons-btn__inner"

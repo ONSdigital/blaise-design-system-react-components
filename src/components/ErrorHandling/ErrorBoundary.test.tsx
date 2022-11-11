@@ -24,7 +24,7 @@ describe("Error Boundary", () => {
             if (error) {
                 throw new Error("I crashed!");
             } else {
-                return <button onClick={() => setError(true)}>Click Me</button>;
+                return <button type="button" onClick={() => setError(true)}>Click Me</button>;
             }
         };
 
