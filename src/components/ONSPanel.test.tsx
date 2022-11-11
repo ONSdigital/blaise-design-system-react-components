@@ -1,7 +1,7 @@
 import React from "react";
-import Enzyme, { mount, shallow } from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { render, waitFor, cleanup } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { ONSPanel } from "./ONSPanel";
 
 describe("ONS Panel Test", () => {

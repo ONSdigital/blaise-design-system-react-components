@@ -12,8 +12,6 @@ describe("ONS Text Input Test", () => {
         cleanup();
     });
 
-    let x: any;
-
     const Props = {
         id: "file-upload",
         label: "text",
@@ -45,8 +43,7 @@ describe("ONS Text Input Test", () => {
                 autoComplete={props.autoComplete}
                 onClick={props.onClick}
                 validate={validateInstrumentName}
-            >
-            </ONSTextInput>,
+            />,
         );
     }
 

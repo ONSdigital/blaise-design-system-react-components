@@ -1,4 +1,3 @@
-import React from "react";
 import {
     validateEmail, validateInstrumentName, validateName, validatePassword, validateRadio,
 } from "./FormValidation";
