@@ -26,8 +26,7 @@ describe("ONS Upload Test", () => {
                 fileID={props.fileID}
                 accept={props.accept}
                 onChange={props.onChange}
-            >
-            </ONSUpload>,
+            />,
         );
     }
 

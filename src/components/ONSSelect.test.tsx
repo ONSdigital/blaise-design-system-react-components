@@ -35,8 +35,7 @@ describe("ONS Select Test", () => {
                 onChange={props.onChange}
                 value={props.value}
                 options={props.options}
-            >
-            </ONSSelect>,
+            />,
         );
     }
 

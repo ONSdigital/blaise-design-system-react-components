@@ -62,7 +62,7 @@ export const ONSButton = (props: Props) => {
                             viewBox="0 0 100 100"
                             preserveAspectRatio="xMidYMid"
                         >
-                            <rect x="0" y="0" width="100" height="100" fill="none" className="bk"></rect>
+                            <rect x="0" y="0" width="100" height="100" fill="none" className="bk" />
                             <rect
                                 x="46.5"
                                 y="40"

@@ -32,8 +32,7 @@ describe("ONS Password Input Test", () => {
                 placeholder={props.placeholder}
                 marginTop={props.marginTop}
                 onChange={props.onChange}
-            >
-            </ONSPasswordInput>,
+            />,
         );
     }
 
