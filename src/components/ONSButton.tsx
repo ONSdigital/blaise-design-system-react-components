@@ -34,13 +34,16 @@ export const ONSButton = (props: Props) => {
         return "button";
     };
 
-    const className = `ons-btn ${
-        props.action ? "ons-btn--link " : ""
-    }${props.loading ? "ons-btn--loader ons-is-loading " : ""
-    }${props.field ? "ons-field " : ""
-    }${props.primary ? "" : "ons-btn--secondary "
-    }${props.small ? "ons-btn--small " : ""
-    }${props.disabled ? "ons-btn--disabled " : ""}`;
+    const className = [
+        "ons-btn ",
+        props.action ? "ons-btn--link" : null,
+        props.loading ? "ons-btn--loader ons-is-loading" : null,
+        props.field ? "ons-field" : null,
+        props.primary ? null : "ons-btn--secondary",
+        props.small ? "ons-btn--small" : null,
+        props.disabled ? "ons-btn--disabled" : null,
+    ].filter((name) => name !== null).join(" ");
+
     return (
         <button
             id={props.id}
