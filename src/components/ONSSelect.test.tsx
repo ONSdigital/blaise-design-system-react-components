@@ -1,31 +1,31 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import {ONSSelect} from "./ONSSelect";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import { ONSSelect } from "./ONSSelect";
 
 describe("ONS Select Test", () => {
-    Enzyme.configure({adapter: new Adapter()});
+    Enzyme.configure({ adapter: new Adapter() });
 
     const Selection = [
-        {"label": "1", "value": "1"},
-        {"label": "2", "value": "2"},
-        {"label": "3", "value": "3"}
-    ]
+        { label: "1", value: "1" },
+        { label: "2", value: "2" },
+        { label: "3", value: "3" },
+    ];
 
     const Props = {
         id: "select-thing",
         label: "Select From",
         value: "select value",
-        options: Selection
-    }
+        options: Selection,
+    };
 
     const changeProps = {
         id: "select-thing",
         label: "Select From",
         options: Selection,
         onChange: jest.fn(),
-    }
+    };
 
     function wrapper(render: any, props: any) {
         return render(
@@ -34,25 +34,25 @@ describe("ONS Select Test", () => {
                 label={props.label}
                 onChange={props.onChange}
                 value={props.value}
-                options={props.options}>
-            </ONSSelect>
-        )
+                options={props.options}
+            />,
+        );
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, Props)).toMatchSnapshot()
+        expect(wrapper(shallow, Props)).toMatchSnapshot();
     });
 
     it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
 
     it("should render with the correct label", () => {
-        wrapper(render, Props)
+        wrapper(render, Props);
         expect(screen.getByLabelText(Props.label)).toBeDefined();
-    })
+    });
 
-    it('simulates change events', () => {
-        //defined
-        wrapper(shallow, changeProps).find("select").simulate('change', {target: {value: 'abc'}});
-        expect(changeProps.onChange).toHaveBeenCalled()
-    })
-})
+    it("simulates change events", () => {
+        // defined
+        wrapper(shallow, changeProps).find("select").simulate("change", { target: { value: "abc" } });
+        expect(changeProps.onChange).toHaveBeenCalled();
+    });
+});

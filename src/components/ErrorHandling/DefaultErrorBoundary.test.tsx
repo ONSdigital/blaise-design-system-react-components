@@ -1,15 +1,16 @@
-import {cleanup, render, waitFor, screen, fireEvent} from "@testing-library/react";
-import {act} from "react-dom/test-utils";
-import React, {useState} from "react";
+import {
+    cleanup, render, waitFor, screen, fireEvent,
+} from "@testing-library/react";
+import { act } from "react-dom/test-utils";
+import React, { useState } from "react";
 import DefaultErrorBoundary from "./DefaultErrorBoundary";
 
 describe("Default Error Boundary", () => {
-
     it("should render children correctly when there are no issues", async () => {
         render(
             <DefaultErrorBoundary>
                 <p>Simple text</p>
-            </DefaultErrorBoundary>
+            </DefaultErrorBoundary>,
         );
 
         await waitFor(() => {
@@ -23,14 +24,14 @@ describe("Default Error Boundary", () => {
             if (error) {
                 throw new Error("I crashed!");
             } else {
-                return <button onClick={() => setError(true)}>Click Me</button>;
+                return <button type="button" onClick={() => setError(true)}>Click Me</button>;
             }
         };
 
         render(
             <DefaultErrorBoundary>
-                <DodgyComponent/>
-            </DefaultErrorBoundary>
+                <DodgyComponent />
+            </DefaultErrorBoundary>,
         );
 
         await act(async () => {

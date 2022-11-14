@@ -1,13 +1,14 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import {cleanup, render, screen, fireEvent} from "@testing-library/react";
+import Enzyme, { shallow } from "enzyme";
+import {
+    cleanup, render, screen, fireEvent,
+} from "@testing-library/react";
 import sinon from "sinon";
 import Adapter from "enzyme-adapter-react-16";
-import {ONSButton} from "./ONSButton";
-
+import { ONSButton } from "./ONSButton";
 
 describe("ONS Button Test", () => {
-    Enzyme.configure({adapter: new Adapter()});
+    Enzyme.configure({ adapter: new Adapter() });
 
     afterEach(() => {
         cleanup();
@@ -27,7 +28,7 @@ describe("ONS Button Test", () => {
         small: true,
         field: true,
         onButtonClick: sinon.spy(),
-        loading: false
+        loading: false,
     };
 
     const smallButtonProps = {
@@ -35,7 +36,7 @@ describe("ONS Button Test", () => {
         primary: true,
         onButtonClick: sinon.spy(),
         loading: true,
-        small: true
+        small: true,
     };
     const loadingButtonProps = {
         label: "Submit4",
@@ -52,7 +53,7 @@ describe("ONS Button Test", () => {
         small: true,
         field: true,
         onButtonClick: sinon.spy(),
-        disabled: true
+        disabled: true,
     };
 
     const callToActionProps = {
@@ -62,7 +63,7 @@ describe("ONS Button Test", () => {
         field: true,
         onButtonClick: sinon.spy(),
         disabled: false,
-        action: true
+        action: true,
     };
 
     const testIdProps = {
@@ -73,38 +74,40 @@ describe("ONS Button Test", () => {
         onButtonClick: sinon.spy(),
         disabled: false,
         action: true,
-        testId: "Unique-ID"
+        testId: "Unique-ID",
     };
 
     function wrapper(render: any, props: any) {
         return render(
-            <ONSButton label={props.label}
-                       id={props.id}
-                       primary={props.primary}
-                       small={props.small}
-                       field={props.field}
-                       loading={props.loading}
-                       marginRight={props.marginRight}
-                       onClick={props.onButtonClick}
-                       disabled={props.disabled}
-                       action={props.action}
-                       testid={props.testId}/>
+            <ONSButton
+                label={props.label}
+                id={props.id}
+                primary={props.primary}
+                small={props.small}
+                field={props.field}
+                loading={props.loading}
+                marginRight={props.marginRight}
+                onClick={props.onButtonClick}
+                disabled={props.disabled}
+                action={props.action}
+                testid={props.testId}
+            />,
         );
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(render, Props)).toMatchSnapshot()
+        expect(wrapper(render, Props)).toMatchSnapshot();
     });
 
     it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
 
     it("should render with the correct label", () => {
-        wrapper(render, Props)
+        wrapper(render, Props);
         expect(screen.getByText(/Submit1/i).textContent).toContain(Props.label);
     });
 
     it("simulates click events", () => {
-        wrapper(render, exportButtonProps)
+        wrapper(render, exportButtonProps);
         fireEvent.click(screen.getByText(/Submit1.5/i));
         expect(exportButtonProps.onButtonClick).toHaveProperty("callCount", 1);
     });
@@ -126,7 +129,7 @@ describe("ONS Button Test", () => {
     });
 
     it("has data-testid set correctly", () => {
-        const button = wrapper(shallow, testIdProps).find("button").get(0)
-        expect(button.props['data-testid']).toEqual(testIdProps.testId + "-button");
+        const button = wrapper(shallow, testIdProps).find("button").get(0);
+        expect(button.props["data-testid"]).toEqual(`${testIdProps.testId}-button`);
     });
 });

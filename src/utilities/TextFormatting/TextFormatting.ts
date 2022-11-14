@@ -1,10 +1,5 @@
 function replaceUnderscoreWithSpaces(text: string): string {
-    return text.split("_").join(" ")
-}
-
-function FormatTitle(text: string): string {
-    text = replaceUnderscoreWithSpaces(text);
-    return TitleCase(text);
+    return text.split("_").join(" ");
 }
 
 function TitleCase(stringToConvert: string): string {
@@ -14,8 +9,12 @@ function TitleCase(stringToConvert: string): string {
     return firstCharacter.toUpperCase() + restString;
 }
 
-function FormatKey(text: string): string {
-    return text.split(" ").join("-")
+function FormatTitle(text: string): string {
+    return TitleCase(replaceUnderscoreWithSpaces(text));
 }
 
-export {FormatTitle, TitleCase, FormatKey};
+function FormatKey(text: string): string {
+    return text.split(" ").join("-");
+}
+
+export { FormatTitle, TitleCase, FormatKey };

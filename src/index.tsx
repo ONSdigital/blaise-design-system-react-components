@@ -1,4 +1,4 @@
-import NotProductionWarning from "./components/NotProductionWarning"
+import NotProductionWarning from "./components/NotProductionWarning";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import BetaBanner from "./components/BetaBanner";
@@ -18,7 +18,9 @@ import Collapsible from "./components/Collapsible";
 import ErrorBoundary from "./components/ErrorHandling/ErrorBoundary";
 import DefaultErrorBoundary from "./components/ErrorHandling/DefaultErrorBoundary";
 import ONSTable from "./components/ONSTable";
-import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
+import {
+    SummaryItemRow, SummaryGroupTable, GroupedSummary, Group,
+} from "./components/ONSSummary";
 import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
 
 export type { Group, FormFieldObject };
@@ -48,5 +50,5 @@ export {
     SummaryGroupTable,
     GroupedSummary,
     FormatTitle,
-    TitleCase
+    TitleCase,
 };

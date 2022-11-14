@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
-interface ONSTable {
+interface ONSTableProps {
     columns: string[];
     children: ReactElement;
     tableID?: string;
     tableCaption?: string;
 }
-declare function ONSTable({ columns, children, tableCaption, tableID }: ONSTable): ReactElement;
+declare function ONSTable({ columns, children, tableCaption, tableID, }: ONSTableProps): ReactElement;
 export default ONSTable;

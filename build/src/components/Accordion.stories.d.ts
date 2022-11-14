@@ -1,5 +1,4 @@
-import { ComponentStory } from "@storybook/react";
-import { Meta } from '@storybook/react';
+import { ComponentStory, Meta } from "@storybook/react";
 import Accordion from "./Accordion";
 declare const _default: Meta<import("@storybook/react").Args>;
 export default _default;

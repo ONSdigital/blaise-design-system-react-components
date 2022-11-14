@@ -1,8 +1,9 @@
-import React, {Fragment} from 'react';
-import {Form, Formik} from "formik";
-import StyledFormErrorSummary from './StyledFormErrorSummary';
-import {ONSButton} from "../ONSButton";
-import {StyledFormField} from "./FormElements/StyledFormFields";
+import React, { Fragment } from "react";
+import { Form, Formik } from "formik";
+import StyledFormErrorSummary from "./StyledFormErrorSummary";
+import { ONSButton } from "../ONSButton";
+// eslint-disable-next-line import/no-cycle
+import { StyledFormField } from "./FormElements/StyledFormFields";
 
 export interface RadioSpecifyOption {
     id: string
@@ -12,7 +13,6 @@ export interface RadioSpecifyOption {
     type: string
     validate?: (value: string) => string | undefined
 }
-
 
 export interface RadioFieldsetObject {
     value: string
@@ -66,10 +66,9 @@ export interface StyledFormProps {
  *  - fields: List of fields to display on form.
  *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
-function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
-
-    let initialFieldValues: any = {};
-    fields.forEach(({name, initial_value}) => {
+function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) {
+    const initialFieldValues: any = {};
+    fields.forEach(({ name, initial_value }) => {
         initialFieldValues[name] = initial_value;
     });
 
@@ -78,37 +77,39 @@ function StyledForm({fields, onSubmitFunction, submitLabel}: StyledFormProps) {
             validateOnBlur={false}
             validateOnChange={false}
             initialValues={initialFieldValues}
-            onSubmit={(values, {setSubmitting}) => {
+            onSubmit={(values, { setSubmitting }) => {
                 onSubmitFunction(values, setSubmitting);
             }}
         >
-            {({isValid, isSubmitting}) => (
+            {({ isValid, isSubmitting }) => (
                 <Form>
-                    <StyledFormErrorSummary/>
+                    <StyledFormErrorSummary />
                     {
                         fields.map((field, index) => {
-                            field.autoFocus = (isValid && index === 0)
+                            // eslint-disable-next-line no-param-reassign
+                            field.autoFocus = (isValid && index === 0);
 
                             return (
                                 <Fragment key={field.name}>
                                     {// @ts-ignore
-                                        <StyledFormField {...field}/>
+                                        <StyledFormField {...field} />
                                     }
                                 </Fragment>
-                            )
+                            );
                         })
                     }
-                    <br/>
+                    <br />
                     <ONSButton
-                        submit={true}
-                        label={(submitLabel ? submitLabel : "Save and continue")}
-                        primary={true}
-                        testid={"submit"}
-                        loading={isSubmitting}/>
+                        submit
+                        label={(submitLabel || "Save and continue")}
+                        primary
+                        testid="submit"
+                        loading={isSubmitting}
+                    />
                 </Form>
             )}
         </Formik>
-    )
+    );
 }
 
 export default StyledForm;

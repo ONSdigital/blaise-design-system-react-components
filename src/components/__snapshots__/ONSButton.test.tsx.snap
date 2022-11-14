@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <button
-        class="ons-btn ons-field ons-btn--secondary ons-btn--small "
+        class="ons-btn  ons-field ons-btn--secondary ons-btn--small"
         data-testid="button"
         type="button"
       >
@@ -20,7 +20,7 @@ Object {
   </body>,
   "container": <div>
     <button
-      class="ons-btn ons-field ons-btn--secondary ons-btn--small "
+      class="ons-btn  ons-field ons-btn--secondary ons-btn--small"
       data-testid="button"
       type="button"
     >

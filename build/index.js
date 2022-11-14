@@ -14,24 +14,22 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
  * Shown at the top of a page, above the header to warn users.
  */
 function NotProductionWarning() {
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("div", { className: "census-warning", style: { background: "#222", color: "#222" } },
-            React__default['default'].createElement("div", { className: "container" },
-                React__default['default'].createElement("div", { className: "panel panel--warn-branded panel--no-title", style: { background: "#222" } },
-                    React__default['default'].createElement("span", { className: "panel__icon", "aria-hidden": "true", style: { color: "#222" } }, "!"),
-                    React__default['default'].createElement("div", { className: "panel__body" },
-                        React__default['default'].createElement("p", { className: "u-mb-no" }, "This environment is not a production environment. Do not upload any live data to this service.")))))));
+    return (React__default['default'].createElement("div", { style: { background: "#222", color: "#222" } },
+        React__default['default'].createElement("div", { className: "ons-container" },
+            React__default['default'].createElement("div", { className: "ons-panel ons-panel--warn-branded ons-panel--no-title", style: { background: "#222" } },
+                React__default['default'].createElement("span", { className: "ons-panel__icon", "aria-hidden": "true", style: { color: "#222" } }, "!"),
+                React__default['default'].createElement("div", { className: "ons-panel__body" },
+                    React__default['default'].createElement("p", { className: "ons-u-mb-no" }, "This environment is not a production environment. Do not upload any live data to this service."))))));
 }
 
 function Footer() {
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("footer", { className: "footer" },
-            React__default['default'].createElement("div", { className: "footer__body", "data-analytics": "footer" },
-                React__default['default'].createElement("div", { className: "container " },
-                    React__default['default'].createElement("div", { className: "grid grid--flex grid--between" },
-                        React__default['default'].createElement("div", { className: "grid__col" },
-                            React__default['default'].createElement("div", { className: "u-mt-m u-mb-s" },
-                                React__default['default'].createElement("img", { src: "https://ons-design-system.netlify.app/img/ons-logo-black-en.svg", alt: "Office for National Statistics" })))))))));
+    return (React__default['default'].createElement("footer", { className: "ons-footer" },
+        React__default['default'].createElement("div", { className: "ons-footer__body", "data-analytics": "footer" },
+            React__default['default'].createElement("div", { className: "ons-container " },
+                React__default['default'].createElement("div", { className: "ons-grid ons-grid--flex ons-grid--between" },
+                    React__default['default'].createElement("div", { className: "ons-grid__col" },
+                        React__default['default'].createElement("div", { className: "ons-u-mt-m ons-u-mb-s" },
+                            React__default['default'].createElement("img", { src: "https://ons-design-system.netlify.app/img/ons-logo-black-en.svg", alt: "Office for National Statistics" }))))))));
 }
 
 function Header(_a) {
@@ -40,61 +38,58 @@ function Header(_a) {
     if (noSave) {
         signOutText = "Sign out";
     }
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("header", { className: "header header--internal" },
-            React__default['default'].createElement("div", { className: "header__top", role: "banner" },
-                React__default['default'].createElement("div", { className: "container" },
-                    React__default['default'].createElement("div", { className: "header__grid-top grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap " },
-                        React__default['default'].createElement("div", { className: "grid__col col-auto" },
-                            React__default['default'].createElement("a", { className: "header__logo-link", href: "/" },
-                                React__default['default'].createElement("picture", null,
-                                    React__default['default'].createElement("img", { className: "header__logo", src: "https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
-            React__default['default'].createElement("div", { className: "header__main" },
-                React__default['default'].createElement("div", { className: "container" },
-                    React__default['default'].createElement("div", { className: "grid grid--gutterless grid--flex grid--between grid--vertical-center grid--no-wrap" },
-                        React__default['default'].createElement("div", { className: "grid__col col-auto u-flex-shrink" },
-                            React__default['default'].createElement("div", { className: "header__title" }, title)),
-                        (signOutButton &&
-                            React__default['default'].createElement("div", { className: "grid__col col-auto u-flex-no-shrink u-d-no@xxs@m" },
-                                React__default['default'].createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "btn btn--ghost u-d-no@xxs@m btn--exit", onClick: function () { return signOutFunction && signOutFunction(); } },
-                                    React__default['default'].createElement("span", { className: "btn__inner" },
-                                        signOutText,
-                                        React__default['default'].createElement("svg", { className: "svg-icon", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
-                                            React__default['default'].createElement("path", { d: "M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z", transform: "translate(-2 -2)" }),
-                                            React__default['default'].createElement("path", { d: "M8.5,14h-6a.5.5,0,0,1-.5-.5V2.5A.5.5,0,0,1,2.5,2h6a.5.5,0,0,1,.5.5V3a.5.5,0,0,1-.5.5h-5v9h5A.5.5,0,0,1,9,13v.5A.5.5,0,0,1,8.5,14Z", transform: "translate(-2 -2)" }))))))))))));
+    return (React__default['default'].createElement("header", { className: "ons-header ons-header--internal" },
+        React__default['default'].createElement("div", { className: "ons-header__top", role: "banner" },
+            React__default['default'].createElement("div", { className: "ons-container" },
+                React__default['default'].createElement("div", { className: "ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap " },
+                    React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto" },
+                        React__default['default'].createElement("a", { className: "header__logo-link", href: "/" },
+                            React__default['default'].createElement("picture", null,
+                                React__default['default'].createElement("img", { className: "ons-header__logo", src: "https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
+        React__default['default'].createElement("div", { className: "ons-header__main" },
+            React__default['default'].createElement("div", { className: "ons-container" },
+                React__default['default'].createElement("div", { className: "ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap" },
+                    React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-shrink" },
+                        React__default['default'].createElement("div", { className: "ons-header__title" }, title)),
+                    (signOutButton
+                        && (React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m" },
+                            React__default['default'].createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit", onClick: function () { return signOutFunction && signOutFunction(); }, type: "button" },
+                                React__default['default'].createElement("span", { className: "ons-btn__inner" },
+                                    React__default['default'].createElement("span", { className: "ons-btn__text" }, signOutText),
+                                    React__default['default'].createElement("svg", { className: "ons-svg-icon ons-u-ml-xs", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
+                                        React__default['default'].createElement("path", { d: "M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z", transform: "translate(-2 -2)" }),
+                                        React__default['default'].createElement("path", { d: "M8.5,14h-6a.5.5,0,0,1-.5-.5V2.5A.5.5,0,0,1,2.5,2h6a.5.5,0,0,1,.5.5V3a.5.5,0,0,1-.5.5h-5v9h5A.5.5,0,0,1,9,13v.5A.5.5,0,0,1,8.5,14Z", transform: "translate(-2 -2)" }))))))))))));
 }
 
 function BetaBanner() {
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("div", { className: "phase-banner" },
-            React__default['default'].createElement("div", { className: "container " },
-                React__default['default'].createElement("div", { className: "grid grid--flex grid--gutterless grid--vertical-center grid--no-wrap" },
-                    React__default['default'].createElement("div", { className: "grid__col col-auto u-flex-no-grow" },
-                        React__default['default'].createElement("h3", { className: "phase-banner__badge" }, "BETA")),
-                    React__default['default'].createElement("div", { className: "grid__col col-auto u-flex-shrink" },
-                        React__default['default'].createElement("p", { className: "phase-banner__desc u-fs-s u-mb-no" },
-                            "This is a new service \u2013 your ",
-                            React__default['default'].createElement("a", { href: "https://ons.service-now.com/" }, "feedback"),
-                            " will help us improve it.")))))));
+    return (React__default['default'].createElement("div", { className: "ons-phase-banner" },
+        React__default['default'].createElement("div", { className: "ons-container " },
+            React__default['default'].createElement("div", { className: "ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap" },
+                React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-no-grow" },
+                    React__default['default'].createElement("h3", { className: "ons-phase-banner__badge" }, "BETA")),
+                React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-shrink" },
+                    React__default['default'].createElement("p", { className: "ons-phase-banner__desc ons-u-fs-s ons-u-mb-no" },
+                        "This is a new service \u2013 your",
+                        React__default['default'].createElement("a", { href: "https://ons.service-now.com/" }, "feedback"),
+                        " ",
+                        "will help us improve it."))))));
 }
 
 function ExternalLink(props) {
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("a", { href: props.link, id: props.id, "aria-label": props.ariaLabel, className: "external-link", target: "_blank", rel: "noopener noreferrer" },
-            props.text,
-            React__default['default'].createElement("svg", { className: "svg-icon", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg" },
-                React__default['default'].createElement("path", { d: "M13.5,9H13a.5.5,0,0,0-.5.5v3h-9v-9h3A.5.5,0,0,0,7,3V2.5A.5.5,0,0,0,6.5,2h-4a.5.5,0,0,0-.5.5v11a.5.5,0,0,0,.5.5h11a.5.5,0,0,0,.5-.5v-4A.5.5,0,0,0,13.5,9Z", transform: "translate(-2 -1.99)" }),
-                React__default['default'].createElement("path", { d: "M8.83,7.88a.51.51,0,0,0,.71,0l2.31-2.32,1.28,1.28A.51.51,0,0,0,14,6.49v-4a.52.52,0,0,0-.5-.5h-4A.51.51,0,0,0,9,2.52a.58.58,0,0,0,.14.33l1.28,1.28L8.12,6.46a.51.51,0,0,0,0,.71Z", transform: "translate(-2 -1.99)" })))));
+    return (React__default['default'].createElement("a", { href: props.link, id: props.id, "aria-label": props.ariaLabel, className: "ons-external-link", target: "_blank", rel: "noopener noreferrer" },
+        props.text,
+        React__default['default'].createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg" },
+            React__default['default'].createElement("path", { d: "M13.5,9H13a.5.5,0,0,0-.5.5v3h-9v-9h3A.5.5,0,0,0,7,3V2.5A.5.5,0,0,0,6.5,2h-4a.5.5,0,0,0-.5.5v11a.5.5,0,0,0,.5.5h11a.5.5,0,0,0,.5-.5v-4A.5.5,0,0,0,13.5,9Z", transform: "translate(-2 -1.99)" }),
+            React__default['default'].createElement("path", { d: "M8.83,7.88a.51.51,0,0,0,.71,0l2.31-2.32,1.28,1.28A.51.51,0,0,0,14,6.49v-4a.52.52,0,0,0-.5-.5h-4A.51.51,0,0,0,9,2.52a.58.58,0,0,0,.14.33l1.28,1.28L8.12,6.46a.51.51,0,0,0,0,.71Z", transform: "translate(-2 -1.99)" }))));
 }
 
 /**
  * This is a Standard Panel with an error status, with a prepared message.
  */
 function ONSErrorPanel() {
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("div", { className: "panel panel--error panel--no-title" },
-            React__default['default'].createElement("div", { className: "panel__body" },
-                React__default['default'].createElement("p", null, "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later.")))));
+    return (React__default['default'].createElement("div", { className: "ons-panel ons-panel--error ons-panel--no-title" },
+        React__default['default'].createElement("div", { className: "ons-panel__body" },
+            React__default['default'].createElement("p", null, "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."))));
 }
 
 var ONSButton = function (props) {
@@ -102,66 +97,68 @@ var ONSButton = function (props) {
         if (props.hidden)
             return { display: "none" };
         return {
-            marginRight: String(props.marginRight) + "px"
+            marginRight: "".concat(String(props.marginRight), "px"),
         };
     };
-    var test_id = function () {
+    var testId = function () {
         if (props.testid) {
-            return props.testid + "-button";
+            return "".concat(props.testid, "-button");
         }
         return "button";
     };
-    var className = "btn " +
-        (props.action ? "btn--link " : "") +
-        (props.loading ? "btn--loader is-loading " : "") +
-        (props.field ? "field " : "") +
-        (props.primary ? "" : "btn--secondary ") +
-        (props.small ? "btn--small " : "") +
-        (props.disabled ? "btn--disabled " : "");
-    return (React__default['default'].createElement("button", { id: props.id, style: spacing(), type: props.submit ? "submit" : "button", disabled: props.loading || props.disabled, className: className, onClick: props.onClick, "data-testid": test_id() },
-        React__default['default'].createElement("span", { className: "btn__inner" },
+    var className = [
+        "ons-btn ",
+        props.action ? "ons-btn--link" : null,
+        props.loading ? "ons-btn--loader ons-is-loading" : null,
+        props.field ? "ons-field" : null,
+        props.primary ? null : "ons-btn--secondary",
+        props.small ? "ons-btn--small" : null,
+        props.disabled ? "ons-btn--disabled" : null,
+    ].filter(function (name) { return name !== null; }).join(" ");
+    return (React__default['default'].createElement("button", { id: props.id, style: spacing(), type: props.submit ? "submit" : "button", disabled: props.loading || props.disabled, className: className, onClick: props.onClick, "data-testid": testId() },
+        React__default['default'].createElement("span", { className: "ons-btn__inner" },
             props.label,
-            props.loading &&
-                React__default['default'].createElement("svg", { className: "svg-icon uil-default", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
+            props.loading
+                && (React__default['default'].createElement("svg", { className: "ons-svg-icon uil-default", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
                     React__default['default'].createElement("rect", { x: "0", y: "0", width: "100", height: "100", fill: "none", className: "bk" }),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(0 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(30 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.08333333333333333s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(60 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.16666666666666666s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(90 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.25s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(120 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.3333333333333333s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(150 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.4166666666666667s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(180 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.5s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(210 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.5833333333333334s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(240 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.6666666666666666s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(270 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.75s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(300 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.8333333333333334s', repeatCount: 'indefinite' })),
-                    React__default['default'].createElement("rect", { x: '46.5', y: '40', width: '7', height: '20', rx: '5', ry: '5', transform: 'rotate(330 50 50) translate(0 -30)' },
-                        React__default['default'].createElement("animate", { attributeName: 'opacity', from: '1', to: '0', dur: '1s', begin: '0.9166666666666666s', repeatCount: 'indefinite' }))))));
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(0 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(30 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.08333333333333333s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(60 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.16666666666666666s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(90 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.25s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(120 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.3333333333333333s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(150 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.4166666666666667s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(180 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.5s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(210 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.5833333333333334s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(240 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.6666666666666666s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(270 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.75s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(300 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.8333333333333334s", repeatCount: "indefinite" })),
+                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(330 50 50) translate(0 -30)" },
+                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.9166666666666666s", repeatCount: "indefinite" })))))));
 };
 
 var ONSPanel = function (props) {
-    var className = "panel panel--" + (props.status ? props.status : "info") + " panel--no-title " + (props.spacious ? "panel--spacious" : "") + " u-mt-m";
+    var className = "ons-panel ons-panel--".concat(props.status ? props.status : "info", " ons-panel--no-title ").concat(props.spacious ? "ons-panel--spacious" : "", " ons-u-mt-m");
     return (React__default['default'].createElement("div", { "data-testid": props.testID, id: props.id, className: className, hidden: props.hidden },
-        props.status === "success" &&
-            React__default['default'].createElement("span", { className: "panel__icon" },
-                React__default['default'].createElement("svg", { className: "svg-icon ".concat(props.bigIcon === true ? "svg-icon--xl" : ""), viewBox: "0 0 13 10", xmlns: "http://www.w3.org/2000/svg" },
-                    React__default['default'].createElement("path", { d: "M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z", transform: "translate(-1.51 -3.04)" }))),
-        props.status === "warn" &&
-            React__default['default'].createElement(React__default['default'].Fragment, null,
-                React__default['default'].createElement("span", { className: "panel__icon", "aria-hidden": "true" }, "!"),
-                React__default['default'].createElement("span", { className: "u-vh" }, "Warning: ")),
-        React__default['default'].createElement("div", { className: "panel__body ".concat(props.bigIcon === true ? "svg-icon-margin--xl" : "") }, props.children)));
+        props.status === "success"
+            && (React__default['default'].createElement("span", { className: "ons-panel__icon" },
+                React__default['default'].createElement("svg", { className: "ons-svg-icon ".concat(props.bigIcon === true ? "ons-svg-icon--xl" : ""), viewBox: "0 0 13 10", xmlns: "http://www.w3.org/2000/svg" },
+                    React__default['default'].createElement("path", { d: "M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z", transform: "translate(-1.51 -3.04)" })))),
+        props.status === "warn"
+            && (React__default['default'].createElement(React__default['default'].Fragment, null,
+                React__default['default'].createElement("span", { className: "ons-panel__icon", "aria-hidden": "true" }, "!"),
+                React__default['default'].createElement("span", { className: "ons-u-vh" }, "Warning: "))),
+        React__default['default'].createElement("div", { className: "ons-panel__body ".concat(props.bigIcon === true ? "ons-svg-icon-margin--xl" : "") }, props.children)));
 };
 
 /*! *****************************************************************************
@@ -223,7 +220,7 @@ var ONSPasswordInput = /** @class */ (function (_super) {
     function ONSPasswordInput(props) {
         var _this = _super.call(this, props) || this;
         _this.togglePassword = function () {
-            _this.setState({ password: !_this.state.password });
+            _this.setState(function (prevState) { return ({ password: !prevState.password }); });
         };
         _this.handleChange = function (e) {
             if (_this.props.onChange !== undefined) {
@@ -232,7 +229,7 @@ var ONSPasswordInput = /** @class */ (function (_super) {
         };
         _this.spacing = function () {
             var buttonStyle = {
-                marginTop: String(_this.props.marginTop) + "px",
+                marginTop: "".concat(String(_this.props.marginTop), "px"),
             };
             return buttonStyle;
         };
@@ -241,12 +238,12 @@ var ONSPasswordInput = /** @class */ (function (_super) {
     }
     ONSPasswordInput.prototype.render = function () {
         var _this = this;
-        return (React__default['default'].createElement("p", { className: "field" },
-            React__default['default'].createElement("label", { className: "label", htmlFor: "password" }, this.props.label),
-            React__default['default'].createElement("span", { className: "checkbox checkbox--toggle", style: this.spacing() },
-                React__default['default'].createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "checkbox__input", name: "show-password", onClick: this.togglePassword }),
-                React__default['default'].createElement("label", { id: "password-toggle-label", className: "checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
-            React__default['default'].createElement("input", { type: this.state.password ? "password" : "text", id: "password", className: "input input--text input-type__input u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
+        return (React__default['default'].createElement("p", { className: "ons-field" },
+            React__default['default'].createElement("label", { className: "ons-label", htmlFor: "password" }, this.props.label),
+            React__default['default'].createElement("span", { className: "ons-checkbox ons-checkbox--toggle", style: this.spacing() },
+                React__default['default'].createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "ons-checkbox__input", name: "show-password", onClick: this.togglePassword }),
+                React__default['default'].createElement("label", { id: "password-toggle-label", className: "ons-checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
+            React__default['default'].createElement("input", { type: this.state.password ? "password" : "text", id: "password", className: "ons-input ons-input--text ons-input-type__input ons-u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
     };
     return ONSPasswordInput;
 }(React.Component));
@@ -274,15 +271,13 @@ var ONSSelect = /** @class */ (function (_super) {
     ONSSelect.prototype.render = function () {
         var _this = this;
         return (React__default['default'].createElement("div", null,
-            this.props.label !== undefined &&
-                React__default['default'].createElement("label", { className: "label", htmlFor: this.props.id },
+            this.props.label !== undefined
+                && (React__default['default'].createElement("label", { className: "ons-label", htmlFor: this.props.id },
                     this.props.label,
-                    " "),
-            React__default['default'].createElement("select", { id: this.props.id, name: "select", defaultValue: this.defaultValue(), className: "input ", onChange: function (e) { return _this.handleChange(e); } },
-                React__default['default'].createElement("option", { value: "", disabled: true, "data-testid": "select-" + this.props.id }, "Select an option"),
-                this.props.options.map(function (option, index) {
-                    return React__default['default'].createElement("option", { value: option.value, key: index, id: option.id, "data-testid": "option-" + _this.props.id + "-" + option.value }, option.label);
-                }))));
+                    " ")),
+            React__default['default'].createElement("select", { id: this.props.id, name: "select", defaultValue: this.defaultValue(), className: "ons-input ", onChange: function (e) { return _this.handleChange(e); } },
+                React__default['default'].createElement("option", { value: "", disabled: true, "data-testid": "select-".concat(this.props.id) }, "Select an option"),
+                this.props.options.map(function (option, index) { return (React__default['default'].createElement("option", { value: option.value, key: index, id: option.id, "data-testid": "option-".concat(_this.props.id, "-").concat(option.value) }, option.label)); }))));
     };
     return ONSSelect;
 }(React.Component));
@@ -299,10 +294,10 @@ var ONSTextInput = /** @class */ (function (_super) {
     }
     ONSTextInput.prototype.render = function () {
         var _this = this;
-        return (React__default['default'].createElement("p", { className: "field" },
-            this.props.label !== undefined &&
-                React__default['default'].createElement("label", { className: "label", htmlFor: this.props.id }, this.props.label),
-            React__default['default'].createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", "zIndex": this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.props.password === true ? "password" : "text", id: this.props.id, className: "input input--text input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": "text-input" })));
+        return (React__default['default'].createElement("p", { className: "ons-field" },
+            this.props.label !== undefined
+                && React__default['default'].createElement("label", { className: "ons-label", htmlFor: this.props.id }, this.props.label),
+            React__default['default'].createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.props.password === true ? "password" : "text", id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": "text-input" })));
     };
     return ONSTextInput;
 }(React.Component));
@@ -320,13 +315,13 @@ var ONSUpload = /** @class */ (function (_super) {
     }
     ONSUpload.prototype.render = function () {
         var _this = this;
-        return (React__default['default'].createElement("div", { className: "field" },
-            React__default['default'].createElement("p", { className: "field" },
-                React__default['default'].createElement("label", { className: "label", htmlFor: this.props.fileID },
+        return (React__default['default'].createElement("div", { className: "ons-field" },
+            React__default['default'].createElement("p", { className: "ons-field" },
+                React__default['default'].createElement("label", { className: "ons-label", htmlFor: this.props.fileID },
                     this.props.label,
                     React__default['default'].createElement("br", null),
-                    React__default['default'].createElement("span", { className: "label__description" }, this.props.description)),
-                React__default['default'].createElement("input", { style: { position: "static" }, type: "file", id: this.props.fileID, className: "input input--text input-type__input input--upload", name: this.props.fileName, accept: this.props.accept, onChange: function (e) { return _this.handleChange(e); }, disabled: (this.props.disabled) }))));
+                    React__default['default'].createElement("span", { className: "ons-label__description" }, this.props.description)),
+                React__default['default'].createElement("input", { style: { position: "static" }, type: "file", id: this.props.fileID, className: "ons-input ons-input--text ons-input-type__input ons-input--upload", name: this.props.fileName, accept: this.props.accept, onChange: function (e) { return _this.handleChange(e); }, disabled: (this.props.disabled) }))));
     };
     return ONSUpload;
 }(React.Component));
@@ -343,25 +338,23 @@ function StyledFormErrorSummary() {
     React.useEffect(function () {
         errorFocus === null || errorFocus === void 0 ? void 0 : errorFocus.focus();
     }, [errors, isValid]);
-    return React__default['default'].createElement(React__default['default'].Fragment, null, !isValid &&
-        React__default['default'].createElement("div", { "aria-labelledby": "error-summary-title", role: "alert", tabIndex: -1, ref: function (inputEl) { return (errorFocus = inputEl); }, className: "panel panel--error" },
-            React__default['default'].createElement("div", { className: "panel__header" },
-                React__default['default'].createElement("h2", { id: "error-summary-title", "data-qa": "error-header", className: "panel__title u-fs-r--b" }, (Object.keys(errors).length === 1 ?
-                    "There is 1 problem with your answer"
-                    :
-                        "There are ".concat(Object.keys(errors).length, " problems with your answer")))),
-            React__default['default'].createElement("div", { className: "panel__body" },
-                React__default['default'].createElement("ol", { className: "list" }, Object.keys(errors).map(function (field, index) {
-                    return React__default['default'].createElement("li", { key: index, className: "list__item " },
-                        React__default['default'].createElement("a", { href: "#".concat(field), className: "list__link js-inpagelink" }, 
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-ignore
-                        errors[field]));
-                })))));
+    return (React__default['default'].createElement(React__default['default'].Fragment, null, !isValid
+        && (React__default['default'].createElement("div", { "aria-labelledby": "error-summary-title", role: "alert", tabIndex: -1, ref: function (inputEl) { return (errorFocus = inputEl); }, className: "ons-panel ons-panel--error" },
+            React__default['default'].createElement("div", { className: "ons-panel__header" },
+                React__default['default'].createElement("h2", { id: "error-summary-title", "data-qa": "error-header", className: "ons-panel__title ons-u-fs-r--b" }, (Object.keys(errors).length === 1
+                    ? "There is 1 problem with your answer"
+                    : "There are ".concat(Object.keys(errors).length, " problems with your answer")))),
+            React__default['default'].createElement("div", { className: "ons-panel__body" },
+                React__default['default'].createElement("ol", { className: "ons-list" }, Object.keys(errors).map(function (field, index) { return (React__default['default'].createElement("li", { key: index, className: "ons-list__item " },
+                    React__default['default'].createElement("a", { href: "#".concat(field), className: "ons-list__link ons-js-inpagelink" }, 
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    errors[field]))); })))))));
 }
 
+// eslint-disable-next-line import/prefer-default-export
 function isObjectWithProperty(value, propertyName) {
-    if (typeof value != "object") {
+    if (typeof value !== "object") {
         return false;
     }
     if (value == null) {
@@ -375,43 +368,37 @@ function toUpperCase(string) {
 }
 function RadioFieldset(_a) {
     var description = _a.description, name = _a.name, radioOptions = _a.radioOptions, props = __rest(_a, ["description", "name", "radioOptions"]);
-    return React__default['default'].createElement("fieldset", { className: "fieldset" },
-        React__default['default'].createElement("legend", { className: "fieldset__legend" }, description),
-        React__default['default'].createElement("div", { className: "radios__items", id: name }, (radioOptions && radioOptions.length > 0 &&
-            radioOptions.map(function (radioOption, radioOptionIndex) {
-                return (React__default['default'].createElement(React.Fragment, { key: radioOption.id },
-                    React__default['default'].createElement("p", { className: "radios__item" },
-                        React__default['default'].createElement("span", { className: "radio" },
-                            React__default['default'].createElement(formik.Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "radio__input js-radio" }, props, { autoFocus: props.autoFocus && radioOptionIndex === 0 })),
-                            React__default['default'].createElement("label", { className: "radio__label ".concat(radioOption.description !== undefined ? "label--with-description" : ""), htmlFor: radioOption.id, id: "".concat(radioOption.id, "-label") },
-                                radioOption.label,
-                                radioOption.description !== undefined &&
-                                    React__default['default'].createElement("span", { id: "white-label-description-hint", className: "label__description radio__label--with-description" }, radioOption.description)),
-                            radioOption.specifyOption && (React__default['default'].createElement("span", { className: "radio__other radio__other--open", id: "other-radio-other-wrap" },
-                                React__default['default'].createElement("label", { className: "label u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
-                                React__default['default'].createElement(formik.Field, { type: radioOption.specifyOption.type, id: radioOption.specifyOption.id, name: radioOption.specifyOption.name, validate: radioOption.specifyOption.validate, min: radioOption.specifyOption.min, className: "input input--text input-type__input input--w-auto" }))))),
-                    React__default['default'].createElement("br", null)));
-            }))));
+    return (React__default['default'].createElement("fieldset", { className: "ons-fieldset" },
+        React__default['default'].createElement("legend", { className: "ons-fieldset__legend" }, description),
+        React__default['default'].createElement("div", { className: "ons-radios__items", id: name }, (radioOptions && radioOptions.length > 0
+            && radioOptions.map(function (radioOption, radioOptionIndex) { return (React__default['default'].createElement(React.Fragment, { key: radioOption.id },
+                React__default['default'].createElement("p", { className: "ons-radios__item" },
+                    React__default['default'].createElement("span", { className: "ons-radio" },
+                        React__default['default'].createElement(formik.Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "ons-radio__input js-radio" }, props, { autoFocus: props.autoFocus && radioOptionIndex === 0 })),
+                        React__default['default'].createElement("label", { className: "ons-radio__label ".concat(radioOption.description !== undefined ? "ons-label--with-description" : ""), htmlFor: radioOption.id, id: "".concat(radioOption.id, "-label") },
+                            radioOption.label,
+                            radioOption.description !== undefined
+                                && (React__default['default'].createElement("span", { id: "white-label-description-hint", className: "ons-label__description ons-radio__label--with-description" }, radioOption.description))),
+                        radioOption.specifyOption && (React__default['default'].createElement("span", { className: "ons-radio__other ons-radio__other--open", id: "other-radio-other-wrap" },
+                            React__default['default'].createElement("label", { className: "label u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
+                            React__default['default'].createElement(formik.Field, { type: radioOption.specifyOption.type, id: radioOption.specifyOption.id, name: radioOption.specifyOption.name, validate: radioOption.specifyOption.validate, min: radioOption.specifyOption.min, className: "ons-input ons-input--text ons-input-type__input ons-input--w-auto" }))))),
+                React__default['default'].createElement("br", null))); })))));
 }
 function CheckboxesFieldset(_a) {
     var description = _a.description, checkboxOptions = _a.checkboxOptions, name = _a.name, props = __rest(_a, ["description", "checkboxOptions", "name"]);
     var _b = formik.useFormikContext(), values = _b.values, setFieldValue = _b.setFieldValue;
     var allValues = (checkboxOptions || []).map(function (checkboxOption) { return checkboxOption.value; });
     function areArraysEqual(array1, array2) {
-        if (array1.length != array2.length) {
+        if (array1.length !== array2.length) {
             return false;
         }
-        else {
-            return array1.every(function (item) { return array2.includes(item); });
-        }
+        return array1.every(function (item) { return array2.includes(item); });
     }
     function isAllSelected() {
         if (!isObjectWithProperty(values, name)) {
             return [];
         }
-        else {
-            return areArraysEqual(values[name] || [], allValues);
-        }
+        return areArraysEqual(values[name] || [], allValues);
     }
     function handleSelectAll() {
         if (isAllSelected()) {
@@ -421,62 +408,58 @@ function CheckboxesFieldset(_a) {
             setFieldValue(name, allValues);
         }
     }
-    return React__default['default'].createElement("fieldset", { className: "fieldset" },
-        React__default['default'].createElement("legend", { className: "fieldset__legend" }, description),
-        React__default['default'].createElement("button", { type: "button", className: "btn u-mb-s js-auto-selector btn--small btn--secondary", onClick: handleSelectAll },
-            React__default['default'].createElement("span", { className: "btn__inner" },
+    return (React__default['default'].createElement("fieldset", { className: "ons-fieldset" },
+        React__default['default'].createElement("legend", { className: "ons-fieldset__legend" }, description),
+        React__default['default'].createElement("button", { type: "button", className: "ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary", onClick: handleSelectAll },
+            React__default['default'].createElement("span", { className: "ons-btn__inner" },
                 React__default['default'].createElement("span", { className: "js-button-text" }, isAllSelected() ? "Unselect All" : "Select All"),
-                React__default['default'].createElement("span", { className: "u-vh" }, " following checkboxes"))),
-        React__default['default'].createElement("div", { className: "checkboxes__items", id: name }, (checkboxOptions && checkboxOptions.length > 0 &&
-            checkboxOptions.map(function (checkboxOption, checkboxIndex) {
-                return (React__default['default'].createElement(React.Fragment, { key: checkboxOption.id },
-                    React__default['default'].createElement("p", { className: "checkboxes__item" },
-                        React__default['default'].createElement("span", { className: "checkbox" },
-                            React__default['default'].createElement(formik.Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "checkbox__input js-checkbox" }, props, { autoFocus: props.autoFocus && checkboxIndex === 0 })),
-                            React__default['default'].createElement("label", { className: "checkbox__label ".concat(checkboxOption.description !== undefined ? "label--with-description" : ""), htmlFor: checkboxOption.id, id: "".concat(checkboxOption.id, "-label") },
-                                checkboxOption.label,
-                                checkboxOption.description !== undefined &&
-                                    React__default['default'].createElement("span", { id: "white-label-description-hint", className: "label__description checkbox__label--with-description" }, checkboxOption.description)))),
-                    React__default['default'].createElement("br", null)));
-            }))));
+                React__default['default'].createElement("span", { className: "ons-u-vh" }, " following checkboxes"))),
+        React__default['default'].createElement("div", { className: "checkboxes__items", id: name }, (checkboxOptions && checkboxOptions.length > 0
+            && checkboxOptions.map(function (checkboxOption, checkboxIndex) { return (React__default['default'].createElement(React.Fragment, { key: checkboxOption.id },
+                React__default['default'].createElement("p", { className: "ons-checkboxes__item" },
+                    React__default['default'].createElement("span", { className: "ons-checkbox" },
+                        React__default['default'].createElement(formik.Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "ons-checkbox__input js-checkbox" }, props, { autoFocus: props.autoFocus && checkboxIndex === 0 })),
+                        React__default['default'].createElement("label", { className: "ons-checkbox__label ".concat(checkboxOption.description !== undefined ? "ons-label--with-description" : ""), htmlFor: checkboxOption.id, id: "".concat(checkboxOption.id, "-label") },
+                            checkboxOption.label,
+                            checkboxOption.description !== undefined
+                                && (React__default['default'].createElement("span", { id: "white-label-description-hint", className: "ons-label__description checkbox__label--with-description" }, checkboxOption.description))))),
+                React__default['default'].createElement("br", null))); })))));
 }
 var ONSInputField = function (_a) {
     var field = _a.field; _a.form; var description = _a.description, props = __rest(_a, ["field", "form", "description"]);
     var id = (props.id ? props.id : field.name);
-    return React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("div", { className: "field" },
-            React__default['default'].createElement("label", { className: "label ".concat((description ? "label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
-            description &&
-                React__default['default'].createElement("span", { id: "description-hint", className: "label__description  input--with-description" }, description),
-            React__default['default'].createElement("input", __assign({ id: id, className: "input input--text input-type__input " }, field, props))));
+    return (React__default['default'].createElement("div", { className: "ons-field" },
+        React__default['default'].createElement("label", { className: "ons-label ".concat((description ? "ons-label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
+        description
+            && (React__default['default'].createElement("span", { id: "description-hint", className: "ons-label__description  ons-input--with-description" }, description)),
+        React__default['default'].createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input " }, field, props))));
 };
 
+function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
+    return (React__default['default'].createElement("div", { className: "ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s", id: "".concat(fieldName, "-error") },
+        React__default['default'].createElement("span", { className: "ons-u-vh" }, "Error: "),
+        React__default['default'].createElement("div", { className: "ons-panel__body" },
+            React__default['default'].createElement("p", { className: "ons-panel__error" },
+                React__default['default'].createElement("strong", null, fieldError)),
+            field)));
+}
 var StyledFormField = function (_a) {
     var name = _a.name, description = _a.description, _b = _a.radioOptions, radioOptions = _b === void 0 ? [] : _b, _c = _a.checkboxOptions, checkboxOptions = _c === void 0 ? [] : _c, props = __rest(_a, ["name", "description", "radioOptions", "checkboxOptions"]);
     var errors = formik.useFormikContext().errors;
     var newField;
     if (props.type === "radio") {
-        newField = React__default['default'].createElement(RadioFieldset, __assign({ description: description, name: name, radioOptions: radioOptions }, props));
+        newField = (React__default['default'].createElement(RadioFieldset, __assign({ description: description, name: name, radioOptions: radioOptions }, props)));
     }
     else if (props.type === "checkbox") {
-        newField = React__default['default'].createElement(CheckboxesFieldset, __assign({ description: description, name: name, checkboxOptions: checkboxOptions }, props));
+        newField = (React__default['default'].createElement(CheckboxesFieldset, __assign({ description: description, name: name, checkboxOptions: checkboxOptions }, props)));
     }
     else {
         newField = React__default['default'].createElement(formik.Field, __assign({ name: name, description: description }, props, { component: ONSInputField }));
     }
-    return (React__default['default'].createElement(React.Fragment, { key: name }, errors[name] ?
-        StyledFormFieldErrorWrapper(errors[name], "name", newField)
-        :
-            newField));
+    return (React__default['default'].createElement(React.Fragment, { key: name }, errors[name]
+        ? StyledFormFieldErrorWrapper(errors[name], "name", newField)
+        : newField));
 };
-function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
-    return (React__default['default'].createElement("div", { className: "panel panel--error panel--no-title u-mb-s", id: "".concat(fieldName, "-error") },
-        React__default['default'].createElement("span", { className: "u-vh" }, "Error: "),
-        React__default['default'].createElement("div", { className: "panel__body" },
-            React__default['default'].createElement("p", { className: "panel__error" },
-                React__default['default'].createElement("strong", null, fieldError)),
-            field)));
-}
 
 /**
  * Formik form styled to ONS design guide with form error panel
@@ -501,12 +484,13 @@ function StyledForm(_a) {
         return (React__default['default'].createElement(formik.Form, null,
             React__default['default'].createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
+                // eslint-disable-next-line no-param-reassign
                 field.autoFocus = (isValid && index === 0);
                 return (React__default['default'].createElement(React.Fragment, { key: field.name }, // @ts-ignore
                 React__default['default'].createElement(StyledFormField, __assign({}, field))));
             }),
             React__default['default'].createElement("br", null),
-            React__default['default'].createElement(ONSButton, { submit: true, label: (submitLabel ? submitLabel : "Save and continue"), primary: true, testid: "submit", loading: isSubmitting })));
+            React__default['default'].createElement(ONSButton, { submit: true, label: (submitLabel || "Save and continue"), primary: true, testid: "submit", loading: isSubmitting })));
     }));
 }
 
@@ -3289,25 +3273,20 @@ var ONSLoadingPanel = function (_a) {
     return (React__default['default'].createElement(ONSPanel, { hidden: hidden },
         React__default['default'].createElement("div", { style: { textAlign: "center" } },
             React__default['default'].createElement(Loader, { type: "TailSpin", color: "#064868", height: 30, width: 30 }),
-            message ? message : "Loading")));
+            message || "Loading")));
 };
 
 function Collapsible(_a) {
     var children = _a.children, title = _a.title;
     var _b = React.useState(false), panelOpen = _b[0], setPanelOpen = _b[1];
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("div", { id: "collapsible-with-save", className: "collapsible js-collapsible collapsible--initialised ".concat((panelOpen && "collapsible--open"), " u-mt-l"), "data-btn-close": "Hide this", "data-save-state": "true", role: "group" },
-            React__default['default'].createElement("div", { className: "collapsible__heading js-collapsible-heading", role: "link", "data-testid": "collapsible-heading", onClick: function () { return setPanelOpen(!panelOpen); }, onKeyPress: function () { return setPanelOpen(!panelOpen); }, tabIndex: 0, "aria-expanded": panelOpen ? "true" : "false", "aria-controls": "collapsible-with-save", "data-ga-action": "Close panel" },
-                React__default['default'].createElement("div", { className: "collapsible__controls" },
-                    React__default['default'].createElement("div", { className: "collapsible__title" }, title),
-                    React__default['default'].createElement("span", { className: "collapsible__icon" },
-                        React__default['default'].createElement("svg", { className: "svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
-                            React__default['default'].createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
-            React__default['default'].createElement("div", { id: "collapsible-with-save-content", className: "collapsible__content js-collapsible-content", "aria-hidden": (panelOpen ? "false" : "true"), "data-testid": "collapsible-content" },
-                children,
-                React__default['default'].createElement("button", { type: "button", className: "btn btn--small js-collapsible-button btn--secondary u-mt-m", "aria-hidden": "true", "aria-controls": "collapsible-with-save", "data-ga-action": "Close panel", onClick: function () { return setPanelOpen(false); } },
-                    React__default['default'].createElement("span", { className: "btn__inner js-collapsible-button-inner" }, "Hide this"),
-                    React__default['default'].createElement("span", { className: "btn__context u-vh" }, title))))));
+    return (React__default['default'].createElement("details", { id: "collapsible-with-save", className: "ons-collapsible ons-js-collapsible ons-u-mt-l", "data-save-state": "true", role: "group" },
+        React__default['default'].createElement("summary", { className: "ons-collapsible__heading ons-js-collapsible-heading", role: "link", "data-testid": "collapsible-heading", onClick: function () { return setPanelOpen(!panelOpen); }, onKeyPress: function () { return setPanelOpen(!panelOpen); }, tabIndex: 0, "aria-expanded": panelOpen ? "true" : "false", "aria-controls": "collapsible-with-save", "data-ga-action": "".concat(panelOpen ? "Close" : "Open", " panel") },
+            React__default['default'].createElement("div", { className: "ons-collapsible__controls" },
+                React__default['default'].createElement("h2", { className: "ons-collapsible__title" }, title),
+                React__default['default'].createElement("span", { className: "ons-collapsible__icon" },
+                    React__default['default'].createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
+                        React__default['default'].createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
+        React__default['default'].createElement("div", { id: "collapsible-with-save-content", className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": !panelOpen, "data-testid": "collapsible-content" }, children)));
 }
 
 /**
@@ -3327,7 +3306,7 @@ var ErrorBoundary = /** @class */ (function (_super) {
     }
     ErrorBoundary.prototype.componentDidCatch = function (_, errorInfo) {
         this.setState({
-            errorInfo: errorInfo
+            errorInfo: errorInfo,
         });
     };
     ErrorBoundary.prototype.render = function () {
@@ -3356,7 +3335,7 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
     }
     DefaultErrorBoundary.prototype.componentDidCatch = function (error, errorInfo) {
         this.setState({
-            errorInfo: errorInfo
+            errorInfo: errorInfo,
         });
     };
     DefaultErrorBoundary.prototype.render = function () {
@@ -3367,7 +3346,8 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
                 React__default['default'].createElement("p", null, "If you have started a survey, your answers have been saved."),
                 React__default['default'].createElement("p", null,
                     React__default['default'].createElement("a", { href: "https://ons.service-now.com/" }, "Contact us"),
-                    " if you need to speak to someone about your survey.")));
+                    " ",
+                    "if you need to speak to someone about your survey.")));
         }
         return React__default['default'].createElement(React__default['default'].Fragment, null, this.props.children);
     };
@@ -3376,25 +3356,23 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
 
 function ONSTable(_a) {
     var columns = _a.columns, children = _a.children, tableCaption = _a.tableCaption, tableID = _a.tableID;
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("table", { className: "table", "data-testid": tableID, id: tableID },
-            tableCaption && React__default['default'].createElement("caption", { className: "table__caption" }, tableCaption),
-            React__default['default'].createElement("thead", { className: "table__head" },
-                React__default['default'].createElement("tr", { className: "table__row" }, columns.map(function (title, index) { return (React__default['default'].createElement("th", { scope: "col", className: "table__header", key: "".concat(title, "-").concat(index) }, title)); }))),
-            React__default['default'].createElement("tbody", { className: "table__body" }, children))));
+    return (React__default['default'].createElement("table", { className: "ons-table", "data-testid": tableID, id: tableID },
+        tableCaption && React__default['default'].createElement("caption", { className: "table__caption" }, tableCaption),
+        React__default['default'].createElement("thead", { className: "ons-table__head" },
+            React__default['default'].createElement("tr", { className: "ons-table__row" }, columns.map(function (title, index) { return (React__default['default'].createElement("th", { scope: "col", className: "ons-table__header", key: "".concat(title, "-").concat(index) }, title)); }))),
+        React__default['default'].createElement("tbody", { className: "ons-table__body" }, children)));
 }
 
 function replaceUnderscoreWithSpaces(text) {
     return text.split("_").join(" ");
 }
-function FormatTitle(text) {
-    text = replaceUnderscoreWithSpaces(text);
-    return TitleCase(text);
-}
 function TitleCase(stringToConvert) {
     var firstCharacter = stringToConvert.substring(0, 1);
     var restString = stringToConvert.substring(1);
     return firstCharacter.toUpperCase() + restString;
+}
+function FormatTitle(text) {
+    return TitleCase(replaceUnderscoreWithSpaces(text));
 }
 function FormatKey(text) {
     return text.split(" ").join("-");
@@ -3420,23 +3398,23 @@ var GroupedSummary = /** @class */ (function () {
 }());
 function SummaryItemRow(_a) {
     var fieldName = _a.fieldName, fieldValue = _a.fieldValue;
-    return (React__default['default'].createElement("tbody", { className: "summary__item" },
-        React__default['default'].createElement("tr", { className: "summary__row summary__row--has-values" },
-            React__default['default'].createElement("td", { className: "summary__item-title" },
-                React__default['default'].createElement("div", { className: "summary__item--text" }, FormatTitle(fieldName))),
-            React__default['default'].createElement("td", { className: "summary__values", colSpan: 2 }, fieldValue))));
+    return (React__default['default'].createElement("tbody", { className: "ons-summary__item" },
+        React__default['default'].createElement("tr", { className: "ons-summary__row ons-summary__row--has-values" },
+            React__default['default'].createElement("td", { className: "ons-summary__item-title" },
+                React__default['default'].createElement("div", { className: "ons-summary__item--text" }, FormatTitle(fieldName))),
+            React__default['default'].createElement("td", { className: "ons-summary__values", colSpan: 2 }, fieldValue))));
 }
 function SummaryGroupTable(_a) {
     var groupedSummary = _a.groupedSummary;
     var elementList = [];
     for (var _i = 0, _b = groupedSummary.groups; _i < _b.length; _i++) {
         var group = _b[_i];
-        elementList.push(React__default['default'].createElement("h3", { key: "summary-group-heading-".concat(FormatKey(group.title)), className: "summary__group-title" }, group.title));
+        elementList.push(React__default['default'].createElement("h3", { key: "summary-group-heading-".concat(FormatKey(group.title)), className: "ons-summary__group-title" }, group.title));
         var tableFieldsList = [];
         for (var field in group.records) {
             tableFieldsList.push(React__default['default'].createElement(SummaryItemRow, { key: "summary-table-row-".concat(FormatKey(field)), fieldName: field, fieldValue: group.records[field] }));
         }
-        elementList.push(React__default['default'].createElement("table", { key: "summary-table-group-".concat(FormatKey(group.title)), className: "summary__items" }, tableFieldsList));
+        elementList.push(React__default['default'].createElement("table", { key: "summary-table-group-".concat(FormatKey(group.title)), className: "ons-summary__items" }, tableFieldsList));
     }
     return (React__default['default'].createElement(React__default['default'].Fragment, null, elementList));
 }

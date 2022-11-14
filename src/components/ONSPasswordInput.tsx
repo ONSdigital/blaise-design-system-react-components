@@ -1,4 +1,4 @@
-import React, {ChangeEvent, Component} from "react";
+import React, { ChangeEvent, Component } from "react";
 
 export interface Props {
     label?: string
@@ -16,11 +16,11 @@ interface State {
 export class ONSPasswordInput extends Component <Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = {password: true};
+        this.state = { password: true };
     }
 
     togglePassword = () => {
-        this.setState({password: !this.state.password});
+        this.setState((prevState) => ({ password: !prevState.password }));
     };
 
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,11 +31,10 @@ export class ONSPasswordInput extends Component <Props, State> {
 
     spacing = () => {
         const buttonStyle = {
-            marginTop: String(this.props.marginTop) + "px",
+            marginTop: `${String(this.props.marginTop)}px`,
         };
         return buttonStyle;
-    }
-
+    };
 
     render() {
         return (
@@ -44,7 +43,7 @@ export class ONSPasswordInput extends Component <Props, State> {
                 <span className="ons-checkbox ons-checkbox--toggle" style={this.spacing()}>
                     <input
                         autoFocus={this.props.autoFocus}
-                        autoComplete={"new-password"}
+                        autoComplete="new-password"
                         type="checkbox"
                         id="password-toggle"
                         className="ons-checkbox__input"
@@ -56,13 +55,13 @@ export class ONSPasswordInput extends Component <Props, State> {
                     </label>
                 </span>
                 <input
-                    type={this.state.password ? "password" : "text"} id="password"
+                    type={this.state.password ? "password" : "text"}
+                    id="password"
                     className="ons-input ons-input--text ons-input-type__input ons-u-mt-xs"
                     value={this.props.value}
                     onChange={(e) => this.handleChange(e)}
                     data-testid="login-password-input"
                 />
-
             </p>
 
         );

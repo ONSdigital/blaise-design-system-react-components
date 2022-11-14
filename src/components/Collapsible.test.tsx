@@ -1,5 +1,5 @@
 import React from "react";
-import {cleanup, fireEvent, render} from "@testing-library/react";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 import Collapsible from "./Collapsible";
 
 describe("Collapsible Test", () => {
@@ -7,11 +7,11 @@ describe("Collapsible Test", () => {
         cleanup();
     });
 
-    const contentText = "Inside the Collapsible"
+    const contentText = "Inside the Collapsible";
 
     const Props = {
         title: "What is the Collapsible title?",
-        content: <p>{contentText}</p>
+        content: <p>{contentText}</p>,
     };
 
     it("matches Snapshot", () => {

@@ -23,7 +23,7 @@ export default class ErrorBoundary extends React.Component<Props, State> {
 
     componentDidCatch(_: Error, errorInfo: ErrorInfo): void {
         this.setState({
-            errorInfo: errorInfo
+            errorInfo,
         });
     }
 

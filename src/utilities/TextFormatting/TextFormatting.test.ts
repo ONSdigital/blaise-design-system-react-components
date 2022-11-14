@@ -1,5 +1,4 @@
-import {FormatTitle} from "./TextFormatting";
-
+import { FormatTitle } from "./TextFormatting";
 
 describe("Text formatting", () => {
     const testCases = [
@@ -25,7 +24,7 @@ describe("Text formatting", () => {
         },
     ];
 
-    testCases.forEach(test => {
+    testCases.forEach((test) => {
         it(`should correctly format the text: ${test.string} to: ${test.expected}`, () => {
             const formattedText = FormatTitle(test.string);
 

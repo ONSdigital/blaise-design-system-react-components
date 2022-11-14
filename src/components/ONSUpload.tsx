@@ -1,4 +1,4 @@
-import React, {ChangeEvent, Component} from "react";
+import React, { ChangeEvent, Component } from "react";
 
 export interface Props {
     label: string,
@@ -22,18 +22,21 @@ export class ONSUpload extends Component <Props> {
         return (
             <div className="ons-field">
                 <p className="ons-field">
-                    <label className="ons-label" htmlFor={this.props.fileID}>{this.props.label}
-                        <br/>
+                    <label className="ons-label" htmlFor={this.props.fileID}>
+                        {this.props.label}
+                        <br />
                         <span className="ons-label__description">{this.props.description}</span>
                     </label>
-                    <input style={{position: "static"}}
-                           type="file"
-                           id={this.props.fileID}
-                           className="ons-input ons-input--text ons-input-type__input ons-input--upload"
-                           name={this.props.fileName}
-                           accept={this.props.accept}
-                           onChange={(e) => this.handleChange(e)}
-                           disabled={(this.props.disabled)}/>
+                    <input
+                        style={{ position: "static" }}
+                        type="file"
+                        id={this.props.fileID}
+                        className="ons-input ons-input--text ons-input-type__input ons-input--upload"
+                        name={this.props.fileName}
+                        accept={this.props.accept}
+                        onChange={(e) => this.handleChange(e)}
+                        disabled={(this.props.disabled)}
+                    />
                 </p>
             </div>
         );
