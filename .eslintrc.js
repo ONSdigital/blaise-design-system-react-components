@@ -20,12 +20,12 @@ module.exports = {
   ],
   overrides: [
     {
-      "files": [
+      files: [
         "**/*.test.ts",
         "**/*.test.tsx"
       ],
-      "env": {
-        "jest": true
+      env: {
+        jest: true
       },
       parserOptions: {
         project: 'tsconfig.test.json',
