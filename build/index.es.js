@@ -98,7 +98,15 @@ var ONSButton = function (props) {
         }
         return "button";
     };
-    var className = "ons-btn ".concat(props.action ? "ons-btn--link " : "").concat(props.loading ? "ons-btn--loader ons-is-loading " : "").concat(props.field ? "ons-field " : "").concat(props.primary ? "" : "ons-btn--secondary ").concat(props.small ? "ons-btn--small " : "").concat(props.disabled ? "ons-btn--disabled " : "");
+    var className = [
+        "ons-btn ",
+        props.action ? "ons-btn--link" : null,
+        props.loading ? "ons-btn--loader ons-is-loading" : null,
+        props.field ? "ons-field" : null,
+        props.primary ? null : "ons-btn--secondary",
+        props.small ? "ons-btn--small" : null,
+        props.disabled ? "ons-btn--disabled" : null,
+    ].filter(function (name) { return name !== null; }).join(" ");
     return (React.createElement("button", { id: props.id, style: spacing(), type: props.submit ? "submit" : "button", disabled: props.loading || props.disabled, className: className, onClick: props.onClick, "data-testid": testId() },
         React.createElement("span", { className: "ons-btn__inner" },
             props.label,
