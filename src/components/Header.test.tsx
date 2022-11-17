@@ -11,7 +11,7 @@ const testProps: Props = {
         { label: "Home", endpoint: "/" },
         { label: "Deploy a questionnaire", endpoint: "/deploy" },
         { label: "View deployment history", endpoint: "/history" },
-        { label: "Check Blaise status", endpoint: "/status" }
+        { label: "Check Blaise status", endpoint: "/status" },
     ],
 };
 
@@ -21,7 +21,7 @@ describe("Check default Header:", () => {
         const wrapper = render(
             <Router location={history.location} navigator={history}>
                 <Header title={testProps.title} />
-            </Router>
+            </Router>,
         );
         expect(wrapper).toMatchSnapshot();
     });
@@ -31,7 +31,7 @@ describe("Check default Header:", () => {
         const wrapper = render(
             <Router location={history.location} navigator={history}>
                 <Header title={testProps.title} />
-            </Router>
+            </Router>,
         );
         expect(wrapper).toBeDefined();
     });
@@ -41,7 +41,7 @@ describe("Check default Header:", () => {
         const wrapper = render(
             <Router location={history.location} navigator={history}>
                 <Header title={testProps.title} />
-            </Router>
+            </Router>,
         );
         expect(wrapper.getByText(testProps.title)).toBeVisible();
     });
@@ -51,7 +51,7 @@ describe("Check default Header:", () => {
         const wrapper = render(
             <Router location={history.location} navigator={history}>
                 <Header title={testProps.title} />
-            </Router>
+            </Router>,
         );
         expect(wrapper.queryAllByText(/Save and sign out/)).toStrictEqual([]);
         expect(wrapper.queryAllByText(/Sign out/)).toStrictEqual([]);
@@ -62,7 +62,7 @@ describe("Check default Header:", () => {
         const wrapper = render(
             <Router location={history.location} navigator={history}>
                 <Header title={testProps.title} />
-            </Router>
+            </Router>,
         );
         expect(wrapper.queryByRole(/navigation/)).toStrictEqual(null);
     });
@@ -73,8 +73,9 @@ describe("Check Header with sign out button:", () => {
         const history = createMemoryHistory();
         const wrapper = render(
             <Router location={history.location} navigator={history}>
-                <Header title={testProps.title} signOutButton signOutFunction={jest.fn()} />)
-            </Router>
+                <Header title={testProps.title} signOutButton signOutFunction={jest.fn()} />
+                )
+            </Router>,
         );
         expect(wrapper).toMatchSnapshot();
     });
@@ -84,7 +85,7 @@ describe("Check Header with sign out button:", () => {
         const wrapper = render(
             <Router location={history.location} navigator={history}>
                 <Header title={testProps.title} signOutButton signOutFunction={jest.fn()} />
-            </Router>
+            </Router>,
         );
         expect(wrapper.getByText(/Save and sign out/)).toBeVisible();
     });
@@ -94,7 +95,7 @@ describe("Check Header with sign out button:", () => {
         const wrapper = render(
             <Router location={history.location} navigator={history}>
                 <Header title={testProps.title} signOutButton noSave signOutFunction={jest.fn()} />
-            </Router>
+            </Router>,
         );
         expect(wrapper.getByText(/Sign out/)).toBeDefined();
         expect(wrapper.queryAllByText(/Save and sign out/)).toStrictEqual([]);
@@ -106,11 +107,11 @@ describe("Check Header with sign out button:", () => {
         const wrapper = render(
             <Router location={history.location} navigator={history}>
                 <Header title={testProps.title} signOutButton signOutFunction={mockFunction} />
-            </Router>
+            </Router>,
         );
         fireEvent.click(wrapper.getByText(/Save and sign out/));
         expect(mockFunction).toHaveProperty("callCount", 1);
-    }); 
+    });
 });
 
 describe("Check Header with navigation bar:", () => {
@@ -118,8 +119,9 @@ describe("Check Header with navigation bar:", () => {
         const history = createMemoryHistory();
         const wrapper = render(
             <Router location={history.location} navigator={history}>
-                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />)
-            </Router>
+                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
+                )
+            </Router>,
         );
         expect(wrapper).toMatchSnapshot();
     });
@@ -128,8 +130,9 @@ describe("Check Header with navigation bar:", () => {
         const history = createMemoryHistory();
         const wrapper = render(
             <Router location={history.location} navigator={history}>
-                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />)
-            </Router>
+                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
+                )
+            </Router>,
         );
         expect(wrapper.queryByRole(/navigation/)).not.toStrictEqual(null);
         expect(wrapper.getByRole("link", { name: /Home/ })).toBeVisible();
@@ -142,25 +145,27 @@ describe("Check Header with navigation bar:", () => {
         const history = createMemoryHistory();
         const wrapper = render(
             <Router location={history.location} navigator={history}>
-                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />)
-            </Router>
+                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
+                )
+            </Router>,
         );
 
-        const homeLink =wrapper.getByRole("link", { name: /Home/ });
+        const homeLink = wrapper.getByRole("link", { name: /Home/ });
 
         fireEvent.click(homeLink);
         expect(history.location.pathname).toEqual("/");
     });
-    
+
     it("navigates to the homepage when clicking the 'Deploy a questionnaire' link", () => {
         const history = createMemoryHistory();
         const wrapper = render(
             <Router location={history.location} navigator={history}>
-                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />)
-            </Router>
+                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
+                )
+            </Router>,
         );
 
-        const deployLink =wrapper.getByRole("link", { name: /Deploy a questionnaire/ });
+        const deployLink = wrapper.getByRole("link", { name: /Deploy a questionnaire/ });
 
         fireEvent.click(deployLink);
         expect(history.location.pathname).toEqual("/deploy");
@@ -170,11 +175,12 @@ describe("Check Header with navigation bar:", () => {
         const history = createMemoryHistory();
         const wrapper = render(
             <Router location={history.location} navigator={history}>
-                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />)
-            </Router>
+                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
+                )
+            </Router>,
         );
 
-        const historyLink =wrapper.getByRole("link", { name: /View deployment history/ });
+        const historyLink = wrapper.getByRole("link", { name: /View deployment history/ });
 
         fireEvent.click(historyLink);
         expect(history.location.pathname).toEqual("/history");
@@ -184,11 +190,12 @@ describe("Check Header with navigation bar:", () => {
         const history = createMemoryHistory();
         const wrapper = render(
             <Router location={history.location} navigator={history}>
-                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />)
-            </Router>
+                <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
+                )
+            </Router>,
         );
 
-        const statusLink =wrapper.getByRole("link", { name: /Check Blaise status/ });
+        const statusLink = wrapper.getByRole("link", { name: /Check Blaise status/ });
 
         fireEvent.click(statusLink);
         expect(history.location.pathname).toEqual("/status");

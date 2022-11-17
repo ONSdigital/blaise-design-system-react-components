@@ -1,6 +1,6 @@
 import React from "react";
 import Enzyme, { render as enzymeRender, shallow } from "enzyme";
-import { render }from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Adapter from "enzyme-adapter-react-16";
 import Footer from "./Footer";
 
@@ -11,7 +11,7 @@ describe("Footer Test", () => {
         const wrapper = enzymeRender(<Footer />);
         expect(wrapper).toMatchSnapshot();
     });
-    
+
     it("should render correctly", () => {
         const wrapper = shallow(<Footer />);
         expect(wrapper.exists()).toEqual(true);

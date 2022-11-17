@@ -14,9 +14,9 @@ export const Default = Template.bind({});
 Default.args = {
     title: "Yet another secret 🐿️ service being built",
     navigationLinks: [
-        { label: "Home", endpoint: "/"},
+        { label: "Home", endpoint: "/" },
         { label: "Deploy a questionnaire", endpoint: "/deploy" },
         { label: "View deployment history", endpoint: "/history" },
         { label: "Check Blaise Status", endpoint: "/status" },
-    ]
+    ],
 };

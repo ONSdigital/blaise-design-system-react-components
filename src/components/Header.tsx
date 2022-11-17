@@ -15,7 +15,7 @@ export interface Props {
 }
 
 function Header({
-    title, signOutButton, noSave, signOutFunction, navigationLinks
+    title, signOutButton, noSave, signOutFunction, navigationLinks,
 }: Props): ReactElement {
     const { pathname } = useLocation();
 
@@ -90,31 +90,34 @@ function Header({
                     </div>
                 </div>
             </div>
-            {   
+            {
                 (navigationLinks && navigationLinks.length !== 0)
                 && (
                     <div className="ons-navigation-wrapper">
                         <div className="ons-container ons-container--gutterless@xxs@l">
-                            <nav className="ons-navigation ons-navigation--main ons-js-navigation" 
-                                id="main-nav" aria-label="Main menu" 
-                                data-analytics="header-navigation" 
+                            <nav
+                                className="ons-navigation ons-navigation--main ons-js-navigation"
+                                id="main-nav"
+                                aria-label="Main menu"
+                                data-analytics="header-navigation"
                                 role="navigation"
                             >
                                 <ul className="ons-navigation__list">
                                     {
-                                        navigationLinks.map(({ label, endpoint }, index) => {
-                                            return (
-                                                <li key={index}
-                                                    className={`ons-navigation__item  ${(pathname === endpoint ? "ons-navigation__item--active" : "")}`}>
-                                                    <Link className="ons-navigation__link"
-                                                        to={endpoint} 
-                                                        role="link"
-                                                    >
-                                                        {label}
-                                                    </Link>
-                                                </li>
-                                            );
-                                        })
+                                        navigationLinks.map(({ label, endpoint }, index) => (
+                                            <li
+                                                key={index}
+                                                className={`ons-navigation__item  ${(pathname === endpoint ? "ons-navigation__item--active" : "")}`}
+                                            >
+                                                <Link
+                                                    className="ons-navigation__link"
+                                                    to={endpoint}
+                                                    role="link"
+                                                >
+                                                    {label}
+                                                </Link>
+                                            </li>
+                                        ))
                                     }
                                 </ul>
                             </nav>
