@@ -37,6 +37,105 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Node {
                   "attribs": Object {
+                    "class": "ons-panel__assistive-text ons-u-vh",
+                  },
+                  "children": Array [
+                    Node {
+                      "data": "Warning: ",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Node {
+                    "attribs": Object {
+                      "class": "ons-panel__body",
+                    },
+                    "children": Array [
+                      Node {
+                        "attribs": Object {
+                          "class": "ons-u-mb-no",
+                        },
+                        "children": Array [
+                          Node {
+                            "data": "This environment is not a production environment. Do not upload any live data to this service.",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "text",
+                          },
+                        ],
+                        "name": "p",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "class": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "class": undefined,
+                        },
+                      },
+                    ],
+                    "name": "div",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": [Circular],
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
+                  "class": undefined,
+                  "style": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
+                  "class": undefined,
+                  "style": undefined,
+                },
+              },
+              Node {
+                "attribs": Object {
+                  "class": "ons-panel__assistive-text ons-u-vh",
+                },
+                "children": Array [
+                  Node {
+                    "data": "Warning: ",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Node {
+                  "attribs": Object {
                     "class": "ons-panel__body",
                   },
                   "children": Array [
@@ -81,17 +180,44 @@ initialize {
                   },
                 },
                 "parent": [Circular],
-                "prev": null,
+                "prev": Node {
+                  "attribs": Object {
+                    "aria-hidden": "true",
+                    "class": "ons-panel__icon",
+                    "style": "color:#222",
+                  },
+                  "children": Array [
+                    Node {
+                      "data": "!",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
+                    "class": undefined,
+                    "style": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
+                    "class": undefined,
+                    "style": undefined,
+                  },
+                },
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "aria-hidden": undefined,
                   "class": undefined,
-                  "style": undefined,
                 },
                 "x-attribsPrefix": Object {
-                  "aria-hidden": undefined,
                   "class": undefined,
-                  "style": undefined,
                 },
               },
               Node {
@@ -132,13 +258,11 @@ initialize {
                 "parent": [Circular],
                 "prev": Node {
                   "attribs": Object {
-                    "aria-hidden": "true",
-                    "class": "ons-panel__icon",
-                    "style": "color:#222",
+                    "class": "ons-panel__assistive-text ons-u-vh",
                   },
                   "children": Array [
                     Node {
-                      "data": "!",
+                      "data": "Warning: ",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
@@ -149,17 +273,44 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": [Circular],
                   "parent": [Circular],
-                  "prev": null,
+                  "prev": Node {
+                    "attribs": Object {
+                      "aria-hidden": "true",
+                      "class": "ons-panel__icon",
+                      "style": "color:#222",
+                    },
+                    "children": Array [
+                      Node {
+                        "data": "!",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": [Circular],
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
+                      "class": undefined,
+                      "style": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
+                      "class": undefined,
+                      "style": undefined,
+                    },
+                  },
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "aria-hidden": undefined,
                     "class": undefined,
-                    "style": undefined,
                   },
                   "x-attribsPrefix": Object {
-                    "aria-hidden": undefined,
                     "class": undefined,
-                    "style": undefined,
                   },
                 },
                 "type": "tag",

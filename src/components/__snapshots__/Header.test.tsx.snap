@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header Test matches Snapshot 1`] = `
+exports[`Check Header with navigation: matches Snapshot with navigation 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -52,13 +52,78 @@ Object {
                 <div
                   class="ons-header__title"
                 >
-                  App Title
+                  ONS Service
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div
+          class="ons-navigation-wrapper"
+        >
+          <div
+            class="ons-container ons-container--gutterless@xxs@l"
+          >
+            <nav
+              aria-label="Main menu"
+              class="ons-navigation ons-navigation--main ons-js-navigation"
+              data-analytics="header-navigation"
+              id="main-nav"
+              role="navigation"
+            >
+              <ul
+                class="ons-navigation__list"
+              >
+                <li
+                  class="ons-navigation__item  ons-navigation__item--active"
+                >
+                  <a
+                    class="ons-navigation__link"
+                    href="/"
+                    role="link"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li
+                  class="ons-navigation__item  "
+                >
+                  <a
+                    class="ons-navigation__link"
+                    href="/deploy"
+                    role="link"
+                  >
+                    Deploy a questionnaire
+                  </a>
+                </li>
+                <li
+                  class="ons-navigation__item  "
+                >
+                  <a
+                    class="ons-navigation__link"
+                    href="/history"
+                    role="link"
+                  >
+                    View deployment history
+                  </a>
+                </li>
+                <li
+                  class="ons-navigation__item  "
+                >
+                  <a
+                    class="ons-navigation__link"
+                    href="/status"
+                    role="link"
+                  >
+                    Check Blaise status
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </header>
+      )
     </div>
   </body>,
   "container": <div>
@@ -109,13 +174,78 @@ Object {
               <div
                 class="ons-header__title"
               >
-                App Title
+                ONS Service
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div
+        class="ons-navigation-wrapper"
+      >
+        <div
+          class="ons-container ons-container--gutterless@xxs@l"
+        >
+          <nav
+            aria-label="Main menu"
+            class="ons-navigation ons-navigation--main ons-js-navigation"
+            data-analytics="header-navigation"
+            id="main-nav"
+            role="navigation"
+          >
+            <ul
+              class="ons-navigation__list"
+            >
+              <li
+                class="ons-navigation__item  ons-navigation__item--active"
+              >
+                <a
+                  class="ons-navigation__link"
+                  href="/"
+                  role="link"
+                >
+                  Home
+                </a>
+              </li>
+              <li
+                class="ons-navigation__item  "
+              >
+                <a
+                  class="ons-navigation__link"
+                  href="/deploy"
+                  role="link"
+                >
+                  Deploy a questionnaire
+                </a>
+              </li>
+              <li
+                class="ons-navigation__item  "
+              >
+                <a
+                  class="ons-navigation__link"
+                  href="/history"
+                  role="link"
+                >
+                  View deployment history
+                </a>
+              </li>
+              <li
+                class="ons-navigation__item  "
+              >
+                <a
+                  class="ons-navigation__link"
+                  href="/status"
+                  role="link"
+                >
+                  Check Blaise status
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </header>
+    )
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
@@ -171,7 +301,7 @@ Object {
 }
 `;
 
-exports[`Header Test matches Snapshot with signout button 1`] = `
+exports[`Check Header with sign out button: matches Snapshot with sign out button 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -223,7 +353,7 @@ Object {
                 <div
                   class="ons-header__title"
                 >
-                  App Title
+                  ONS Service
                 </div>
               </div>
               <div
@@ -260,6 +390,214 @@ Object {
                     </svg>
                   </span>
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      )
+    </div>
+  </body>,
+  "container": <div>
+    <header
+      class="ons-header ons-header--internal"
+    >
+      <div
+        class="ons-header__top"
+        role="banner"
+      >
+        <div
+          class="ons-container"
+        >
+          <div
+            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
+          >
+            <div
+              class="ons-grid__col ons-col-auto"
+            >
+              <a
+                class="header__logo-link"
+                href="/"
+              >
+                <picture>
+                  <img
+                    alt="Office for National Statistics logo"
+                    class="ons-header__logo"
+                    src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
+                  />
+                </picture>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ons-header__main"
+      >
+        <div
+          class="ons-container"
+        >
+          <div
+            class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+          >
+            <div
+              class="ons-grid__col ons-col-auto ons-u-flex-shrink"
+            >
+              <div
+                class="ons-header__title"
+              >
+                ONS Service
+              </div>
+            </div>
+            <div
+              class="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m"
+            >
+              <button
+                class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
+                data-test-id="signout-button"
+                id="signout-button"
+                type="button"
+              >
+                <span
+                  class="ons-btn__inner"
+                >
+                  <span
+                    class="ons-btn__text"
+                  >
+                    Save and sign out
+                  </span>
+                  <svg
+                    class="ons-svg-icon ons-u-ml-xs"
+                    focusable="false"
+                    viewBox="0 0 12 12"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z"
+                      transform="translate(-2 -2)"
+                    />
+                    <path
+                      d="M8.5,14h-6a.5.5,0,0,1-.5-.5V2.5A.5.5,0,0,1,2.5,2h6a.5.5,0,0,1,.5.5V3a.5.5,0,0,1-.5.5h-5v9h5A.5.5,0,0,1,9,13v.5A.5.5,0,0,1,8.5,14Z"
+                      transform="translate(-2 -2)"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    )
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Check default Header: matches Snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header
+        class="ons-header ons-header--internal"
+      >
+        <div
+          class="ons-header__top"
+          role="banner"
+        >
+          <div
+            class="ons-container"
+          >
+            <div
+              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
+            >
+              <div
+                class="ons-grid__col ons-col-auto"
+              >
+                <a
+                  class="header__logo-link"
+                  href="/"
+                >
+                  <picture>
+                    <img
+                      alt="Office for National Statistics logo"
+                      class="ons-header__logo"
+                      src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
+                    />
+                  </picture>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ons-header__main"
+        >
+          <div
+            class="ons-container"
+          >
+            <div
+              class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+            >
+              <div
+                class="ons-grid__col ons-col-auto ons-u-flex-shrink"
+              >
+                <div
+                  class="ons-header__title"
+                >
+                  ONS Service
+                </div>
               </div>
             </div>
           </div>
@@ -315,43 +653,8 @@ Object {
               <div
                 class="ons-header__title"
               >
-                App Title
+                ONS Service
               </div>
-            </div>
-            <div
-              class="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m"
-            >
-              <button
-                class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
-                data-test-id="signout-button"
-                id="signout-button"
-                type="button"
-              >
-                <span
-                  class="ons-btn__inner"
-                >
-                  <span
-                    class="ons-btn__text"
-                  >
-                    Save and sign out
-                  </span>
-                  <svg
-                    class="ons-svg-icon ons-u-ml-xs"
-                    focusable="false"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z"
-                      transform="translate(-2 -2)"
-                    />
-                    <path
-                      d="M8.5,14h-6a.5.5,0,0,1-.5-.5V2.5A.5.5,0,0,1,2.5,2h6a.5.5,0,0,1,.5.5V3a.5.5,0,0,1-.5.5h-5v9h5A.5.5,0,0,1,9,13v.5A.5.5,0,0,1,8.5,14Z"
-                      transform="translate(-2 -2)"
-                    />
-                  </svg>
-                </span>
-              </button>
             </div>
           </div>
         </div>
