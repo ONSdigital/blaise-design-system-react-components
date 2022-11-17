@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Check Header with navigation: matches Snapshot with navigation 1`] = `
+exports[`Check Header with navigation bar: matches Snapshot with navigation 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
