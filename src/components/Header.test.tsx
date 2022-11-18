@@ -19,7 +19,7 @@ describe("Check default Header:", () => {
     it("matches Snapshot", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} />
             </Router>,
         );
@@ -29,7 +29,7 @@ describe("Check default Header:", () => {
     it("should render correctly", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} />
             </Router>,
         );
@@ -39,7 +39,7 @@ describe("Check default Header:", () => {
     it("should render with the title displayed", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} />
             </Router>,
         );
@@ -49,7 +49,7 @@ describe("Check default Header:", () => {
     it("should not show the signout button by default", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} />
             </Router>,
         );
@@ -60,7 +60,7 @@ describe("Check default Header:", () => {
     it("should not show the navigation by default", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} />
             </Router>,
         );
@@ -72,7 +72,7 @@ describe("Check Header with sign out button:", () => {
     it("matches Snapshot with sign out button", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} signOutButton signOutFunction={jest.fn()} />
                 )
             </Router>,
@@ -83,7 +83,7 @@ describe("Check Header with sign out button:", () => {
     it("shows sign out button", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} signOutButton signOutFunction={jest.fn()} />
             </Router>,
         );
@@ -93,7 +93,7 @@ describe("Check Header with sign out button:", () => {
     it("shows sign out button with special text", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} signOutButton noSave signOutFunction={jest.fn()} />
             </Router>,
         );
@@ -105,7 +105,7 @@ describe("Check Header with sign out button:", () => {
         const mockFunction = sinon.spy();
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} signOutButton signOutFunction={mockFunction} />
             </Router>,
         );
@@ -118,7 +118,7 @@ describe("Check Header with navigation bar:", () => {
     it("matches Snapshot with navigation", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
                 )
             </Router>,
@@ -129,7 +129,7 @@ describe("Check Header with navigation bar:", () => {
     it("shows the navigation with links", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
                 )
             </Router>,
@@ -144,7 +144,7 @@ describe("Check Header with navigation bar:", () => {
     it("navigates to the homepage when clicking the 'Home' link", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
                 )
             </Router>,
@@ -159,7 +159,7 @@ describe("Check Header with navigation bar:", () => {
     it("navigates to the homepage when clicking the 'Deploy a questionnaire' link", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
                 )
             </Router>,
@@ -174,7 +174,7 @@ describe("Check Header with navigation bar:", () => {
     it("navigates to the homepage when clicking the 'View deployment history' link", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
                 )
             </Router>,
@@ -189,7 +189,7 @@ describe("Check Header with navigation bar:", () => {
     it("navigates to the homepage when clicking the 'Check Blaise status' link", () => {
         const history = createMemoryHistory();
         const wrapper = render(
-            <Router location={history.location} navigator={history}>
+            <Router history={history}>
                 <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />
                 )
             </Router>,
