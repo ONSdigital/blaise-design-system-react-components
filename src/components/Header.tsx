@@ -12,12 +12,24 @@ export interface Props {
     signOutFunction?: () => void
     navigationLinks?: NavigationLinks[]
     currentLocation?: string
-    createLink: (label: string, endpoint: string) => ReactNode
+    createNavLink?: (label: string, endpoint: string) => ReactNode
 }
 
 function Header({
-    title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createLink
+    title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createNavLink
 }: Props): ReactElement {
+
+    const createLink = (label: string, endpoint: string) => {
+        if (createNavLink) {
+            return createNavLink(label, endpoint);
+        }
+        return (
+            <a className="ons-navigation__link" href={endpoint} role="link">
+                {label}
+            </a>
+        )
+    };
+
     let signOutText = "Save and sign out";
     if (noSave) {
         signOutText = "Sign out";
@@ -109,13 +121,6 @@ function Header({
                                                 className={`ons-navigation__item  ${(currentLocation === endpoint ? "ons-navigation__item--active" : "")}`}
                                             >
                                                 {createLink(label, endpoint)}
-                                                {/* <Link
-                                                    className="ons-navigation__link"
-                                                    to={endpoint}
-                                                    role="link"
-                                                >
-                                                    {label}
-                                                </Link> */}
                                             </li>
                                         ))
                                     }
