@@ -75,7 +75,7 @@ Object {
                 class="ons-navigation__list"
               >
                 <li
-                  class="ons-navigation__item  ons-navigation__item--active"
+                  class="ons-navigation__item  "
                 >
                   <a
                     class="ons-navigation__link"
@@ -123,7 +123,6 @@ Object {
           </div>
         </div>
       </header>
-      )
     </div>
   </body>,
   "container": <div>
@@ -197,7 +196,7 @@ Object {
               class="ons-navigation__list"
             >
               <li
-                class="ons-navigation__item  ons-navigation__item--active"
+                class="ons-navigation__item  "
               >
                 <a
                   class="ons-navigation__link"
@@ -245,7 +244,6 @@ Object {
         </div>
       </div>
     </header>
-    )
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
@@ -395,7 +393,6 @@ Object {
           </div>
         </div>
       </header>
-      )
     </div>
   </body>,
   "container": <div>
@@ -488,7 +485,6 @@ Object {
         </div>
       </div>
     </header>
-    )
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
