@@ -1,5 +1,4 @@
-import React, { ReactElement } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { ReactElement, ReactNode } from "react";
 
 export interface NavigationLinks {
     label: string,
@@ -10,15 +9,15 @@ export interface Props {
     title: string
     signOutButton?: boolean
     noSave?: boolean
-    signOutFunction?: () => void,
+    signOutFunction?: () => void
     navigationLinks?: NavigationLinks[]
+    currentLocation?: string
+    createLink: (label: string, endpoint: string) => ReactNode
 }
 
 function Header({
-    title, signOutButton, noSave, signOutFunction, navigationLinks,
+    title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createLink
 }: Props): ReactElement {
-    const { pathname } = useLocation();
-
     let signOutText = "Save and sign out";
     if (noSave) {
         signOutText = "Sign out";
@@ -107,15 +106,16 @@ function Header({
                                         navigationLinks.map(({ label, endpoint }, index) => (
                                             <li
                                                 key={index}
-                                                className={`ons-navigation__item  ${(pathname === endpoint ? "ons-navigation__item--active" : "")}`}
+                                                className={`ons-navigation__item  ${(currentLocation === endpoint ? "ons-navigation__item--active" : "")}`}
                                             >
-                                                <Link
+                                                {createLink(endpoint, label)}
+                                                {/* <Link
                                                     className="ons-navigation__link"
                                                     to={endpoint}
                                                     role="link"
                                                 >
                                                     {label}
-                                                </Link>
+                                                </Link> */}
                                             </li>
                                         ))
                                     }

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface RadioSpecifyOption {
     id: string;
     name: string;

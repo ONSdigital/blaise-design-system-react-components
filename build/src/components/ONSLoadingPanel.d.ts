@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface Props {
     hidden?: boolean;
     message?: string;
