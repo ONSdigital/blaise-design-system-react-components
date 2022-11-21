@@ -92,7 +92,7 @@ function Header(_a) {
                     React.createElement("nav", { className: "ons-navigation ons-navigation--main ons-js-navigation", id: "main-nav", "aria-label": "Main menu", "data-analytics": "header-navigation", role: "navigation" },
                         React.createElement("ul", { className: "ons-navigation__list" }, navigationLinks.map(function (_a, index) {
                             var label = _a.label, endpoint = _a.endpoint;
-                            return (React.createElement("li", { key: index, className: "ons-navigation__item  ".concat((currentLocation === endpoint ? "ons-navigation__item--active" : "")) }, createLink(endpoint, label)));
+                            return (React.createElement("li", { key: index, className: "ons-navigation__item  ".concat((currentLocation === endpoint ? "ons-navigation__item--active" : "")) }, createLink(label, endpoint)));
                         }))))))));
 }
 

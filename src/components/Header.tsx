@@ -108,7 +108,7 @@ function Header({
                                                 key={index}
                                                 className={`ons-navigation__item  ${(currentLocation === endpoint ? "ons-navigation__item--active" : "")}`}
                                             >
-                                                {createLink(endpoint, label)}
+                                                {createLink(label, endpoint)}
                                                 {/* <Link
                                                     className="ons-navigation__link"
                                                     to={endpoint}
