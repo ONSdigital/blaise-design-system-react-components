@@ -68,7 +68,13 @@ function Footer() {
 }
 
 function Header(_a) {
-    var title = _a.title, signOutButton = _a.signOutButton, noSave = _a.noSave, signOutFunction = _a.signOutFunction, navigationLinks = _a.navigationLinks, currentLocation = _a.currentLocation, createLink = _a.createLink;
+    var title = _a.title, signOutButton = _a.signOutButton, noSave = _a.noSave, signOutFunction = _a.signOutFunction, navigationLinks = _a.navigationLinks, currentLocation = _a.currentLocation, createNavLink = _a.createNavLink;
+    var createLink = function (label, endpoint) {
+        if (createNavLink) {
+            return createNavLink(label, endpoint);
+        }
+        return (React__default['default'].createElement("a", { className: "ons-navigation__link", href: endpoint, role: "link" }, label));
+    };
     var signOutText = "Save and sign out";
     if (noSave) {
         signOutText = "Sign out";
