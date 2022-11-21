@@ -12,5 +12,5 @@ export interface Props {
     currentLocation?: string;
     createNavLink?: (label: string, endpoint: string) => ReactNode;
 }
-declare function Header({ title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createNavLink }: Props): ReactElement;
+declare function Header({ title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createNavLink, }: Props): ReactElement;
 export default Header;

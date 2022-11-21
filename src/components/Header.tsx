@@ -16,9 +16,8 @@ export interface Props {
 }
 
 function Header({
-    title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createNavLink
+    title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createNavLink,
 }: Props): ReactElement {
-
     const createLink = (label: string, endpoint: string) => {
         if (createNavLink) {
             return createNavLink(label, endpoint);
@@ -27,7 +26,7 @@ function Header({
             <a className="ons-navigation__link" href={endpoint} role="link">
                 {label}
             </a>
-        )
+        );
     };
 
     let signOutText = "Save and sign out";
