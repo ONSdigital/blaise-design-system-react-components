@@ -110,10 +110,9 @@ function BetaBanner() {
                     React.createElement("h3", { className: "ons-phase-banner__badge" }, "BETA")),
                 React.createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-shrink" },
                     React.createElement("p", { className: "ons-phase-banner__desc ons-u-fs-s ons-u-mb-no" },
-                        "This is a new service \u2013 your",
+                        "This is a new service \u2013 your\u00A0",
                         React.createElement("a", { href: "https://ons.service-now.com/" }, "feedback"),
-                        " ",
-                        "will help us improve it."))))));
+                        "\u00A0will help us improve it."))))));
 }
 
 function ExternalLink(props) {
