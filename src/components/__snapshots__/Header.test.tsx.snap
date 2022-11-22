@@ -75,7 +75,7 @@ Object {
                 class="ons-navigation__list"
               >
                 <li
-                  class="ons-navigation__item  "
+                  class="ons-navigation__item  ons-navigation__item--active"
                 >
                   <a
                     class="ons-navigation__link"
@@ -196,7 +196,7 @@ Object {
               class="ons-navigation__list"
             >
               <li
-                class="ons-navigation__item  "
+                class="ons-navigation__item  ons-navigation__item--active"
               >
                 <a
                   class="ons-navigation__link"

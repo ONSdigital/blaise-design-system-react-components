@@ -87,19 +87,26 @@ describe("Check Header with sign out button:", () => {
 describe("Check Header with navigation bar:", () => {
     it("matches Snapshot with navigation", () => {
         const wrapper = render(
-            <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />,
+            <Header title={testProps.title} navigationLinks={testProps.navigationLinks} currentLocation="/" />,
         );
         expect(wrapper).toMatchSnapshot();
     });
 
     it("shows the navigation with links", () => {
         const wrapper = render(
-            <Header title={testProps.title} navigationLinks={testProps.navigationLinks} />,
+            <Header title={testProps.title} navigationLinks={testProps.navigationLinks} currentLocation="/" />,
         );
         expect(wrapper.queryByRole(/navigation/)).not.toStrictEqual(null);
         expect(wrapper.getByRole("link", { name: /Home/ })).toBeVisible();
         expect(wrapper.getByRole("link", { name: /Deploy a questionnaire/ })).toBeVisible();
         expect(wrapper.getByRole("link", { name: /View deployment history/ })).toBeVisible();
         expect(wrapper.getByRole("link", { name: /Check Blaise status/ })).toBeVisible();
+    });
+
+    it("shows active link", () => {
+        const wrapper = render(
+            <Header title={testProps.title} navigationLinks={testProps.navigationLinks} currentLocation="/deploy" />,
+        );
+        expect(wrapper.getByRole("link", { name: /Deploy a questionnaire/ }).parentElement).toHaveClass("ons-navigation__item--active");
     });
 });
