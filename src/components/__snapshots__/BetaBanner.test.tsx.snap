@@ -29,14 +29,13 @@ Object {
               <p
                 class="ons-phase-banner__desc ons-u-fs-s ons-u-mb-no"
               >
-                This is a new service – your
+                This is a new service – your 
                 <a
                   href="https://ons.service-now.com/"
                 >
                   feedback
                 </a>
-                 
-                will help us improve it.
+                 will help us improve it.
               </p>
             </div>
           </div>
@@ -69,14 +68,13 @@ Object {
             <p
               class="ons-phase-banner__desc ons-u-fs-s ons-u-mb-no"
             >
-              This is a new service – your
+              This is a new service – your 
               <a
                 href="https://ons.service-now.com/"
               >
                 feedback
               </a>
-               
-              will help us improve it.
+               will help us improve it.
             </p>
           </div>
         </div>

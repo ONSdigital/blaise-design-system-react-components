@@ -10,14 +10,13 @@ function BetaBanner(): ReactElement {
                     </div>
                     <div className="ons-grid__col ons-col-auto ons-u-flex-shrink">
                         <p className="ons-phase-banner__desc ons-u-fs-s ons-u-mb-no">
-                            This is a new service – your
+                            This is a new service – your&nbsp;
                             <a
                                 href="https://ons.service-now.com/"
                             >
                                 feedback
                             </a>
-                            {" "}
-                            will help us improve it.
+                            &nbsp;will help us improve it.
                         </p>
                     </div>
                 </div>

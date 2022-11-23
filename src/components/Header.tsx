@@ -1,5 +1,4 @@
-import React, { ReactElement } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { ReactElement, ReactNode } from "react";
 
 export interface NavigationLinks {
     label: string,
@@ -10,14 +9,25 @@ export interface Props {
     title: string
     signOutButton?: boolean
     noSave?: boolean
-    signOutFunction?: () => void,
+    signOutFunction?: () => void
     navigationLinks?: NavigationLinks[]
+    currentLocation?: string
+    createNavLink?: (label: string, endpoint: string) => ReactNode
 }
 
 function Header({
-    title, signOutButton, noSave, signOutFunction, navigationLinks,
+    title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createNavLink,
 }: Props): ReactElement {
-    const { pathname } = useLocation();
+    const createLink = (label: string, endpoint: string) => {
+        if (createNavLink) {
+            return createNavLink(label, endpoint);
+        }
+        return (
+            <a className="ons-navigation__link" href={endpoint} role="link">
+                {label}
+            </a>
+        );
+    };
 
     let signOutText = "Save and sign out";
     if (noSave) {
@@ -107,15 +117,9 @@ function Header({
                                         navigationLinks.map(({ label, endpoint }, index) => (
                                             <li
                                                 key={index}
-                                                className={`ons-navigation__item  ${(pathname === endpoint ? "ons-navigation__item--active" : "")}`}
+                                                className={`ons-navigation__item  ${(currentLocation === endpoint ? "ons-navigation__item--active" : "")}`}
                                             >
-                                                <Link
-                                                    className="ons-navigation__link"
-                                                    to={endpoint}
-                                                    role="link"
-                                                >
-                                                    {label}
-                                                </Link>
+                                                {createLink(label, endpoint)}
                                             </li>
                                         ))
                                     }
