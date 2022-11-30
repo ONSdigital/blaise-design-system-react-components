@@ -34,9 +34,9 @@ WithSignOut.args = {
 WithNavigation.args = {
     title: "Yet another secret 🐿️ service being built",
     navigationLinks: [
-        { label: "Home", endpoint: "/" },
-        { label: "Deploy a questionnaire", endpoint: "/deploy" },
-        { label: "View deployment history", endpoint: "/history" },
-        { label: "Check Blaise Status", endpoint: "/status" },
+        { id: "home-link", label: "Home", endpoint: "/" },
+        { id: "deploy-questionnaire-link", label: "Deploy a questionnaire", endpoint: "/deploy" },
+        { id: "audit-logs-link", label: "View deployment history", endpoint: "/history" },
+        { id: "blaise-status-link", label: "Check Blaise status", endpoint: "/status" },
     ],
 };

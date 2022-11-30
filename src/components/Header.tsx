@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode } from "react";
 
 export interface NavigationLinks {
+    id: string,
     label: string,
     endpoint: string
 }
@@ -12,18 +13,18 @@ export interface Props {
     signOutFunction?: () => void
     navigationLinks?: NavigationLinks[]
     currentLocation?: string
-    createNavLink?: (label: string, endpoint: string) => ReactNode
+    createNavLink?: (id: string, label: string, endpoint: string) => ReactNode
 }
 
 function Header({
     title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createNavLink,
 }: Props): ReactElement {
-    const createLink = (label: string, endpoint: string) => {
+    const createLink = (id: string, label: string, endpoint: string) => {
         if (createNavLink) {
-            return createNavLink(label, endpoint);
+            return createNavLink(id, label, endpoint);
         }
         return (
-            <a className="ons-navigation__link" href={endpoint} role="link">
+            <a className="ons-navigation__link" id={id} href={endpoint} role="link">
                 {label}
             </a>
         );
@@ -114,12 +115,12 @@ function Header({
                             >
                                 <ul className="ons-navigation__list">
                                     {
-                                        navigationLinks.map(({ label, endpoint }, index) => (
+                                        navigationLinks.map(({ id, label, endpoint }, index) => (
                                             <li
                                                 key={index}
                                                 className={`ons-navigation__item  ${(currentLocation === endpoint ? "ons-navigation__item--active" : "")}`}
                                             >
-                                                {createLink(label, endpoint)}
+                                                {createLink(id, label, endpoint)}
                                             </li>
                                         ))
                                     }
