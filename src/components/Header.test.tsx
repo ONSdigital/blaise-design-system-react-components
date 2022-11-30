@@ -6,10 +6,10 @@ import Header, { Props } from "./Header";
 const testProps: Props = {
     title: "ONS Service",
     navigationLinks: [
-        { label: "Home", endpoint: "/" },
-        { label: "Deploy a questionnaire", endpoint: "/deploy" },
-        { label: "View deployment history", endpoint: "/history" },
-        { label: "Check Blaise status", endpoint: "/status" },
+        { id: "home-link", label: "Home", endpoint: "/" },
+        { id: "deploy-questionnaire-link", label: "Deploy a questionnaire", endpoint: "/deploy" },
+        { id: "audit-logs-link", label: "View deployment history", endpoint: "/history" },
+        { id: "blaise-status-link", label: "Check Blaise status", endpoint: "/status" },
     ],
 };
 
@@ -92,7 +92,7 @@ describe("Check Header with navigation bar:", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it("shows the navigation with links", () => {
+    it("shows the navigation with links by name", () => {
         const wrapper = render(
             <Header title={testProps.title} navigationLinks={testProps.navigationLinks} currentLocation="/" />,
         );
