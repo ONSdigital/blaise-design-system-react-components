@@ -61,11 +61,11 @@ function Footer() {
 
 function Header(_a) {
     var title = _a.title, signOutButton = _a.signOutButton, noSave = _a.noSave, signOutFunction = _a.signOutFunction, navigationLinks = _a.navigationLinks, currentLocation = _a.currentLocation, createNavLink = _a.createNavLink;
-    var createLink = function (label, endpoint) {
+    var createLink = function (id, label, endpoint) {
         if (createNavLink) {
-            return createNavLink(label, endpoint);
+            return createNavLink(id, label, endpoint);
         }
-        return (React.createElement("a", { className: "ons-navigation__link", href: endpoint, role: "link" }, label));
+        return (React.createElement("a", { className: "ons-navigation__link", id: id, href: endpoint, role: "link" }, label));
     };
     var signOutText = "Save and sign out";
     if (noSave) {
@@ -97,8 +97,8 @@ function Header(_a) {
                 React.createElement("div", { className: "ons-container ons-container--gutterless@xxs@l" },
                     React.createElement("nav", { className: "ons-navigation ons-navigation--main ons-js-navigation", id: "main-nav", "aria-label": "Main menu", "data-analytics": "header-navigation", role: "navigation" },
                         React.createElement("ul", { className: "ons-navigation__list" }, navigationLinks.map(function (_a, index) {
-                            var label = _a.label, endpoint = _a.endpoint;
-                            return (React.createElement("li", { key: index, className: "ons-navigation__item  ".concat((currentLocation === endpoint ? "ons-navigation__item--active" : "")) }, createLink(label, endpoint)));
+                            var id = _a.id, label = _a.label, endpoint = _a.endpoint;
+                            return (React.createElement("li", { key: index, className: "ons-navigation__item  ".concat((currentLocation === endpoint ? "ons-navigation__item--active" : "")) }, createLink(id, label, endpoint)));
                         }))))))));
 }
 
