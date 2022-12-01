@@ -74,7 +74,7 @@ export function RadioFieldset({
                                                 id="other-radio-other-wrap"
                                             >
                                                 <label
-                                                    className="label u-fs-s--b "
+                                                    className="ons-label ons-u-fs-s--b "
                                                     htmlFor={radioOption.specifyOption.id}
                                                     id="other-textbox-label"
                                                 >
