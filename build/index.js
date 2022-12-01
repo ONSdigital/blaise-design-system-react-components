@@ -428,7 +428,7 @@ function RadioFieldset(_a) {
                             radioOption.description !== undefined
                                 && (React__default['default'].createElement("span", { id: "white-label-description-hint", className: "ons-label__description ons-radio__label--with-description" }, radioOption.description))),
                         radioOption.specifyOption && (React__default['default'].createElement("span", { className: "ons-radio__other ons-radio__other--open", id: "other-radio-other-wrap" },
-                            React__default['default'].createElement("label", { className: "label u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
+                            React__default['default'].createElement("label", { className: "ons-label ons-u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
                             React__default['default'].createElement(formik.Field, { type: radioOption.specifyOption.type, id: radioOption.specifyOption.id, name: radioOption.specifyOption.name, validate: radioOption.specifyOption.validate, min: radioOption.specifyOption.min, className: "ons-input ons-input--text ons-input-type__input ons-input--w-auto" }))))),
                 React__default['default'].createElement("br", null))); })))));
 }
