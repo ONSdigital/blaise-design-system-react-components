@@ -23,7 +23,7 @@ const groupedSummary = new GroupedSummary([{
             const groupedSummary = new GroupedSummary({
                 title: "Table title",
                 records: {
-                    "Record 1": "foo"
+                    "Record 1": "foo",
                     "Record 2": "bar" 
                 }
             });
