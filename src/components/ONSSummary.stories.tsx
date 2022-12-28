@@ -12,8 +12,8 @@ const SummaryTableTemplate: ComponentStory<typeof SummaryGroupTable> = (args) =>
 const SummaryRowTemplate: ComponentStory<typeof SummaryItemRow> = (args) => <SummaryItemRow {...args} />;
 
 // 👇 Each story then reuses that template
-export const SummaryTable = SummaryTableTemplate.bind({});
-export const SummaryRow = SummaryRowTemplate.bind({});
+export const Table = SummaryTableTemplate.bind({});
+export const Row = SummaryRowTemplate.bind({});
 
 const groupedSummary = new GroupedSummary([{
     title: "How to use a Summary table",
@@ -34,11 +34,11 @@ const groupedSummary = new GroupedSummary([{
     },
 }]);
 
-SummaryTable.args = {
+Table.args = {
     groupedSummary,
 };
 
-SummaryRow.args = {
+Row.args = {
     fieldName: "Field",
     fieldValue: "Value",
 };

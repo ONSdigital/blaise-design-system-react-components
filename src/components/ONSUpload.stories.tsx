@@ -11,9 +11,9 @@ export default {
 const Template: ComponentStory<typeof ONSUpload> = (args) => <ONSUpload {...args} />;
 
 // 👇 Each story then reuses that template
-export const DefaultMessage = Template.bind({});
+export const Default = Template.bind({});
 
-DefaultMessage.args = {
+Default.args = {
     label: "Upload",
     description: "Upload a file with the following extension: .pdf",
 };

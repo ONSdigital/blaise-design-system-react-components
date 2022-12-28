@@ -11,9 +11,9 @@ export default {
 const Template: ComponentStory<typeof ONSTextInput> = (args) => <ONSTextInput {...args} />;
 
 // 👇 Each story then reuses that template
-export const DefaultMessage = Template.bind({});
+export const Default = Template.bind({});
 
-DefaultMessage.args = {
+Default.args = {
     label: "Text Input",
     placeholder: "Type here",
     autoFocus: true,
