@@ -11,19 +11,17 @@ export default {
 const Template: ComponentStory<typeof ONSSelect> = (args) => <ONSSelect {...args} />;
 
 // 👇 Each story then reuses that template
-export const DefaultMessage = Template.bind({});
+export const Default = Template.bind({});
 
 const Selection = [
-    { label: "Brown Bear", value: "brown-bear" },
-    { label: "Giant Panda", value: "giant-panda" },
-    { label: "Polar Bear", value: "polar-bear" },
-    { label: "Black Bear", value: "black-bear" },
+    { label: "LMS", value: "lms" },
+    { label: "OPN", value: "opn" },
+    { label: "DST", value: "dst" },
 ];
 
-DefaultMessage.args = {
-    id: "select-thing",
-    label: "Select bear",
-    value: "select value",
+Default.args = {
+    id: "select-survey",
+    label: "Select survey",
     options: Selection,
     defaultValue: Selection[0].value,
 };

@@ -11,9 +11,9 @@ export default {
 const Template: ComponentStory<typeof ONSPasswordInput> = (args) => <ONSPasswordInput {...args} />;
 
 // 👇 Each story then reuses that template
-export const DefaultMessage = Template.bind({});
+export const Default = Template.bind({});
 
-DefaultMessage.args = {
+Default.args = {
     label: "Password",
     placeholder: "Confirm password",
     autoFocus: true,
