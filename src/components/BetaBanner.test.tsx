@@ -1,12 +1,8 @@
 import React from "react";
-import { cleanup, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import BetaBanner from "./BetaBanner";
 
-describe("ONS In Dev Banner Test", () => {
-    afterEach(() => {
-        cleanup();
-    });
-
+describe.only("ONS In Dev Banner Test", () => {
     it("matches Snapshot", () => {
         expect(render(<BetaBanner />)).toMatchSnapshot();
     });

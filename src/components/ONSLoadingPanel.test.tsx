@@ -1,24 +1,19 @@
 import React from "react";
-import { cleanup, render } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import { ONSLoadingPanel } from "./ONSLoadingPanel";
 
-describe("Header Test", () => {
-    afterEach(() => {
-        cleanup();
-    });
-
+describe("ONS Loading Panel test", () => {
     it("matches Snapshot", () => {
-        const wrapper = render(<ONSLoadingPanel />);
-        expect(wrapper).toMatchSnapshot();
+        expect(render(<ONSLoadingPanel />)).toMatchSnapshot();
     });
 
     it("shows default loading text when no message has been passed through", () => {
-        const wrapper = render(<ONSLoadingPanel />);
-        expect(wrapper.getByText(/Loading/)).toBeDefined();
+        render(<ONSLoadingPanel />);
+        expect(screen.getByText(/Loading/)).toBeVisible();
     });
 
     it("shows passed in loading text message has been passed through", () => {
-        const wrapper = render(<ONSLoadingPanel message="A different message for loading" />);
-        expect(wrapper.getByText(/A different message for loading/)).toBeDefined();
+        render(<ONSLoadingPanel message="A different message for loading" />);
+        expect(screen.getByText(/A different message for loading/)).toBeVisible();
     });
 });
