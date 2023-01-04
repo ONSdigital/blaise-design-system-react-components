@@ -1,6 +1,6 @@
 import React from "react";
-import { fireEvent, render } from "@testing-library/react";
-import sinon from "sinon";
+import { screen, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Header, { Props } from "./Header";
 
 const testProps: Props = {
@@ -13,7 +13,7 @@ const testProps: Props = {
     ],
 };
 
-describe("Check default Header:", () => {
+describe.only("Check default Header:", () => {
     it("matches Snapshot", () => {
         const wrapper = render(
             <Header title={testProps.title} />,
@@ -21,33 +21,26 @@ describe("Check default Header:", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it("should render correctly", () => {
-        const wrapper = render(
-            <Header title={testProps.title} />,
-        );
-        expect(wrapper).toBeDefined();
-    });
-
     it("should render with the title displayed", () => {
-        const wrapper = render(
+        render(
             <Header title={testProps.title} />,
         );
-        expect(wrapper.getByText(testProps.title)).toBeVisible();
+        expect(screen.getByText(testProps.title)).toBeVisible();
     });
 
     it("should not show the signout button by default", () => {
-        const wrapper = render(
+        render(
             <Header title={testProps.title} />,
         );
-        expect(wrapper.queryAllByText(/Save and sign out/)).toStrictEqual([]);
-        expect(wrapper.queryAllByText(/Sign out/)).toStrictEqual([]);
+        expect(screen.queryAllByText(/Save and sign out/)).toStrictEqual([]);
+        expect(screen.queryAllByText(/Sign out/)).toStrictEqual([]);
     });
 
     it("should not show the navigation by default", () => {
-        const wrapper = render(
+        render(
             <Header title={testProps.title} />,
         );
-        expect(wrapper.queryByRole(/navigation/)).toStrictEqual(null);
+        expect(screen.queryByRole(/navigation/)).toStrictEqual(null);
     });
 });
 
@@ -60,27 +53,30 @@ describe("Check Header with sign out button:", () => {
     });
 
     it("shows sign out button", () => {
-        const wrapper = render(
+        render(
             <Header title={testProps.title} signOutButton signOutFunction={jest.fn()} />,
         );
-        expect(wrapper.getByText(/Save and sign out/)).toBeVisible();
+        expect(screen.getByText(/Save and sign out/)).toBeVisible();
     });
 
     it("shows sign out button with special text", () => {
-        const wrapper = render(
+        render(
             <Header title={testProps.title} signOutButton noSave signOutFunction={jest.fn()} />,
         );
-        expect(wrapper.getByText(/Sign out/)).toBeDefined();
-        expect(wrapper.queryAllByText(/Save and sign out/)).toStrictEqual([]);
+        expect(screen.getByText(/Sign out/)).toBeDefined();
+        expect(screen.queryAllByText(/Save and sign out/)).toStrictEqual([]);
     });
 
-    it("passes in the sign out function correctly button", () => {
-        const mockFunction = sinon.spy();
-        const wrapper = render(
+    it("passes in the sign out function correctly button", async () => {
+        const mockFunction = jest.fn();
+
+        render(
             <Header title={testProps.title} signOutButton signOutFunction={mockFunction} />,
         );
-        fireEvent.click(wrapper.getByText(/Save and sign out/));
-        expect(mockFunction).toHaveProperty("callCount", 1);
+        const signOutButton = screen.getByText(/Save and sign out/);
+        await userEvent.click(signOutButton);
+
+        expect(mockFunction).toHaveBeenCalledTimes(1);
     });
 });
 
@@ -93,20 +89,31 @@ describe("Check Header with navigation bar:", () => {
     });
 
     it("shows the navigation with links by name", () => {
-        const wrapper = render(
+        render(
             <Header title={testProps.title} navigationLinks={testProps.navigationLinks} currentLocation="/" />,
         );
-        expect(wrapper.queryByRole(/navigation/)).not.toStrictEqual(null);
-        expect(wrapper.getByRole("link", { name: /Home/ })).toBeVisible();
-        expect(wrapper.getByRole("link", { name: /Deploy a questionnaire/ })).toBeVisible();
-        expect(wrapper.getByRole("link", { name: /View deployment history/ })).toBeVisible();
-        expect(wrapper.getByRole("link", { name: /Check Blaise status/ })).toBeVisible();
+        expect(screen.queryByRole(/navigation/)).not.toStrictEqual(null);
+        expect(screen.getByRole("link", { name: /Home/ })).toBeVisible();
+        expect(screen.getByRole("link", { name: /Deploy a questionnaire/ })).toBeVisible();
+        expect(screen.getByRole("link", { name: /View deployment history/ })).toBeVisible();
+        expect(screen.getByRole("link", { name: /Check Blaise status/ })).toBeVisible();
+    });
+
+    it("has navigation links with IDs for integrated tests)", () => {
+        render(
+            <Header title={testProps.title} navigationLinks={testProps.navigationLinks} currentLocation="/" />,
+        );
+        expect(screen.queryByRole(/navigation/)).not.toStrictEqual(null);
+        expect(screen.getByRole("link", { name: /Home/ })).toHaveAttribute("id", "home-link");
+        expect(screen.getByRole("link", { name: /Deploy a questionnaire/ })).toHaveAttribute("id", "deploy-questionnaire-link");
+        expect(screen.getByRole("link", { name: /View deployment history/ })).toHaveAttribute("id", "audit-logs-link");
+        expect(screen.getByRole("link", { name: /Check Blaise status/ })).toHaveAttribute("id", "blaise-status-link");
     });
 
     it("shows active link", () => {
-        const wrapper = render(
+        render(
             <Header title={testProps.title} navigationLinks={testProps.navigationLinks} currentLocation="/deploy" />,
         );
-        expect(wrapper.getByRole("link", { name: /Deploy a questionnaire/ }).parentElement).toHaveClass("ons-navigation__item--active");
+        expect(screen.getByRole("link", { name: /Deploy a questionnaire/ }).parentElement).toHaveClass("ons-navigation__item--active");
     });
 });

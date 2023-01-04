@@ -1,12 +1,9 @@
 import React from "react";
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Collapsible from "./Collapsible";
 
 describe("Collapsible Test", () => {
-    afterEach(() => {
-        cleanup();
-    });
-
     const contentText = "Inside the Collapsible";
 
     const Props = {
@@ -34,21 +31,33 @@ describe("Collapsible Test", () => {
         expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "true");
     });
 
-    it("should change content div to aria-hidden false when title is clicked on", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.click(wrapper.getByRole("link"));
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
+    it("should change content div to aria-hidden false when title is clicked on", async () => {
+        render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
+
+        const collapsibleHeading = screen.getByTestId("collapsible-heading");
+        const collapsibleContent = screen.getByTestId("collapsible-content");
+        await userEvent.click(collapsibleHeading);
+
+        expect(collapsibleContent).toHaveAttribute("aria-hidden", "false");
     });
 
-    it("should change content div to aria-hidden false when you press the SpaceBar key on the title", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.keyPress(wrapper.getByTestId("collapsible-heading"), { key: "Space", code: 32, charCode: 32 });
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
+    it("should change content div to aria-hidden false when you press the SpaceBar key on the title", async () => {
+        render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
+
+        const collapsibleHeading = screen.getByTestId("collapsible-heading");
+        const collapsibleContent = screen.getByTestId("collapsible-content");
+        fireEvent.keyPress(collapsibleHeading, { key: "Space", code: 32, charCode: 32 });
+
+        expect(collapsibleContent).toHaveAttribute("aria-hidden", "false");
     });
 
     it("should change content div to aria-hidden false when you press the enter key on the title", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.keyPress(wrapper.getByTestId("collapsible-heading"), { key: "Enter", code: 13, charCode: 13 });
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
+        render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
+
+        const collapsibleHeading = screen.getByTestId("collapsible-heading");
+        const collapsibleContent = screen.getByTestId("collapsible-content");
+        fireEvent.keyPress(collapsibleHeading, { key: "Enter", code: 13, charCode: 13 });
+
+        expect(collapsibleContent).toHaveAttribute("aria-hidden", "false");
     });
 });
