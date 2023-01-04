@@ -13,7 +13,7 @@ const testProps: Props = {
     ],
 };
 
-describe.only("Check default Header:", () => {
+describe("Check default Header:", () => {
     it("matches Snapshot", () => {
         const wrapper = render(
             <Header title={testProps.title} />,
