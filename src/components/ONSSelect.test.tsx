@@ -1,16 +1,13 @@
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ONSSelect } from "./ONSSelect";
 
 describe("ONS Select Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
-
     const Selection = [
-        { label: "1", value: "1" },
-        { label: "2", value: "2" },
-        { label: "3", value: "3" },
+        { label: "Option 1", value: "1" },
+        { label: "Option 2", value: "2" },
+        { label: "Option 3", value: "3" },
     ];
 
     const Props = {
@@ -40,19 +37,31 @@ describe("ONS Select Test", () => {
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, Props)).toMatchSnapshot();
+        expect(wrapper(render, Props)).toMatchSnapshot();
     });
-
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
 
     it("should render with the correct label", () => {
         wrapper(render, Props);
-        expect(screen.getByLabelText(Props.label)).toBeDefined();
+        expect(screen.getByLabelText(Props.label)).toBeVisible();
     });
 
-    it("simulates change events", () => {
-        // defined
-        wrapper(shallow, changeProps).find("select").simulate("change", { target: { value: "abc" } });
-        expect(changeProps.onChange).toHaveBeenCalled();
+    it("should pass in and trigger callback once after one user event", async () => {
+        wrapper(render, changeProps);
+
+        const selectElement = screen.getByLabelText("Select From");
+        await userEvent.selectOptions(selectElement, "Option 2");
+
+        expect(changeProps.onChange).toHaveBeenCalledTimes(1);
+    });
+
+    it("should select 'Option 3' from the 'Select' dropdown", async () => {
+        wrapper(render, changeProps);
+
+        const selectElement = screen.getByLabelText("Select From");
+        await userEvent.selectOptions(selectElement, "Option 3");
+
+        expect(screen.getByRole("option", { name: "Option 1" }).selected).toBe(false);
+        expect(screen.getByRole("option", { name: "Option 2" }).selected).toBe(false);
+        expect(screen.getByRole("option", { name: "Option 3" }).selected).toBe(true);
     });
 });
