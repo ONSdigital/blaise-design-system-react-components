@@ -1,15 +1,9 @@
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import { cleanup, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ONSPasswordInput } from "./ONSPasswordInput";
 
 describe("ONS Password Input Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
-    afterEach(() => {
-        cleanup();
-    });
-
     const Props = {};
 
     const labelProps = {
@@ -24,8 +18,8 @@ describe("ONS Password Input Test", () => {
         onChange: undefined,
     };
 
-    function wrapper(render: any, props: any) {
-        return render(
+    function wrapper(renderFunc: any, props: any) {
+        return renderFunc(
             <ONSPasswordInput
                 value={props.value}
                 label={props.label}
@@ -37,29 +31,29 @@ describe("ONS Password Input Test", () => {
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, Props)).toMatchSnapshot();
+        expect(wrapper(render, Props)).toMatchSnapshot();
     });
-
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
 
     it("should render with the correct label", () => {
         wrapper(render, labelProps);
-        expect(screen.getByLabelText(labelProps.label)).toBeDefined();
+        expect(screen.getByLabelText(labelProps.label)).toBeVisible();
     });
 
-    it("should handle a change", () => {
-        // defined onchange
-        wrapper(shallow, changeProps).find("input.ons-input").simulate("change");
-        expect(changeProps.onChange).toHaveBeenCalled();
+    it("should trigger callback on change, e.g. user types 'testing'", async () => {
+        wrapper(render, changeProps);
 
-        // undefined onchange
-        wrapper(shallow, undefinedChangeProps).find("input.ons-input").simulate("change");
-        expect(undefinedChangeProps.onChange).toBeUndefined();
+        const passwordInput = screen.getByTestId("login-password-input");
+        await userEvent.type(passwordInput, "testing");
+
+        expect(changeProps.onChange).toHaveBeenCalledTimes(7);
     });
 
-    it("should handle a click on the checkbox", () => {
-        const thisWrapper = wrapper(shallow, undefinedChangeProps);
-        thisWrapper.find("input.ons-checkbox__input").simulate("click");
-        expect(thisWrapper.state("password")).toBeFalsy();
+    it("should handle a click on the checkbox", async () => {
+        wrapper(render, undefinedChangeProps);
+
+        const toggleShowPassword = screen.getByLabelText("Show password");
+        await userEvent.click(toggleShowPassword);
+
+        expect(toggleShowPassword).toBeChecked();
     });
 });
