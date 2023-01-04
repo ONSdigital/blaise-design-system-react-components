@@ -1,15 +1,8 @@
 import React from "react";
-import { cleanup, render, screen } from "@testing-library/react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import { render, screen } from "@testing-library/react";
 import ExternalLink from "./ExternalLink";
 
 describe("External Link Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
-    afterEach(() => {
-        cleanup();
-    });
-
     const Props = {
         text: "Click Me",
         link: "/link",
@@ -21,25 +14,25 @@ describe("External Link Test", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it("should render correctly", () => {
-        const wrapper = render(<ExternalLink {...Props} />);
-        expect(wrapper).toBeDefined();
-    });
-
     it("should render with the correct text displayed", () => {
         render(<ExternalLink {...Props} />);
         expect(screen.getByText(/Click Me/i)).toBeVisible();
     });
 
-    it("should render with the correct href passed in", () => {
-        const wrapper = shallow(<ExternalLink {...Props} />);
-        const { href } = wrapper.find("a").props();
-        expect(href).toEqual(Props.link);
+    it("should render with the correct href passed in", async () => {
+        render(<ExternalLink {...Props} />);
+
+        const linkElement = screen.getByText("Click Me");
+
+        expect(linkElement).toHaveAttribute("href", "/link");
     });
 
-    it("should render with the correct aria label passed in", () => {
-        const wrapper = shallow(<ExternalLink {...Props} />);
-        const ariaLabel = wrapper.find("a").props()["aria-label"];
-        expect(ariaLabel).toEqual(Props.ariaLabel);
+    it.only("should render with the correct aria label passed in", async () => {
+        render(<ExternalLink {...Props} />);
+
+        const linkElement = await screen.findByLabelText(Props.ariaLabel);
+
+        expect(linkElement).toHaveAttribute("aria-label");
+        expect(linkElement.getAttribute("aria-label")).toEqual("Aria label description");
     });
 });
