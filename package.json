@@ -40,7 +40,10 @@
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-loader-spinner": "^5.3.4"
+    "react-loader-spinner": "^5.3.4",
+    "@types/react": "^18.0.28",
+    "@types/react-csv": "^1.1.2",
+    "@types/react-dom": "^18.0.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -58,9 +61,6 @@
     "@testing-library/react": "^11.2.4",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.20",
-    "@types/react": "^18.0.28",
-    "@types/react-csv": "^1.1.2",
-    "@types/react-dom": "^18.0.10",
     "@types/react-test-renderer": "^17.0.0",
     "@types/sinon": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
