@@ -1,8 +1,9 @@
+import React from "react";
 export interface Props {
     /**
      * Render any standard HTML (or other React components) within the panel
      */
-    children: any;
+    children: React.ReactNode;
     status?: "success" | "error" | "info" | "warn";
     spacious?: boolean;
     id?: string;
