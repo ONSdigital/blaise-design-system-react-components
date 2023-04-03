@@ -1,5 +1,5 @@
 import React from "react";
-import Loader from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 import { ONSPanel } from "./ONSPanel";
 
 export interface Props {
@@ -14,11 +14,14 @@ export interface Props {
 export const ONSLoadingPanel = ({ hidden, message }: Props) => (
     <ONSPanel hidden={hidden}>
         <div style={{ textAlign: "center" }}>
-            <Loader
-                type="TailSpin"
+            <TailSpin
                 color="#064868"
                 height={30}
                 width={30}
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{ display: "inline-block", width: "100%", textAlign: "center" }}
+                visible
             />
             {
                 message || "Loading"
