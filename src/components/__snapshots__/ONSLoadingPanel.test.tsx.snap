@@ -16,10 +16,13 @@ Object {
           >
             <div
               aria-busy="true"
-              class=""
+              aria-label="tail-spin-loading"
+              data-testid="tail-spin-loading"
+              role="status"
+              style="display: inline-block; width: 100%; text-align: center;"
             >
               <svg
-                aria-label="audio-loading"
+                data-testid="tail-spin-svg"
                 height="30"
                 viewBox="0 0 38 38"
                 width="30"
@@ -108,10 +111,13 @@ Object {
         >
           <div
             aria-busy="true"
-            class=""
+            aria-label="tail-spin-loading"
+            data-testid="tail-spin-loading"
+            role="status"
+            style="display: inline-block; width: 100%; text-align: center;"
           >
             <svg
-              aria-label="audio-loading"
+              data-testid="tail-spin-svg"
               height="30"
               viewBox="0 0 38 38"
               width="30"
