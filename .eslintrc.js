@@ -17,6 +17,8 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'airbnb',
     'airbnb-typescript',
+    "airbnb-typescript", 
+    "plugin:storybook/recommended"
   ],
   overrides: [
     {
