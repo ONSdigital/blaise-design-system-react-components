@@ -1,7 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
 
-const USERNAME = "admin";
-
 export type ExpandableContent = {
     content: ReactElement
     title: string
