@@ -37,7 +37,7 @@ export interface CheckboxFormFieldObject extends BaseFormFieldObject {
     validate?: (value: string[]) => string | undefined;
     checkboxOptions: CheckboxFieldsetObject[];
 }
-export declare type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
+export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
 export interface StyledFormProps {
     fields: FormFieldObject[];
     onSubmitFunction: (values: any, setSubmitting: (isSubmitting: boolean) => void) => void;

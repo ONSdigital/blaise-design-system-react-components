@@ -1,6 +1,6 @@
 import { Data } from "react-csv/components/CommonPropTypes";
 import { ReactElement } from "react";
-declare type Group = {
+type Group = {
     title: string;
     records: Record<string, any>;
 };
