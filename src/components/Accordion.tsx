@@ -1,5 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 
+const PASSWORD = "password";
+
 export type ExpandableContent = {
     content: ReactElement
     title: string
