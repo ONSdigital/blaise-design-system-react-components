@@ -1,3 +1,4 @@
+import React from "react";
 export interface Props {
     label: string;
     id?: string;
@@ -16,4 +17,4 @@ export interface Props {
     hidden?: boolean;
     submit?: boolean;
 }
-export declare const ONSButton: (props: Props) => JSX.Element;
+export declare const ONSButton: (props: Props) => React.JSX.Element;

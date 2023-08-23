@@ -1,3 +1,4 @@
+import React from "react";
 export interface RadioSpecifyOption {
     id: string;
     name: string;
@@ -51,5 +52,5 @@ export interface StyledFormProps {
  *  - fields: List of fields to display on form.
  *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
-declare function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps): JSX.Element;
+declare function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps): React.JSX.Element;
 export default StyledForm;
