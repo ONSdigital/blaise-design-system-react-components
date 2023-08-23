@@ -20,5 +20,6 @@ import DefaultErrorBoundary from "./components/ErrorHandling/DefaultErrorBoundar
 import ONSTable from "./components/ONSTable";
 import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
 import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
+import Accordion from "./components/Accordion";
 export type { Group, FormFieldObject };
-export { NotProductionWarning, Footer, Header, BetaBanner, ExternalLink, ONSErrorPanel, ONSButton, ONSPanel, ONSLoadingPanel, ONSUpload, ONSSelect, ONSPasswordInput, ONSTextInput, ONSTable, StyledForm, StyledFormErrorSummary, StyledFormField, Collapsible, ErrorBoundary, DefaultErrorBoundary, SummaryItemRow, SummaryGroupTable, GroupedSummary, FormatTitle, TitleCase, };
+export { NotProductionWarning, Footer, Header, BetaBanner, ExternalLink, ONSErrorPanel, ONSButton, ONSPanel, ONSLoadingPanel, ONSUpload, ONSSelect, ONSPasswordInput, ONSTextInput, ONSTable, StyledForm, StyledFormErrorSummary, StyledFormField, Collapsible, ErrorBoundary, DefaultErrorBoundary, SummaryItemRow, SummaryGroupTable, GroupedSummary, FormatTitle, TitleCase, Accordion, };
