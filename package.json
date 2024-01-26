@@ -12,9 +12,10 @@
     "build": "rollup -c",
     "test": "jest --coverage --watchAll=false",
     "test-watch": "jest --coverage --watchAll=true",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs-build",
-    "lint": "eslint ."
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
+    "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook -o docs-build",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -29,17 +30,18 @@
   "homepage": "https://github.com/ONSdigital/blaise-design-system-react-components#readme",
   "peerDependencies": {
     "formik": "^2.2.9",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "formik": "^2.2.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-loader-spinner": "^4.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^4.0.0",
+    "storybook": "^7.6.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -88,7 +90,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.29.0",
     "sinon": "^10.0.0",
-    "typescript": "*"
+    "typescript": "~4.3.5"
   },
   "types": "build/src/index.d.ts"
 }
