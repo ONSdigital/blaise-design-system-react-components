@@ -23,7 +23,17 @@ example:
 ```shell
 yarn add git+https://github.com/ONSdigital/blaise-design-system-react-components#v0.8.0
 ```
+---
 
+Before using components from this library, add the following code within the `<head>` tags of your React project's `public/index.html` file:
+
+```
+<link href="https://cdn.ons.gov.uk/sdc/design-system/60.0.2/css/main.css" rel="stylesheet" type="text/css">
+```
+
+The above code implements the ONS Design System's global CSS style rules into your project - if this code is not included, style rules will not be applied to this library's components within your project.
+
+## Add a component
 With this imported, you can add the components to your page, like the example below, where we use the Header,
 ExternalLink and ONSButton components on the page:
 
