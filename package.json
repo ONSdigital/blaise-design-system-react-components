@@ -36,6 +36,9 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "resolutions": {
+    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0"
+  },
   "dependencies": {
     "formik": "^2.2.9",
     "react": "^18.2.0",
@@ -71,7 +74,7 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^8.0.1",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-formatter-summary": "^1.1.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.6.1",
