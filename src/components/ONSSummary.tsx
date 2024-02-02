@@ -1,4 +1,4 @@
-import { Data } from "react-csv/components/CommonPropTypes";
+import { Data } from "react-csv/lib/core";
 import React, { ReactElement } from "react";
 import { FormatTitle, FormatKey } from "../utilities/TextFormatting";
 
