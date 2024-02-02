@@ -12,16 +12,18 @@ React component implementations of the [ONS Design system components](https://on
 
 ## Documentation
 
-[Link to storybook documentation](https://onsdigital.github.io/blaise-design-system-react-components)
-Created using [Storybook](https://storybook.js.org/docs/react/get-started/introduction).
+To view and interact with the components live, please visit the [documentation](https://onsdigital.github.io/blaise-design-system-react-components) (created using [Storybook](https://storybook.js.org/docs/get-started/install)).
+
+### Why Storybook?
+
+Storybook is like a small development [workshop](https://bradfrost.com/blog/post/a-frontend-workshop-environment/) that allows you to conveniently visualise and manually test UI components without needing to spin up a whole separate application.
 
 ## Usage
 
-In your own React project add this repository as a dependency, specifying a release version after the # at the end for
-example:
+In your own React project add this repository as a dependency, specifying a release version after the # at the end. For example:
 
 ```shell
-yarn add git+https://github.com/ONSdigital/blaise-design-system-react-components#v0.8.0
+yarn add git+https://github.com/ONSdigital/blaise-design-system-react-components#<RELEASE_TAG>
 ```
 ---
 
@@ -125,6 +127,19 @@ To install required dependencies run:
 yarn install
 ```
 
+### Visualise Components using Storybook
+
+When developing a new component, having a way to visualise and interact with the component is very useful, this is why we use Storybook.
+
+Visit the [documentation](https://onsdigital.github.io/blaise-design-system-react-components) to learn more about how we use Storybook.
+
+You can run a local instance of the Storybook app using:
+```shell
+yarn run storybook
+```
+
+For more information about Storybook, visit the official [Storybook documentation](https://storybook.js.org/docs/get-started/install)
+
 ### Tests
 
 To run the tests with coverage results run:
@@ -144,4 +159,4 @@ yarn run build
 This will add all the exported components into the `build/index.js` file which will be imported by other React projects.
 Commit these changes.
 
-Once merged into main, create a new release, adding an appropriate version number. 
+Once merged into main, [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), add an appropriate version number and document new changes.
