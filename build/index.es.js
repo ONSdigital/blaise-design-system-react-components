@@ -521,7 +521,7 @@ function StyledForm(_a) {
             onSubmitFunction(values, setSubmitting);
         } }, function (_a) {
         var isValid = _a.isValid, isSubmitting = _a.isSubmitting;
-        return (React.createElement(Form, null,
+        return (React.createElement(Form, { placeholder: undefined },
             React.createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
                 // eslint-disable-next-line no-param-reassign

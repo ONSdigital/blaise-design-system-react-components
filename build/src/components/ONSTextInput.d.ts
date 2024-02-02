@@ -1,4 +1,4 @@
-import { ChangeEvent, Component } from "react";
+import React, { ChangeEvent, Component } from "react";
 export interface Props {
     label?: string;
     id?: string;
@@ -14,5 +14,5 @@ export interface Props {
 }
 export declare class ONSTextInput extends Component<Props> {
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    render(): JSX.Element;
+    render(): React.JSX.Element;
 }

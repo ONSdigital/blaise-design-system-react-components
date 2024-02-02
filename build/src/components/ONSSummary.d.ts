@@ -1,4 +1,4 @@
-import { Data } from "react-csv/components/CommonPropTypes";
+import { Data } from "react-csv/lib/core";
 import { ReactElement } from "react";
 type Group = {
     title: string;

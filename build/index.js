@@ -529,7 +529,7 @@ function StyledForm(_a) {
             onSubmitFunction(values, setSubmitting);
         } }, function (_a) {
         var isValid = _a.isValid, isSubmitting = _a.isSubmitting;
-        return (React__default['default'].createElement(formik.Form, null,
+        return (React__default['default'].createElement(formik.Form, { placeholder: undefined },
             React__default['default'].createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
                 // eslint-disable-next-line no-param-reassign

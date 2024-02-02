@@ -1,4 +1,4 @@
-import { ChangeEvent, Component } from "react";
+import React, { ChangeEvent, Component } from "react";
 export interface Props {
     label: string;
     description: string;
@@ -11,5 +11,5 @@ export interface Props {
 }
 export declare class ONSUpload extends Component<Props> {
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    render(): JSX.Element;
+    render(): React.JSX.Element;
 }

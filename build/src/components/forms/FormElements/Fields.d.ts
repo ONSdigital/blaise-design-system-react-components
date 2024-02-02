@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 interface RadioFieldsetProps {
     description?: string;
@@ -16,5 +16,5 @@ interface CheckboxesProps {
 }
 export declare function RadioFieldset({ description, name, radioOptions, ...props }: RadioFieldsetProps): ReactElement;
 export declare function CheckboxesFieldset({ description, checkboxOptions, name, ...props }: CheckboxesProps): ReactElement;
-export declare const ONSInputField: ({ field, form, description, ...props }: any) => JSX.Element;
+export declare const ONSInputField: ({ field, form, description, ...props }: any) => React.JSX.Element;
 export default CheckboxesFieldset;

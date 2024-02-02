@@ -1,3 +1,4 @@
+import React from "react";
 export interface Props {
     /**
      * Render any standard HTML (or other React components) within the panel
@@ -13,4 +14,4 @@ export interface Props {
      */
     bigIcon?: boolean;
 }
-export declare const ONSPanel: (props: Props) => JSX.Element;
+export declare const ONSPanel: (props: Props) => React.JSX.Element;
