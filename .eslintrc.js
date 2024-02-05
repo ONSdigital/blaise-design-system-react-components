@@ -7,6 +7,7 @@ module.exports = {
     "coverage/*",
     "build/*",
     ".eslintrc.js",
+    "docs-build"
   ],
   env: {
     browser: true,
@@ -46,9 +47,9 @@ module.exports = {
     "react/jsx-indent-props": ["error", 4],
     "react/jsx-no-useless-fragment": ["error", { allowExpressions: true }],
     "@typescript-eslint/quotes": ["error", "double"],
-    "react/jsx-filename-extension":  ["error", { "extensions": [".tsx", ".jsx"] }],
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx"] }],
     "guard-for-in": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.tsx", "**/*.stories.tsx", "src/setupTests.ts"]}],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.tsx", "**/*.stories.tsx", "src/setupTests.ts"] }],
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/no-autofocus": "off",
     "jsx-a11y/no-redundant-roles": "off",
