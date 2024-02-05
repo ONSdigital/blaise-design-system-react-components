@@ -1,5 +1,3 @@
-import { ComponentStory, Meta } from "@storybook/react";
-import { ONSSelect } from "./ONSSelect";
-declare const _default: Meta<import("@storybook/react").Args>;
+declare const _default: import("@storybook/types").ComponentAnnotations<import("@storybook/react/dist/types-0fc72a6d").R, import("@storybook/types").Args>;
 export default _default;
-export declare const Default: ComponentStory<typeof ONSSelect>;
+export declare const Default: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSSelect").Props>;

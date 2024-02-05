@@ -7,6 +7,7 @@ module.exports = {
     "coverage/*",
     "build/*",
     ".eslintrc.js",
+    "docs-build/*",
   ],
   env: {
     browser: true,

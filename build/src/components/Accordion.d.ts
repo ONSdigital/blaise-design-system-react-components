@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-export declare type ExpandableContent = {
+export type ExpandableContent = {
     content: ReactElement;
     title: string;
 };

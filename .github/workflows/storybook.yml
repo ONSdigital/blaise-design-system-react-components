@@ -14,7 +14,7 @@ jobs:
       - name: Install and Build 🔧
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 20.x
       - run: yarn install
       - run: yarn build-storybook
       - name: Deploy 🚀

@@ -82,7 +82,7 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
             }}
         >
             {({ isValid, isSubmitting }) => (
-                <Form>
+                <Form placeholder={undefined}>
                     <StyledFormErrorSummary />
                     {
                         fields.map((field, index) => {

@@ -1,3 +1,4 @@
+import React from "react";
 export interface RadioSpecifyOption {
     id: string;
     name: string;
@@ -37,7 +38,7 @@ export interface CheckboxFormFieldObject extends BaseFormFieldObject {
     validate?: (value: string[]) => string | undefined;
     checkboxOptions: CheckboxFieldsetObject[];
 }
-export declare type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
+export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
 export interface StyledFormProps {
     fields: FormFieldObject[];
     onSubmitFunction: (values: any, setSubmitting: (isSubmitting: boolean) => void) => void;
@@ -51,5 +52,5 @@ export interface StyledFormProps {
  *  - fields: List of fields to display on form.
  *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
-declare function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps): JSX.Element;
+declare function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps): React.JSX.Element;
 export default StyledForm;
