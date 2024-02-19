@@ -14,12 +14,7 @@ interface CheckboxesProps {
     autoFocus: boolean;
     props: Pick<any, string | number | symbol>;
 }
-interface InputFieldProps {
-    field: any;
-    description?: string;
-    props: Pick<any, string | number | symbol>;
-}
 export declare function RadioFieldset({ description, name, radioOptions, ...props }: RadioFieldsetProps): ReactElement;
 export declare function CheckboxesFieldset({ description, checkboxOptions, name, ...props }: CheckboxesProps): ReactElement;
-export declare function ONSInputField({ field, description, props }: InputFieldProps): ReactElement;
+export declare function ONSInputField({ field, description, props }: any): ReactElement;
 export default CheckboxesFieldset;

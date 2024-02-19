@@ -480,7 +480,7 @@ function ONSInputField(_a) {
         React__default['default'].createElement("label", { className: "ons-label ".concat((description ? "ons-label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
         description
             && (React__default['default'].createElement("span", { id: "description-hint", className: "ons-label__description  ons-input--with-description" }, description)),
-        React__default['default'].createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input " }, field, props))));
+        React__default['default'].createElement("input", __assign({ className: "ons-input ons-input--text ons-input-type__input ", name: "yo vivian", id: id }, field, props))));
 }
 
 function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
