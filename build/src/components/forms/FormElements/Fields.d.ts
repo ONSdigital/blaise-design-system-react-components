@@ -16,5 +16,5 @@ interface CheckboxesProps {
 }
 export declare function RadioFieldset({ description, name, radioOptions, ...props }: RadioFieldsetProps): ReactElement;
 export declare function CheckboxesFieldset({ description, checkboxOptions, name, ...props }: CheckboxesProps): ReactElement;
-export declare function ONSInputField({ field, description, props }: any): ReactElement;
+export declare function ONSInputField({ field, description, ...props }: any): ReactElement;
 export default CheckboxesFieldset;

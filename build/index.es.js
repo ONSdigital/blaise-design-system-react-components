@@ -466,7 +466,7 @@ function CheckboxesFieldset(_a) {
                 React.createElement("br", null))); })))));
 }
 function ONSInputField(_a) {
-    var field = _a.field, description = _a.description, props = _a.props;
+    var field = _a.field, description = _a.description, props = __rest(_a, ["field", "description"]);
     var id = (props.id ? props.id : field.name);
     return (React.createElement("div", { className: "ons-field" },
         React.createElement("label", { className: "ons-label ".concat((description ? "ons-label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),

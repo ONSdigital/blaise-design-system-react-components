@@ -197,7 +197,7 @@ export function CheckboxesFieldset({
 
 
 export function ONSInputField({
-    field, description, props
+    field, description, ...props
     }: any): ReactElement {    
     const id = (props.id ? props.id : field.name);
     return (
