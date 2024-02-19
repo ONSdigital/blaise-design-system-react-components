@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 interface RadioFieldsetProps {
     description?: string;
@@ -14,7 +14,12 @@ interface CheckboxesProps {
     autoFocus: boolean;
     props: Pick<any, string | number | symbol>;
 }
+interface InputFieldProps {
+    field: any;
+    description?: string;
+    props: Pick<any, string | number | symbol>;
+}
 export declare function RadioFieldset({ description, name, radioOptions, ...props }: RadioFieldsetProps): ReactElement;
 export declare function CheckboxesFieldset({ description, checkboxOptions, name, ...props }: CheckboxesProps): ReactElement;
-export declare const ONSInputField: ({ field, form, description, ...props }: any) => React.JSX.Element;
+export declare function ONSInputField({ field, description, props }: InputFieldProps): ReactElement;
 export default CheckboxesFieldset;

@@ -24,6 +24,12 @@ interface CheckboxesProps {
     props: Pick<any, string | number | symbol>
 }
 
+interface InputFieldProps {
+    field: any,
+    description?: string,
+    props: Pick<any, string | number | symbol>
+}
+
 export function RadioFieldset({
     description, name, radioOptions, ...props
 }: RadioFieldsetProps): ReactElement {
@@ -195,9 +201,10 @@ export function CheckboxesFieldset({
     );
 }
 
-export const ONSInputField = ({
-    field, form, description, ...props
-}: any) => {
+
+export function ONSInputField({
+    field, description, props
+    }: InputFieldProps): ReactElement {    
     const id = (props.id ? props.id : field.name);
     return (
         <div className="ons-field">
