@@ -475,15 +475,15 @@ function CheckboxesFieldset(_a) {
                                 && (React.createElement("span", { id: "white-label-description-hint", className: "ons-label__description checkbox__label--with-description" }, checkboxOption.description))))),
                 React.createElement("br", null))); })))));
 }
-var ONSInputField = function (_a) {
-    var field = _a.field; _a.form; var description = _a.description, props = __rest(_a, ["field", "form", "description"]);
+function ONSInputField(_a) {
+    var field = _a.field, description = _a.description, props = __rest(_a, ["field", "description"]);
     var id = (props.id ? props.id : field.name);
     return (React.createElement("div", { className: "ons-field" },
         React.createElement("label", { className: "ons-label ".concat((description ? "ons-label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
         description
-            && (React.createElement("span", { id: "description-hint", className: "ons-label__description  ons-input--with-description" }, description)),
-        React.createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input " }, field, props))));
-};
+            && (React.createElement("span", { id: "description-hint", className: "ons-label__description ons-input--with-description" }, description)),
+        React.createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input" }, field, props))));
+}
 
 function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
     return (React.createElement("div", { className: "ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s", id: "".concat(fieldName, "-error") },

@@ -195,9 +195,9 @@ export function CheckboxesFieldset({
     );
 }
 
-export const ONSInputField = ({
-    field, form, description, ...props
-}: any) => {
+export function ONSInputField({
+    field, description, ...props
+}: any): ReactElement {
     const id = (props.id ? props.id : field.name);
     return (
         <div className="ons-field">
@@ -207,19 +207,19 @@ export const ONSInputField = ({
             {
                 description
                 && (
-                    <span id="description-hint" className="ons-label__description  ons-input--with-description">
+                    <span id="description-hint" className="ons-label__description ons-input--with-description">
                         {description}
                     </span>
                 )
             }
             <input
                 id={id}
-                className="ons-input ons-input--text ons-input-type__input "
+                className="ons-input ons-input--text ons-input-type__input"
                 {...field}
                 {...props}
             />
         </div>
     );
-};
+}
 
 export default CheckboxesFieldset;
