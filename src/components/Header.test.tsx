@@ -47,7 +47,7 @@ describe("Check default Header:", () => {
         const wrapper = render(
             <Header title={testProps.title} />,
         );
-        expect(wrapper.queryByRole(/navigation/)).toStrictEqual(null);
+        expect(wrapper.queryByRole("navigation")).toStrictEqual(null);
     });
 });
 
@@ -96,7 +96,7 @@ describe("Check Header with navigation bar:", () => {
         const wrapper = render(
             <Header title={testProps.title} navigationLinks={testProps.navigationLinks} currentLocation="/" />,
         );
-        expect(wrapper.queryByRole(/navigation/)).not.toStrictEqual(null);
+        expect(wrapper.queryByRole("navigation")).not.toStrictEqual(null);
         expect(wrapper.getByRole("link", { name: /Home/ })).toBeVisible();
         expect(wrapper.getByRole("link", { name: /Deploy a questionnaire/ })).toBeVisible();
         expect(wrapper.getByRole("link", { name: /View deployment history/ })).toBeVisible();

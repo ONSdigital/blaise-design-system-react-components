@@ -3470,27 +3470,27 @@ function SummaryGroupTable(_a) {
 }
 
 function Expandable(_a) {
-    var title = _a.title, content = _a.content, id = _a.id, panelsOpen = _a.panelsOpen, setPanelsOpen = _a.setPanelsOpen;
+    var title = _a.title, content = _a.content, contentId = _a.contentId, expandableIndex = _a.expandableIndex, panelsOpen = _a.panelsOpen, setPanelsOpen = _a.setPanelsOpen;
     function togglePanel(event) {
         var newPanelsOpen = __spreadArray([], panelsOpen, true);
-        newPanelsOpen[id] = !newPanelsOpen[id];
+        newPanelsOpen[expandableIndex] = !newPanelsOpen[expandableIndex];
         setPanelsOpen(newPanelsOpen);
         event.preventDefault();
     }
     function panelIsOpen() {
-        return panelsOpen[id];
+        return panelsOpen[expandableIndex];
     }
-    return (React.createElement("details", { id: "accordion-".concat(id), className: "ons-collapsible ons-js-collapsible ons-collapsible--accordion ", "data-btn-close": "Hide", "data-group": "accordion", open: panelIsOpen() },
-        React.createElement("summary", { className: "ons-collapsible__heading ons-js-collapsible-heading", role: "link", "data-testid": "accordion-".concat(id, "-heading"), onClick: togglePanel, onKeyPress: togglePanel, "aria-expanded": panelIsOpen() ? "true" : "false", "aria-controls": "accordion-".concat(id), "data-ga-action": panelIsOpen() ? "Close panel" : "Open panel", tabIndex: 0 },
+    return (React.createElement("details", { id: "".concat(contentId, "-accordion-").concat(expandableIndex), className: "ons-collapsible ons-js-collapsible ons-collapsible--accordion ", "data-btn-close": "Hide", "data-group": "accordion", open: panelIsOpen() },
+        React.createElement("summary", { className: "ons-collapsible__heading ons-js-collapsible-heading", role: "link", "data-testid": "".concat(contentId, "-accordion-").concat(expandableIndex, "-heading"), onClick: togglePanel, onKeyPress: togglePanel, "aria-expanded": panelIsOpen() ? "true" : "false", "aria-controls": "".concat(contentId, "-accordion-").concat(expandableIndex), "data-ga-action": panelIsOpen() ? "Close panel" : "Open panel", tabIndex: 0 },
             React.createElement("div", { className: "ons-collapsible__controls" },
                 React.createElement("h2", { className: "ons-collapsible__title" }, title),
                 React.createElement("span", { className: "ons-collapsible__icon" },
                     React.createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
                         React.createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
-        React.createElement("div", { id: "accordion-".concat(id, "-content"), "data-testid": "accordion-".concat(id, "-content"), className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": (panelIsOpen() ? "false" : "true") }, content)));
+        React.createElement("div", { id: "".concat(contentId, "-accordion-").concat(expandableIndex, "-content"), "data-testid": "".concat(contentId, "-accordion-").concat(expandableIndex, "-content"), className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": (panelIsOpen() ? "false" : "true") }, content)));
 }
 function ShowAll(_a) {
-    var showAllEnabled = _a.showAllEnabled, panelsOpen = _a.panelsOpen, setPanelsOpen = _a.setPanelsOpen;
+    var showAllEnabled = _a.showAllEnabled, panelsOpen = _a.panelsOpen, setPanelsOpen = _a.setPanelsOpen, contentId = _a.contentId;
     var _b = useState(false), showing = _b[0], setShowing = _b[1];
     useEffect(function () {
         if (panelsOpen.includes(false)) {
@@ -3501,19 +3501,19 @@ function ShowAll(_a) {
         }
     }, [panelsOpen, setShowing]);
     if (showAllEnabled) {
-        return (React.createElement("button", { "data-testid": "accordion-show-all", type: "button", className: "ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small", "data-close-all": "Hide all", "data-group": "accordion", onClick: function () { return setPanelsOpen(new Array(panelsOpen.length).fill(!showing)); } },
+        return (React.createElement("button", { "data-testid": "".concat(contentId, "-accordion-show-all"), type: "button", className: "ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small", "data-close-all": "Hide all", "data-group": "accordion", onClick: function () { return setPanelsOpen(new Array(panelsOpen.length).fill(!showing)); } },
             React.createElement("span", { className: "ons-btn__inner ons-js-collapsible-all-inner" }, showing ? "Hide all" : "Show all")));
     }
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return React.createElement(React.Fragment, null);
 }
 function Accordion(_a) {
-    var ShowAllEnabled = _a.ShowAllEnabled, Expandables = _a.Expandables;
+    var ShowAllEnabled = _a.ShowAllEnabled, Expandables = _a.Expandables, ContentId = _a.ContentId;
     var expandableStates = new Array(Expandables.length).fill(false);
     var _b = useState(expandableStates), panelsOpen = _b[0], setPanelsOpen = _b[1];
-    return (React.createElement("div", { id: "accordion", className: "ons-accordion" },
-        React.createElement(ShowAll, { showAllEnabled: ShowAllEnabled, panelsOpen: panelsOpen, setPanelsOpen: setPanelsOpen }),
-        Expandables.map(function (expandable, index) { return (React.createElement(Expandable, { key: "accordion-".concat(index), content: expandable.content, title: expandable.title, id: index, setPanelsOpen: setPanelsOpen, panelsOpen: panelsOpen })); })));
+    return (React.createElement("div", { id: "".concat(ContentId, "-accordion"), className: "ons-accordion" },
+        React.createElement(ShowAll, { showAllEnabled: ShowAllEnabled, panelsOpen: panelsOpen, setPanelsOpen: setPanelsOpen, contentId: ContentId }),
+        Expandables.map(function (expandable, index) { return (React.createElement(Expandable, { key: "accordion-".concat(index), content: expandable.content, contentId: ContentId, title: expandable.title, expandableIndex: index, setPanelsOpen: setPanelsOpen, panelsOpen: panelsOpen })); })));
 }
 
 export { Accordion, BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, FormatTitle, GroupedSummary, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTable, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField, SummaryGroupTable, SummaryItemRow, TitleCase };
