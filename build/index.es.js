@@ -255,6 +255,16 @@ function __rest(s, e) {
     return t;
 }
 
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+}
+
 var ONSPasswordInput = /** @class */ (function (_super) {
     __extends(ONSPasswordInput, _super);
     function ONSPasswordInput(props) {
@@ -465,15 +475,15 @@ function CheckboxesFieldset(_a) {
                                 && (React.createElement("span", { id: "white-label-description-hint", className: "ons-label__description checkbox__label--with-description" }, checkboxOption.description))))),
                 React.createElement("br", null))); })))));
 }
-var ONSInputField = function (_a) {
-    var field = _a.field; _a.form; var description = _a.description, props = __rest(_a, ["field", "form", "description"]);
+function ONSInputField(_a) {
+    var field = _a.field, description = _a.description, props = __rest(_a, ["field", "description"]);
     var id = (props.id ? props.id : field.name);
     return (React.createElement("div", { className: "ons-field" },
         React.createElement("label", { className: "ons-label ".concat((description ? "ons-label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
         description
-            && (React.createElement("span", { id: "description-hint", className: "ons-label__description  ons-input--with-description" }, description)),
-        React.createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input " }, field, props))));
-};
+            && (React.createElement("span", { id: "description-hint", className: "ons-label__description ons-input--with-description" }, description)),
+        React.createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input" }, field, props))));
+}
 
 function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
     return (React.createElement("div", { className: "ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s", id: "".concat(fieldName, "-error") },
@@ -3459,5 +3469,52 @@ function SummaryGroupTable(_a) {
     return (React.createElement(React.Fragment, null, elementList));
 }
 
-export { BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, FormatTitle, GroupedSummary, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTable, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField, SummaryGroupTable, SummaryItemRow, TitleCase };
+function Expandable(_a) {
+    var title = _a.title, content = _a.content, id = _a.id, panelsOpen = _a.panelsOpen, setPanelsOpen = _a.setPanelsOpen;
+    function togglePanel(event) {
+        var newPanelsOpen = __spreadArray([], panelsOpen, true);
+        newPanelsOpen[id] = !newPanelsOpen[id];
+        setPanelsOpen(newPanelsOpen);
+        event.preventDefault();
+    }
+    function panelIsOpen() {
+        return panelsOpen[id];
+    }
+    return (React.createElement("details", { id: "accordion-".concat(id), className: "ons-collapsible ons-js-collapsible ons-collapsible--accordion ", "data-btn-close": "Hide", "data-group": "accordion", open: panelIsOpen() },
+        React.createElement("summary", { className: "ons-collapsible__heading ons-js-collapsible-heading", role: "link", "data-testid": "accordion-".concat(id, "-heading"), onClick: togglePanel, onKeyPress: togglePanel, "aria-expanded": panelIsOpen() ? "true" : "false", "aria-controls": "accordion-".concat(id), "data-ga-action": panelIsOpen() ? "Close panel" : "Open panel", tabIndex: 0 },
+            React.createElement("div", { className: "ons-collapsible__controls" },
+                React.createElement("h2", { className: "ons-collapsible__title" }, title),
+                React.createElement("span", { className: "ons-collapsible__icon" },
+                    React.createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
+                        React.createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
+        React.createElement("div", { id: "accordion-".concat(id, "-content"), "data-testid": "accordion-".concat(id, "-content"), className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": (panelIsOpen() ? "false" : "true") }, content)));
+}
+function ShowAll(_a) {
+    var showAllEnabled = _a.showAllEnabled, panelsOpen = _a.panelsOpen, setPanelsOpen = _a.setPanelsOpen;
+    var _b = useState(false), showing = _b[0], setShowing = _b[1];
+    useEffect(function () {
+        if (panelsOpen.includes(false)) {
+            setShowing(false);
+        }
+        else {
+            setShowing(true);
+        }
+    }, [panelsOpen, setShowing]);
+    if (showAllEnabled) {
+        return (React.createElement("button", { "data-testid": "accordion-show-all", type: "button", className: "ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small", "data-close-all": "Hide all", "data-group": "accordion", onClick: function () { return setPanelsOpen(new Array(panelsOpen.length).fill(!showing)); } },
+            React.createElement("span", { className: "ons-btn__inner ons-js-collapsible-all-inner" }, showing ? "Hide all" : "Show all")));
+    }
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return React.createElement(React.Fragment, null);
+}
+function Accordion(_a) {
+    var ShowAllEnabled = _a.ShowAllEnabled, Expandables = _a.Expandables;
+    var expandableStates = new Array(Expandables.length).fill(false);
+    var _b = useState(expandableStates), panelsOpen = _b[0], setPanelsOpen = _b[1];
+    return (React.createElement("div", { id: "accordion", className: "ons-accordion" },
+        React.createElement(ShowAll, { showAllEnabled: ShowAllEnabled, panelsOpen: panelsOpen, setPanelsOpen: setPanelsOpen }),
+        Expandables.map(function (expandable, index) { return (React.createElement(Expandable, { key: "accordion-".concat(index), content: expandable.content, title: expandable.title, id: index, setPanelsOpen: setPanelsOpen, panelsOpen: panelsOpen })); })));
+}
+
+export { Accordion, BetaBanner, Collapsible, DefaultErrorBoundary, ErrorBoundary, ExternalLink, Footer, FormatTitle, GroupedSummary, Header, NotProductionWarning, ONSButton, ONSErrorPanel, ONSLoadingPanel, ONSPanel, ONSPasswordInput, ONSSelect, ONSTable, ONSTextInput, ONSUpload, StyledForm, StyledFormErrorSummary, StyledFormField, SummaryGroupTable, SummaryItemRow, TitleCase };
 //# sourceMappingURL=index.es.js.map

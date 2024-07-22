@@ -22,6 +22,7 @@ import {
     SummaryItemRow, SummaryGroupTable, GroupedSummary, Group,
 } from "./components/ONSSummary";
 import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
+import Accordion from "./components/Accordion";
 
 export type { Group, FormFieldObject };
 
@@ -51,4 +52,5 @@ export {
     GroupedSummary,
     FormatTitle,
     TitleCase,
+    Accordion,
 };
