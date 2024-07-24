@@ -3,10 +3,10 @@ export type ExpandableContent = {
     content: ReactElement;
     contentId: string;
     title: string;
+    panelsOpen: boolean[];
 };
 export interface ExpandableProps extends ExpandableContent {
     expandableIndex: number;
-    panelsOpen: boolean[];
     setPanelsOpen: (panelsOpen: boolean[]) => void;
 }
 interface AccordionProps {

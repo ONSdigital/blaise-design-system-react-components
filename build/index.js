@@ -3521,7 +3521,7 @@ function Accordion(_a) {
     var _b = React.useState(expandableStates), panelsOpen = _b[0], setPanelsOpen = _b[1];
     return (React__default['default'].createElement("div", { id: "".concat(ContentId, "-accordion"), className: "ons-accordion" },
         React__default['default'].createElement(ShowAll, { showAllEnabled: ShowAllEnabled, panelsOpen: panelsOpen, setPanelsOpen: setPanelsOpen, contentId: ContentId }),
-        Expandables.map(function (expandable, index) { return (React__default['default'].createElement(Expandable, { key: "accordion-".concat(index), content: expandable.content, contentId: ContentId, title: expandable.title, expandableIndex: index, setPanelsOpen: setPanelsOpen, panelsOpen: panelsOpen })); })));
+        Expandables.map(function (expandable, index) { return (React__default['default'].createElement(Expandable, { key: "".concat(expandable.contentId, "-accordion-").concat(index), content: expandable.content, contentId: expandable.contentId, title: expandable.title, expandableIndex: index, setPanelsOpen: setPanelsOpen, panelsOpen: panelsOpen })); })));
 }
 
 exports.Accordion = Accordion;

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent, RenderResult } from "@testing-library/react";
 import Accordion from "./Accordion";
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
 
 function renderAccordionWithShowAll(): RenderResult {
     return render(
@@ -20,14 +20,14 @@ function renderAccordionWithShowAll(): RenderResult {
 
 function renderAccordionWithoutShowAll(): RenderResult {
     return render(
-        <Accordion 
-        ContentId="test"
-        Expandables={
-            [
-                { title: "Foo", content: <p>bar</p>, contentId: "test" },
-                { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
-            ]
-        }
+        <Accordion
+            ContentId="test"
+            Expandables={
+                [
+                    { title: "Foo", content: <p>bar</p>, contentId: "test" },
+                    { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
+                ]
+            }
         />,
     );
 }
