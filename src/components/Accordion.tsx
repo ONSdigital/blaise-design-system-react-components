@@ -127,9 +127,9 @@ export default function Accordion({ ShowAllEnabled, Expandables, ContentId }: Ac
             {
                 Expandables.map((expandable: ExpandableContent, index: number) => (
                     <Expandable
-                        key={`accordion-${index}`}
+                        key={`${expandable.contentId}-accordion-${index}`}
                         content={expandable.content}
-                        contentId={ContentId}
+                        contentId={expandable.contentId}
                         title={expandable.title}
                         expandableIndex={index}
                         setPanelsOpen={setPanelsOpen}
