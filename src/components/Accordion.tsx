@@ -78,7 +78,8 @@ function Expandable({
 interface AccordionProps {
     ShowAllEnabled?: boolean
     Expandables: ExpandableContent[],
-    ContentId: string
+    ContentId: string,
+    Expanded?: boolean
 }
 
 interface ShowAllProps {
@@ -88,7 +89,9 @@ interface ShowAllProps {
     contentId:string
 }
 
-function ShowAll({ showAllEnabled, panelsOpen, setPanelsOpen, contentId}: ShowAllProps): ReactElement {
+function ShowAll({
+    showAllEnabled, panelsOpen, setPanelsOpen, contentId,
+}: ShowAllProps): ReactElement {
     const [showing, setShowing] = useState<boolean>(false);
 
     useEffect(() => {
@@ -117,13 +120,15 @@ function ShowAll({ showAllEnabled, panelsOpen, setPanelsOpen, contentId}: ShowAl
     return <></>;
 }
 
-export default function Accordion({ ShowAllEnabled, Expandables, ContentId }: AccordionProps): ReactElement {
-    const expandableStates = new Array(Expandables.length).fill(false);
+export default function Accordion({
+    ShowAllEnabled, Expandables, ContentId, Expanded,
+}: AccordionProps): ReactElement {
+    const expandableStates = new Array(Expandables.length).fill(Expanded ?? false);
     const [panelsOpen, setPanelsOpen] = useState<boolean[]>(expandableStates);
 
     return (
         <div id={`${ContentId}-accordion`} className="ons-accordion">
-            <ShowAll showAllEnabled={ShowAllEnabled} panelsOpen={panelsOpen} setPanelsOpen={setPanelsOpen} contentId={ContentId}/>
+            <ShowAll showAllEnabled={ShowAllEnabled} panelsOpen={panelsOpen} setPanelsOpen={setPanelsOpen} contentId={ContentId} />
             {
                 Expandables.map((expandable: ExpandableContent, index: number) => (
                     <Expandable
