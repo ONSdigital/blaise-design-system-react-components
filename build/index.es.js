@@ -3508,8 +3508,8 @@ function ShowAll(_a) {
     return React.createElement(React.Fragment, null);
 }
 function Accordion(_a) {
-    var ShowAllEnabled = _a.ShowAllEnabled, Expandables = _a.Expandables, ContentId = _a.ContentId;
-    var expandableStates = new Array(Expandables.length).fill(false);
+    var ShowAllEnabled = _a.ShowAllEnabled, Expandables = _a.Expandables, ContentId = _a.ContentId, Expanded = _a.Expanded;
+    var expandableStates = new Array(Expandables.length).fill(Expanded !== null && Expanded !== void 0 ? Expanded : false);
     var _b = useState(expandableStates), panelsOpen = _b[0], setPanelsOpen = _b[1];
     return (React.createElement("div", { id: "".concat(ContentId, "-accordion"), className: "ons-accordion" },
         React.createElement(ShowAll, { showAllEnabled: ShowAllEnabled, panelsOpen: panelsOpen, setPanelsOpen: setPanelsOpen, contentId: ContentId }),
