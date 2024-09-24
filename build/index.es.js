@@ -325,7 +325,7 @@ var ONSSelect = /** @class */ (function (_super) {
                 && (React.createElement("label", { className: "ons-label", htmlFor: this.props.id },
                     this.props.label,
                     " ")),
-            React.createElement("select", { id: this.props.id, name: "select", defaultValue: this.defaultValue(), className: "ons-input ", onChange: function (e) { return _this.handleChange(e); } },
+            React.createElement("select", { id: this.props.id, name: "select", defaultValue: this.defaultValue(), className: "ons-input ", onChange: function (e) { return _this.handleChange(e); }, "data-testid": this.props.testId },
                 React.createElement("option", { value: "", disabled: true, "data-testid": "select-".concat(this.props.id) }, "Select an option"),
                 this.props.options.map(function (option, index) { return (React.createElement("option", { value: option.value, key: index, id: option.id, "data-testid": "option-".concat(_this.props.id, "-").concat(option.value) }, option.label)); }))));
     };

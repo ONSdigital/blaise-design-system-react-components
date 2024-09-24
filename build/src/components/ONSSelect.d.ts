@@ -6,6 +6,7 @@ export interface Props {
     value: string;
     options: Option[];
     defaultValue?: string;
+    testId?: string;
 }
 interface Option {
     label: string;

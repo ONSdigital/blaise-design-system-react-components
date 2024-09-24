@@ -7,6 +7,7 @@ export interface Props {
     value: string
     options: Option[]
     defaultValue?: string
+    testId?: string;
 }
 
 interface Option {
@@ -56,6 +57,7 @@ export class ONSSelect extends Component <Props, State> {
                     defaultValue={this.defaultValue()}
                     className="ons-input "
                     onChange={(e) => this.handleChange(e)}
+                    data-testid={this.props.testId}
                 >
                     <option value="" disabled data-testid={`select-${this.props.id}`}>
                         Select an option
