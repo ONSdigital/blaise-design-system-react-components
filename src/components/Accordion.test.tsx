@@ -1,15 +1,17 @@
 import React from "react";
 import { render, fireEvent, RenderResult } from "@testing-library/react";
 import Accordion from "./Accordion";
+import "@testing-library/jest-dom";
 
 function renderAccordionWithShowAll(): RenderResult {
     return render(
         <Accordion
+            ContentId="test"
             ShowAllEnabled
             Expandables={
                 [
-                    { title: "Foo", content: <p>bar</p> },
-                    { title: "Bar", content: <p>bar foo</p> },
+                    { title: "Foo", content: <p>bar</p>, contentId: "test" },
+                    { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
                 ]
             }
         />,
@@ -18,12 +20,14 @@ function renderAccordionWithShowAll(): RenderResult {
 
 function renderAccordionWithoutShowAll(): RenderResult {
     return render(
-        <Accordion Expandables={
-            [
-                { title: "Foo", content: <p>bar</p> },
-                { title: "Bar", content: <p>bar foo</p> },
-            ]
-        }
+        <Accordion
+            ContentId="test"
+            Expandables={
+                [
+                    { title: "Foo", content: <p>bar</p>, contentId: "test" },
+                    { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
+                ]
+            }
         />,
     );
 }
@@ -44,27 +48,27 @@ function clickOnASingleExpandable(summary: string | RegExp, wrapper: RenderResul
 }
 
 function expectShowAllButtonToBeVisible(wrapper: RenderResult) {
-    expect(wrapper.getByTestId("accordion-show-all")).toBeVisible();
-    expect(wrapper.getByTestId("accordion-show-all")).toHaveTextContent("Show all");
+    expect(wrapper.getByTestId("test-accordion-show-all")).toBeVisible();
+    expect(wrapper.getByTestId("test-accordion-show-all")).toHaveTextContent("Show all");
 }
 
 function expectShowAllButtonNotToBeDefined(wrapper: RenderResult) {
-    expect(wrapper.queryByTestId("accordion-show-all")).toBeFalsy();
+    expect(wrapper.queryByTestId("test-accordion-show-all")).toBeFalsy();
 }
 
 function expectHideAllButtonToBeDefined(wrapper: RenderResult) {
-    expect(wrapper.getByTestId("accordion-show-all")).toBeDefined();
-    expect(wrapper.getByTestId("accordion-show-all")).toHaveTextContent("Hide all");
+    expect(wrapper.getByTestId("test-accordion-show-all")).toBeDefined();
+    expect(wrapper.getByTestId("test-accordion-show-all")).toHaveTextContent("Hide all");
 }
 
 function expectExpandableToBeClosed(title: string, id: number, wrapper: RenderResult) {
-    expect(wrapper.getByTestId(`accordion-${id}-heading`)).toHaveTextContent(title);
-    expect(wrapper.getByTestId(`accordion-${id}-content`)).toHaveAttribute("aria-hidden", "true");
+    expect(wrapper.getByTestId(`test-accordion-${id}-heading`)).toHaveTextContent(title);
+    expect(wrapper.getByTestId(`test-accordion-${id}-content`)).toHaveAttribute("aria-hidden", "true");
 }
 
 function expectExpandableToBeOpen(title: string, id: number, wrapper: RenderResult) {
-    expect(wrapper.getByTestId(`accordion-${id}-heading`)).toHaveTextContent(title);
-    expect(wrapper.getByTestId(`accordion-${id}-content`)).toHaveAttribute("aria-hidden", "false");
+    expect(wrapper.getByTestId(`test-accordion-${id}-heading`)).toHaveTextContent(title);
+    expect(wrapper.getByTestId(`test-accordion-${id}-content`)).toHaveAttribute("aria-hidden", "false");
 }
 
 describe("Accordion tests", () => {

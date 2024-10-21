@@ -2,33 +2,34 @@ import React, { ReactElement, useEffect, useState } from "react";
 
 export type ExpandableContent = {
     content: ReactElement
+    contentId: string
     title: string
 };
 
 export interface ExpandableProps extends ExpandableContent {
-    id: number
+    expandableIndex: number
     panelsOpen: boolean[]
     setPanelsOpen: (panelsOpen: boolean[]) => void
 }
 
 function Expandable({
-    title, content, id, panelsOpen, setPanelsOpen,
+    title, content, contentId, expandableIndex, panelsOpen, setPanelsOpen,
 }: ExpandableProps): ReactElement {
     function togglePanel(event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
         const newPanelsOpen = [...panelsOpen];
-        newPanelsOpen[id] = !newPanelsOpen[id];
+        newPanelsOpen[expandableIndex] = !newPanelsOpen[expandableIndex];
         setPanelsOpen(newPanelsOpen);
 
         event.preventDefault();
     }
 
     function panelIsOpen(): boolean {
-        return panelsOpen[id];
+        return panelsOpen[expandableIndex];
     }
 
     return (
         <details
-            id={`accordion-${id}`}
+            id={`${contentId}-accordion-${expandableIndex}`}
             className="ons-collapsible ons-js-collapsible ons-collapsible--accordion "
             data-btn-close="Hide"
             data-group="accordion"
@@ -37,11 +38,11 @@ function Expandable({
             <summary
                 className="ons-collapsible__heading ons-js-collapsible-heading"
                 role="link"
-                data-testid={`accordion-${id}-heading`}
+                data-testid={`${contentId}-accordion-${expandableIndex}-heading`}
                 onClick={togglePanel}
                 onKeyPress={togglePanel}
                 aria-expanded={panelIsOpen() ? "true" : "false"}
-                aria-controls={`accordion-${id}`}
+                aria-controls={`${contentId}-accordion-${expandableIndex}`}
                 data-ga-action={panelIsOpen() ? "Close panel" : "Open panel"}
                 tabIndex={0}
             >
@@ -63,8 +64,8 @@ function Expandable({
                 </div>
             </summary>
             <div
-                id={`accordion-${id}-content`}
-                data-testid={`accordion-${id}-content`}
+                id={`${contentId}-accordion-${expandableIndex}-content`}
+                data-testid={`${contentId}-accordion-${expandableIndex}-content`}
                 className="ons-collapsible__content ons-js-collapsible-content"
                 aria-hidden={(panelIsOpen() ? "false" : "true")}
             >
@@ -76,16 +77,21 @@ function Expandable({
 
 interface AccordionProps {
     ShowAllEnabled?: boolean
-    Expandables: ExpandableContent[]
+    Expandables: ExpandableContent[],
+    ContentId: string,
+    Expanded?: boolean
 }
 
 interface ShowAllProps {
     showAllEnabled?: boolean
     panelsOpen: boolean[]
     setPanelsOpen: React.Dispatch<React.SetStateAction<boolean[]>>
+    contentId:string
 }
 
-function ShowAll({ showAllEnabled, panelsOpen, setPanelsOpen }: ShowAllProps): ReactElement {
+function ShowAll({
+    showAllEnabled, panelsOpen, setPanelsOpen, contentId,
+}: ShowAllProps): ReactElement {
     const [showing, setShowing] = useState<boolean>(false);
 
     useEffect(() => {
@@ -99,7 +105,7 @@ function ShowAll({ showAllEnabled, panelsOpen, setPanelsOpen }: ShowAllProps): R
     if (showAllEnabled) {
         return (
             <button
-                data-testid="accordion-show-all"
+                data-testid={`${contentId}-accordion-show-all`}
                 type="button"
                 className="ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small"
                 data-close-all="Hide all"
@@ -114,21 +120,23 @@ function ShowAll({ showAllEnabled, panelsOpen, setPanelsOpen }: ShowAllProps): R
     return <></>;
 }
 
-export default function Accordion({ ShowAllEnabled, Expandables }: AccordionProps): ReactElement {
-    const expandableStates = new Array(Expandables.length).fill(false);
-
+export default function Accordion({
+    ShowAllEnabled, Expandables, ContentId, Expanded,
+}: AccordionProps): ReactElement {
+    const expandableStates = new Array(Expandables.length).fill(Expanded ?? false);
     const [panelsOpen, setPanelsOpen] = useState<boolean[]>(expandableStates);
 
     return (
-        <div id="accordion" className="ons-accordion">
-            <ShowAll showAllEnabled={ShowAllEnabled} panelsOpen={panelsOpen} setPanelsOpen={setPanelsOpen} />
+        <div id={`${ContentId}-accordion`} className="ons-accordion">
+            <ShowAll showAllEnabled={ShowAllEnabled} panelsOpen={panelsOpen} setPanelsOpen={setPanelsOpen} contentId={ContentId} />
             {
                 Expandables.map((expandable: ExpandableContent, index: number) => (
                     <Expandable
-                        key={`accordion-${index}`}
+                        key={`${expandable.contentId}-accordion-${index}`}
                         content={expandable.content}
+                        contentId={expandable.contentId}
                         title={expandable.title}
-                        id={index}
+                        expandableIndex={index}
                         setPanelsOpen={setPanelsOpen}
                         panelsOpen={panelsOpen}
                     />

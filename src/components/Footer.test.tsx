@@ -1,4 +1,5 @@
 import React from "react";
+import "@testing-library/jest-dom";
 import Enzyme, { render as enzymeRender, shallow } from "enzyme";
 import { render } from "@testing-library/react";
 import Adapter from "enzyme-adapter-react-16";

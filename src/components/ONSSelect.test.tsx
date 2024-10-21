@@ -18,12 +18,14 @@ describe("ONS Select Test", () => {
         label: "Select From",
         value: "select value",
         options: Selection,
+        testId: "test-id",
     };
 
     const changeProps = {
         id: "select-thing",
         label: "Select From",
         options: Selection,
+        testId: "test-id",
         onChange: jest.fn(),
     };
 
@@ -35,6 +37,7 @@ describe("ONS Select Test", () => {
                 onChange={props.onChange}
                 value={props.value}
                 options={props.options}
+                testId={props.testId}
             />,
         );
     }
