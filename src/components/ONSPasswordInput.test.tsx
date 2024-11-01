@@ -12,8 +12,9 @@ describe("ONS Password Input Test", () => {
 
     const Props = {};
 
-    const labelProps = {
+    const passwordInputProps = {
         label: "Submit",
+        inputId: "submit",
     };
 
     const changeProps = {
@@ -29,6 +30,7 @@ describe("ONS Password Input Test", () => {
             <ONSPasswordInput
                 value={props.value}
                 label={props.label}
+                inputId={props.inputId}
                 placeholder={props.placeholder}
                 marginTop={props.marginTop}
                 onChange={props.onChange}
@@ -42,9 +44,14 @@ describe("ONS Password Input Test", () => {
 
     it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
 
-    it("should render with the correct label", () => {
-        wrapper(render, labelProps);
-        expect(screen.getByLabelText(labelProps.label)).toBeDefined();
+    it("should render with the correct label and input ID", () => {
+        wrapper(render, passwordInputProps);
+
+        const labelElement = screen.getByText(passwordInputProps.label);
+        const inputElement = screen.getByLabelText(passwordInputProps.label);
+
+        expect(labelElement).toHaveTextContent(passwordInputProps.label);
+        expect(inputElement).toHaveAttribute("id", passwordInputProps.inputId);
     });
 
     it("should handle a change", () => {
