@@ -15,6 +15,7 @@ export const Default = Template.bind({});
 
 Default.args = {
     label: "Password",
+    inputId: "password",
     placeholder: "Confirm password",
     autoFocus: true,
 };

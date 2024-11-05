@@ -289,11 +289,11 @@ var ONSPasswordInput = /** @class */ (function (_super) {
     ONSPasswordInput.prototype.render = function () {
         var _this = this;
         return (React.createElement("p", { className: "ons-field" },
-            React.createElement("label", { className: "ons-label", htmlFor: "password" }, this.props.label),
+            React.createElement("label", { className: "ons-label", htmlFor: this.props.inputId || "password" }, this.props.label),
             React.createElement("span", { className: "ons-checkbox ons-checkbox--toggle", style: this.spacing() },
                 React.createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "ons-checkbox__input", name: "show-password", onClick: this.togglePassword }),
                 React.createElement("label", { id: "password-toggle-label", className: "ons-checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
-            React.createElement("input", { type: this.state.password ? "password" : "text", id: "password", className: "ons-input ons-input--text ons-input-type__input ons-u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
+            React.createElement("input", { type: this.state.password ? "password" : "text", id: this.props.inputId || "password", className: "ons-input ons-input--text ons-input-type__input ons-u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
     };
     return ONSPasswordInput;
 }(Component));

@@ -2,6 +2,7 @@ import React, { ChangeEvent, Component } from "react";
 
 export interface Props {
     label?: string
+    inputId?: string
     placeholder?: string
     marginTop?: number
     onChange?: (e: ChangeEvent<HTMLInputElement>, ...args: any[]) => void
@@ -39,7 +40,7 @@ export class ONSPasswordInput extends Component <Props, State> {
     render() {
         return (
             <p className="ons-field">
-                <label className="ons-label" htmlFor="password">{this.props.label}</label>
+                <label className="ons-label" htmlFor={this.props.inputId || "password"}>{this.props.label}</label>
                 <span className="ons-checkbox ons-checkbox--toggle" style={this.spacing()}>
                     <input
                         autoFocus={this.props.autoFocus}
@@ -56,14 +57,13 @@ export class ONSPasswordInput extends Component <Props, State> {
                 </span>
                 <input
                     type={this.state.password ? "password" : "text"}
-                    id="password"
+                    id={this.props.inputId || "password"}
                     className="ons-input ons-input--text ons-input-type__input ons-u-mt-xs"
                     value={this.props.value}
                     onChange={(e) => this.handleChange(e)}
                     data-testid="login-password-input"
                 />
             </p>
-
         );
     }
 }
