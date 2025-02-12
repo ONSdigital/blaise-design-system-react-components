@@ -14,57 +14,57 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
  * Shown at the top of a page, above the header to warn users.
  */
 function NotProductionWarning() {
-    return (React__default['default'].createElement("div", { style: { background: "#222", color: "#222" } },
-        React__default['default'].createElement("div", { className: "ons-container" },
-            React__default['default'].createElement("div", { className: "ons-panel ons-panel--warn-branded ons-panel--no-title", style: { background: "#222" } },
-                React__default['default'].createElement("span", { className: "ons-panel__icon", "aria-hidden": "true", style: { color: "#222" } }, "!"),
-                React__default['default'].createElement("span", { className: "ons-panel__assistive-text ons-u-vh" }, "Warning: "),
-                React__default['default'].createElement("div", { className: "ons-panel__body" },
-                    React__default['default'].createElement("p", { className: "ons-u-mb-no" }, "This environment is not a production environment. Do not upload any live data to this service."))))));
+    return (React__default["default"].createElement("div", { style: { background: "#222", color: "#222" } },
+        React__default["default"].createElement("div", { className: "ons-container" },
+            React__default["default"].createElement("div", { className: "ons-panel ons-panel--warn-branded ons-panel--no-title", style: { background: "#222" } },
+                React__default["default"].createElement("span", { className: "ons-panel__icon", "aria-hidden": "true", style: { color: "#222" } }, "!"),
+                React__default["default"].createElement("span", { className: "ons-panel__assistive-text ons-u-vh" }, "Warning: "),
+                React__default["default"].createElement("div", { className: "ons-panel__body" },
+                    React__default["default"].createElement("p", { className: "ons-u-mb-no" }, "This environment is not a production environment. Do not upload any live data to this service."))))));
 }
 
 function Footer() {
-    return (React__default['default'].createElement("footer", { className: "ons-footer" },
-        React__default['default'].createElement("div", { className: "ons-footer__body", "data-analytics": "footer" },
-            React__default['default'].createElement("div", { className: "ons-container" },
-                React__default['default'].createElement("div", { className: "ons-grid" }),
-                React__default['default'].createElement("div", { className: "ons-grid ons-grid--flex ons-grid--vertical-top ons-grid--between" },
-                    React__default['default'].createElement("div", { className: "ons-grid__col" },
-                        React__default['default'].createElement("div", { className: "ons-footer__poweredby ons-u-mb-m" },
-                            React__default['default'].createElement("svg", { className: "ons-svg-logo", xmlns: "http://www.w3.org/2000/svg", width: "197", height: "19", viewBox: "33 2 552 60", "aria-labelledby": "ons-logo-en-footer-alt" },
-                                React__default['default'].createElement("title", { id: "ons-logo-en-footer-alt" }, "Office for National Statistics"),
-                                React__default['default'].createElement("g", { className: "ons-svg-logo__group ons-svg-logo__group--secondary", fill: "#a8bd3a" },
-                                    React__default['default'].createElement("path", { d: "M0,34.6c.8-1.69,1.39-3,2.32-4.6A38.28,38.28,0,0,1,0,23.4V34.6M5,3S0,3,0,9.25v1A62.12,62.12,0,0,0,4.2,27a43.77,43.77,0,0,1,9.42-10.79C21.69,9.21,31.16,5.13,45.9,3Z" })),
-                                React__default['default'].createElement("g", { className: "ons-svg-logo__group ons-svg-logo__group--primary", fill: "#003c57" },
-                                    React__default['default'].createElement("path", { d: "M53.06,6.42C36.2,8,24.68,12.92,16.43,20.07A41.46,41.46,0,0,0,6.4,32.2C12.87,44.93,28.88,57,46.6,57H47s6.32.21,6.32-6.91V6.36a1.22,1.22,0,0,1-.26.06M9.72,42.67a44.25,44.25,0,0,1-5-7.42A80.59,80.59,0,0,0,0,46.38V56.91L31.06,57c-9.83-3-15.74-7.64-21.34-14.3" })),
-                                React__default['default'].createElement("g", { className: "ons-svg-logo__group ons-svg-logo__group--text", fill: "#003c57" },
-                                    React__default['default'].createElement("path", { d: "M82,47.49c-9.07,0-13.13-7.51-13.13-16.77S72.91,14,82,14s13.1,7.61,13.1,16.77S91.1,47.54,82,47.54m0-30.91c-6.69,0-9.07,7.33-9.07,14.05s2.16,13.9,9.07,13.9,9-7.28,9-13.9-2.34-14-9-14" }),
-                                    React__default['default'].createElement("path", { d: "M106.36,23.81V46.88h-3.67V23.81H98.93V21.56h3.76V17.9c0-4.61,2.72-7.95,8.08-7.95.38,0,.86.05.86.05v2.35h-.43c-2.55,0-4.84,1.64-4.84,5.12v4.09h5.27v2.25Z" }),
-                                    React__default['default'].createElement("path", { d: "M121.53,23.81V46.88h-3.67V23.81H114.1V21.56h3.76V17.9c0-4.61,2.72-7.95,8.08-7.95.38,0,.86.05.86.05v2.35h-.43c-2.55,0-4.84,1.64-4.84,5.12v4.09h5.27v2.25Z" }),
-                                    React__default['default'].createElement("path", { d: "M132.85,16.72a2.28,2.28,0,0,1-2.33-2.23v0a2.34,2.34,0,0,1,4.67,0,2.28,2.28,0,0,1-2.3,2.26h0M131,21.56h3.71V46.88H131Z" }),
-                                    React__default['default'].createElement("path", { d: "M150.53,47.49c-6,0-10.63-5.16-10.63-13.29S144.52,21,150.66,21a9.76,9.76,0,0,1,6.17,1.74l-1,2.25a7.53,7.53,0,0,0-4.4-1.36c-5.15,0-7.78,4.46-7.78,10.48,0,6.2,3,10.62,7.65,10.62a8,8,0,0,0,4.49-1.37l1,2.45a10.21,10.21,0,0,1-6.3,1.73" }),
-                                    React__default['default'].createElement("path", { d: "M162.84,35.75c.48,6,3.76,9,8.9,9a14.66,14.66,0,0,0,6.88-1.55l1.08,2.59a18,18,0,0,1-8.22,1.73c-7.12,0-12.18-4.23-12.18-13.34,0-8.69,4.67-13.2,11-13.2s10.37,3.95,10.37,12.4Zm7.35-12.41c-4.1,0-7.56,3.2-7.52,10.29l14.39-2c0-5.87-2.81-8.32-6.87-8.32" }),
-                                    React__default['default'].createElement("path", { d: "M198.57,23.81V46.88H194.9V23.81h-3.76V21.56h3.76V17.9c0-4.61,2.72-7.95,8.08-7.95.39,0,.87.05.87.05v2.35h-.44c-2.54,0-4.84,1.64-4.84,5.12v4.09h5.28v2.25Z" }),
-                                    React__default['default'].createElement("path", { d: "M217.28,47.49c-7.47,0-10.89-5.78-10.89-13.24S209.81,21,217.28,21s10.85,5.82,10.85,13.3-3.37,13.24-10.85,13.24m0-24c-5.53,0-7.13,5.59-7.13,10.81s1.73,10.56,7.13,10.56,7.13-5.35,7.13-10.56-1.6-10.81-7.13-10.81" }),
-                                    React__default['default'].createElement("path", { d: "M244.08,23.91c-2.34-.61-5.75-.52-7.35.47v22.5H233V22.69c2.67-1.13,5.36-1.74,10.11-1.74H245Z" }),
-                                    React__default['default'].createElement("path", { d: "M277.42,47.13,263.07,25a32.2,32.2,0,0,1-1.85-3.29h-.09s.13,1.88.13,3.85V47.13h-4.71V14.8h5.31l13.61,20.82A28.76,28.76,0,0,1,277.38,39h.08s-.17-1.84-.17-3.77V14.8H282V47.13Z" }),
-                                    React__default['default'].createElement("path", { d: "M297.52,47.79c-7.43,0-10.93-3-10.93-7.81,0-6.8,7.12-8.64,15.59-9.39V29.13c0-3.47-2.37-4.51-5.83-4.51a18,18,0,0,0-6.87,1.46L288.23,23a24,24,0,0,1,9.12-1.83c5.61,0,9.93,2.3,9.93,8.78V46a22.71,22.71,0,0,1-9.76,1.83m4.66-14.67c-6.26.67-10.45,1.84-10.45,6.73,0,3.42,2.42,4.88,6.22,4.88a10.09,10.09,0,0,0,4.23-.84Z" }),
-                                    React__default['default'].createElement("path", { d: "M322,47.69c-5.31,0-7.34-3.43-7.34-6.86V25.09h-3.55V21.81h3.55V16.12l5.4-1.5v7.19H325v3.28h-5V40.55a3.26,3.26,0,0,0,3,3.52h.5a5.5,5.5,0,0,0,1.46-.23v3.33a7.69,7.69,0,0,1-3,.52" }),
-                                    React__default['default'].createElement("path", { d: "M331.91,17.43a3,3,0,0,1-3.15-2.81,3.17,3.17,0,0,1,6.31,0,3,3,0,0,1-3.16,2.81m-2.72,4.38h5.44V47.13h-5.44Z" }),
-                                    React__default['default'].createElement("path", { d: "M350.88,47.79c-7.73,0-11.57-5.74-11.57-13.3s3.84-13.34,11.57-13.34,11.54,5.78,11.54,13.34-3.8,13.3-11.54,13.3m0-23.17c-4.66,0-6.05,4.89-6.05,9.82s1.47,9.63,6.05,9.63,6.05-4.7,6.05-9.63-1.38-9.82-6.05-9.82" }),
-                                    React__default['default'].createElement("path", { d: "M382.52,47.13V29c0-3.24-2.77-4.47-5.88-4.47a12.3,12.3,0,0,0-4.37.76v21.8h-5.39V23a26.81,26.81,0,0,1,10.06-1.83c6.61,0,11,2.25,11,7.8V47.13Z" }),
-                                    React__default['default'].createElement("path", { d: "M403.18,47.79c-7.43,0-10.94-3-10.94-7.81,0-6.8,7.13-8.64,15.6-9.39V29.13c0-3.47-2.37-4.51-5.83-4.51a18,18,0,0,0-6.87,1.46L393.89,23A24,24,0,0,1,403,21.15c5.62,0,9.94,2.3,9.94,8.78V46a22.71,22.71,0,0,1-9.76,1.83m4.66-14.67c-6.27.67-10.46,1.84-10.46,6.73,0,3.42,2.43,4.88,6.23,4.88a10.09,10.09,0,0,0,4.23-.84Z" }),
-                                    React__default['default'].createElement("polygon", { points: "418.52 47.13 418.52 34.91 418.52 10.25 423.92 10.25 423.92 22.76 423.92 47.13 418.52 47.13" }),
-                                    React__default['default'].createElement("path", { d: "M445.39,47.79A19.11,19.11,0,0,1,436.58,46l1.51-4a13.48,13.48,0,0,0,6.22,1.55c3.76,0,6.44-2.21,6.44-5.41,0-7.09-13.44-4.36-13.44-14.42,0-5.13,4.15-9.59,10.72-9.59A15.82,15.82,0,0,1,455.8,16l-1.38,3.52a11.93,11.93,0,0,0-5.66-1.5c-3.5,0-5.79,2.11-5.79,5.12,0,7,13.74,3.94,13.74,14.65,0,5.74-4.71,10-11.32,10" }),
-                                    React__default['default'].createElement("path", { d: "M470.41,47.69c-5.31,0-7.34-3.43-7.34-6.86V25.09h-3.54V21.81h3.54V16.12l5.4-1.5v7.19h4.92v3.28h-4.92V40.55a3.27,3.27,0,0,0,3,3.52h.48a5.12,5.12,0,0,0,1.46-.23v3.33a7.69,7.69,0,0,1-3,.52" }),
-                                    React__default['default'].createElement("path", { d: "M487.27,47.79c-7.44,0-10.93-3-10.93-7.81,0-6.8,7.13-8.64,15.6-9.39V29.13c0-3.47-2.38-4.51-5.84-4.51a18,18,0,0,0-6.87,1.46L478,23a23.94,23.94,0,0,1,9.11-1.83c5.62,0,9.94,2.3,9.94,8.78V46a22.71,22.71,0,0,1-9.76,1.83M492,33.16c-6.27.67-10.46,1.84-10.46,6.73,0,3.42,2.42,4.88,6.22,4.88a10,10,0,0,0,4.24-.84Z" }),
-                                    React__default['default'].createElement("path", { d: "M511.73,47.69c-5.32,0-7.35-3.43-7.35-6.86V25.09h-3.54V21.81h3.54V16.12l5.4-1.5v7.19h4.92v3.28h-4.92V40.55a3.26,3.26,0,0,0,3,3.52h.5a5.5,5.5,0,0,0,1.46-.23v3.33a7.69,7.69,0,0,1-3,.52" }),
-                                    React__default['default'].createElement("path", { d: "M521.66,17.43a3,3,0,0,1-3.15-2.81,3.17,3.17,0,0,1,6.31,0,3,3,0,0,1-3.16,2.81m-2.72,4.38h5.45V47.13h-5.45Z" }),
-                                    React__default['default'].createElement("path", { d: "M536.19,47.79A15.9,15.9,0,0,1,528.54,46L530,42.48a10.53,10.53,0,0,0,5.52,1.5c2.77,0,5-1.78,5-3.94,0-6-11.1-3.2-11.1-11.47,0-3.76,3.37-7.42,8.86-7.42A13.56,13.56,0,0,1,545.34,23l-1.42,3.14a8.47,8.47,0,0,0-4.62-1.45c-2.81,0-4.54,1.69-4.54,3.62,0,5.64,11.32,3.14,11.32,11.6,0,4-3.85,7.9-9.89,7.9" }),
-                                    React__default['default'].createElement("path", { d: "M559.83,47.69c-5.31,0-7.35-3.43-7.35-6.86V25.09h-3.54V21.81h3.54V16.12l5.4-1.5v7.19h4.93v3.28h-4.93V40.55a3.27,3.27,0,0,0,3,3.52h.48a5.64,5.64,0,0,0,1.47-.23v3.33a7.72,7.72,0,0,1-3,.52" }),
-                                    React__default['default'].createElement("path", { d: "M569.77,17.43a3,3,0,0,1-3.15-2.81,3.17,3.17,0,0,1,6.31,0,3,3,0,0,1-3.16,2.81m-2.72,4.38h5.44V47.13h-5.44Z" }),
-                                    React__default['default'].createElement("path", { d: "M588.14,47.79c-6.23,0-11-5.08-11-13.35s4.88-13.29,11-13.29A10.51,10.51,0,0,1,594.66,23l-1.21,3a6.87,6.87,0,0,0-4-1.22c-4.4,0-6.69,3.81-6.69,9.49s2.63,9.59,6.61,9.59a6.74,6.74,0,0,0,4-1.28L594.7,46c-1.12.94-3.33,1.84-6.56,1.84" }),
-                                    React__default['default'].createElement("path", { d: "M605.1,47.79A15.9,15.9,0,0,1,597.45,46l1.42-3.47A10.54,10.54,0,0,0,604.4,44c2.77,0,5-1.78,5-3.94,0-6-11.1-3.2-11.1-11.47,0-3.76,3.37-7.42,8.85-7.42a13.49,13.49,0,0,1,7.1,1.83l-1.42,3.14a8.42,8.42,0,0,0-4.63-1.45c-2.8,0-4.53,1.69-4.53,3.62,0,5.64,11.32,3.14,11.32,11.6,0,4-3.85,7.9-9.89,7.9" }))))))))));
+    return (React__default["default"].createElement("footer", { className: "ons-footer" },
+        React__default["default"].createElement("div", { className: "ons-footer__body", "data-analytics": "footer" },
+            React__default["default"].createElement("div", { className: "ons-container" },
+                React__default["default"].createElement("div", { className: "ons-grid" }),
+                React__default["default"].createElement("div", { className: "ons-grid ons-grid--flex ons-grid--vertical-top ons-grid--between" },
+                    React__default["default"].createElement("div", { className: "ons-grid__col" },
+                        React__default["default"].createElement("div", { className: "ons-footer__poweredby ons-u-mb-m" },
+                            React__default["default"].createElement("svg", { className: "ons-svg-logo", xmlns: "http://www.w3.org/2000/svg", width: "197", height: "19", viewBox: "33 2 552 60", "aria-labelledby": "ons-logo-en-footer-alt" },
+                                React__default["default"].createElement("title", { id: "ons-logo-en-footer-alt" }, "Office for National Statistics"),
+                                React__default["default"].createElement("g", { className: "ons-svg-logo__group ons-svg-logo__group--secondary", fill: "#a8bd3a" },
+                                    React__default["default"].createElement("path", { d: "M0,34.6c.8-1.69,1.39-3,2.32-4.6A38.28,38.28,0,0,1,0,23.4V34.6M5,3S0,3,0,9.25v1A62.12,62.12,0,0,0,4.2,27a43.77,43.77,0,0,1,9.42-10.79C21.69,9.21,31.16,5.13,45.9,3Z" })),
+                                React__default["default"].createElement("g", { className: "ons-svg-logo__group ons-svg-logo__group--primary", fill: "#003c57" },
+                                    React__default["default"].createElement("path", { d: "M53.06,6.42C36.2,8,24.68,12.92,16.43,20.07A41.46,41.46,0,0,0,6.4,32.2C12.87,44.93,28.88,57,46.6,57H47s6.32.21,6.32-6.91V6.36a1.22,1.22,0,0,1-.26.06M9.72,42.67a44.25,44.25,0,0,1-5-7.42A80.59,80.59,0,0,0,0,46.38V56.91L31.06,57c-9.83-3-15.74-7.64-21.34-14.3" })),
+                                React__default["default"].createElement("g", { className: "ons-svg-logo__group ons-svg-logo__group--text", fill: "#003c57" },
+                                    React__default["default"].createElement("path", { d: "M82,47.49c-9.07,0-13.13-7.51-13.13-16.77S72.91,14,82,14s13.1,7.61,13.1,16.77S91.1,47.54,82,47.54m0-30.91c-6.69,0-9.07,7.33-9.07,14.05s2.16,13.9,9.07,13.9,9-7.28,9-13.9-2.34-14-9-14" }),
+                                    React__default["default"].createElement("path", { d: "M106.36,23.81V46.88h-3.67V23.81H98.93V21.56h3.76V17.9c0-4.61,2.72-7.95,8.08-7.95.38,0,.86.05.86.05v2.35h-.43c-2.55,0-4.84,1.64-4.84,5.12v4.09h5.27v2.25Z" }),
+                                    React__default["default"].createElement("path", { d: "M121.53,23.81V46.88h-3.67V23.81H114.1V21.56h3.76V17.9c0-4.61,2.72-7.95,8.08-7.95.38,0,.86.05.86.05v2.35h-.43c-2.55,0-4.84,1.64-4.84,5.12v4.09h5.27v2.25Z" }),
+                                    React__default["default"].createElement("path", { d: "M132.85,16.72a2.28,2.28,0,0,1-2.33-2.23v0a2.34,2.34,0,0,1,4.67,0,2.28,2.28,0,0,1-2.3,2.26h0M131,21.56h3.71V46.88H131Z" }),
+                                    React__default["default"].createElement("path", { d: "M150.53,47.49c-6,0-10.63-5.16-10.63-13.29S144.52,21,150.66,21a9.76,9.76,0,0,1,6.17,1.74l-1,2.25a7.53,7.53,0,0,0-4.4-1.36c-5.15,0-7.78,4.46-7.78,10.48,0,6.2,3,10.62,7.65,10.62a8,8,0,0,0,4.49-1.37l1,2.45a10.21,10.21,0,0,1-6.3,1.73" }),
+                                    React__default["default"].createElement("path", { d: "M162.84,35.75c.48,6,3.76,9,8.9,9a14.66,14.66,0,0,0,6.88-1.55l1.08,2.59a18,18,0,0,1-8.22,1.73c-7.12,0-12.18-4.23-12.18-13.34,0-8.69,4.67-13.2,11-13.2s10.37,3.95,10.37,12.4Zm7.35-12.41c-4.1,0-7.56,3.2-7.52,10.29l14.39-2c0-5.87-2.81-8.32-6.87-8.32" }),
+                                    React__default["default"].createElement("path", { d: "M198.57,23.81V46.88H194.9V23.81h-3.76V21.56h3.76V17.9c0-4.61,2.72-7.95,8.08-7.95.39,0,.87.05.87.05v2.35h-.44c-2.54,0-4.84,1.64-4.84,5.12v4.09h5.28v2.25Z" }),
+                                    React__default["default"].createElement("path", { d: "M217.28,47.49c-7.47,0-10.89-5.78-10.89-13.24S209.81,21,217.28,21s10.85,5.82,10.85,13.3-3.37,13.24-10.85,13.24m0-24c-5.53,0-7.13,5.59-7.13,10.81s1.73,10.56,7.13,10.56,7.13-5.35,7.13-10.56-1.6-10.81-7.13-10.81" }),
+                                    React__default["default"].createElement("path", { d: "M244.08,23.91c-2.34-.61-5.75-.52-7.35.47v22.5H233V22.69c2.67-1.13,5.36-1.74,10.11-1.74H245Z" }),
+                                    React__default["default"].createElement("path", { d: "M277.42,47.13,263.07,25a32.2,32.2,0,0,1-1.85-3.29h-.09s.13,1.88.13,3.85V47.13h-4.71V14.8h5.31l13.61,20.82A28.76,28.76,0,0,1,277.38,39h.08s-.17-1.84-.17-3.77V14.8H282V47.13Z" }),
+                                    React__default["default"].createElement("path", { d: "M297.52,47.79c-7.43,0-10.93-3-10.93-7.81,0-6.8,7.12-8.64,15.59-9.39V29.13c0-3.47-2.37-4.51-5.83-4.51a18,18,0,0,0-6.87,1.46L288.23,23a24,24,0,0,1,9.12-1.83c5.61,0,9.93,2.3,9.93,8.78V46a22.71,22.71,0,0,1-9.76,1.83m4.66-14.67c-6.26.67-10.45,1.84-10.45,6.73,0,3.42,2.42,4.88,6.22,4.88a10.09,10.09,0,0,0,4.23-.84Z" }),
+                                    React__default["default"].createElement("path", { d: "M322,47.69c-5.31,0-7.34-3.43-7.34-6.86V25.09h-3.55V21.81h3.55V16.12l5.4-1.5v7.19H325v3.28h-5V40.55a3.26,3.26,0,0,0,3,3.52h.5a5.5,5.5,0,0,0,1.46-.23v3.33a7.69,7.69,0,0,1-3,.52" }),
+                                    React__default["default"].createElement("path", { d: "M331.91,17.43a3,3,0,0,1-3.15-2.81,3.17,3.17,0,0,1,6.31,0,3,3,0,0,1-3.16,2.81m-2.72,4.38h5.44V47.13h-5.44Z" }),
+                                    React__default["default"].createElement("path", { d: "M350.88,47.79c-7.73,0-11.57-5.74-11.57-13.3s3.84-13.34,11.57-13.34,11.54,5.78,11.54,13.34-3.8,13.3-11.54,13.3m0-23.17c-4.66,0-6.05,4.89-6.05,9.82s1.47,9.63,6.05,9.63,6.05-4.7,6.05-9.63-1.38-9.82-6.05-9.82" }),
+                                    React__default["default"].createElement("path", { d: "M382.52,47.13V29c0-3.24-2.77-4.47-5.88-4.47a12.3,12.3,0,0,0-4.37.76v21.8h-5.39V23a26.81,26.81,0,0,1,10.06-1.83c6.61,0,11,2.25,11,7.8V47.13Z" }),
+                                    React__default["default"].createElement("path", { d: "M403.18,47.79c-7.43,0-10.94-3-10.94-7.81,0-6.8,7.13-8.64,15.6-9.39V29.13c0-3.47-2.37-4.51-5.83-4.51a18,18,0,0,0-6.87,1.46L393.89,23A24,24,0,0,1,403,21.15c5.62,0,9.94,2.3,9.94,8.78V46a22.71,22.71,0,0,1-9.76,1.83m4.66-14.67c-6.27.67-10.46,1.84-10.46,6.73,0,3.42,2.43,4.88,6.23,4.88a10.09,10.09,0,0,0,4.23-.84Z" }),
+                                    React__default["default"].createElement("polygon", { points: "418.52 47.13 418.52 34.91 418.52 10.25 423.92 10.25 423.92 22.76 423.92 47.13 418.52 47.13" }),
+                                    React__default["default"].createElement("path", { d: "M445.39,47.79A19.11,19.11,0,0,1,436.58,46l1.51-4a13.48,13.48,0,0,0,6.22,1.55c3.76,0,6.44-2.21,6.44-5.41,0-7.09-13.44-4.36-13.44-14.42,0-5.13,4.15-9.59,10.72-9.59A15.82,15.82,0,0,1,455.8,16l-1.38,3.52a11.93,11.93,0,0,0-5.66-1.5c-3.5,0-5.79,2.11-5.79,5.12,0,7,13.74,3.94,13.74,14.65,0,5.74-4.71,10-11.32,10" }),
+                                    React__default["default"].createElement("path", { d: "M470.41,47.69c-5.31,0-7.34-3.43-7.34-6.86V25.09h-3.54V21.81h3.54V16.12l5.4-1.5v7.19h4.92v3.28h-4.92V40.55a3.27,3.27,0,0,0,3,3.52h.48a5.12,5.12,0,0,0,1.46-.23v3.33a7.69,7.69,0,0,1-3,.52" }),
+                                    React__default["default"].createElement("path", { d: "M487.27,47.79c-7.44,0-10.93-3-10.93-7.81,0-6.8,7.13-8.64,15.6-9.39V29.13c0-3.47-2.38-4.51-5.84-4.51a18,18,0,0,0-6.87,1.46L478,23a23.94,23.94,0,0,1,9.11-1.83c5.62,0,9.94,2.3,9.94,8.78V46a22.71,22.71,0,0,1-9.76,1.83M492,33.16c-6.27.67-10.46,1.84-10.46,6.73,0,3.42,2.42,4.88,6.22,4.88a10,10,0,0,0,4.24-.84Z" }),
+                                    React__default["default"].createElement("path", { d: "M511.73,47.69c-5.32,0-7.35-3.43-7.35-6.86V25.09h-3.54V21.81h3.54V16.12l5.4-1.5v7.19h4.92v3.28h-4.92V40.55a3.26,3.26,0,0,0,3,3.52h.5a5.5,5.5,0,0,0,1.46-.23v3.33a7.69,7.69,0,0,1-3,.52" }),
+                                    React__default["default"].createElement("path", { d: "M521.66,17.43a3,3,0,0,1-3.15-2.81,3.17,3.17,0,0,1,6.31,0,3,3,0,0,1-3.16,2.81m-2.72,4.38h5.45V47.13h-5.45Z" }),
+                                    React__default["default"].createElement("path", { d: "M536.19,47.79A15.9,15.9,0,0,1,528.54,46L530,42.48a10.53,10.53,0,0,0,5.52,1.5c2.77,0,5-1.78,5-3.94,0-6-11.1-3.2-11.1-11.47,0-3.76,3.37-7.42,8.86-7.42A13.56,13.56,0,0,1,545.34,23l-1.42,3.14a8.47,8.47,0,0,0-4.62-1.45c-2.81,0-4.54,1.69-4.54,3.62,0,5.64,11.32,3.14,11.32,11.6,0,4-3.85,7.9-9.89,7.9" }),
+                                    React__default["default"].createElement("path", { d: "M559.83,47.69c-5.31,0-7.35-3.43-7.35-6.86V25.09h-3.54V21.81h3.54V16.12l5.4-1.5v7.19h4.93v3.28h-4.93V40.55a3.27,3.27,0,0,0,3,3.52h.48a5.64,5.64,0,0,0,1.47-.23v3.33a7.72,7.72,0,0,1-3,.52" }),
+                                    React__default["default"].createElement("path", { d: "M569.77,17.43a3,3,0,0,1-3.15-2.81,3.17,3.17,0,0,1,6.31,0,3,3,0,0,1-3.16,2.81m-2.72,4.38h5.44V47.13h-5.44Z" }),
+                                    React__default["default"].createElement("path", { d: "M588.14,47.79c-6.23,0-11-5.08-11-13.35s4.88-13.29,11-13.29A10.51,10.51,0,0,1,594.66,23l-1.21,3a6.87,6.87,0,0,0-4-1.22c-4.4,0-6.69,3.81-6.69,9.49s2.63,9.59,6.61,9.59a6.74,6.74,0,0,0,4-1.28L594.7,46c-1.12.94-3.33,1.84-6.56,1.84" }),
+                                    React__default["default"].createElement("path", { d: "M605.1,47.79A15.9,15.9,0,0,1,597.45,46l1.42-3.47A10.54,10.54,0,0,0,604.4,44c2.77,0,5-1.78,5-3.94,0-6-11.1-3.2-11.1-11.47,0-3.76,3.37-7.42,8.85-7.42a13.49,13.49,0,0,1,7.1,1.83l-1.42,3.14a8.42,8.42,0,0,0-4.63-1.45c-2.8,0-4.53,1.69-4.53,3.62,0,5.64,11.32,3.14,11.32,11.6,0,4-3.85,7.9-9.89,7.9" }))))))))));
 }
 
 function Header(_a) {
@@ -73,71 +73,71 @@ function Header(_a) {
         if (createNavLink) {
             return createNavLink(id, label, endpoint);
         }
-        return (React__default['default'].createElement("a", { className: "ons-navigation__link", id: id, href: endpoint, role: "link" }, label));
+        return (React__default["default"].createElement("a", { className: "ons-navigation__link", id: id, href: endpoint, role: "link" }, label));
     };
     var signOutText = "Save and sign out";
     if (noSave) {
         signOutText = "Sign out";
     }
-    return (React__default['default'].createElement("header", { className: "ons-header ons-header--internal" },
-        React__default['default'].createElement("div", { className: "ons-header__top", role: "banner" },
-            React__default['default'].createElement("div", { className: "ons-container" },
-                React__default['default'].createElement("div", { className: "ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap " },
-                    React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto" },
-                        React__default['default'].createElement("a", { className: "header__logo-link", href: "/" },
-                            React__default['default'].createElement("picture", null,
-                                React__default['default'].createElement("img", { className: "ons-header__logo", src: "https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
-        React__default['default'].createElement("div", { className: "ons-header__main" },
-            React__default['default'].createElement("div", { className: "ons-container" },
-                React__default['default'].createElement("div", { className: "ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap" },
-                    React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-shrink" },
-                        React__default['default'].createElement("div", { className: "ons-header__title" }, title)),
+    return (React__default["default"].createElement("header", { className: "ons-header ons-header--internal" },
+        React__default["default"].createElement("div", { className: "ons-header__top", role: "banner" },
+            React__default["default"].createElement("div", { className: "ons-container" },
+                React__default["default"].createElement("div", { className: "ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap " },
+                    React__default["default"].createElement("div", { className: "ons-grid__col ons-col-auto" },
+                        React__default["default"].createElement("a", { className: "header__logo-link", href: "/" },
+                            React__default["default"].createElement("picture", null,
+                                React__default["default"].createElement("img", { className: "ons-header__logo", src: "https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg", alt: "Office for National Statistics logo" }))))))),
+        React__default["default"].createElement("div", { className: "ons-header__main" },
+            React__default["default"].createElement("div", { className: "ons-container" },
+                React__default["default"].createElement("div", { className: "ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap" },
+                    React__default["default"].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-shrink" },
+                        React__default["default"].createElement("div", { className: "ons-header__title" }, title)),
                     signOutButton
-                        && (React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m" },
-                            React__default['default'].createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit", onClick: function () { return signOutFunction && signOutFunction(); }, type: "button" },
-                                React__default['default'].createElement("span", { className: "ons-btn__inner" },
-                                    React__default['default'].createElement("span", { className: "ons-btn__text" }, signOutText),
-                                    React__default['default'].createElement("svg", { className: "ons-svg-icon ons-u-ml-xs", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
-                                        React__default['default'].createElement("path", { d: "M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z", transform: "translate(-2 -2)" }),
-                                        React__default['default'].createElement("path", { d: "M8.5,14h-6a.5.5,0,0,1-.5-.5V2.5A.5.5,0,0,1,2.5,2h6a.5.5,0,0,1,.5.5V3a.5.5,0,0,1-.5.5h-5v9h5A.5.5,0,0,1,9,13v.5A.5.5,0,0,1,8.5,14Z", transform: "translate(-2 -2)" }))))))))),
+                        && (React__default["default"].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m" },
+                            React__default["default"].createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit", onClick: function () { return signOutFunction && signOutFunction(); }, type: "button" },
+                                React__default["default"].createElement("span", { className: "ons-btn__inner" },
+                                    React__default["default"].createElement("span", { className: "ons-btn__text" }, signOutText),
+                                    React__default["default"].createElement("svg", { className: "ons-svg-icon ons-u-ml-xs", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
+                                        React__default["default"].createElement("path", { d: "M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z", transform: "translate(-2 -2)" }),
+                                        React__default["default"].createElement("path", { d: "M8.5,14h-6a.5.5,0,0,1-.5-.5V2.5A.5.5,0,0,1,2.5,2h6a.5.5,0,0,1,.5.5V3a.5.5,0,0,1-.5.5h-5v9h5A.5.5,0,0,1,9,13v.5A.5.5,0,0,1,8.5,14Z", transform: "translate(-2 -2)" }))))))))),
         (navigationLinks && navigationLinks.length !== 0)
-            && (React__default['default'].createElement("div", { className: "ons-navigation-wrapper" },
-                React__default['default'].createElement("div", { className: "ons-container ons-container--gutterless@xxs@l" },
-                    React__default['default'].createElement("nav", { className: "ons-navigation ons-navigation--main ons-js-navigation", id: "main-nav", "aria-label": "Main menu", "data-analytics": "header-navigation", role: "navigation" },
-                        React__default['default'].createElement("ul", { className: "ons-navigation__list" }, navigationLinks.map(function (_a, index) {
+            && (React__default["default"].createElement("div", { className: "ons-navigation-wrapper" },
+                React__default["default"].createElement("div", { className: "ons-container ons-container--gutterless@xxs@l" },
+                    React__default["default"].createElement("nav", { className: "ons-navigation ons-navigation--main ons-js-navigation", id: "main-nav", "aria-label": "Main menu", "data-analytics": "header-navigation", role: "navigation" },
+                        React__default["default"].createElement("ul", { className: "ons-navigation__list" }, navigationLinks.map(function (_a, index) {
                             var id = _a.id, label = _a.label, endpoint = _a.endpoint;
-                            return (React__default['default'].createElement("li", { key: index, className: "ons-navigation__item  ".concat((currentLocation === endpoint ? "ons-navigation__item--active" : "")) }, createLink(id, label, endpoint)));
+                            return (React__default["default"].createElement("li", { key: index, className: "ons-navigation__item  ".concat((currentLocation === endpoint ? "ons-navigation__item--active" : "")) }, createLink(id, label, endpoint)));
                         }))))))));
 }
 
 function BetaBanner() {
-    return (React__default['default'].createElement("div", { className: "ons-phase-banner" },
-        React__default['default'].createElement("div", { className: "ons-container " },
-            React__default['default'].createElement("div", { className: "ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap" },
-                React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-no-grow" },
-                    React__default['default'].createElement("h3", { className: "ons-phase-banner__badge" }, "BETA")),
-                React__default['default'].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-shrink" },
-                    React__default['default'].createElement("p", { className: "ons-phase-banner__desc ons-u-fs-s ons-u-mb-no" },
+    return (React__default["default"].createElement("div", { className: "ons-phase-banner" },
+        React__default["default"].createElement("div", { className: "ons-container " },
+            React__default["default"].createElement("div", { className: "ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap" },
+                React__default["default"].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-no-grow" },
+                    React__default["default"].createElement("h3", { className: "ons-phase-banner__badge" }, "BETA")),
+                React__default["default"].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-shrink" },
+                    React__default["default"].createElement("p", { className: "ons-phase-banner__desc ons-u-fs-s ons-u-mb-no" },
                         "This is a new service \u2013 your\u00A0",
-                        React__default['default'].createElement("a", { href: "https://ons.service-now.com/" }, "feedback"),
+                        React__default["default"].createElement("a", { href: "https://ons.service-now.com/" }, "feedback"),
                         "\u00A0will help us improve it."))))));
 }
 
 function ExternalLink(props) {
-    return (React__default['default'].createElement("a", { href: props.link, id: props.id, "aria-label": props.ariaLabel, className: "ons-external-link", target: "_blank", rel: "noopener noreferrer" },
+    return (React__default["default"].createElement("a", { href: props.link, id: props.id, "aria-label": props.ariaLabel, className: "ons-external-link", target: "_blank", rel: "noopener noreferrer" },
         props.text,
-        React__default['default'].createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg" },
-            React__default['default'].createElement("path", { d: "M13.5,9H13a.5.5,0,0,0-.5.5v3h-9v-9h3A.5.5,0,0,0,7,3V2.5A.5.5,0,0,0,6.5,2h-4a.5.5,0,0,0-.5.5v11a.5.5,0,0,0,.5.5h11a.5.5,0,0,0,.5-.5v-4A.5.5,0,0,0,13.5,9Z", transform: "translate(-2 -1.99)" }),
-            React__default['default'].createElement("path", { d: "M8.83,7.88a.51.51,0,0,0,.71,0l2.31-2.32,1.28,1.28A.51.51,0,0,0,14,6.49v-4a.52.52,0,0,0-.5-.5h-4A.51.51,0,0,0,9,2.52a.58.58,0,0,0,.14.33l1.28,1.28L8.12,6.46a.51.51,0,0,0,0,.71Z", transform: "translate(-2 -1.99)" }))));
+        React__default["default"].createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg" },
+            React__default["default"].createElement("path", { d: "M13.5,9H13a.5.5,0,0,0-.5.5v3h-9v-9h3A.5.5,0,0,0,7,3V2.5A.5.5,0,0,0,6.5,2h-4a.5.5,0,0,0-.5.5v11a.5.5,0,0,0,.5.5h11a.5.5,0,0,0,.5-.5v-4A.5.5,0,0,0,13.5,9Z", transform: "translate(-2 -1.99)" }),
+            React__default["default"].createElement("path", { d: "M8.83,7.88a.51.51,0,0,0,.71,0l2.31-2.32,1.28,1.28A.51.51,0,0,0,14,6.49v-4a.52.52,0,0,0-.5-.5h-4A.51.51,0,0,0,9,2.52a.58.58,0,0,0,.14.33l1.28,1.28L8.12,6.46a.51.51,0,0,0,0,.71Z", transform: "translate(-2 -1.99)" }))));
 }
 
 /**
  * This is a Standard Panel with an error status, with a prepared message.
  */
 function ONSErrorPanel() {
-    return (React__default['default'].createElement("div", { className: "ons-panel ons-panel--error ons-panel--no-title" },
-        React__default['default'].createElement("div", { className: "ons-panel__body" },
-            React__default['default'].createElement("p", null, "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."))));
+    return (React__default["default"].createElement("div", { className: "ons-panel ons-panel--error ons-panel--no-title" },
+        React__default["default"].createElement("div", { className: "ons-panel__body" },
+            React__default["default"].createElement("p", null, "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."))));
 }
 
 var ONSButton = function (props) {
@@ -163,50 +163,50 @@ var ONSButton = function (props) {
         props.small ? "ons-btn--small" : null,
         props.disabled ? "ons-btn--disabled" : null,
     ].filter(function (name) { return name !== null; }).join(" ");
-    return (React__default['default'].createElement("button", { id: props.id, style: spacing(), type: props.submit ? "submit" : "button", disabled: props.loading || props.disabled, className: className, onClick: props.onClick, "data-testid": testId() },
-        React__default['default'].createElement("span", { className: "ons-btn__inner" },
+    return (React__default["default"].createElement("button", { id: props.id, style: spacing(), type: props.submit ? "submit" : "button", disabled: props.loading || props.disabled, className: className, onClick: props.onClick, "data-testid": testId() },
+        React__default["default"].createElement("span", { className: "ons-btn__inner" },
             props.label,
             props.loading
-                && (React__default['default'].createElement("svg", { className: "ons-svg-icon uil-default", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
-                    React__default['default'].createElement("rect", { x: "0", y: "0", width: "100", height: "100", fill: "none", className: "bk" }),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(0 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(30 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.08333333333333333s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(60 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.16666666666666666s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(90 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.25s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(120 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.3333333333333333s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(150 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.4166666666666667s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(180 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.5s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(210 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.5833333333333334s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(240 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.6666666666666666s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(270 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.75s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(300 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.8333333333333334s", repeatCount: "indefinite" })),
-                    React__default['default'].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(330 50 50) translate(0 -30)" },
-                        React__default['default'].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.9166666666666666s", repeatCount: "indefinite" })))))));
+                && (React__default["default"].createElement("svg", { className: "ons-svg-icon uil-default", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
+                    React__default["default"].createElement("rect", { x: "0", y: "0", width: "100", height: "100", fill: "none", className: "bk" }),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(0 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(30 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.08333333333333333s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(60 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.16666666666666666s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(90 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.25s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(120 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.3333333333333333s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(150 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.4166666666666667s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(180 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.5s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(210 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.5833333333333334s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(240 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.6666666666666666s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(270 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.75s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(300 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.8333333333333334s", repeatCount: "indefinite" })),
+                    React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(330 50 50) translate(0 -30)" },
+                        React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0.9166666666666666s", repeatCount: "indefinite" })))))));
 };
 
 var ONSPanel = function (props) {
     var className = "ons-panel ons-panel--".concat(props.status ? props.status : "info", " ons-panel--no-title ").concat(props.spacious ? "ons-panel--spacious" : "", " ons-u-mt-m");
-    return (React__default['default'].createElement("div", { "data-testid": props.testID, id: props.id, className: className, hidden: props.hidden },
+    return (React__default["default"].createElement("div", { "data-testid": props.testID, id: props.id, className: className, hidden: props.hidden },
         props.status === "success"
-            && (React__default['default'].createElement("span", { className: "ons-panel__icon" },
-                React__default['default'].createElement("svg", { className: "ons-svg-icon ".concat(props.bigIcon === true ? "ons-svg-icon--xl" : ""), viewBox: "0 0 13 10", xmlns: "http://www.w3.org/2000/svg" },
-                    React__default['default'].createElement("path", { d: "M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z", transform: "translate(-1.51 -3.04)" })))),
+            && (React__default["default"].createElement("span", { className: "ons-panel__icon" },
+                React__default["default"].createElement("svg", { className: "ons-svg-icon ".concat(props.bigIcon === true ? "ons-svg-icon--xl" : ""), viewBox: "0 0 13 10", xmlns: "http://www.w3.org/2000/svg" },
+                    React__default["default"].createElement("path", { d: "M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z", transform: "translate(-1.51 -3.04)" })))),
         props.status === "warn"
-            && (React__default['default'].createElement(React__default['default'].Fragment, null,
-                React__default['default'].createElement("span", { className: "ons-panel__icon", "aria-hidden": "true" }, "!"),
-                React__default['default'].createElement("span", { className: "ons-u-vh" }, "Warning: "))),
-        React__default['default'].createElement("div", { className: "ons-panel__body ".concat(props.bigIcon === true ? "ons-svg-icon-margin--xl" : "") }, props.children)));
+            && (React__default["default"].createElement(React__default["default"].Fragment, null,
+                React__default["default"].createElement("span", { className: "ons-panel__icon", "aria-hidden": "true" }, "!"),
+                React__default["default"].createElement("span", { className: "ons-u-vh" }, "Warning: "))),
+        React__default["default"].createElement("div", { className: "ons-panel__body ".concat(props.bigIcon === true ? "ons-svg-icon-margin--xl" : "") }, props.children)));
 };
 
 /*! *****************************************************************************
@@ -296,12 +296,12 @@ var ONSPasswordInput = /** @class */ (function (_super) {
     }
     ONSPasswordInput.prototype.render = function () {
         var _this = this;
-        return (React__default['default'].createElement("p", { className: "ons-field" },
-            React__default['default'].createElement("label", { className: "ons-label", htmlFor: this.props.inputId || "password" }, this.props.label),
-            React__default['default'].createElement("span", { className: "ons-checkbox ons-checkbox--toggle", style: this.spacing() },
-                React__default['default'].createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "ons-checkbox__input", name: "show-password", onClick: this.togglePassword }),
-                React__default['default'].createElement("label", { id: "password-toggle-label", className: "ons-checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
-            React__default['default'].createElement("input", { type: this.state.password ? "password" : "text", id: this.props.inputId || "password", className: "ons-input ons-input--text ons-input-type__input ons-u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
+        return (React__default["default"].createElement("p", { className: "ons-field" },
+            React__default["default"].createElement("label", { className: "ons-label", htmlFor: this.props.inputId || "password" }, this.props.label),
+            React__default["default"].createElement("span", { className: "ons-checkbox ons-checkbox--toggle", style: this.spacing() },
+                React__default["default"].createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "ons-checkbox__input", name: "show-password", onClick: this.togglePassword }),
+                React__default["default"].createElement("label", { id: "password-toggle-label", className: "ons-checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
+            React__default["default"].createElement("input", { type: this.state.password ? "password" : "text", id: this.props.inputId || "password", className: "ons-input ons-input--text ons-input-type__input ons-u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
     };
     return ONSPasswordInput;
 }(React.Component));
@@ -328,14 +328,14 @@ var ONSSelect = /** @class */ (function (_super) {
     };
     ONSSelect.prototype.render = function () {
         var _this = this;
-        return (React__default['default'].createElement("div", null,
+        return (React__default["default"].createElement("div", null,
             this.props.label !== undefined
-                && (React__default['default'].createElement("label", { className: "ons-label", htmlFor: this.props.id },
+                && (React__default["default"].createElement("label", { className: "ons-label", htmlFor: this.props.id },
                     this.props.label,
                     " ")),
-            React__default['default'].createElement("select", { id: this.props.id, name: "select", defaultValue: this.defaultValue(), className: "ons-input ", onChange: function (e) { return _this.handleChange(e); }, "data-testid": this.props.testId },
-                React__default['default'].createElement("option", { value: "", disabled: true, "data-testid": "select-".concat(this.props.id) }, "Select an option"),
-                this.props.options.map(function (option, index) { return (React__default['default'].createElement("option", { value: option.value, key: index, id: option.id, "data-testid": "option-".concat(_this.props.id, "-").concat(option.value) }, option.label)); }))));
+            React__default["default"].createElement("select", { id: this.props.id, name: "select", defaultValue: this.defaultValue(), className: "ons-input ", onChange: function (e) { return _this.handleChange(e); }, "data-testid": this.props.testId },
+                React__default["default"].createElement("option", { value: "", disabled: true, "data-testid": "select-".concat(this.props.id) }, "Select an option"),
+                this.props.options.map(function (option, index) { return (React__default["default"].createElement("option", { value: option.value, key: index, id: option.id, "data-testid": "option-".concat(_this.props.id, "-").concat(option.value) }, option.label)); }))));
     };
     return ONSSelect;
 }(React.Component));
@@ -352,10 +352,10 @@ var ONSTextInput = /** @class */ (function (_super) {
     }
     ONSTextInput.prototype.render = function () {
         var _this = this;
-        return (React__default['default'].createElement("p", { className: "ons-field" },
+        return (React__default["default"].createElement("p", { className: "ons-field" },
             this.props.label !== undefined
-                && React__default['default'].createElement("label", { className: "ons-label", htmlFor: this.props.id }, this.props.label),
-            React__default['default'].createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.props.password === true ? "password" : "text", id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": "text-input" })));
+                && React__default["default"].createElement("label", { className: "ons-label", htmlFor: this.props.id }, this.props.label),
+            React__default["default"].createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.props.password === true ? "password" : "text", id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": "text-input" })));
     };
     return ONSTextInput;
 }(React.Component));
@@ -373,13 +373,13 @@ var ONSUpload = /** @class */ (function (_super) {
     }
     ONSUpload.prototype.render = function () {
         var _this = this;
-        return (React__default['default'].createElement("div", { className: "ons-field" },
-            React__default['default'].createElement("p", { className: "ons-field" },
-                React__default['default'].createElement("label", { className: "ons-label", htmlFor: this.props.fileID },
+        return (React__default["default"].createElement("div", { className: "ons-field" },
+            React__default["default"].createElement("p", { className: "ons-field" },
+                React__default["default"].createElement("label", { className: "ons-label", htmlFor: this.props.fileID },
                     this.props.label,
-                    React__default['default'].createElement("br", null),
-                    React__default['default'].createElement("span", { className: "ons-label__description" }, this.props.description)),
-                React__default['default'].createElement("input", { style: { position: "static" }, type: "file", id: this.props.fileID, className: "ons-input ons-input--text ons-input-type__input ons-input--upload", name: this.props.fileName, accept: this.props.accept, onChange: function (e) { return _this.handleChange(e); }, disabled: (this.props.disabled) }))));
+                    React__default["default"].createElement("br", null),
+                    React__default["default"].createElement("span", { className: "ons-label__description" }, this.props.description)),
+                React__default["default"].createElement("input", { style: { position: "static" }, type: "file", id: this.props.fileID, className: "ons-input ons-input--text ons-input-type__input ons-input--upload", name: this.props.fileName, accept: this.props.accept, onChange: function (e) { return _this.handleChange(e); }, disabled: (this.props.disabled) }))));
     };
     return ONSUpload;
 }(React.Component));
@@ -396,15 +396,15 @@ function StyledFormErrorSummary() {
     React.useEffect(function () {
         errorFocus === null || errorFocus === void 0 ? void 0 : errorFocus.focus();
     }, [errors, isValid]);
-    return (React__default['default'].createElement(React__default['default'].Fragment, null, !isValid
-        && (React__default['default'].createElement("div", { "aria-labelledby": "error-summary-title", role: "alert", tabIndex: -1, ref: function (inputEl) { return (errorFocus = inputEl); }, className: "ons-panel ons-panel--error" },
-            React__default['default'].createElement("div", { className: "ons-panel__header" },
-                React__default['default'].createElement("h2", { id: "error-summary-title", "data-qa": "error-header", className: "ons-panel__title ons-u-fs-r--b" }, (Object.keys(errors).length === 1
+    return (React__default["default"].createElement(React__default["default"].Fragment, null, !isValid
+        && (React__default["default"].createElement("div", { "aria-labelledby": "error-summary-title", role: "alert", tabIndex: -1, ref: function (inputEl) { return (errorFocus = inputEl); }, className: "ons-panel ons-panel--error" },
+            React__default["default"].createElement("div", { className: "ons-panel__header" },
+                React__default["default"].createElement("h2", { id: "error-summary-title", "data-qa": "error-header", className: "ons-panel__title ons-u-fs-r--b" }, (Object.keys(errors).length === 1
                     ? "There is 1 problem with your answer"
                     : "There are ".concat(Object.keys(errors).length, " problems with your answer")))),
-            React__default['default'].createElement("div", { className: "ons-panel__body" },
-                React__default['default'].createElement("ol", { className: "ons-list" }, Object.keys(errors).map(function (field, index) { return (React__default['default'].createElement("li", { key: index, className: "ons-list__item " },
-                    React__default['default'].createElement("a", { href: "#".concat(field), className: "ons-list__link ons-js-inpagelink" }, 
+            React__default["default"].createElement("div", { className: "ons-panel__body" },
+                React__default["default"].createElement("ol", { className: "ons-list" }, Object.keys(errors).map(function (field, index) { return (React__default["default"].createElement("li", { key: index, className: "ons-list__item " },
+                    React__default["default"].createElement("a", { href: "#".concat(field), className: "ons-list__link ons-js-inpagelink" }, 
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     errors[field]))); })))))));
@@ -426,21 +426,21 @@ function toUpperCase(string) {
 }
 function RadioFieldset(_a) {
     var description = _a.description, name = _a.name, radioOptions = _a.radioOptions, props = __rest(_a, ["description", "name", "radioOptions"]);
-    return (React__default['default'].createElement("fieldset", { className: "ons-fieldset" },
-        React__default['default'].createElement("legend", { className: "ons-fieldset__legend" }, description),
-        React__default['default'].createElement("div", { className: "ons-radios__items", id: name }, (radioOptions && radioOptions.length > 0
-            && radioOptions.map(function (radioOption, radioOptionIndex) { return (React__default['default'].createElement(React.Fragment, { key: radioOption.id },
-                React__default['default'].createElement("p", { className: "ons-radios__item" },
-                    React__default['default'].createElement("span", { className: "ons-radio" },
-                        React__default['default'].createElement(formik.Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "ons-radio__input js-radio" }, props, { autoFocus: props.autoFocus && radioOptionIndex === 0 })),
-                        React__default['default'].createElement("label", { className: "ons-radio__label ".concat(radioOption.description !== undefined ? "ons-label--with-description" : ""), htmlFor: radioOption.id, id: "".concat(radioOption.id, "-label") },
+    return (React__default["default"].createElement("fieldset", { className: "ons-fieldset" },
+        React__default["default"].createElement("legend", { className: "ons-fieldset__legend" }, description),
+        React__default["default"].createElement("div", { className: "ons-radios__items", id: name }, (radioOptions && radioOptions.length > 0
+            && radioOptions.map(function (radioOption, radioOptionIndex) { return (React__default["default"].createElement(React.Fragment, { key: radioOption.id },
+                React__default["default"].createElement("p", { className: "ons-radios__item" },
+                    React__default["default"].createElement("span", { className: "ons-radio" },
+                        React__default["default"].createElement(formik.Field, __assign({ type: "radio", id: radioOption.id, name: name, value: radioOption.value, className: "ons-radio__input js-radio" }, props, { autoFocus: props.autoFocus && radioOptionIndex === 0 })),
+                        React__default["default"].createElement("label", { className: "ons-radio__label ".concat(radioOption.description !== undefined ? "ons-label--with-description" : ""), htmlFor: radioOption.id, id: "".concat(radioOption.id, "-label") },
                             radioOption.label,
                             radioOption.description !== undefined
-                                && (React__default['default'].createElement("span", { id: "white-label-description-hint", className: "ons-label__description ons-radio__label--with-description" }, radioOption.description))),
-                        radioOption.specifyOption && (React__default['default'].createElement("span", { className: "ons-radio__other ons-radio__other--open", id: "other-radio-other-wrap" },
-                            React__default['default'].createElement("label", { className: "ons-label ons-u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
-                            React__default['default'].createElement(formik.Field, { type: radioOption.specifyOption.type, id: radioOption.specifyOption.id, name: radioOption.specifyOption.name, validate: radioOption.specifyOption.validate, min: radioOption.specifyOption.min, className: "ons-input ons-input--text ons-input-type__input ons-input--w-auto" }))))),
-                React__default['default'].createElement("br", null))); })))));
+                                && (React__default["default"].createElement("span", { id: "white-label-description-hint", className: "ons-label__description ons-radio__label--with-description" }, radioOption.description))),
+                        radioOption.specifyOption && (React__default["default"].createElement("span", { className: "ons-radio__other ons-radio__other--open", id: "other-radio-other-wrap" },
+                            React__default["default"].createElement("label", { className: "ons-label ons-u-fs-s--b ", htmlFor: radioOption.specifyOption.id, id: "other-textbox-label" }, radioOption.specifyOption.description),
+                            React__default["default"].createElement(formik.Field, { type: radioOption.specifyOption.type, id: radioOption.specifyOption.id, name: radioOption.specifyOption.name, validate: radioOption.specifyOption.validate, min: radioOption.specifyOption.min, className: "ons-input ons-input--text ons-input-type__input ons-input--w-auto" }))))),
+                React__default["default"].createElement("br", null))); })))));
 }
 function CheckboxesFieldset(_a) {
     var description = _a.description, checkboxOptions = _a.checkboxOptions, name = _a.name, props = __rest(_a, ["description", "checkboxOptions", "name"]);
@@ -466,39 +466,39 @@ function CheckboxesFieldset(_a) {
             setFieldValue(name, allValues);
         }
     }
-    return (React__default['default'].createElement("fieldset", { className: "ons-fieldset" },
-        React__default['default'].createElement("legend", { className: "ons-fieldset__legend" }, description),
-        React__default['default'].createElement("button", { type: "button", className: "ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary", onClick: handleSelectAll },
-            React__default['default'].createElement("span", { className: "ons-btn__inner" },
-                React__default['default'].createElement("span", { className: "js-button-text" }, isAllSelected() ? "Unselect All" : "Select All"),
-                React__default['default'].createElement("span", { className: "ons-u-vh" }, " following checkboxes"))),
-        React__default['default'].createElement("div", { className: "checkboxes__items", id: name }, (checkboxOptions && checkboxOptions.length > 0
-            && checkboxOptions.map(function (checkboxOption, checkboxIndex) { return (React__default['default'].createElement(React.Fragment, { key: checkboxOption.id },
-                React__default['default'].createElement("p", { className: "ons-checkboxes__item" },
-                    React__default['default'].createElement("span", { className: "ons-checkbox" },
-                        React__default['default'].createElement(formik.Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "ons-checkbox__input js-checkbox" }, props, { autoFocus: props.autoFocus && checkboxIndex === 0 })),
-                        React__default['default'].createElement("label", { className: "ons-checkbox__label ".concat(checkboxOption.description !== undefined ? "ons-label--with-description" : ""), htmlFor: checkboxOption.id, id: "".concat(checkboxOption.id, "-label") },
+    return (React__default["default"].createElement("fieldset", { className: "ons-fieldset" },
+        React__default["default"].createElement("legend", { className: "ons-fieldset__legend" }, description),
+        React__default["default"].createElement("button", { type: "button", className: "ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary", onClick: handleSelectAll },
+            React__default["default"].createElement("span", { className: "ons-btn__inner" },
+                React__default["default"].createElement("span", { className: "js-button-text" }, isAllSelected() ? "Unselect All" : "Select All"),
+                React__default["default"].createElement("span", { className: "ons-u-vh" }, " following checkboxes"))),
+        React__default["default"].createElement("div", { className: "checkboxes__items", id: name }, (checkboxOptions && checkboxOptions.length > 0
+            && checkboxOptions.map(function (checkboxOption, checkboxIndex) { return (React__default["default"].createElement(React.Fragment, { key: checkboxOption.id },
+                React__default["default"].createElement("p", { className: "ons-checkboxes__item" },
+                    React__default["default"].createElement("span", { className: "ons-checkbox" },
+                        React__default["default"].createElement(formik.Field, __assign({ type: "checkbox", id: checkboxOption.id, name: name, value: checkboxOption.value, className: "ons-checkbox__input js-checkbox" }, props, { autoFocus: props.autoFocus && checkboxIndex === 0 })),
+                        React__default["default"].createElement("label", { className: "ons-checkbox__label ".concat(checkboxOption.description !== undefined ? "ons-label--with-description" : ""), htmlFor: checkboxOption.id, id: "".concat(checkboxOption.id, "-label") },
                             checkboxOption.label,
                             checkboxOption.description !== undefined
-                                && (React__default['default'].createElement("span", { id: "white-label-description-hint", className: "ons-label__description checkbox__label--with-description" }, checkboxOption.description))))),
-                React__default['default'].createElement("br", null))); })))));
+                                && (React__default["default"].createElement("span", { id: "white-label-description-hint", className: "ons-label__description checkbox__label--with-description" }, checkboxOption.description))))),
+                React__default["default"].createElement("br", null))); })))));
 }
 function ONSInputField(_a) {
     var field = _a.field, description = _a.description, props = __rest(_a, ["field", "description"]);
     var id = (props.id ? props.id : field.name);
-    return (React__default['default'].createElement("div", { className: "ons-field" },
-        React__default['default'].createElement("label", { className: "ons-label ".concat((description ? "ons-label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
+    return (React__default["default"].createElement("div", { className: "ons-field" },
+        React__default["default"].createElement("label", { className: "ons-label ".concat((description ? "ons-label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
         description
-            && (React__default['default'].createElement("span", { id: "description-hint", className: "ons-label__description ons-input--with-description" }, description)),
-        React__default['default'].createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input" }, field, props))));
+            && (React__default["default"].createElement("span", { id: "description-hint", className: "ons-label__description ons-input--with-description" }, description)),
+        React__default["default"].createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input" }, field, props))));
 }
 
 function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
-    return (React__default['default'].createElement("div", { className: "ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s", id: "".concat(fieldName, "-error") },
-        React__default['default'].createElement("span", { className: "ons-u-vh" }, "Error: "),
-        React__default['default'].createElement("div", { className: "ons-panel__body" },
-            React__default['default'].createElement("p", { className: "ons-panel__error" },
-                React__default['default'].createElement("strong", null, fieldError)),
+    return (React__default["default"].createElement("div", { className: "ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s", id: "".concat(fieldName, "-error") },
+        React__default["default"].createElement("span", { className: "ons-u-vh" }, "Error: "),
+        React__default["default"].createElement("div", { className: "ons-panel__body" },
+            React__default["default"].createElement("p", { className: "ons-panel__error" },
+                React__default["default"].createElement("strong", null, fieldError)),
             field)));
 }
 var StyledFormField = function (_a) {
@@ -506,15 +506,15 @@ var StyledFormField = function (_a) {
     var errors = formik.useFormikContext().errors;
     var newField;
     if (props.type === "radio") {
-        newField = (React__default['default'].createElement(RadioFieldset, __assign({ description: description, name: name, radioOptions: radioOptions }, props)));
+        newField = (React__default["default"].createElement(RadioFieldset, __assign({ description: description, name: name, radioOptions: radioOptions }, props)));
     }
     else if (props.type === "checkbox") {
-        newField = (React__default['default'].createElement(CheckboxesFieldset, __assign({ description: description, name: name, checkboxOptions: checkboxOptions }, props)));
+        newField = (React__default["default"].createElement(CheckboxesFieldset, __assign({ description: description, name: name, checkboxOptions: checkboxOptions }, props)));
     }
     else {
-        newField = React__default['default'].createElement(formik.Field, __assign({ name: name, description: description }, props, { component: ONSInputField }));
+        newField = React__default["default"].createElement(formik.Field, __assign({ name: name, description: description }, props, { component: ONSInputField }));
     }
-    return (React__default['default'].createElement(React.Fragment, { key: name }, errors[name]
+    return (React__default["default"].createElement(React.Fragment, { key: name }, errors[name]
         ? StyledFormFieldErrorWrapper(errors[name], "name", newField)
         : newField));
 };
@@ -534,21 +534,21 @@ function StyledForm(_a) {
         var name = _a.name, initial_value = _a.initial_value;
         initialFieldValues[name] = initial_value;
     });
-    return (React__default['default'].createElement(formik.Formik, { validateOnBlur: false, validateOnChange: false, initialValues: initialFieldValues, onSubmit: function (values, _a) {
+    return (React__default["default"].createElement(formik.Formik, { validateOnBlur: false, validateOnChange: false, initialValues: initialFieldValues, onSubmit: function (values, _a) {
             var setSubmitting = _a.setSubmitting;
             onSubmitFunction(values, setSubmitting);
         } }, function (_a) {
         var isValid = _a.isValid, isSubmitting = _a.isSubmitting;
-        return (React__default['default'].createElement(formik.Form, { placeholder: undefined },
-            React__default['default'].createElement(StyledFormErrorSummary, null),
+        return (React__default["default"].createElement(formik.Form, { placeholder: undefined },
+            React__default["default"].createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
                 // eslint-disable-next-line no-param-reassign
                 field.autoFocus = (isValid && index === 0);
-                return (React__default['default'].createElement(React.Fragment, { key: field.name }, // @ts-ignore
-                React__default['default'].createElement(StyledFormField, __assign({}, field))));
+                return (React__default["default"].createElement(React.Fragment, { key: field.name }, // @ts-ignore
+                React__default["default"].createElement(StyledFormField, __assign({}, field))));
             }),
-            React__default['default'].createElement("br", null),
-            React__default['default'].createElement(ONSButton, { submit: true, label: (submitLabel || "Save and continue"), primary: true, testid: "submit", loading: isSubmitting })));
+            React__default["default"].createElement("br", null),
+            React__default["default"].createElement(ONSButton, { submit: true, label: (submitLabel || "Save and continue"), primary: true, testid: "submit", loading: isSubmitting })));
     }));
 }
 
@@ -912,18 +912,18 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret$1 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1 = ReactPropTypesSecret;
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
 
-var printWarning = function() {};
+var printWarning$1 = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+  var ReactPropTypesSecret = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
-  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+  var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
 
-  printWarning = function(text) {
+  printWarning$1 = function(text) {
     var message = 'Warning: ' + text;
     if (typeof console !== 'undefined') {
       console.error(message);
@@ -951,7 +951,7 @@ if (process.env.NODE_ENV !== 'production') {
 function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
   if (process.env.NODE_ENV !== 'production') {
     for (var typeSpecName in typeSpecs) {
-      if (has(typeSpecs, typeSpecName)) {
+      if (has$1(typeSpecs, typeSpecName)) {
         var error;
         // Prop type validation may throw. In case they do, we don't want to
         // fail the render phase where it didn't fail before. So we log it.
@@ -967,12 +967,12 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
             err.name = 'Invariant Violation';
             throw err;
           }
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
         } catch (ex) {
           error = ex;
         }
         if (error && !(error instanceof Error)) {
-          printWarning(
+          printWarning$1(
             (componentName || 'React class') + ': type specification of ' +
             location + ' `' + typeSpecName + '` is invalid; the type checker ' +
             'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
@@ -988,7 +988,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
           var stack = getStack ? getStack() : '';
 
-          printWarning(
+          printWarning$1(
             'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
           );
         }
@@ -1010,11 +1010,11 @@ checkPropTypes.resetWarningCache = function() {
 
 var checkPropTypes_1 = checkPropTypes;
 
-var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
-var printWarning$1 = function() {};
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  printWarning$1 = function(text) {
+  printWarning = function(text) {
     var message = 'Warning: ' + text;
     if (typeof console !== 'undefined') {
       console.error(message);
@@ -1190,7 +1190,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
             // Avoid spamming the console because they are often not actionable except for lib authors
             manualPropTypeWarningCount < 3
           ) {
-            printWarning$1(
+            printWarning(
               'You are manually calling a React.PropTypes validation ' +
               'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
               'and will throw in the standalone `prop-types` package. ' +
@@ -1303,12 +1303,12 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
     if (!Array.isArray(expectedValues)) {
       if (process.env.NODE_ENV !== 'production') {
         if (arguments.length > 1) {
-          printWarning$1(
+          printWarning(
             'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
             'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
           );
         } else {
-          printWarning$1('Invalid argument supplied to oneOf, expected an array.');
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
         }
       }
       return emptyFunctionThatReturnsNull;
@@ -1345,7 +1345,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
       }
       for (var key in propValue) {
-        if (has$1(propValue, key)) {
+        if (has(propValue, key)) {
           var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
           if (error instanceof Error) {
             return error;
@@ -1359,14 +1359,14 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? printWarning$1('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunctionThatReturnsNull;
     }
 
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        printWarning$1(
+        printWarning(
           'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
           'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
         );
@@ -1668,7 +1668,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Circles = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -1728,7 +1728,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Watch = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -1819,7 +1819,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Audio = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -1910,7 +1910,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.BallTriangle = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2020,7 +2020,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Bars = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2160,7 +2160,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.CradleLoader = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2205,7 +2205,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Grid = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2347,7 +2347,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Hearts = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2415,7 +2415,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MutatingDots = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2515,7 +2515,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Oval = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2579,7 +2579,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Plane = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2638,7 +2638,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Puff = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2730,7 +2730,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RevolvingDot = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2799,7 +2799,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Rings = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -2911,7 +2911,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TailSpin = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -3000,7 +3000,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ThreeDots = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -3113,7 +3113,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Triangle = void 0;
 
-var _react = _interopRequireDefault(React__default['default']);
+var _react = _interopRequireDefault(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -3229,7 +3229,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = Loader;
 
-var _react = _interopRequireWildcard(React__default['default']);
+var _react = _interopRequireWildcard(React__default["default"]);
 
 var _propTypes = _interopRequireDefault(propTypes);
 
@@ -3328,23 +3328,23 @@ var Loader = unwrapExports(dist);
  */
 var ONSLoadingPanel = function (_a) {
     var hidden = _a.hidden, message = _a.message;
-    return (React__default['default'].createElement(ONSPanel, { hidden: hidden },
-        React__default['default'].createElement("div", { style: { textAlign: "center" } },
-            React__default['default'].createElement(Loader, { type: "TailSpin", color: "#064868", height: 30, width: 30 }),
+    return (React__default["default"].createElement(ONSPanel, { hidden: hidden },
+        React__default["default"].createElement("div", { style: { textAlign: "center" } },
+            React__default["default"].createElement(Loader, { type: "TailSpin", color: "#064868", height: 30, width: 30 }),
             message || "Loading")));
 };
 
 function Collapsible(_a) {
     var children = _a.children, title = _a.title;
     var _b = React.useState(false), panelOpen = _b[0], setPanelOpen = _b[1];
-    return (React__default['default'].createElement("details", { id: "collapsible-with-save", className: "ons-collapsible ons-js-collapsible ons-u-mt-l", "data-save-state": "true", role: "group" },
-        React__default['default'].createElement("summary", { className: "ons-collapsible__heading ons-js-collapsible-heading", role: "link", "data-testid": "collapsible-heading", onClick: function () { return setPanelOpen(!panelOpen); }, onKeyPress: function () { return setPanelOpen(!panelOpen); }, tabIndex: 0, "aria-expanded": panelOpen ? "true" : "false", "aria-controls": "collapsible-with-save", "data-ga-action": "".concat(panelOpen ? "Close" : "Open", " panel") },
-            React__default['default'].createElement("div", { className: "ons-collapsible__controls" },
-                React__default['default'].createElement("h2", { className: "ons-collapsible__title" }, title),
-                React__default['default'].createElement("span", { className: "ons-collapsible__icon" },
-                    React__default['default'].createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
-                        React__default['default'].createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
-        React__default['default'].createElement("div", { id: "collapsible-with-save-content", className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": !panelOpen, "data-testid": "collapsible-content" }, children)));
+    return (React__default["default"].createElement("details", { id: "collapsible-with-save", className: "ons-collapsible ons-js-collapsible ons-u-mt-l", "data-save-state": "true", role: "group" },
+        React__default["default"].createElement("summary", { className: "ons-collapsible__heading ons-js-collapsible-heading", role: "link", "data-testid": "collapsible-heading", onClick: function () { return setPanelOpen(!panelOpen); }, onKeyPress: function () { return setPanelOpen(!panelOpen); }, tabIndex: 0, "aria-expanded": panelOpen ? "true" : "false", "aria-controls": "collapsible-with-save", "data-ga-action": "".concat(panelOpen ? "Close" : "Open", " panel") },
+            React__default["default"].createElement("div", { className: "ons-collapsible__controls" },
+                React__default["default"].createElement("h2", { className: "ons-collapsible__title" }, title),
+                React__default["default"].createElement("span", { className: "ons-collapsible__icon" },
+                    React__default["default"].createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
+                        React__default["default"].createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
+        React__default["default"].createElement("div", { id: "collapsible-with-save-content", className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": !panelOpen, "data-testid": "collapsible-content" }, children)));
 }
 
 /**
@@ -3369,13 +3369,13 @@ var ErrorBoundary = /** @class */ (function (_super) {
     };
     ErrorBoundary.prototype.render = function () {
         if (this.state.errorInfo.componentStack !== "Fine") {
-            return (React__default['default'].createElement(ONSPanel, { status: "error" },
-                React__default['default'].createElement("p", null, this.props.errorMessageText)));
+            return (React__default["default"].createElement(ONSPanel, { status: "error" },
+                React__default["default"].createElement("p", null, this.props.errorMessageText)));
         }
-        return React__default['default'].createElement(React__default['default'].Fragment, null, this.props.children);
+        return React__default["default"].createElement(React__default["default"].Fragment, null, this.props.children);
     };
     return ErrorBoundary;
-}(React__default['default'].Component));
+}(React__default["default"].Component));
 
 /**
  * If an issue occurs in the render function of a React component, if not handled then the UI will fall over.
@@ -3398,27 +3398,27 @@ var DefaultErrorBoundary = /** @class */ (function (_super) {
     };
     DefaultErrorBoundary.prototype.render = function () {
         if (this.state.errorInfo.componentStack !== "Fine") {
-            return (React__default['default'].createElement(React__default['default'].Fragment, null,
-                React__default['default'].createElement("h1", null, "Sorry, there is a problem with the service"),
-                React__default['default'].createElement("p", null, "Try again later."),
-                React__default['default'].createElement("p", null, "If you have started a survey, your answers have been saved."),
-                React__default['default'].createElement("p", null,
-                    React__default['default'].createElement("a", { href: "https://ons.service-now.com/" }, "Contact us"),
+            return (React__default["default"].createElement(React__default["default"].Fragment, null,
+                React__default["default"].createElement("h1", null, "Sorry, there is a problem with the service"),
+                React__default["default"].createElement("p", null, "Try again later."),
+                React__default["default"].createElement("p", null, "If you have started a survey, your answers have been saved."),
+                React__default["default"].createElement("p", null,
+                    React__default["default"].createElement("a", { href: "https://ons.service-now.com/" }, "Contact us"),
                     " ",
                     "if you need to speak to someone about your survey.")));
         }
-        return React__default['default'].createElement(React__default['default'].Fragment, null, this.props.children);
+        return React__default["default"].createElement(React__default["default"].Fragment, null, this.props.children);
     };
     return DefaultErrorBoundary;
-}(React__default['default'].Component));
+}(React__default["default"].Component));
 
 function ONSTable(_a) {
     var columns = _a.columns, children = _a.children, tableCaption = _a.tableCaption, tableID = _a.tableID;
-    return (React__default['default'].createElement("table", { className: "ons-table", "data-testid": tableID, id: tableID },
-        tableCaption && React__default['default'].createElement("caption", { className: "table__caption" }, tableCaption),
-        React__default['default'].createElement("thead", { className: "ons-table__head" },
-            React__default['default'].createElement("tr", { className: "ons-table__row" }, columns.map(function (title, index) { return (React__default['default'].createElement("th", { scope: "col", className: "ons-table__header", key: "".concat(title, "-").concat(index) }, title)); }))),
-        React__default['default'].createElement("tbody", { className: "ons-table__body" }, children)));
+    return (React__default["default"].createElement("table", { className: "ons-table", "data-testid": tableID, id: tableID },
+        tableCaption && React__default["default"].createElement("caption", { className: "table__caption" }, tableCaption),
+        React__default["default"].createElement("thead", { className: "ons-table__head" },
+            React__default["default"].createElement("tr", { className: "ons-table__row" }, columns.map(function (title, index) { return (React__default["default"].createElement("th", { scope: "col", className: "ons-table__header", key: "".concat(title, "-").concat(index) }, title)); }))),
+        React__default["default"].createElement("tbody", { className: "ons-table__body" }, children)));
 }
 
 function replaceUnderscoreWithSpaces(text) {
@@ -3456,25 +3456,25 @@ var GroupedSummary = /** @class */ (function () {
 }());
 function SummaryItemRow(_a) {
     var fieldName = _a.fieldName, fieldValue = _a.fieldValue;
-    return (React__default['default'].createElement("tbody", { className: "ons-summary__item" },
-        React__default['default'].createElement("tr", { className: "ons-summary__row ons-summary__row--has-values" },
-            React__default['default'].createElement("td", { className: "ons-summary__item-title" },
-                React__default['default'].createElement("div", { className: "ons-summary__item--text" }, FormatTitle(fieldName))),
-            React__default['default'].createElement("td", { className: "ons-summary__values", colSpan: 2 }, fieldValue))));
+    return (React__default["default"].createElement("tbody", { className: "ons-summary__item" },
+        React__default["default"].createElement("tr", { className: "ons-summary__row ons-summary__row--has-values" },
+            React__default["default"].createElement("td", { className: "ons-summary__item-title" },
+                React__default["default"].createElement("div", { className: "ons-summary__item--text" }, FormatTitle(fieldName))),
+            React__default["default"].createElement("td", { className: "ons-summary__values", colSpan: 2 }, fieldValue))));
 }
 function SummaryGroupTable(_a) {
     var groupedSummary = _a.groupedSummary;
     var elementList = [];
     for (var _i = 0, _b = groupedSummary.groups; _i < _b.length; _i++) {
         var group = _b[_i];
-        elementList.push(React__default['default'].createElement("h3", { key: "summary-group-heading-".concat(FormatKey(group.title)), className: "ons-summary__group-title" }, group.title));
+        elementList.push(React__default["default"].createElement("h3", { key: "summary-group-heading-".concat(FormatKey(group.title)), className: "ons-summary__group-title" }, group.title));
         var tableFieldsList = [];
         for (var field in group.records) {
-            tableFieldsList.push(React__default['default'].createElement(SummaryItemRow, { key: "summary-table-row-".concat(FormatKey(field)), fieldName: field, fieldValue: group.records[field] }));
+            tableFieldsList.push(React__default["default"].createElement(SummaryItemRow, { key: "summary-table-row-".concat(FormatKey(field)), fieldName: field, fieldValue: group.records[field] }));
         }
-        elementList.push(React__default['default'].createElement("table", { key: "summary-table-group-".concat(FormatKey(group.title)), className: "ons-summary__items" }, tableFieldsList));
+        elementList.push(React__default["default"].createElement("table", { key: "summary-table-group-".concat(FormatKey(group.title)), className: "ons-summary__items" }, tableFieldsList));
     }
-    return (React__default['default'].createElement(React__default['default'].Fragment, null, elementList));
+    return (React__default["default"].createElement(React__default["default"].Fragment, null, elementList));
 }
 
 function Expandable(_a) {
@@ -3488,14 +3488,14 @@ function Expandable(_a) {
     function panelIsOpen() {
         return panelsOpen[expandableIndex];
     }
-    return (React__default['default'].createElement("details", { id: "".concat(contentId, "-accordion-").concat(expandableIndex), className: "ons-collapsible ons-js-collapsible ons-collapsible--accordion ", "data-btn-close": "Hide", "data-group": "accordion", open: panelIsOpen() },
-        React__default['default'].createElement("summary", { className: "ons-collapsible__heading ons-js-collapsible-heading", role: "link", "data-testid": "".concat(contentId, "-accordion-").concat(expandableIndex, "-heading"), onClick: togglePanel, onKeyPress: togglePanel, "aria-expanded": panelIsOpen() ? "true" : "false", "aria-controls": "".concat(contentId, "-accordion-").concat(expandableIndex), "data-ga-action": panelIsOpen() ? "Close panel" : "Open panel", tabIndex: 0 },
-            React__default['default'].createElement("div", { className: "ons-collapsible__controls" },
-                React__default['default'].createElement("h2", { className: "ons-collapsible__title" }, title),
-                React__default['default'].createElement("span", { className: "ons-collapsible__icon" },
-                    React__default['default'].createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
-                        React__default['default'].createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
-        React__default['default'].createElement("div", { id: "".concat(contentId, "-accordion-").concat(expandableIndex, "-content"), "data-testid": "".concat(contentId, "-accordion-").concat(expandableIndex, "-content"), className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": (panelIsOpen() ? "false" : "true") }, content)));
+    return (React__default["default"].createElement("details", { id: "".concat(contentId, "-accordion-").concat(expandableIndex), className: "ons-collapsible ons-js-collapsible ons-collapsible--accordion ", "data-btn-close": "Hide", "data-group": "accordion", open: panelIsOpen() },
+        React__default["default"].createElement("summary", { className: "ons-collapsible__heading ons-js-collapsible-heading", role: "link", "data-testid": "".concat(contentId, "-accordion-").concat(expandableIndex, "-heading"), onClick: togglePanel, onKeyPress: togglePanel, "aria-expanded": panelIsOpen() ? "true" : "false", "aria-controls": "".concat(contentId, "-accordion-").concat(expandableIndex), "data-ga-action": panelIsOpen() ? "Close panel" : "Open panel", tabIndex: 0 },
+            React__default["default"].createElement("div", { className: "ons-collapsible__controls" },
+                React__default["default"].createElement("h2", { className: "ons-collapsible__title" }, title),
+                React__default["default"].createElement("span", { className: "ons-collapsible__icon" },
+                    React__default["default"].createElement("svg", { className: "ons-svg-icon", viewBox: "0 0 7.5 12.85", xmlns: "http://www.w3.org/2000/svg", focusable: "false" },
+                        React__default["default"].createElement("path", { d: "M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z", transform: "translate(-5.02 -1.59)" }))))),
+        React__default["default"].createElement("div", { id: "".concat(contentId, "-accordion-").concat(expandableIndex, "-content"), "data-testid": "".concat(contentId, "-accordion-").concat(expandableIndex, "-content"), className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": (panelIsOpen() ? "false" : "true") }, content)));
 }
 function ShowAll(_a) {
     var showAllEnabled = _a.showAllEnabled, panelsOpen = _a.panelsOpen, setPanelsOpen = _a.setPanelsOpen, contentId = _a.contentId;
@@ -3509,19 +3509,19 @@ function ShowAll(_a) {
         }
     }, [panelsOpen, setShowing]);
     if (showAllEnabled) {
-        return (React__default['default'].createElement("button", { "data-testid": "".concat(contentId, "-accordion-show-all"), type: "button", className: "ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small", "data-close-all": "Hide all", "data-group": "accordion", onClick: function () { return setPanelsOpen(new Array(panelsOpen.length).fill(!showing)); } },
-            React__default['default'].createElement("span", { className: "ons-btn__inner ons-js-collapsible-all-inner" }, showing ? "Hide all" : "Show all")));
+        return (React__default["default"].createElement("button", { "data-testid": "".concat(contentId, "-accordion-show-all"), type: "button", className: "ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small", "data-close-all": "Hide all", "data-group": "accordion", onClick: function () { return setPanelsOpen(new Array(panelsOpen.length).fill(!showing)); } },
+            React__default["default"].createElement("span", { className: "ons-btn__inner ons-js-collapsible-all-inner" }, showing ? "Hide all" : "Show all")));
     }
     // eslint-disable-next-line react/jsx-no-useless-fragment
-    return React__default['default'].createElement(React__default['default'].Fragment, null);
+    return React__default["default"].createElement(React__default["default"].Fragment, null);
 }
 function Accordion(_a) {
     var ShowAllEnabled = _a.ShowAllEnabled, Expandables = _a.Expandables, ContentId = _a.ContentId, Expanded = _a.Expanded;
     var expandableStates = new Array(Expandables.length).fill(Expanded !== null && Expanded !== void 0 ? Expanded : false);
     var _b = React.useState(expandableStates), panelsOpen = _b[0], setPanelsOpen = _b[1];
-    return (React__default['default'].createElement("div", { id: "".concat(ContentId, "-accordion"), className: "ons-accordion" },
-        React__default['default'].createElement(ShowAll, { showAllEnabled: ShowAllEnabled, panelsOpen: panelsOpen, setPanelsOpen: setPanelsOpen, contentId: ContentId }),
-        Expandables.map(function (expandable, index) { return (React__default['default'].createElement(Expandable, { key: "".concat(expandable.contentId, "-accordion-").concat(index), content: expandable.content, contentId: expandable.contentId, title: expandable.title, expandableIndex: index, setPanelsOpen: setPanelsOpen, panelsOpen: panelsOpen })); })));
+    return (React__default["default"].createElement("div", { id: "".concat(ContentId, "-accordion"), className: "ons-accordion" },
+        React__default["default"].createElement(ShowAll, { showAllEnabled: ShowAllEnabled, panelsOpen: panelsOpen, setPanelsOpen: setPanelsOpen, contentId: ContentId }),
+        Expandables.map(function (expandable, index) { return (React__default["default"].createElement(Expandable, { key: "".concat(expandable.contentId, "-accordion-").concat(index), content: expandable.content, contentId: expandable.contentId, title: expandable.title, expandableIndex: index, setPanelsOpen: setPanelsOpen, panelsOpen: panelsOpen })); })));
 }
 
 exports.Accordion = Accordion;
