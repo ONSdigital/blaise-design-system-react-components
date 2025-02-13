@@ -1,5 +1,5 @@
 import {
-    cleanup, fireEvent, render,
+    cleanup, fireEvent, render, screen,
 } from "@testing-library/react";
 import React from "react";
 import { ONSTextInput } from "./ONSTextInput";
@@ -52,19 +52,19 @@ describe("ONS Text Input Test", () => {
     });
 
     it("should render with the correct label", () => {
-        const screen = wrapper(render, Props);
+        wrapper(render, Props);
         expect(screen.getByLabelText(Props.label)).toBeDefined();
     });
 
     it("simulates change events", () => {
-        const screen = wrapper(render, changeProps);
+        wrapper(render, changeProps);
         fireEvent.change(screen.getByTestId("text-input"), { target: { value: "test1" } });
         fireEvent.change(screen.getByTestId("text-input"), { target: { value: "test2" } });
         expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 
     it("simulates click events", () => {
-        const screen = wrapper(render, clickProps);
+        wrapper(render, clickProps);
         fireEvent.click(screen.getByTestId("text-input"));
         expect(clickProps.onClick).toHaveBeenCalledTimes(1);
     });

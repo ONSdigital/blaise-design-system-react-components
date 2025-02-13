@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { ONSUpload } from "./ONSUpload";
 
 describe("ONS Upload Test", () => {
@@ -36,7 +36,7 @@ describe("ONS Upload Test", () => {
     });
 
     it("should handle a change", () => {
-        const screen = wrapper(render, changeProps);
+        wrapper(render, changeProps);
         fireEvent.change(screen.getByTestId("upload-input"), { target: { value: "test1" } });
         fireEvent.change(screen.getByTestId("upload-input"), { target: { value: "test2" } });
         expect(changeProps.onChange).toHaveBeenCalledTimes(2);

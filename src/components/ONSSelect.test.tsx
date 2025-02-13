@@ -53,7 +53,7 @@ describe("ONS Select Test", () => {
     });
 
     it("simulates change events", () => {
-        const screen = wrapper(render, changeProps);
+        wrapper(render, changeProps);
         fireEvent.change(screen.getByTestId("test-id"), { target: { value: "test" } });
         fireEvent.change(screen.getByTestId("test-id"), { target: { value: "test2" } });
         expect(changeProps.onChange).toHaveBeenCalledTimes(2);

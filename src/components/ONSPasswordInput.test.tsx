@@ -56,20 +56,20 @@ describe("ONS Password Input Test", () => {
     });
 
     it("should handle a defined change", () => {
-        const screen = wrapper(render, changeProps);
+        wrapper(render, changeProps);
         fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test1" } });
         fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test2" } });
         expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 
     it("should handle an undefined change", () => {
-        const screen = wrapper(render, undefinedChangeProps);
+        wrapper(render, undefinedChangeProps);
         fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test" } });
         expect(undefinedChangeProps.onChange).toBeUndefined();
     });
 
     it("should handle a click on the checkbox", () => {
-        const screen = wrapper(render, undefinedChangeProps);
+        wrapper(render, undefinedChangeProps);
         const passwordToggle = screen.getByTestId("login-password-toggle");
         fireEvent.click(passwordToggle);
         expect(passwordToggle.checked).toBeTruthy();
