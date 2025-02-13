@@ -201,7 +201,7 @@ var ONSPanel = function (props) {
         React.createElement("div", { className: "ons-panel__body ".concat(props.bigIcon === true ? "ons-svg-icon-margin--xl" : "") }, props.children)));
 };
 
-/*! *****************************************************************************
+/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -215,7 +215,7 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-/* global Reflect, Promise */
+/* global Reflect, Promise, SuppressedError, Symbol, Iterator */
 
 var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf ||
@@ -264,6 +264,11 @@ function __spreadArray(to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 }
+
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
 
 var ONSPasswordInput = /** @class */ (function (_super) {
     __extends(ONSPasswordInput, _super);
@@ -531,7 +536,7 @@ function StyledForm(_a) {
             onSubmitFunction(values, setSubmitting);
         } }, function (_a) {
         var isValid = _a.isValid, isSubmitting = _a.isSubmitting;
-        return (React.createElement(Form, { placeholder: undefined },
+        return (React.createElement(Form, null,
             React.createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
                 // eslint-disable-next-line no-param-reassign
@@ -904,16 +909,22 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$1 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$2;
+
+var has$2 = Function.call.bind(Object.prototype.hasOwnProperty);
+
+var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+
+var has$1 = has$2;
 
 var printWarning$1 = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = ReactPropTypesSecret_1;
+  var ReactPropTypesSecret = ReactPropTypesSecret$1;
   var loggedTypeFailures = {};
-  var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
+  var has = has$1;
 
   printWarning$1 = function(text) {
     var message = 'Warning: ' + text;
@@ -925,7 +936,7 @@ if (process.env.NODE_ENV !== 'production') {
       // This error was thrown as a convenience so that you can use this stack
       // to find the callsite that caused this warning to fire.
       throw new Error(message);
-    } catch (x) {}
+    } catch (x) { /**/ }
   };
 }
 
@@ -940,10 +951,10 @@ if (process.env.NODE_ENV !== 'production') {
  * @param {?Function} getStack Returns the component stack.
  * @private
  */
-function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
   if (process.env.NODE_ENV !== 'production') {
     for (var typeSpecName in typeSpecs) {
-      if (has$1(typeSpecs, typeSpecName)) {
+      if (has(typeSpecs, typeSpecName)) {
         var error;
         // Prop type validation may throw. In case they do, we don't want to
         // fail the render phase where it didn't fail before. So we log it.
@@ -954,7 +965,8 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
           if (typeof typeSpecs[typeSpecName] !== 'function') {
             var err = Error(
               (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
-              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
+              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
             );
             err.name = 'Invariant Violation';
             throw err;
@@ -994,15 +1006,16 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
  *
  * @private
  */
-checkPropTypes.resetWarningCache = function() {
+checkPropTypes$1.resetWarningCache = function() {
   if (process.env.NODE_ENV !== 'production') {
     loggedTypeFailures = {};
   }
 };
 
-var checkPropTypes_1 = checkPropTypes;
+var checkPropTypes_1 = checkPropTypes$1;
 
-var has = Function.call.bind(Object.prototype.hasOwnProperty);
+var checkPropTypes = checkPropTypes_1;
+
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -1103,6 +1116,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
   // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
   var ReactPropTypes = {
     array: createPrimitiveTypeChecker('array'),
+    bigint: createPrimitiveTypeChecker('bigint'),
     bool: createPrimitiveTypeChecker('boolean'),
     func: createPrimitiveTypeChecker('function'),
     number: createPrimitiveTypeChecker('number'),
@@ -1148,8 +1162,9 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
    * is prohibitively expensive if they are created too often, such as what
    * happens in oneOfType() for any type before the one that matched.
    */
-  function PropTypeError(message) {
+  function PropTypeError(message, data) {
     this.message = message;
+    this.data = data && typeof data === 'object' ? data: {};
     this.stack = '';
   }
   // Make `instanceof Error` still work for returned errors.
@@ -1164,7 +1179,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
       componentName = componentName || ANONYMOUS;
       propFullName = propFullName || propName;
 
-      if (secret !== ReactPropTypesSecret_1) {
+      if (secret !== ReactPropTypesSecret$1) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
           var err = new Error(
@@ -1184,7 +1199,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
           ) {
             printWarning(
               'You are manually calling a React.PropTypes validation ' +
-              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
               'and will throw in the standalone `prop-types` package. ' +
               'You may be seeing this warning due to a third-party PropTypes ' +
               'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
@@ -1223,7 +1238,10 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         // 'of type `object`'.
         var preciseType = getPreciseType(propValue);
 
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+        return new PropTypeError(
+          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
+          {expectedType: expectedType}
+        );
       }
       return null;
     }
@@ -1245,7 +1263,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
       }
       for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1);
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret$1);
         if (error instanceof Error) {
           return error;
         }
@@ -1337,8 +1355,8 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
       }
       for (var key in propValue) {
-        if (has(propValue, key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+        if (has$1(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
           if (error instanceof Error) {
             return error;
           }
@@ -1367,14 +1385,19 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
     }
 
     function validate(props, propName, componentName, location, propFullName) {
+      var expectedTypes = [];
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1) == null) {
+        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret$1);
+        if (checkerResult == null) {
           return null;
         }
+        if (checkerResult.data && has$1(checkerResult.data, 'expectedType')) {
+          expectedTypes.push(checkerResult.data.expectedType);
+        }
       }
-
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
     }
     return createChainableTypeChecker(validate);
   }
@@ -1389,6 +1412,13 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
     return createChainableTypeChecker(validate);
   }
 
+  function invalidValidatorError(componentName, location, propFullName, key, type) {
+    return new PropTypeError(
+      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
+      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
+    );
+  }
+
   function createShapeTypeChecker(shapeTypes) {
     function validate(props, propName, componentName, location, propFullName) {
       var propValue = props[propName];
@@ -1398,10 +1428,10 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
       }
       for (var key in shapeTypes) {
         var checker = shapeTypes[key];
-        if (!checker) {
-          continue;
+        if (typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
         }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
         if (error) {
           return error;
         }
@@ -1418,19 +1448,21 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
       if (propType !== 'object') {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
       }
-      // We need to check all keys in case some are required but missing from
-      // props.
+      // We need to check all keys in case some are required but missing from props.
       var allKeys = objectAssign({}, props[propName], shapeTypes);
       for (var key in allKeys) {
         var checker = shapeTypes[key];
+        if (has$1(shapeTypes, key) && typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
         if (!checker) {
           return new PropTypeError(
             'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
             '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
-            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
           );
         }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
         if (error) {
           return error;
         }
@@ -1572,8 +1604,8 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
     return propValue.constructor.name;
   }
 
-  ReactPropTypes.checkPropTypes = checkPropTypes_1;
-  ReactPropTypes.resetWarningCache = checkPropTypes_1.resetWarningCache;
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
   ReactPropTypes.PropTypes = ReactPropTypes;
 
   return ReactPropTypes;
@@ -1585,7 +1617,7 @@ emptyFunctionWithReset.resetWarningCache = emptyFunction;
 
 var factoryWithThrowingShims = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
-    if (secret === ReactPropTypesSecret_1) {
+    if (secret === ReactPropTypesSecret$1) {
       // It is still safe when called from React.
       return;
     }
@@ -1603,6 +1635,7 @@ var factoryWithThrowingShims = function() {
   // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
   var ReactPropTypes = {
     array: shim,
+    bigint: shim,
     bool: shim,
     func: shim,
     number: shim,
@@ -1631,6 +1664,10 @@ var factoryWithThrowingShims = function() {
   return ReactPropTypes;
 };
 
+var require$$1$1 = factoryWithTypeCheckers;
+
+var require$$2 = factoryWithThrowingShims;
+
 var propTypes = createCommonjsModule(function (module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1645,13 +1682,15 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = factoryWithTypeCheckers(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = require$$1$1(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = factoryWithThrowingShims();
+  module.exports = require$$2();
 }
 });
+
+var require$$1 = propTypes;
 
 var Circles_1 = createCommonjsModule(function (module, exports) {
 
@@ -1662,7 +1701,7 @@ exports.Circles = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -1722,7 +1761,7 @@ exports.Watch = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -1813,7 +1852,7 @@ exports.Audio = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -1904,7 +1943,7 @@ exports.BallTriangle = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2014,7 +2053,7 @@ exports.Bars = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2154,7 +2193,7 @@ exports.CradleLoader = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2199,7 +2238,7 @@ exports.Grid = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2341,7 +2380,7 @@ exports.Hearts = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2409,7 +2448,7 @@ exports.MutatingDots = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2509,7 +2548,7 @@ exports.Oval = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2573,7 +2612,7 @@ exports.Plane = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2632,7 +2671,7 @@ exports.Puff = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2724,7 +2763,7 @@ exports.RevolvingDot = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2793,7 +2832,7 @@ exports.Rings = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2905,7 +2944,7 @@ exports.TailSpin = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -2994,7 +3033,7 @@ exports.ThreeDots = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -3107,7 +3146,7 @@ exports.Triangle = void 0;
 
 var _react = _interopRequireDefault(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -3223,7 +3262,7 @@ exports["default"] = Loader;
 
 var _react = _interopRequireWildcard(React);
 
-var _propTypes = _interopRequireDefault(propTypes);
+var _propTypes = _interopRequireDefault(require$$1);
 
 
 
