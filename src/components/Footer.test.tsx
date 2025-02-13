@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import React from "react";
 import Footer from "./Footer";
 
@@ -15,7 +15,7 @@ describe("Footer Test", () => {
     });
 
     it("should display 'Office for National Statistics' as part of the SVG", () => {
-        const screen = render(<Footer />);
+        render(<Footer />);
         expect(screen.getByText(/Office for National Statistics/i)).toBeInTheDocument();
     });
 });

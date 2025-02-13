@@ -1,6 +1,6 @@
 import React from "react";
-import { SummaryGroupTable, SummaryItemRow, GroupedSummary } from "./ONSSummary";
 import { render } from "@testing-library/react";
+import { SummaryGroupTable, SummaryItemRow, GroupedSummary } from "./ONSSummary";
 
 describe("ONS Summary Group Table test", () => {
     const groupedSummary = new GroupedSummary([{ title: "test", records: { foo: "bar" } }]);
@@ -15,7 +15,6 @@ describe("ONS Summary Group Table test", () => {
 });
 
 describe("ONS Summary Item Row test", () => {
-
     it("matches Snapshot", () => {
         expect(render(<SummaryItemRow fieldName="foo" fieldValue="bar" />)).toMatchSnapshot();
     });

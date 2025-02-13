@@ -1,7 +1,6 @@
 import {
-    cleanup, render, waitFor, screen, fireEvent,
+    cleanup, render, waitFor, screen, fireEvent, act,
 } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
 import React, { useState } from "react";
 import DefaultErrorBoundary from "./DefaultErrorBoundary";
 

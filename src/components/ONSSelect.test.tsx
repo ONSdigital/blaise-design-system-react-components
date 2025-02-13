@@ -4,7 +4,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { ONSSelect } from "./ONSSelect";
 
 describe("ONS Select Test", () => {
-
     const Selection = [
         { label: "1", value: "1" },
         { label: "2", value: "2" },
@@ -45,7 +44,7 @@ describe("ONS Select Test", () => {
     });
 
     it("should render correctly", () => {
-        expect(wrapper(render, Props)).toBeDefined()
+        expect(wrapper(render, Props)).toBeDefined();
     });
 
     it("should render with the correct label", () => {

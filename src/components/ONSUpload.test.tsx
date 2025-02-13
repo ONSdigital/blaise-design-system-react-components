@@ -1,9 +1,8 @@
 import React from "react";
-import { ONSUpload } from "./ONSUpload";
 import { fireEvent, render } from "@testing-library/react";
+import { ONSUpload } from "./ONSUpload";
 
 describe("ONS Upload Test", () => {
-
     const Props = {};
 
     const changeProps = {

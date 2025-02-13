@@ -2,6 +2,7 @@ import {
     cleanup,
     fireEvent,
     render,
+    screen,
 } from "@testing-library/react";
 import React from "react";
 import { ONSButton } from "./ONSButton";
@@ -104,46 +105,42 @@ describe("ONS Button Test", () => {
     });
 
     it("should render with the correct label", () => {
-        const screen = render(<ONSButton {...Props} />);
+        render(<ONSButton {...Props} />);
         expect(screen.getByText(/Submit1/i).textContent).toContain(Props.label);
     });
 
     it("simulates click events", async () => {
-        const screen = wrapper(render, exportButtonProps);
+        wrapper(render, exportButtonProps);
         fireEvent.click(screen.getByText(/Submit1.5/i));
         expect(exportButtonProps.onButtonClick).toHaveBeenCalledTimes(1);
     });
 
     it("displays loading button", () => {
-        const screen = render(<ONSButton {...loadingButtonProps} />);
+        wrapper(render, loadingButtonProps);
         const button = screen.getByRole("button");
-        const classes = button.getAttribute("class")?.split(" ");
-        expect(classes).toContain("ons-btn--loader");
+        expect(button.getAttribute("class")).toMatch(/ons-btn--loader/gi);
     });
 
     it("displays small button", () => {
-        const screen = render(<ONSButton {...smallButtonProps} />);
+        wrapper(render, smallButtonProps);
         const button = screen.getByRole("button");
-        const classes = button.getAttribute("class")?.split(" ");
-        expect(classes).toContain("ons-btn--small");
+        expect(button.getAttribute("class")).toMatch(/ons-btn--small/gi);
     });
 
     it("displays disabled button", () => {
-        const screen = render(<ONSButton {...disabledProps} />);
+        render(<ONSButton {...disabledProps} />);
         const button = screen.getByRole("button");
-        const classes = button.getAttribute("class")?.split(" ");
-        expect(classes).toContain("ons-btn--disabled");
+        expect(button.getAttribute("class")).toMatch(/ons-btn--disabled/gi);
     });
 
     it("displays Call to Action button", () => {
-        const screen = render(<ONSButton {...callToActionProps} />);
+        render(<ONSButton {...callToActionProps} />);
         const button = screen.getByRole("button");
-        const classes = button.getAttribute("class")?.split(" ");
-        expect(classes).toContain("ons-btn--link");
+        expect(button.getAttribute("class")).toMatch(/ons-btn--link/gi);
     });
 
     it("has data-testid set correctly", () => {
-        const screen = render(<ONSButton {...callToActionProps} />);
+        render(<ONSButton {...callToActionProps} />);
         const button = screen.getByRole("button");
         expect(button).toHaveAttribute("data-testid", `${testIdProps.testId}-button`);
     });

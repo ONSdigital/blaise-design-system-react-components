@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import React from "react";
 import NotProductionWarning from "./NotProductionWarning";
 
@@ -13,7 +13,7 @@ describe("ONS Not production warning Test", () => {
     });
 
     it("should display warning paragraph text", () => {
-        const screen = render(<NotProductionWarning />);
+        render(<NotProductionWarning />);
         expect(screen.getByText(/This environment is not a production environment. Do not upload any live data to this service./)).toBeVisible();
     });
 });

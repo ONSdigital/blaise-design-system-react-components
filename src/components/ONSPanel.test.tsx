@@ -3,9 +3,8 @@ import { render } from "@testing-library/react";
 import { ONSPanel } from "./ONSPanel";
 
 describe("ONS Panel Test", () => {
-
     const panelProps = {
-        children: <p data-testid = "child">Succceeesssss</p>,
+        children: <p data-testid="child">Succceeesssss</p>,
         testID: "panel",
     };
 
@@ -21,14 +20,14 @@ describe("ONS Panel Test", () => {
         status: "error",
         spacious: true,
         id: "spacious",
-        testID: "spacious-panel"
+        testID: "spacious-panel",
     };
 
     const bigIconStatusPanelProps = {
         children: <p>Statusssss</p>,
         status: "success",
         bigIcon: true,
-        testID: "big-icon-panel"
+        testID: "big-icon-panel",
         // spacious: false
     };
 
@@ -67,20 +66,20 @@ describe("ONS Panel Test", () => {
     it("should render the correct status", () => {
         const view = wrapper(render, statusPanelProps);
         const panel = view.getByTestId("status-panel");
-        expect(panel.getAttribute('class')).toMatch(/ons-panel--success/gi)
+        expect(panel.getAttribute("class")).toMatch(/ons-panel--success/gi);
     });
 
     it("displays a spacious panel button", () => {
         const view = wrapper(render, spaciousPanelProps);
         const panel = view.getByTestId("spacious-panel");
-        expect(panel.getAttribute('class')).toMatch(/ons-panel--spacious/gi)
+        expect(panel.getAttribute("class")).toMatch(/ons-panel--spacious/gi);
     });
 
     it("should render the big success tick", () => {
         const view = wrapper(render, bigIconStatusPanelProps);
         const panel = view.getByTestId("big-icon-panel");
         const child = panel.querySelector(".ons-svg-icon-margin--xl");
-        expect(child.getAttribute('class')).toMatch(/ons-svg-icon-margin--xl/gi)
+        expect(child.getAttribute("class")).toMatch(/ons-svg-icon-margin--xl/gi);
     });
 
     it("matches Snapshot a big success icon", () => {
