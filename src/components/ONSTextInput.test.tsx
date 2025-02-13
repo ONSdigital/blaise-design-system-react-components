@@ -1,10 +1,9 @@
-import React from "react";
-import Enzyme, { shallow } from "enzyme";
 import { cleanup, render, screen } from "@testing-library/react";
+import Enzyme, { shallow } from "enzyme";
+import React from "react";
 
 import Adapter from "enzyme-adapter-react-16";
 import { ONSTextInput } from "./ONSTextInput";
-import { validateInstrumentName } from "./forms/ExampleForm/FormValidation";
 
 describe("ONS Text Input Test", () => {
     Enzyme.configure({ adapter: new Adapter() });
@@ -42,7 +41,6 @@ describe("ONS Text Input Test", () => {
                 value={props.value}
                 autoComplete={props.autoComplete}
                 onClick={props.onClick}
-                validate={validateInstrumentName}
             />,
         );
     }

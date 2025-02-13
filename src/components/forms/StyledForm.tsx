@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
 import { Form, Formik } from "formik";
-import StyledFormErrorSummary from "./StyledFormErrorSummary";
+import React, { Fragment } from "react";
 import { ONSButton } from "../ONSButton";
+import StyledFormErrorSummary from "./StyledFormErrorSummary";
 // eslint-disable-next-line import/no-cycle
 import { StyledFormField } from "./FormElements/StyledFormFields";
 
@@ -82,7 +82,7 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
             }}
         >
             {({ isValid, isSubmitting }) => (
-                <Form placeholder={undefined}>
+                <Form>
                     <StyledFormErrorSummary />
                     {
                         fields.map((field, index) => {

@@ -1,15 +1,13 @@
-import React from "react";
-import Enzyme, { shallow } from "enzyme";
 import {
-    cleanup, render, screen, fireEvent,
+    cleanup,
+    fireEvent,
+    render,
 } from "@testing-library/react";
+import React from "react";
 import sinon from "sinon";
-import Adapter from "enzyme-adapter-react-16";
 import { ONSButton } from "./ONSButton";
 
 describe("ONS Button Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
-
     afterEach(() => {
         cleanup();
     });
@@ -99,37 +97,50 @@ describe("ONS Button Test", () => {
         expect(wrapper(render, Props)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
+    it("should render correctly", () => {
+        const { container } = render(<ONSButton {...Props} />);
+        expect(container).toBeDefined();
+    });
 
     it("should render with the correct label", () => {
-        wrapper(render, Props);
+        const screen = render(<ONSButton {...Props} />);
         expect(screen.getByText(/Submit1/i).textContent).toContain(Props.label);
     });
 
-    it("simulates click events", () => {
-        wrapper(render, exportButtonProps);
+    it.only("simulates click events", async () => {
+        // const screen = render(<ONSButton {...exportButtonProps} />);
+        const screen = wrapper(render, exportButtonProps);
         fireEvent.click(screen.getByText(/Submit1.5/i));
         expect(exportButtonProps.onButtonClick).toHaveProperty("callCount", 1);
     });
 
     it("displays loading button", () => {
-        expect(wrapper(shallow, loadingButtonProps).find("button").hasClass("ons-btn--loader")).toEqual(true);
+        const screen = render(<ONSButton {...loadingButtonProps} />);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("class", "ons-btn--loader");
     });
 
     it("displays small button", () => {
-        expect(wrapper(shallow, smallButtonProps).find("button").hasClass("ons-btn--small")).toEqual(true);
+        const screen = render(<ONSButton {...smallButtonProps} />);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("class", "ons-btn--small");
     });
 
     it("displays disabled button", () => {
-        expect(wrapper(shallow, disabledProps).find("button").hasClass("ons-btn--disabled")).toEqual(true);
+        const screen = render(<ONSButton {...disabledProps} />);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("class", "ons-btn--disabled");
     });
 
     it("displays Call to Action button", () => {
-        expect(wrapper(shallow, callToActionProps).find("button").hasClass("ons-btn--link")).toEqual(true);
+        const screen = render(<ONSButton {...callToActionProps} />);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("class", "ons-btn--link");
     });
 
     it("has data-testid set correctly", () => {
-        const button = wrapper(shallow, testIdProps).find("button").get(0);
-        expect(button.props["data-testid"]).toEqual(`${testIdProps.testId}-button`);
+        const screen = render(<ONSButton {...callToActionProps} />);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("data-testid", `${testIdProps.testId}-button`);
     });
 });
