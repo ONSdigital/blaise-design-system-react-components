@@ -1,19 +1,18 @@
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import { render } from "@testing-library/react";
 import { ONSPanel } from "./ONSPanel";
 
 describe("ONS Panel Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
 
     const panelProps = {
-        children: <p>Succceeesssss</p>,
+        children: <p data-testid = "child">Succceeesssss</p>,
+        testID: "panel",
     };
 
     const statusPanelProps = {
         children: <p>Statusssss</p>,
         status: "success",
+        testID: "status-panel",
         // spacious: false
     };
 
@@ -22,12 +21,14 @@ describe("ONS Panel Test", () => {
         status: "error",
         spacious: true,
         id: "spacious",
+        testID: "spacious-panel"
     };
 
     const bigIconStatusPanelProps = {
         children: <p>Statusssss</p>,
         status: "success",
         bigIcon: true,
+        testID: "big-icon-panel"
         // spacious: false
     };
 
@@ -52,22 +53,34 @@ describe("ONS Panel Test", () => {
         expect(wrapper(render, statusPanelProps)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(wrapper(shallow, panelProps).exists()).toEqual(true));
+    it("should render correctly", () => {
+        expect(wrapper(render, panelProps)).toBeDefined();
+    });
 
     it("should render the correct children", () => {
-        expect(wrapper(shallow, panelProps).find("div.ons-panel__body").getElement().props.children).toEqual(panelProps.children);
+        const view = wrapper(render, panelProps);
+        const parent = view.getByTestId("panel");
+        const child = view.getByTestId("child");
+        expect(parent).toContainElement(child);
     });
 
     it("should render the correct status", () => {
-        expect(wrapper(shallow, statusPanelProps).find("div.ons-panel").hasClass("ons-panel--success")).toEqual(true);
+        const view = wrapper(render, statusPanelProps);
+        const panel = view.getByTestId("status-panel");
+        expect(panel.getAttribute('class')).toMatch(/ons-panel--success/gi)
     });
 
     it("displays a spacious panel button", () => {
-        expect(wrapper(shallow, spaciousPanelProps).find("div.ons-panel").hasClass("ons-panel--spacious")).toEqual(true);
+        const view = wrapper(render, spaciousPanelProps);
+        const panel = view.getByTestId("spacious-panel");
+        expect(panel.getAttribute('class')).toMatch(/ons-panel--spacious/gi)
     });
 
     it("should render the big success tick", () => {
-        expect(wrapper(shallow, bigIconStatusPanelProps).find("div.ons-panel__body").hasClass("ons-svg-icon-margin--xl")).toEqual(true);
+        const view = wrapper(render, bigIconStatusPanelProps);
+        const panel = view.getByTestId("big-icon-panel");
+        const child = panel.querySelector(".ons-svg-icon-margin--xl");
+        expect(child.getAttribute('class')).toMatch(/ons-svg-icon-margin--xl/gi)
     });
 
     it("matches Snapshot a big success icon", () => {

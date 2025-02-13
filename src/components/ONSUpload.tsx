@@ -36,6 +36,7 @@ export class ONSUpload extends Component <Props> {
                         accept={this.props.accept}
                         onChange={(e) => this.handleChange(e)}
                         disabled={(this.props.disabled)}
+                        data-testid="upload-input"
                     />
                 </p>
             </div>

@@ -1,10 +1,8 @@
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import { ONSUpload } from "./ONSUpload";
+import { fireEvent, render } from "@testing-library/react";
 
 describe("ONS Upload Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
 
     const Props = {};
 
@@ -31,14 +29,17 @@ describe("ONS Upload Test", () => {
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, Props)).toMatchSnapshot();
+        expect(wrapper(render, Props)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
+    it("should render correctly", () => {
+        expect(wrapper(render, Props)).toBeDefined();
+    });
 
     it("should handle a change", () => {
-        const input = wrapper(shallow, changeProps);
-        input.find("input").simulate("change", { target: { value: "abc" } });
-        expect(changeProps.onChange).toHaveBeenCalled();
+        const screen = wrapper(render, changeProps);
+        fireEvent.change(screen.getByTestId("upload-input"), { target: { value: "test1" } });
+        fireEvent.change(screen.getByTestId("upload-input"), { target: { value: "test2" } });
+        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 });

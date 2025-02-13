@@ -1,11 +1,8 @@
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { ONSPasswordInput } from "./ONSPasswordInput";
 
 describe("ONS Password Input Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
     afterEach(() => {
         cleanup();
     });
@@ -39,10 +36,12 @@ describe("ONS Password Input Test", () => {
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, Props)).toMatchSnapshot();
+        expect(wrapper(render, Props)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
+    it("should render correctly", () => {
+        expect(wrapper(render, Props)).toBeDefined();
+    });
 
     it("should render with the correct label and input ID", () => {
         wrapper(render, passwordInputProps);
@@ -54,19 +53,25 @@ describe("ONS Password Input Test", () => {
         expect(inputElement).toHaveAttribute("id", passwordInputProps.inputId);
     });
 
-    it("should handle a change", () => {
-        // defined onchange
-        wrapper(shallow, changeProps).find("input.ons-input").simulate("change");
-        expect(changeProps.onChange).toHaveBeenCalled();
+    it("should handle a defined change", () => {
+        const screen = wrapper(render, changeProps);
+        fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test1" } });
+        fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test2" } });
+        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
+    });
 
-        // undefined onchange
-        wrapper(shallow, undefinedChangeProps).find("input.ons-input").simulate("change");
+    it("should handle an undefined change", () => {
+        const screen = wrapper(render, undefinedChangeProps);
+        fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test" } });
         expect(undefinedChangeProps.onChange).toBeUndefined();
     });
 
     it("should handle a click on the checkbox", () => {
-        const thisWrapper = wrapper(shallow, undefinedChangeProps);
-        thisWrapper.find("input.ons-checkbox__input").simulate("click");
-        expect(thisWrapper.state("password")).toBeFalsy();
+        const screen = wrapper(render, undefinedChangeProps);
+        const passwordToggle = screen.getByTestId("login-password-toggle");
+        fireEvent.click(passwordToggle);
+        expect(passwordToggle.checked).toBeTruthy();
+        fireEvent.click(passwordToggle);
+        expect(passwordToggle.checked).toBeFalsy();
     });
 });

@@ -50,6 +50,7 @@ export class ONSPasswordInput extends Component <Props, State> {
                         className="ons-checkbox__input"
                         name="show-password"
                         onClick={this.togglePassword}
+                        data-testid="login-password-toggle"
                     />
                     <label id="password-toggle-label" className="ons-checkbox__label " htmlFor="password-toggle">
                         Show password

@@ -109,10 +109,9 @@ describe("ONS Button Test", () => {
     });
 
     it("simulates click events", async () => {
-        jest.spyOn(exportButtonProps, "onButtonClick");
-        const screen = render(<ONSButton {...exportButtonProps} />);
+        const screen = wrapper(render, exportButtonProps);
         fireEvent.click(screen.getByText(/Submit1.5/i));
-        expect(exportButtonProps.onButtonClick.call.length).toEqual(1);
+        expect(exportButtonProps.onButtonClick).toHaveBeenCalledTimes(1);
     });
 
     it("displays loading button", () => {

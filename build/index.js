@@ -304,7 +304,7 @@ var ONSPasswordInput = /** @class */ (function (_super) {
         return (React__default["default"].createElement("p", { className: "ons-field" },
             React__default["default"].createElement("label", { className: "ons-label", htmlFor: this.props.inputId || "password" }, this.props.label),
             React__default["default"].createElement("span", { className: "ons-checkbox ons-checkbox--toggle", style: this.spacing() },
-                React__default["default"].createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "ons-checkbox__input", name: "show-password", onClick: this.togglePassword }),
+                React__default["default"].createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "ons-checkbox__input", name: "show-password", onClick: this.togglePassword, "data-testid": "login-password-toggle" }),
                 React__default["default"].createElement("label", { id: "password-toggle-label", className: "ons-checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
             React__default["default"].createElement("input", { type: this.state.password ? "password" : "text", id: this.props.inputId || "password", className: "ons-input ons-input--text ons-input-type__input ons-u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
     };
@@ -384,7 +384,7 @@ var ONSUpload = /** @class */ (function (_super) {
                     this.props.label,
                     React__default["default"].createElement("br", null),
                     React__default["default"].createElement("span", { className: "ons-label__description" }, this.props.description)),
-                React__default["default"].createElement("input", { style: { position: "static" }, type: "file", id: this.props.fileID, className: "ons-input ons-input--text ons-input-type__input ons-input--upload", name: this.props.fileName, accept: this.props.accept, onChange: function (e) { return _this.handleChange(e); }, disabled: (this.props.disabled) }))));
+                React__default["default"].createElement("input", { style: { position: "static" }, type: "file", id: this.props.fileID, className: "ons-input ons-input--text ons-input-type__input ons-input--upload", name: this.props.fileName, accept: this.props.accept, onChange: function (e) { return _this.handleChange(e); }, disabled: (this.props.disabled), "data-testid": "upload-input" }))));
     };
     return ONSUpload;
 }(React.Component));
