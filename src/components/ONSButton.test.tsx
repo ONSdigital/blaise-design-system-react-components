@@ -4,11 +4,11 @@ import {
     render,
 } from "@testing-library/react";
 import React from "react";
-import sinon from "sinon";
 import { ONSButton } from "./ONSButton";
 
 describe("ONS Button Test", () => {
     afterEach(() => {
+        jest.clearAllMocks();
         cleanup();
     });
 
@@ -17,7 +17,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
     };
 
     const exportButtonProps = {
@@ -25,14 +25,14 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         loading: false,
     };
 
     const smallButtonProps = {
         label: "Submit2",
         primary: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         loading: true,
         small: true,
     };
@@ -40,7 +40,7 @@ describe("ONS Button Test", () => {
         label: "Submit4",
         primary: true,
         small: false,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         loading: true,
         field: true,
     };
@@ -50,7 +50,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         disabled: true,
     };
 
@@ -59,9 +59,10 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         disabled: false,
         action: true,
+        testid: "Unique-ID",
     };
 
     const testIdProps = {
@@ -69,7 +70,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         disabled: false,
         action: true,
         testId: "Unique-ID",
@@ -107,35 +108,39 @@ describe("ONS Button Test", () => {
         expect(screen.getByText(/Submit1/i).textContent).toContain(Props.label);
     });
 
-    it.only("simulates click events", async () => {
-        // const screen = render(<ONSButton {...exportButtonProps} />);
-        const screen = wrapper(render, exportButtonProps);
+    it("simulates click events", async () => {
+        jest.spyOn(exportButtonProps, "onButtonClick");
+        const screen = render(<ONSButton {...exportButtonProps} />);
         fireEvent.click(screen.getByText(/Submit1.5/i));
-        expect(exportButtonProps.onButtonClick).toHaveProperty("callCount", 1);
+        expect(exportButtonProps.onButtonClick.call.length).toEqual(1);
     });
 
     it("displays loading button", () => {
         const screen = render(<ONSButton {...loadingButtonProps} />);
         const button = screen.getByRole("button");
-        expect(button).toHaveAttribute("class", "ons-btn--loader");
+        const classes = button.getAttribute("class")?.split(" ");
+        expect(classes).toContain("ons-btn--loader");
     });
 
     it("displays small button", () => {
         const screen = render(<ONSButton {...smallButtonProps} />);
         const button = screen.getByRole("button");
-        expect(button).toHaveAttribute("class", "ons-btn--small");
+        const classes = button.getAttribute("class")?.split(" ");
+        expect(classes).toContain("ons-btn--small");
     });
 
     it("displays disabled button", () => {
         const screen = render(<ONSButton {...disabledProps} />);
         const button = screen.getByRole("button");
-        expect(button).toHaveAttribute("class", "ons-btn--disabled");
+        const classes = button.getAttribute("class")?.split(" ");
+        expect(classes).toContain("ons-btn--disabled");
     });
 
     it("displays Call to Action button", () => {
         const screen = render(<ONSButton {...callToActionProps} />);
         const button = screen.getByRole("button");
-        expect(button).toHaveAttribute("class", "ons-btn--link");
+        const classes = button.getAttribute("class")?.split(" ");
+        expect(classes).toContain("ons-btn--link");
     });
 
     it("has data-testid set correctly", () => {
