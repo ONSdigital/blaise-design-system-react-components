@@ -1,16 +1,15 @@
-import React from "react";
-import Enzyme, { shallow } from "enzyme";
 import {
-    cleanup, render, screen, fireEvent,
+    cleanup,
+    fireEvent,
+    render,
+    screen,
 } from "@testing-library/react";
-import sinon from "sinon";
-import Adapter from "enzyme-adapter-react-16";
+import React from "react";
 import { ONSButton } from "./ONSButton";
 
 describe("ONS Button Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
-
     afterEach(() => {
+        jest.clearAllMocks();
         cleanup();
     });
 
@@ -19,7 +18,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
     };
 
     const exportButtonProps = {
@@ -27,14 +26,14 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         loading: false,
     };
 
     const smallButtonProps = {
         label: "Submit2",
         primary: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         loading: true,
         small: true,
     };
@@ -42,7 +41,7 @@ describe("ONS Button Test", () => {
         label: "Submit4",
         primary: true,
         small: false,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         loading: true,
         field: true,
     };
@@ -52,7 +51,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         disabled: true,
     };
 
@@ -61,9 +60,10 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         disabled: false,
         action: true,
+        testid: "Unique-ID",
     };
 
     const testIdProps = {
@@ -71,7 +71,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: sinon.spy(),
+        onButtonClick: jest.fn(),
         disabled: false,
         action: true,
         testId: "Unique-ID",
@@ -99,37 +99,49 @@ describe("ONS Button Test", () => {
         expect(wrapper(render, Props)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
+    it("should render correctly", () => {
+        const { container } = render(<ONSButton {...Props} />);
+        expect(container).toBeDefined();
+    });
 
     it("should render with the correct label", () => {
-        wrapper(render, Props);
+        render(<ONSButton {...Props} />);
         expect(screen.getByText(/Submit1/i).textContent).toContain(Props.label);
     });
 
-    it("simulates click events", () => {
+    it("simulates click events", async () => {
         wrapper(render, exportButtonProps);
         fireEvent.click(screen.getByText(/Submit1.5/i));
-        expect(exportButtonProps.onButtonClick).toHaveProperty("callCount", 1);
+        expect(exportButtonProps.onButtonClick).toHaveBeenCalledTimes(1);
     });
 
     it("displays loading button", () => {
-        expect(wrapper(shallow, loadingButtonProps).find("button").hasClass("ons-btn--loader")).toEqual(true);
+        wrapper(render, loadingButtonProps);
+        const button = screen.getByRole("button");
+        expect(button.getAttribute("class")).toMatch(/ons-btn--loader/gi);
     });
 
     it("displays small button", () => {
-        expect(wrapper(shallow, smallButtonProps).find("button").hasClass("ons-btn--small")).toEqual(true);
+        wrapper(render, smallButtonProps);
+        const button = screen.getByRole("button");
+        expect(button.getAttribute("class")).toMatch(/ons-btn--small/gi);
     });
 
     it("displays disabled button", () => {
-        expect(wrapper(shallow, disabledProps).find("button").hasClass("ons-btn--disabled")).toEqual(true);
+        render(<ONSButton {...disabledProps} />);
+        const button = screen.getByRole("button");
+        expect(button.getAttribute("class")).toMatch(/ons-btn--disabled/gi);
     });
 
     it("displays Call to Action button", () => {
-        expect(wrapper(shallow, callToActionProps).find("button").hasClass("ons-btn--link")).toEqual(true);
+        render(<ONSButton {...callToActionProps} />);
+        const button = screen.getByRole("button");
+        expect(button.getAttribute("class")).toMatch(/ons-btn--link/gi);
     });
 
     it("has data-testid set correctly", () => {
-        const button = wrapper(shallow, testIdProps).find("button").get(0);
-        expect(button.props["data-testid"]).toEqual(`${testIdProps.testId}-button`);
+        render(<ONSButton {...callToActionProps} />);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("data-testid", `${testIdProps.testId}-button`);
     });
 });

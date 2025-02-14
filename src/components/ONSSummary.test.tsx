@@ -1,11 +1,8 @@
 import React from "react";
-import Enzyme, { shallow, render } from "enzyme";
-
-import Adapter from "enzyme-adapter-react-16";
+import { render } from "@testing-library/react";
 import { SummaryGroupTable, SummaryItemRow, GroupedSummary } from "./ONSSummary";
 
 describe("ONS Summary Group Table test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
     const groupedSummary = new GroupedSummary([{ title: "test", records: { foo: "bar" } }]);
 
     it("matches Snapshot", () => {
@@ -13,19 +10,17 @@ describe("ONS Summary Group Table test", () => {
     });
 
     it("should render correctly", () => {
-        expect(shallow(<SummaryGroupTable groupedSummary={groupedSummary} />).exists()).toEqual(true);
+        expect(render(<SummaryGroupTable groupedSummary={groupedSummary} />)).toBeDefined();
     });
 });
 
 describe("ONS Summary Item Row test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
-
     it("matches Snapshot", () => {
         expect(render(<SummaryItemRow fieldName="foo" fieldValue="bar" />)).toMatchSnapshot();
     });
 
     it("should render correctly", () => {
-        expect(shallow(<SummaryItemRow fieldName="foo" fieldValue="bar" />).exists()).toEqual(true);
+        expect(render(<SummaryItemRow fieldName="foo" fieldValue="bar" />)).toBeDefined();
     });
 });
 

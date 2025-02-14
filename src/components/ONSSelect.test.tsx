@@ -1,12 +1,9 @@
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import { render, screen } from "@testing-library/react";
+
+import { fireEvent, render, screen } from "@testing-library/react";
 import { ONSSelect } from "./ONSSelect";
 
 describe("ONS Select Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
-
     const Selection = [
         { label: "1", value: "1" },
         { label: "2", value: "2" },
@@ -43,10 +40,12 @@ describe("ONS Select Test", () => {
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, Props)).toMatchSnapshot();
+        expect(wrapper(render, Props)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
+    it("should render correctly", () => {
+        expect(wrapper(render, Props)).toBeDefined();
+    });
 
     it("should render with the correct label", () => {
         wrapper(render, Props);
@@ -54,8 +53,9 @@ describe("ONS Select Test", () => {
     });
 
     it("simulates change events", () => {
-        // defined
-        wrapper(shallow, changeProps).find("select").simulate("change", { target: { value: "abc" } });
-        expect(changeProps.onChange).toHaveBeenCalled();
+        wrapper(render, changeProps);
+        fireEvent.change(screen.getByTestId("test-id"), { target: { value: "test" } });
+        fireEvent.change(screen.getByTestId("test-id"), { target: { value: "test2" } });
+        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 });

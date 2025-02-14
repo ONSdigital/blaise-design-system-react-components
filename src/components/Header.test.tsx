@@ -1,6 +1,5 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
-import sinon from "sinon";
 import Header, { Props } from "./Header";
 
 const testProps: Props = {
@@ -75,12 +74,12 @@ describe("Check Header with sign out button:", () => {
     });
 
     it("passes in the sign out function correctly button", () => {
-        const mockFunction = sinon.spy();
+        const mockFunction = jest.fn();
         const wrapper = render(
             <Header title={testProps.title} signOutButton signOutFunction={mockFunction} />,
         );
         fireEvent.click(wrapper.getByText(/Save and sign out/));
-        expect(mockFunction).toHaveProperty("callCount", 1);
+        expect(mockFunction).toHaveBeenCalledTimes(1);
     });
 });
 

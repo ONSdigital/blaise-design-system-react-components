@@ -1,939 +1,237 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ONS Summary Group Table test matches Snapshot 1`] = `
-initialize {
-  "0": Node {
-    "attribs": Object {
-      "class": "ons-summary__group-title",
-    },
-    "children": Array [
-      Node {
-        "data": "test",
-        "next": null,
-        "parent": [Circular],
-        "prev": null,
-        "type": "text",
-      },
-    ],
-    "name": "h3",
-    "namespace": "http://www.w3.org/1999/xhtml",
-    "next": Node {
-      "attribs": Object {
-        "class": "ons-summary__items",
-      },
-      "children": Array [
-        Node {
-          "attribs": Object {
-            "class": "ons-summary__item",
-          },
-          "children": Array [
-            Node {
-              "attribs": Object {
-                "class": "ons-summary__row ons-summary__row--has-values",
-              },
-              "children": Array [
-                Node {
-                  "attribs": Object {
-                    "class": "ons-summary__item-title",
-                  },
-                  "children": Array [
-                    Node {
-                      "attribs": Object {
-                        "class": "ons-summary__item--text",
-                      },
-                      "children": Array [
-                        Node {
-                          "data": "Foo",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                      ],
-                      "name": "div",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "class": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "class": undefined,
-                      },
-                    },
-                  ],
-                  "name": "td",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": Node {
-                    "attribs": Object {
-                      "class": "ons-summary__values",
-                      "colspan": "2",
-                    },
-                    "children": Array [
-                      Node {
-                        "data": "bar",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "td",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": [Circular],
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                      "colspan": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                      "colspan": undefined,
-                    },
-                  },
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                Node {
-                  "attribs": Object {
-                    "class": "ons-summary__values",
-                    "colspan": "2",
-                  },
-                  "children": Array [
-                    Node {
-                      "data": "bar",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "td",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": Node {
-                    "attribs": Object {
-                      "class": "ons-summary__item-title",
-                    },
-                    "children": Array [
-                      Node {
-                        "attribs": Object {
-                          "class": "ons-summary__item--text",
-                        },
-                        "children": Array [
-                          Node {
-                            "data": "Foo",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "text",
-                          },
-                        ],
-                        "name": "div",
-                        "namespace": "http://www.w3.org/1999/xhtml",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "class": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "class": undefined,
-                        },
-                      },
-                    ],
-                    "name": "td",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": [Circular],
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                    "colspan": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                    "colspan": undefined,
-                  },
-                },
-              ],
-              "name": "tr",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-              },
-            },
-          ],
-          "name": "tbody",
-          "namespace": "http://www.w3.org/1999/xhtml",
-          "next": null,
-          "parent": [Circular],
-          "prev": null,
-          "type": "tag",
-          "x-attribsNamespace": Object {
-            "class": undefined,
-          },
-          "x-attribsPrefix": Object {
-            "class": undefined,
-          },
-        },
-      ],
-      "name": "table",
-      "namespace": "http://www.w3.org/1999/xhtml",
-      "next": null,
-      "parent": Node {
-        "children": Array [
-          [Circular],
-          [Circular],
-        ],
-        "name": "root",
-        "next": null,
-        "parent": null,
-        "prev": null,
-        "type": "root",
-      },
-      "prev": [Circular],
-      "type": "tag",
-      "x-attribsNamespace": Object {
-        "class": undefined,
-      },
-      "x-attribsPrefix": Object {
-        "class": undefined,
-      },
-    },
-    "parent": Node {
-      "children": Array [
-        [Circular],
-        Node {
-          "attribs": Object {
-            "class": "ons-summary__items",
-          },
-          "children": Array [
-            Node {
-              "attribs": Object {
-                "class": "ons-summary__item",
-              },
-              "children": Array [
-                Node {
-                  "attribs": Object {
-                    "class": "ons-summary__row ons-summary__row--has-values",
-                  },
-                  "children": Array [
-                    Node {
-                      "attribs": Object {
-                        "class": "ons-summary__item-title",
-                      },
-                      "children": Array [
-                        Node {
-                          "attribs": Object {
-                            "class": "ons-summary__item--text",
-                          },
-                          "children": Array [
-                            Node {
-                              "data": "Foo",
-                              "next": null,
-                              "parent": [Circular],
-                              "prev": null,
-                              "type": "text",
-                            },
-                          ],
-                          "name": "div",
-                          "namespace": "http://www.w3.org/1999/xhtml",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "class": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "class": undefined,
-                          },
-                        },
-                      ],
-                      "name": "td",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": Node {
-                        "attribs": Object {
-                          "class": "ons-summary__values",
-                          "colspan": "2",
-                        },
-                        "children": Array [
-                          Node {
-                            "data": "bar",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "text",
-                          },
-                        ],
-                        "name": "td",
-                        "namespace": "http://www.w3.org/1999/xhtml",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": [Circular],
-                        "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "class": undefined,
-                          "colspan": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "class": undefined,
-                          "colspan": undefined,
-                        },
-                      },
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "class": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "class": undefined,
-                      },
-                    },
-                    Node {
-                      "attribs": Object {
-                        "class": "ons-summary__values",
-                        "colspan": "2",
-                      },
-                      "children": Array [
-                        Node {
-                          "data": "bar",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                      ],
-                      "name": "td",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": Node {
-                        "attribs": Object {
-                          "class": "ons-summary__item-title",
-                        },
-                        "children": Array [
-                          Node {
-                            "attribs": Object {
-                              "class": "ons-summary__item--text",
-                            },
-                            "children": Array [
-                              Node {
-                                "data": "Foo",
-                                "next": null,
-                                "parent": [Circular],
-                                "prev": null,
-                                "type": "text",
-                              },
-                            ],
-                            "name": "div",
-                            "namespace": "http://www.w3.org/1999/xhtml",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "class": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "class": undefined,
-                            },
-                          },
-                        ],
-                        "name": "td",
-                        "namespace": "http://www.w3.org/1999/xhtml",
-                        "next": [Circular],
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "class": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "class": undefined,
-                        },
-                      },
-                      "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "class": undefined,
-                        "colspan": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "class": undefined,
-                        "colspan": undefined,
-                      },
-                    },
-                  ],
-                  "name": "tr",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-              ],
-              "name": "tbody",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-              },
-            },
-          ],
-          "name": "table",
-          "namespace": "http://www.w3.org/1999/xhtml",
-          "next": null,
-          "parent": [Circular],
-          "prev": [Circular],
-          "type": "tag",
-          "x-attribsNamespace": Object {
-            "class": undefined,
-          },
-          "x-attribsPrefix": Object {
-            "class": undefined,
-          },
-        },
-      ],
-      "name": "root",
-      "next": null,
-      "parent": null,
-      "prev": null,
-      "type": "root",
-    },
-    "prev": null,
-    "type": "tag",
-    "x-attribsNamespace": Object {
-      "class": undefined,
-    },
-    "x-attribsPrefix": Object {
-      "class": undefined,
-    },
-  },
-  "1": Node {
-    "attribs": Object {
-      "class": "ons-summary__items",
-    },
-    "children": Array [
-      Node {
-        "attribs": Object {
-          "class": "ons-summary__item",
-        },
-        "children": Array [
-          Node {
-            "attribs": Object {
-              "class": "ons-summary__row ons-summary__row--has-values",
-            },
-            "children": Array [
-              Node {
-                "attribs": Object {
-                  "class": "ons-summary__item-title",
-                },
-                "children": Array [
-                  Node {
-                    "attribs": Object {
-                      "class": "ons-summary__item--text",
-                    },
-                    "children": Array [
-                      Node {
-                        "data": "Foo",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "div",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                ],
-                "name": "td",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Node {
-                  "attribs": Object {
-                    "class": "ons-summary__values",
-                    "colspan": "2",
-                  },
-                  "children": Array [
-                    Node {
-                      "data": "bar",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "td",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": [Circular],
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                    "colspan": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                    "colspan": undefined,
-                  },
-                },
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
-              Node {
-                "attribs": Object {
-                  "class": "ons-summary__values",
-                  "colspan": "2",
-                },
-                "children": Array [
-                  Node {
-                    "data": "bar",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "td",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": Node {
-                  "attribs": Object {
-                    "class": "ons-summary__item-title",
-                  },
-                  "children": Array [
-                    Node {
-                      "attribs": Object {
-                        "class": "ons-summary__item--text",
-                      },
-                      "children": Array [
-                        Node {
-                          "data": "Foo",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                      ],
-                      "name": "div",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "class": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "class": undefined,
-                      },
-                    },
-                  ],
-                  "name": "td",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                  "colspan": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                  "colspan": undefined,
-                },
-              },
-            ],
-            "name": "tr",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-            },
-          },
-        ],
-        "name": "tbody",
-        "namespace": "http://www.w3.org/1999/xhtml",
-        "next": null,
-        "parent": [Circular],
-        "prev": null,
-        "type": "tag",
-        "x-attribsNamespace": Object {
-          "class": undefined,
-        },
-        "x-attribsPrefix": Object {
-          "class": undefined,
-        },
-      },
-    ],
-    "name": "table",
-    "namespace": "http://www.w3.org/1999/xhtml",
-    "next": null,
-    "parent": Node {
-      "children": Array [
-        Node {
-          "attribs": Object {
-            "class": "ons-summary__group-title",
-          },
-          "children": Array [
-            Node {
-              "data": "test",
-              "next": null,
-              "parent": [Circular],
-              "prev": null,
-              "type": "text",
-            },
-          ],
-          "name": "h3",
-          "namespace": "http://www.w3.org/1999/xhtml",
-          "next": [Circular],
-          "parent": [Circular],
-          "prev": null,
-          "type": "tag",
-          "x-attribsNamespace": Object {
-            "class": undefined,
-          },
-          "x-attribsPrefix": Object {
-            "class": undefined,
-          },
-        },
-        [Circular],
-      ],
-      "name": "root",
-      "next": null,
-      "parent": null,
-      "prev": null,
-      "type": "root",
-    },
-    "prev": Node {
-      "attribs": Object {
-        "class": "ons-summary__group-title",
-      },
-      "children": Array [
-        Node {
-          "data": "test",
-          "next": null,
-          "parent": [Circular],
-          "prev": null,
-          "type": "text",
-        },
-      ],
-      "name": "h3",
-      "namespace": "http://www.w3.org/1999/xhtml",
-      "next": [Circular],
-      "parent": Node {
-        "children": Array [
-          [Circular],
-          [Circular],
-        ],
-        "name": "root",
-        "next": null,
-        "parent": null,
-        "prev": null,
-        "type": "root",
-      },
-      "prev": null,
-      "type": "tag",
-      "x-attribsNamespace": Object {
-        "class": undefined,
-      },
-      "x-attribsPrefix": Object {
-        "class": undefined,
-      },
-    },
-    "type": "tag",
-    "x-attribsNamespace": Object {
-      "class": undefined,
-    },
-    "x-attribsPrefix": Object {
-      "class": undefined,
-    },
-  },
-  "_root": [Circular],
-  "length": 2,
-  "options": Object {
-    "decodeEntities": true,
-    "xml": false,
-  },
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <h3
+        class="ons-summary__group-title"
+      >
+        test
+      </h3>
+      <table
+        class="ons-summary__items"
+      >
+        <tbody
+          class="ons-summary__item"
+        >
+          <tr
+            class="ons-summary__row ons-summary__row--has-values"
+          >
+            <td
+              class="ons-summary__item-title"
+            >
+              <div
+                class="ons-summary__item--text"
+              >
+                Foo
+              </div>
+            </td>
+            <td
+              class="ons-summary__values"
+              colspan="2"
+            >
+              bar
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>,
+  "container": <div>
+    <h3
+      class="ons-summary__group-title"
+    >
+      test
+    </h3>
+    <table
+      class="ons-summary__items"
+    >
+      <tbody
+        class="ons-summary__item"
+      >
+        <tr
+          class="ons-summary__row ons-summary__row--has-values"
+        >
+          <td
+            class="ons-summary__item-title"
+          >
+            <div
+              class="ons-summary__item--text"
+            >
+              Foo
+            </div>
+          </td>
+          <td
+            class="ons-summary__values"
+            colspan="2"
+          >
+            bar
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
 }
 `;
 
 exports[`ONS Summary Item Row test matches Snapshot 1`] = `
-initialize {
-  "0": Node {
-    "attribs": Object {
-      "class": "ons-summary__item",
-    },
-    "children": Array [
-      Node {
-        "attribs": Object {
-          "class": "ons-summary__row ons-summary__row--has-values",
-        },
-        "children": Array [
-          Node {
-            "attribs": Object {
-              "class": "ons-summary__item-title",
-            },
-            "children": Array [
-              Node {
-                "attribs": Object {
-                  "class": "ons-summary__item--text",
-                },
-                "children": Array [
-                  Node {
-                    "data": "Foo",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "div",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
-            ],
-            "name": "td",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": Node {
-              "attribs": Object {
-                "class": "ons-summary__values",
-                "colspan": "2",
-              },
-              "children": Array [
-                Node {
-                  "data": "bar",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "td",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": [Circular],
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-                "colspan": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-                "colspan": undefined,
-              },
-            },
-            "parent": [Circular],
-            "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-            },
-          },
-          Node {
-            "attribs": Object {
-              "class": "ons-summary__values",
-              "colspan": "2",
-            },
-            "children": Array [
-              Node {
-                "data": "bar",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "text",
-              },
-            ],
-            "name": "td",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": Node {
-              "attribs": Object {
-                "class": "ons-summary__item-title",
-              },
-              "children": Array [
-                Node {
-                  "attribs": Object {
-                    "class": "ons-summary__item--text",
-                  },
-                  "children": Array [
-                    Node {
-                      "data": "Foo",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "div",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-              ],
-              "name": "td",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": [Circular],
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-              },
-            },
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-              "colspan": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-              "colspan": undefined,
-            },
-          },
-        ],
-        "name": "tr",
-        "namespace": "http://www.w3.org/1999/xhtml",
-        "next": null,
-        "parent": [Circular],
-        "prev": null,
-        "type": "tag",
-        "x-attribsNamespace": Object {
-          "class": undefined,
-        },
-        "x-attribsPrefix": Object {
-          "class": undefined,
-        },
-      },
-    ],
-    "name": "tbody",
-    "namespace": "http://www.w3.org/1999/xhtml",
-    "next": null,
-    "parent": Node {
-      "children": Array [
-        [Circular],
-      ],
-      "name": "root",
-      "next": null,
-      "parent": null,
-      "prev": null,
-      "type": "root",
-    },
-    "prev": null,
-    "type": "tag",
-    "x-attribsNamespace": Object {
-      "class": undefined,
-    },
-    "x-attribsPrefix": Object {
-      "class": undefined,
-    },
-  },
-  "_root": [Circular],
-  "length": 1,
-  "options": Object {
-    "decodeEntities": true,
-    "xml": false,
-  },
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <tbody
+        class="ons-summary__item"
+      >
+        <tr
+          class="ons-summary__row ons-summary__row--has-values"
+        >
+          <td
+            class="ons-summary__item-title"
+          >
+            <div
+              class="ons-summary__item--text"
+            >
+              Foo
+            </div>
+          </td>
+          <td
+            class="ons-summary__values"
+            colspan="2"
+          >
+            bar
+          </td>
+        </tr>
+      </tbody>
+    </div>
+  </body>,
+  "container": <div>
+    <tbody
+      class="ons-summary__item"
+    >
+      <tr
+        class="ons-summary__row ons-summary__row--has-values"
+      >
+        <td
+          class="ons-summary__item-title"
+        >
+          <div
+            class="ons-summary__item--text"
+          >
+            Foo
+          </div>
+        </td>
+        <td
+          class="ons-summary__values"
+          colspan="2"
+        >
+          bar
+        </td>
+      </tr>
+    </tbody>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
 }
 `;

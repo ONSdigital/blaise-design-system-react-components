@@ -1,11 +1,8 @@
-import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import React from "react";
 import ExternalLink from "./ExternalLink";
 
 describe("External Link Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
     afterEach(() => {
         cleanup();
     });
@@ -17,13 +14,13 @@ describe("External Link Test", () => {
     };
 
     it("matches Snapshot", () => {
-        const wrapper = render(<ExternalLink {...Props} />);
-        expect(wrapper).toMatchSnapshot();
+        const { asFragment } = render(<ExternalLink {...Props} />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it("should render correctly", () => {
-        const wrapper = render(<ExternalLink {...Props} />);
-        expect(wrapper).toBeDefined();
+        const { container } = render(<ExternalLink {...Props} />);
+        expect(container).toBeDefined();
     });
 
     it("should render with the correct text displayed", () => {
@@ -32,14 +29,14 @@ describe("External Link Test", () => {
     });
 
     it("should render with the correct href passed in", () => {
-        const wrapper = shallow(<ExternalLink {...Props} />);
-        const { href } = wrapper.find("a").props();
-        expect(href).toEqual(Props.link);
+        render(<ExternalLink {...Props} />);
+        const linkElement = screen.getByRole("link");
+        expect(linkElement).toHaveAttribute("href", Props.link);
     });
 
     it("should render with the correct aria label passed in", () => {
-        const wrapper = shallow(<ExternalLink {...Props} />);
-        const ariaLabel = wrapper.find("a").props()["aria-label"];
-        expect(ariaLabel).toEqual(Props.ariaLabel);
+        render(<ExternalLink {...Props} />);
+        const linkElement = screen.getByRole("link");
+        expect(linkElement).toHaveAttribute("aria-label", Props.ariaLabel);
     });
 });

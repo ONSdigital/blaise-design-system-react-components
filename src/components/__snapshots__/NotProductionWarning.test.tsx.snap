@@ -1,384 +1,132 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ONS Not production warning Test matches Snapshot 1`] = `
-initialize {
-  "0": Node {
-    "attribs": Object {
-      "style": "background:#222;color:#222",
-    },
-    "children": Array [
-      Node {
-        "attribs": Object {
-          "class": "ons-container",
-        },
-        "children": Array [
-          Node {
-            "attribs": Object {
-              "class": "ons-panel ons-panel--warn-branded ons-panel--no-title",
-              "style": "background:#222",
-            },
-            "children": Array [
-              Node {
-                "attribs": Object {
-                  "aria-hidden": "true",
-                  "class": "ons-panel__icon",
-                  "style": "color:#222",
-                },
-                "children": Array [
-                  Node {
-                    "data": "!",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Node {
-                  "attribs": Object {
-                    "class": "ons-panel__assistive-text ons-u-vh",
-                  },
-                  "children": Array [
-                    Node {
-                      "data": "Warning: ",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": Node {
-                    "attribs": Object {
-                      "class": "ons-panel__body",
-                    },
-                    "children": Array [
-                      Node {
-                        "attribs": Object {
-                          "class": "ons-u-mb-no",
-                        },
-                        "children": Array [
-                          Node {
-                            "data": "This environment is not a production environment. Do not upload any live data to this service.",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "text",
-                          },
-                        ],
-                        "name": "p",
-                        "namespace": "http://www.w3.org/1999/xhtml",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "class": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "class": undefined,
-                        },
-                      },
-                    ],
-                    "name": "div",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": [Circular],
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                  "parent": [Circular],
-                  "prev": [Circular],
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "aria-hidden": undefined,
-                  "class": undefined,
-                  "style": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "aria-hidden": undefined,
-                  "class": undefined,
-                  "style": undefined,
-                },
-              },
-              Node {
-                "attribs": Object {
-                  "class": "ons-panel__assistive-text ons-u-vh",
-                },
-                "children": Array [
-                  Node {
-                    "data": "Warning: ",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Node {
-                  "attribs": Object {
-                    "class": "ons-panel__body",
-                  },
-                  "children": Array [
-                    Node {
-                      "attribs": Object {
-                        "class": "ons-u-mb-no",
-                      },
-                      "children": Array [
-                        Node {
-                          "data": "This environment is not a production environment. Do not upload any live data to this service.",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                      ],
-                      "name": "p",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "class": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "class": undefined,
-                      },
-                    },
-                  ],
-                  "name": "div",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": [Circular],
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                "parent": [Circular],
-                "prev": Node {
-                  "attribs": Object {
-                    "aria-hidden": "true",
-                    "class": "ons-panel__icon",
-                    "style": "color:#222",
-                  },
-                  "children": Array [
-                    Node {
-                      "data": "!",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "aria-hidden": undefined,
-                    "class": undefined,
-                    "style": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "aria-hidden": undefined,
-                    "class": undefined,
-                    "style": undefined,
-                  },
-                },
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
-              Node {
-                "attribs": Object {
-                  "class": "ons-panel__body",
-                },
-                "children": Array [
-                  Node {
-                    "attribs": Object {
-                      "class": "ons-u-mb-no",
-                    },
-                    "children": Array [
-                      Node {
-                        "data": "This environment is not a production environment. Do not upload any live data to this service.",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "p",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                ],
-                "name": "div",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": Node {
-                  "attribs": Object {
-                    "class": "ons-panel__assistive-text ons-u-vh",
-                  },
-                  "children": Array [
-                    Node {
-                      "data": "Warning: ",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
-                  "parent": [Circular],
-                  "prev": Node {
-                    "attribs": Object {
-                      "aria-hidden": "true",
-                      "class": "ons-panel__icon",
-                      "style": "color:#222",
-                    },
-                    "children": Array [
-                      Node {
-                        "data": "!",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "span",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": [Circular],
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "aria-hidden": undefined,
-                      "class": undefined,
-                      "style": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "aria-hidden": undefined,
-                      "class": undefined,
-                      "style": undefined,
-                    },
-                  },
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
-            ],
-            "name": "div",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-              "style": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-              "style": undefined,
-            },
-          },
-        ],
-        "name": "div",
-        "namespace": "http://www.w3.org/1999/xhtml",
-        "next": null,
-        "parent": [Circular],
-        "prev": null,
-        "type": "tag",
-        "x-attribsNamespace": Object {
-          "class": undefined,
-        },
-        "x-attribsPrefix": Object {
-          "class": undefined,
-        },
-      },
-    ],
-    "name": "div",
-    "namespace": "http://www.w3.org/1999/xhtml",
-    "next": null,
-    "parent": Node {
-      "children": Array [
-        [Circular],
-      ],
-      "name": "root",
-      "next": null,
-      "parent": null,
-      "prev": null,
-      "type": "root",
-    },
-    "prev": null,
-    "type": "tag",
-    "x-attribsNamespace": Object {
-      "style": undefined,
-    },
-    "x-attribsPrefix": Object {
-      "style": undefined,
-    },
-  },
-  "_root": [Circular],
-  "length": 1,
-  "options": Object {
-    "decodeEntities": true,
-    "xml": false,
-  },
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        style="background: rgb(34, 34, 34); color: rgb(34, 34, 34);"
+      >
+        <div
+          class="ons-container"
+        >
+          <div
+            class="ons-panel ons-panel--warn-branded ons-panel--no-title"
+            style="background: rgb(34, 34, 34);"
+          >
+            <span
+              aria-hidden="true"
+              class="ons-panel__icon"
+              style="color: rgb(34, 34, 34);"
+            >
+              !
+            </span>
+            <span
+              class="ons-panel__assistive-text ons-u-vh"
+            >
+              Warning: 
+            </span>
+            <div
+              class="ons-panel__body"
+            >
+              <p
+                class="ons-u-mb-no"
+              >
+                This environment is not a production environment. Do not upload any live data to this service.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      style="background: rgb(34, 34, 34); color: rgb(34, 34, 34);"
+    >
+      <div
+        class="ons-container"
+      >
+        <div
+          class="ons-panel ons-panel--warn-branded ons-panel--no-title"
+          style="background: rgb(34, 34, 34);"
+        >
+          <span
+            aria-hidden="true"
+            class="ons-panel__icon"
+            style="color: rgb(34, 34, 34);"
+          >
+            !
+          </span>
+          <span
+            class="ons-panel__assistive-text ons-u-vh"
+          >
+            Warning: 
+          </span>
+          <div
+            class="ons-panel__body"
+          >
+            <p
+              class="ons-u-mb-no"
+            >
+              This environment is not a production environment. Do not upload any live data to this service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
 }
 `;

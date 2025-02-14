@@ -7,11 +7,14 @@ Object {
     <div>
       <div
         class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
+        data-testid="panel"
       >
         <div
           class="ons-panel__body "
         >
-          <p>
+          <p
+            data-testid="child"
+          >
             Succceeesssss
           </p>
         </div>
@@ -21,11 +24,14 @@ Object {
   "container": <div>
     <div
       class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
+      data-testid="panel"
     >
       <div
         class="ons-panel__body "
       >
-        <p>
+        <p
+          data-testid="child"
+        >
           Succceeesssss
         </p>
       </div>
@@ -92,6 +98,7 @@ Object {
     <div>
       <div
         class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
+        data-testid="big-icon-panel"
       >
         <span
           class="ons-panel__icon"
@@ -120,6 +127,7 @@ Object {
   "container": <div>
     <div
       class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
+      data-testid="big-icon-panel"
     >
       <span
         class="ons-panel__icon"
@@ -312,6 +320,7 @@ Object {
     <div>
       <div
         class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
+        data-testid="status-panel"
       >
         <span
           class="ons-panel__icon"
@@ -340,6 +349,7 @@ Object {
   "container": <div>
     <div
       class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
+      data-testid="status-panel"
     >
       <span
         class="ons-panel__icon"

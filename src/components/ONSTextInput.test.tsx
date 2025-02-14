@@ -1,13 +1,10 @@
+import {
+    cleanup, fireEvent, render, screen,
+} from "@testing-library/react";
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import { cleanup, render, screen } from "@testing-library/react";
-
-import Adapter from "enzyme-adapter-react-16";
 import { ONSTextInput } from "./ONSTextInput";
-import { validateInstrumentName } from "./forms/ExampleForm/FormValidation";
 
 describe("ONS Text Input Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
     afterEach(() => {
         cleanup();
     });
@@ -42,16 +39,17 @@ describe("ONS Text Input Test", () => {
                 value={props.value}
                 autoComplete={props.autoComplete}
                 onClick={props.onClick}
-                validate={validateInstrumentName}
             />,
         );
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, Props)).toMatchSnapshot();
+        expect(wrapper(render, Props)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
+    it("should render correctly", () => {
+        expect(wrapper(render, Props)).toBeDefined();
+    });
 
     it("should render with the correct label", () => {
         wrapper(render, Props);
@@ -59,13 +57,15 @@ describe("ONS Text Input Test", () => {
     });
 
     it("simulates change events", () => {
-        const input = wrapper(shallow, changeProps);
-        input.find("input").simulate("change", { target: { value: "abc" } });
-        expect(changeProps.onChange).toHaveBeenCalled();
+        wrapper(render, changeProps);
+        fireEvent.change(screen.getByTestId("text-input"), { target: { value: "test1" } });
+        fireEvent.change(screen.getByTestId("text-input"), { target: { value: "test2" } });
+        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 
     it("simulates click events", () => {
-        wrapper(shallow, clickProps).find("input").simulate("click");
-        expect(clickProps.onClick).toHaveBeenCalled();
+        wrapper(render, clickProps);
+        fireEvent.click(screen.getByTestId("text-input"));
+        expect(clickProps.onClick).toHaveBeenCalledTimes(1);
     });
 });

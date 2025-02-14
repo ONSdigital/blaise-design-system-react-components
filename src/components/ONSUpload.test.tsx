@@ -1,11 +1,8 @@
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { ONSUpload } from "./ONSUpload";
 
 describe("ONS Upload Test", () => {
-    Enzyme.configure({ adapter: new Adapter() });
-
     const Props = {};
 
     const changeProps = {
@@ -31,14 +28,21 @@ describe("ONS Upload Test", () => {
     }
 
     it("matches Snapshot", () => {
-        expect(wrapper(shallow, Props)).toMatchSnapshot();
+        expect(wrapper(render, Props)).toMatchSnapshot();
     });
 
-    it("should render correctly", () => expect(wrapper(shallow, Props).exists()).toEqual(true));
+    it("should render correctly", () => {
+        expect(wrapper(render, Props)).toBeDefined();
+    });
 
     it("should handle a change", () => {
-        const input = wrapper(shallow, changeProps);
-        input.find("input").simulate("change", { target: { value: "abc" } });
-        expect(changeProps.onChange).toHaveBeenCalled();
+        wrapper(render, changeProps);
+        fireEvent.change(screen.getByTestId("upload-input"), {
+            target: { files: [new File(["(⌐□_□)"], "test1.csv", { type: "csv" })] },
+        });
+        fireEvent.change(screen.getByTestId("upload-input"), {
+            target: { files: [new File(["(⌐□_□)"], "test2.csv", { type: "csv" })] },
+        });
+        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 });
