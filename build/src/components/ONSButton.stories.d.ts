@@ -1,7 +1,7 @@
-declare const _default: import("@storybook/types").ComponentAnnotations<import("@storybook/react/dist/types-0fc72a6d").R, import("@storybook/types").Args>;
+declare const _default: import("@storybook/csf").ComponentAnnotations<import("@storybook/react/dist/types-a5624094").R, import("@storybook/csf").Args>;
 export default _default;
-export declare const Primary: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSButton").Props>;
-export declare const Secondary: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSButton").Props>;
-export declare const Small: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSButton").Props>;
-export declare const Loading: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSButton").Props>;
-export declare const Hidden: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSButton").Props>;
+export declare const Primary: any;
+export declare const Secondary: any;
+export declare const Small: any;
+export declare const Loading: any;
+export declare const Hidden: any;

@@ -1,5 +1,5 @@
-declare const _default: import("@storybook/types").ComponentAnnotations<import("@storybook/react/dist/types-0fc72a6d").R, import("@storybook/types").Args>;
+declare const _default: import("@storybook/csf").ComponentAnnotations<import("@storybook/react/dist/types-a5624094").R, import("@storybook/csf").Args>;
 export default _default;
-export declare const DefaultMessage: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSLoadingPanel").Props>;
-export declare const CustomMessage: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSLoadingPanel").Props>;
-export declare const Hidden: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSLoadingPanel").Props>;
+export declare const DefaultMessage: any;
+export declare const CustomMessage: any;
+export declare const Hidden: any;

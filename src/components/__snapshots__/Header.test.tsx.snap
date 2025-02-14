@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Check Header with navigation bar: matches Snapshot with navigation 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -308,7 +308,7 @@ Object {
 `;
 
 exports[`Check Header with sign out button: matches Snapshot with sign out button 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -549,7 +549,7 @@ Object {
 `;
 
 exports[`Check default Header: matches Snapshot 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
