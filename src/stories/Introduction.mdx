@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/blocks';
 
 <Meta title="Blaise/Introduction" />
 
@@ -26,6 +26,7 @@ First we import the component into a default statement, the title is where in th
 so below the panel will be under the label `Components`.
 You can also add a sub folder by adding a extra layer in the / for example `'Components/Error Boundary/Panel'`,
 creates a `Error Boundary` group.
+
 ```tsx
 export default {
     component: ONSPanel,
@@ -35,6 +36,7 @@ export default {
 
 Create the standard template, which passes any arguments to the component. Then create a story so different type of the component,
 like below you have a Info, Success and Error variant of the Panel component
+
 ```tsx
 //👇 We create a "template" of how args map to rendering
 const Template: ComponentStory<typeof ONSPanel> = (args) => <ONSPanel {...args}/>;

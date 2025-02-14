@@ -1,7 +1,7 @@
-declare const _default: import("@storybook/types").ComponentAnnotations<import("@storybook/react/dist/types-0fc72a6d").R, import("@storybook/types").Args>;
+declare const _default: import("@storybook/csf").ComponentAnnotations<import("@storybook/react/dist/types-a5624094").R, import("@storybook/csf").Args>;
 export default _default;
-export declare const Info: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSPanel").Props>;
-export declare const Success: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSPanel").Props>;
-export declare const Error: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSPanel").Props>;
-export declare const Warn: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSPanel").Props>;
-export declare const Spacious: import("@storybook/types").AnnotatedStoryFn<import("@storybook/react/dist/types-0fc72a6d").R, import("./ONSPanel").Props>;
+export declare const Info: any;
+export declare const Success: any;
+export declare const Error: any;
+export declare const Warn: any;
+export declare const Spacious: any;
