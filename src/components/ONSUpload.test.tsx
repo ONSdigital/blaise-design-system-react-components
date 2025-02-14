@@ -37,8 +37,12 @@ describe("ONS Upload Test", () => {
 
     it("should handle a change", () => {
         wrapper(render, changeProps);
-        fireEvent.change(screen.getByTestId("upload-input"), { target: { value: "test1" } });
-        fireEvent.change(screen.getByTestId("upload-input"), { target: { value: "test2" } });
+        fireEvent.change(screen.getByTestId("upload-input"), {
+        target: {files: [new File(['(⌐□_□)'], 'test1.csv', { type: 'csv' })]},
+        })
+        fireEvent.change(screen.getByTestId("upload-input"), {
+        target: {files: [new File(['(⌐□_□)'], 'test2.csv', { type: 'csv' })]},
+        })
         expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 });
