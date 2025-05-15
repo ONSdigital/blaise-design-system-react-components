@@ -20,6 +20,18 @@ describe("ONS Text Input Test", () => {
         onChange: jest.fn(),
     };
 
+    const testIdProps = {
+        testId: "test-id",
+    };
+
+    const passwordProps = {
+        password: true,
+    };
+
+    const numberProps = {
+        number: true,
+    };
+
     const clickProps = {
         onClick: jest.fn(),
         fit: true,
@@ -32,6 +44,7 @@ describe("ONS Text Input Test", () => {
                 label={props.label}
                 id={props.id}
                 password={props.password}
+                number={props.number}
                 onChange={props.onChange}
                 placeholder={props.placeholder}
                 fit={props.fit}
@@ -39,6 +52,7 @@ describe("ONS Text Input Test", () => {
                 value={props.value}
                 autoComplete={props.autoComplete}
                 onClick={props.onClick}
+                testId={props.testId}
             />,
         );
     }
@@ -61,6 +75,26 @@ describe("ONS Text Input Test", () => {
         fireEvent.change(screen.getByTestId("text-input"), { target: { value: "test1" } });
         fireEvent.change(screen.getByTestId("text-input"), { target: { value: "test2" } });
         expect(changeProps.onChange).toHaveBeenCalledTimes(2);
+    });
+
+    it("should change the test id when given in the props", () => {
+        wrapper(render, testIdProps);
+        expect(screen.getByTestId("test-id")).toBeDefined();
+    });
+
+    it("should be text type by default", () => {
+        wrapper(render, Props);
+        expect(screen.getByTestId("text-input")).toHaveProperty("type", "text");
+    });
+
+    it("should be password type when given in Props", () => {
+        wrapper(render, passwordProps);
+        expect(screen.getByTestId("text-input")).toHaveProperty("type", "password");
+    });
+
+    it("should be number type when given in props", () => {
+        wrapper(render, numberProps);
+        expect(screen.getByTestId("text-input")).toHaveProperty("type", "number");
     });
 
     it("simulates click events", () => {

@@ -3,6 +3,7 @@ export interface Props {
     label?: string;
     id?: string;
     password?: boolean;
+    number?: boolean;
     onChange?: (e: ChangeEvent<HTMLInputElement>, ...args: any[]) => void;
     placeholder?: string;
     fit?: boolean;
@@ -11,6 +12,7 @@ export interface Props {
     autoComplete?: string;
     onClick?: any;
     zIndex?: number;
+    testId?: string;
 }
 export declare class ONSTextInput extends Component<Props> {
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;

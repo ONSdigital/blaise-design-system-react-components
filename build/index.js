@@ -360,7 +360,7 @@ var ONSTextInput = /** @class */ (function (_super) {
         return (React__default["default"].createElement("p", { className: "ons-field" },
             this.props.label !== undefined
                 && React__default["default"].createElement("label", { className: "ons-label", htmlFor: this.props.id }, this.props.label),
-            React__default["default"].createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.props.password === true ? "password" : "text", id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": "text-input" })));
+            React__default["default"].createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.props.password === true ? "password" : this.props.number === true ? "number" : "text", id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": this.props.testId !== undefined ? this.props.testId : "text-input" })));
     };
     return ONSTextInput;
 }(React.Component));
