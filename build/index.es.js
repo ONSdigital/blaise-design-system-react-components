@@ -345,6 +345,15 @@ var ONSTextInput = /** @class */ (function (_super) {
             if (_this.props.onChange !== undefined)
                 _this.props.onChange(e, _this.props.label);
         };
+        _this.determineType = function () {
+            if (_this.props.password === true) {
+                return "password";
+            }
+            if (_this.props.number === true) {
+                return "number";
+            }
+            return "text";
+        };
         return _this;
     }
     ONSTextInput.prototype.render = function () {
@@ -352,7 +361,7 @@ var ONSTextInput = /** @class */ (function (_super) {
         return (React.createElement("p", { className: "ons-field" },
             this.props.label !== undefined
                 && React.createElement("label", { className: "ons-label", htmlFor: this.props.id }, this.props.label),
-            React.createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.props.password === true ? "password" : "text", id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": "text-input" })));
+            React.createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.determineType(), id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": this.props.testId !== undefined ? this.props.testId : "text-input" })));
     };
     return ONSTextInput;
 }(Component));
