@@ -21,6 +21,15 @@ export class ONSTextInput extends Component <Props> {
         if (this.props.onChange !== undefined) this.props.onChange(e, this.props.label);
     };
 
+    determineType = () => {
+        if (this.props.password === true) {
+            return "password";
+        } if (this.props.number === true) {
+            return "number";
+        }
+        return "text";
+    };
+
     render() {
         return (
             <p className="ons-field">
@@ -31,7 +40,7 @@ export class ONSTextInput extends Component <Props> {
                     style={{ width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }}
                     autoFocus={this.props.autoFocus === true}
                     autoComplete={this.props.autoComplete}
-                    type={this.props.password === true ? "password" : this.props.number === true ? "number" : "text"}
+                    type={this.determineType()}
                     id={this.props.id}
                     className="ons-input ons-input--text ons-input-type__input "
                     placeholder={this.props.placeholder}

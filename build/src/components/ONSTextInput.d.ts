@@ -16,5 +16,6 @@ export interface Props {
 }
 export declare class ONSTextInput extends Component<Props> {
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    determineType: () => "password" | "number" | "text";
     render(): React.JSX.Element;
 }
