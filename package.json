@@ -39,9 +39,9 @@
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "formik": "^2.2.9",
-    "react": "^18.2.0",
+    "react": "^19.1.0",
     "react-csv": "^2.2.2",
-    "react-dom": "^18.2.0",
+    "react-dom": "^19.1.0",
     "react-loader-spinner": "^4.0.0",
     "storybook": "^8.5.6"
   },
@@ -96,5 +96,6 @@
   "resolutions": {
     "@babel/traverse": "^7.23.2"
   },
-  "types": "build/src/index.d.ts"
+  "types": "build/src/index.d.ts",
+  "packageManager": "yarn@3.3.1+sha512.e355f587284d06d2c0c1c2259c68746aa1f1f6cdeedefce543cec206709beeb7951c0a27cdbfb7b5736a576854829af9c660bbe82052192c49f108a546994b71"
 }
