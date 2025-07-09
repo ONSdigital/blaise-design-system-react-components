@@ -60,7 +60,7 @@ function Header({
             <div className="ons-header__main">
                 <div className="ons-container">
                     <div
-                        className="ons-grid ons-grid-flex ons-grid-flex--between ons-grid-flex--vertical-center ons-grid-flex--no-wrap"
+                        className="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
                     >
                         <div className="ons-grid__col ons-col-auto ons-u-flex-shrink">
                             <div className="ons-header__title">{title}</div>
@@ -68,11 +68,11 @@ function Header({
                         {
                             signOutButton
                             && (
-                                <div className="ons-grid__col ons-col-auto ons-u-flex-no-shrink">
+                                <div className="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m">
                                     <button
                                         id="signout-button"
                                         data-test-id="signout-button"
-                                        className="ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn"
+                                        className="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
                                         onClick={() => signOutFunction && signOutFunction()}
                                         type="button"
                                     >
