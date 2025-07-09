@@ -366,7 +366,7 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
                 class="ons-grid__col ons-col-auto ons-u-flex-no-shrink"
               >
                 <button
-                  class="ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn"
+                  class="ons-u-d-no@2xs@m ons-btn--ghost ons-btn ons-js-submit-btn"
                   data-test-id="signout-button"
                   id="signout-button"
                   type="button"
@@ -461,7 +461,7 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
               class="ons-grid__col ons-col-auto ons-u-flex-no-shrink"
             >
               <button
-                class="ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn"
+                class="ons-u-d-no@2xs@m ons-btn--ghost ons-btn ons-js-submit-btn"
                 data-test-id="signout-button"
                 id="signout-button"
                 type="button"

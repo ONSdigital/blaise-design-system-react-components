@@ -72,7 +72,7 @@ function Header({
                                     <button
                                         id="signout-button"
                                         data-test-id="signout-button"
-                                        className="ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn"
+                                        className="ons-u-d-no@2xs@m ons-btn--ghost ons-btn ons-js-submit-btn"
                                         onClick={() => signOutFunction && signOutFunction()}
                                         type="button"
                                     >

@@ -94,7 +94,7 @@ function Header(_a) {
                         React__default["default"].createElement("div", { className: "ons-header__title" }, title)),
                     signOutButton
                         && (React__default["default"].createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-no-shrink" },
-                            React__default["default"].createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn", onClick: function () { return signOutFunction && signOutFunction(); }, type: "button" },
+                            React__default["default"].createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "ons-u-d-no@2xs@m ons-btn--ghost ons-btn ons-js-submit-btn", onClick: function () { return signOutFunction && signOutFunction(); }, type: "button" },
                                 React__default["default"].createElement("span", { className: "ons-btn__inner" },
                                     React__default["default"].createElement("span", { className: "ons-btn__text" }, signOutText),
                                     React__default["default"].createElement("svg", { className: "ons-icon ons-u-ml-2xs", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg", focusable: "false", fill: "currentColor", role: "img", "aria-hidden": "true" },

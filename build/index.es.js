@@ -86,7 +86,7 @@ function Header(_a) {
                         React.createElement("div", { className: "ons-header__title" }, title)),
                     signOutButton
                         && (React.createElement("div", { className: "ons-grid__col ons-col-auto ons-u-flex-no-shrink" },
-                            React.createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn", onClick: function () { return signOutFunction && signOutFunction(); }, type: "button" },
+                            React.createElement("button", { id: "signout-button", "data-test-id": "signout-button", className: "ons-u-d-no@2xs@m ons-btn--ghost ons-btn ons-js-submit-btn", onClick: function () { return signOutFunction && signOutFunction(); }, type: "button" },
                                 React.createElement("span", { className: "ons-btn__inner" },
                                     React.createElement("span", { className: "ons-btn__text" }, signOutText),
                                     React.createElement("svg", { className: "ons-icon ons-u-ml-2xs", viewBox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg", focusable: "false", fill: "currentColor", role: "img", "aria-hidden": "true" },
