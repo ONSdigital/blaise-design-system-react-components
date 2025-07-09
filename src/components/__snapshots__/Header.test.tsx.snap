@@ -44,7 +44,7 @@ exports[`Check Header with navigation bar: matches Snapshot with navigation 1`] 
             class="ons-container"
           >
             <div
-              class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+              class="ons-grid ons-grid-flex ons-grid-flex--between ons-grid-flex--vertical-center ons-grid-flex--no-wrap"
             >
               <div
                 class="ons-grid__col ons-col-auto ons-u-flex-shrink"
@@ -169,7 +169,7 @@ exports[`Check Header with navigation bar: matches Snapshot with navigation 1`] 
           class="ons-container"
         >
           <div
-            class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+            class="ons-grid ons-grid-flex ons-grid-flex--between ons-grid-flex--vertical-center ons-grid-flex--no-wrap"
           >
             <div
               class="ons-grid__col ons-col-auto ons-u-flex-shrink"
@@ -351,7 +351,7 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
             class="ons-container"
           >
             <div
-              class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+              class="ons-grid ons-grid-flex ons-grid-flex--between ons-grid-flex--vertical-center ons-grid-flex--no-wrap"
             >
               <div
                 class="ons-grid__col ons-col-auto ons-u-flex-shrink"
@@ -363,10 +363,10 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
                 </div>
               </div>
               <div
-                class="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m"
+                class="ons-grid__col ons-col-auto ons-u-flex-no-shrink"
               >
                 <button
-                  class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
+                  class="ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn"
                   data-test-id="signout-button"
                   id="signout-button"
                   type="button"
@@ -380,8 +380,11 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
                       Save and sign out
                     </span>
                     <svg
-                      class="ons-svg-icon ons-u-ml-xs"
+                      aria-hidden="true"
+                      class="ons-icon ons-u-ml-2xs"
+                      fill="currentColor"
                       focusable="false"
+                      role="img"
                       viewBox="0 0 12 12"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -443,7 +446,7 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
           class="ons-container"
         >
           <div
-            class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+            class="ons-grid ons-grid-flex ons-grid-flex--between ons-grid-flex--vertical-center ons-grid-flex--no-wrap"
           >
             <div
               class="ons-grid__col ons-col-auto ons-u-flex-shrink"
@@ -455,10 +458,10 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
               </div>
             </div>
             <div
-              class="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m"
+              class="ons-grid__col ons-col-auto ons-u-flex-no-shrink"
             >
               <button
-                class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
+                class="ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn"
                 data-test-id="signout-button"
                 id="signout-button"
                 type="button"
@@ -472,8 +475,11 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
                     Save and sign out
                   </span>
                   <svg
-                    class="ons-svg-icon ons-u-ml-xs"
+                    aria-hidden="true"
+                    class="ons-icon ons-u-ml-2xs"
+                    fill="currentColor"
                     focusable="false"
+                    role="img"
                     viewBox="0 0 12 12"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -592,7 +598,7 @@ exports[`Check default Header: matches Snapshot 1`] = `
             class="ons-container"
           >
             <div
-              class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+              class="ons-grid ons-grid-flex ons-grid-flex--between ons-grid-flex--vertical-center ons-grid-flex--no-wrap"
             >
               <div
                 class="ons-grid__col ons-col-auto ons-u-flex-shrink"
@@ -649,7 +655,7 @@ exports[`Check default Header: matches Snapshot 1`] = `
           class="ons-container"
         >
           <div
-            class="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+            class="ons-grid ons-grid-flex ons-grid-flex--between ons-grid-flex--vertical-center ons-grid-flex--no-wrap"
           >
             <div
               class="ons-grid__col ons-col-auto ons-u-flex-shrink"

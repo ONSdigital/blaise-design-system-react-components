@@ -60,7 +60,7 @@ function Header({
             <div className="ons-header__main">
                 <div className="ons-container">
                     <div
-                        className="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
+                        className="ons-grid ons-grid-flex ons-grid-flex--between ons-grid-flex--vertical-center ons-grid-flex--no-wrap"
                     >
                         <div className="ons-grid__col ons-col-auto ons-u-flex-shrink">
                             <div className="ons-header__title">{title}</div>
@@ -68,21 +68,24 @@ function Header({
                         {
                             signOutButton
                             && (
-                                <div className="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m">
+                                <div className="ons-grid__col ons-col-auto ons-u-flex-no-shrink">
                                     <button
                                         id="signout-button"
                                         data-test-id="signout-button"
-                                        className="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
+                                        className="ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link ons-js-submit-btn"
                                         onClick={() => signOutFunction && signOutFunction()}
                                         type="button"
                                     >
                                         <span className="ons-btn__inner">
                                             <span className="ons-btn__text">{signOutText}</span>
                                             <svg
-                                                className="ons-svg-icon ons-u-ml-xs"
+                                                className="ons-icon ons-u-ml-2xs"
                                                 viewBox="0 0 12 12"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 focusable="false"
+                                                fill="currentColor" 
+                                                role="img" 
+                                                aria-hidden="true"
                                             >
                                                 <path
                                                     d="M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z"
