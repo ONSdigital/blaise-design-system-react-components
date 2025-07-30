@@ -104,7 +104,7 @@ exports[`ONS Panel Test matches Snapshot a big success icon 1`] = `
           class="ons-panel__icon"
         >
           <svg
-            class="ons-svg-icon ons-svg-icon--xl"
+            class="ons-icon ons-icon--xl"
             viewBox="0 0 13 10"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -133,7 +133,7 @@ exports[`ONS Panel Test matches Snapshot a big success icon 1`] = `
         class="ons-panel__icon"
       >
         <svg
-          class="ons-svg-icon ons-svg-icon--xl"
+          class="ons-icon ons-icon--xl"
           viewBox="0 0 13 10"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -326,7 +326,7 @@ exports[`ONS Panel Test success panel matches Snapshot 1`] = `
           class="ons-panel__icon"
         >
           <svg
-            class="ons-svg-icon "
+            class="ons-icon "
             viewBox="0 0 13 10"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -355,7 +355,7 @@ exports[`ONS Panel Test success panel matches Snapshot 1`] = `
         class="ons-panel__icon"
       >
         <svg
-          class="ons-svg-icon "
+          class="ons-icon "
           viewBox="0 0 13 10"
           xmlns="http://www.w3.org/2000/svg"
         >
