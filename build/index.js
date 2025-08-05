@@ -167,7 +167,7 @@ var ONSButton = function (props) {
         React__default["default"].createElement("span", { className: "ons-btn__inner" },
             props.label,
             props.loading
-                && (React__default["default"].createElement("svg", { className: "ons-svg-icon uil-default", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
+                && (React__default["default"].createElement("svg", { className: "ons-icon uil-default", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "xMidYMid" },
                     React__default["default"].createElement("rect", { x: "0", y: "0", width: "100", height: "100", fill: "none", className: "bk" }),
                     React__default["default"].createElement("rect", { x: "46.5", y: "40", width: "7", height: "20", rx: "5", ry: "5", transform: "rotate(0 50 50) translate(0 -30)" },
                         React__default["default"].createElement("animate", { attributeName: "opacity", from: "1", to: "0", dur: "1s", begin: "0s", repeatCount: "indefinite" })),

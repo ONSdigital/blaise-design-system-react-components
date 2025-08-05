@@ -60,7 +60,7 @@ export const ONSButton = (props: Props) => {
                     props.loading
                     && (
                         <svg
-                            className="ons-svg-icon uil-default"
+                            className="ons-icon uil-default"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 100 100"
                             preserveAspectRatio="xMidYMid"
