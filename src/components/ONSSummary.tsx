@@ -4,7 +4,7 @@ import { FormatTitle, FormatKey } from "../utilities/TextFormatting";
 
 type Group = {
     title: string
-    records: Record<string, any>
+    records: Record<string, string | number | boolean | null | undefined>;
 };
 class GroupedSummary {
     groups: Group[];
@@ -15,7 +15,7 @@ class GroupedSummary {
 
     csv(): Data {
         const records: Data = [];
-        const row: Record<string, any> = {};
+        const row: Record<string, string | number | boolean | null | undefined> = {};
         for (const group of this.groups) {
             for (const record in group.records) {
                 row[record] = group.records[record];
@@ -28,7 +28,7 @@ class GroupedSummary {
 
 interface SummaryItemProps {
     fieldName: string
-    fieldValue: any
+    fieldValue: React.ReactNode
 }
 
 function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): ReactElement {

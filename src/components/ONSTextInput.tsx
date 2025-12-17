@@ -5,13 +5,13 @@ export interface Props {
     id?: string
     password?: boolean
     number?: boolean
-    onChange?: (e: ChangeEvent<HTMLInputElement>, ...args: any[]) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>, label?: string) => void;
     placeholder?: string
     fit?: boolean
     autoFocus?: boolean
     value?: string
     autoComplete?: string
-    onClick?: any
+    onClick?: React.MouseEventHandler<HTMLInputElement>;
     zIndex?: number
     testId?: string
 }

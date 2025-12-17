@@ -4,6 +4,13 @@ import {
 } from "./FormValidation";
 import StyledForm, { FormFieldObject } from "../StyledForm";
 
+interface ExampleFormValues {
+    Instrument: string;
+    name: string;
+    Email: string;
+    Password: string;
+}
+
 function ExampleForm() {
     const [formStatus, setFormStatus] = useState<string>("");
 
@@ -42,7 +49,7 @@ function ExampleForm() {
      * @param formValues Object with all field values
      * @param setSubmitting Function to set isSubmitting attribute which disables submit button while processing the form
      */
-    function onFormSubmission(formValues: any, setSubmitting: (isSubmitting: boolean) => void): void {
+    function onFormSubmission(formValues: ExampleFormValues, setSubmitting: (isSubmitting: boolean) => void): void {
         console.warn(formValues);
         setFormStatus(`Form submitted for user ${formValues.name}`);
         setSubmitting(false);

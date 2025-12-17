@@ -3,8 +3,9 @@ import {
     fireEvent,
     render,
     screen,
+    RenderResult
 } from "@testing-library/react";
-import React from "react";
+import React, { ComponentProps } from "react";
 import { ONSButton } from "./ONSButton";
 
 describe("ONS Button Test", () => {
@@ -77,8 +78,13 @@ describe("ONS Button Test", () => {
         testId: "Unique-ID",
     };
 
-    function wrapper(render: any, props: any) {
-        return render(
+    type WrapperInputProps = Omit<ComponentProps<typeof ONSButton>, "onClick" | "testid"> & {
+        onButtonClick?: () => void;
+        testId?: string;
+    };
+
+    function wrapper(renderFn: typeof render, props: WrapperInputProps): RenderResult {
+        return renderFn(
             <ONSButton
                 label={props.label}
                 id={props.id}

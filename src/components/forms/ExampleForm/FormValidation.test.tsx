@@ -56,7 +56,7 @@ test("email validation", () => {
 });
 
 test("radio validation", () => {
-    // @ts-ignore
+    // @ts-expect-error testing validation logic when input is undefined
     let errorMessage = validateRadio(undefined);
 
     expect(errorMessage).toEqual("Select an option");

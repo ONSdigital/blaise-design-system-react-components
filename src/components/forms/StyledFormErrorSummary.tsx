@@ -1,5 +1,5 @@
 import { useFormikContext, FormikContextType } from "formik";
-import React, { ReactElement, useEffect } from "react";
+import React, { ReactElement, useEffect, useRef } from "react";
 
 /**
  * Error summary list
@@ -9,10 +9,13 @@ import React, { ReactElement, useEffect } from "react";
  */
 function StyledFormErrorSummary(): ReactElement {
     const { errors, isValid }: FormikContextType<unknown> = useFormikContext();
-    let errorFocus: HTMLDivElement | null;
+
+    const errorFocus = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        errorFocus?.focus();
+        if (!isValid) {
+            errorFocus.current?.focus();
+        }
     }, [errors, isValid]);
 
     return (
@@ -24,7 +27,7 @@ function StyledFormErrorSummary(): ReactElement {
                     aria-labelledby="error-summary-title"
                     role="alert"
                     tabIndex={-1}
-                    ref={(inputEl) => (errorFocus = inputEl)}
+                    ref={errorFocus}
                     className="ons-panel ons-panel--error"
                 >
                     <div className="ons-panel__header">

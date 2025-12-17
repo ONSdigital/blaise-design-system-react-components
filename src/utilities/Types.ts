@@ -1,9 +1,8 @@
-// eslint-disable-next-line import/prefer-default-export
-export function isObjectWithProperty<Type extends string>(value: any, propertyName: Type): value is Record<Type, any> {
+export function isObjectWithProperty<Type extends string>(value: unknown, propertyName: Type): value is Record<Type, unknown> {
     if (typeof value !== "object") {
         return false;
     }
-    if (value == null) {
+    if (value === null) {
         return false;
     }
     return propertyName in value;

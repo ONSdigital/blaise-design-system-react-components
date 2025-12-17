@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import StyledForm, { FormFieldObject } from "../StyledForm";
 import { validateCheckbox } from "./FormValidation";
 
+interface CheckboxFormValues {
+    questionnaire: string[];
+}
+
 function ExampleForm() {
     const [formStatus, setFormStatus] = useState<string>("");
 
@@ -25,7 +29,7 @@ function ExampleForm() {
      * @param formValues Object with all field values
      * @param setSubmitting Function to set isSubmitting attribute which disables submit button while processing the form
      */
-    function onFormSubmission(formValues: any, setSubmitting: (isSubmitting: boolean) => void): void {
+    function onFormSubmission(formValues: CheckboxFormValues, setSubmitting: (isSubmitting: boolean) => void): void {
         console.warn(formValues);
         setFormStatus(`Form submitted, questionnaires chosen ${formValues.questionnaire}`);
         setSubmitting(false);

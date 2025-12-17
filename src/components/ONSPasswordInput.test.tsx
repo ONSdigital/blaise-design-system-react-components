@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 import {
-    cleanup, fireEvent, render, screen,
+    cleanup, fireEvent, render, screen, RenderResult
 } from "@testing-library/react";
 import { ONSPasswordInput } from "./ONSPasswordInput";
 
@@ -24,10 +24,10 @@ describe("ONS Password Input Test", () => {
         onChange: undefined,
     };
 
-    function wrapper(render: any, props: any) {
-        return render(
+    function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSPasswordInput>>): RenderResult {
+        return renderFn(
             <ONSPasswordInput
-                value={props.value}
+                value={props.value as string}
                 label={props.label}
                 inputId={props.inputId}
                 placeholder={props.placeholder}

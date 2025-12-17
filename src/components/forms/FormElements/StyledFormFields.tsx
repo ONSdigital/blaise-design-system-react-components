@@ -1,16 +1,18 @@
 import React, { Fragment, ReactElement } from "react";
 import { Field, useFormikContext } from "formik";
-// eslint-disable-next-line import/no-cycle
+ 
 import { ONSInputField, RadioFieldset, CheckboxesFieldset } from "./Fields";
+
+import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 
 interface Props {
     description?: string,
     name: string,
-    radioOptions?: any[],
-    checkboxOptions?: any[],
-    autoFocus: boolean,
+    radioOptions?: RadioFieldsetObject[],
+    checkboxOptions?: CheckboxFieldsetObject[],
+    autoFocus?: boolean,
     type?: string,
-    props: Pick<any, string | number | symbol>
+    [key: string]: unknown;
 }
 
 export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement) {
@@ -33,7 +35,7 @@ export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: strin
 export const StyledFormField = ({
     name, description, radioOptions = [], checkboxOptions = [], ...props
 }: Props): ReactElement => {
-    const { errors }: any = useFormikContext();
+    const { errors } = useFormikContext<Record<string, string>>();
     let newField: ReactElement;
 
     if (props.type === "radio") {

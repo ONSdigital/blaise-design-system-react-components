@@ -11,7 +11,7 @@ export interface Props {
     /**
      * Optional click handler
      */
-    onClick?: (...props: any[]) => void
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean
     action?: boolean
     testid?: string

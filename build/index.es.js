@@ -410,13 +410,10 @@ function StyledFormErrorSummary() {
                     : "There are ".concat(Object.keys(errors).length, " problems with your answer")))),
             React.createElement("div", { className: "ons-panel__body" },
                 React.createElement("ol", { className: "ons-list" }, Object.keys(errors).map(function (field, index) { return (React.createElement("li", { key: index, className: "ons-list__item " },
-                    React.createElement("a", { href: "#".concat(field), className: "ons-list__link ons-js-inpagelink" }, 
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
+                    React.createElement("a", { href: "#".concat(field), className: "ons-list__link ons-js-inpagelink" },
                     errors[field]))); })))))));
 }
 
-// eslint-disable-next-line import/prefer-default-export
 function isObjectWithProperty(value, propertyName) {
     if (typeof value !== "object") {
         return false;
@@ -548,7 +545,7 @@ function StyledForm(_a) {
         return (React.createElement(Form, null,
             React.createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
-                // eslint-disable-next-line no-param-reassign
+                 
                 field.autoFocus = (isValid && index === 0);
                 return (React.createElement(Fragment$1, { key: field.name }, // @ts-ignore
                 React.createElement(StyledFormField, __assign({}, field))));
@@ -827,7 +824,7 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
-/* eslint-disable no-unused-vars */
+ 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
@@ -849,7 +846,7 @@ function shouldUseNative() {
 		// Detect buggy property enumeration order in older V8 versions.
 
 		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		var test1 = new String('abc');   
 		test1[5] = 'de';
 		if (Object.getOwnPropertyNames(test1)[0] === '5') {
 			return false;
@@ -1150,7 +1147,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
    * inlined Object.is polyfill to avoid requiring consumers ship their own
    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
    */
-  /*eslint-disable no-self-compare*/
+   
   function is(x, y) {
     // SameValue algorithm
     if (x === y) {
@@ -1162,7 +1159,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
       return x !== x && y !== y;
     }
   }
-  /*eslint-enable no-self-compare*/
+   
 
   /**
    * We use an Error-like object for backward compatibility as people may call
@@ -3552,7 +3549,6 @@ function ShowAll(_a) {
         return (React.createElement("button", { "data-testid": "".concat(contentId, "-accordion-show-all"), type: "button", className: "ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small", "data-close-all": "Hide all", "data-group": "accordion", onClick: function () { return setPanelsOpen(new Array(panelsOpen.length).fill(!showing)); } },
             React.createElement("span", { className: "ons-btn__inner ons-js-collapsible-all-inner" }, showing ? "Hide all" : "Show all")));
     }
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     return React.createElement(React.Fragment, null);
 }
 function Accordion(_a) {

@@ -3,7 +3,7 @@ import React, { ChangeEvent, Component } from "react";
 export interface Props {
     label?: string
     id?: string
-    onChange?: (e: ChangeEvent<HTMLSelectElement>, ...args: any[]) => void
+    onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
     value: string
     options: Option[]
     defaultValue?: string
