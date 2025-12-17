@@ -16,11 +16,11 @@ describe("ONS Summary Group Table test", () => {
 
 describe("ONS Summary Item Row test", () => {
     it("matches Snapshot", () => {
-        expect(render(<SummaryItemRow fieldName="foo" fieldValue="bar" />)).toMatchSnapshot();
+        expect(render(<table><SummaryItemRow fieldName="foo" fieldValue="bar" /></table>)).toMatchSnapshot();
     });
 
     it("should render correctly", () => {
-        expect(render(<SummaryItemRow fieldName="foo" fieldValue="bar" />)).toBeDefined();
+        expect(render(<table><SummaryItemRow fieldName="foo" fieldValue="bar" /></table>)).toBeDefined();
     });
 });
 
