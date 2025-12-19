@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
 import { ONSSelect } from "./ONSSelect";
 
 describe("ONS Select Test", () => {
@@ -26,14 +26,14 @@ describe("ONS Select Test", () => {
         onChange: jest.fn(),
     };
 
-    function wrapper(render: any, props: any) {
-        return render(
+    function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSSelect>>): RenderResult {
+        return renderFn(
             <ONSSelect
                 id={props.id}
                 label={props.label}
                 onChange={props.onChange}
-                value={props.value}
-                options={props.options}
+                value={props.value as string}
+                options={props.options!}
                 testId={props.testId}
             />,
         );

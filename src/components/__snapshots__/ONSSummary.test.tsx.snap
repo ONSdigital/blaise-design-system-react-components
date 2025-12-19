@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ONS Summary Group Table test matches Snapshot 1`] = `
 {
@@ -132,6 +132,35 @@ exports[`ONS Summary Item Row test matches Snapshot 1`] = `
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <table>
+        <tbody
+          class="ons-summary__item"
+        >
+          <tr
+            class="ons-summary__row ons-summary__row--has-values"
+          >
+            <td
+              class="ons-summary__item-title"
+            >
+              <div
+                class="ons-summary__item--text"
+              >
+                Foo
+              </div>
+            </td>
+            <td
+              class="ons-summary__values"
+              colspan="2"
+            >
+              bar
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>,
+  "container": <div>
+    <table>
       <tbody
         class="ons-summary__item"
       >
@@ -155,32 +184,7 @@ exports[`ONS Summary Item Row test matches Snapshot 1`] = `
           </td>
         </tr>
       </tbody>
-    </div>
-  </body>,
-  "container": <div>
-    <tbody
-      class="ons-summary__item"
-    >
-      <tr
-        class="ons-summary__row ons-summary__row--has-values"
-      >
-        <td
-          class="ons-summary__item-title"
-        >
-          <div
-            class="ons-summary__item--text"
-          >
-            Foo
-          </div>
-        </td>
-        <td
-          class="ons-summary__values"
-          colspan="2"
-        >
-          bar
-        </td>
-      </tr>
-    </tbody>
+    </table>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

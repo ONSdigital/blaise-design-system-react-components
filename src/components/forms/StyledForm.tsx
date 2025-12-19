@@ -2,7 +2,7 @@ import { Form, Formik } from "formik";
 import React, { Fragment } from "react";
 import { ONSButton } from "../ONSButton";
 import StyledFormErrorSummary from "./StyledFormErrorSummary";
-// eslint-disable-next-line import/no-cycle
+ 
 import { StyledFormField } from "./FormElements/StyledFormFields";
 
 export interface RadioSpecifyOption {
@@ -29,24 +29,23 @@ export interface CheckboxFieldsetObject {
     description?: string
 }
 
-export interface BaseFormFieldObject {
+export interface BaseFormFieldObject<V = string | string[]> {
     name: string
     description?: string
     type: string
     id?: string
-    validate?: (value: any) => string | undefined
+    validate?: (value: V) => string | undefined
     autoFocus?: boolean
-    initial_value?: string | string[]
+    initial_value?: V
 }
 
-export interface RadioFormFieldObject extends BaseFormFieldObject {
+export interface RadioFormFieldObject extends BaseFormFieldObject<string> {
     type: "radio"
     radioOptions: RadioFieldsetObject[]
 }
 
-export interface CheckboxFormFieldObject extends BaseFormFieldObject {
+export interface CheckboxFormFieldObject extends BaseFormFieldObject<string[]> {
     type: "checkbox"
-    validate?: (value: string[]) => string | undefined
     checkboxOptions: CheckboxFieldsetObject[]
 }
 
@@ -54,7 +53,7 @@ export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | B
 
 export interface StyledFormProps {
     fields: FormFieldObject[]
-    onSubmitFunction: (values: any, setSubmitting: (isSubmitting: boolean) => void) => void
+    onSubmitFunction: (values: Record<string, unknown>, setSubmitting: (isSubmitting: boolean) => void) => void;
     submitLabel?: string
 }
 
@@ -67,7 +66,7 @@ export interface StyledFormProps {
  *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
 function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) {
-    const initialFieldValues: any = {};
+    const initialFieldValues: Record<string, unknown> = {};
     fields.forEach(({ name, initial_value }) => {
         initialFieldValues[name] = initial_value;
     });
@@ -86,12 +85,12 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
                     <StyledFormErrorSummary />
                     {
                         fields.map((field, index) => {
-                            // eslint-disable-next-line no-param-reassign
+                             
                             field.autoFocus = (isValid && index === 0);
 
                             return (
                                 <Fragment key={field.name}>
-                                    {// @ts-ignore
+                                    {
                                         <StyledFormField {...field} />
                                     }
                                 </Fragment>

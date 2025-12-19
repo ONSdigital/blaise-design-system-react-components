@@ -73,7 +73,7 @@ test("setting initial value", async () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-        expect(submitFunction).toBeCalledWith(
+        expect(submitFunction).toHaveBeenCalledWith(
             expect.objectContaining({ topping: "cheese" }),
             expect.any(Function),
         );

@@ -7,7 +7,7 @@ export interface Props {
     fileName: string,
     fileID: string,
     accept: string,
-    onChange?: (e: ChangeEvent<HTMLInputElement>, ...args: any[]) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>, label?: string) => void;
     disabled?: boolean
 }
 

@@ -1,6 +1,6 @@
 import React, { Fragment, ReactElement } from "react";
-import { Field, useFormikContext } from "formik";
-// eslint-disable-next-line import/no-cycle
+import { Field, useFormikContext, FieldInputProps } from "formik";
+ 
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 import { isObjectWithProperty } from "../../../utilities/Types";
 
@@ -8,20 +8,22 @@ function toUpperCase(string: string): string {
     return string.trim().replace(/^\w/, (c: string) => c.toUpperCase());
 }
 
-interface RadioFieldsetProps {
+interface UnknownProps {
+    [key: string]: unknown;
+}
+
+interface RadioFieldsetProps extends UnknownProps {
     description?: string,
     name: string,
     radioOptions?: RadioFieldsetObject[],
-    autoFocus: boolean,
-    props: Pick<any, string | number | symbol>
+    autoFocus: boolean
 }
 
-interface CheckboxesProps {
+interface CheckboxesProps extends UnknownProps {
     description?: string,
     checkboxOptions?: CheckboxFieldsetObject[],
     name: string,
-    autoFocus: boolean,
-    props: Pick<any, string | number | symbol>
+    autoFocus: boolean
 }
 
 export function RadioFieldset({
@@ -109,7 +111,7 @@ export function CheckboxesFieldset({
     const { values, setFieldValue } = useFormikContext();
     const allValues = (checkboxOptions || []).map((checkboxOption) => checkboxOption.value);
 
-    function areArraysEqual(array1: any[], array2: any[]) {
+    function areArraysEqual(array1: string[], array2: string[]) {
         if (array1.length !== array2.length) {
             return false;
         }
@@ -195,9 +197,14 @@ export function CheckboxesFieldset({
     );
 }
 
+interface ONSInputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    field: FieldInputProps<string>; // Formik's specific type for field props
+    description?: string;
+}
+
 export function ONSInputField({
     field, description, ...props
-}: any): ReactElement {
+}: ONSInputFieldProps): ReactElement {
     const id = (props.id ? props.id : field.name);
     return (
         <div className="ons-field">

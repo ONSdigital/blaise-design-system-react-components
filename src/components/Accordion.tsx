@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 
 export type ExpandableContent = {
     content: ReactElement
@@ -92,15 +92,7 @@ interface ShowAllProps {
 function ShowAll({
     showAllEnabled, panelsOpen, setPanelsOpen, contentId,
 }: ShowAllProps): ReactElement {
-    const [showing, setShowing] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (panelsOpen.includes(false)) {
-            setShowing(false);
-        } else {
-            setShowing(true);
-        }
-    }, [panelsOpen, setShowing]);
+    const showing = !panelsOpen.includes(false);
 
     if (showAllEnabled) {
         return (
@@ -112,11 +104,13 @@ function ShowAll({
                 data-group="accordion"
                 onClick={() => setPanelsOpen(new Array(panelsOpen.length).fill(!showing))}
             >
-                <span className="ons-btn__inner ons-js-collapsible-all-inner">{showing ? "Hide all" : "Show all"}</span>
+                <span className="ons-btn__inner ons-js-collapsible-all-inner">
+                    {showing ? "Hide all" : "Show all"}
+                </span>
             </button>
         );
     }
-    // eslint-disable-next-line react/jsx-no-useless-fragment
+     
     return <></>;
 }
 

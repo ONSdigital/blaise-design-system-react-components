@@ -5,7 +5,7 @@ export interface Props {
     inputId?: string
     placeholder?: string
     marginTop?: number
-    onChange?: (e: ChangeEvent<HTMLInputElement>, ...args: any[]) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>, value: string) => void;
     value: string
     autoFocus?: boolean
 }

@@ -1,7 +1,7 @@
 import {
-    cleanup, fireEvent, render, screen,
+    cleanup, fireEvent, render, screen, RenderResult
 } from "@testing-library/react";
-import React from "react";
+import React, { ComponentProps } from "react";
 import { ONSTextInput } from "./ONSTextInput";
 
 describe("ONS Text Input Test", () => {
@@ -38,8 +38,8 @@ describe("ONS Text Input Test", () => {
         password: true,
     };
 
-    function wrapper(render: any, props: any) {
-        return render(
+    function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSTextInput>>): RenderResult {
+        return renderFn(
             <ONSTextInput
                 label={props.label}
                 id={props.id}

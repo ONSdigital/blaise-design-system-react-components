@@ -1,5 +1,5 @@
-import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import React, { ComponentProps } from "react";
+import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
 import { ONSUpload } from "./ONSUpload";
 
 describe("ONS Upload Test", () => {
@@ -14,14 +14,14 @@ describe("ONS Upload Test", () => {
         onChange: jest.fn(),
     };
 
-    function wrapper(render: any, props: any) {
-        return render(
+    function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSUpload>>): RenderResult {
+        return renderFn(
             <ONSUpload
-                label={props.label}
-                description={props.description}
-                fileName={props.fileName}
-                fileID={props.fileID}
-                accept={props.accept}
+                label={props.label as string}
+                description={props.description as string}
+                fileName={props.fileName as string}
+                fileID={props.fileID as string}
+                accept={props.accept as string}
                 onChange={props.onChange}
             />,
         );

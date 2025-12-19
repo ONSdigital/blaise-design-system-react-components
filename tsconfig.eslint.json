@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.test.tsx",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "eslint.config.mts"
+  ],
+  "exclude": [], 
+  "compilerOptions": {
+    "noEmit": true
+  }
+}

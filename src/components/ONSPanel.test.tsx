@@ -1,5 +1,5 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React, { ComponentProps } from "react";
+import { render, RenderResult } from "@testing-library/react";
 import { ONSPanel } from "./ONSPanel";
 
 describe("ONS Panel Test", () => {
@@ -10,14 +10,14 @@ describe("ONS Panel Test", () => {
 
     const statusPanelProps = {
         children: <p>Statusssss</p>,
-        status: "success",
+        status: "success" as const,
         testID: "status-panel",
         // spacious: false
     };
 
     const spaciousPanelProps = {
         children: <p>Spaciooouuusssss</p>,
-        status: "error",
+        status: "error" as const,
         spacious: true,
         id: "spacious",
         testID: "spacious-panel",
@@ -25,7 +25,7 @@ describe("ONS Panel Test", () => {
 
     const bigIconStatusPanelProps = {
         children: <p>Statusssss</p>,
-        status: "success",
+        status: "success" as const,
         bigIcon: true,
         testID: "big-icon-panel",
         // spacious: false
@@ -33,11 +33,11 @@ describe("ONS Panel Test", () => {
 
     const warnStatusPanelProps = {
         children: <p>Statusssss</p>,
-        status: "warn",
+        status: "warn" as const,
     };
 
-    function wrapper(render: any, props: any) {
-        return render(
+    function wrapper(renderFn: typeof render, props: ComponentProps<typeof ONSPanel>): RenderResult {
+        return renderFn(
             <ONSPanel {...props}>
                 {props.children}
             </ONSPanel>,
@@ -78,7 +78,7 @@ describe("ONS Panel Test", () => {
     it("should render the big success tick", () => {
         const view = wrapper(render, bigIconStatusPanelProps);
         const panel = view.getByTestId("big-icon-panel");
-        const child = panel.querySelector(".ons-svg-icon-margin--xl");
+        const child = panel.querySelector(".ons-svg-icon-margin--xl")!;
         expect(child.getAttribute("class")).toMatch(/ons-svg-icon-margin--xl/gi);
     });
 
