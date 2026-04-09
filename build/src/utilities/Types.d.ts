@@ -1,1 +1,1 @@
-export declare function isObjectWithProperty<Type extends string>(value: any, propertyName: Type): value is Record<Type, any>;
+export declare function isObjectWithProperty<Type extends string>(value: unknown, propertyName: Type): value is Record<Type, unknown>;

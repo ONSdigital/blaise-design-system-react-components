@@ -36,7 +36,7 @@ export class ONSTextInput extends Component <Props> {
                 {this.props.label !== undefined
                 && <label className="ons-label" htmlFor={this.props.id}>{this.props.label}</label>}
                 <input
-                    value={this.props.value}
+                    value={this.props.value ?? ""}
                     style={{ width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }}
                     autoFocus={this.props.autoFocus === true}
                     autoComplete={this.props.autoComplete}

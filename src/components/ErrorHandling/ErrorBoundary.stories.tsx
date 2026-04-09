@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ComponentStory, Meta } from "@storybook/react";
+import { ComponentStory, Meta } from "@storybook/react-webpack5";
 import ErrorBoundary from "./ErrorBoundary";
 
 const DodgyComponent = () => {

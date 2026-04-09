@@ -20,28 +20,27 @@ export interface CheckboxFieldsetObject {
     label: string;
     description?: string;
 }
-export interface BaseFormFieldObject {
+export interface BaseFormFieldObject<V = string | string[]> {
     name: string;
     description?: string;
     type: string;
     id?: string;
-    validate?: (value: any) => string | undefined;
+    validate?: (value: V) => string | undefined;
     autoFocus?: boolean;
-    initial_value?: string | string[];
+    initial_value?: V;
 }
-export interface RadioFormFieldObject extends BaseFormFieldObject {
+export interface RadioFormFieldObject extends BaseFormFieldObject<string> {
     type: "radio";
     radioOptions: RadioFieldsetObject[];
 }
-export interface CheckboxFormFieldObject extends BaseFormFieldObject {
+export interface CheckboxFormFieldObject extends BaseFormFieldObject<string[]> {
     type: "checkbox";
-    validate?: (value: string[]) => string | undefined;
     checkboxOptions: CheckboxFieldsetObject[];
 }
 export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
 export interface StyledFormProps {
     fields: FormFieldObject[];
-    onSubmitFunction: (values: any, setSubmitting: (isSubmitting: boolean) => void) => void;
+    onSubmitFunction: (values: Record<string, unknown>, setSubmitting: (isSubmitting: boolean) => void) => void;
     submitLabel?: string;
 }
 /**

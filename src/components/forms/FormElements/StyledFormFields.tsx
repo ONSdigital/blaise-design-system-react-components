@@ -1,6 +1,6 @@
 import React, { Fragment, ReactElement } from "react";
 import { Field, useFormikContext } from "formik";
- 
+
 import { ONSInputField, RadioFieldset, CheckboxesFieldset } from "./Fields";
 
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
@@ -33,7 +33,12 @@ export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: strin
 }
 
 export const StyledFormField = ({
-    name, description, radioOptions = [], checkboxOptions = [], ...props
+    name, 
+    description, 
+    radioOptions = [], 
+    checkboxOptions = [], 
+    autoFocus = false,
+    ...props
 }: Props): ReactElement => {
     const { errors } = useFormikContext<Record<string, string>>();
     let newField: ReactElement;
@@ -44,6 +49,7 @@ export const StyledFormField = ({
                 description={description}
                 name={name}
                 radioOptions={radioOptions}
+                autoFocus={autoFocus}
                 {...props}
             />
         );
@@ -53,11 +59,12 @@ export const StyledFormField = ({
                 description={description}
                 name={name}
                 checkboxOptions={checkboxOptions}
+                autoFocus={autoFocus}
                 {...props}
             />
         );
     } else {
-        newField = <Field name={name} description={description} {...props} component={ONSInputField} />;
+        newField = <Field name={name} description={description} autoFocus={autoFocus} {...props} component={ONSInputField} />;
     }
 
     return (
@@ -65,8 +72,8 @@ export const StyledFormField = ({
             {
                 errors[name]
                     ? StyledFormFieldErrorWrapper(
-                        errors[name],
-                        "name",
+                        errors[name] || "",
+                        name,
                         newField,
                     )
                     : newField

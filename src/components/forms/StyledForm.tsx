@@ -67,8 +67,14 @@ export interface StyledFormProps {
  */
 function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) {
     const initialFieldValues: Record<string, unknown> = {};
-    fields.forEach(({ name, initial_value }) => {
-        initialFieldValues[name] = initial_value;
+    fields.forEach((field) => {
+        if (field.initial_value !== undefined) {
+            initialFieldValues[field.name] = field.initial_value;
+        } else if (field.type === "checkbox") {
+            initialFieldValues[field.name] = [];
+        } else {
+            initialFieldValues[field.name] = "";
+        }
     });
 
     return (
@@ -85,9 +91,7 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
                     <StyledFormErrorSummary />
                     {
                         fields.map((field, index) => {
-                             
                             field.autoFocus = (isValid && index === 0);
-
                             return (
                                 <Fragment key={field.name}>
                                     {

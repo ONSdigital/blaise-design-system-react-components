@@ -1,13 +1,14 @@
 import React, { ReactElement } from "react";
+import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 interface Props {
     description?: string;
     name: string;
-    radioOptions?: any[];
-    checkboxOptions?: any[];
-    autoFocus: boolean;
+    radioOptions?: RadioFieldsetObject[];
+    checkboxOptions?: CheckboxFieldsetObject[];
+    autoFocus?: boolean;
     type?: string;
-    props: Pick<any, string | number | symbol>;
+    [key: string]: unknown;
 }
 export declare function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement): React.JSX.Element;
-export declare const StyledFormField: ({ name, description, radioOptions, checkboxOptions, ...props }: Props) => ReactElement;
+export declare const StyledFormField: ({ name, description, radioOptions, checkboxOptions, autoFocus, ...props }: Props) => ReactElement;
 export {};

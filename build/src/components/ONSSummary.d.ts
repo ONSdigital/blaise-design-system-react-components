@@ -1,8 +1,8 @@
 import { Data } from "react-csv/lib/core";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 type Group = {
     title: string;
-    records: Record<string, any>;
+    records: Record<string, string | number | boolean | null | undefined>;
 };
 declare class GroupedSummary {
     groups: Group[];
@@ -11,7 +11,7 @@ declare class GroupedSummary {
 }
 interface SummaryItemProps {
     fieldName: string;
-    fieldValue: any;
+    fieldValue: React.ReactNode;
 }
 declare function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): ReactElement;
 interface SummaryGroupTableProps {

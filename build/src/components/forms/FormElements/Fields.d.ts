@@ -1,20 +1,26 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
+import { FieldInputProps } from "formik";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
-interface RadioFieldsetProps {
+interface UnknownProps {
+    [key: string]: unknown;
+}
+interface RadioFieldsetProps extends UnknownProps {
     description?: string;
     name: string;
     radioOptions?: RadioFieldsetObject[];
     autoFocus: boolean;
-    props: Pick<any, string | number | symbol>;
 }
-interface CheckboxesProps {
+interface CheckboxesProps extends UnknownProps {
     description?: string;
     checkboxOptions?: CheckboxFieldsetObject[];
     name: string;
     autoFocus: boolean;
-    props: Pick<any, string | number | symbol>;
 }
 export declare function RadioFieldset({ description, name, radioOptions, ...props }: RadioFieldsetProps): ReactElement;
 export declare function CheckboxesFieldset({ description, checkboxOptions, name, ...props }: CheckboxesProps): ReactElement;
-export declare function ONSInputField({ field, description, ...props }: any): ReactElement;
+interface ONSInputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    field: FieldInputProps<string>;
+    description?: string;
+}
+export declare function ONSInputField({ field, description, ...props }: ONSInputFieldProps): ReactElement;
 export default CheckboxesFieldset;

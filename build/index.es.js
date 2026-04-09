@@ -1,4 +1,4 @@
-import React, { Component, useEffect, Fragment as Fragment$1, useState } from 'react';
+import React, { Component, useRef, useEffect, Fragment as Fragment$1, useState } from 'react';
 import { useFormikContext, Field, Formik, Form } from 'formik';
 
 /**
@@ -358,10 +358,11 @@ var ONSTextInput = /** @class */ (function (_super) {
     }
     ONSTextInput.prototype.render = function () {
         var _this = this;
+        var _a;
         return (React.createElement("p", { className: "ons-field" },
             this.props.label !== undefined
                 && React.createElement("label", { className: "ons-label", htmlFor: this.props.id }, this.props.label),
-            React.createElement("input", { value: this.props.value, style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.determineType(), id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": this.props.testId !== undefined ? this.props.testId : "text-input" })));
+            React.createElement("input", { value: (_a = this.props.value) !== null && _a !== void 0 ? _a : "", style: { width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }, autoFocus: this.props.autoFocus === true, autoComplete: this.props.autoComplete, type: this.determineType(), id: this.props.id, className: "ons-input ons-input--text ons-input-type__input ", placeholder: this.props.placeholder, onChange: function (e) { return _this.handleChange(e); }, onClick: function (e) { return (_this.props.onClick !== undefined && _this.props.onClick(e)); }, "data-testid": this.props.testId !== undefined ? this.props.testId : "text-input" })));
     };
     return ONSTextInput;
 }(Component));
@@ -398,19 +399,24 @@ var ONSUpload = /** @class */ (function (_super) {
  */
 function StyledFormErrorSummary() {
     var _a = useFormikContext(), errors = _a.errors, isValid = _a.isValid;
-    var errorFocus;
+    var errorFocus = useRef(null);
     useEffect(function () {
-        errorFocus === null || errorFocus === void 0 ? void 0 : errorFocus.focus();
+        var _a;
+        if (!isValid) {
+            (_a = errorFocus.current) === null || _a === void 0 ? void 0 : _a.focus();
+        }
     }, [errors, isValid]);
     return (React.createElement(React.Fragment, null, !isValid
-        && (React.createElement("div", { "aria-labelledby": "error-summary-title", role: "alert", tabIndex: -1, ref: function (inputEl) { return (errorFocus = inputEl); }, className: "ons-panel ons-panel--error" },
+        && (React.createElement("div", { "aria-labelledby": "error-summary-title", role: "alert", tabIndex: -1, ref: errorFocus, className: "ons-panel ons-panel--error" },
             React.createElement("div", { className: "ons-panel__header" },
                 React.createElement("h2", { id: "error-summary-title", "data-qa": "error-header", className: "ons-panel__title ons-u-fs-r--b" }, (Object.keys(errors).length === 1
                     ? "There is 1 problem with your answer"
                     : "There are ".concat(Object.keys(errors).length, " problems with your answer")))),
             React.createElement("div", { className: "ons-panel__body" },
                 React.createElement("ol", { className: "ons-list" }, Object.keys(errors).map(function (field, index) { return (React.createElement("li", { key: index, className: "ons-list__item " },
-                    React.createElement("a", { href: "#".concat(field), className: "ons-list__link ons-js-inpagelink" },
+                    React.createElement("a", { href: "#".concat(field), className: "ons-list__link ons-js-inpagelink" }, 
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
                     errors[field]))); })))))));
 }
 
@@ -418,7 +424,7 @@ function isObjectWithProperty(value, propertyName) {
     if (typeof value !== "object") {
         return false;
     }
-    if (value == null) {
+    if (value === null) {
         return false;
     }
     return propertyName in value;
@@ -456,10 +462,10 @@ function CheckboxesFieldset(_a) {
         return array1.every(function (item) { return array2.includes(item); });
     }
     function isAllSelected() {
-        if (!isObjectWithProperty(values, name)) {
-            return [];
+        if (!isObjectWithProperty(values, name) || !Array.isArray(values[name])) {
+            return false;
         }
-        return areArraysEqual(values[name] || [], allValues);
+        return areArraysEqual(values[name], allValues);
     }
     function handleSelectAll() {
         if (isAllSelected()) {
@@ -487,13 +493,14 @@ function CheckboxesFieldset(_a) {
                 React.createElement("br", null))); })))));
 }
 function ONSInputField(_a) {
+    var _b;
     var field = _a.field, description = _a.description, props = __rest(_a, ["field", "description"]);
     var id = (props.id ? props.id : field.name);
     return (React.createElement("div", { className: "ons-field" },
         React.createElement("label", { className: "ons-label ".concat((description ? "ons-label--with-description" : "")), htmlFor: id }, toUpperCase(field.name)),
         description
             && (React.createElement("span", { id: "description-hint", className: "ons-label__description ons-input--with-description" }, description)),
-        React.createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input" }, field, props))));
+        React.createElement("input", __assign({ id: id, className: "ons-input ons-input--text ons-input-type__input" }, field, { value: (_b = field.value) !== null && _b !== void 0 ? _b : "" }, props))));
 }
 
 function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
@@ -505,20 +512,20 @@ function StyledFormFieldErrorWrapper(fieldError, fieldName, field) {
             field)));
 }
 var StyledFormField = function (_a) {
-    var name = _a.name, description = _a.description, _b = _a.radioOptions, radioOptions = _b === void 0 ? [] : _b, _c = _a.checkboxOptions, checkboxOptions = _c === void 0 ? [] : _c, props = __rest(_a, ["name", "description", "radioOptions", "checkboxOptions"]);
+    var name = _a.name, description = _a.description, _b = _a.radioOptions, radioOptions = _b === void 0 ? [] : _b, _c = _a.checkboxOptions, checkboxOptions = _c === void 0 ? [] : _c, _d = _a.autoFocus, autoFocus = _d === void 0 ? false : _d, props = __rest(_a, ["name", "description", "radioOptions", "checkboxOptions", "autoFocus"]);
     var errors = useFormikContext().errors;
     var newField;
     if (props.type === "radio") {
-        newField = (React.createElement(RadioFieldset, __assign({ description: description, name: name, radioOptions: radioOptions }, props)));
+        newField = (React.createElement(RadioFieldset, __assign({ description: description, name: name, radioOptions: radioOptions, autoFocus: autoFocus }, props)));
     }
     else if (props.type === "checkbox") {
-        newField = (React.createElement(CheckboxesFieldset, __assign({ description: description, name: name, checkboxOptions: checkboxOptions }, props)));
+        newField = (React.createElement(CheckboxesFieldset, __assign({ description: description, name: name, checkboxOptions: checkboxOptions, autoFocus: autoFocus }, props)));
     }
     else {
-        newField = React.createElement(Field, __assign({ name: name, description: description }, props, { component: ONSInputField }));
+        newField = React.createElement(Field, __assign({ name: name, description: description, autoFocus: autoFocus }, props, { component: ONSInputField }));
     }
     return (React.createElement(Fragment$1, { key: name }, errors[name]
-        ? StyledFormFieldErrorWrapper(errors[name], "name", newField)
+        ? StyledFormFieldErrorWrapper(errors[name] || "", name, newField)
         : newField));
 };
 
@@ -533,9 +540,16 @@ var StyledFormField = function (_a) {
 function StyledForm(_a) {
     var fields = _a.fields, onSubmitFunction = _a.onSubmitFunction, submitLabel = _a.submitLabel;
     var initialFieldValues = {};
-    fields.forEach(function (_a) {
-        var name = _a.name, initial_value = _a.initial_value;
-        initialFieldValues[name] = initial_value;
+    fields.forEach(function (field) {
+        if (field.initial_value !== undefined) {
+            initialFieldValues[field.name] = field.initial_value;
+        }
+        else if (field.type === "checkbox") {
+            initialFieldValues[field.name] = [];
+        }
+        else {
+            initialFieldValues[field.name] = "";
+        }
     });
     return (React.createElement(Formik, { validateOnBlur: false, validateOnChange: false, initialValues: initialFieldValues, onSubmit: function (values, _a) {
             var setSubmitting = _a.setSubmitting;
@@ -545,10 +559,8 @@ function StyledForm(_a) {
         return (React.createElement(Form, null,
             React.createElement(StyledFormErrorSummary, null),
             fields.map(function (field, index) {
-                 
                 field.autoFocus = (isValid && index === 0);
-                return (React.createElement(Fragment$1, { key: field.name }, // @ts-ignore
-                React.createElement(StyledFormField, __assign({}, field))));
+                return (React.createElement(Fragment$1, { key: field.name }, React.createElement(StyledFormField, __assign({}, field))));
             }),
             React.createElement("br", null),
             React.createElement(ONSButton, { submit: true, label: (submitLabel || "Save and continue"), primary: true, testid: "submit", loading: isSubmitting })));
@@ -824,7 +836,7 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
- 
+/* eslint-disable no-unused-vars */
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
@@ -846,7 +858,7 @@ function shouldUseNative() {
 		// Detect buggy property enumeration order in older V8 versions.
 
 		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');   
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
 		test1[5] = 'de';
 		if (Object.getOwnPropertyNames(test1)[0] === '5') {
 			return false;
@@ -1147,7 +1159,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
    * inlined Object.is polyfill to avoid requiring consumers ship their own
    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
    */
-   
+  /*eslint-disable no-self-compare*/
   function is(x, y) {
     // SameValue algorithm
     if (x === y) {
@@ -1159,7 +1171,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
       return x !== x && y !== y;
     }
   }
-   
+  /*eslint-enable no-self-compare*/
 
   /**
    * We use an Error-like object for backward compatibility as people may call
@@ -3384,7 +3396,7 @@ function Collapsible(_a) {
         React.createElement("div", { id: "collapsible-with-save-content", className: "ons-collapsible__content ons-js-collapsible-content", "aria-hidden": !panelOpen, "data-testid": "collapsible-content" }, children)));
 }
 
-/**
+/*
  * If an issue occurs in the render function of a React component, if not handled then the UI will fall over.
  * Wrappers will catch any error then display something else instead so if part of the page fails the
  * whole application does not break.
@@ -3536,15 +3548,7 @@ function Expandable(_a) {
 }
 function ShowAll(_a) {
     var showAllEnabled = _a.showAllEnabled, panelsOpen = _a.panelsOpen, setPanelsOpen = _a.setPanelsOpen, contentId = _a.contentId;
-    var _b = useState(false), showing = _b[0], setShowing = _b[1];
-    useEffect(function () {
-        if (panelsOpen.includes(false)) {
-            setShowing(false);
-        }
-        else {
-            setShowing(true);
-        }
-    }, [panelsOpen, setShowing]);
+    var showing = !panelsOpen.includes(false);
     if (showAllEnabled) {
         return (React.createElement("button", { "data-testid": "".concat(contentId, "-accordion-show-all"), type: "button", className: "ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small", "data-close-all": "Hide all", "data-group": "accordion", onClick: function () { return setPanelsOpen(new Array(panelsOpen.length).fill(!showing)); } },
             React.createElement("span", { className: "ons-btn__inner ons-js-collapsible-all-inner" }, showing ? "Hide all" : "Show all")));

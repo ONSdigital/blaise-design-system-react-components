@@ -1,6 +1,6 @@
 import React, { Fragment, ReactElement } from "react";
 import { Field, useFormikContext, FieldInputProps } from "formik";
- 
+
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 import { isObjectWithProperty } from "../../../utilities/Types";
 
@@ -108,7 +108,7 @@ export function RadioFieldset({
 export function CheckboxesFieldset({
     description, checkboxOptions, name, ...props
 }: CheckboxesProps): ReactElement {
-    const { values, setFieldValue } = useFormikContext();
+    const { values, setFieldValue } = useFormikContext<Record<string, string[]>>();
     const allValues = (checkboxOptions || []).map((checkboxOption) => checkboxOption.value);
 
     function areArraysEqual(array1: string[], array2: string[]) {
@@ -118,11 +118,11 @@ export function CheckboxesFieldset({
         return array1.every((item) => array2.includes(item));
     }
 
-    function isAllSelected() {
-        if (!isObjectWithProperty(values, name)) {
-            return [];
+    function isAllSelected(): boolean {
+        if (!isObjectWithProperty(values, name) || !Array.isArray(values[name])) {
+            return false;
         }
-        return areArraysEqual(values[name] || [], allValues);
+        return areArraysEqual(values[name], allValues);
     }
 
     function handleSelectAll() {
@@ -198,7 +198,7 @@ export function CheckboxesFieldset({
 }
 
 interface ONSInputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    field: FieldInputProps<string>; // Formik's specific type for field props
+    field: FieldInputProps<string>;
     description?: string;
 }
 
@@ -223,6 +223,7 @@ export function ONSInputField({
                 id={id}
                 className="ons-input ons-input--text ons-input-type__input"
                 {...field}
+                value={field.value ?? ""}
                 {...props}
             />
         </div>
