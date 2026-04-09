@@ -18,7 +18,6 @@ export default tseslint.config(
       "coverage",
       "node_modules",
       "vite.config.ts",
-      "vitest.config.ts",
       "build/**",
       "docs-build/**"
     ],
@@ -78,7 +77,7 @@ export default tseslint.config(
             "**/*.stories.tsx",
             "src/setupTests.ts",
             "eslint.config.mts",
-            "rollup.config.mjs",
+            "vite.config.ts",
             ".storybook/**"
           ],
         },

@@ -9,8 +9,7 @@
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
     "eslint.config.mts",
-    "rollup.config.mjs",
-    "vitest.config.ts"
+    "vite.config.ts"
   ],
   "exclude": [
     "node_modules",
