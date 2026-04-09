@@ -2771,7 +2771,6 @@ function FormatKey(text) {
 var GroupedSummary = /*#__PURE__*/function () {
   function GroupedSummary(groups) {
     _classCallCheck(this, GroupedSummary);
-    _defineProperty(this, "groups", void 0);
     this.groups = groups;
   }
   return _createClass(GroupedSummary, [{

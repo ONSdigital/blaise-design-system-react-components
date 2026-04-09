@@ -67,7 +67,7 @@ test("setting initial value", async () => {
         },
     ];
 
-    const submitFunction = jest.fn();
+    const submitFunction = vi.fn();
 
     render(<StyledForm fields={fields} onSubmitFunction={submitFunction} />);
 

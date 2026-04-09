@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ONSTable renders a formatted table 1`] = `
+exports[`ONSTable > renders a formatted table 1`] = `
 <table
   class="ons-table"
   data-testid="my-test-table"

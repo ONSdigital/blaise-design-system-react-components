@@ -53,28 +53,28 @@ describe("Check default Header:", () => {
 describe("Check Header with sign out button:", () => {
     it("matches Snapshot with sign out button", () => {
         const wrapper = render(
-            <Header title={testProps.title} signOutButton signOutFunction={jest.fn()} />,
+            <Header title={testProps.title} signOutButton signOutFunction={vi.fn()} />,
         );
         expect(wrapper).toMatchSnapshot();
     });
 
     it("shows sign out button", () => {
         const wrapper = render(
-            <Header title={testProps.title} signOutButton signOutFunction={jest.fn()} />,
+            <Header title={testProps.title} signOutButton signOutFunction={vi.fn()} />,
         );
         expect(wrapper.getByText(/Save and sign out/)).toBeVisible();
     });
 
     it("shows sign out button with special text", () => {
         const wrapper = render(
-            <Header title={testProps.title} signOutButton noSave signOutFunction={jest.fn()} />,
+            <Header title={testProps.title} signOutButton noSave signOutFunction={vi.fn()} />,
         );
         expect(wrapper.getByText(/Sign out/)).toBeDefined();
         expect(wrapper.queryAllByText(/Save and sign out/)).toStrictEqual([]);
     });
 
     it("passes in the sign out function correctly button", () => {
-        const mockFunction = jest.fn();
+        const mockFunction = vi.fn();
         const wrapper = render(
             <Header title={testProps.title} signOutButton signOutFunction={mockFunction} />,
         );

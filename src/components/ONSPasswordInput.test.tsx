@@ -17,7 +17,7 @@ describe("ONS Password Input Test", () => {
     };
 
     const changeProps = {
-        onChange: jest.fn(),
+        onChange: vi.fn(),
     };
 
     const undefinedChangeProps = {

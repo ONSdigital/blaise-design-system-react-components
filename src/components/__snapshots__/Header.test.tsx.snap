@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Check Header with navigation bar: matches Snapshot with navigation 1`] = `
+exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -307,7 +307,7 @@ exports[`Check Header with navigation bar: matches Snapshot with navigation 1`] 
 }
 `;
 
-exports[`Check Header with sign out button: matches Snapshot with sign out button 1`] = `
+exports[`Check Header with sign out button: > matches Snapshot with sign out button 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -548,7 +548,7 @@ exports[`Check Header with sign out button: matches Snapshot with sign out butto
 }
 `;
 
-exports[`Check default Header: matches Snapshot 1`] = `
+exports[`Check default Header: > matches Snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>

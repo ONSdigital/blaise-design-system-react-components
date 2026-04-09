@@ -10,8 +10,7 @@
     ".storybook/**/*.tsx",
     "eslint.config.mts",
     "rollup.config.mjs",
-    "jest.config.cjs",
-    "babel.config.cjs"
+    "vitest.config.ts"
   ],
   "exclude": [
     "node_modules",

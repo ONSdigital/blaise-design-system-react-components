@@ -10,7 +10,6 @@ import { ONSButton } from "./ONSButton";
 
 describe("ONS Button Test", () => {
     afterEach(() => {
-        jest.clearAllMocks();
         cleanup();
     });
 
@@ -19,7 +18,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: jest.fn(),
+        onButtonClick: vi.fn(),
     };
 
     const exportButtonProps = {
@@ -27,14 +26,14 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: jest.fn(),
+        onButtonClick: vi.fn(),
         loading: false,
     };
 
     const smallButtonProps = {
         label: "Submit2",
         primary: true,
-        onButtonClick: jest.fn(),
+        onButtonClick: vi.fn(),
         loading: true,
         small: true,
     };
@@ -42,7 +41,7 @@ describe("ONS Button Test", () => {
         label: "Submit4",
         primary: true,
         small: false,
-        onButtonClick: jest.fn(),
+        onButtonClick: vi.fn(),
         loading: true,
         field: true,
     };
@@ -52,7 +51,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: jest.fn(),
+        onButtonClick: vi.fn(),
         disabled: true,
     };
 
@@ -61,7 +60,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: jest.fn(),
+        onButtonClick: vi.fn(),
         disabled: false,
         action: true,
         testid: "Unique-ID",
@@ -72,7 +71,7 @@ describe("ONS Button Test", () => {
         primary: false,
         small: true,
         field: true,
-        onButtonClick: jest.fn(),
+        onButtonClick: vi.fn(),
         disabled: false,
         action: true,
         testId: "Unique-ID",

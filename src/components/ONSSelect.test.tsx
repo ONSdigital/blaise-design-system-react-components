@@ -23,7 +23,7 @@ describe("ONS Select Test", () => {
         label: "Select From",
         options: Selection,
         testId: "test-id",
-        onChange: jest.fn(),
+        onChange: vi.fn(),
     };
 
     function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSSelect>>): RenderResult {

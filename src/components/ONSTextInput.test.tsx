@@ -17,7 +17,7 @@ describe("ONS Text Input Test", () => {
     const changeProps = {
         id: "file-upload",
         label: "Upload Label",
-        onChange: jest.fn(),
+        onChange: vi.fn(),
     };
 
     const testIdProps = {
@@ -33,7 +33,7 @@ describe("ONS Text Input Test", () => {
     };
 
     const clickProps = {
-        onClick: jest.fn(),
+        onClick: vi.fn(),
         fit: true,
         password: true,
     };

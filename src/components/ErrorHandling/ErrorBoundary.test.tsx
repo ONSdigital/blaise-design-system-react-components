@@ -43,7 +43,6 @@ describe("Error Boundary", () => {
     });
 
     afterAll(() => {
-        jest.clearAllMocks();
         cleanup();
     });
 });

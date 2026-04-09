@@ -11,7 +11,7 @@ describe("ONS Upload Test", () => {
         fileName: "file.csv",
         fileID: "file",
         accept: "yes?",
-        onChange: jest.fn(),
+        onChange: vi.fn(),
     };
 
     function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSUpload>>): RenderResult {

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ONS Summary Group Table test matches Snapshot 1`] = `
+exports[`ONS Summary Group Table test > matches Snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -127,7 +127,7 @@ exports[`ONS Summary Group Table test matches Snapshot 1`] = `
 }
 `;
 
-exports[`ONS Summary Item Row test matches Snapshot 1`] = `
+exports[`ONS Summary Item Row test > matches Snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
