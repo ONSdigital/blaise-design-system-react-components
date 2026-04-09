@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikValues } from "formik";
 import React, { Fragment } from "react";
 import { ONSButton } from "../ONSButton";
 import StyledFormErrorSummary from "./StyledFormErrorSummary";
@@ -29,7 +29,7 @@ export interface CheckboxFieldsetObject {
     description?: string
 }
 
-export interface BaseFormFieldObject<V = string | string[]> {
+export interface BaseFormFieldObject<V = string> {
     name: string
     description?: string
     type: string
@@ -49,23 +49,29 @@ export interface CheckboxFormFieldObject extends BaseFormFieldObject<string[]> {
     checkboxOptions: CheckboxFieldsetObject[]
 }
 
-export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
+export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject<string>;
 
-export interface StyledFormProps {
+export interface StyledFormProps<T extends FormikValues = FormikValues> {
     fields: FormFieldObject[]
-    onSubmitFunction: (values: Record<string, unknown>, setSubmitting: (isSubmitting: boolean) => void) => void;
+    onSubmitFunction: (values: T, setSubmitting: (isSubmitting: boolean) => void) => void;
     submitLabel?: string
 }
 
-/**
+/*
  * Formik form styled to ONS design guide with form error panel
  *
  * @param Props
  *
- *  - fields: List of fields to display on form.
- *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
+ * - fields: List of fields to display on form.
+ * - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
-function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) {
+
+function StyledForm<T extends FormikValues = FormikValues>({ 
+    fields, 
+    onSubmitFunction, 
+    submitLabel 
+}: StyledFormProps<T>) {
+    
     const initialFieldValues: Record<string, unknown> = {};
     fields.forEach((field) => {
         if (field.initial_value !== undefined) {
@@ -78,10 +84,10 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
     });
 
     return (
-        <Formik
+        <Formik<T>
             validateOnBlur={false}
             validateOnChange={false}
-            initialValues={initialFieldValues}
+            initialValues={initialFieldValues as T}
             onSubmit={(values, { setSubmitting }) => {
                 onSubmitFunction(values, setSubmitting);
             }}
@@ -91,12 +97,13 @@ function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps) 
                     <StyledFormErrorSummary />
                     {
                         fields.map((field, index) => {
-                            field.autoFocus = (isValid && index === 0);
+                            const isAutoFocus = (isValid && index === 0);
                             return (
                                 <Fragment key={field.name}>
-                                    {
-                                        <StyledFormField {...field} />
-                                    }
+                                    <StyledFormField 
+                                        {...field} 
+                                        autoFocus={isAutoFocus} 
+                                    />
                                 </Fragment>
                             );
                         })

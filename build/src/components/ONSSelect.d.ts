@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component } from "react";
+import { ChangeEvent, Component } from "react";
 export interface Props {
     label?: string;
     id?: string;
@@ -21,6 +21,6 @@ export declare class ONSSelect extends Component<Props, State> {
     constructor(props: Props);
     handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
     defaultValue(): string;
-    render(): React.JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
 export {};

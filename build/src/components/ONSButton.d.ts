@@ -17,4 +17,4 @@ export interface Props {
     hidden?: boolean;
     submit?: boolean;
 }
-export declare const ONSButton: (props: Props) => React.JSX.Element;
+export declare const ONSButton: (props: Props) => import("react/jsx-runtime").JSX.Element;

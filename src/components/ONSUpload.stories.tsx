@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentStory, Meta } from "@storybook/react-webpack5";
+import { ComponentStory, Meta } from "@storybook/react";
 import { ONSUpload } from "./ONSUpload";
 
 export default {

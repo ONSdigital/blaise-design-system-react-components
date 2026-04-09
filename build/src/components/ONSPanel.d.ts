@@ -14,4 +14,4 @@ export interface Props {
      */
     bigIcon?: boolean;
 }
-export declare const ONSPanel: (props: Props) => React.JSX.Element;
+export declare const ONSPanel: (props: Props) => import("react/jsx-runtime").JSX.Element;

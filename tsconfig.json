@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext", 
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext",
-      "es6"
+      "esnext"
     ],
     "outDir": "build",
     "sourceMap": true,
@@ -16,12 +15,12 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true,
     "declaration": true
   },
@@ -29,8 +28,11 @@
     "src"
   ],
   "exclude": [
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx",
-    "node_modules"
+    "node_modules",
+    "build",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/*.stories.tsx",
+    "src/setupTests.ts"
   ]
 }

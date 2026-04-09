@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { ComponentStory, Meta } from "@storybook/react-webpack5";
+import { ComponentStory, Meta } from "@storybook/react";
 import ONSTable from "./ONSTable";
 
 export default {

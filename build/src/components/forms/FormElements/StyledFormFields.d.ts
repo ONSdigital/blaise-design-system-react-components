@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 interface Props {
     description?: string;
@@ -9,6 +9,6 @@ interface Props {
     type?: string;
     [key: string]: unknown;
 }
-export declare function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement): React.JSX.Element;
+export declare function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement): import("react/jsx-runtime").JSX.Element;
 export declare const StyledFormField: ({ name, description, radioOptions, checkboxOptions, autoFocus, ...props }: Props) => ReactElement;
 export {};

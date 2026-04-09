@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 export interface Props {
     /**
      * Render any standard HTML (or other React components) within the Collapsible
@@ -6,5 +6,5 @@ export interface Props {
     children: ReactElement;
     title: string;
 }
-declare function Collapsible({ children, title }: Props): React.JSX.Element;
+declare function Collapsible({ children, title }: Props): import("react/jsx-runtime").JSX.Element;
 export default Collapsible;

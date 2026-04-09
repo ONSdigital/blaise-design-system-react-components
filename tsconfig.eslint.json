@@ -4,12 +4,22 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.test.tsx",
-    "vite.config.ts",
-    "vitest.config.ts",
-    "eslint.config.mts"
+    "src/**/*.test.ts",
+    "src/**/*.stories.tsx",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "eslint.config.mts",
+    "rollup.config.mjs",
+    "jest.config.cjs",
+    "babel.config.cjs"
   ],
-  "exclude": [], 
+  "exclude": [
+    "node_modules",
+    "build",
+    "docs-build"
+  ],
   "compilerOptions": {
-    "noEmit": true
+    "noEmit": true,
+    "allowJs": true
   }
 }

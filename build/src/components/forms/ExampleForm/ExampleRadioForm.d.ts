@@ -1,3 +1,2 @@
-import React from "react";
-declare function ExampleForm(): React.JSX.Element;
+declare function ExampleForm(): import("react/jsx-runtime").JSX.Element;
 export default ExampleForm;

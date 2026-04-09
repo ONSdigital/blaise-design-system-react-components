@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta } from "@storybook/react-webpack5";
+import { Meta } from "@storybook/react";
 import BetaBanner from "./BetaBanner";
 
 export default {

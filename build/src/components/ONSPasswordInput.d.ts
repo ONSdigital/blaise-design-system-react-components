@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component } from "react";
+import { ChangeEvent, Component } from "react";
 export interface Props {
     label?: string;
     inputId?: string;
@@ -18,6 +18,6 @@ export declare class ONSPasswordInput extends Component<Props, State> {
     spacing: () => {
         marginTop: string;
     };
-    render(): React.JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
 export {};

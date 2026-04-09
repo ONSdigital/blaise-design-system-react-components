@@ -1,4 +1,4 @@
-import React from "react";
+import { FormikValues } from "formik";
 export interface RadioSpecifyOption {
     id: string;
     name: string;
@@ -20,7 +20,7 @@ export interface CheckboxFieldsetObject {
     label: string;
     description?: string;
 }
-export interface BaseFormFieldObject<V = string | string[]> {
+export interface BaseFormFieldObject<V = string> {
     name: string;
     description?: string;
     type: string;
@@ -37,19 +37,11 @@ export interface CheckboxFormFieldObject extends BaseFormFieldObject<string[]> {
     type: "checkbox";
     checkboxOptions: CheckboxFieldsetObject[];
 }
-export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject;
-export interface StyledFormProps {
+export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject<string>;
+export interface StyledFormProps<T extends FormikValues = FormikValues> {
     fields: FormFieldObject[];
-    onSubmitFunction: (values: Record<string, unknown>, setSubmitting: (isSubmitting: boolean) => void) => void;
+    onSubmitFunction: (values: T, setSubmitting: (isSubmitting: boolean) => void) => void;
     submitLabel?: string;
 }
-/**
- * Formik form styled to ONS design guide with form error panel
- *
- * @param Props
- *
- *  - fields: List of fields to display on form.
- *  - onSubmitFunction: Function to call after submit of form and all field validation is valid.
- */
-declare function StyledForm({ fields, onSubmitFunction, submitLabel }: StyledFormProps): React.JSX.Element;
+declare function StyledForm<T extends FormikValues = FormikValues>({ fields, onSubmitFunction, submitLabel }: StyledFormProps<T>): import("react/jsx-runtime").JSX.Element;
 export default StyledForm;

@@ -16,10 +16,13 @@ exports[`Header Test matches Snapshot 1`] = `
           >
             <div
               aria-busy="true"
-              class=""
+              aria-label="loading-indicator"
+              class="sc-bdnAzI kiLNmC"
+              data-testid="tail-spin-loading"
+              role="progressbar"
             >
               <svg
-                aria-label="audio-loading"
+                data-testid="tail-spin-svg"
                 height="30"
                 viewBox="0 0 38 38"
                 width="30"
@@ -90,6 +93,7 @@ exports[`Header Test matches Snapshot 1`] = `
                 </g>
               </svg>
             </div>
+            <br />
             Loading
           </div>
         </div>
@@ -108,10 +112,13 @@ exports[`Header Test matches Snapshot 1`] = `
         >
           <div
             aria-busy="true"
-            class=""
+            aria-label="loading-indicator"
+            class="sc-bdnAzI kiLNmC"
+            data-testid="tail-spin-loading"
+            role="progressbar"
           >
             <svg
-              aria-label="audio-loading"
+              data-testid="tail-spin-svg"
               height="30"
               viewBox="0 0 38 38"
               width="30"
@@ -182,6 +189,7 @@ exports[`Header Test matches Snapshot 1`] = `
               </g>
             </svg>
           </div>
+          <br />
           Loading
         </div>
       </div>
