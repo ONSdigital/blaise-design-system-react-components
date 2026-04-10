@@ -3,6 +3,7 @@ import React, { ChangeEvent, Component } from "react";
 export interface Props {
     label?: string
     inputId?: string
+    testId?: string
     placeholder?: string
     marginTop?: number
     onChange?: (e: ChangeEvent<HTMLInputElement>, ...args: any[]) => void
@@ -46,23 +47,27 @@ export class ONSPasswordInput extends Component <Props, State> {
                         autoFocus={this.props.autoFocus}
                         autoComplete="new-password"
                         type="checkbox"
-                        id="password-toggle"
+                        id={this.props.inputId ? `${this.props.inputId}-password-toggle` : "password-toggle"}
                         className="ons-checkbox__input"
                         name="show-password"
                         onClick={this.togglePassword}
-                        data-testid="login-password-toggle"
+                        data-testid={this.props.testId ? `${this.props.testId}-password-toggle` : "login-password-toggle"}
                     />
-                    <label id="password-toggle-label" className="ons-checkbox__label " htmlFor="password-toggle">
+                    <label 
+                        id={this.props.inputId ? `${this.props.inputId}-password-toggle-label` : "password-toggle-label"}
+                        data-testid={this.props.testId ? `${this.props.testId}-password-toggle-label` : "password-toggle-label"}
+                        className="ons-checkbox__label "
+                        htmlFor="password-toggle">
                         Show password
                     </label>
                 </span>
                 <input
                     type={this.state.password ? "password" : "text"}
-                    id={this.props.inputId || "password"}
+                    id={this.props.inputId ? `${this.props.inputId}` : "password"}
                     className="ons-input ons-input--text ons-input-type__input ons-u-mt-xs"
                     value={this.props.value}
                     onChange={(e) => this.handleChange(e)}
-                    data-testid="login-password-input"
+                    data-testid={this.props.testId ? `${this.props.testId}` : "login-password-input"}
                 />
             </p>
         );

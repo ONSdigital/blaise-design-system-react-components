@@ -296,9 +296,9 @@ var ONSPasswordInput = /** @class */ (function (_super) {
         return (React.createElement("p", { className: "ons-field" },
             React.createElement("label", { className: "ons-label", htmlFor: this.props.inputId || "password" }, this.props.label),
             React.createElement("span", { className: "ons-checkbox ons-checkbox--toggle", style: this.spacing() },
-                React.createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: "password-toggle", className: "ons-checkbox__input", name: "show-password", onClick: this.togglePassword, "data-testid": "login-password-toggle" }),
-                React.createElement("label", { id: "password-toggle-label", className: "ons-checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
-            React.createElement("input", { type: this.state.password ? "password" : "text", id: this.props.inputId || "password", className: "ons-input ons-input--text ons-input-type__input ons-u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": "login-password-input" })));
+                React.createElement("input", { autoFocus: this.props.autoFocus, autoComplete: "new-password", type: "checkbox", id: this.props.inputId ? "".concat(this.props.inputId, "-password-toggle") : "password-toggle", className: "ons-checkbox__input", name: "show-password", onClick: this.togglePassword, "data-testid": this.props.testId ? "".concat(this.props.testId, "-password-toggle") : "login-password-toggle" }),
+                React.createElement("label", { id: this.props.inputId ? "".concat(this.props.inputId, "-password-toggle-label") : "password-toggle-label", "data-testid": this.props.testId ? "".concat(this.props.testId, "-password-toggle-label") : "password-toggle-label", className: "ons-checkbox__label ", htmlFor: "password-toggle" }, "Show password")),
+            React.createElement("input", { type: this.state.password ? "password" : "text", id: this.props.inputId ? "".concat(this.props.inputId) : "password", className: "ons-input ons-input--text ons-input-type__input ons-u-mt-xs", value: this.props.value, onChange: function (e) { return _this.handleChange(e); }, "data-testid": this.props.testId ? "".concat(this.props.testId) : "login-password-input" })));
     };
     return ONSPasswordInput;
 }(Component));

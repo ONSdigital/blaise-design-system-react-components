@@ -2,6 +2,7 @@ import React, { ChangeEvent, Component } from "react";
 export interface Props {
     label?: string;
     inputId?: string;
+    testId?: string;
     placeholder?: string;
     marginTop?: number;
     onChange?: (e: ChangeEvent<HTMLInputElement>, ...args: any[]) => void;
