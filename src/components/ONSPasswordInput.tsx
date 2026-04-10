@@ -57,7 +57,7 @@ export class ONSPasswordInput extends Component <Props, State> {
                         id={this.props.inputId ? `${this.props.inputId}-password-toggle-label` : "password-toggle-label"}
                         data-testid={this.props.testId ? `${this.props.testId}-password-toggle-label` : "password-toggle-label"}
                         className="ons-checkbox__label "
-                        htmlFor="password-toggle">
+                        htmlFor={this.props.inputId ? `${this.props.inputId}-password-toggle` : "password-toggle"}>
                         Show password
                     </label>
                 </span>
