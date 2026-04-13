@@ -67,7 +67,7 @@ export class ONSPasswordInput extends Component <Props, State> {
                     className="ons-input ons-input--text ons-input-type__input ons-u-mt-xs"
                     value={this.props.value}
                     onChange={(e) => this.handleChange(e)}
-                    data-testid={this.props.testId ? `${this.props.testId}` : "login-password-input"}
+                    data-testid={this.props.testId ? `${this.props.testId}-input` : "login-password-input"}
                 />
             </p>
         );
