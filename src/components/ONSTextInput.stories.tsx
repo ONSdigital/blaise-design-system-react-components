@@ -1,20 +1,40 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
+import { useState, ChangeEvent } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ONSTextInput } from "./ONSTextInput";
 
-export default {
-    component: ONSTextInput,
+const meta = {
     title: "Components/Text Input",
-} as Meta;
+    component: ONSTextInput,
+    tags: ["autodocs"],
+    argTypes: {
+        onChange: { action: "changed" },
+        autoFocus: { control: "boolean" },
+    },
+} satisfies Meta<typeof ONSTextInput>;
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSTextInput> = (args) => <ONSTextInput {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
-Default.args = {
-    label: "Text Input",
-    placeholder: "Type here",
-    autoFocus: true,
+export const Default: Story = {
+    render: (args) => {
+        const [currentValue, setCurrentValue] = useState(args.value || "");
+
+        return (
+            <ONSTextInput
+                {...args}
+                value={currentValue}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    setCurrentValue(e.target.value);
+                    args.onChange?.(e);
+                }}
+            />
+        );
+    },
+    args: {
+        label: "Text Input",
+        placeholder: "Type here",
+        autoFocus: true,
+        value: "",
+    },
 };

@@ -1,21 +1,40 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
+import { useState, ChangeEvent } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ONSPasswordInput } from "./ONSPasswordInput";
 
-export default {
-    component: ONSPasswordInput,
+const meta = {
     title: "Components/Password Input",
-} as Meta;
+    component: ONSPasswordInput,
+    tags: ["autodocs"],
+    argTypes: {
+        autoFocus: { control: "boolean" },
+        label: { control: "text" },
+    },
+} satisfies Meta<typeof ONSPasswordInput>;
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSPasswordInput> = (args) => <ONSPasswordInput {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
-Default.args = {
-    label: "Password",
-    inputId: "password",
-    placeholder: "Confirm password",
-    autoFocus: true,
+export const Default: Story = {
+    render: (args) => {
+        const [currentValue, setCurrentValue] = useState(args.value);
+        
+        return (
+            <ONSPasswordInput 
+                {...args} 
+                value={currentValue} 
+                onChange={(e: ChangeEvent<HTMLInputElement>, val: string) => {
+                    setCurrentValue(val);
+                    args.onChange?.(e, val);
+                }} 
+            />
+        );
+    },
+    args: {
+        value: "",
+        label: "Password",
+        inputId: "password",
+        autoFocus: true,
+    },
 };

@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
-import React from "react";
-import ONSErrorPanel from "./ONSErrorPanel";
+import { ONSErrorPanel } from "./ONSErrorPanel";
 
 describe("ONS Error Panel Test", () => {
     it("matches Snapshot", () => {

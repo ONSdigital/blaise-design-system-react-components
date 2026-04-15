@@ -1,46 +1,57 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ONSButton } from "./ONSButton";
 
-export default {
-    component: ONSButton,
+const meta = {
     title: "Components/Button",
-} as Meta;
+    component: ONSButton,
+    tags: ["autodocs"],
+    argTypes: {
+        onClick: { action: "clicked" },
+        primary: { control: "boolean" },
+        small: { control: "boolean" },
+        loading: { control: "boolean" },
+        hidden: { control: "boolean" },
+    },
+} satisfies Meta<typeof ONSButton>;
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSButton> = (args) => <ONSButton {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const Primary = Template.bind({});
-export const Secondary = Template.bind({});
-export const Small = Template.bind({});
-export const Loading = Template.bind({});
-export const Hidden = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
-Primary.args = {
-    primary: true,
-    label: "Button",
+export const Primary: Story = {
+    args: {
+        primary: true,
+        label: "Primary Button",
+    },
 };
 
-Secondary.args = {
-    primary: false,
-    label: "Button",
+export const Secondary: Story = {
+    args: {
+        primary: false,
+        label: "Secondary Button",
+    },
 };
 
-Small.args = {
-    primary: true,
-    label: "Button",
-    small: true,
+export const Small: Story = {
+    args: {
+        ...Primary.args,
+        label: "Small Button",
+        small: true,
+    },
 };
 
-Loading.args = {
-    primary: true,
-    label: "Button",
-    loading: true,
+export const Loading: Story = {
+    args: {
+        ...Primary.args,
+        label: "Loading Button",
+        loading: true,
+    },
 };
 
-Hidden.args = {
-    primary: true,
-    label: "Button",
-    hidden: true,
+export const Hidden: Story = {
+    args: {
+        ...Primary.args,
+        label: "Hidden Button",
+        hidden: true,
+    },
 };

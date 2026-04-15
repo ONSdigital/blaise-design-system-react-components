@@ -1,13 +1,14 @@
-import React, { ErrorInfo, ReactNode, ReactElement } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 import { ONSPanel } from "../ONSPanel";
 
 export interface Props {
-    errorMessageText: string,
+    errorMessageText: string;
     children: ReactNode;
 }
 
 interface State {
-    errorInfo: ErrorInfo
+    hasError: boolean;
+    errorInfo: ErrorInfo | null;
 }
 
 /*
@@ -19,17 +20,25 @@ interface State {
  * table, so if it fails to render this panel will show in its place on the page.
  */
 
-export default class ErrorBoundary extends React.Component<Props, State> {
-    state = { errorInfo: { componentStack: "Fine" } };
+export class ErrorBoundary extends Component<Props, State> {
+    state: State = { 
+        hasError: false,
+        errorInfo: null 
+    };
 
-    componentDidCatch(_: Error, errorInfo: ErrorInfo): void {
+    static getDerivedStateFromError(_: Error): Partial<State> {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         this.setState({
             errorInfo,
         });
+        console.error("ErrorBoundary caught an error:", error, errorInfo);
     }
 
-    render(): ReactElement {
-        if (this.state.errorInfo.componentStack !== "Fine") {
+    render(): ReactNode {
+        if (this.state.hasError) {
             return (
                 <ONSPanel status="error">
                     <p>
@@ -38,7 +47,6 @@ export default class ErrorBoundary extends React.Component<Props, State> {
                 </ONSPanel>
             );
         }
-
-        return <>{this.props.children}</>;
+        return this.props.children;
     }
 }

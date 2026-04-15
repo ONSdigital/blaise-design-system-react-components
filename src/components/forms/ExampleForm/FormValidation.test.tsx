@@ -1,67 +1,37 @@
-import {
-    validateEmail, validateInstrumentName, validateName, validatePassword, validateRadio,
-} from "./FormValidation";
+import { validateEmail, validateInstrumentName, validateName, validatePassword, validateRadio } from "./FormValidation";
 
-test("Instrument name length validation", () => {
-    let errorMessage = validateInstrumentName("");
+describe("FormValidation", () => {
 
-    expect(errorMessage).toEqual("Enter a valid instrument name");
+    test("Instrument name validation", () => {
+        expect(validateInstrumentName("")).toBe("Enter a valid instrument name");
+        expect(validateInstrumentName("OPN210")).toBe("Enter a valid instrument name (longer than 7 characters)");
+        expect(validateInstrumentName("OPN2101")).toBeUndefined(); 
+    });
 
-    errorMessage = validateInstrumentName("OPN210");
+    test("Name validation", () => {
+        expect(validateName("")).toBe("Enter a name");
+        expect(validateName("Ma")).toBe("Enter a name longer than 2 characters");
+        expect(validateName("Matthew")).toBeUndefined();
+    });
 
-    expect(errorMessage).toEqual("Enter a valid instrument name (longer than 7 characters)");
+    test("Password validation", () => {
+        expect(validatePassword("")).toBe("Enter a password");
+        expect(validatePassword("Passw")).toBe("Enter a password longer than 6 characters");
+        expect(validatePassword("Password")).toBeUndefined();
+    });
 
-    errorMessage = validateName("OPN2101");
+    test("Email validation", () => {
+        const invalidEmailMessage = "Enter an email address in the correct format, such as name@example.com";
+        expect(validateEmail("")).toBe("Enter an email");
+        expect(validateEmail("matthew")).toBe(invalidEmailMessage);
+        expect(validateEmail("matthew@email")).toBe(invalidEmailMessage);
+        expect(validateEmail("matthew@email.")).toBe(invalidEmailMessage);
+        expect(validateEmail("matthew@email.com")).toBeUndefined();
+    });
 
-    expect(errorMessage).toEqual(undefined);
-});
+    test("Radio validation", () => {
+        expect(validateRadio("")).toBe("Select an option");
+        expect(validateRadio("Bacon")).toBeUndefined();
+    });
 
-test("name length validation", () => {
-    let errorMessage = validateName("Ma");
-
-    expect(errorMessage).toEqual("Enter a name longer than 2 characters");
-
-    errorMessage = validateName("Matthew");
-
-    expect(errorMessage).toEqual(undefined);
-});
-
-test("password length validation", () => {
-    let errorMessage = validatePassword("Passw");
-
-    expect(errorMessage).toEqual("Enter a password longer than 6 characters");
-
-    errorMessage = validatePassword("Password");
-
-    expect(errorMessage).toEqual(undefined);
-});
-
-test("email validation", () => {
-    const invalidEmailMessage = "Enter an email address in the correct format, such as name@example.com";
-
-    let errorMessage = validateEmail("matthew");
-    expect(errorMessage).toEqual(invalidEmailMessage);
-
-    errorMessage = validateEmail("matthew@email");
-    expect(errorMessage).toEqual(invalidEmailMessage);
-
-    errorMessage = validateEmail("matthew@email");
-    expect(errorMessage).toEqual(invalidEmailMessage);
-
-    errorMessage = validateEmail("matthew@email.");
-    expect(errorMessage).toEqual(invalidEmailMessage);
-
-    errorMessage = validateEmail("matthew@email.com");
-    expect(errorMessage).toEqual(undefined);
-});
-
-test("radio validation", () => {
-    // @ts-expect-error testing validation logic when input is undefined
-    let errorMessage = validateRadio(undefined);
-
-    expect(errorMessage).toEqual("Select an option");
-
-    errorMessage = validateRadio("Bcaon");
-
-    expect(errorMessage).toEqual(undefined);
 });

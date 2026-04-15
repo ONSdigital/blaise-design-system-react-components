@@ -75,7 +75,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                 class="ons-navigation__list"
               >
                 <li
-                  class="ons-navigation__item  ons-navigation__item--active"
+                  class="ons-navigation__item ons-navigation__item--active"
                 >
                   <a
                     class="ons-navigation__link"
@@ -87,7 +87,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                   </a>
                 </li>
                 <li
-                  class="ons-navigation__item  "
+                  class="ons-navigation__item "
                 >
                   <a
                     class="ons-navigation__link"
@@ -99,7 +99,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                   </a>
                 </li>
                 <li
-                  class="ons-navigation__item  "
+                  class="ons-navigation__item "
                 >
                   <a
                     class="ons-navigation__link"
@@ -111,7 +111,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                   </a>
                 </li>
                 <li
-                  class="ons-navigation__item  "
+                  class="ons-navigation__item "
                 >
                   <a
                     class="ons-navigation__link"
@@ -200,7 +200,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
               class="ons-navigation__list"
             >
               <li
-                class="ons-navigation__item  ons-navigation__item--active"
+                class="ons-navigation__item ons-navigation__item--active"
               >
                 <a
                   class="ons-navigation__link"
@@ -212,7 +212,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                 </a>
               </li>
               <li
-                class="ons-navigation__item  "
+                class="ons-navigation__item "
               >
                 <a
                   class="ons-navigation__link"
@@ -224,7 +224,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                 </a>
               </li>
               <li
-                class="ons-navigation__item  "
+                class="ons-navigation__item "
               >
                 <a
                   class="ons-navigation__link"
@@ -236,7 +236,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                 </a>
               </li>
               <li
-                class="ons-navigation__item  "
+                class="ons-navigation__item "
               >
                 <a
                   class="ons-navigation__link"

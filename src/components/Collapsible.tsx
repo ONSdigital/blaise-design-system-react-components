@@ -1,32 +1,42 @@
-import React, { ReactElement, useState } from "react";
+import { ReactNode, useState, useId } from "react";
 
 export interface Props {
-    /**
-     * Render any standard HTML (or other React components) within the Collapsible
-     */
-    children: ReactElement
-    title: string
+    children: ReactNode;
+    title: string;
+    id?: string;
 }
 
-function Collapsible({ children, title }: Props) {
-    const [panelOpen, setPanelOpen] = useState<boolean>(false);
+export const Collapsible = ({ children, title, id }: Props) => {
+    const [panelOpen, setPanelOpen] = useState<boolean>(false);    
+    const uniqueId = useId();
+    const componentId = id || `collapsible-with-save-${uniqueId}`;
+
+    const handleToggle = (event: React.SyntheticEvent) => {
+        event.preventDefault();
+        setPanelOpen(!panelOpen);
+    };
 
     return (
         <details
-            id="collapsible-with-save"
+            id={componentId}
             className="ons-collapsible ons-js-collapsible ons-u-mt-l"
             data-save-state="true"
             role="group"
+            open={panelOpen}
         >
             <summary
                 className="ons-collapsible__heading ons-js-collapsible-heading"
-                role="link"
+                role="button"
                 data-testid="collapsible-heading"
-                onClick={() => setPanelOpen(!panelOpen)}
-                onKeyPress={() => setPanelOpen(!panelOpen)}
+                onClick={handleToggle}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        handleToggle(e);
+                    }
+                }}
                 tabIndex={0}
-                aria-expanded={panelOpen ? "true" : "false"}
-                aria-controls="collapsible-with-save"
+                aria-expanded={panelOpen}
+                aria-controls={`${componentId}-content`}
                 data-ga-action={`${panelOpen ? "Close" : "Open"} panel`}
             >
                 <div className="ons-collapsible__controls">
@@ -47,7 +57,7 @@ function Collapsible({ children, title }: Props) {
                 </div>
             </summary>
             <div
-                id="collapsible-with-save-content"
+                id={`${componentId}-content`}
                 className="ons-collapsible__content ons-js-collapsible-content"
                 aria-hidden={!panelOpen}
                 data-testid="collapsible-content"
@@ -56,6 +66,4 @@ function Collapsible({ children, title }: Props) {
             </div>
         </details>
     );
-}
-
-export default Collapsible;
+};

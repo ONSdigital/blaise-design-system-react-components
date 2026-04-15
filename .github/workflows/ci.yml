@@ -1,4 +1,4 @@
-name: CI Validation
+name: CI Validation ✅
 permissions:
   contents: read
 on:
@@ -7,12 +7,12 @@ on:
   push:
     branches: [ main ]
 jobs:
-  validate:
+  ci-validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository 🛎️
         uses: actions/checkout@v4
-      - name: Setup Node & Cache 🔧
+      - name: Setup Node and Cache 🔧
         uses: actions/setup-node@v4
         with:
           node-version: 24.x

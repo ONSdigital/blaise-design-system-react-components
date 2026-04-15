@@ -5,42 +5,41 @@ exports[`ONS Select Test > matches Snapshot 1`] = `
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
+      <div
+        class="ons-field"
+      >
         <label
           class="ons-label"
           for="select-thing"
         >
           Select From
-           
         </label>
         <select
-          class="ons-input "
+          class="ons-input ons-input--select"
           data-testid="test-id"
           id="select-thing"
           name="select"
         >
           <option
-            data-testid="select-select-thing"
             disabled=""
-            selected=""
             value=""
           >
             Select an option
           </option>
           <option
-            data-testid="option-select-thing-1"
+            data-testid="option-test-id-1"
             value="1"
           >
             1
           </option>
           <option
-            data-testid="option-select-thing-2"
+            data-testid="option-test-id-2"
             value="2"
           >
             2
           </option>
           <option
-            data-testid="option-select-thing-3"
+            data-testid="option-test-id-3"
             value="3"
           >
             3
@@ -50,42 +49,41 @@ exports[`ONS Select Test > matches Snapshot 1`] = `
     </div>
   </body>,
   "container": <div>
-    <div>
+    <div
+      class="ons-field"
+    >
       <label
         class="ons-label"
         for="select-thing"
       >
         Select From
-         
       </label>
       <select
-        class="ons-input "
+        class="ons-input ons-input--select"
         data-testid="test-id"
         id="select-thing"
         name="select"
       >
         <option
-          data-testid="select-select-thing"
           disabled=""
-          selected=""
           value=""
         >
           Select an option
         </option>
         <option
-          data-testid="option-select-thing-1"
+          data-testid="option-test-id-1"
           value="1"
         >
           1
         </option>
         <option
-          data-testid="option-select-thing-2"
+          data-testid="option-test-id-2"
           value="2"
         >
           2
         </option>
         <option
-          data-testid="option-select-thing-3"
+          data-testid="option-test-id-3"
           value="3"
         >
           3

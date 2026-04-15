@@ -1,5 +1,4 @@
-import React, { ComponentProps } from "react";
-
+import { ComponentProps } from "react";
 import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
 import { ONSSelect } from "./ONSSelect";
 

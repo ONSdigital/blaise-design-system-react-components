@@ -1,18 +1,8 @@
-import {
-    cleanup,
-    fireEvent,
-    render,
-    screen,
-    RenderResult
-} from "@testing-library/react";
-import React, { ComponentProps } from "react";
+import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
+import { ComponentProps } from "react";
 import { ONSButton } from "./ONSButton";
 
 describe("ONS Button Test", () => {
-    afterEach(() => {
-        cleanup();
-    });
-
     const Props = {
         label: "Submit1",
         primary: false,

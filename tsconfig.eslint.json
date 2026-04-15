@@ -1,20 +1,20 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.test.tsx",
-    "src/**/*.test.ts",
-    "src/**/*.stories.tsx",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
-    "eslint.config.mts",
+    "eslint.config.ts",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "vite.config.ts"
   ],
   "exclude": [
-    "node_modules",
     "build",
-    "docs-build"
+    "docs-build",
+    "node_modules"
   ],
   "compilerOptions": {
     "noEmit": true,

@@ -1,9 +1,6 @@
-import React from "react";
-import {
-    fireEvent, render, screen, waitFor,
-} from "@testing-library/react";
-import ExampleRadioForm from "./ExampleForm/ExampleRadioForm";
-import StyledForm from "./StyledForm";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { ExampleRadioForm } from "./ExampleForm/ExampleRadioForm";
+import { StyledForm } from "./StyledForm";
 import { validateRadio } from "./ExampleForm/FormValidation";
 
 test("it matches snapshots", async () => {
@@ -45,7 +42,7 @@ test("submit function is called when form is valid", async () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-        const successMessage = screen.getByText(/Form submitted, topping chosen bacon/i);
+        const successMessage = screen.getByText(/Form submitted, topping chosen: bacon/i);
         expect(successMessage).toBeInTheDocument();
     });
 });

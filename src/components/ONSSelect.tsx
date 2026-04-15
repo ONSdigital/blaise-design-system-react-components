@@ -1,73 +1,76 @@
-import React, { ChangeEvent, Component } from "react";
+import { ChangeEvent, Component } from "react";
 
 export interface Props {
-    label?: string
-    id?: string
+    label?: string;
+    id?: string;
     onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
-    value: string
-    options: Option[]
-    defaultValue?: string
+    value: string;
+    options: Option[];
+    defaultValue?: string;
     testId?: string;
 }
 
 interface Option {
-    label: string
-    value?: string
-    id?: string
+    label: string;
+    value: string;
+    id?: string;
 }
 
 interface State {
-    value: string
+    value: string;
 }
 
-export class ONSSelect extends Component <Props, State> {
-    value: string = this.props.value !== undefined ? this.props.value : "";
-
+export class ONSSelect extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = { value: props.value !== undefined ? this.props.value : "" };
+        this.state = { 
+            value: props.value !== undefined ? props.value : "" 
+        };
+    }
+
+    static getDerivedStateFromProps(nextProps: Props, prevState: State): Partial<State> | null {
+        if (nextProps.value !== undefined && nextProps.value !== prevState.value) {
+            return { value: nextProps.value };
+        }
+        return null;
     }
 
     handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        if (this.props.onChange !== undefined) {
+        const newValue = e.target.value;
+        this.setState({ value: newValue });
+
+        if (this.props.onChange) {
             this.props.onChange(e);
         }
-        this.value = e.target.value;
-        this.setState({ value: e.target.value });
     };
 
-    defaultValue(): string {
-        if (this.props.defaultValue) return this.props.defaultValue;
-        return "";
-    }
-
     render() {
+        const { id, label, options, testId } = this.props;
+
         return (
-            <div>
-                {this.props.label !== undefined
-                && (
-                    <label className="ons-label" htmlFor={this.props.id}>
-                        {this.props.label}
-                        {" "}
+            <div className="ons-field">
+                {label !== undefined && (
+                    <label className="ons-label" htmlFor={id}>
+                        {label}
                     </label>
                 )}
                 <select
-                    id={this.props.id}
+                    id={id}
                     name="select"
-                    defaultValue={this.defaultValue()}
-                    className="ons-input "
-                    onChange={(e) => this.handleChange(e)}
-                    data-testid={this.props.testId}
+                    value={this.state.value} 
+                    className="ons-input ons-input--select"
+                    onChange={this.handleChange}
+                    data-testid={testId}
                 >
-                    <option value="" disabled data-testid={`select-${this.props.id}`}>
+                    <option value="" disabled>
                         Select an option
                     </option>
-                    {this.props.options.map((option, index) => (
+                    {options.map((option, index) => (
                         <option
                             value={option.value}
-                            key={index}
+                            key={option.id || `${id}-option-${index}`}
                             id={option.id}
-                            data-testid={`option-${this.props.id}-${option.value}`}
+                            data-testid={testId ? `option-${testId}-${option.value}` : undefined}
                         >
                             {option.label}
                         </option>

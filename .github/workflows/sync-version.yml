@@ -1,0 +1,30 @@
+name: Sync Version 🔄
+permissions:
+  contents: write
+on:
+  release:
+    types: [published]
+jobs:
+  sync-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository 🛎️
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+      - name: Setup Node 🔧
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+      - name: Update package.json Version 📝
+        run: |
+          # Extract version from tag (removes 'v' prefix if present)
+          CLEAN_VERSION=$(echo "${{ github.event.release.tag_name }}" | sed 's/^v//')
+          # Use npm version command to update the file without running scripts
+          npm version $CLEAN_VERSION --no-git-tag-version
+          echo "NEW_VERSION=$CLEAN_VERSION" >> $GITHUB_ENV
+      - name: Commit and Push Changes 🚀
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: bump version to ${{ env.NEW_VERSION }}"
+          file_pattern: 'package.json'

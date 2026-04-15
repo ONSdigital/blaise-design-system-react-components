@@ -1,8 +1,6 @@
-import {
-    cleanup, render, waitFor, screen, fireEvent, act,
-} from "@testing-library/react";
-import React, { useState } from "react";
-import ErrorBoundary from "./ErrorBoundary";
+import { render, waitFor, screen, fireEvent, act } from "@testing-library/react";
+import { useState } from "react";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 describe("Error Boundary", () => {
     it("should render children correctly when there are no issues", async () => {
@@ -40,9 +38,5 @@ describe("Error Boundary", () => {
         await waitFor(() => {
             expect(screen.getByText(/Super dodgy component has failed/i)).toBeDefined();
         });
-    });
-
-    afterAll(() => {
-        cleanup();
     });
 });

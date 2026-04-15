@@ -1,44 +1,42 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { GroupedSummary, SummaryGroupTable, SummaryItemRow } from "./ONSSummary";
 
-export default {
-    component: SummaryGroupTable,
+const meta = {
     title: "Components/Summary",
-} as Meta;
+    component: SummaryGroupTable,
+    tags: ["autodocs"],
+} satisfies Meta<typeof SummaryGroupTable>;
 
-// 👇 We create a “template” of how args map to rendering
-const SummaryTableTemplate: ComponentStory<typeof SummaryGroupTable> = (args) => <SummaryGroupTable {...args} />;
-const SummaryRowTemplate: ComponentStory<typeof SummaryItemRow> = (args) => <SummaryItemRow {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const Table = SummaryTableTemplate.bind({});
-export const Row = SummaryRowTemplate.bind({});
+type TableStory = StoryObj<typeof SummaryGroupTable>;
+type RowStory = StoryObj<typeof SummaryItemRow>;
 
-const groupedSummary = new GroupedSummary([{
-    title: "How to use a Summary table",
+const censusSummary = new GroupedSummary([{
+    title: "Household details",
     records: {
-        "Step 1": "Import GroupedSummary, SummaryGroupTable, SummaryItemRow from ONSSummary",
-        "Step 2": `Instantiate a GroupedSummary and pass in the following object:    
-            const groupedSummary = new GroupedSummary({
-                title: "Table title",
-                records: {
-                    "Record 1": "foo",
-                    "Record 2": "bar" 
-                }
-            });
-        `,
-        "Step 3": `Instantiate a SummaryGroupTable element and pass in the GroupedSummary defined in Step 2:
-            <SummaryGroupTable groupedSummary={groupedSummary} />
-        `,
-    },
+        "Address": "102 Petty France, London",
+        "Property type": "Office block",
+        "Number of residents": "0"
+    }
 }]);
 
-Table.args = {
-    groupedSummary,
+export const Table: TableStory = {
+    args: {
+        groupedSummary: censusSummary,
+    },
 };
 
-Row.args = {
-    fieldName: "Field",
-    fieldValue: "Value",
+export const Row: RowStory = {
+    render: (args) => (
+        <table className="ons-summary__table">
+            <tbody className="ons-summary__tbody">
+                <SummaryItemRow {...args} />
+            </tbody>
+        </table>
+    ),
+    args: {
+        fieldName: "Survey",
+        fieldValue: "Labour Force Survey",
+    },
 };

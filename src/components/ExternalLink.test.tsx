@@ -1,12 +1,7 @@
-import { cleanup, render, screen } from "@testing-library/react";
-import React from "react";
-import ExternalLink from "./ExternalLink";
+import { render, screen } from "@testing-library/react";
+import { ExternalLink } from "./ExternalLink";
 
 describe("External Link Test", () => {
-    afterEach(() => {
-        cleanup();
-    });
-
     const Props = {
         text: "Click Me",
         link: "/link",

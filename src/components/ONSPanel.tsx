@@ -1,31 +1,47 @@
-import React from "react";
+import { ReactNode } from "react";
 
 export interface Props {
-    /**
+    /*
      * Render any standard HTML (or other React components) within the panel
      */
-    children: React.ReactNode,
-    status?: "success" | "error" | "info" | "warn",
-    spacious?: boolean,
-    id?: string,
-    hidden?: boolean,
-    testID?: string
-    /**
+    children: ReactNode; // CHANGED: Removed "React." prefix
+    status?: "success" | "error" | "info" | "warn";
+    spacious?: boolean;
+    id?: string;
+    hidden?: boolean;
+    testID?: string;
+    /*
      * Uses a bigger tick icon for the success panel only.
      */
-    bigIcon?: boolean
+    bigIcon?: boolean;
 }
 
-export const ONSPanel = (props: Props) => {
-    const className = `ons-panel ons-panel--${props.status ? props.status : "info"} ons-panel--no-title ${props.spacious ? "ons-panel--spacious" : ""} ons-u-mt-m`;
+export const ONSPanel = ({
+    children,
+    status = "info",
+    spacious,
+    id,
+    hidden,
+    testID,
+    bigIcon,
+}: Props) => {
+
+    const className = [
+        "ons-panel",
+        `ons-panel--${status}`,
+        "ons-panel--no-title",
+        spacious && "ons-panel--spacious",
+        "ons-u-mt-m"
+    ].filter(Boolean).join(" ");
+
     return (
-        <div data-testid={props.testID} id={props.id} className={className} hidden={props.hidden}>
+        <div data-testid={testID} id={id} className={className} hidden={hidden}>
             {
-                props.status === "success"
+                status === "success"
                 && (
                     <span className="ons-panel__icon">
                         <svg
-                            className={`ons-svg-icon ${props.bigIcon === true ? "ons-svg-icon--xl" : ""}`}
+                            className={`ons-svg-icon ${bigIcon ? "ons-svg-icon--xl" : ""}`}
                             viewBox="0 0 13 10"
                             xmlns="http://www.w3.org/2000/svg"
                         >
@@ -38,7 +54,7 @@ export const ONSPanel = (props: Props) => {
                 )
             }
             {
-                props.status === "warn"
+                status === "warn"
                 && (
                     <>
                         <span className="ons-panel__icon" aria-hidden="true">!</span>
@@ -46,8 +62,8 @@ export const ONSPanel = (props: Props) => {
                     </>
                 )
             }
-            <div className={`ons-panel__body ${props.bigIcon === true ? "ons-svg-icon-margin--xl" : ""}`}>
-                {props.children}
+            <div className={`ons-panel__body ${bigIcon ? "ons-svg-icon-margin--xl" : ""}`}>
+                {children}
             </div>
         </div>
     );

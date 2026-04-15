@@ -1,15 +1,15 @@
-import React, { ReactElement } from "react";
+import { ReactNode } from "react";
 
-interface ONSTableProps {
-    columns: string[]
-    children: ReactElement
-    tableID?: string
-    tableCaption?: string
+export interface Props {
+    columns: string[];
+    children: ReactNode;
+    tableID?: string;
+    tableCaption?: string;
 }
 
-function ONSTable({
+export const ONSTable = ({
     columns, children, tableCaption, tableID,
-}: ONSTableProps): ReactElement {
+}: Props) => {
     return (
         <table
             className="ons-table"
@@ -31,6 +31,4 @@ function ONSTable({
             </tbody>
         </table>
     );
-}
-
-export default ONSTable;
+};

@@ -1,6 +1,6 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
-function BetaBanner(): ReactElement {
+export const BetaBanner = (): ReactElement => {
     return (
         <div className="ons-phase-banner">
             <div className="ons-container ">
@@ -24,5 +24,3 @@ function BetaBanner(): ReactElement {
         </div>
     );
 }
-
-export default BetaBanner;

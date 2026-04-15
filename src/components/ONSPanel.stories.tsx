@@ -1,49 +1,65 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ONSPanel } from "./ONSPanel";
 
-export default {
-    component: ONSPanel,
+const meta = {
     title: "Components/Panel",
-} as Meta;
+    component: ONSPanel,
+    tags: ["autodocs"],
+    argTypes: {
+        children: { control: false },
+        status: {
+            control: "select",
+            options: ["success", "error", "warn", "info"],
+        },
+    },
+} satisfies Meta<typeof ONSPanel>;
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSPanel> = (args) => <ONSPanel {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const Info = Template.bind({});
-export const Success = Template.bind({});
-export const Error = Template.bind({});
-export const Warn = Template.bind({});
-export const Spacious = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
-Info.args = {
-    children: <p>Some message in a panel</p>,
+export const Info: Story = {
+    render: (args) => <ONSPanel {...args} />,
+    args: {
+        children: <p>Some message in a panel</p>,
+    },
 };
 
-Success.args = {
-    status: "success",
-    bigIcon: true,
-    children: (
-        <div>
-            <h1>Title in a panel</h1>
-            <p>And then some text</p>
-        </div>
-    ),
+export const Success: Story = {
+    render: (args) => <ONSPanel {...args} />,
+    args: {
+        status: "success",
+        bigIcon: true,
+        children: (
+            <div>
+                <h1>Title in a panel</h1>
+                <p>And then some text</p>
+            </div>
+        ),
+    },
 };
 
-Error.args = {
-    status: "error",
-    children: <p>Some message in a panel</p>,
+export const Error: Story = {
+    render: (args) => <ONSPanel {...args} />,
+    args: {
+        status: "error",
+        children: <p>Some message in an error panel</p>,
+    },
 };
 
-Warn.args = {
-    status: "warn",
-    children: <p>All data will be removed</p>,
+export const Warn: Story = {
+    render: (args) => <ONSPanel {...args} />,
+    args: {
+        status: "warn",
+        children: <p>All data will be removed</p>,
+    },
 };
 
-Spacious.args = {
-    status: "info",
-    children: <p>Wow look at all this space</p>,
-    spacious: true,
+export const Spacious: Story = {
+    render: (args) => <ONSPanel {...args} />,
+    args: {
+        status: "info",
+        children: <p>So much room for activities!</p>,
+        spacious: true,
+    },
 };

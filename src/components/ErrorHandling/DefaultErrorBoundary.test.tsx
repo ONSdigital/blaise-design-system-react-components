@@ -1,8 +1,6 @@
-import {
-    cleanup, render, waitFor, screen, fireEvent, act,
-} from "@testing-library/react";
-import React, { useState } from "react";
-import DefaultErrorBoundary from "./DefaultErrorBoundary";
+import { render, waitFor, screen, fireEvent, act } from "@testing-library/react";
+import { useState } from "react";
+import { DefaultErrorBoundary } from "./DefaultErrorBoundary";
 
 describe("Default Error Boundary", () => {
     it("should render children correctly when there are no issues", async () => {
@@ -40,9 +38,5 @@ describe("Default Error Boundary", () => {
         await waitFor(() => {
             expect(screen.getByText(/Sorry, there is a problem with the service/i)).toBeDefined();
         });
-    });
-
-    afterAll(() => {
-        cleanup();
     });
 });

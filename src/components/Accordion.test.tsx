@@ -1,7 +1,5 @@
-import React from "react";
 import { render, fireEvent, RenderResult } from "@testing-library/react";
-import Accordion from "./Accordion";
-import "@testing-library/jest-dom";
+import { Accordion } from "./Accordion";
 
 function renderAccordionWithShowAll(): RenderResult {
     return render(

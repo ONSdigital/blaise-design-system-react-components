@@ -8,16 +8,16 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
       <details
         class="ons-collapsible ons-js-collapsible ons-u-mt-l"
         data-save-state="true"
-        id="collapsible-with-save"
+        id="collapsible-with-save-_r_0_"
         role="group"
       >
         <summary
-          aria-controls="collapsible-with-save"
+          aria-controls="collapsible-with-save-_r_0_-content"
           aria-expanded="false"
           class="ons-collapsible__heading ons-js-collapsible-heading"
           data-ga-action="Open panel"
           data-testid="collapsible-heading"
-          role="link"
+          role="button"
           tabindex="0"
         >
           <div
@@ -49,7 +49,7 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
           aria-hidden="true"
           class="ons-collapsible__content ons-js-collapsible-content"
           data-testid="collapsible-content"
-          id="collapsible-with-save-content"
+          id="collapsible-with-save-_r_0_-content"
         >
           <p>
             Inside the Collapsible
@@ -62,16 +62,16 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
     <details
       class="ons-collapsible ons-js-collapsible ons-u-mt-l"
       data-save-state="true"
-      id="collapsible-with-save"
+      id="collapsible-with-save-_r_0_"
       role="group"
     >
       <summary
-        aria-controls="collapsible-with-save"
+        aria-controls="collapsible-with-save-_r_0_-content"
         aria-expanded="false"
         class="ons-collapsible__heading ons-js-collapsible-heading"
         data-ga-action="Open panel"
         data-testid="collapsible-heading"
-        role="link"
+        role="button"
         tabindex="0"
       >
         <div
@@ -103,7 +103,7 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
         aria-hidden="true"
         class="ons-collapsible__content ons-js-collapsible-content"
         data-testid="collapsible-content"
-        id="collapsible-with-save-content"
+        id="collapsible-with-save-_r_0_-content"
       >
         <p>
           Inside the Collapsible

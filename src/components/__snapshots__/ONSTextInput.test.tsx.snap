@@ -15,7 +15,7 @@ exports[`ONS Text Input Test > matches Snapshot 1`] = `
           text
         </label>
         <input
-          class="ons-input ons-input--text ons-input-type__input "
+          class="ons-input ons-input--text ons-input-type__input"
           data-testid="text-input"
           id="file-upload"
           style="z-index: 0;"
@@ -36,7 +36,7 @@ exports[`ONS Text Input Test > matches Snapshot 1`] = `
         text
       </label>
       <input
-        class="ons-input ons-input--text ons-input-type__input "
+        class="ons-input ons-input--text ons-input-type__input"
         data-testid="text-input"
         id="file-upload"
         style="z-index: 0;"

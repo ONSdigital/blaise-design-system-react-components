@@ -1,6 +1,6 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
-function Footer(): ReactElement {
+export const Footer = (): ReactElement => {
     return (
         <footer className="ons-footer">
             <div className="ons-footer__body" data-analytics="footer">
@@ -55,5 +55,3 @@ function Footer(): ReactElement {
         </footer>
     );
 }
-
-export default Footer;

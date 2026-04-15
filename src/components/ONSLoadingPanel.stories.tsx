@@ -1,27 +1,32 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ONSLoadingPanel } from "./ONSLoadingPanel";
 
-export default {
-    component: ONSLoadingPanel,
+const meta = {
     title: "Components/Loading Panel",
-} as Meta;
+    component: ONSLoadingPanel,
+    tags: ["autodocs"],
+    argTypes: {
+        message: { control: "text" },
+        hidden: { control: "boolean" },
+    },
+} satisfies Meta<typeof ONSLoadingPanel>;
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSLoadingPanel> = (args) => <ONSLoadingPanel {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const DefaultMessage = Template.bind({});
-export const CustomMessage = Template.bind({});
-export const Hidden = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
-DefaultMessage.args = {
+export const DefaultMessage: Story = {
+    args: {},
 };
 
-CustomMessage.args = {
-    message: "Waiting till the cows come home...",
+export const CustomMessage: Story = {
+    args: {
+        message: "Waiting till the cows come home...",
+    },
 };
 
-Hidden.args = {
-    hidden: true,
+export const Hidden: Story = {
+    args: {
+        hidden: true,
+    },
 };

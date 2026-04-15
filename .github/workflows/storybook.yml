@@ -1,16 +1,15 @@
-name: Build and Deploy Storybook
+name: Build and Deploy Storybook 📖
+permissions:
+  contents: write
 on:
   push:
     branches: [ main ]
 jobs:
-  build-and-deploy:
+  build-and-deploy-storybook:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout Repository 🛎️
         uses: actions/checkout@v4
-        
       - name: Setup Node and Cache 🔧
         uses: actions/setup-node@v4
         with:

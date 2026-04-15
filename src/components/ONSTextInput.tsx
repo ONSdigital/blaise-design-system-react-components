@@ -1,52 +1,62 @@
-import React, { ChangeEvent, Component } from "react";
+import { ChangeEvent, MouseEventHandler, Component, CSSProperties } from "react";
 
 export interface Props {
-    label?: string
-    id?: string
-    password?: boolean
-    number?: boolean
+    label?: string;
+    id?: string;
+    password?: boolean;
+    number?: boolean;
     onChange?: (e: ChangeEvent<HTMLInputElement>, label?: string) => void;
-    placeholder?: string
-    fit?: boolean
-    autoFocus?: boolean
-    value?: string
-    autoComplete?: string
-    onClick?: React.MouseEventHandler<HTMLInputElement>;
-    zIndex?: number
-    testId?: string
+    placeholder?: string;
+    fit?: boolean;
+    autoFocus?: boolean;
+    value?: string;
+    autoComplete?: string;
+    onClick?: MouseEventHandler<HTMLInputElement>;
+    zIndex?: number;
+    testId?: string;
 }
 
-export class ONSTextInput extends Component <Props> {
+export class ONSTextInput extends Component<Props> {
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (this.props.onChange !== undefined) this.props.onChange(e, this.props.label);
+        this.props.onChange?.(e, this.props.label);
     };
 
-    determineType = () => {
-        if (this.props.password === true) {
-            return "password";
-        } if (this.props.number === true) {
-            return "number";
-        }
+    determineType = (): string => {
+        if (this.props.password) return "password";
+        if (this.props.number) return "number";
         return "text";
     };
 
     render() {
+        const { 
+            label, id, value, fit, zIndex, autoComplete, 
+            placeholder, onClick, testId 
+        } = this.props;
+
+        const inputStyle: CSSProperties = {
+            width: fit ? "unset" : undefined,
+            zIndex: zIndex ?? 0,
+        };
+
         return (
             <p className="ons-field">
-                {this.props.label !== undefined
-                && <label className="ons-label" htmlFor={this.props.id}>{this.props.label}</label>}
+                {label !== undefined && (
+                    <label className="ons-label" htmlFor={id}>
+                        {label}
+                    </label>
+                )}
                 <input
-                    value={this.props.value ?? ""}
-                    style={{ width: this.props.fit === true ? "unset" : "", zIndex: this.props.zIndex ? this.props.zIndex : 0 }}
-                    autoFocus={this.props.autoFocus === true}
-                    autoComplete={this.props.autoComplete}
+                    id={id}
+                    className="ons-input ons-input--text ons-input-type__input"
+                    value={value ?? ""}
                     type={this.determineType()}
-                    id={this.props.id}
-                    className="ons-input ons-input--text ons-input-type__input "
-                    placeholder={this.props.placeholder}
-                    onChange={(e) => this.handleChange(e)}
-                    onClick={(e) => (this.props.onClick !== undefined && this.props.onClick(e))}
-                    data-testid={this.props.testId !== undefined ? this.props.testId : "text-input"}
+                    style={inputStyle}
+                    autoFocus={this.props.autoFocus}
+                    autoComplete={autoComplete}
+                    placeholder={placeholder}
+                    onChange={this.handleChange}
+                    onClick={onClick}
+                    data-testid={testId ?? "text-input"}
                 />
             </p>
         );

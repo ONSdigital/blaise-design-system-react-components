@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ESNext", 
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
+    ],
+    "types": [
+      "vitest/globals",
+      "@testing-library/jest-dom/vitest"
     ],
     "outDir": "build",
     "sourceMap": true,
@@ -28,11 +32,8 @@
     "src"
   ],
   "exclude": [
-    "node_modules",
     "build",
-    "**/*.test.tsx",
-    "**/*.test.ts",
-    "**/*.stories.tsx",
-    "src/setupTests.ts"
+    "docs-build",
+    "node_modules"
   ]
 }

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 export interface Props {
     text: string
@@ -7,17 +7,17 @@ export interface Props {
     id?: string
 }
 
-function ExternalLink(props: Props): ReactElement {
+export const ExternalLink = ({ text, link, ariaLabel, id }: Props): ReactElement => {
     return (
         <a
-            href={props.link}
-            id={props.id}
-            aria-label={props.ariaLabel}
+            href={link}
+            id={id}
+            aria-label={ariaLabel}
             className="ons-external-link"
             target="_blank"
             rel="noopener noreferrer"
         >
-            {props.text}
+            {text}
             <svg
                 className="ons-svg-icon"
                 viewBox="0 0 12 12"
@@ -34,6 +34,4 @@ function ExternalLink(props: Props): ReactElement {
             </svg>
         </a>
     );
-}
-
-export default ExternalLink;
+};

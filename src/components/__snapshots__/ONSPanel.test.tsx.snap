@@ -6,7 +6,7 @@ exports[`ONS Panel Test > matches Snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
+        class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
         data-testid="panel"
       >
         <div
@@ -23,7 +23,7 @@ exports[`ONS Panel Test > matches Snapshot 1`] = `
   </body>,
   "container": <div>
     <div
-      class="ons-panel ons-panel--info ons-panel--no-title  ons-u-mt-m"
+      class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
       data-testid="panel"
     >
       <div
@@ -97,7 +97,7 @@ exports[`ONS Panel Test > matches Snapshot a big success icon 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
+        class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
         data-testid="big-icon-panel"
       >
         <span
@@ -126,7 +126,7 @@ exports[`ONS Panel Test > matches Snapshot a big success icon 1`] = `
   </body>,
   "container": <div>
     <div
-      class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
+      class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
       data-testid="big-icon-panel"
     >
       <span
@@ -212,7 +212,7 @@ exports[`ONS Panel Test > matches Snapshot for warning panel 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="ons-panel ons-panel--warn ons-panel--no-title  ons-u-mt-m"
+        class="ons-panel ons-panel--warn ons-panel--no-title ons-u-mt-m"
       >
         <span
           aria-hidden="true"
@@ -237,7 +237,7 @@ exports[`ONS Panel Test > matches Snapshot for warning panel 1`] = `
   </body>,
   "container": <div>
     <div
-      class="ons-panel ons-panel--warn ons-panel--no-title  ons-u-mt-m"
+      class="ons-panel ons-panel--warn ons-panel--no-title ons-u-mt-m"
     >
       <span
         aria-hidden="true"
@@ -319,7 +319,7 @@ exports[`ONS Panel Test > success panel matches Snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
+        class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
         data-testid="status-panel"
       >
         <span
@@ -348,7 +348,7 @@ exports[`ONS Panel Test > success panel matches Snapshot 1`] = `
   </body>,
   "container": <div>
     <div
-      class="ons-panel ons-panel--success ons-panel--no-title  ons-u-mt-m"
+      class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
       data-testid="status-panel"
     >
       <span

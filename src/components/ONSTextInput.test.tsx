@@ -1,37 +1,26 @@
-import {
-    cleanup, fireEvent, render, screen, RenderResult
-} from "@testing-library/react";
-import React, { ComponentProps } from "react";
+import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
+import { ComponentProps } from "react";
 import { ONSTextInput } from "./ONSTextInput";
 
 describe("ONS Text Input Test", () => {
-    afterEach(() => {
-        cleanup();
-    });
-
     const Props = {
         id: "file-upload",
         label: "text",
     };
-
     const changeProps = {
         id: "file-upload",
         label: "Upload Label",
         onChange: vi.fn(),
     };
-
     const testIdProps = {
         testId: "test-id",
     };
-
     const passwordProps = {
         password: true,
     };
-
     const numberProps = {
         number: true,
     };
-
     const clickProps = {
         onClick: vi.fn(),
         fit: true,

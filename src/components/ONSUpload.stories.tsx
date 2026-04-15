@@ -1,19 +1,25 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { ONSUpload } from "./ONSUpload";
 
-export default {
-    component: ONSUpload,
+const meta = {
     title: "Components/Upload",
-} as Meta;
+    component: ONSUpload,
+    tags: ["autodocs"],
+    argTypes: {
+        onChange: { action: "changed" },
+    },
+} satisfies Meta<typeof ONSUpload>;
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSUpload> = (args) => <ONSUpload {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
-Default.args = {
-    label: "Upload",
-    description: "Upload a file with the following extension: .pdf",
+export const Default: Story = {
+    args: {
+        label: "Upload",
+        description: "Upload a file with the following extension: .pdf",
+        fileName: "file-upload",
+        fileID: "file-upload-input",
+        accept: ".pdf",
+    },
 };

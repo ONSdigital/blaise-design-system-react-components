@@ -1,8 +1,6 @@
 import { Form, Formik, FormikValues } from "formik";
-import React, { Fragment } from "react";
 import { ONSButton } from "../ONSButton";
-import StyledFormErrorSummary from "./StyledFormErrorSummary";
- 
+import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
 import { StyledFormField } from "./FormElements/StyledFormFields";
 
 export interface RadioSpecifyOption {
@@ -36,7 +34,7 @@ export interface BaseFormFieldObject<V = string> {
     id?: string
     validate?: (value: V) => string | undefined
     autoFocus?: boolean
-    initial_value?: V
+    initial_value?: V | V[];
 }
 
 export interface RadioFormFieldObject extends BaseFormFieldObject<string> {
@@ -66,22 +64,22 @@ export interface StyledFormProps<T extends FormikValues = FormikValues> {
  * - onSubmitFunction: Function to call after submit of form and all field validation is valid.
  */
 
-function StyledForm<T extends FormikValues = FormikValues>({ 
-    fields, 
-    onSubmitFunction, 
-    submitLabel 
-}: StyledFormProps<T>) {
-    
-    const initialFieldValues: Record<string, unknown> = {};
-    fields.forEach((field) => {
+export const StyledForm = <T extends FormikValues = FormikValues>({
+    fields,
+    onSubmitFunction,
+    submitLabel
+}: StyledFormProps<T>) => {
+
+    const initialFieldValues = fields.reduce<Record<string, unknown>>((acc, field) => {
         if (field.initial_value !== undefined) {
-            initialFieldValues[field.name] = field.initial_value;
+            acc[field.name] = field.initial_value;
         } else if (field.type === "checkbox") {
-            initialFieldValues[field.name] = [];
+            acc[field.name] = [];
         } else {
-            initialFieldValues[field.name] = "";
+            acc[field.name] = "";
         }
-    });
+        return acc;
+    }, {});
 
     return (
         <Formik<T>
@@ -99,12 +97,11 @@ function StyledForm<T extends FormikValues = FormikValues>({
                         fields.map((field, index) => {
                             const isAutoFocus = (isValid && index === 0);
                             return (
-                                <Fragment key={field.name}>
-                                    <StyledFormField 
-                                        {...field} 
-                                        autoFocus={isAutoFocus} 
-                                    />
-                                </Fragment>
+                                <StyledFormField
+                                    key={field.name}
+                                    {...field}
+                                    autoFocus={isAutoFocus}
+                                />
                             );
                         })
                     }
@@ -120,6 +117,4 @@ function StyledForm<T extends FormikValues = FormikValues>({
             )}
         </Formik>
     );
-}
-
-export default StyledForm;
+};

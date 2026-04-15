@@ -1,24 +1,31 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
-import Accordion from "./Accordion";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Accordion } from "./Accordion";
 
-export default {
-    component: Accordion,
+const meta = {
     title: "Components/Accordion",
-} as Meta;
+    component: Accordion,
+    tags: ["autodocs"],
+} satisfies Meta<typeof Accordion>;
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof Accordion> = (args) => <Accordion {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
-Default.args = {
-    Expandables: [{
-        title: "What is the meaning of life the universe and everything?",
-        content: <p>42</p>,
-    }, {
-        title: "Does dis work?",
-        content: <p>If you can only see this sometimes, probably...</p>,
-    }],
+export const Default: Story = {
+    render: (args) => <Accordion {...args} />,
+    args: {
+        ContentId: "example-accordion", 
+        Expandables: [
+            {
+                contentId: "the-hitchhikers-guide-to-the-galaxy,",
+                title: "What is the meaning of life, the universe, and everything?",
+                content: <p>42</p>,
+            },
+            {
+                contentId: "monty-python-and-the-holy-grail,",
+                title: "What is the airspeed velocity of an unladen swallow?",
+                content: <p>African or European?</p>,
+            },
+        ],
+    },
 };

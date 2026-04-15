@@ -1,50 +1,41 @@
-import React, { ReactElement } from "react";
-import { ComponentStory, Meta } from "@storybook/react";
-import ONSTable from "./ONSTable";
+import type { Meta, StoryObj } from "@storybook/react";
+import { ONSTable } from "./ONSTable";
 
-export default {
-    component: ONSTable,
+const meta = {
     title: "Components/Table",
-} as Meta;
+    component: ONSTable,
+    tags: ["autodocs"],
+    argTypes: {
+        children: { control: false },
+    },
+} satisfies Meta<typeof ONSTable>;
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSTable> = (args) => <ONSTable {...args} />;
+export default meta;
 
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
 const columns = ["Column 1", "Column 2", "Column 3"];
 
-const tableBody: ReactElement = (
-    <tr
-        className="ons-table__row"
-        key={0}
-        data-testid="questionnaire-table-row"
-    >
-        <td
-            className="ons-table__cell"
-            key={0}
-        >
-            Cell A1
-        </td>
-        <td
-            className="ons-table__cell"
-            key={1}
-        >
-            Cell B1
-        </td>
-        <td
-            className="ons-table__cell"
-            key={2}
-        >
-            Cell C1
-        </td>
-    </tr>
+const tableBody = (
+    <>
+        <tr className="ons-table__row" data-testid="questionnaire-table-row-0">
+            <td className="ons-table__cell">Cell A1</td>
+            <td className="ons-table__cell">Cell B1</td>
+            <td className="ons-table__cell">Cell C1</td>
+        </tr>
+        <tr className="ons-table__row" data-testid="questionnaire-table-row-1">
+            <td className="ons-table__cell">Cell A2</td>
+            <td className="ons-table__cell">Cell B2</td>
+            <td className="ons-table__cell">Cell C2</td>
+        </tr>
+    </>
 );
 
-Default.args = {
-    columns,
-    children: tableBody,
-    tableID: "example-table",
-    tableCaption: "An example table",
+export const Default: Story = {
+    args: {
+        columns,
+        children: tableBody,
+        tableID: "example-table",
+        tableCaption: "An example table",
+    },
 };

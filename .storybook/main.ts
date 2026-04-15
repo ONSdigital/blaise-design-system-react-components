@@ -1,19 +1,19 @@
-module.exports = {
-  "stories": ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+import type { StorybookConfig } from '@storybook/react-vite';
 
-  "addons": [
+const config: StorybookConfig = {
+  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: [
     "@storybook/addon-links",
-    "@storybook/addon-webpack5-compiler-babel",
     "@chromatic-com/storybook",
     "@storybook/addon-docs"
   ],
-
   framework: {
     name: "@storybook/react-vite",
     options: {}
   },
-
   typescript: {
     reactDocgen: "react-docgen-typescript"
   }
-}
+};
+
+export default config;

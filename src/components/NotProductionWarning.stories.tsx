@@ -1,6 +1,5 @@
-import React from "react";
 import { Meta } from "@storybook/react";
-import NotProductionWarning from "./NotProductionWarning";
+import { NotProductionWarning } from "./NotProductionWarning";
 
 export default {
     component: NotProductionWarning,

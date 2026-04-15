@@ -1,6 +1,5 @@
-import React from "react";
 import { fireEvent, render } from "@testing-library/react";
-import Header, { Props } from "./Header";
+import { Header, Props } from "./Header";
 
 const testProps: Props = {
     title: "ONS Service",

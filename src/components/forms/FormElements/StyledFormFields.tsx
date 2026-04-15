@@ -1,8 +1,6 @@
-import React, { Fragment, ReactElement } from "react";
+import { Fragment, ReactElement } from "react";
 import { Field, useFormikContext } from "formik";
-
 import { ONSInputField, RadioFieldset, CheckboxesFieldset } from "./Fields";
-
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 
 interface Props {
@@ -33,10 +31,10 @@ export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: strin
 }
 
 export const StyledFormField = ({
-    name, 
-    description, 
-    radioOptions = [], 
-    checkboxOptions = [], 
+    name,
+    description,
+    radioOptions = [],
+    checkboxOptions = [],
     autoFocus = false,
     ...props
 }: Props): ReactElement => {

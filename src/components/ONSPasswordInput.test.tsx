@@ -1,25 +1,16 @@
-import React, { ComponentProps } from "react";
-import {
-    cleanup, fireEvent, render, screen, RenderResult
-} from "@testing-library/react";
+import { ComponentProps } from "react";
+import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
 import { ONSPasswordInput } from "./ONSPasswordInput";
 
 describe("ONS Password Input Test", () => {
-    afterEach(() => {
-        cleanup();
-    });
-
     const Props = {};
-
     const passwordInputProps = {
         label: "Submit",
         inputId: "submit",
     };
-
     const changeProps = {
         onChange: vi.fn(),
     };
-
     const undefinedChangeProps = {
         onChange: undefined,
     };
@@ -30,7 +21,6 @@ describe("ONS Password Input Test", () => {
                 value={props.value as string}
                 label={props.label}
                 inputId={props.inputId}
-                placeholder={props.placeholder}
                 marginTop={props.marginTop}
                 onChange={props.onChange}
             />,
@@ -70,9 +60,12 @@ describe("ONS Password Input Test", () => {
 
     it("should handle a click on the checkbox", () => {
         wrapper(render, undefinedChangeProps);
-        const passwordToggle = screen.getByTestId("login-password-toggle");
+        
+        const passwordToggle = screen.getByTestId<HTMLInputElement>("login-password-toggle");
+        
         fireEvent.click(passwordToggle);
         expect(passwordToggle.checked).toBeTruthy();
+        
         fireEvent.click(passwordToggle);
         expect(passwordToggle.checked).toBeFalsy();
     });

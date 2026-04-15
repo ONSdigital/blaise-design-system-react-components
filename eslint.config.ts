@@ -5,11 +5,8 @@ import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 import pluginImport from "eslint-plugin-import";
-import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = import.meta.dirname;
 
 export default tseslint.config(
   {
@@ -25,7 +22,7 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-  
+
   {
     languageOptions: {
       ecmaVersion: 2020,
@@ -45,7 +42,7 @@ export default tseslint.config(
       },
     },
   },
-  
+
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -76,7 +73,7 @@ export default tseslint.config(
             "**/*.test.tsx",
             "**/*.stories.tsx",
             "src/setupTests.ts",
-            "eslint.config.mts",
+            "eslint.config.ts",
             "vite.config.ts",
             ".storybook/**"
           ],
@@ -84,9 +81,9 @@ export default tseslint.config(
       ],
     },
   },
-  
+
   ...storybook.configs["flat/recommended"],
-  
+
   {
     files: ["**/*.stories.tsx", "**/*.stories.ts"],
     rules: {

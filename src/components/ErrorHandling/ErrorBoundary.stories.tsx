@@ -1,26 +1,40 @@
-import React, { useState } from "react";
-import { ComponentStory, Meta } from "@storybook/react";
-import ErrorBoundary from "./ErrorBoundary";
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 const DodgyComponent = () => {
     const [error, setError] = useState(false);
     if (error) {
         throw new Error("I crashed!");
     } else {
-        return <button type="button" onClick={() => setError(true)}>Click Me</button>;
+        return (
+            <button 
+                type="button" 
+                onClick={() => setError(true)}
+            >
+                Click Me to Trigger Panel Error
+            </button>
+        );
     }
 };
 
-export default {
-    component: ErrorBoundary,
+const meta = {
     title: "Components/Error Boundary/Panel",
-} as Meta;
+    component: ErrorBoundary,
+    tags: ["autodocs"],
+    argTypes: {
+        children: { control: false },
+        errorMessageText: { control: "text" },
+    },
+} satisfies Meta<typeof ErrorBoundary>;
 
-const Template: ComponentStory<typeof ErrorBoundary> = (args) => <ErrorBoundary {...args} />;
+export default meta;
 
-export const Panel = Template.bind({});
+type Story = StoryObj<typeof meta>;
 
-Panel.args = {
-    children: <DodgyComponent />,
-    errorMessageText: "D'oh!",
+export const Panel: Story = {
+    args: {
+        children: <DodgyComponent />,
+        errorMessageText: "D'oh!",
+    },
 };

@@ -1,17 +1,6 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
-import { ONSSelect } from "./ONSSelect";
-
-export default {
-    component: ONSSelect,
-    title: "Components/Select",
-} as Meta;
-
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ONSSelect> = (args) => <ONSSelect {...args} />;
-
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
+import { useState, ChangeEvent } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { ONSSelect, Props } from "./ONSSelect";
 
 const Selection = [
     { label: "LMS", value: "lms" },
@@ -19,9 +8,39 @@ const Selection = [
     { label: "DST", value: "dst" },
 ];
 
-Default.args = {
-    id: "select-survey",
-    label: "Select survey",
-    options: Selection,
-    defaultValue: Selection[0].value,
+const meta: Meta<Props> = {
+    title: "Components/Select",
+    component: ONSSelect,
+    tags: ["autodocs"],
+    argTypes: {
+        onChange: { action: "changed" },
+    },
+};
+
+export default meta;
+
+type Story = StoryObj<Props>;
+
+export const Default: Story = {
+    render: (args) => {
+        const [selectedValue, setSelectedValue] = useState(args.value || "");
+
+        return (
+            <ONSSelect
+                {...args}
+                value={selectedValue}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+                    setSelectedValue(e.target.value);
+                    if (args.onChange) args.onChange(e);
+                }}
+            />
+        );
+    },
+    args: {
+        id: "select-survey",
+        label: "Select survey",
+        options: Selection,
+        value: Selection[0].value,
+        defaultValue: Selection[0].value,
+    },
 };

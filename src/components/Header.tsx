@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 
 export interface NavigationLinks {
     id: string,
@@ -16,9 +16,10 @@ export interface Props {
     createNavLink?: (id: string, label: string, endpoint: string) => ReactNode
 }
 
-function Header({
+export const Header = ({
     title, signOutButton, noSave, signOutFunction, navigationLinks, currentLocation, createNavLink,
-}: Props): ReactElement {
+}: Props): ReactElement => {
+    
     const createLink = (id: string, label: string, endpoint: string) => {
         if (createNavLink) {
             return createNavLink(id, label, endpoint);
@@ -34,6 +35,7 @@ function Header({
     if (noSave) {
         signOutText = "Sign out";
     }
+    
     return (
         <header className="ons-header ons-header--internal">
             <div className="ons-header__top" role="banner">
@@ -45,7 +47,7 @@ function Header({
                             <a className="header__logo-link" href="/">
                                 <picture>
                                     {/* <source media="(max-width: 499px)" srcSet="/img/ons-logo-stacked-neg-en.svg" */}
-                                    {/*        alt="Office for National Statistics logo"/> */}
+                                    {/* alt="Office for National Statistics logo"/> */}
                                     <img
                                         className="ons-header__logo"
                                         src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
@@ -118,7 +120,7 @@ function Header({
                                         navigationLinks.map(({ id, label, endpoint }, index) => (
                                             <li
                                                 key={index}
-                                                className={`ons-navigation__item  ${(currentLocation === endpoint ? "ons-navigation__item--active" : "")}`}
+                                                className={`ons-navigation__item ${(currentLocation === endpoint ? "ons-navigation__item--active" : "")}`}
                                             >
                                                 {createLink(id, label, endpoint)}
                                             </li>
@@ -132,6 +134,4 @@ function Header({
             }
         </header>
     );
-}
-
-export default Header;
+};

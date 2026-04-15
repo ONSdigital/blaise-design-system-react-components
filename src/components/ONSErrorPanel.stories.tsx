@@ -1,6 +1,5 @@
-import React from "react";
 import { Meta } from "@storybook/react";
-import ONSErrorPanel from "./ONSErrorPanel";
+import { ONSErrorPanel } from "./ONSErrorPanel";
 
 export default {
     component: ONSErrorPanel,
