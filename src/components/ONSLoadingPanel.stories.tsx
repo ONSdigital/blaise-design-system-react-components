@@ -5,10 +5,6 @@ const meta = {
     title: "Components/Loading Panel",
     component: ONSLoadingPanel,
     tags: ["autodocs"],
-    argTypes: {
-        message: { control: "text" },
-        hidden: { control: "boolean" },
-    },
 } satisfies Meta<typeof ONSLoadingPanel>;
 
 export default meta;

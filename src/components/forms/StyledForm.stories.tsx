@@ -6,7 +6,13 @@ const meta = {
     component: StyledForm,
     tags: ["autodocs"],
     argTypes: {
-        onSubmitFunction: { action: "submitted" },
+        onSubmitFunction: { 
+            action: "submitted",
+            control: false 
+        },
+        fields: {
+            control: "object"
+        }
     },
 } satisfies Meta<typeof StyledForm>;
 

@@ -12,8 +12,8 @@ export default defineConfig({
     dts({
       rollupTypes: true,
       exclude: [
-        '**/*.test.tsx',
         '**/*.test.ts',
+        '**/*.test.tsx',        
         '**/*.stories.tsx',
         '**/setupTests.ts'
       ],

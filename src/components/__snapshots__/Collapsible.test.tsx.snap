@@ -8,11 +8,11 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
       <details
         class="ons-collapsible ons-js-collapsible ons-u-mt-l"
         data-save-state="true"
-        id="collapsible-with-save-_r_0_"
+        id="collapsible-_r_0_"
         role="group"
       >
         <summary
-          aria-controls="collapsible-with-save-_r_0_-content"
+          aria-controls="collapsible-_r_0_-content"
           aria-expanded="false"
           class="ons-collapsible__heading ons-js-collapsible-heading"
           data-ga-action="Open panel"
@@ -32,13 +32,14 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
               class="ons-collapsible__icon"
             >
               <svg
+                aria-hidden="true"
                 class="ons-svg-icon"
                 focusable="false"
                 viewBox="0 0 7.5 12.85"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+                  d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
                   transform="translate(-5.02 -1.59)"
                 />
               </svg>
@@ -49,7 +50,7 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
           aria-hidden="true"
           class="ons-collapsible__content ons-js-collapsible-content"
           data-testid="collapsible-content"
-          id="collapsible-with-save-_r_0_-content"
+          id="collapsible-_r_0_-content"
         >
           <p>
             Inside the Collapsible
@@ -62,11 +63,11 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
     <details
       class="ons-collapsible ons-js-collapsible ons-u-mt-l"
       data-save-state="true"
-      id="collapsible-with-save-_r_0_"
+      id="collapsible-_r_0_"
       role="group"
     >
       <summary
-        aria-controls="collapsible-with-save-_r_0_-content"
+        aria-controls="collapsible-_r_0_-content"
         aria-expanded="false"
         class="ons-collapsible__heading ons-js-collapsible-heading"
         data-ga-action="Open panel"
@@ -86,13 +87,14 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
             class="ons-collapsible__icon"
           >
             <svg
+              aria-hidden="true"
               class="ons-svg-icon"
               focusable="false"
               viewBox="0 0 7.5 12.85"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
                 transform="translate(-5.02 -1.59)"
               />
             </svg>
@@ -103,7 +105,7 @@ exports[`Collapsible Test > matches Snapshot 1`] = `
         aria-hidden="true"
         class="ons-collapsible__content ons-js-collapsible-content"
         data-testid="collapsible-content"
-        id="collapsible-with-save-_r_0_-content"
+        id="collapsible-_r_0_-content"
       >
         <p>
           Inside the Collapsible

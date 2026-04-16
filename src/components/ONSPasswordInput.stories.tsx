@@ -7,8 +7,9 @@ const meta = {
     component: ONSPasswordInput,
     tags: ["autodocs"],
     argTypes: {
-        autoFocus: { control: "boolean" },
-        label: { control: "text" },
+        onChange: { 
+            action: "changed" 
+        },
     },
 } satisfies Meta<typeof ONSPasswordInput>;
 

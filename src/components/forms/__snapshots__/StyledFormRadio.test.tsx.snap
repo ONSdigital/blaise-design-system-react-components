@@ -41,7 +41,6 @@ exports[`it matches snapshots 1`] = `
                 </label>
               </span>
             </p>
-            <br />
             <p
               class="ons-radios__item"
             >
@@ -70,7 +69,6 @@ exports[`it matches snapshots 1`] = `
                 </label>
               </span>
             </p>
-            <br />
           </div>
         </fieldset>
         <fieldset
@@ -106,7 +104,6 @@ exports[`it matches snapshots 1`] = `
                 </label>
               </span>
             </p>
-            <br />
             <p
               class="ons-radios__item"
             >
@@ -147,7 +144,6 @@ exports[`it matches snapshots 1`] = `
                 </span>
               </span>
             </p>
-            <br />
           </div>
         </fieldset>
         <br />
@@ -159,7 +155,7 @@ exports[`it matches snapshots 1`] = `
           <span
             class="ons-btn__inner"
           >
-            Save and continue
+            Save and Continue
           </span>
         </button>
       </form>
@@ -202,7 +198,6 @@ exports[`it matches snapshots 1`] = `
               </label>
             </span>
           </p>
-          <br />
           <p
             class="ons-radios__item"
           >
@@ -231,7 +226,6 @@ exports[`it matches snapshots 1`] = `
               </label>
             </span>
           </p>
-          <br />
         </div>
       </fieldset>
       <fieldset
@@ -267,7 +261,6 @@ exports[`it matches snapshots 1`] = `
               </label>
             </span>
           </p>
-          <br />
           <p
             class="ons-radios__item"
           >
@@ -308,7 +301,6 @@ exports[`it matches snapshots 1`] = `
               </span>
             </span>
           </p>
-          <br />
         </div>
       </fieldset>
       <br />
@@ -320,7 +312,7 @@ exports[`it matches snapshots 1`] = `
         <span
           class="ons-btn__inner"
         >
-          Save and continue
+          Save and Continue
         </span>
       </button>
     </form>

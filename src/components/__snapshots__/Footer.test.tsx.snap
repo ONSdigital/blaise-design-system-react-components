@@ -28,6 +28,7 @@ exports[`Footer Test > matches Snapshot 1`] = `
                 aria-labelledby="ons-logo-en-footer-alt"
                 class="ons-svg-logo"
                 height="19"
+                role="img"
                 viewBox="33 2 552 60"
                 width="197"
                 xmlns="http://www.w3.org/2000/svg"

@@ -1,46 +1,51 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Header } from "./Header";
 
-const meta: Meta<typeof Header> = {
-    component: Header,
+const meta = {
     title: "Components/Header",
-};
+    component: Header,
+    tags: ["autodocs"],
+    argTypes: {
+        signOutFunction: { action: "signed-out" },
+        navigationLinks: { control: "object" },
+        createNavLink: { control: false }
+    }
+} satisfies Meta<typeof Header>;
 
 export default meta;
 
-type Story = StoryObj<typeof Header>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        title: "Yet another secret 🐿️ service being built",
+        title: "Service title",
     },
 };
 
 export const WithSaveSignOut: Story = {
     args: {
-        title: "Yet another secret 🐿️ service being built",
+        title: "Service title",
         signOutButton: true,
-        signOutFunction: () => console.log("User clicked sign out"),
     },
 };
 
 export const WithSignOut: Story = {
     args: {
-        title: "Yet another secret 🐿️ service being built",
+        title: "Service title",
         noSave: true,
         signOutButton: true,
-        signOutFunction: () => console.log("User clicked sign out"),
     },
 };
 
 export const WithNavigation: Story = {
     args: {
-        title: "Yet another secret 🐿️ service being built",
+        title: "Service title",
         navigationLinks: [
-            { id: "home-link", label: "Home", endpoint: "/" },
-            { id: "deploy-questionnaire-link", label: "Deploy a questionnaire", endpoint: "/deploy" },
-            { id: "audit-logs-link", label: "View deployment history", endpoint: "/history" },
-            { id: "blaise-status-link", label: "Check Blaise status", endpoint: "/status" },
+            { id: "home", label: "Home", endpoint: "#" },
+            { id: "menu-1", label: "Menu #1", endpoint: "#" },
+            { id: "menu-2", label: "Menu #2", endpoint: "#" },
+            { id: "menu-3", label: "Menu #3", endpoint: "#" },
         ],
+        currentLocation: "/deploy",
     },
 };

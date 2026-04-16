@@ -4,66 +4,88 @@ import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
 import { StyledFormField } from "./FormElements/StyledFormFields";
 
 export interface RadioSpecifyOption {
-    id: string
-    name: string
-    min?: string
-    description?: string
-    type: string
-    validate?: (value: string) => string | undefined
+    /** Unique HTML ID for the specify input. */
+    id: string;
+    /** Formik field name for the specify input. */
+    name: string;
+    /** Optional minimum value (for numeric types). */
+    min?: string;
+    /** Label text displayed above the specify input. */
+    description?: string;
+    /** HTML input type (e.g., 'text', 'number'). */
+    type: string;
+    /** Optional Formik validation function for this specific input. */
+    validate?: (value: string) => string | undefined;
 }
 
 export interface RadioFieldsetObject {
-    value: string
-    id: string
-    label: string
-    description?: string
-    specifyOption?: RadioSpecifyOption
+    /** The underlying value for this radio option. */
+    value: string;
+    /** Unique HTML ID for the radio input. */
+    id: string;
+    /** The visible label text for the radio option. */
+    label: string;
+    /** Optional hint text displayed beneath the label. */
+    description?: string;
+    /** Configuration for an 'Other' specify text field attached to this radio. */
+    specifyOption?: RadioSpecifyOption;
 }
 
 export interface CheckboxFieldsetObject {
-    value: string
-    id: string
-    label: string
-    description?: string
+    /** The underlying value for this checkbox. */
+    value: string;
+    /** Unique HTML ID for the checkbox input. */
+    id: string;
+    /** The visible label text for the checkbox. */
+    label: string;
+    /** Optional hint text displayed beneath the label. */
+    description?: string;
 }
 
 export interface BaseFormFieldObject<V = string> {
-    name: string
-    description?: string
-    type: string
-    id?: string
-    validate?: (value: V) => string | undefined
-    autoFocus?: boolean
+    /** Formik field name used for state management. */
+    name: string;
+    /** Label text displayed above the field. */
+    description?: string;
+    /** HTML input type or ONS component type. */
+    type: string;
+    /** Optional unique HTML ID. */
+    id?: string;
+    /** Formik validation function. Returns an error string if invalid. */
+    validate?: (value: V) => string | undefined;
+    /** If true, this field will attempt to auto-focus on mount. */
+    autoFocus?: boolean;
+    /** The starting value for the field. */
     initial_value?: V | V[];
 }
 
 export interface RadioFormFieldObject extends BaseFormFieldObject<string> {
-    type: "radio"
-    radioOptions: RadioFieldsetObject[]
+    type: "radio";
+    /** List of radio options to render. */
+    radioOptions: RadioFieldsetObject[];
 }
 
 export interface CheckboxFormFieldObject extends BaseFormFieldObject<string[]> {
-    type: "checkbox"
-    checkboxOptions: CheckboxFieldsetObject[]
+    type: "checkbox";
+    /** List of checkbox options to render. */
+    checkboxOptions: CheckboxFieldsetObject[];
 }
 
 export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject<string>;
 
 export interface StyledFormProps<T extends FormikValues = FormikValues> {
-    fields: FormFieldObject[]
+    /** Array of field configurations to generate the form. */
+    fields: FormFieldObject[];
+    /** Callback executed on valid form submission. Provides current values and the Formik subitting state setter. */
     onSubmitFunction: (values: T, setSubmitting: (isSubmitting: boolean) => void) => void;
-    submitLabel?: string
+    /** Custom text for the submit button. Defaults to "Save and continue". */
+    submitLabel?: string;
 }
 
-/*
- * Formik form styled to ONS design guide with form error panel
- *
- * @param Props
- *
- * - fields: List of fields to display on form.
- * - onSubmitFunction: Function to call after submit of form and all field validation is valid.
+/**
+ * A standard ONS Formik wrapper that automatically handles initial values, 
+ * error summaries, and ONS-styled field layouts.
  */
-
 export const StyledForm = <T extends FormikValues = FormikValues>({
     fields,
     onSubmitFunction,

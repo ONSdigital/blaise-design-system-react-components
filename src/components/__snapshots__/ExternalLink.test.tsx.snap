@@ -9,9 +9,15 @@ exports[`External Link Test > matches Snapshot 1`] = `
     rel="noopener noreferrer"
     target="_blank"
   >
-    Click Me
+    <span
+      class="ons-external-link__text"
+    >
+      Click Me
+    </span>
     <svg
+      aria-hidden="true"
       class="ons-svg-icon"
+      focusable="false"
       viewBox="0 0 12 12"
       xmlns="http://www.w3.org/2000/svg"
     >

@@ -1,6 +1,17 @@
 import { ReactElement } from "react";
 
-export const BetaBanner = (): ReactElement => {
+export interface BetaBannerProps {
+    /** The URL for the feedback link. Defaults to the ONS Service-Now portal. */
+    feedbackLink?: string;
+}
+
+/**
+ * The Beta Banner is used to inform users that the service is in a beta phase
+ * and to encourage them to provide feedback via a specified link.
+ */
+export const BetaBanner = ({
+    feedbackLink = "https://ons.service-now.com/"
+}: BetaBannerProps): ReactElement => {
     return (
         <div className="ons-phase-banner">
             <div className="ons-container ">
@@ -11,9 +22,7 @@ export const BetaBanner = (): ReactElement => {
                     <div className="ons-grid__col ons-col-auto ons-u-flex-shrink">
                         <p className="ons-phase-banner__desc ons-u-fs-s ons-u-mb-no">
                             This is a new service – your&nbsp;
-                            <a
-                                href="https://ons.service-now.com/"
-                            >
+                            <a href={feedbackLink}>
                                 feedback
                             </a>
                             &nbsp;will help us improve it.

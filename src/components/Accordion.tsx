@@ -4,12 +4,17 @@ import {
     MouseEvent, 
     KeyboardEvent, 
     Dispatch, 
-    SetStateAction 
+    SetStateAction,
+    Fragment
 } from "react";
 
+/** Defines the structure for an individual panel within the accordion. */
 export type ExpandableContent = {
+    /** The React nodes to display when the panel is expanded. */
     content: ReactNode; 
+    /** Unique ID for the content area. */
     contentId?: string;
+    /** The text displayed in the clickable header of the panel. */
     title: string;
 };
 
@@ -19,6 +24,7 @@ interface ExpandableProps extends ExpandableContent {
     setPanelsOpen: Dispatch<SetStateAction<boolean[]>>;
 }
 
+/** Internal sub-component for individual accordion rows. */
 const Expandable = ({
     title, content, contentId, expandableIndex, panelsOpen, setPanelsOpen,
 }: ExpandableProps) => {
@@ -66,6 +72,7 @@ const Expandable = ({
                             viewBox="0 0 7.5 12.85"
                             xmlns="http://www.w3.org/2000/svg"
                             focusable="false"
+                            aria-hidden="true"
                         >
                             <path
                                 d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
@@ -88,10 +95,13 @@ const Expandable = ({
 };
 
 export interface Props {
-    // TODO: convert to camelCase, will break consumers
+    /** Toggles the visibility of the 'Show All' / 'Hide All' button. */
     ShowAllEnabled?: boolean;
+    /** An array of objects containing the title and content for each panel. */
     Expandables: ExpandableContent[];
+    /** A unique ID for the accordion container. */
     ContentId: string;
+    /** Sets the initial expanded state of all accordion panels. */
     Expanded?: boolean;
 }
 
@@ -115,8 +125,6 @@ const ShowAll = ({
             data-testid={`${contentId}-accordion-show-all`}
             type="button"
             className="ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small"
-            data-close-all="Hide all"
-            data-group="accordion"
             onClick={() => setPanelsOpen((prev) => new Array(prev.length).fill(!showing))}
         >
             <span className="ons-btn__inner ons-js-collapsible-all-inner">
@@ -127,21 +135,25 @@ const ShowAll = ({
 };
 
 export const Accordion = ({
-    ShowAllEnabled, Expandables, ContentId, Expanded,
+    // TODO: force camelCase, will break consumers
+    ShowAllEnabled: showAllEnabled, 
+    Expandables: expandables, 
+    ContentId: contentId, 
+    Expanded: expanded,
 }: Props) => {
     const [panelsOpen, setPanelsOpen] = useState<boolean[]>(() => 
-        new Array(Expandables.length).fill(Expanded ?? false)
+        new Array(expandables.length).fill(expanded ?? false)
     );
 
     return (
-        <div id={`${ContentId}-accordion`} className="ons-accordion">
+        <div id={`${contentId}-accordion`} className="ons-accordion">
             <ShowAll 
-                showAllEnabled={ShowAllEnabled} 
+                showAllEnabled={showAllEnabled} 
                 panelsOpen={panelsOpen} 
                 setPanelsOpen={setPanelsOpen} 
-                contentId={ContentId} 
+                contentId={contentId} 
             />
-            {Expandables.map((expandable: ExpandableContent, index: number) => (
+            {expandables.map((expandable: ExpandableContent, index: number) => (
                 <Expandable
                     key={`${expandable.contentId || "item"}-${index}`}
                     content={expandable.content}

@@ -1,18 +1,19 @@
 import { ReactNode } from "react";
 
 export interface Props {
-    /*
-     * Render any standard HTML (or other React components) within the panel
-     */
-    children: ReactNode; // CHANGED: Removed "React." prefix
+    /** The content to render inside the panel body (typically strings or other React elements). */
+    children: ReactNode;
+    /** Determines the visual styling and icon of the panel. Defaults to "info". */
     status?: "success" | "error" | "info" | "warn";
+    /** If true, increases the internal padding of the panel. */
     spacious?: boolean;
+    /** Unique HTML ID for the panel element. */
     id?: string;
+    /** If true, hides the panel from the DOM. */
     hidden?: boolean;
+    /** Optional test ID for automated testing. */
     testID?: string;
-    /*
-     * Uses a bigger tick icon for the success panel only.
-     */
+    /** Uses a bigger tick icon. Note: This only applies when status is "success". */
     bigIcon?: boolean;
 }
 
@@ -44,6 +45,8 @@ export const ONSPanel = ({
                             className={`ons-svg-icon ${bigIcon ? "ons-svg-icon--xl" : ""}`}
                             viewBox="0 0 13 10"
                             xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            focusable="false"
                         >
                             <path
                                 d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"

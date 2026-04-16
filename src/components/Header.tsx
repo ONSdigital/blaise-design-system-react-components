@@ -1,18 +1,28 @@
 import { ReactElement, ReactNode } from "react";
 
 export interface NavigationLinks {
+    /** The unique ID for the navigation item. */
     id: string;
+    /** The text displayed to the user. */
     label: string;
+    /** The URL or path the link points to. */
     endpoint: string;
 }
 
 export interface Props {
+    /** The main title displayed in the header. */
     title: string;
+    /** Toggles the visibility of the sign-out button. */
     signOutButton?: boolean;
+    /** If true, changes the button text from 'Save and sign out' to 'Sign out'. */
     noSave?: boolean;
+    /** Callback triggered when the sign-out button is clicked. */
     signOutFunction?: () => void;
+    /** Array of navigation link objects to be rendered in the main menu. */
     navigationLinks?: NavigationLinks[];
+    /** The current URL endpoint. Used to highlight the active navigation link. */
     currentLocation?: string;
+    /** Optional render prop to override default anchor tags (e.g., to use React Router's <Link>). */
     createNavLink?: (id: string, label: string, endpoint: string) => ReactNode;
 }
 
@@ -39,10 +49,10 @@ export const Header = ({
                 <div className="ons-container">
                     <div className="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap">
                         <div className="ons-grid__col ons-col-auto">
-                            <a className="header__logo-link" href="/">
+                            <a className="ons-header__org-logo-link" href="/">
                                 <picture>
                                     <img
-                                        className="ons-header__logo"
+                                        className="ons-header__org-logo"
                                         src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
                                         alt="Office for National Statistics logo"
                                     />
@@ -75,6 +85,7 @@ export const Header = ({
                                                 viewBox="0 0 12 12"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 focusable="false"
+                                                aria-hidden="true"
                                             >
                                                 <path
                                                     d="M13.85,7.65l-2.5-2.5a.5.5,0,0,0-.71,0,.48.48,0,0,0-.15.36V7h-3a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5h3v1.5A.49.49,0,0,0,11,11a.48.48,0,0,0,.34-.14l2.51-2.5a.49.49,0,0,0,0-.68Z"
@@ -106,7 +117,7 @@ export const Header = ({
                             >
                                 <ul className="ons-navigation__list">
                                     {
-                                        navigationLinks!.map(({ id, label, endpoint }) => (
+                                        navigationLinks?.map(({ id, label, endpoint }) => (
                                             <li
                                                 key={id}
                                                 className={`ons-navigation__item ${currentLocation === endpoint ? "ons-navigation__item--active" : ""}`}

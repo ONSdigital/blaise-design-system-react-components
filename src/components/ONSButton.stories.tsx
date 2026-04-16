@@ -7,10 +7,6 @@ const meta = {
     tags: ["autodocs"],
     argTypes: {
         onClick: { action: "clicked" },
-        primary: { control: "boolean" },
-        small: { control: "boolean" },
-        loading: { control: "boolean" },
-        hidden: { control: "boolean" },
     },
 } satisfies Meta<typeof ONSButton>;
 

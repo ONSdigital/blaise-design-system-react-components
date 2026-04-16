@@ -1,21 +1,22 @@
 import { useFormikContext } from "formik";
 import { useEffect, useRef } from "react";
 
-/*
- * Error summary list
- * - Displayed when isValid is false.
- * - Focuses div when error lists changes.
+/**
+ * An accessibility-focused error summary list.
+ * Automatically displays when form validation fails after a submit attempt.
+ * Shifts focus to the summary box to alert screen readers of the errors.
+ * Provides anchor links to jump directly to the invalid form fields.
  */
-
 export const StyledFormErrorSummary = () => {
-    const { errors, isValid } = useFormikContext<Record<string, unknown>>();
+    const { errors, isValid, submitCount, isSubmitting } = useFormikContext<Record<string, unknown>>();
     const errorFocus = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!isValid) {
+        // Accessibility requirement: Focus the error summary if submit failed
+        if (!isValid && submitCount > 0 && !isSubmitting) {
             errorFocus.current?.focus();
         }
-    }, [errors, isValid]);
+    }, [submitCount, isValid, isSubmitting]);
 
     if (isValid) {
         return null;
@@ -47,11 +48,9 @@ export const StyledFormErrorSummary = () => {
             <div className="ons-panel__body">
                 <ol className="ons-list">
                     {errorKeys.map((field) => (
-                        <li key={field} className="ons-list__item ">
+                        <li key={field} className="ons-list__item">
                             <a href={`#${field}`} className="ons-list__link ons-js-inpagelink">
-                                {
-                                    String(errors[field as keyof typeof errors])
-                                }
+                                {String(errors[field as keyof typeof errors])}
                             </a>
                         </li>
                     ))}

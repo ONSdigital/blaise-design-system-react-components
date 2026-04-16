@@ -80,7 +80,7 @@ test("submit function is called when form is valid", async () => {
     });
 
     fireEvent.change(screen.getByLabelText(/Email/i), {
-        target: { value: "ricer@email.com" },
+        target: { value: "ricer@example.com" },
     });
 
     fireEvent.change(screen.getByLabelText(/Password/i), {

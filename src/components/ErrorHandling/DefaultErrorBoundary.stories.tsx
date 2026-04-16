@@ -2,6 +2,9 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { DefaultErrorBoundary } from "./DefaultErrorBoundary";
 
+/**
+ * A utility component used to manually trigger an error for testing the boundary.
+ */
 const DodgyComponent = () => {
     const [error, setError] = useState(false);
     if (error) {
@@ -10,9 +13,10 @@ const DodgyComponent = () => {
         return (
             <button 
                 type="button" 
+                className="ons-btn ons-btn--secondary"
                 onClick={() => setError(true)}
             >
-                Click Me to Trigger Error
+                <span className="ons-btn__inner">Click Me to Trigger Error</span>
             </button>
         );
     }

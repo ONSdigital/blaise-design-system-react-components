@@ -6,7 +6,7 @@ exports[`not production warning test > matches Snapshot 1`] = `
   "baseElement": <body>
     <div>
       <div
-        style="background: rgb(34, 34, 34); color: rgb(34, 34, 34);"
+        style="background: rgb(34, 34, 34); color: rgb(255, 255, 255);"
       >
         <div
           class="ons-container"
@@ -43,7 +43,7 @@ exports[`not production warning test > matches Snapshot 1`] = `
   </body>,
   "container": <div>
     <div
-      style="background: rgb(34, 34, 34); color: rgb(34, 34, 34);"
+      style="background: rgb(34, 34, 34); color: rgb(255, 255, 255);"
     >
       <div
         class="ons-container"

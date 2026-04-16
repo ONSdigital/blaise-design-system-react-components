@@ -1,9 +1,13 @@
 import { ReactNode } from "react";
 
 export interface Props {
+    /** Array of strings representing the table column headers. */
     columns: string[];
+    /** The content to render inside the table body (typically <tr> and <td> elements). */
     children: ReactNode;
+    /** Optional custom ID for the table element, also used for the data-testid. */
     tableID?: string;
+    /** Optional visually accessible title for the table. */
     tableCaption?: string;
 }
 
@@ -16,7 +20,7 @@ export const ONSTable = ({
             data-testid={tableID}
             id={tableID}
         >
-            {tableCaption && <caption className="table__caption">{tableCaption}</caption>}
+            {tableCaption && <caption className="ons-table__caption">{tableCaption}</caption>}
             <thead className="ons-table__head">
                 <tr className="ons-table__row">
                     {

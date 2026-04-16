@@ -2,11 +2,15 @@ import { ReactElement, ReactNode, Fragment } from "react";
 import { Data } from "react-csv/lib/core";
 import { FormatTitle, FormatKey } from "../utilities/TextFormatting";
 
+/** Represents a single section within a summary table. */
 export type Group = {
+    /** The heading displayed above this specific group of records. */
     title: string;
+    /** A key-value pair of the data to display in the table rows. */
     records: Record<string, string | number | boolean | null | undefined>;
 };
 
+/** A data structure class that holds multiple summary groups and provides utility methods. */
 export class GroupedSummary {
     groups: Group[];
 
@@ -14,6 +18,7 @@ export class GroupedSummary {
         this.groups = groups;
     }
 
+    /** Flattens the grouped records into a single row format suitable for CSV export. */
     csv(): Data {
         const row = this.groups.reduce((acc, group) => {
             return { ...acc, ...group.records };
@@ -24,7 +29,9 @@ export class GroupedSummary {
 }
 
 export interface SummaryItemProps {
+    /** The label for the data field (left column). */
     fieldName: string;
+    /** The value to display (right column). Accepts strings, numbers, or React components. */
     fieldValue: ReactNode;
 }
 
@@ -46,6 +53,7 @@ export function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): Rea
 }
 
 export interface SummaryGroupTableProps {
+    /** The instantiated GroupedSummary object containing the data to render. */
     groupedSummary: GroupedSummary;
 }
 

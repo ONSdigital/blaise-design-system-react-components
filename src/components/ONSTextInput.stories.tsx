@@ -8,7 +8,7 @@ const meta = {
     tags: ["autodocs"],
     argTypes: {
         onChange: { action: "changed" },
-        autoFocus: { control: "boolean" },
+        onClick: { action: "clicked" },
     },
 } satisfies Meta<typeof ONSTextInput>;
 
@@ -24,9 +24,9 @@ export const Default: Story = {
             <ONSTextInput
                 {...args}
                 value={currentValue}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                onChange={(e: ChangeEvent<HTMLInputElement>, label?: string) => {
                     setCurrentValue(e.target.value);
-                    args.onChange?.(e);
+                    args.onChange?.(e, label);
                 }}
             />
         );

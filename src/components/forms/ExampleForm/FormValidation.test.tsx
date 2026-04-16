@@ -4,8 +4,8 @@ describe("FormValidation", () => {
 
     test("Instrument name validation", () => {
         expect(validateInstrumentName("")).toBe("Enter a valid instrument name");
-        expect(validateInstrumentName("OPN210")).toBe("Enter a valid instrument name (longer than 7 characters)");
-        expect(validateInstrumentName("OPN2101")).toBeUndefined(); 
+        expect(validateInstrumentName("OPN2101")).toBe("Enter a valid instrument name (longer than 7 characters)");
+        expect(validateInstrumentName("OPN2101A")).toBeUndefined(); 
     });
 
     test("Name validation", () => {
@@ -16,7 +16,7 @@ describe("FormValidation", () => {
 
     test("Password validation", () => {
         expect(validatePassword("")).toBe("Enter a password");
-        expect(validatePassword("Passw")).toBe("Enter a password longer than 6 characters");
+        expect(validatePassword("Passw")).toBe("Enter a password longer than 5 characters");
         expect(validatePassword("Password")).toBeUndefined();
     });
 
@@ -24,9 +24,9 @@ describe("FormValidation", () => {
         const invalidEmailMessage = "Enter an email address in the correct format, such as name@example.com";
         expect(validateEmail("")).toBe("Enter an email");
         expect(validateEmail("matthew")).toBe(invalidEmailMessage);
-        expect(validateEmail("matthew@email")).toBe(invalidEmailMessage);
-        expect(validateEmail("matthew@email.")).toBe(invalidEmailMessage);
-        expect(validateEmail("matthew@email.com")).toBeUndefined();
+        expect(validateEmail("matthew@example")).toBe(invalidEmailMessage);
+        expect(validateEmail("matthew@example.")).toBe(invalidEmailMessage);
+        expect(validateEmail("matthew@example.com")).toBeUndefined();
     });
 
     test("Radio validation", () => {

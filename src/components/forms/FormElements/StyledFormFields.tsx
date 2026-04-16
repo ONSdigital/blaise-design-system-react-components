@@ -3,17 +3,25 @@ import { Field, useFormikContext } from "formik";
 import { ONSInputField, RadioFieldset, CheckboxesFieldset } from "./Fields";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 
-interface Props {
+export interface Props {
+    /** The visible label or legend text for the field. */
     description?: string;
+    /** The Formik field name used for state management. */
     name: string;
+    /** Configuration array for radio options (only used when type is 'radio'). */
     radioOptions?: RadioFieldsetObject[];
+    /** Configuration array for checkbox options (only used when type is 'checkbox'). */
     checkboxOptions?: CheckboxFieldsetObject[];
+    /** If true, the input will receive focus on mount. */
     autoFocus?: boolean;
+    /** The type of field to render (e.g., 'radio', 'checkbox', 'text', 'date'). */
     type?: string;
+    /** Additional props passed down to the underlying ONS input components. */
     [key: string]: unknown;
 }
 
-export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: string, field: ReactElement) {
+/** Internal sub-component to wrap fields in an ONS error panel when validation fails. */
+const StyledFormFieldErrorWrapper = (fieldError: string, fieldName: string, field: ReactElement) => {
     return (
         <div
             className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
@@ -30,6 +38,10 @@ export function StyledFormFieldErrorWrapper(fieldError: string, fieldName: strin
     );
 }
 
+/**
+ * A factory component that resolves the specific ONS field type to render based on props.
+ * Automatically wraps the field in an error state if Formik validation fails.
+ */
 export const StyledFormField = ({
     name,
     description,
@@ -41,6 +53,7 @@ export const StyledFormField = ({
     const { errors } = useFormikContext<Record<string, string>>();
     let newField: ReactElement;
 
+    // Factory logic to determine which specialized field component to use
     if (props.type === "radio") {
         newField = (
             <RadioFieldset
@@ -62,11 +75,19 @@ export const StyledFormField = ({
             />
         );
     } else {
-        newField = <Field name={name} description={description} autoFocus={autoFocus} {...props} component={ONSInputField} />;
+        newField = (
+            <Field 
+                name={name} 
+                description={description} 
+                autoFocus={autoFocus} 
+                {...props} 
+                component={ONSInputField} 
+            />
+        );
     }
 
     return (
-        <Fragment key={name}>
+        <Fragment>
             {
                 errors[name]
                     ? StyledFormFieldErrorWrapper(

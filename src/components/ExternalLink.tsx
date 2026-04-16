@@ -1,12 +1,17 @@
 import { ReactElement } from "react";
 
 export interface Props {
-    text: string
-    link: string
-    ariaLabel?: string
-    id?: string
+    /** The visible text content of the link. */
+    text: string;
+    /** The destination URL (should be a full URL for external links). */
+    link: string;
+    /** Optional accessibility label. */
+    ariaLabel?: string;
+    /** Optional custom HTML ID for the anchor element. */
+    id?: string;
 }
 
+/** A standard link component for navigating to external domains. */
 export const ExternalLink = ({ text, link, ariaLabel, id }: Props): ReactElement => {
     return (
         <a
@@ -17,11 +22,13 @@ export const ExternalLink = ({ text, link, ariaLabel, id }: Props): ReactElement
             target="_blank"
             rel="noopener noreferrer"
         >
-            {text}
+            <span className="ons-external-link__text">{text}</span>
             <svg
                 className="ons-svg-icon"
                 viewBox="0 0 12 12"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
             >
                 <path
                     d="M13.5,9H13a.5.5,0,0,0-.5.5v3h-9v-9h3A.5.5,0,0,0,7,3V2.5A.5.5,0,0,0,6.5,2h-4a.5.5,0,0,0-.5.5v11a.5.5,0,0,0,.5.5h11a.5.5,0,0,0,.5-.5v-4A.5.5,0,0,0,13.5,9Z"

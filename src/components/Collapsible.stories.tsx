@@ -6,8 +6,9 @@ const meta = {
     component: Collapsible,
     tags: ["autodocs"],
     argTypes: {
-        title: { control: 'text' },
-        id: { control: 'text' },
+        children: {
+            control: false, 
+        }
     },
 } satisfies Meta<typeof Collapsible>;
 
@@ -16,9 +17,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: (args) => <Collapsible {...args} />,
     args: {
-        title: "What is the meaning of life, the universe, and everything?",
-        children: <p>42</p>,
+        title: "How much power is required for a single temporal displacement?",
+        children: <p>1.21 Gigawatts! (Great Scott!)</p>,
     },
 };

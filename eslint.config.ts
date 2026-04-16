@@ -70,6 +70,7 @@ export default tseslint.config(
         "error",
         {
           devDependencies: [
+            "**/*.test.ts",
             "**/*.test.tsx",
             "**/*.stories.tsx",
             "src/setupTests.ts",
@@ -85,7 +86,7 @@ export default tseslint.config(
   ...storybook.configs["flat/recommended"],
 
   {
-    files: ["**/*.stories.tsx", "**/*.stories.ts"],
+    files: ["**/*.stories.tsx"],
     rules: {
       "storybook/no-renderer-packages": "off"
     }

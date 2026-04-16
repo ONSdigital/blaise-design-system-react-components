@@ -7,10 +7,6 @@ const meta = {
     tags: ["autodocs"],
     argTypes: {
         children: { control: false },
-        status: {
-            control: "select",
-            options: ["success", "error", "warn", "info"],
-        },
     },
 } satisfies Meta<typeof ONSPanel>;
 
@@ -19,20 +15,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Info: Story = {
-    render: (args) => <ONSPanel {...args} />,
     args: {
-        children: <p>Some message in a panel</p>,
+        children: <p>Some message in an info panel</p>,
     },
 };
 
 export const Success: Story = {
-    render: (args) => <ONSPanel {...args} />,
     args: {
         status: "success",
         bigIcon: true,
         children: (
             <div>
-                <h1>Title in a panel</h1>
+                <h1>Title in a success panel</h1>
                 <p>And then some text</p>
             </div>
         ),
@@ -40,7 +34,6 @@ export const Success: Story = {
 };
 
 export const Error: Story = {
-    render: (args) => <ONSPanel {...args} />,
     args: {
         status: "error",
         children: <p>Some message in an error panel</p>,
@@ -48,15 +41,13 @@ export const Error: Story = {
 };
 
 export const Warn: Story = {
-    render: (args) => <ONSPanel {...args} />,
     args: {
         status: "warn",
-        children: <p>All data will be removed</p>,
+        children: <p>It's a trap!</p>,
     },
 };
 
 export const Spacious: Story = {
-    render: (args) => <ONSPanel {...args} />,
     args: {
         status: "info",
         children: <p>So much room for activities!</p>,

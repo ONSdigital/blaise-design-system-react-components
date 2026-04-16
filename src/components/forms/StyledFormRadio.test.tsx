@@ -42,7 +42,7 @@ test("submit function is called when form is valid", async () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-        const successMessage = screen.getByText(/Form submitted, topping chosen: bacon/i);
+        const successMessage = screen.getByText(/Form submitted. Topping: bacon. Option:/i);
         expect(successMessage).toBeInTheDocument();
     });
 });

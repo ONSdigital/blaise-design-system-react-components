@@ -11,20 +11,29 @@ interface UnknownProps {
     [key: string]: unknown;
 }
 
-interface RadioFieldsetProps extends UnknownProps {
+export interface RadioFieldsetProps extends UnknownProps {
+    /** Text displayed in the fieldset legend. */
     description?: string;
+    /** Formik field name. */
     name: string;
+    /** Configuration array for the radio options. */
     radioOptions?: RadioFieldsetObject[];
+    /** If true, the first radio option will receive focus on mount. */
     autoFocus: boolean;
 }
 
-interface CheckboxesProps extends UnknownProps {
+export interface CheckboxesProps extends UnknownProps {
+    /** Text displayed in the fieldset legend. */
     description?: string;
+    /** Configuration array for the checkbox options. */
     checkboxOptions?: CheckboxFieldsetObject[];
+    /** Formik field name. */
     name: string;
+    /** If true, the first checkbox option will receive focus on mount. */
     autoFocus: boolean;
 }
 
+/** A group of ONS-styled radio buttons integrated with Formik. */
 export function RadioFieldset({
     description, name, radioOptions, ...props
 }: RadioFieldsetProps): ReactElement {
@@ -34,7 +43,7 @@ export function RadioFieldset({
                 {description}
             </legend>
             <div className="ons-radios__items">
-                {radioOptions && radioOptions.length > 0 && radioOptions.map((radioOption: RadioFieldsetObject, radioOptionIndex: number) => (
+                {radioOptions?.map((radioOption, radioOptionIndex) => (
                     <Fragment key={radioOption.id}>
                         <p className="ons-radios__item">
                             <span className="ons-radio">
@@ -94,27 +103,28 @@ export function RadioFieldset({
     );
 }
 
+/** A group of ONS-styled checkboxes with a 'Select All' utility, integrated with Formik. */
 export function CheckboxesFieldset({
     description, checkboxOptions, name, ...props
 }: CheckboxesProps): ReactElement {
     const { values, setFieldValue } = useFormikContext<Record<string, string[]>>();
     const allValues = (checkboxOptions || []).map((checkboxOption) => checkboxOption.value);
 
-    function isAllSelected() {
+    const isAllSelected = () => {
         if (!isObjectWithProperty(values, name)) {
             return false;
         }
         const currentValues = values[name] || [];
         return allValues.length > 0 && allValues.every((item) => currentValues.includes(item));
-    }
+    };
 
-    function handleSelectAll() {
+    const handleSelectAll = () => {
         if (isAllSelected()) {
             setFieldValue(name, []);
         } else {
             setFieldValue(name, allValues);
         }
-    }
+    };
 
     return (
         <fieldset className="ons-fieldset">
@@ -133,8 +143,8 @@ export function CheckboxesFieldset({
                 </span>
             </button>
 
-            <div className="checkboxes__items">
-                {checkboxOptions && checkboxOptions.length > 0 && checkboxOptions.map((checkboxOption: CheckboxFieldsetObject, checkboxIndex: number) => (
+            <div className="ons-checkboxes__items">
+                {checkboxOptions?.map((checkboxOption, checkboxIndex) => (
                     <Fragment key={checkboxOption.id}>
                         <p className="ons-checkboxes__item">
                             <span className="ons-checkbox">
@@ -156,7 +166,7 @@ export function CheckboxesFieldset({
                                     {checkboxOption.description && (
                                         <span
                                             id={`${checkboxOption.id}-description-hint`}
-                                            className="ons-label__description checkbox__label--with-description"
+                                            className="ons-label__description ons-checkbox__label--with-description"
                                         >
                                             {checkboxOption.description}
                                         </span>
@@ -173,10 +183,13 @@ export function CheckboxesFieldset({
 }
 
 interface ONSInputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+    /** Formik field connection object. */
     field: FieldInputProps<string>; 
+    /** Optional hint text displayed beneath the label. */
     description?: string;
 }
 
+/** A single ONS-styled text input integrated with Formik. */
 export function ONSInputField({
     field, description, ...props
 }: ONSInputFieldProps): ReactElement {

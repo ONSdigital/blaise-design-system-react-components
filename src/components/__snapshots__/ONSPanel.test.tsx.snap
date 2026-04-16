@@ -104,7 +104,9 @@ exports[`ONS Panel Test > matches Snapshot a big success icon 1`] = `
           class="ons-panel__icon"
         >
           <svg
+            aria-hidden="true"
             class="ons-svg-icon ons-svg-icon--xl"
+            focusable="false"
             viewBox="0 0 13 10"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -133,7 +135,9 @@ exports[`ONS Panel Test > matches Snapshot a big success icon 1`] = `
         class="ons-panel__icon"
       >
         <svg
+          aria-hidden="true"
           class="ons-svg-icon ons-svg-icon--xl"
+          focusable="false"
           viewBox="0 0 13 10"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -326,7 +330,9 @@ exports[`ONS Panel Test > success panel matches Snapshot 1`] = `
           class="ons-panel__icon"
         >
           <svg
+            aria-hidden="true"
             class="ons-svg-icon "
+            focusable="false"
             viewBox="0 0 13 10"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -355,7 +361,9 @@ exports[`ONS Panel Test > success panel matches Snapshot 1`] = `
         class="ons-panel__icon"
       >
         <svg
+          aria-hidden="true"
           class="ons-svg-icon "
+          focusable="false"
           viewBox="0 0 13 10"
           xmlns="http://www.w3.org/2000/svg"
         >

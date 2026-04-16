@@ -2,19 +2,15 @@ import { TailSpin } from "react-loader-spinner";
 import { ONSPanel } from "./ONSPanel";
 
 export interface Props {
+    /** If true, the entire panel is removed from the visual flow. */
     hidden?: boolean;
+    /** Optional custom text to display beneath the loading spinner. Defaults to "Loading". */
     message?: string;
 }
 
-/*
- * This is a Standard Panel with an info status, with a loading spinner and "Loading" message.
- * Uses [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) for the loading spinner.
- */
-
 export const ONSLoadingPanel = ({ hidden, message }: Props) => (
     <ONSPanel hidden={hidden}>
-        <div style={{ textAlign: "center" }}>
-            {}
+        <div className="ons-u-ta-center">
             <TailSpin
                 color="#064868"
                 height={30}
@@ -22,9 +18,7 @@ export const ONSLoadingPanel = ({ hidden, message }: Props) => (
                 ariaLabel="loading-indicator"
             />
             <br />
-            {
-                message || "Loading"
-            }
+            {message ?? "Loading"}
         </div>
     </ONSPanel>
 );

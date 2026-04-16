@@ -1,6 +1,7 @@
 import { Component, ErrorInfo, ReactNode } from "react";
 
 export interface Props {
+    /** The components that this boundary should monitor for errors. */
     children: ReactNode;
 }
 
@@ -10,14 +11,12 @@ interface State {
     errorInfo: ErrorInfo | null;
 }
 
-/*
- * If an issue occurs in the render function of a React component, if not handled then the UI will fall over.
- * Wrappers will catch any error then display something else instead so if part of the page fails the
- * whole application does not break.
- *
- * This is useful for wrapping around the entire page to display a generic `Sorry, there is a problem with the service` message.
+/**
+ * Catches JavaScript errors anywhere in their child component tree, logs those errors, 
+ * and displays a generic fallback UI instead of the component tree that crashed.
+ * This is intended for top-level page wrapping to display the standard 
+ * 'Sorry, there is a problem with the service' message.
  */
-
 export class DefaultErrorBoundary extends Component<Props, State> {
     state: State = { 
         hasError: false,
@@ -34,8 +33,8 @@ export class DefaultErrorBoundary extends Component<Props, State> {
     componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         this.setState({
             errorInfo,
-        });        
-        console.error("Uncaught error:", error, errorInfo);
+        });         
+        console.error("DefaultErrorBoundary caught an error:", error, errorInfo);
     }
 
     render(): ReactNode {
@@ -55,6 +54,7 @@ export class DefaultErrorBoundary extends Component<Props, State> {
                 </div>
             );
         }
+
         return this.props.children;
     }
 }

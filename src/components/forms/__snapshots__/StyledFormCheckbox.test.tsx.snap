@@ -36,7 +36,7 @@ exports[`StyledForm Checkbox > it matches snapshots 1`] = `
             </span>
           </button>
           <div
-            class="checkboxes__items"
+            class="ons-checkboxes__items"
           >
             <p
               class="ons-checkboxes__item"
@@ -60,7 +60,6 @@ exports[`StyledForm Checkbox > it matches snapshots 1`] = `
                 </label>
               </span>
             </p>
-            <br />
             <p
               class="ons-checkboxes__item"
             >
@@ -83,7 +82,6 @@ exports[`StyledForm Checkbox > it matches snapshots 1`] = `
                 </label>
               </span>
             </p>
-            <br />
           </div>
         </fieldset>
         <br />
@@ -95,7 +93,7 @@ exports[`StyledForm Checkbox > it matches snapshots 1`] = `
           <span
             class="ons-btn__inner"
           >
-            Save and continue
+            Submit Selection
           </span>
         </button>
       </form>
@@ -133,7 +131,7 @@ exports[`StyledForm Checkbox > it matches snapshots 1`] = `
           </span>
         </button>
         <div
-          class="checkboxes__items"
+          class="ons-checkboxes__items"
         >
           <p
             class="ons-checkboxes__item"
@@ -157,7 +155,6 @@ exports[`StyledForm Checkbox > it matches snapshots 1`] = `
               </label>
             </span>
           </p>
-          <br />
           <p
             class="ons-checkboxes__item"
           >
@@ -180,7 +177,6 @@ exports[`StyledForm Checkbox > it matches snapshots 1`] = `
               </label>
             </span>
           </p>
-          <br />
         </div>
       </fieldset>
       <br />
@@ -192,7 +188,7 @@ exports[`StyledForm Checkbox > it matches snapshots 1`] = `
         <span
           class="ons-btn__inner"
         >
-          Save and continue
+          Submit Selection
         </span>
       </button>
     </form>

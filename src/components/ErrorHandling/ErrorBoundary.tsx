@@ -2,7 +2,9 @@ import { Component, ErrorInfo, ReactNode } from "react";
 import { ONSPanel } from "../ONSPanel";
 
 export interface Props {
+    /** The error message displayed inside the ONSPanel when a child component crashes. */
     errorMessageText: string;
+    /** The component tree that this boundary should monitor for errors. */
     children: ReactNode;
 }
 
@@ -11,15 +13,11 @@ interface State {
     errorInfo: ErrorInfo | null;
 }
 
-/*
- * If an issue occurs in the render function of a React component, if not handled then the UI will fall over.
- * Wrappers will catch any error then display something else instead so if part of the page fails the
- * whole application does not break.
- *
- * Catches any issues and displays a error panel with a custom message provided. For example, you can wrap this around a
- * table, so if it fails to render this panel will show in its place on the page.
+/**
+ * A localised error boundary that displays an ONS error panel if a child component fails to render.
+ * This is useful for wrapping specific sections of a page (e.g., a data table), 
+ * ensuring that if that section fails, the rest of the application remains functional.
  */
-
 export class ErrorBoundary extends Component<Props, State> {
     state: State = { 
         hasError: false,
@@ -47,6 +45,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 </ONSPanel>
             );
         }
+
         return this.props.children;
     }
 }

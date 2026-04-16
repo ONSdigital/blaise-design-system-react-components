@@ -12,7 +12,7 @@ exports[`Header Test > matches Snapshot 1`] = `
           class="ons-panel__body "
         >
           <div
-            style="text-align: center;"
+            class="ons-u-ta-center"
           >
             <div
               aria-busy="true"
@@ -108,7 +108,7 @@ exports[`Header Test > matches Snapshot 1`] = `
         class="ons-panel__body "
       >
         <div
-          style="text-align: center;"
+          class="ons-u-ta-center"
         >
           <div
             aria-busy="true"

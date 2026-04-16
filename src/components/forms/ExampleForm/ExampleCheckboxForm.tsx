@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import { StyledForm, FormFieldObject } from "../StyledForm";
 import { validateCheckbox } from "./FormValidation";
 
+/** Type definition for the expected form values. */
 export interface CheckboxFormValues {
     questionnaire: string[];
 }
 
-/* List of fields in order for form generation */
+/** Configuration for the form fields. */
 const formElements: FormFieldObject[] = [
     {
         name: "questionnaire",
@@ -20,28 +21,40 @@ const formElements: FormFieldObject[] = [
     },
 ];
 
-export const ExampleCheckboxForm = () => {
+/**
+ * An example implementation of a checkbox form using StyledForm.
+ * Demonstrates state handling and submission feedback.
+ */
+export const ExampleCheckboxForm = (): ReactElement => {
     const [formStatus, setFormStatus] = useState<string>("");
 
-    /*
-     * Function is called after submit of form and all field validation is valid
-     *
-     * @param formValues Object with all field values
-     * @param setSubmitting Function to set isSubmitting attribute which disables submit button while processing the form
+    /**
+     * Handles the valid form submission.
+     * @param formValues - Object containing the validated questionnaire array.
+     * @param setSubmitting - Formik utility to toggle the loading state of the submit button.
      */
-
-    const onFormSubmission = (formValues: CheckboxFormValues, setSubmitting: (isSubmitting: boolean) => void): void => {
-        console.warn(formValues);
+    const onFormSubmission = (
+        formValues: CheckboxFormValues, 
+        setSubmitting: (isSubmitting: boolean) => void
+    ): void => {
+        console.warn("Submission Data:", formValues);
         setFormStatus(`Form submitted, questionnaires chosen: ${formValues.questionnaire.join(", ")}`);
         setSubmitting(false);
     };
 
     return (
         <>
-            {formStatus && <p>{formStatus}</p>}
+            {formStatus && (
+                <div className="ons-panel ons-panel--info ons-panel--no-title ons-u-mb-m">
+                    <div className="ons-panel__body">
+                        <p>{formStatus}</p>
+                    </div>
+                </div>
+            )}
             <StyledForm<CheckboxFormValues> 
                 fields={formElements} 
                 onSubmitFunction={onFormSubmission} 
+                submitLabel="Submit Selection"
             />
         </>
     );

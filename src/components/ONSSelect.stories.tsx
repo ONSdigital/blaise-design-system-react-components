@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ONSSelect, Props } from "./ONSSelect"; 
+import { ONSSelect } from "./ONSSelect";
 
 const Selection = [
     { label: "LMS", value: "lms" },
@@ -8,18 +8,18 @@ const Selection = [
     { label: "DST", value: "dst" },
 ];
 
-const meta: Meta<Props> = {
+const meta = {
     title: "Components/Select",
     component: ONSSelect,
     tags: ["autodocs"],
     argTypes: {
         onChange: { action: "changed" },
     },
-};
+} satisfies Meta<typeof ONSSelect>;
 
 export default meta;
 
-type Story = StoryObj<Props>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     render: (args) => {

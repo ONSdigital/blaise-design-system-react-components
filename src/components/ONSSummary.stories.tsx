@@ -5,6 +5,9 @@ const meta = {
     title: "Components/Summary",
     component: SummaryGroupTable,
     tags: ["autodocs"],
+    argTypes: {
+        groupedSummary: { control: false },
+    }
 } satisfies Meta<typeof SummaryGroupTable>;
 
 export default meta;
@@ -35,6 +38,9 @@ export const Row: RowStory = {
             </tbody>
         </table>
     ),
+    argTypes: {
+        fieldValue: { control: false }
+    },
     args: {
         fieldName: "Survey",
         fieldValue: "Labour Force Survey",

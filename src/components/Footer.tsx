@@ -9,7 +9,15 @@ export const Footer = (): ReactElement => {
                     <div className="ons-grid ons-grid--flex ons-grid--vertical-top ons-grid--between">
                         <div className="ons-grid__col">
                             <div className="ons-footer__poweredby ons-u-mb-m">
-                                <svg className="ons-svg-logo" xmlns="http://www.w3.org/2000/svg" width="197" height="19" viewBox="33 2 552 60" aria-labelledby="ons-logo-en-footer-alt">
+                                <svg 
+                                    className="ons-svg-logo" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    width="197" 
+                                    height="19" 
+                                    viewBox="33 2 552 60" 
+                                    aria-labelledby="ons-logo-en-footer-alt"
+                                    role="img"
+                                >
                                     <title id="ons-logo-en-footer-alt">Office for National Statistics</title>
                                     <g className="ons-svg-logo__group ons-svg-logo__group--secondary" fill="#a8bd3a">
                                         <path d="M0,34.6c.8-1.69,1.39-3,2.32-4.6A38.28,38.28,0,0,1,0,23.4V34.6M5,3S0,3,0,9.25v1A62.12,62.12,0,0,0,4.2,27a43.77,43.77,0,0,1,9.42-10.79C21.69,9.21,31.16,5.13,45.9,3Z" />
@@ -54,4 +62,4 @@ export const Footer = (): ReactElement => {
             </div>
         </footer>
     );
-}
+};

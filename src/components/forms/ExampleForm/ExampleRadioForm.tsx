@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import { validateRadio } from "./FormValidation";
 import { StyledForm, FormFieldObject } from "../StyledForm";
 
+/**
+ * Interface representing the values captured by the radio form.
+ * Includes the optional 'other-text' for the conditional input.
+ */
 export interface RadioFormValues {
     topping: string;
     options: string;
     "other-text"?: string;
 }
 
-/* List of fields in order for form generation */
+/** Configuration for the radio form elements. */
 const formElements: FormFieldObject[] = [
     {
         name: "topping",
@@ -33,35 +37,55 @@ const formElements: FormFieldObject[] = [
                 value: "other",
                 label: "Other",
                 specifyOption: {
-                    id: "other-text", name: "other-text", description: "Please specify", type: "text",
+                    id: "other-text", 
+                    name: "other-text", 
+                    description: "Please specify", 
+                    type: "text",
                 },
             },
         ],
     },
 ];
 
-export const ExampleRadioForm = () => {
+/**
+ * An example implementation of a radio form using StyledForm.
+ * Demonstrates standard radio groups and the 'Other/Specify' conditional pattern.
+ */
+export const ExampleRadioForm = (): ReactElement => {
     const [formStatus, setFormStatus] = useState<string>("");
 
-    /*
-     * Function is called after submit of form and all field validation is valid
-     *
-     * @param formValues Object with all field values
-     * @param setSubmitting Function to set isSubmitting attribute which disables submit button while processing the form
+    /**
+     * Executes once Formik validation passes.
+     * @param formValues - The captured radio and conditional text values.
+     * @param setSubmitting - Formik utility to re-enable the submit button after processing.
      */
+    const onFormSubmission = (
+        formValues: RadioFormValues, 
+        setSubmitting: (isSubmitting: boolean) => void
+    ): void => {
+        console.warn("Radio Submission:", formValues);
+        
+        const selectionMsg = formValues.options === "other" 
+            ? `other (${formValues["other-text"]})` 
+            : formValues.options;
 
-    const onFormSubmission = (formValues: RadioFormValues, setSubmitting: (isSubmitting: boolean) => void): void => {
-        console.warn(formValues);
-        setFormStatus(`Form submitted, topping chosen: ${formValues.topping}`);
+        setFormStatus(`Form submitted. Topping: ${formValues.topping}. Option: ${selectionMsg}`);
         setSubmitting(false);
     };
 
     return (
         <>
-            {formStatus && <p>{formStatus}</p>}
+            {formStatus && (
+                <div className="ons-panel ons-panel--info ons-panel--no-title ons-u-mb-m">
+                    <div className="ons-panel__body">
+                        <p>{formStatus}</p>
+                    </div>
+                </div>
+            )}
             <StyledForm<RadioFormValues> 
                 fields={formElements} 
                 onSubmitFunction={onFormSubmission} 
+                submitLabel="Save and Continue"
             />
         </>
     );
