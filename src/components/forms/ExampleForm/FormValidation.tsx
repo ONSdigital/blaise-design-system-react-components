@@ -40,7 +40,8 @@ export function validatePassword(value: string): string | undefined {
  */
 export function validateEmail(value: string): string | undefined {
     if (!value) return "Enter an email";
-    if (!EMAIL_REGEX.test(value)) return "Enter an email address in the correct format, such as name@example.com";
+    if (!EMAIL_REGEX.test(value))
+        return "Enter an email address in the correct format, such as name@example.com";
     return undefined;
 }
 

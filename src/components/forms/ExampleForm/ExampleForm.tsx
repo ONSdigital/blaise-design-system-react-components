@@ -1,5 +1,10 @@
 import { useState, ReactElement } from "react";
-import { validateEmail, validateInstrumentName, validateName, validatePassword } from "./FormValidation";
+import {
+    validateEmail,
+    validateInstrumentName,
+    validateName,
+    validatePassword,
+} from "./FormValidation";
 import { StyledForm, FormFieldObject } from "../StyledForm";
 
 /** Interface representing the values captured by the example form. */
@@ -52,8 +57,8 @@ export const ExampleForm = (): ReactElement => {
      * @param setSubmitting - Callback to toggle the button loading state.
      */
     const onFormSubmission = (
-        formValues: ExampleFormValues, 
-        setSubmitting: (isSubmitting: boolean) => void
+        formValues: ExampleFormValues,
+        setSubmitting: (isSubmitting: boolean) => void,
     ): void => {
         console.warn("Form Submission:", formValues);
         setFormStatus(`Form submitted for user ${formValues.name}`);
@@ -69,9 +74,9 @@ export const ExampleForm = (): ReactElement => {
                     </div>
                 </div>
             )}
-            <StyledForm<ExampleFormValues> 
-                fields={formElements} 
-                onSubmitFunction={onFormSubmission} 
+            <StyledForm<ExampleFormValues>
+                fields={formElements}
+                onSubmitFunction={onFormSubmission}
                 submitLabel="Create Account"
             />
         </>

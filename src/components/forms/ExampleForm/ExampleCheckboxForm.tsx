@@ -34,11 +34,13 @@ export const ExampleCheckboxForm = (): ReactElement => {
      * @param setSubmitting - Formik utility to toggle the loading state of the submit button.
      */
     const onFormSubmission = (
-        formValues: CheckboxFormValues, 
-        setSubmitting: (isSubmitting: boolean) => void
+        formValues: CheckboxFormValues,
+        setSubmitting: (isSubmitting: boolean) => void,
     ): void => {
         console.warn("Submission Data:", formValues);
-        setFormStatus(`Form submitted, questionnaires chosen: ${formValues.questionnaire.join(", ")}`);
+        setFormStatus(
+            `Form submitted, questionnaires chosen: ${formValues.questionnaire.join(", ")}`,
+        );
         setSubmitting(false);
     };
 
@@ -51,9 +53,9 @@ export const ExampleCheckboxForm = (): ReactElement => {
                     </div>
                 </div>
             )}
-            <StyledForm<CheckboxFormValues> 
-                fields={formElements} 
-                onSubmitFunction={onFormSubmission} 
+            <StyledForm<CheckboxFormValues>
+                fields={formElements}
+                onSubmitFunction={onFormSubmission}
                 submitLabel="Submit Selection"
             />
         </>

@@ -35,13 +35,14 @@ export interface CheckboxesProps extends UnknownProps {
 
 /** A group of ONS-styled radio buttons integrated with Formik. */
 export function RadioFieldset({
-    description, name, radioOptions, ...props
+    description,
+    name,
+    radioOptions,
+    ...props
 }: RadioFieldsetProps): ReactElement {
     return (
         <fieldset className="ons-fieldset">
-            <legend className="ons-fieldset__legend">
-                {description}
-            </legend>
+            <legend className="ons-fieldset__legend">{description}</legend>
             <div className="ons-radios__items">
                 {radioOptions?.map((radioOption, radioOptionIndex) => (
                     <Fragment key={radioOption.id}>
@@ -105,7 +106,10 @@ export function RadioFieldset({
 
 /** A group of ONS-styled checkboxes with a 'Select All' utility, integrated with Formik. */
 export function CheckboxesFieldset({
-    description, checkboxOptions, name, ...props
+    description,
+    checkboxOptions,
+    name,
+    ...props
 }: CheckboxesProps): ReactElement {
     const { values, setFieldValue } = useFormikContext<Record<string, string[]>>();
     const allValues = (checkboxOptions || []).map((checkboxOption) => checkboxOption.value);
@@ -128,9 +132,7 @@ export function CheckboxesFieldset({
 
     return (
         <fieldset className="ons-fieldset">
-            <legend className="ons-fieldset__legend">
-                {description}
-            </legend>
+            <legend className="ons-fieldset__legend">{description}</legend>
 
             <button
                 type="button"
@@ -138,7 +140,9 @@ export function CheckboxesFieldset({
                 onClick={handleSelectAll}
             >
                 <span className="ons-btn__inner">
-                    <span className="js-button-text">{isAllSelected() ? "Unselect All" : "Select All"}</span>
+                    <span className="js-button-text">
+                        {isAllSelected() ? "Unselect All" : "Select All"}
+                    </span>
                     <span className="ons-u-vh"> following checkboxes</span>
                 </span>
             </button>
@@ -184,23 +188,27 @@ export function CheckboxesFieldset({
 
 interface ONSInputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
     /** Formik field connection object. */
-    field: FieldInputProps<string>; 
+    field: FieldInputProps<string>;
     /** Optional hint text displayed beneath the label. */
     description?: string;
 }
 
 /** A single ONS-styled text input integrated with Formik. */
-export function ONSInputField({
-    field, description, ...props
-}: ONSInputFieldProps): ReactElement {
+export function ONSInputField({ field, description, ...props }: ONSInputFieldProps): ReactElement {
     const id = props.id || field.name;
     return (
         <div className="ons-field">
-            <label className={`ons-label ${description ? "ons-label--with-description" : ""}`} htmlFor={id}>
+            <label
+                className={`ons-label ${description ? "ons-label--with-description" : ""}`}
+                htmlFor={id}
+            >
                 {toUpperCase(field.name)}
             </label>
             {description && (
-                <span id={`${id}-description-hint`} className="ons-label__description ons-input--with-description">
+                <span
+                    id={`${id}-description-hint`}
+                    className="ons-label__description ons-input--with-description"
+                >
                     {description}
                 </span>
             )}

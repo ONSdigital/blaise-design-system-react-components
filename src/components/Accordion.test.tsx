@@ -6,12 +6,10 @@ function renderAccordionWithShowAll(): RenderResult {
         <Accordion
             ContentId="test"
             ShowAllEnabled
-            Expandables={
-                [
-                    { title: "Foo", content: <p>bar</p>, contentId: "test" },
-                    { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
-                ]
-            }
+            Expandables={[
+                { title: "Foo", content: <p>bar</p>, contentId: "test" },
+                { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
+            ]}
         />,
     );
 }
@@ -20,12 +18,10 @@ function renderAccordionWithoutShowAll(): RenderResult {
     return render(
         <Accordion
             ContentId="test"
-            Expandables={
-                [
-                    { title: "Foo", content: <p>bar</p>, contentId: "test" },
-                    { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
-                ]
-            }
+            Expandables={[
+                { title: "Foo", content: <p>bar</p>, contentId: "test" },
+                { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
+            ]}
         />,
     );
 }
@@ -61,12 +57,18 @@ function expectHideAllButtonToBeDefined(wrapper: RenderResult) {
 
 function expectExpandableToBeClosed(title: string, id: number, wrapper: RenderResult) {
     expect(wrapper.getByTestId(`test-accordion-${id}-heading`)).toHaveTextContent(title);
-    expect(wrapper.getByTestId(`test-accordion-${id}-content`)).toHaveAttribute("aria-hidden", "true");
+    expect(wrapper.getByTestId(`test-accordion-${id}-content`)).toHaveAttribute(
+        "aria-hidden",
+        "true",
+    );
 }
 
 function expectExpandableToBeOpen(title: string, id: number, wrapper: RenderResult) {
     expect(wrapper.getByTestId(`test-accordion-${id}-heading`)).toHaveTextContent(title);
-    expect(wrapper.getByTestId(`test-accordion-${id}-content`)).toHaveAttribute("aria-hidden", "false");
+    expect(wrapper.getByTestId(`test-accordion-${id}-content`)).toHaveAttribute(
+        "aria-hidden",
+        "false",
+    );
 }
 
 describe("Accordion tests", () => {

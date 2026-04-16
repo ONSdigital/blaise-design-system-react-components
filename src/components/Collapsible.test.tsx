@@ -36,13 +36,21 @@ describe("Collapsible Test", () => {
 
     it("should change content div to aria-hidden false when you press the SpaceBar key on the title", () => {
         const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.keyDown(wrapper.getByTestId("collapsible-heading"), { key: " ", code: "Space", keyCode: 32 });
+        fireEvent.keyDown(wrapper.getByTestId("collapsible-heading"), {
+            key: " ",
+            code: "Space",
+            keyCode: 32,
+        });
         expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
     });
 
     it("should change content div to aria-hidden false when you press the enter key on the title", () => {
         const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.keyDown(wrapper.getByTestId("collapsible-heading"), { key: "Enter", code: "Enter", keyCode: 13 });
+        fireEvent.keyDown(wrapper.getByTestId("collapsible-heading"), {
+            key: "Enter",
+            code: "Enter",
+            keyCode: 13,
+        });
         expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
     });
 });

@@ -8,7 +8,8 @@ import { useEffect, useRef } from "react";
  * Provides anchor links to jump directly to the invalid form fields.
  */
 export const StyledFormErrorSummary = () => {
-    const { errors, isValid, submitCount, isSubmitting } = useFormikContext<Record<string, unknown>>();
+    const { errors, isValid, submitCount, isSubmitting } =
+        useFormikContext<Record<string, unknown>>();
     const errorFocus = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -38,11 +39,9 @@ export const StyledFormErrorSummary = () => {
                     data-qa="error-header"
                     className="ons-panel__title ons-u-fs-r--b"
                 >
-                    {
-                        errorKeys.length === 1
-                            ? "There is 1 problem with your answer"
-                            : `There are ${errorKeys.length} problems with your answer`
-                    }
+                    {errorKeys.length === 1
+                        ? "There is 1 problem with your answer"
+                        : `There are ${errorKeys.length} problems with your answer`}
                 </h2>
             </div>
             <div className="ons-panel__body">

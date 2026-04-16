@@ -6,13 +6,13 @@ const meta = {
     component: StyledForm,
     tags: ["autodocs"],
     argTypes: {
-        onSubmitFunction: { 
+        onSubmitFunction: {
             action: "submitted",
-            control: false 
+            control: false,
         },
         fields: {
-            control: "object"
-        }
+            control: "object",
+        },
     },
 } satisfies Meta<typeof StyledForm>;
 
@@ -35,10 +35,16 @@ export const Default: Story = {
                 radioOptions: [
                     { id: "all", value: "undefined", label: "Show all surveys" },
                     {
-                        id: "lms", value: "lms", label: "LMS", description: "Labour Market Survey",
+                        id: "lms",
+                        value: "lms",
+                        label: "LMS",
+                        description: "Labour Market Survey",
                     },
                     {
-                        id: "opn", value: "opn", label: "OPN", description: "Opinions and Lifestyle Survey",
+                        id: "opn",
+                        value: "opn",
+                        label: "OPN",
+                        description: "Opinions and Lifestyle Survey",
                     },
                 ],
             },

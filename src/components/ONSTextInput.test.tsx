@@ -27,7 +27,10 @@ describe("ONS Text Input Test", () => {
         password: true,
     };
 
-    function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSTextInput>>): RenderResult {
+    function wrapper(
+        renderFn: typeof render,
+        props: Partial<ComponentProps<typeof ONSTextInput>>,
+    ): RenderResult {
         return renderFn(
             <ONSTextInput
                 label={props.label}

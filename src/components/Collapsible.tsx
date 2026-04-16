@@ -10,7 +10,7 @@ export interface Props {
 }
 
 export const Collapsible = ({ children, title, id }: Props) => {
-    const [panelOpen, setPanelOpen] = useState<boolean>(false);    
+    const [panelOpen, setPanelOpen] = useState<boolean>(false);
     const uniqueId = useId();
     const componentId = id || `collapsible-${uniqueId}`;
 
@@ -33,7 +33,7 @@ export const Collapsible = ({ children, title, id }: Props) => {
                 data-testid="collapsible-heading"
                 onClick={handleToggle}
                 onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.key === "Enter" || e.key === " ") {
                         handleToggle(e);
                     }
                 }}

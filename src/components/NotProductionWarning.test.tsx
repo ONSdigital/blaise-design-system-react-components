@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { NotProductionWarning }  from "./NotProductionWarning";
+import { NotProductionWarning } from "./NotProductionWarning";
 
 describe("not production warning test", () => {
     it("matches Snapshot", () => {
@@ -13,6 +13,10 @@ describe("not production warning test", () => {
 
     it("should display warning paragraph text", () => {
         render(<NotProductionWarning />);
-        expect(screen.getByText(/This is not a production environment. Do not upload any production data to this service./)).toBeVisible();
+        expect(
+            screen.getByText(
+                /This is not a production environment. Do not upload any production data to this service./,
+            ),
+        ).toBeVisible();
     });
 });

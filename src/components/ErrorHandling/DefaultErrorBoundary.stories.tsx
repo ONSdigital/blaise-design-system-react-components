@@ -11,8 +11,8 @@ const DodgyComponent = () => {
         throw new Error("I crashed!");
     } else {
         return (
-            <button 
-                type="button" 
+            <button
+                type="button"
                 className="ons-btn ons-btn--secondary"
                 onClick={() => setError(true)}
             >

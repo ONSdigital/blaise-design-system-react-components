@@ -16,7 +16,7 @@ export interface Props {
     /** Adds specific pixel-based right margin via inline styles. */
     marginRight?: number;
     /** Callback fired when the button is clicked. */
-    onClick?: MouseEventHandler<HTMLButtonElement>; 
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     /** Visually disables the button and prevents interaction. */
     disabled?: boolean;
     /** Renders the button with a link-style appearance. */
@@ -44,7 +44,6 @@ export const ONSButton = ({
     hidden,
     submit,
 }: Props): ReactElement => {
-    
     const getStyles = (): CSSProperties => {
         if (hidden) return { display: "none" };
         return {
@@ -60,14 +59,16 @@ export const ONSButton = ({
         !primary && "ons-btn--secondary",
         small && "ons-btn--small",
         disabled && "ons-btn--disabled",
-    ].filter(Boolean).join(" ");
+    ]
+        .filter(Boolean)
+        .join(" ");
 
     return (
         <button
             id={id}
             style={getStyles()}
             type={submit ? "submit" : "button"}
-            disabled={loading || disabled} 
+            disabled={loading || disabled}
             className={classNames}
             onClick={onClick}
             data-testid={testid ? `${testid}-button` : "button"}

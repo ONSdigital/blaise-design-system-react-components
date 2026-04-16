@@ -43,7 +43,7 @@ export const Error: Story = {
 export const Warn: Story = {
     args: {
         status: "warn",
-        children: <p>It's a trap!</p>,
+        children: <p>{"It's a trap!"}</p>,
     },
 };
 

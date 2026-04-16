@@ -22,7 +22,10 @@ const formElements: FormFieldObject[] = [
         radioOptions: [
             { id: "bacon", value: "bacon", label: "Bacon" },
             {
-                id: "cheese", value: "cheese", label: "Cheese", description: "This includes all types of cheese",
+                id: "cheese",
+                value: "cheese",
+                label: "Cheese",
+                description: "This includes all types of cheese",
             },
         ],
     },
@@ -37,9 +40,9 @@ const formElements: FormFieldObject[] = [
                 value: "other",
                 label: "Other",
                 specifyOption: {
-                    id: "other-text", 
-                    name: "other-text", 
-                    description: "Please specify", 
+                    id: "other-text",
+                    name: "other-text",
+                    description: "Please specify",
                     type: "text",
                 },
             },
@@ -60,14 +63,15 @@ export const ExampleRadioForm = (): ReactElement => {
      * @param setSubmitting - Formik utility to re-enable the submit button after processing.
      */
     const onFormSubmission = (
-        formValues: RadioFormValues, 
-        setSubmitting: (isSubmitting: boolean) => void
+        formValues: RadioFormValues,
+        setSubmitting: (isSubmitting: boolean) => void,
     ): void => {
         console.warn("Radio Submission:", formValues);
-        
-        const selectionMsg = formValues.options === "other" 
-            ? `other (${formValues["other-text"]})` 
-            : formValues.options;
+
+        const selectionMsg =
+            formValues.options === "other"
+                ? `other (${formValues["other-text"]})`
+                : formValues.options;
 
         setFormStatus(`Form submitted. Topping: ${formValues.topping}. Option: ${selectionMsg}`);
         setSubmitting(false);
@@ -82,9 +86,9 @@ export const ExampleRadioForm = (): ReactElement => {
                     </div>
                 </div>
             )}
-            <StyledForm<RadioFormValues> 
-                fields={formElements} 
-                onSubmitFunction={onFormSubmission} 
+            <StyledForm<RadioFormValues>
+                fields={formElements}
+                onSubmitFunction={onFormSubmission}
                 submitLabel="Save and Continue"
             />
         </>

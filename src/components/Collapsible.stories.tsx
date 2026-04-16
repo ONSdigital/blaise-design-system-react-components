@@ -7,8 +7,8 @@ const meta = {
     tags: ["autodocs"],
     argTypes: {
         children: {
-            control: false, 
-        }
+            control: false,
+        },
     },
 } satisfies Meta<typeof Collapsible>;
 

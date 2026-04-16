@@ -8,8 +8,8 @@ const meta = {
     argTypes: {
         signOutFunction: { action: "signed-out" },
         navigationLinks: { control: "object" },
-        createNavLink: { control: false }
-    }
+        createNavLink: { control: false },
+    },
 } satisfies Meta<typeof Header>;
 
 export default meta;

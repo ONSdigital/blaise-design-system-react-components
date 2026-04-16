@@ -1,11 +1,18 @@
-import { validateEmail, validateInstrumentName, validateName, validatePassword, validateRadio } from "./FormValidation";
+import {
+    validateEmail,
+    validateInstrumentName,
+    validateName,
+    validatePassword,
+    validateRadio,
+} from "./FormValidation";
 
 describe("FormValidation", () => {
-
     test("Instrument name validation", () => {
         expect(validateInstrumentName("")).toBe("Enter a valid instrument name");
-        expect(validateInstrumentName("OPN2101")).toBe("Enter a valid instrument name (longer than 7 characters)");
-        expect(validateInstrumentName("OPN2101A")).toBeUndefined(); 
+        expect(validateInstrumentName("OPN2101")).toBe(
+            "Enter a valid instrument name (longer than 7 characters)",
+        );
+        expect(validateInstrumentName("OPN2101A")).toBeUndefined();
     });
 
     test("Name validation", () => {
@@ -21,7 +28,8 @@ describe("FormValidation", () => {
     });
 
     test("Email validation", () => {
-        const invalidEmailMessage = "Enter an email address in the correct format, such as name@example.com";
+        const invalidEmailMessage =
+            "Enter an email address in the correct format, such as name@example.com";
         expect(validateEmail("")).toBe("Enter an email");
         expect(validateEmail("matthew")).toBe(invalidEmailMessage);
         expect(validateEmail("matthew@example")).toBe(invalidEmailMessage);
@@ -33,5 +41,4 @@ describe("FormValidation", () => {
         expect(validateRadio("")).toBe("Select an option");
         expect(validateRadio("Bacon")).toBeUndefined();
     });
-
 });

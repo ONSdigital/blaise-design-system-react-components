@@ -21,7 +21,11 @@ export interface Props {
 }
 
 /** Internal sub-component to wrap fields in an ONS error panel when validation fails. */
-const StyledFormFieldErrorWrapper = (fieldError: string, fieldName: string, field: ReactElement) => {
+const StyledFormFieldErrorWrapper = (
+    fieldError: string,
+    fieldName: string,
+    field: ReactElement,
+) => {
     return (
         <div
             className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
@@ -36,7 +40,7 @@ const StyledFormFieldErrorWrapper = (fieldError: string, fieldName: string, fiel
             </div>
         </div>
     );
-}
+};
 
 /**
  * A factory component that resolves the specific ONS field type to render based on props.
@@ -76,27 +80,21 @@ export const StyledFormField = ({
         );
     } else {
         newField = (
-            <Field 
-                name={name} 
-                description={description} 
-                autoFocus={autoFocus} 
-                {...props} 
-                component={ONSInputField} 
+            <Field
+                name={name}
+                description={description}
+                autoFocus={autoFocus}
+                {...props}
+                component={ONSInputField}
             />
         );
     }
 
     return (
         <Fragment>
-            {
-                errors[name]
-                    ? StyledFormFieldErrorWrapper(
-                        errors[name] || "",
-                        name,
-                        newField,
-                    )
-                    : newField
-            }
+            {errors[name]
+                ? StyledFormFieldErrorWrapper(errors[name] || "", name, newField)
+                : newField}
         </Fragment>
     );
 };

@@ -14,7 +14,10 @@ describe("ONS Upload Test", () => {
         onChange: vi.fn(),
     };
 
-    function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSUpload>>): RenderResult {
+    function wrapper(
+        renderFn: typeof render,
+        props: Partial<ComponentProps<typeof ONSUpload>>,
+    ): RenderResult {
         return renderFn(
             <ONSUpload
                 label={props.label as string}

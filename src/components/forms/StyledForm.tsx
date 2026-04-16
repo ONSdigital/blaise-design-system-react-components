@@ -71,7 +71,10 @@ export interface CheckboxFormFieldObject extends BaseFormFieldObject<string[]> {
     checkboxOptions: CheckboxFieldsetObject[];
 }
 
-export type FormFieldObject = CheckboxFormFieldObject | RadioFormFieldObject | BaseFormFieldObject<string>;
+export type FormFieldObject =
+    | CheckboxFormFieldObject
+    | RadioFormFieldObject
+    | BaseFormFieldObject<string>;
 
 export interface StyledFormProps<T extends FormikValues = FormikValues> {
     /** Array of field configurations to generate the form. */
@@ -83,15 +86,14 @@ export interface StyledFormProps<T extends FormikValues = FormikValues> {
 }
 
 /**
- * A standard ONS Formik wrapper that automatically handles initial values, 
+ * A standard ONS Formik wrapper that automatically handles initial values,
  * error summaries, and ONS-styled field layouts.
  */
 export const StyledForm = <T extends FormikValues = FormikValues>({
     fields,
     onSubmitFunction,
-    submitLabel
+    submitLabel,
 }: StyledFormProps<T>) => {
-
     const initialFieldValues = fields.reduce<Record<string, unknown>>((acc, field) => {
         if (field.initial_value !== undefined) {
             acc[field.name] = field.initial_value;
@@ -115,22 +117,16 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
             {({ isValid, isSubmitting }) => (
                 <Form>
                     <StyledFormErrorSummary />
-                    {
-                        fields.map((field, index) => {
-                            const isAutoFocus = (isValid && index === 0);
-                            return (
-                                <StyledFormField
-                                    key={field.name}
-                                    {...field}
-                                    autoFocus={isAutoFocus}
-                                />
-                            );
-                        })
-                    }
+                    {fields.map((field, index) => {
+                        const isAutoFocus = isValid && index === 0;
+                        return (
+                            <StyledFormField key={field.name} {...field} autoFocus={isAutoFocus} />
+                        );
+                    })}
                     <br />
                     <ONSButton
                         submit
-                        label={(submitLabel || "Save and continue")}
+                        label={submitLabel || "Save and continue"}
                         primary
                         testid="submit"
                         loading={isSubmitting}

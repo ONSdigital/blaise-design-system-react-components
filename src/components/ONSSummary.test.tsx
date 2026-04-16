@@ -15,11 +15,23 @@ describe("ONS Summary Group Table test", () => {
 
 describe("ONS Summary Item Row test", () => {
     it("matches Snapshot", () => {
-        expect(render(<table><SummaryItemRow fieldName="foo" fieldValue="bar" /></table>)).toMatchSnapshot();
+        expect(
+            render(
+                <table>
+                    <SummaryItemRow fieldName="foo" fieldValue="bar" />
+                </table>,
+            ),
+        ).toMatchSnapshot();
     });
 
     it("should render correctly", () => {
-        expect(render(<table><SummaryItemRow fieldName="foo" fieldValue="bar" /></table>)).toBeDefined();
+        expect(
+            render(
+                <table>
+                    <SummaryItemRow fieldName="foo" fieldValue="bar" />
+                </table>,
+            ),
+        ).toBeDefined();
     });
 });
 
@@ -30,9 +42,11 @@ describe("GroupedSummary as CSV tests", () => {
     ]);
 
     it("converts a grouped summary to a csv type object", () => {
-        expect(groupedSummary.csv()).toEqual([{
-            foo: "bar",
-            fwibble: "fish",
-        }]);
+        expect(groupedSummary.csv()).toEqual([
+            {
+                foo: "bar",
+                fwibble: "fish",
+            },
+        ]);
     });
 });

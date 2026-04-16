@@ -15,13 +15,13 @@ interface State {
 
 /**
  * A localised error boundary that displays an ONS error panel if a child component fails to render.
- * This is useful for wrapping specific sections of a page (e.g., a data table), 
+ * This is useful for wrapping specific sections of a page (e.g., a data table),
  * ensuring that if that section fails, the rest of the application remains functional.
  */
 export class ErrorBoundary extends Component<Props, State> {
-    state: State = { 
+    state: State = {
         hasError: false,
-        errorInfo: null 
+        errorInfo: null,
     };
 
     static getDerivedStateFromError(_: Error): Partial<State> {
@@ -39,9 +39,7 @@ export class ErrorBoundary extends Component<Props, State> {
         if (this.state.hasError) {
             return (
                 <ONSPanel status="error">
-                    <p>
-                        {this.props.errorMessageText}
-                    </p>
+                    <p>{this.props.errorMessageText}</p>
                 </ONSPanel>
             );
         }

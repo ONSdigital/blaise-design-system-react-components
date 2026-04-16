@@ -24,14 +24,7 @@ export interface Props {
     testId?: string;
 }
 
-export const ONSSelect = ({
-    label,
-    id,
-    onChange,
-    value,
-    options,
-    testId,
-}: Props) => {
+export const ONSSelect = ({ label, id, onChange, value, options, testId }: Props) => {
     return (
         <div className="ons-field">
             {label !== undefined && (
@@ -42,7 +35,7 @@ export const ONSSelect = ({
             <select
                 id={id}
                 name="select"
-                value={value} 
+                value={value}
                 className="ons-input ons-input--select"
                 onChange={onChange}
                 data-testid={testId}

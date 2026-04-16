@@ -15,7 +15,10 @@ describe("ONS Password Input Test", () => {
         onChange: undefined,
     };
 
-    function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSPasswordInput>>): RenderResult {
+    function wrapper(
+        renderFn: typeof render,
+        props: Partial<ComponentProps<typeof ONSPasswordInput>>,
+    ): RenderResult {
         return renderFn(
             <ONSPasswordInput
                 value={props.value as string}
@@ -47,8 +50,12 @@ describe("ONS Password Input Test", () => {
 
     it("should handle a defined change", () => {
         wrapper(render, changeProps);
-        fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test1" } });
-        fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test2" } });
+        fireEvent.change(screen.getByTestId("login-password-input"), {
+            target: { value: "test1" },
+        });
+        fireEvent.change(screen.getByTestId("login-password-input"), {
+            target: { value: "test2" },
+        });
         expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 
@@ -60,12 +67,12 @@ describe("ONS Password Input Test", () => {
 
     it("should handle a click on the checkbox", () => {
         wrapper(render, undefinedChangeProps);
-        
+
         const passwordToggle = screen.getByTestId<HTMLInputElement>("login-password-toggle");
-        
+
         fireEvent.click(passwordToggle);
         expect(passwordToggle.checked).toBeTruthy();
-        
+
         fireEvent.click(passwordToggle);
         expect(passwordToggle.checked).toBeFalsy();
     });

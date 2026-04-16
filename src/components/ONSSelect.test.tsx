@@ -25,7 +25,10 @@ describe("ONS Select Test", () => {
         onChange: vi.fn(),
     };
 
-    function wrapper(renderFn: typeof render, props: Partial<ComponentProps<typeof ONSSelect>>): RenderResult {
+    function wrapper(
+        renderFn: typeof render,
+        props: Partial<ComponentProps<typeof ONSSelect>>,
+    ): RenderResult {
         return renderFn(
             <ONSSelect
                 id={props.id}

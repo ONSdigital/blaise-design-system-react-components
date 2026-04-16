@@ -5,8 +5,6 @@ export interface Props {
     label: string;
     /** Additional instructions or hints for the user (e.g., allowed file types). */
     description: string;
-    /** @deprecated Optional ID, kept for backwards compatibility. The component relies on fileID. */
-    id?: string;
     /** The standard HTML name attribute for the file input element. */
     fileName: string;
     /** The unique HTML ID for the file input element. */
@@ -22,14 +20,12 @@ export interface Props {
 export const ONSUpload = ({
     label,
     description,
-    id,
     fileName,
     fileID,
     accept,
     onChange,
     disabled,
 }: Props) => {
-    
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e, label);
     };

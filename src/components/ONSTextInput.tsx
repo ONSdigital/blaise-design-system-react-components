@@ -44,7 +44,6 @@ export const ONSTextInput = ({
     zIndex,
     testId = "text-input",
 }: Props) => {
-    
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e, label);
     };

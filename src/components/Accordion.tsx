@@ -1,17 +1,9 @@
-import { 
-    ReactNode, 
-    useState, 
-    MouseEvent, 
-    KeyboardEvent, 
-    Dispatch, 
-    SetStateAction,
-    Fragment
-} from "react";
+import { ReactNode, useState, MouseEvent, KeyboardEvent, Dispatch, SetStateAction } from "react";
 
 /** Defines the structure for an individual panel within the accordion. */
 export type ExpandableContent = {
     /** The React nodes to display when the panel is expanded. */
-    content: ReactNode; 
+    content: ReactNode;
     /** Unique ID for the content area. */
     contentId?: string;
     /** The text displayed in the clickable header of the panel. */
@@ -26,10 +18,15 @@ interface ExpandableProps extends ExpandableContent {
 
 /** Internal sub-component for individual accordion rows. */
 const Expandable = ({
-    title, content, contentId, expandableIndex, panelsOpen, setPanelsOpen,
+    title,
+    content,
+    contentId,
+    expandableIndex,
+    panelsOpen,
+    setPanelsOpen,
 }: ExpandableProps) => {
     const safeId = contentId || `expandable-${expandableIndex}`;
-    
+
     const togglePanel = (event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>) => {
         event.preventDefault();
         setPanelsOpen((prevPanels) => {
@@ -112,14 +109,11 @@ interface ShowAllProps {
     contentId: string;
 }
 
-const ShowAll = ({
-    showAllEnabled, panelsOpen, setPanelsOpen, contentId,
-}: ShowAllProps) => {
-    
-    if (!showAllEnabled) return null; 
+const ShowAll = ({ showAllEnabled, panelsOpen, setPanelsOpen, contentId }: ShowAllProps) => {
+    if (!showAllEnabled) return null;
 
     const showing = !panelsOpen.includes(false);
-    
+
     return (
         <button
             data-testid={`${contentId}-accordion-show-all`}
@@ -136,22 +130,22 @@ const ShowAll = ({
 
 export const Accordion = ({
     // TODO: force camelCase, will break consumers
-    ShowAllEnabled: showAllEnabled, 
-    Expandables: expandables, 
-    ContentId: contentId, 
+    ShowAllEnabled: showAllEnabled,
+    Expandables: expandables,
+    ContentId: contentId,
     Expanded: expanded,
 }: Props) => {
-    const [panelsOpen, setPanelsOpen] = useState<boolean[]>(() => 
-        new Array(expandables.length).fill(expanded ?? false)
+    const [panelsOpen, setPanelsOpen] = useState<boolean[]>(() =>
+        new Array(expandables.length).fill(expanded ?? false),
     );
 
     return (
         <div id={`${contentId}-accordion`} className="ons-accordion">
-            <ShowAll 
-                showAllEnabled={showAllEnabled} 
-                panelsOpen={panelsOpen} 
-                setPanelsOpen={setPanelsOpen} 
-                contentId={contentId} 
+            <ShowAll
+                showAllEnabled={showAllEnabled}
+                panelsOpen={panelsOpen}
+                setPanelsOpen={setPanelsOpen}
+                contentId={contentId}
             />
             {expandables.map((expandable: ExpandableContent, index: number) => (
                 <Expandable

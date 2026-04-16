@@ -6,7 +6,7 @@ export interface ErrorPanelProps {
 }
 
 export const ONSErrorPanel = ({
-    text = "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."
+    text = "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later.",
 }: ErrorPanelProps): ReactElement => {
     return (
         <div className="ons-panel ons-panel--error ons-panel--no-title">

@@ -23,7 +23,7 @@ export class GroupedSummary {
         const row = this.groups.reduce((acc, group) => {
             return { ...acc, ...group.records };
         }, {});
-        
+
         return [row];
     }
 }
@@ -40,9 +40,7 @@ export function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): Rea
         <tbody className="ons-summary__item">
             <tr className="ons-summary__row ons-summary__row--has-values">
                 <td className="ons-summary__item-title">
-                    <div className="ons-summary__item--text">
-                        {FormatTitle(fieldName)}
-                    </div>
+                    <div className="ons-summary__item--text">{FormatTitle(fieldName)}</div>
                 </td>
                 <td className="ons-summary__values" colSpan={2}>
                     {fieldValue}
@@ -62,15 +60,13 @@ export function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): R
         <>
             {groupedSummary.groups.map((group) => (
                 <Fragment key={`summary-group-wrapper-${FormatKey(group.title)}`}>
-                    <h3 className="ons-summary__group-title">
-                        {group.title}
-                    </h3>
+                    <h3 className="ons-summary__group-title">{group.title}</h3>
                     <table className="ons-summary__items">
                         {Object.entries(group.records).map(([field, value]) => (
-                            <SummaryItemRow 
-                                key={`summary-table-row-${FormatKey(field)}`} 
-                                fieldName={field} 
-                                fieldValue={value as ReactNode} 
+                            <SummaryItemRow
+                                key={`summary-table-row-${FormatKey(field)}`}
+                                fieldName={field}
+                                fieldValue={value as ReactNode}
                             />
                         ))}
                     </table>

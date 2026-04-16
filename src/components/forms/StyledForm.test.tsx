@@ -10,19 +10,19 @@ test("error appears on submit of empty form", async () => {
 
     await waitFor(() => {
         expect(screen.getByText(/Password must be longer than 6 characters/i)).toBeInTheDocument();
-        
+
         const errorMessage = screen.getByText(/There are 4 problems with your answer/i);
         expect(errorMessage).toBeInTheDocument();
 
         const instrumentErrorMessage = screen.queryAllByText(/Enter a valid instrument name/i);
         expect(instrumentErrorMessage).toHaveLength(2);
-        
+
         const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
         expect(nameErrorMessage).toHaveLength(2);
-        
+
         const emailErrorMessage = screen.queryAllByText(/Enter an email/i);
         expect(emailErrorMessage).toHaveLength(2);
-        
+
         const passwordErrorMessage = screen.queryAllByText(/Enter a password/i);
         expect(passwordErrorMessage).toHaveLength(2);
     });
@@ -56,14 +56,16 @@ test("only one error appears on submit of one incorrect field", async () => {
 
         const instrumentNameErrorMessage = screen.queryAllByText(/Enter a valid instrument name/i);
         expect(instrumentNameErrorMessage).toHaveLength(0);
-        
+
         const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
         expect(nameErrorMessage).toHaveLength(0);
-        
+
         const passwordErrorMessage = screen.queryAllByText(/Enter a password/i);
         expect(passwordErrorMessage).toHaveLength(0);
 
-        const emailErrorMessage = screen.queryAllByText(/Enter an email address in the correct format, such as name@example.com/i);
+        const emailErrorMessage = screen.queryAllByText(
+            /Enter an email address in the correct format, such as name@example.com/i,
+        );
         expect(emailErrorMessage).toHaveLength(2);
     });
 });
@@ -104,7 +106,9 @@ test("custom submit button label can be set", async () => {
         },
     ];
 
-    render(<StyledForm fields={fields} onSubmitFunction={() => {}} submitLabel="Press for bacon" />);
+    render(
+        <StyledForm fields={fields} onSubmitFunction={() => {}} submitLabel="Press for bacon" />,
+    );
 
     const successMessage = await screen.findByText(/Press for bacon/i);
     expect(successMessage).toBeInTheDocument();

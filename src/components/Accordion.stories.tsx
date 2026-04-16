@@ -7,7 +7,7 @@ const meta = {
     tags: ["autodocs"],
     argTypes: {
         Expandables: {
-            control: false, 
+            control: false,
         },
     },
 } satisfies Meta<typeof Accordion>;
@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        ContentId: "example-accordion", 
+        ContentId: "example-accordion",
         ShowAllEnabled: true,
         Expanded: false,
         Expandables: [

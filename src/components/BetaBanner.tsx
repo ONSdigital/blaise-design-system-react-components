@@ -10,7 +10,7 @@ export interface BetaBannerProps {
  * and to encourage them to provide feedback via a specified link.
  */
 export const BetaBanner = ({
-    feedbackLink = "https://ons.service-now.com/"
+    feedbackLink = "https://ons.service-now.com/",
 }: BetaBannerProps): ReactElement => {
     return (
         <div className="ons-phase-banner">
@@ -22,9 +22,7 @@ export const BetaBanner = ({
                     <div className="ons-grid__col ons-col-auto ons-u-flex-shrink">
                         <p className="ons-phase-banner__desc ons-u-fs-s ons-u-mb-no">
                             This is a new service – your&nbsp;
-                            <a href={feedbackLink}>
-                                feedback
-                            </a>
+                            <a href={feedbackLink}>feedback</a>
                             &nbsp;will help us improve it.
                         </p>
                     </div>
@@ -32,4 +30,4 @@ export const BetaBanner = ({
             </div>
         </div>
     );
-}
+};

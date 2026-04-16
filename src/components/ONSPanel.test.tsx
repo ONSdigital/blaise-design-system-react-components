@@ -36,12 +36,11 @@ describe("ONS Panel Test", () => {
         status: "warn" as const,
     };
 
-    function wrapper(renderFn: typeof render, props: ComponentProps<typeof ONSPanel>): RenderResult {
-        return renderFn(
-            <ONSPanel {...props}>
-                {props.children}
-            </ONSPanel>,
-        );
+    function wrapper(
+        renderFn: typeof render,
+        props: ComponentProps<typeof ONSPanel>,
+    ): RenderResult {
+        return renderFn(<ONSPanel {...props}>{props.children}</ONSPanel>);
     }
 
     it("matches Snapshot", () => {

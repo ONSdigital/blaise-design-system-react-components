@@ -45,7 +45,9 @@ describe("StyledForm Checkbox", () => {
         fireEvent.click(screen.getByTestId(/submit-button/i));
 
         await waitFor(() => {
-            const successMessage = screen.getByText(/Form submitted, questionnaires chosen: lms, opn/i);
+            const successMessage = screen.getByText(
+                /Form submitted, questionnaires chosen: lms, opn/i,
+            );
             expect(successMessage).toBeInTheDocument();
         });
     });
@@ -87,7 +89,9 @@ describe("StyledForm Checkbox", () => {
         fireEvent.click(screen.getByTestId(/submit-button/i));
 
         await waitFor(() => {
-            const successMessage = screen.getByText(/Form submitted, questionnaires chosen: lms, opn/i);
+            const successMessage = screen.getByText(
+                /Form submitted, questionnaires chosen: lms, opn/i,
+            );
             expect(successMessage).toBeInTheDocument();
         });
     });
