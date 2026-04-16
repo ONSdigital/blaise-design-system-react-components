@@ -1,0 +1,252 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StyledForm Checkbox > it matches snapshots 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <form
+        action="#"
+      >
+        <fieldset
+          class="ons-fieldset"
+        >
+          <legend
+            class="ons-fieldset__legend"
+          >
+            Select questionnaires
+          </legend>
+          <button
+            class="ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary"
+            type="button"
+          >
+            <span
+              class="ons-btn__inner"
+            >
+              <span
+                class="js-button-text"
+              >
+                Select All
+              </span>
+              <span
+                class="ons-u-vh"
+              >
+                 following checkboxes
+              </span>
+            </span>
+          </button>
+          <div
+            class="checkboxes__items"
+          >
+            <p
+              class="ons-checkboxes__item"
+            >
+              <span
+                class="ons-checkbox"
+              >
+                <input
+                  class="ons-checkbox__input js-checkbox"
+                  id="lms"
+                  name="questionnaire"
+                  type="checkbox"
+                  value="lms"
+                />
+                <label
+                  class="ons-checkbox__label "
+                  for="lms"
+                  id="lms-label"
+                >
+                  LMS
+                </label>
+              </span>
+            </p>
+            <br />
+            <p
+              class="ons-checkboxes__item"
+            >
+              <span
+                class="ons-checkbox"
+              >
+                <input
+                  class="ons-checkbox__input js-checkbox"
+                  id="opn"
+                  name="questionnaire"
+                  type="checkbox"
+                  value="opn"
+                />
+                <label
+                  class="ons-checkbox__label "
+                  for="opn"
+                  id="opn-label"
+                >
+                  OPN
+                </label>
+              </span>
+            </p>
+            <br />
+          </div>
+        </fieldset>
+        <br />
+        <button
+          class="ons-btn"
+          data-testid="submit-button"
+          type="submit"
+        >
+          <span
+            class="ons-btn__inner"
+          >
+            Save and continue
+          </span>
+        </button>
+      </form>
+    </div>
+  </body>,
+  "container": <div>
+    <form
+      action="#"
+    >
+      <fieldset
+        class="ons-fieldset"
+      >
+        <legend
+          class="ons-fieldset__legend"
+        >
+          Select questionnaires
+        </legend>
+        <button
+          class="ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary"
+          type="button"
+        >
+          <span
+            class="ons-btn__inner"
+          >
+            <span
+              class="js-button-text"
+            >
+              Select All
+            </span>
+            <span
+              class="ons-u-vh"
+            >
+               following checkboxes
+            </span>
+          </span>
+        </button>
+        <div
+          class="checkboxes__items"
+        >
+          <p
+            class="ons-checkboxes__item"
+          >
+            <span
+              class="ons-checkbox"
+            >
+              <input
+                class="ons-checkbox__input js-checkbox"
+                id="lms"
+                name="questionnaire"
+                type="checkbox"
+                value="lms"
+              />
+              <label
+                class="ons-checkbox__label "
+                for="lms"
+                id="lms-label"
+              >
+                LMS
+              </label>
+            </span>
+          </p>
+          <br />
+          <p
+            class="ons-checkboxes__item"
+          >
+            <span
+              class="ons-checkbox"
+            >
+              <input
+                class="ons-checkbox__input js-checkbox"
+                id="opn"
+                name="questionnaire"
+                type="checkbox"
+                value="opn"
+              />
+              <label
+                class="ons-checkbox__label "
+                for="opn"
+                id="opn-label"
+              >
+                OPN
+              </label>
+            </span>
+          </p>
+          <br />
+        </div>
+      </fieldset>
+      <br />
+      <button
+        class="ons-btn"
+        data-testid="submit-button"
+        type="submit"
+      >
+        <span
+          class="ons-btn__inner"
+        >
+          Save and continue
+        </span>
+      </button>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

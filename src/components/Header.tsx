@@ -1,19 +1,19 @@
 import { ReactElement, ReactNode } from "react";
 
 export interface NavigationLinks {
-    id: string,
-    label: string,
-    endpoint: string
+    id: string;
+    label: string;
+    endpoint: string;
 }
 
 export interface Props {
-    title: string
-    signOutButton?: boolean
-    noSave?: boolean
-    signOutFunction?: () => void
-    navigationLinks?: NavigationLinks[]
-    currentLocation?: string
-    createNavLink?: (id: string, label: string, endpoint: string) => ReactNode
+    title: string;
+    signOutButton?: boolean;
+    noSave?: boolean;
+    signOutFunction?: () => void;
+    navigationLinks?: NavigationLinks[];
+    currentLocation?: string;
+    createNavLink?: (id: string, label: string, endpoint: string) => ReactNode;
 }
 
 export const Header = ({
@@ -25,29 +25,22 @@ export const Header = ({
             return createNavLink(id, label, endpoint);
         }
         return (
-            <a className="ons-navigation__link" id={id} href={endpoint} role="link">
+            <a className="ons-navigation__link" id={id} href={endpoint}>
                 {label}
             </a>
         );
     };
 
-    let signOutText = "Save and sign out";
-    if (noSave) {
-        signOutText = "Sign out";
-    }
+    const signOutText = noSave ? "Sign out" : "Save and sign out";
     
     return (
         <header className="ons-header ons-header--internal">
             <div className="ons-header__top" role="banner">
                 <div className="ons-container">
-                    <div
-                        className="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
-                    >
+                    <div className="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap">
                         <div className="ons-grid__col ons-col-auto">
                             <a className="header__logo-link" href="/">
                                 <picture>
-                                    {/* <source media="(max-width: 499px)" srcSet="/img/ons-logo-stacked-neg-en.svg" */}
-                                    {/* alt="Office for National Statistics logo"/> */}
                                     <img
                                         className="ons-header__logo"
                                         src="https://cdn.ons.gov.uk/sdc/design-system/31.4.0/img/ons-logo-neg-en.svg"
@@ -61,21 +54,18 @@ export const Header = ({
             </div>
             <div className="ons-header__main">
                 <div className="ons-container">
-                    <div
-                        className="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
-                    >
+                    <div className="ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap">
                         <div className="ons-grid__col ons-col-auto ons-u-flex-shrink">
                             <div className="ons-header__title">{title}</div>
                         </div>
                         {
-                            signOutButton
-                            && (
+                            signOutButton && (
                                 <div className="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m">
                                     <button
                                         id="signout-button"
                                         data-test-id="signout-button"
                                         className="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
-                                        onClick={() => signOutFunction && signOutFunction()}
+                                        onClick={() => signOutFunction?.()}
                                         type="button"
                                     >
                                         <span className="ons-btn__inner">
@@ -104,8 +94,7 @@ export const Header = ({
                 </div>
             </div>
             {
-                (navigationLinks && navigationLinks.length !== 0)
-                && (
+                (navigationLinks?.length ?? 0) > 0 && (
                     <div className="ons-navigation-wrapper">
                         <div className="ons-container ons-container--gutterless@xxs@l">
                             <nav
@@ -117,10 +106,10 @@ export const Header = ({
                             >
                                 <ul className="ons-navigation__list">
                                     {
-                                        navigationLinks.map(({ id, label, endpoint }, index) => (
+                                        navigationLinks!.map(({ id, label, endpoint }) => (
                                             <li
-                                                key={index}
-                                                className={`ons-navigation__item ${(currentLocation === endpoint ? "ons-navigation__item--active" : "")}`}
+                                                key={id}
+                                                className={`ons-navigation__item ${currentLocation === endpoint ? "ons-navigation__item--active" : ""}`}
                                             >
                                                 {createLink(id, label, endpoint)}
                                             </li>

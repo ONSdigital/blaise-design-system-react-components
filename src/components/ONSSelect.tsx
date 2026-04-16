@@ -6,7 +6,6 @@ export interface Props {
     onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
     value: string;
     options: Option[];
-    defaultValue?: string;
     testId?: string;
 }
 
@@ -24,7 +23,7 @@ export class ONSSelect extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = { 
-            value: props.value !== undefined ? props.value : "" 
+            value: props.value ?? "" 
         };
     }
 
@@ -38,10 +37,7 @@ export class ONSSelect extends Component<Props, State> {
     handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const newValue = e.target.value;
         this.setState({ value: newValue });
-
-        if (this.props.onChange) {
-            this.props.onChange(e);
-        }
+        this.props.onChange?.(e);
     };
 
     render() {

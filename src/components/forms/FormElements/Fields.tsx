@@ -1,52 +1,203 @@
-import { Component, ErrorInfo, ReactNode } from "react";
-import { ONSPanel } from "../../ONSPanel";
+import { Fragment, ReactElement, InputHTMLAttributes } from "react";
+import { Field, useFormikContext, FieldInputProps } from "formik";
+import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
+import { isObjectWithProperty } from "../../../utilities/Types";
 
-export interface Props {
-    errorMessageText: string;
-    children: ReactNode;
+function toUpperCase(string: string): string {
+    return string.trim().replace(/^\w/, (c: string) => c.toUpperCase());
 }
 
-interface State {
-    hasError: boolean;
-    errorInfo: ErrorInfo | null;
+interface UnknownProps {
+    [key: string]: unknown;
 }
 
-/*
- * If an issue occurs in the render function of a React component, if not handled then the UI will fall over.
- * Wrappers will catch any error then display something else instead so if part of the page fails the
- * whole application does not break.
- *
- * Catches any issues and displays a error panel with a custom message provided. For example, you can wrap this around a
- * table, so if it fails to render this panel will show in its place on the page.
- */
+interface RadioFieldsetProps extends UnknownProps {
+    description?: string;
+    name: string;
+    radioOptions?: RadioFieldsetObject[];
+    autoFocus: boolean;
+}
 
-export class ErrorBoundary extends Component<Props, State> {
-    state: State = { 
-        hasError: false,
-        errorInfo: null 
-    };
+interface CheckboxesProps extends UnknownProps {
+    description?: string;
+    checkboxOptions?: CheckboxFieldsetObject[];
+    name: string;
+    autoFocus: boolean;
+}
 
-    static getDerivedStateFromError(_: Error): Partial<State> {
-        return { hasError: true };
-    }
+export function RadioFieldset({
+    description, name, radioOptions, ...props
+}: RadioFieldsetProps): ReactElement {
+    return (
+        <fieldset className="ons-fieldset">
+            <legend className="ons-fieldset__legend">
+                {description}
+            </legend>
+            <div className="ons-radios__items">
+                {radioOptions && radioOptions.length > 0 && radioOptions.map((radioOption: RadioFieldsetObject, radioOptionIndex: number) => (
+                    <Fragment key={radioOption.id}>
+                        <p className="ons-radios__item">
+                            <span className="ons-radio">
+                                <Field
+                                    type="radio"
+                                    id={radioOption.id}
+                                    name={name}
+                                    value={radioOption.value}
+                                    className="ons-radio__input js-radio"
+                                    {...props}
+                                    autoFocus={props.autoFocus && radioOptionIndex === 0}
+                                />
+                                <label
+                                    className={`ons-radio__label ${radioOption.description ? "ons-label--with-description" : ""}`}
+                                    htmlFor={radioOption.id}
+                                    id={`${radioOption.id}-label`}
+                                >
+                                    {radioOption.label}
+                                    {radioOption.description && (
+                                        <span
+                                            id={`${radioOption.id}-description-hint`}
+                                            className="ons-label__description ons-radio__label--with-description"
+                                        >
+                                            {radioOption.description}
+                                        </span>
+                                    )}
+                                </label>
+                                {radioOption.specifyOption && (
+                                    <span
+                                        className="ons-radio__other ons-radio__other--open"
+                                        id={`${radioOption.id}-other-wrap`}
+                                    >
+                                        <label
+                                            className="ons-label ons-u-fs-s--b"
+                                            htmlFor={radioOption.specifyOption.id}
+                                            id={`${radioOption.specifyOption.id}-label`}
+                                        >
+                                            {radioOption.specifyOption.description}
+                                        </label>
+                                        <Field
+                                            type={radioOption.specifyOption.type}
+                                            id={radioOption.specifyOption.id}
+                                            name={radioOption.specifyOption.name}
+                                            validate={radioOption.specifyOption.validate}
+                                            min={radioOption.specifyOption.min}
+                                            className="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
+                                        />
+                                    </span>
+                                )}
+                            </span>
+                        </p>
+                        <br />
+                    </Fragment>
+                ))}
+            </div>
+        </fieldset>
+    );
+}
 
-    componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-        this.setState({
-            errorInfo,
-        });
-        console.error("ErrorBoundary caught an error:", error, errorInfo);
-    }
+export function CheckboxesFieldset({
+    description, checkboxOptions, name, ...props
+}: CheckboxesProps): ReactElement {
+    const { values, setFieldValue } = useFormikContext<Record<string, string[]>>();
+    const allValues = (checkboxOptions || []).map((checkboxOption) => checkboxOption.value);
 
-    render(): ReactNode {
-        if (this.state.hasError) {
-            return (
-                <ONSPanel status="error">
-                    <p>
-                        {this.props.errorMessageText}
-                    </p>
-                </ONSPanel>
-            );
+    function isAllSelected() {
+        if (!isObjectWithProperty(values, name)) {
+            return false;
         }
-        return this.props.children;
+        const currentValues = values[name] || [];
+        return allValues.length > 0 && allValues.every((item) => currentValues.includes(item));
     }
+
+    function handleSelectAll() {
+        if (isAllSelected()) {
+            setFieldValue(name, []);
+        } else {
+            setFieldValue(name, allValues);
+        }
+    }
+
+    return (
+        <fieldset className="ons-fieldset">
+            <legend className="ons-fieldset__legend">
+                {description}
+            </legend>
+
+            <button
+                type="button"
+                className="ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary"
+                onClick={handleSelectAll}
+            >
+                <span className="ons-btn__inner">
+                    <span className="js-button-text">{isAllSelected() ? "Unselect All" : "Select All"}</span>
+                    <span className="ons-u-vh"> following checkboxes</span>
+                </span>
+            </button>
+
+            <div className="checkboxes__items">
+                {checkboxOptions && checkboxOptions.length > 0 && checkboxOptions.map((checkboxOption: CheckboxFieldsetObject, checkboxIndex: number) => (
+                    <Fragment key={checkboxOption.id}>
+                        <p className="ons-checkboxes__item">
+                            <span className="ons-checkbox">
+                                <Field
+                                    type="checkbox"
+                                    id={checkboxOption.id}
+                                    name={name}
+                                    value={checkboxOption.value}
+                                    className="ons-checkbox__input js-checkbox"
+                                    {...props}
+                                    autoFocus={props.autoFocus && checkboxIndex === 0}
+                                />
+                                <label
+                                    className={`ons-checkbox__label ${checkboxOption.description ? "ons-label--with-description" : ""}`}
+                                    htmlFor={checkboxOption.id}
+                                    id={`${checkboxOption.id}-label`}
+                                >
+                                    {checkboxOption.label}
+                                    {checkboxOption.description && (
+                                        <span
+                                            id={`${checkboxOption.id}-description-hint`}
+                                            className="ons-label__description checkbox__label--with-description"
+                                        >
+                                            {checkboxOption.description}
+                                        </span>
+                                    )}
+                                </label>
+                            </span>
+                        </p>
+                        <br />
+                    </Fragment>
+                ))}
+            </div>
+        </fieldset>
+    );
+}
+
+interface ONSInputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+    field: FieldInputProps<string>; 
+    description?: string;
+}
+
+export function ONSInputField({
+    field, description, ...props
+}: ONSInputFieldProps): ReactElement {
+    const id = props.id || field.name;
+    return (
+        <div className="ons-field">
+            <label className={`ons-label ${description ? "ons-label--with-description" : ""}`} htmlFor={id}>
+                {toUpperCase(field.name)}
+            </label>
+            {description && (
+                <span id={`${id}-description-hint`} className="ons-label__description ons-input--with-description">
+                    {description}
+                </span>
+            )}
+            <input
+                id={id}
+                className="ons-input ons-input--text ons-input-type__input"
+                {...field}
+                value={field.value ?? ""}
+                {...props}
+            />
+        </div>
+    );
 }

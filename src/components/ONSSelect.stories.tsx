@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ONSSelect, Props } from "./ONSSelect";
+import { ONSSelect, Props } from "./ONSSelect"; 
 
 const Selection = [
     { label: "LMS", value: "lms" },
@@ -31,7 +31,7 @@ export const Default: Story = {
                 value={selectedValue}
                 onChange={(e: ChangeEvent<HTMLSelectElement>) => {
                     setSelectedValue(e.target.value);
-                    if (args.onChange) args.onChange(e);
+                    args.onChange?.(e);
                 }}
             />
         );
@@ -41,6 +41,5 @@ export const Default: Story = {
         label: "Select survey",
         options: Selection,
         value: Selection[0].value,
-        defaultValue: Selection[0].value,
     },
 };

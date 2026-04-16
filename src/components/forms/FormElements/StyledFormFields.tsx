@@ -4,12 +4,12 @@ import { ONSInputField, RadioFieldset, CheckboxesFieldset } from "./Fields";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 
 interface Props {
-    description?: string,
-    name: string,
-    radioOptions?: RadioFieldsetObject[],
-    checkboxOptions?: CheckboxFieldsetObject[],
-    autoFocus?: boolean,
-    type?: string,
+    description?: string;
+    name: string;
+    radioOptions?: RadioFieldsetObject[];
+    checkboxOptions?: CheckboxFieldsetObject[];
+    autoFocus?: boolean;
+    type?: string;
     [key: string]: unknown;
 }
 

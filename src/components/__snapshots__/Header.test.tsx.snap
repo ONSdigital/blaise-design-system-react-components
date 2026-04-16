@@ -16,7 +16,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
             class="ons-container"
           >
             <div
-              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
+              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
             >
               <div
                 class="ons-grid__col ons-col-auto"
@@ -81,7 +81,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                     class="ons-navigation__link"
                     href="/"
                     id="home-link"
-                    role="link"
                   >
                     Home
                   </a>
@@ -93,7 +92,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                     class="ons-navigation__link"
                     href="/deploy"
                     id="deploy-questionnaire-link"
-                    role="link"
                   >
                     Deploy a questionnaire
                   </a>
@@ -105,7 +103,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                     class="ons-navigation__link"
                     href="/history"
                     id="audit-logs-link"
-                    role="link"
                   >
                     View deployment history
                   </a>
@@ -117,7 +114,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                     class="ons-navigation__link"
                     href="/status"
                     id="blaise-status-link"
-                    role="link"
                   >
                     Check Blaise status
                   </a>
@@ -141,7 +137,7 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
           class="ons-container"
         >
           <div
-            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
+            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
           >
             <div
               class="ons-grid__col ons-col-auto"
@@ -206,7 +202,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                   class="ons-navigation__link"
                   href="/"
                   id="home-link"
-                  role="link"
                 >
                   Home
                 </a>
@@ -218,7 +213,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                   class="ons-navigation__link"
                   href="/deploy"
                   id="deploy-questionnaire-link"
-                  role="link"
                 >
                   Deploy a questionnaire
                 </a>
@@ -230,7 +224,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                   class="ons-navigation__link"
                   href="/history"
                   id="audit-logs-link"
-                  role="link"
                 >
                   View deployment history
                 </a>
@@ -242,7 +235,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
                   class="ons-navigation__link"
                   href="/status"
                   id="blaise-status-link"
-                  role="link"
                 >
                   Check Blaise status
                 </a>
@@ -323,7 +315,7 @@ exports[`Check Header with sign out button: > matches Snapshot with sign out but
             class="ons-container"
           >
             <div
-              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
+              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
             >
               <div
                 class="ons-grid__col ons-col-auto"
@@ -415,7 +407,7 @@ exports[`Check Header with sign out button: > matches Snapshot with sign out but
           class="ons-container"
         >
           <div
-            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
+            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
           >
             <div
               class="ons-grid__col ons-col-auto"
@@ -564,7 +556,7 @@ exports[`Check default Header: > matches Snapshot 1`] = `
             class="ons-container"
           >
             <div
-              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
+              class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
             >
               <div
                 class="ons-grid__col ons-col-auto"
@@ -621,7 +613,7 @@ exports[`Check default Header: > matches Snapshot 1`] = `
           class="ons-container"
         >
           <div
-            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap "
+            class="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap"
           >
             <div
               class="ons-grid__col ons-col-auto"

@@ -31,7 +31,6 @@ describe("StyledForm Checkbox", () => {
         fireEvent.click(screen.getByTestId(/submit-button/i));
 
         await waitFor(() => {
-            // CHANGED: Added the colon to match the new UI format
             const successMessage = screen.getByText(/Form submitted, questionnaires chosen: lms/i);
             expect(successMessage).toBeInTheDocument();
         });
@@ -46,7 +45,6 @@ describe("StyledForm Checkbox", () => {
         fireEvent.click(screen.getByTestId(/submit-button/i));
 
         await waitFor(() => {
-            // CHANGED: Added the colon and space after comma to match the .join(", ") format
             const successMessage = screen.getByText(/Form submitted, questionnaires chosen: lms, opn/i);
             expect(successMessage).toBeInTheDocument();
         });
@@ -89,7 +87,6 @@ describe("StyledForm Checkbox", () => {
         fireEvent.click(screen.getByTestId(/submit-button/i));
 
         await waitFor(() => {
-            // CHANGED: Updated string matching here as well
             const successMessage = screen.getByText(/Form submitted, questionnaires chosen: lms, opn/i);
             expect(successMessage).toBeInTheDocument();
         });

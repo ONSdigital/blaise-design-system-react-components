@@ -13,33 +13,35 @@ export type ExpandableContent = {
     title: string;
 };
 
-export interface ExpandableProps extends ExpandableContent {
+interface ExpandableProps extends ExpandableContent {
     expandableIndex: number;
     panelsOpen: boolean[];
-    setPanelsOpen: (panelsOpen: boolean[]) => void;
+    setPanelsOpen: Dispatch<SetStateAction<boolean[]>>;
 }
 
 const Expandable = ({
     title, content, contentId, expandableIndex, panelsOpen, setPanelsOpen,
 }: ExpandableProps) => {
     const safeId = contentId || `expandable-${expandableIndex}`;
+    
     const togglePanel = (event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>) => {
-        const newPanelsOpen = [...panelsOpen];
-        newPanelsOpen[expandableIndex] = !newPanelsOpen[expandableIndex];
-        setPanelsOpen(newPanelsOpen);
         event.preventDefault();
+        setPanelsOpen((prevPanels) => {
+            const newPanels = [...prevPanels];
+            newPanels[expandableIndex] = !newPanels[expandableIndex];
+            return newPanels;
+        });
     };
-    const panelIsOpen = (): boolean => {
-        return panelsOpen[expandableIndex];
-    };
+
+    const panelIsOpen = panelsOpen[expandableIndex];
 
     return (
         <details
             id={`${safeId}-accordion-${expandableIndex}`}
-            className="ons-collapsible ons-js-collapsible ons-collapsible--accordion "
+            className="ons-collapsible ons-js-collapsible ons-collapsible--accordion"
             data-btn-close="Hide"
             data-group="accordion"
-            open={panelIsOpen()}
+            open={panelIsOpen}
         >
             <summary
                 className="ons-collapsible__heading ons-js-collapsible-heading"
@@ -51,9 +53,9 @@ const Expandable = ({
                         togglePanel(e);
                     }
                 }}
-                aria-expanded={panelIsOpen()}
+                aria-expanded={panelIsOpen}
                 aria-controls={`${safeId}-accordion-${expandableIndex}-content`}
-                data-ga-action={panelIsOpen() ? "Close panel" : "Open panel"}
+                data-ga-action={panelIsOpen ? "Close panel" : "Open panel"}
                 tabIndex={0}
             >
                 <div className="ons-collapsible__controls">
@@ -66,7 +68,7 @@ const Expandable = ({
                             focusable="false"
                         >
                             <path
-                                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+                                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
                                 transform="translate(-5.02 -1.59)"
                             />
                         </svg>
@@ -77,7 +79,7 @@ const Expandable = ({
                 id={`${safeId}-accordion-${expandableIndex}-content`}
                 data-testid={`${safeId}-accordion-${expandableIndex}-content`}
                 className="ons-collapsible__content ons-js-collapsible-content"
-                aria-hidden={!panelIsOpen()}
+                aria-hidden={!panelIsOpen}
             >
                 {content}
             </div>
@@ -86,6 +88,7 @@ const Expandable = ({
 };
 
 export interface Props {
+    // TODO: convert to camelCase, will break consumers
     ShowAllEnabled?: boolean;
     Expandables: ExpandableContent[];
     ContentId: string;
@@ -103,9 +106,7 @@ const ShowAll = ({
     showAllEnabled, panelsOpen, setPanelsOpen, contentId,
 }: ShowAllProps) => {
     
-    if (!showAllEnabled) {
-        return null; 
-    }
+    if (!showAllEnabled) return null; 
 
     const showing = !panelsOpen.includes(false);
     
@@ -116,7 +117,7 @@ const ShowAll = ({
             className="ons-btn ons-js-collapsible-all ons-u-mb-s ons-btn--secondary ons-btn--small"
             data-close-all="Hide all"
             data-group="accordion"
-            onClick={() => setPanelsOpen(new Array(panelsOpen.length).fill(!showing))}
+            onClick={() => setPanelsOpen((prev) => new Array(prev.length).fill(!showing))}
         >
             <span className="ons-btn__inner ons-js-collapsible-all-inner">
                 {showing ? "Hide all" : "Show all"}
@@ -140,19 +141,17 @@ export const Accordion = ({
                 setPanelsOpen={setPanelsOpen} 
                 contentId={ContentId} 
             />
-            {
-                Expandables.map((expandable: ExpandableContent, index: number) => (
-                    <Expandable
-                        key={`${expandable.contentId || "item"}-${index}`}
-                        content={expandable.content}
-                        contentId={expandable.contentId}
-                        title={expandable.title}
-                        expandableIndex={index}
-                        setPanelsOpen={setPanelsOpen}
-                        panelsOpen={panelsOpen}
-                    />
-                ))
-            }
+            {Expandables.map((expandable: ExpandableContent, index: number) => (
+                <Expandable
+                    key={`${expandable.contentId || "item"}-${index}`}
+                    content={expandable.content}
+                    contentId={expandable.contentId}
+                    title={expandable.title}
+                    expandableIndex={index}
+                    setPanelsOpen={setPanelsOpen}
+                    panelsOpen={panelsOpen}
+                />
+            ))}
         </div>
     );
 };
