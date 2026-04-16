@@ -35,6 +35,7 @@ export const Header = ({
     currentLocation,
     createNavLink,
 }: Props): ReactElement => {
+    
     const createLink = (id: string, label: string, endpoint: string) => {
         if (createNavLink) {
             return createNavLink(id, label, endpoint);
@@ -50,7 +51,7 @@ export const Header = ({
 
     return (
         <header className="ons-header ons-header--internal">
-            <div className="ons-header__top" role="banner">
+            <div className="ons-header__top">
                 <div className="ons-container">
                     <div className="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap">
                         <div className="ons-grid__col ons-col-auto">
@@ -78,7 +79,7 @@ export const Header = ({
                                 <button
                                     id="signout-button"
                                     data-test-id="signout-button"
-                                    className="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
+                                    className="ons-btn ons-btn--ghost ons-btn--exit"
                                     onClick={() => signOutFunction?.()}
                                     type="button"
                                 >
@@ -115,7 +116,6 @@ export const Header = ({
                             id="main-nav"
                             aria-label="Main menu"
                             data-analytics="header-navigation"
-                            role="navigation"
                         >
                             <ul className="ons-navigation__list">
                                 {navigationLinks?.map(({ id, label, endpoint }) => (
@@ -133,4 +133,4 @@ export const Header = ({
             )}
         </header>
     );
-};
+}

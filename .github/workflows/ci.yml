@@ -1,4 +1,5 @@
-name: CI Validation ✅
+---
+name: ✅ Run CI Validation
 permissions:
   contents: read
 on:
@@ -7,24 +8,24 @@ on:
   push:
     branches: [ main ]
 jobs:
-  ci-validate:
+  run-ci-validation:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository 🛎️
-        uses: actions/checkout@v4
-      - name: Setup Node and Cache 🔧
-        uses: actions/setup-node@v4
+      - name: 🛎️ Checkout Repository
+        uses: actions/checkout@v6
+      - name: 🔧 Setup Node and Cache
+        uses: actions/setup-node@v6
         with:
           node-version: 24.x
           cache: yarn
-      - name: Install Dependencies 📦
+      - name: 📦 Install Dependencies
         run: yarn install --frozen-lockfile
-      - name: Run Linter 🧹
+      - name: 🧹 Run Linter
         run: yarn run lint
-      - name: Run Tests and Generate Coverage 🧪
+      - name: 🧪 Run Tests and Generate Coverage
         run: yarn run test --coverage
-      - name: Upload to Codecov 📈
-        uses: codecov/codecov-action@v4
+      - name: 📈 Upload to Codecov
+        uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true

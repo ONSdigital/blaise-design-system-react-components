@@ -10,7 +10,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
       >
         <div
           class="ons-header__top"
-          role="banner"
         >
           <div
             class="ons-container"
@@ -69,7 +68,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
               class="ons-navigation ons-navigation--main ons-js-navigation"
               data-analytics="header-navigation"
               id="main-nav"
-              role="navigation"
             >
               <ul
                 class="ons-navigation__list"
@@ -131,7 +129,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
     >
       <div
         class="ons-header__top"
-        role="banner"
       >
         <div
           class="ons-container"
@@ -190,7 +187,6 @@ exports[`Check Header with navigation bar: > matches Snapshot with navigation 1`
             class="ons-navigation ons-navigation--main ons-js-navigation"
             data-analytics="header-navigation"
             id="main-nav"
-            role="navigation"
           >
             <ul
               class="ons-navigation__list"
@@ -309,7 +305,6 @@ exports[`Check Header with sign out button: > matches Snapshot with sign out but
       >
         <div
           class="ons-header__top"
-          role="banner"
         >
           <div
             class="ons-container"
@@ -358,7 +353,7 @@ exports[`Check Header with sign out button: > matches Snapshot with sign out but
                 class="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m"
               >
                 <button
-                  class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
+                  class="ons-btn ons-btn--ghost ons-btn--exit"
                   data-test-id="signout-button"
                   id="signout-button"
                   type="button"
@@ -402,7 +397,6 @@ exports[`Check Header with sign out button: > matches Snapshot with sign out but
     >
       <div
         class="ons-header__top"
-        role="banner"
       >
         <div
           class="ons-container"
@@ -451,7 +445,7 @@ exports[`Check Header with sign out button: > matches Snapshot with sign out but
               class="ons-grid__col ons-col-auto ons-u-flex-no-shrink ons-u-d-no@xxs@m"
             >
               <button
-                class="ons-btn ons-btn--ghost ons-u-d-no@xxs@m ons-btn--exit"
+                class="ons-btn ons-btn--ghost ons-btn--exit"
                 data-test-id="signout-button"
                 id="signout-button"
                 type="button"
@@ -552,7 +546,6 @@ exports[`Check default Header: > matches Snapshot 1`] = `
       >
         <div
           class="ons-header__top"
-          role="banner"
         >
           <div
             class="ons-container"
@@ -609,7 +602,6 @@ exports[`Check default Header: > matches Snapshot 1`] = `
     >
       <div
         class="ons-header__top"
-        role="banner"
       >
         <div
           class="ons-container"
