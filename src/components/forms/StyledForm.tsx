@@ -1,7 +1,7 @@
 import { Form, Formik, FormikValues } from "formik";
 import { ONSButton } from "../ONSButton";
 import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
-import { StyledFormField } from "./FormElements/StyledFormFields";
+import { StyledFormField } from "./form-elements/StyledFormFields";
 
 export interface RadioSpecifyOption {
     /** Unique HTML ID for the specify input. */

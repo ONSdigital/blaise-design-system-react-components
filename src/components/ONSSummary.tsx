@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, Fragment } from "react";
 import { Data } from "react-csv/lib/core";
-import { FormatTitle, FormatKey } from "../utilities/TextFormatting";
+import { FormatTitle, FormatKey } from "../utilities/text-formatting";
 
 /** Represents a single section within a summary table. */
 export type Group = {

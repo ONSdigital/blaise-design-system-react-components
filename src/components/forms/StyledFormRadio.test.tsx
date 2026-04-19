@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ExampleRadioForm } from "./ExampleForm/ExampleRadioForm";
+import { ExampleRadioForm } from "./example-form/ExampleRadioForm";
 import { StyledForm } from "./StyledForm";
-import { validateRadio } from "./ExampleForm/FormValidation";
+import { validateRadio } from "./example-form/FormValidation";
 
 const setup = (component = <ExampleRadioForm />) => {
     return {

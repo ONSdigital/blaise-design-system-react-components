@@ -12,15 +12,15 @@ import { ONSTextInput } from "./components/ONSTextInput";
 import { ONSUpload } from "./components/ONSUpload";
 import { ONSLoadingPanel } from "./components/ONSLoadingPanel";
 import { Collapsible } from "./components/Collapsible";
-import { ErrorBoundary } from "./components/ErrorHandling/ErrorBoundary";
-import { DefaultErrorBoundary } from "./components/ErrorHandling/DefaultErrorBoundary";
+import { ErrorBoundary } from "./components/error-handling/ErrorBoundary";
+import { DefaultErrorBoundary } from "./components/error-handling/DefaultErrorBoundary";
 import { ONSTable } from "./components/ONSTable";
 import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/ONSSummary";
-import { FormatTitle, TitleCase } from "./utilities/TextFormatting";
+import { FormatTitle, TitleCase } from "./utilities/text-formatting";
 import { Accordion } from "./components/Accordion";
 import { StyledForm, FormFieldObject } from "./components/forms/StyledForm";
 import { StyledFormErrorSummary } from "./components/forms/StyledFormErrorSummary";
-import { StyledFormField } from "./components/forms/FormElements/StyledFormFields";
+import { StyledFormField } from "./components/forms/form-elements/StyledFormFields";
 
 export type { Group, FormFieldObject };
 

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ExampleForm } from "./ExampleForm/ExampleForm";
+import { ExampleForm } from "./example-form/ExampleForm";
 import { StyledForm } from "./StyledForm";
 
 const setup = (component = <ExampleForm />) => {

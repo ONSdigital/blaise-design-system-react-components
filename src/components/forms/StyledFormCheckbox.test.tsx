@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ExampleCheckboxForm } from "./ExampleForm/ExampleCheckboxForm";
+import { ExampleCheckboxForm } from "./example-form/ExampleCheckboxForm";
 import { StyledForm } from "./StyledForm";
 
 const setup = (component = <ExampleCheckboxForm />) => {
