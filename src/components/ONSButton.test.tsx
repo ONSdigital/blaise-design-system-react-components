@@ -1,142 +1,89 @@
-import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ComponentProps } from "react";
 import { ONSButton } from "./ONSButton";
 
-describe("ONS Button Test", () => {
-    const Props = {
-        label: "Submit1",
-        primary: false,
-        small: true,
-        field: true,
-        onButtonClick: vi.fn(),
-    };
+type ButtonProps = ComponentProps<typeof ONSButton>;
 
-    const exportButtonProps = {
-        label: "Submit1.5",
+const setup = (overrideProps: Partial<ButtonProps> = {}) => {
+    const props: ButtonProps = {
+        label: "Submit",
+        onClick: vi.fn(),
         primary: false,
-        small: true,
-        field: true,
-        onButtonClick: vi.fn(),
-        loading: false,
-    };
-
-    const smallButtonProps = {
-        label: "Submit2",
-        primary: true,
-        onButtonClick: vi.fn(),
-        loading: true,
-        small: true,
-    };
-    const loadingButtonProps = {
-        label: "Submit4",
-        primary: true,
         small: false,
-        onButtonClick: vi.fn(),
-        loading: true,
-        field: true,
-    };
-
-    const disabledProps = {
-        label: "Submit1",
-        primary: false,
-        small: true,
-        field: true,
-        onButtonClick: vi.fn(),
-        disabled: true,
-    };
-
-    const callToActionProps = {
-        label: "Submit1",
-        primary: false,
-        small: true,
-        field: true,
-        onButtonClick: vi.fn(),
+        field: false,
+        loading: false,
         disabled: false,
-        action: true,
-        testid: "Unique-ID",
+        action: false,
+        ...overrideProps,
     };
 
-    const testIdProps = {
-        label: "Submit1",
-        primary: false,
-        small: true,
-        field: true,
-        onButtonClick: vi.fn(),
-        disabled: false,
-        action: true,
-        testId: "Unique-ID",
+    return {
+        user: userEvent.setup(),
+        props,
+        ...render(<ONSButton {...props} />),
     };
+};
 
-    type WrapperInputProps = Omit<ComponentProps<typeof ONSButton>, "onClick" | "testid"> & {
-        onButtonClick?: () => void;
-        testId?: string;
-    };
+describe("ONSButton", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
 
-    function wrapper(renderFn: typeof render, props: WrapperInputProps): RenderResult {
-        return renderFn(
-            <ONSButton
-                label={props.label}
-                id={props.id}
-                primary={props.primary}
-                small={props.small}
-                field={props.field}
-                loading={props.loading}
-                marginRight={props.marginRight}
-                onClick={props.onButtonClick}
-                disabled={props.disabled}
-                action={props.action}
-                testid={props.testId}
-            />,
-        );
-    }
+            expect(asFragment()).toMatchSnapshot();
+        });
 
-    it("matches Snapshot", () => {
-        expect(wrapper(render, Props)).toMatchSnapshot();
+        it("should display the correct label text", () => {
+            const { props } = setup({ label: "Custom Label" });
+
+            expect(screen.getByText(props.label as string)).toBeVisible();
+        });
+
+        it("should apply the custom data-testid", () => {
+            const { props } = setup({ testid: "custom-btn-id" });
+            const button = screen.getByRole("button");
+
+            expect(button).toHaveAttribute("data-testid", `${props.testid}-button`);
+        });
     });
 
-    it("should render correctly", () => {
-        const { container } = render(<ONSButton {...Props} />);
-        expect(container).toBeDefined();
+    describe("Interactions", () => {
+        it("should trigger the onClick handler when clicked", async () => {
+            const { user, props } = setup();
+            const button = screen.getByRole("button", { name: props.label as string });
+
+            await user.click(button);
+            expect(props.onClick).toHaveBeenCalledTimes(1);
+        });
     });
 
-    it("should render with the correct label", () => {
-        render(<ONSButton {...Props} />);
-        expect(screen.getByText(/Submit1/i).textContent).toContain(Props.label);
-    });
+    describe("Props", () => {
+        it("should append the loader class when loading is true", () => {
+            setup({ loading: true });
+            const button = screen.getByRole("button");
 
-    it("simulates click events", async () => {
-        wrapper(render, exportButtonProps);
-        fireEvent.click(screen.getByText(/Submit1.5/i));
-        expect(exportButtonProps.onButtonClick).toHaveBeenCalledTimes(1);
-    });
+            expect(button).toHaveClass("ons-btn--loader");
+        });
 
-    it("displays loading button", () => {
-        wrapper(render, loadingButtonProps);
-        const button = screen.getByRole("button");
-        expect(button.getAttribute("class")).toMatch(/ons-btn--loader/gi);
-    });
+        it("should append the small class when small is true", () => {
+            setup({ small: true });
+            const button = screen.getByRole("button");
 
-    it("displays small button", () => {
-        wrapper(render, smallButtonProps);
-        const button = screen.getByRole("button");
-        expect(button.getAttribute("class")).toMatch(/ons-btn--small/gi);
-    });
+            expect(button).toHaveClass("ons-btn--small");
+        });
 
-    it("displays disabled button", () => {
-        render(<ONSButton {...disabledProps} />);
-        const button = screen.getByRole("button");
-        expect(button.getAttribute("class")).toMatch(/ons-btn--disabled/gi);
-    });
+        it("should append the disabled class when disabled is true", () => {
+            setup({ disabled: true });
+            const button = screen.getByRole("button");
 
-    it("displays Call to Action button", () => {
-        render(<ONSButton {...callToActionProps} />);
-        const button = screen.getByRole("button");
-        expect(button.getAttribute("class")).toMatch(/ons-btn--link/gi);
-    });
+            expect(button).toHaveClass("ons-btn--disabled");
+        });
 
-    it("has data-testid set correctly", () => {
-        render(<ONSButton {...callToActionProps} />);
-        const button = screen.getByRole("button");
-        expect(button).toHaveAttribute("data-testid", `${testIdProps.testId}-button`);
+        it("should append the link class when action is true", () => {
+            setup({ action: true });
+            const button = screen.getByRole("button");
+
+            expect(button).toHaveClass("ons-btn--link");
+        });
     });
 });

@@ -31,7 +31,9 @@ const Expandable = ({
         event.preventDefault();
         setPanelsOpen((prevPanels) => {
             const newPanels = [...prevPanels];
+
             newPanels[expandableIndex] = !newPanels[expandableIndex];
+
             return newPanels;
         });
     };
@@ -140,7 +142,10 @@ export const Accordion = ({
     );
 
     return (
-        <div id={`${contentId}-accordion`} className="ons-accordion">
+        <div
+            id={`${contentId}-accordion`}
+            className="ons-accordion"
+        >
             <ShowAll
                 showAllEnabled={showAllEnabled}
                 panelsOpen={panelsOpen}

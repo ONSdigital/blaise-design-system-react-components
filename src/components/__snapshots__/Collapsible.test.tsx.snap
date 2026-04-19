@@ -1,168 +1,58 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Collapsible Test > matches Snapshot 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <details
-        class="ons-collapsible ons-js-collapsible ons-u-mt-l"
-        data-save-state="true"
-        id="collapsible-_r_0_"
-        role="group"
-      >
-        <summary
-          aria-controls="collapsible-_r_0_-content"
-          aria-expanded="false"
-          class="ons-collapsible__heading ons-js-collapsible-heading"
-          data-ga-action="Open panel"
-          data-testid="collapsible-heading"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="ons-collapsible__controls"
-          >
-            <h2
-              class="ons-collapsible__title"
-            >
-              What is the Collapsible title?
-            </h2>
-            <span
-              class="ons-collapsible__icon"
-            >
-              <svg
-                aria-hidden="true"
-                class="ons-svg-icon"
-                focusable="false"
-                viewBox="0 0 7.5 12.85"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
-                  transform="translate(-5.02 -1.59)"
-                />
-              </svg>
-            </span>
-          </div>
-        </summary>
-        <div
-          aria-hidden="true"
-          class="ons-collapsible__content ons-js-collapsible-content"
-          data-testid="collapsible-content"
-          id="collapsible-_r_0_-content"
-        >
-          <p>
-            Inside the Collapsible
-          </p>
-        </div>
-      </details>
-    </div>
-  </body>,
-  "container": <div>
-    <details
-      class="ons-collapsible ons-js-collapsible ons-u-mt-l"
-      data-save-state="true"
-      id="collapsible-_r_0_"
-      role="group"
+exports[`Collapsible > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <details
+    class="ons-collapsible ons-js-collapsible ons-u-mt-l"
+    data-save-state="true"
+    id="collapsible-_r_0_"
+    role="group"
+  >
+    <summary
+      aria-controls="collapsible-_r_0_-content"
+      aria-expanded="false"
+      class="ons-collapsible__heading ons-js-collapsible-heading"
+      data-ga-action="Open panel"
+      data-testid="collapsible-heading"
+      role="button"
+      tabindex="0"
     >
-      <summary
-        aria-controls="collapsible-_r_0_-content"
-        aria-expanded="false"
-        class="ons-collapsible__heading ons-js-collapsible-heading"
-        data-ga-action="Open panel"
-        data-testid="collapsible-heading"
-        role="button"
-        tabindex="0"
-      >
-        <div
-          class="ons-collapsible__controls"
-        >
-          <h2
-            class="ons-collapsible__title"
-          >
-            What is the Collapsible title?
-          </h2>
-          <span
-            class="ons-collapsible__icon"
-          >
-            <svg
-              aria-hidden="true"
-              class="ons-svg-icon"
-              focusable="false"
-              viewBox="0 0 7.5 12.85"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
-                transform="translate(-5.02 -1.59)"
-              />
-            </svg>
-          </span>
-        </div>
-      </summary>
       <div
-        aria-hidden="true"
-        class="ons-collapsible__content ons-js-collapsible-content"
-        data-testid="collapsible-content"
-        id="collapsible-_r_0_-content"
+        class="ons-collapsible__controls"
       >
-        <p>
-          Inside the Collapsible
-        </p>
+        <h2
+          class="ons-collapsible__title"
+        >
+          Collapsible Title
+        </h2>
+        <span
+          class="ons-collapsible__icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="ons-svg-icon"
+            focusable="false"
+            viewBox="0 0 7.5 12.85"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+              transform="translate(-5.02 -1.59)"
+            />
+          </svg>
+        </span>
       </div>
-    </details>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+    </summary>
+    <div
+      aria-hidden="true"
+      class="ons-collapsible__content ons-js-collapsible-content"
+      data-testid="collapsible-content"
+      id="collapsible-_r_0_-content"
+    >
+      <p>
+        Collapsible Content
+      </p>
+    </div>
+  </details>
+</DocumentFragment>
 `;

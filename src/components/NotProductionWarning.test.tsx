@@ -1,22 +1,33 @@
 import { render, screen } from "@testing-library/react";
 import { NotProductionWarning } from "./NotProductionWarning";
 
-describe("not production warning test", () => {
-    it("matches Snapshot", () => {
-        expect(render(<NotProductionWarning />)).toMatchSnapshot();
-    });
+const setup = () => {
+    return {
+        ...render(<NotProductionWarning />),
+    };
+};
 
-    it("should render correctly", () => {
-        const { container } = render(<NotProductionWarning />);
-        expect(container).toBeDefined();
-    });
+describe("NotProductionWarning", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
 
-    it("should display warning paragraph text", () => {
-        render(<NotProductionWarning />);
-        expect(
-            screen.getByText(
-                /This is not a production environment. Do not upload any production data to this service./,
-            ),
-        ).toBeVisible();
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should render the warning container", () => {
+            const { container } = setup();
+
+            expect(container).not.toBeEmptyDOMElement();
+        });
+
+        it("should display the correct warning text regarding production data", () => {
+            setup();
+            expect(
+                screen.getByText(
+                    /This is not a production environment. Do not upload any production data to this service./i,
+                ),
+            ).toBeVisible();
+        });
     });
 });

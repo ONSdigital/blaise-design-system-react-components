@@ -5,7 +5,6 @@ import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 import pluginImport from "eslint-plugin-import";
-// ADDED: Prettier integration
 import pluginPrettier from "eslint-plugin-prettier";
 import configPrettier from "eslint-config-prettier";
 
@@ -13,7 +12,6 @@ const __dirname = import.meta.dirname;
 
 export default tseslint.config(
     {
-        // UPDATED: Centralized ignore list (works for both ESLint and Prettier plugin)
         ignores: [
             "dist",
             "coverage",
@@ -62,12 +60,24 @@ export default tseslint.config(
         plugins: {
             "react-hooks": pluginReactHooks,
             import: pluginImport,
-            // ADDED: Prettier plugin
             prettier: pluginPrettier,
         },
         rules: {
             ...pluginReactHooks.configs.recommended.rules,
-            // ADDED: Prettier rule enforcement
+
+            "no-trailing-spaces": "error",
+            "eol-last": ["error", "always"],
+            "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 0, maxBOF: 0 }],
+            "padding-line-between-statements": [
+                "error",
+                { blankLine: "always", prev: "*", next: "return" },
+                { blankLine: "always", prev: "import", next: "*" },
+                { blankLine: "any", prev: "import", next: "import" },
+                { blankLine: "always", prev: ["const", "let", "var"], next: "*" },
+                { blankLine: "any", prev: ["const", "let", "var"], next: ["const", "let", "var"] },
+                { blankLine: "always", prev: "*", next: ["class", "function", "export"] },
+            ],
+
             "prettier/prettier": [
                 "error",
                 {
@@ -77,9 +87,14 @@ export default tseslint.config(
                     trailingComma: "all",
                     printWidth: 100,
                     bracketSpacing: true,
-                    endOfLine: "auto",
+                    jsxSingleQuote: false,
+                    arrowParens: "always",
+                    singleAttributePerLine: true,
+                    jsxBracketSameLine: false,
+                    endOfLine: "lf",
                 },
             ],
+
             "react/react-in-jsx-scope": "off",
             "react/require-default-props": "off",
             "react/no-unstable-nested-components": ["error", { allowAsProps: true }],
@@ -113,6 +128,5 @@ export default tseslint.config(
             "storybook/no-renderer-packages": "off",
         },
     },
-    // ADDED: Must be last to disable conflicting rules
     configPrettier,
 );

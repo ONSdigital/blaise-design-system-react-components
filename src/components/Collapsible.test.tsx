@@ -1,56 +1,71 @@
-import { fireEvent, render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { ComponentProps } from "react";
 import { Collapsible } from "./Collapsible";
 
-describe("Collapsible Test", () => {
-    const contentText = "Inside the Collapsible";
-    const Props = {
-        title: "What is the Collapsible title?",
-        content: <p>{contentText}</p>,
+type CollapsibleProps = ComponentProps<typeof Collapsible>;
+
+const setup = (overrideProps: Partial<CollapsibleProps> = {}) => {
+    const props: CollapsibleProps = {
+        title: "Collapsible Title",
+        children: <p>Collapsible Content</p>,
+        ...overrideProps,
     };
 
-    it("matches Snapshot", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        expect(wrapper).toMatchSnapshot();
-    });
+    return {
+        user: userEvent.setup(),
+        props,
+        ...render(<Collapsible {...props} />),
+    };
+};
 
-    it("renders title", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        expect(wrapper.queryAllByText(Props.title)).toHaveLength(1);
-    });
+describe("Collapsible", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
 
-    it("renders children inside the Collapsible", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        expect(wrapper.getByText(contentText)).toBeInTheDocument();
-    });
-
-    it("children inside the Collapsible should be hidden by aria by default", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "true");
-    });
-
-    it("should change content div to aria-hidden false when title is clicked on", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.click(wrapper.getByRole("button"));
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
-    });
-
-    it("should change content div to aria-hidden false when you press the SpaceBar key on the title", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.keyDown(wrapper.getByTestId("collapsible-heading"), {
-            key: " ",
-            code: "Space",
-            keyCode: 32,
+            expect(asFragment()).toMatchSnapshot();
         });
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
+
+        it("should display the title", () => {
+            const { props } = setup();
+
+            expect(screen.getByText(props.title)).toBeVisible();
+        });
+
+        it("should hide the content by default (aria-hidden)", () => {
+            setup();
+            const content = screen.getByTestId("collapsible-content");
+
+            expect(content).toHaveAttribute("aria-hidden", "true");
+        });
     });
 
-    it("should change content div to aria-hidden false when you press the enter key on the title", () => {
-        const wrapper = render(<Collapsible title={Props.title}>{Props.content}</Collapsible>);
-        fireEvent.keyDown(wrapper.getByTestId("collapsible-heading"), {
-            key: "Enter",
-            code: "Enter",
-            keyCode: 13,
+    describe("Interactions", () => {
+        it("should reveal the content when the toggle button is clicked", async () => {
+            const { user, props } = setup();
+            const button = screen.getByRole("button", { name: props.title });
+
+            await user.click(button);
+            expect(screen.getByTestId("collapsible-content")).toHaveAttribute(
+                "aria-hidden",
+                "false",
+            );
         });
-        expect(wrapper.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
+
+        it.each([
+            { key: " ", description: "space key" },
+            { key: "{Enter}", description: "enter key" },
+        ])("should reveal the content when the $description is pressed", async ({ key }) => {
+            const { user } = setup();
+            const heading = screen.getByTestId("collapsible-heading");
+
+            heading.focus();
+            await user.keyboard(key);
+            expect(screen.getByTestId("collapsible-content")).toHaveAttribute(
+                "aria-hidden",
+                "false",
+            );
+        });
     });
 });

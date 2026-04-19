@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ONSErrorPanel } from "./ONSErrorPanel";
 
 const meta = {
     title: "Components/Error Panel",
     component: ONSErrorPanel,
-    tags: ["autodocs"],
     argTypes: {
         text: {
             control: "text",

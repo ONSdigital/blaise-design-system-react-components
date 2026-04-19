@@ -102,6 +102,7 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
         } else {
             acc[field.name] = "";
         }
+
         return acc;
     }, {});
 
@@ -119,8 +120,13 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
                     <StyledFormErrorSummary />
                     {fields.map((field, index) => {
                         const isAutoFocus = isValid && index === 0;
+
                         return (
-                            <StyledFormField key={field.name} {...field} autoFocus={isAutoFocus} />
+                            <StyledFormField
+                                key={field.name}
+                                {...field}
+                                autoFocus={isAutoFocus}
+                            />
                         );
                     })}
                     <br />

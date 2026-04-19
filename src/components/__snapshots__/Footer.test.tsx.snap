@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Footer Test > matches Snapshot 1`] = `
+exports[`Footer > Rendering > should match the snapshot 1`] = `
 <DocumentFragment>
   <footer
     class="ons-footer"

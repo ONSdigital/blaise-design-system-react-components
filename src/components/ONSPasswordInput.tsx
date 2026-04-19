@@ -35,10 +35,16 @@ export const ONSPasswordInput = ({
 
     return (
         <p className="ons-field">
-            <label className="ons-label" htmlFor={inputId}>
+            <label
+                className="ons-label"
+                htmlFor={inputId}
+            >
                 {label}
             </label>
-            <span className="ons-checkbox ons-checkbox--toggle" style={spacingStyle}>
+            <span
+                className="ons-checkbox ons-checkbox--toggle"
+                style={spacingStyle}
+            >
                 <input
                     type="checkbox"
                     id={`${inputId}-toggle`}
@@ -47,7 +53,10 @@ export const ONSPasswordInput = ({
                     onClick={togglePassword}
                     data-testid="login-password-toggle"
                 />
-                <label className="ons-checkbox__label" htmlFor={`${inputId}-toggle`}>
+                <label
+                    className="ons-checkbox__label"
+                    htmlFor={`${inputId}-toggle`}
+                >
                     Show password
                 </label>
             </span>

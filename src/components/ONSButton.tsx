@@ -46,6 +46,7 @@ export const ONSButton = ({
 }: Props): ReactElement => {
     const getStyles = (): CSSProperties => {
         if (hidden) return { display: "none" };
+
         return {
             marginRight: marginRight ? `${marginRight}px` : undefined,
         };
@@ -84,7 +85,13 @@ export const ONSButton = ({
                         aria-hidden="true"
                         focusable="false"
                     >
-                        <rect x="0" y="0" width="100" height="100" fill="none" />
+                        <rect
+                            x="0"
+                            y="0"
+                            width="100"
+                            height="100"
+                            fill="none"
+                        />
                         {[...Array(12)].map((_, i) => (
                             <rect
                                 key={i}

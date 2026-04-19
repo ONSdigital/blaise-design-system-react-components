@@ -1,13 +1,32 @@
 import { render } from "@testing-library/react";
+import { ComponentProps } from "react";
 import { ONSErrorPanel } from "./ONSErrorPanel";
 
-describe("ONS Error Panel Test", () => {
-    it("matches Snapshot", () => {
-        expect(render(<ONSErrorPanel />)).toMatchSnapshot();
-    });
+type ErrorPanelProps = ComponentProps<typeof ONSErrorPanel>;
 
-    it("should render correctly", () => {
-        const { container } = render(<ONSErrorPanel />);
-        expect(container).toBeDefined();
+const setup = (overrideProps: Partial<ErrorPanelProps> = {}) => {
+    const props: ErrorPanelProps = {
+        ...overrideProps,
+    } as ErrorPanelProps;
+
+    return {
+        props,
+        ...render(<ONSErrorPanel {...props} />),
+    };
+};
+
+describe("ONSErrorPanel", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
+
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should render the error panel container", () => {
+            const { container } = setup();
+
+            expect(container).not.toBeEmptyDOMElement();
+        });
     });
 });

@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { NotProductionWarning } from "./NotProductionWarning";
 
 const meta = {
     title: "Components/Not Production Warning",
     component: NotProductionWarning,
-    tags: ["autodocs"],
 } satisfies Meta<typeof NotProductionWarning>;
 
 export default meta;

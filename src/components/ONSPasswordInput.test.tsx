@@ -1,79 +1,81 @@
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ComponentProps } from "react";
-import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
 import { ONSPasswordInput } from "./ONSPasswordInput";
 
-describe("ONS Password Input Test", () => {
-    const Props = {};
-    const passwordInputProps = {
-        label: "Submit",
-        inputId: "submit",
-    };
-    const changeProps = {
+type PasswordInputProps = ComponentProps<typeof ONSPasswordInput>;
+
+const setup = (overrideProps: Partial<PasswordInputProps> = {}) => {
+    const props: PasswordInputProps = {
+        label: "Password",
+        inputId: "password-input",
+        value: "",
         onChange: vi.fn(),
-    };
-    const undefinedChangeProps = {
-        onChange: undefined,
+        ...overrideProps,
     };
 
-    function wrapper(
-        renderFn: typeof render,
-        props: Partial<ComponentProps<typeof ONSPasswordInput>>,
-    ): RenderResult {
-        return renderFn(
+    return {
+        user: userEvent.setup(),
+        props,
+        ...render(
             <ONSPasswordInput
                 value={props.value as string}
-                label={props.label}
-                inputId={props.inputId}
+                label={props.label as string}
+                inputId={props.inputId as string}
                 marginTop={props.marginTop}
                 onChange={props.onChange}
             />,
-        );
-    }
+        ),
+    };
+};
 
-    it("matches Snapshot", () => {
-        expect(wrapper(render, Props)).toMatchSnapshot();
-    });
+describe("ONSPasswordInput", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
 
-    it("should render correctly", () => {
-        expect(wrapper(render, Props)).toBeDefined();
-    });
-
-    it("should render with the correct label and input ID", () => {
-        wrapper(render, passwordInputProps);
-
-        const labelElement = screen.getByText(passwordInputProps.label);
-        const inputElement = screen.getByLabelText(passwordInputProps.label);
-
-        expect(labelElement).toHaveTextContent(passwordInputProps.label);
-        expect(inputElement).toHaveAttribute("id", passwordInputProps.inputId);
-    });
-
-    it("should handle a defined change", () => {
-        wrapper(render, changeProps);
-        fireEvent.change(screen.getByTestId("login-password-input"), {
-            target: { value: "test1" },
+            expect(asFragment()).toMatchSnapshot();
         });
-        fireEvent.change(screen.getByTestId("login-password-input"), {
-            target: { value: "test2" },
+
+        it("should display the correct label and link it to the input ID", () => {
+            const { props } = setup({ label: "Submit", inputId: "submit-id" });
+            const labelElement = screen.getByText(props.label as string);
+            const inputElement = screen.getByLabelText(props.label as string);
+
+            expect(labelElement).toBeVisible();
+            expect(inputElement).toHaveAttribute("id", props.inputId);
         });
-        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 
-    it("should handle an undefined change", () => {
-        wrapper(render, undefinedChangeProps);
-        fireEvent.change(screen.getByTestId("login-password-input"), { target: { value: "test" } });
-        expect(undefinedChangeProps.onChange).toBeUndefined();
-    });
+    describe("Interactions", () => {
+        it("should trigger the onChange handler for every character typed", async () => {
+            const { user, props } = setup();
+            const input = screen.getByTestId("login-password-input");
 
-    it("should handle a click on the checkbox", () => {
-        wrapper(render, undefinedChangeProps);
+            await user.type(input, "abc");
+            expect(props.onChange).toHaveBeenCalledTimes(3);
+        });
 
-        const passwordToggle = screen.getByTestId<HTMLInputElement>("login-password-toggle");
+        it("should safely handle user input when no onChange handler is provided", async () => {
+            const { user } = setup({ onChange: undefined });
+            const input = screen.getByTestId("login-password-input");
 
-        fireEvent.click(passwordToggle);
-        expect(passwordToggle.checked).toBeTruthy();
+            await expect(user.type(input, "test")).resolves.not.toThrow();
+        });
 
-        fireEvent.click(passwordToggle);
-        expect(passwordToggle.checked).toBeFalsy();
+        it("should toggle the checkbox state and reveal the password text", async () => {
+            const { user } = setup();
+            const passwordInput = screen.getByTestId("login-password-input");
+            const toggleCheckbox = screen.getByTestId<HTMLInputElement>("login-password-toggle");
+
+            expect(toggleCheckbox.checked).toBe(false);
+            expect(passwordInput).toHaveAttribute("type", "password");
+            await user.click(toggleCheckbox);
+            expect(toggleCheckbox.checked).toBe(true);
+            expect(passwordInput).toHaveAttribute("type", "text");
+            await user.click(toggleCheckbox);
+            expect(toggleCheckbox.checked).toBe(false);
+            expect(passwordInput).toHaveAttribute("type", "password");
+        });
     });
 });

@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ExternalLink } from "./ExternalLink";
 
 const meta = {
     title: "Components/External Link",
     component: ExternalLink,
-    tags: ["autodocs"],
 } satisfies Meta<typeof ExternalLink>;
 
 export default meta;

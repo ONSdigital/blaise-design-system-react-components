@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Accordion } from "./Accordion";
 
 const meta = {
     title: "Components/Accordion",
     component: Accordion,
-    tags: ["autodocs"],
     argTypes: {
         Expandables: {
             control: false,

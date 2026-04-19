@@ -37,7 +37,12 @@ export const ONSPanel = ({
         .join(" ");
 
     return (
-        <div data-testid={testID} id={id} className={className} hidden={hidden}>
+        <div
+            data-testid={testID}
+            id={id}
+            className={className}
+            hidden={hidden}
+        >
             {status === "success" && (
                 <span className="ons-panel__icon">
                     <svg
@@ -56,7 +61,10 @@ export const ONSPanel = ({
             )}
             {status === "warn" && (
                 <>
-                    <span className="ons-panel__icon" aria-hidden="true">
+                    <span
+                        className="ons-panel__icon"
+                        aria-hidden="true"
+                    >
                         !
                     </span>
                     <span className="ons-u-vh">Warning: </span>

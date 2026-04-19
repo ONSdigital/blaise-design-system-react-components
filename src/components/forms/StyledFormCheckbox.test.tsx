@@ -1,115 +1,106 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ExampleCheckboxForm } from "./ExampleForm/ExampleCheckboxForm";
 import { StyledForm } from "./StyledForm";
 
-describe("StyledForm Checkbox", () => {
-    test("it matches snapshots", async () => {
-        const formPage = render(<ExampleCheckboxForm />);
+const setup = (component = <ExampleCheckboxForm />) => {
+    return {
+        user: userEvent.setup(),
+        ...render(component),
+    };
+};
 
-        expect(formPage).toMatchSnapshot();
-    });
+describe("ExampleCheckboxForm", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
 
-    test("error appears on submit of empty form", async () => {
-        render(<ExampleCheckboxForm />);
-
-        fireEvent.click(screen.getByTestId(/submit-button/i));
-
-        await waitFor(() => {
-            const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
-            expect(errorMessage).toBeInTheDocument();
-
-            const checkboxErrorMessage = screen.queryAllByText(/Select an option/i);
-            expect(checkboxErrorMessage).toHaveLength(2);
+            expect(asFragment()).toMatchSnapshot();
         });
     });
 
-    test("submit function is called when one checkbox is selected", async () => {
-        render(<ExampleCheckboxForm />);
+    describe("Interactions", () => {
+        it("should display validation errors upon submitting an empty form", async () => {
+            const { user } = setup();
+            const submitButton = screen.getByRole("button", { name: /submit selection/i });
 
-        fireEvent.click(screen.getByLabelText(/LMS/i));
+            await user.click(submitButton);
+            expect(await screen.findByText(/There is 1 problem with your answer/i)).toBeVisible();
+            const checkboxErrors = screen.queryAllByText(/Select an option/i);
 
-        fireEvent.click(screen.getByTestId(/submit-button/i));
+            expect(checkboxErrors).toHaveLength(2);
+        });
 
-        await waitFor(() => {
-            const successMessage = screen.getByText(/Form submitted, questionnaires chosen: lms/i);
-            expect(successMessage).toBeInTheDocument();
+        it("should call the submit function when a single checkbox is selected", async () => {
+            const { user } = setup();
+
+            await user.click(screen.getByLabelText(/LMS/i));
+            await user.click(screen.getByRole("button", { name: /submit selection/i }));
+            expect(
+                await screen.findByText(/Form submitted, questionnaires chosen: lms/i),
+            ).toBeVisible();
+        });
+
+        it("should call the submit function when multiple checkboxes are selected", async () => {
+            const { user } = setup();
+
+            await user.click(screen.getByLabelText(/LMS/i));
+            await user.click(screen.getByLabelText(/OPN/i));
+            await user.click(screen.getByRole("button", { name: /submit selection/i }));
+            expect(
+                await screen.findByText(/Form submitted, questionnaires chosen: lms, opn/i),
+            ).toBeVisible();
+        });
+
+        it("should select all checkboxes when 'Select all' is clicked", async () => {
+            const { user } = setup();
+
+            await user.click(screen.getByRole("button", { name: /select all/i }));
+            await user.click(screen.getByRole("button", { name: /submit selection/i }));
+            expect(
+                await screen.findByText(/Form submitted, questionnaires chosen: lms, opn/i),
+            ).toBeVisible();
+        });
+
+        it("should deselect all checkboxes when 'Unselect all' is clicked", async () => {
+            const { user } = setup();
+
+            await user.click(screen.getByRole("button", { name: /select all/i }));
+            await user.click(screen.getByRole("button", { name: /unselect all/i }));
+            await user.click(screen.getByRole("button", { name: /submit selection/i }));
+            expect(await screen.findByText(/There is 1 problem with your answer/i)).toBeVisible();
+            expect(screen.queryAllByText(/Select an option/i)).toHaveLength(2);
         });
     });
 
-    test("submit function is called when multiple checkboxes are selected", async () => {
-        render(<ExampleCheckboxForm />);
-
-        fireEvent.click(screen.getByLabelText(/LMS/i));
-        fireEvent.click(screen.getByLabelText(/OPN/i));
-
-        fireEvent.click(screen.getByTestId(/submit-button/i));
-
-        await waitFor(() => {
-            const successMessage = screen.getByText(
-                /Form submitted, questionnaires chosen: lms, opn/i,
+    describe("Props", () => {
+        it("should submit the correct data array based on the provided initial_value", async () => {
+            const submitFunction = vi.fn();
+            const fields = [
+                {
+                    name: "topping",
+                    description: "Select your favorite topping",
+                    type: "checkbox",
+                    initial_value: ["bacon", "pineapple"],
+                    checkboxOptions: [
+                        { id: "bacon", value: "bacon", label: "Bacon" },
+                        { id: "cheese", value: "cheese", label: "Cheese" },
+                        { id: "pineapple", value: "pineapple", label: "Pineapple" },
+                    ],
+                },
+            ];
+            const { user } = setup(
+                <StyledForm
+                    fields={fields}
+                    onSubmitFunction={submitFunction}
+                />,
             );
-            expect(successMessage).toBeInTheDocument();
-        });
-    });
 
-    test("setting initial value", async () => {
-        const fields = [
-            {
-                name: "topping",
-                description: "Select your favorite topping",
-                type: "checkbox",
-                initial_value: ["bacon", "pineapple"],
-                checkboxOptions: [
-                    { id: "bacon", value: "bacon", label: "Bacon" },
-                    { id: "cheese", value: "cheese", label: "Cheese" },
-                    { id: "pineapple", value: "pineapple", label: "Pineapple" },
-                ],
-            },
-        ];
-
-        const submitFunction = vi.fn();
-
-        render(<StyledForm fields={fields} onSubmitFunction={submitFunction} />);
-
-        fireEvent.click(screen.getByTestId(/submit-button/i));
-
-        await waitFor(() => {
+            await user.click(screen.getByRole("button", { name: /save and continue/i }));
             expect(submitFunction).toHaveBeenCalledWith(
                 expect.objectContaining({ topping: ["bacon", "pineapple"] }),
                 expect.any(Function),
             );
-        });
-    });
-
-    test("all checkboxes are selected when select all button is clicked", async () => {
-        render(<ExampleCheckboxForm />);
-
-        fireEvent.click(screen.getByText(/Select all/i));
-
-        fireEvent.click(screen.getByTestId(/submit-button/i));
-
-        await waitFor(() => {
-            const successMessage = screen.getByText(
-                /Form submitted, questionnaires chosen: lms, opn/i,
-            );
-            expect(successMessage).toBeInTheDocument();
-        });
-    });
-
-    test("all checkboxes are deselected when unselect all button is clicked", async () => {
-        render(<ExampleCheckboxForm />);
-
-        fireEvent.click(screen.getByText(/Select all/i));
-        fireEvent.click(screen.getByText(/Unselect all/i));
-
-        fireEvent.click(screen.getByTestId(/submit-button/i));
-
-        await waitFor(() => {
-            const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
-            expect(errorMessage).toBeInTheDocument();
-
-            const checkboxErrorMessage = screen.queryAllByText(/Select an option/i);
-            expect(checkboxErrorMessage).toHaveLength(2);
         });
     });
 });

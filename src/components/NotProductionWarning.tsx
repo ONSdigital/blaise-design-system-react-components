@@ -12,7 +12,11 @@ export const NotProductionWarning = (): ReactElement => {
                     className="ons-panel ons-panel--warn-branded ons-panel--no-title"
                     style={{ background: "#222" }}
                 >
-                    <span className="ons-panel__icon" aria-hidden="true" style={{ color: "#222" }}>
+                    <span
+                        className="ons-panel__icon"
+                        aria-hidden="true"
+                        style={{ color: "#222" }}
+                    >
                         !
                     </span>
                     <span className="ons-panel__assistive-text ons-u-vh">Warning: </span>

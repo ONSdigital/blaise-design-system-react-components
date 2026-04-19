@@ -1,0 +1,115 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Accordion > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-accordion"
+    id="test-accordion"
+  >
+    <details
+      class="ons-collapsible ons-js-collapsible ons-collapsible--accordion"
+      data-btn-close="Hide"
+      data-group="accordion"
+      id="foo-accordion-0"
+    >
+      <summary
+        aria-controls="foo-accordion-0-content"
+        aria-expanded="false"
+        class="ons-collapsible__heading ons-js-collapsible-heading"
+        data-ga-action="Open panel"
+        data-testid="foo-accordion-0-heading"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="ons-collapsible__controls"
+        >
+          <h2
+            class="ons-collapsible__title"
+          >
+            Foo
+          </h2>
+          <span
+            class="ons-collapsible__icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="ons-svg-icon"
+              focusable="false"
+              viewBox="0 0 7.5 12.85"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+                transform="translate(-5.02 -1.59)"
+              />
+            </svg>
+          </span>
+        </div>
+      </summary>
+      <div
+        aria-hidden="true"
+        class="ons-collapsible__content ons-js-collapsible-content"
+        data-testid="foo-accordion-0-content"
+        id="foo-accordion-0-content"
+      >
+        <p>
+          foo
+        </p>
+      </div>
+    </details>
+    <details
+      class="ons-collapsible ons-js-collapsible ons-collapsible--accordion"
+      data-btn-close="Hide"
+      data-group="accordion"
+      id="bar-accordion-1"
+    >
+      <summary
+        aria-controls="bar-accordion-1-content"
+        aria-expanded="false"
+        class="ons-collapsible__heading ons-js-collapsible-heading"
+        data-ga-action="Open panel"
+        data-testid="bar-accordion-1-heading"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="ons-collapsible__controls"
+        >
+          <h2
+            class="ons-collapsible__title"
+          >
+            Bar
+          </h2>
+          <span
+            class="ons-collapsible__icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="ons-svg-icon"
+              focusable="false"
+              viewBox="0 0 7.5 12.85"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+                transform="translate(-5.02 -1.59)"
+              />
+            </svg>
+          </span>
+        </div>
+      </summary>
+      <div
+        aria-hidden="true"
+        class="ons-collapsible__content ons-js-collapsible-content"
+        data-testid="bar-accordion-1-content"
+        id="bar-accordion-1-content"
+      >
+        <p>
+          bar
+        </p>
+      </div>
+    </details>
+  </div>
+</DocumentFragment>
+`;

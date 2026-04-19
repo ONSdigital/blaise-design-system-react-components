@@ -13,12 +13,20 @@ export interface Props {
 
 export const ONSTable = ({ columns, children, tableCaption, tableID }: Props) => {
     return (
-        <table className="ons-table" data-testid={tableID} id={tableID}>
+        <table
+            className="ons-table"
+            data-testid={tableID}
+            id={tableID}
+        >
             {tableCaption && <caption className="ons-table__caption">{tableCaption}</caption>}
             <thead className="ons-table__head">
                 <tr className="ons-table__row">
                     {columns.map((title: string, index: number) => (
-                        <th scope="col" className="ons-table__header" key={`${title}-${index}`}>
+                        <th
+                            scope="col"
+                            className="ons-table__header"
+                            key={`${title}-${index}`}
+                        >
                             {title}
                         </th>
                     ))}

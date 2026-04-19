@@ -35,13 +35,17 @@ export const Header = ({
     currentLocation,
     createNavLink,
 }: Props): ReactElement => {
-    
     const createLink = (id: string, label: string, endpoint: string) => {
         if (createNavLink) {
             return createNavLink(id, label, endpoint);
         }
+
         return (
-            <a className="ons-navigation__link" id={id} href={endpoint}>
+            <a
+                className="ons-navigation__link"
+                id={id}
+                href={endpoint}
+            >
                 {label}
             </a>
         );
@@ -55,7 +59,10 @@ export const Header = ({
                 <div className="ons-container">
                     <div className="ons-header__grid-top ons-grid ons-grid--gutterless ons-grid--flex ons-grid--between ons-grid--vertical-center ons-grid--no-wrap">
                         <div className="ons-grid__col ons-col-auto">
-                            <a className="ons-header__org-logo-link" href="/">
+                            <a
+                                className="ons-header__org-logo-link"
+                                href="/"
+                            >
                                 <picture>
                                     <img
                                         className="ons-header__org-logo"
@@ -133,4 +140,4 @@ export const Header = ({
             )}
         </header>
     );
-}
+};

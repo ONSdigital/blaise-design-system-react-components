@@ -1,63 +1,73 @@
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ComponentProps } from "react";
-import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
 import { ONSSelect } from "./ONSSelect";
 
-describe("ONS Select Test", () => {
-    const Selection = [
-        { label: "1", value: "1" },
-        { label: "2", value: "2" },
-        { label: "3", value: "3" },
-    ];
+type SelectProps = ComponentProps<typeof ONSSelect>;
 
-    const Props = {
+const defaultOptions = [
+    { label: "Option 1", value: "1" },
+    { label: "Option 2", value: "2" },
+    { label: "Option 3", value: "3" },
+];
+
+const setup = (overrideProps: Partial<SelectProps> = {}) => {
+    const props: SelectProps = {
         id: "select-thing",
         label: "Select From",
-        value: "select value",
-        options: Selection,
-        testId: "test-id",
-    };
-
-    const changeProps = {
-        id: "select-thing",
-        label: "Select From",
-        options: Selection,
-        testId: "test-id",
+        value: "",
+        options: defaultOptions,
+        testId: "test-select",
         onChange: vi.fn(),
+        ...overrideProps,
     };
 
-    function wrapper(
-        renderFn: typeof render,
-        props: Partial<ComponentProps<typeof ONSSelect>>,
-    ): RenderResult {
-        return renderFn(
+    return {
+        user: userEvent.setup(),
+        props,
+        ...render(
             <ONSSelect
                 id={props.id}
                 label={props.label}
                 onChange={props.onChange}
                 value={props.value as string}
-                options={props.options!}
+                options={props.options}
                 testId={props.testId}
             />,
-        );
-    }
+        ),
+    };
+};
 
-    it("matches Snapshot", () => {
-        expect(wrapper(render, Props)).toMatchSnapshot();
+describe("ONSSelect", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
+
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should display the correct label associated with the select element", () => {
+            const { props } = setup();
+
+            expect(screen.getByLabelText(props.label as string)).toBeInTheDocument();
+        });
+
+        it("should render all provided options in the dropdown", () => {
+            setup();
+            expect(screen.getByRole("option", { name: "Option 1" })).toBeInTheDocument();
+            expect(screen.getByRole("option", { name: "Option 2" })).toBeInTheDocument();
+            expect(screen.getByRole("option", { name: "Option 3" })).toBeInTheDocument();
+        });
     });
 
-    it("should render correctly", () => {
-        expect(wrapper(render, Props)).toBeDefined();
-    });
+    describe("Interactions", () => {
+        it("should trigger the onChange handler when a new option is selected", async () => {
+            const { user, props } = setup();
+            const selectElement = screen.getByTestId(props.testId as string);
 
-    it("should render with the correct label", () => {
-        wrapper(render, Props);
-        expect(screen.getByLabelText(Props.label)).toBeDefined();
-    });
-
-    it("simulates change events", () => {
-        wrapper(render, changeProps);
-        fireEvent.change(screen.getByTestId("test-id"), { target: { value: "test" } });
-        fireEvent.change(screen.getByTestId("test-id"), { target: { value: "test2" } });
-        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
+            await user.selectOptions(selectElement, "2");
+            await user.selectOptions(selectElement, "3");
+            expect(props.onChange).toHaveBeenCalledTimes(2);
+        });
     });
 });

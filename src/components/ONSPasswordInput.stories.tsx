@@ -1,11 +1,10 @@
 import { useState, ChangeEvent } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ONSPasswordInput } from "./ONSPasswordInput";
 
 const meta = {
     title: "Components/Password Input",
     component: ONSPasswordInput,
-    tags: ["autodocs"],
     argTypes: {
         onChange: {
             action: "changed",

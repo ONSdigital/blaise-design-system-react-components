@@ -13,7 +13,6 @@ export const StyledFormErrorSummary = () => {
     const errorFocus = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // Accessibility requirement: Focus the error summary if submit failed
         if (!isValid && submitCount > 0 && !isSubmitting) {
             errorFocus.current?.focus();
         }
@@ -47,8 +46,14 @@ export const StyledFormErrorSummary = () => {
             <div className="ons-panel__body">
                 <ol className="ons-list">
                     {errorKeys.map((field) => (
-                        <li key={field} className="ons-list__item">
-                            <a href={`#${field}`} className="ons-list__link ons-js-inpagelink">
+                        <li
+                            key={field}
+                            className="ons-list__item"
+                        >
+                            <a
+                                href={`#${field}`}
+                                className="ons-list__link ons-js-inpagelink"
+                            >
                                 {String(errors[field as keyof typeof errors])}
                             </a>
                         </li>

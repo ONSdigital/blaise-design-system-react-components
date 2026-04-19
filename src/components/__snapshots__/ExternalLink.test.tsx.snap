@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`External Link Test > matches Snapshot 1`] = `
+exports[`ExternalLink > Rendering > should match the snapshot 1`] = `
 <DocumentFragment>
   <a
     aria-label="Aria label description"

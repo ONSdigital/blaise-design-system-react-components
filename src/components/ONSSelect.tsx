@@ -28,7 +28,10 @@ export const ONSSelect = ({ label, id, onChange, value, options, testId }: Props
     return (
         <div className="ons-field">
             {label !== undefined && (
-                <label className="ons-label" htmlFor={id}>
+                <label
+                    className="ons-label"
+                    htmlFor={id}
+                >
                     {label}
                 </label>
             )}
@@ -40,7 +43,10 @@ export const ONSSelect = ({ label, id, onChange, value, options, testId }: Props
                 onChange={onChange}
                 data-testid={testId}
             >
-                <option value="" disabled>
+                <option
+                    value=""
+                    disabled
+                >
                     Select an option
                 </option>
                 {options.map((option, index) => (

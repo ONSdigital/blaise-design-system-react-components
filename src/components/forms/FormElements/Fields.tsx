@@ -119,6 +119,7 @@ export function CheckboxesFieldset({
             return false;
         }
         const currentValues = values[name] || [];
+
         return allValues.length > 0 && allValues.every((item) => currentValues.includes(item));
     };
 
@@ -196,6 +197,7 @@ interface ONSInputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 /** A single ONS-styled text input integrated with Formik. */
 export function ONSInputField({ field, description, ...props }: ONSInputFieldProps): ReactElement {
     const id = props.id || field.name;
+
     return (
         <div className="ons-field">
             <label

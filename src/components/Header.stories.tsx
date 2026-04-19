@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Header } from "./Header";
 
 const meta = {
     title: "Components/Header",
     component: Header,
-    tags: ["autodocs"],
     argTypes: {
         signOutFunction: { action: "signed-out" },
         navigationLinks: { control: "object" },

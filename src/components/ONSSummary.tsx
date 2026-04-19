@@ -42,7 +42,10 @@ export function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): Rea
                 <td className="ons-summary__item-title">
                     <div className="ons-summary__item--text">{FormatTitle(fieldName)}</div>
                 </td>
-                <td className="ons-summary__values" colSpan={2}>
+                <td
+                    className="ons-summary__values"
+                    colSpan={2}
+                >
                     {fieldValue}
                 </td>
             </tr>

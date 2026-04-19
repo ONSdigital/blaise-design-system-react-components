@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Collapsible } from "./Collapsible";
 
 const meta = {
     title: "Components/Collapsible",
     component: Collapsible,
-    tags: ["autodocs"],
     argTypes: {
         children: {
             control: false,

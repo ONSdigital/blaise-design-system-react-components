@@ -1,51 +1,53 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ONSTable > renders a formatted table 1`] = `
-<table
-  class="ons-table"
-  data-testid="my-test-table"
-  id="my-test-table"
->
-  <thead
-    class="ons-table__head"
+exports[`ONSTable > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <table
+    class="ons-table"
+    data-testid="my-test-table"
+    id="my-test-table"
   >
-    <tr
-      class="ons-table__row"
+    <thead
+      class="ons-table__head"
     >
-      <th
-        class="ons-table__header"
-        scope="col"
+      <tr
+        class="ons-table__row"
       >
-        column1
-      </th>
-      <th
-        class="ons-table__header"
-        scope="col"
-      >
-        column2
-      </th>
-      <th
-        class="ons-table__header"
-        scope="col"
-      >
-        column3
-      </th>
-    </tr>
-  </thead>
-  <tbody
-    class="ons-table__body"
-  >
-    <tr>
-      <td>
-        Value column 1
-      </td>
-      <td>
-        Value column 2
-      </td>
-      <td>
-        Value column 3
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <th
+          class="ons-table__header"
+          scope="col"
+        >
+          column1
+        </th>
+        <th
+          class="ons-table__header"
+          scope="col"
+        >
+          column2
+        </th>
+        <th
+          class="ons-table__header"
+          scope="col"
+        >
+          column3
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ons-table__body"
+    >
+      <tr>
+        <td>
+          Value column 1
+        </td>
+        <td>
+          Value column 2
+        </td>
+        <td>
+          Value column 3
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
 `;

@@ -1,241 +1,69 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ONS Summary Group Table test > matches Snapshot 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <h3
-        class="ons-summary__group-title"
-      >
-        test
-      </h3>
-      <table
-        class="ons-summary__items"
-      >
-        <tbody
-          class="ons-summary__item"
-        >
-          <tr
-            class="ons-summary__row ons-summary__row--has-values"
-          >
-            <td
-              class="ons-summary__item-title"
-            >
-              <div
-                class="ons-summary__item--text"
-              >
-                Foo
-              </div>
-            </td>
-            <td
-              class="ons-summary__values"
-              colspan="2"
-            >
-              bar
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </body>,
-  "container": <div>
-    <h3
-      class="ons-summary__group-title"
+exports[`SummaryGroupTable > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <h3
+    class="ons-summary__group-title"
+  >
+    test
+  </h3>
+  <table
+    class="ons-summary__items"
+  >
+    <tbody
+      class="ons-summary__item"
     >
-      test
-    </h3>
-    <table
-      class="ons-summary__items"
-    >
-      <tbody
-        class="ons-summary__item"
+      <tr
+        class="ons-summary__row ons-summary__row--has-values"
       >
-        <tr
-          class="ons-summary__row ons-summary__row--has-values"
+        <td
+          class="ons-summary__item-title"
         >
-          <td
-            class="ons-summary__item-title"
+          <div
+            class="ons-summary__item--text"
           >
-            <div
-              class="ons-summary__item--text"
-            >
-              Foo
-            </div>
-          </td>
-          <td
-            class="ons-summary__values"
-            colspan="2"
-          >
-            bar
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+            Foo
+          </div>
+        </td>
+        <td
+          class="ons-summary__values"
+          colspan="2"
+        >
+          bar
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
 `;
 
-exports[`ONS Summary Item Row test > matches Snapshot 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <table>
-        <tbody
-          class="ons-summary__item"
-        >
-          <tr
-            class="ons-summary__row ons-summary__row--has-values"
-          >
-            <td
-              class="ons-summary__item-title"
-            >
-              <div
-                class="ons-summary__item--text"
-              >
-                Foo
-              </div>
-            </td>
-            <td
-              class="ons-summary__values"
-              colspan="2"
-            >
-              bar
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </body>,
-  "container": <div>
-    <table>
-      <tbody
-        class="ons-summary__item"
+exports[`SummaryItemRow > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <table>
+    <tbody />
+    <tbody
+      class="ons-summary__item"
+    >
+      <tr
+        class="ons-summary__row ons-summary__row--has-values"
       >
-        <tr
-          class="ons-summary__row ons-summary__row--has-values"
+        <td
+          class="ons-summary__item-title"
         >
-          <td
-            class="ons-summary__item-title"
+          <div
+            class="ons-summary__item--text"
           >
-            <div
-              class="ons-summary__item--text"
-            >
-              Foo
-            </div>
-          </td>
-          <td
-            class="ons-summary__values"
-            colspan="2"
-          >
-            bar
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+            Foo
+          </div>
+        </td>
+        <td
+          class="ons-summary__values"
+          colspan="2"
+        >
+          bar
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
 `;

@@ -1,19 +1,30 @@
 import { render, screen } from "@testing-library/react";
 import { Footer } from "./Footer";
 
-describe("Footer Test", () => {
-    it("matches Snapshot", () => {
-        const { asFragment } = render(<Footer />);
-        expect(asFragment()).toMatchSnapshot();
-    });
+const setup = () => {
+    return {
+        ...render(<Footer />),
+    };
+};
 
-    it("should render correctly", () => {
-        const { container } = render(<Footer />);
-        expect(container).toBeDefined();
-    });
+describe("Footer", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
 
-    it("should display 'Office for National Statistics' as part of the SVG", () => {
-        render(<Footer />);
-        expect(screen.getByText(/Office for National Statistics/i)).toBeInTheDocument();
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should display the ONS logo with the correct accessible name", () => {
+            setup();
+            const logo = screen.getByRole("img", { name: /office for national statistics/i });
+
+            expect(logo).toBeVisible();
+        });
+
+        it("should render as a semantic 'contentinfo' landmark", () => {
+            setup();
+            expect(screen.getByRole("contentinfo")).toBeInTheDocument();
+        });
     });
 });

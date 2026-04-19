@@ -3,7 +3,10 @@ import { ReactElement } from "react";
 export const Footer = (): ReactElement => {
     return (
         <footer className="ons-footer">
-            <div className="ons-footer__body" data-analytics="footer">
+            <div
+                className="ons-footer__body"
+                data-analytics="footer"
+            >
                 <div className="ons-container">
                     <div className="ons-grid" />
                     <div className="ons-grid ons-grid--flex ons-grid--vertical-top ons-grid--between">

@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ONSLoadingPanel } from "./ONSLoadingPanel";
 
 const meta = {
     title: "Components/Loading Panel",
     component: ONSLoadingPanel,
-    tags: ["autodocs"],
 } satisfies Meta<typeof ONSLoadingPanel>;
 
 export default meta;

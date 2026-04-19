@@ -11,7 +11,6 @@ export interface Props {
     id?: string;
 }
 
-/** A standard link component for navigating to external domains. */
 export const ExternalLink = ({ text, link, ariaLabel, id }: Props): ReactElement => {
     return (
         <a

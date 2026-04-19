@@ -1,129 +1,85 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ExampleForm } from "./ExampleForm/ExampleForm";
 import { StyledForm } from "./StyledForm";
 
-test("error appears on submit of empty form", async () => {
-    render(<ExampleForm />);
+const setup = (component = <ExampleForm />) => {
+    return {
+        user: userEvent.setup(),
+        ...render(component),
+    };
+};
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
+describe("StyledForm", () => {
+    describe("Interactions", () => {
+        it("should display the summary of all validation errors when submitting an empty form", async () => {
+            const { user } = setup();
+            const submitButton = screen.getByRole("button", { name: /create account/i });
 
-    await waitFor(() => {
-        expect(screen.getByText(/Password must be longer than 6 characters/i)).toBeInTheDocument();
+            await user.click(submitButton);
+            expect(await screen.findByText(/There are 4 problems with your answer/i)).toBeVisible();
+            expect(screen.getByText(/Password must be longer than 6 characters/i)).toBeVisible();
+            expect(screen.queryAllByText(/Enter a valid instrument name/i)).toHaveLength(2);
+            expect(screen.queryAllByText(/Enter a name/i)).toHaveLength(2);
+            expect(screen.queryAllByText(/Enter an email/i)).toHaveLength(2);
+            expect(screen.queryAllByText(/Enter a password/i)).toHaveLength(2);
+        });
 
-        const errorMessage = screen.getByText(/There are 4 problems with your answer/i);
-        expect(errorMessage).toBeInTheDocument();
+        it("should only display a specific error for the incorrect field", async () => {
+            const { user } = setup();
 
-        const instrumentErrorMessage = screen.queryAllByText(/Enter a valid instrument name/i);
-        expect(instrumentErrorMessage).toHaveLength(2);
+            await user.type(screen.getByLabelText(/Instrument/i), "OPN2101A");
+            await user.type(screen.getByLabelText(/name/i), "ricer");
+            await user.type(screen.getByLabelText(/Email/i), "invalidEmail123");
+            await user.type(screen.getByLabelText(/Password/i), "ricer123");
+            await user.click(screen.getByRole("button", { name: /create account/i }));
+            expect(await screen.findByText(/There is 1 problem with your answer/i)).toBeVisible();
+            expect(screen.queryByText(/Enter a valid instrument name/i)).not.toBeInTheDocument();
+            expect(screen.queryByText(/Enter a name/i)).not.toBeInTheDocument();
+            expect(
+                screen.queryAllByText(/Enter an email address in the correct format/i),
+            ).toHaveLength(2);
+        });
 
-        const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
-        expect(nameErrorMessage).toHaveLength(2);
+        it("should trigger the success state and display submission feedback when the form is valid", async () => {
+            const { user } = setup();
 
-        const emailErrorMessage = screen.queryAllByText(/Enter an email/i);
-        expect(emailErrorMessage).toHaveLength(2);
-
-        const passwordErrorMessage = screen.queryAllByText(/Enter a password/i);
-        expect(passwordErrorMessage).toHaveLength(2);
-    });
-});
-
-test("only one error appears on submit of one incorrect field", async () => {
-    render(<ExampleForm />);
-
-    fireEvent.change(screen.getByLabelText(/Instrument/i), {
-        target: { value: "OPN2101A" },
-    });
-
-    fireEvent.change(screen.getByLabelText(/name/i), {
-        target: { value: "ricer" },
-    });
-
-    fireEvent.change(screen.getByLabelText(/Email/i), {
-        target: { value: "invalidEmail123" },
-    });
-
-    fireEvent.change(screen.getByLabelText(/Password/i), {
-        target: { value: "ricer123" },
-    });
-
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-        const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
-        expect(errorMessage).toBeInTheDocument();
-
-        const instrumentNameErrorMessage = screen.queryAllByText(/Enter a valid instrument name/i);
-        expect(instrumentNameErrorMessage).toHaveLength(0);
-
-        const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
-        expect(nameErrorMessage).toHaveLength(0);
-
-        const passwordErrorMessage = screen.queryAllByText(/Enter a password/i);
-        expect(passwordErrorMessage).toHaveLength(0);
-
-        const emailErrorMessage = screen.queryAllByText(
-            /Enter an email address in the correct format, such as name@example.com/i,
-        );
-        expect(emailErrorMessage).toHaveLength(2);
-    });
-});
-
-test("submit function is called when form is valid", async () => {
-    render(<ExampleForm />);
-
-    fireEvent.change(screen.getByLabelText(/Instrument/i), {
-        target: { value: "OPN2101A" },
+            await user.type(screen.getByLabelText(/Instrument/i), "OPN2101A");
+            await user.type(screen.getByLabelText(/name/i), "ricer");
+            await user.type(screen.getByLabelText(/Email/i), "ricer@example.com");
+            await user.type(screen.getByLabelText(/Password/i), "ricer123");
+            await user.click(screen.getByRole("button", { name: /create account/i }));
+            expect(await screen.findByText(/Form submitted for user ricer/i)).toBeVisible();
+        });
     });
 
-    fireEvent.change(screen.getByLabelText(/name/i), {
-        target: { value: "ricer" },
+    describe("Props", () => {
+        const minimalFields = [{ name: "Name", type: "text" as const }];
+
+        it("should display a custom label when the submitLabel prop is provided", async () => {
+            const customLabel = "Press for bacon";
+
+            setup(
+                <StyledForm
+                    fields={minimalFields}
+                    onSubmitFunction={vi.fn()}
+                    submitLabel={customLabel}
+                />,
+            );
+            expect(
+                screen.getByRole("button", { name: new RegExp(customLabel, "i") }),
+            ).toBeVisible();
+        });
+
+        it("should fallback to 'Save and continue' when no label is provided", () => {
+            setup(
+                <StyledForm
+                    fields={minimalFields}
+                    onSubmitFunction={vi.fn()}
+                />,
+            );
+
+            expect(screen.getByRole("button", { name: /save and continue/i })).toBeVisible();
+        });
     });
-
-    fireEvent.change(screen.getByLabelText(/Email/i), {
-        target: { value: "ricer@example.com" },
-    });
-
-    fireEvent.change(screen.getByLabelText(/Password/i), {
-        target: { value: "ricer123" },
-    });
-
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-        const successMessage = screen.getByText(/Form submitted for user ricer/i);
-        expect(successMessage).toBeInTheDocument();
-    });
-});
-
-test("custom submit button label can be set", async () => {
-    const fields = [
-        {
-            name: "Name",
-            type: "text",
-        },
-    ];
-
-    render(
-        <StyledForm fields={fields} onSubmitFunction={() => {}} submitLabel="Press for bacon" />,
-    );
-
-    const successMessage = await screen.findByText(/Press for bacon/i);
-    expect(successMessage).toBeInTheDocument();
-});
-
-test("default submit button label is used when no label is passed in", async () => {
-    const fields = [
-        {
-            name: "Name",
-            type: "text",
-        },
-    ];
-
-    render(<StyledForm fields={fields} onSubmitFunction={() => {}} />);
-
-    const successMessage = await screen.findByText(/Save and continue/i);
-    expect(successMessage).toBeInTheDocument();
 });

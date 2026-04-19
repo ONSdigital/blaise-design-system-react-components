@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { GroupedSummary, SummaryGroupTable, SummaryItemRow } from "./ONSSummary";
 
 const meta = {
     title: "Components/Summary",
     component: SummaryGroupTable,
-    tags: ["autodocs"],
     argTypes: {
         groupedSummary: { control: false },
     },

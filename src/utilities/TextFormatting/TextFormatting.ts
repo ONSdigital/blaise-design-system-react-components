@@ -1,12 +1,13 @@
 function replaceUnderscoreWithSpaces(text: string): string {
-    return text.split("_").join(" ");
+    return text.replaceAll("_", " ");
 }
 
 function TitleCase(stringToConvert: string): string {
-    const firstCharacter = stringToConvert.substring(0, 1);
-    const restString = stringToConvert.substring(1);
+    if (!stringToConvert) {
+        return "";
+    }
 
-    return firstCharacter.toUpperCase() + restString;
+    return stringToConvert.charAt(0).toUpperCase() + stringToConvert.slice(1);
 }
 
 function FormatTitle(text: string): string {
@@ -14,7 +15,7 @@ function FormatTitle(text: string): string {
 }
 
 function FormatKey(text: string): string {
-    return text.split(" ").join("-");
+    return text.replaceAll(" ", "-");
 }
 
 export { FormatTitle, TitleCase, FormatKey };

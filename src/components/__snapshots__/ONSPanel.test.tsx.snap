@@ -1,437 +1,120 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ONS Panel Test > matches Snapshot 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <div
-        class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
-        data-testid="panel"
-      >
-        <div
-          class="ons-panel__body "
-        >
-          <p
-            data-testid="child"
-          >
-            Succceeesssss
-          </p>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
+exports[`ONSPanel > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
+    data-testid="test-panel"
+  >
     <div
-      class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
-      data-testid="panel"
+      class="ons-panel__body "
     >
-      <div
-        class="ons-panel__body "
+      <p
+        data-testid="panel-child"
       >
-        <p
-          data-testid="child"
-        >
-          Succceeesssss
-        </p>
-      </div>
+        Panel Content
+      </p>
     </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+  </div>
+</DocumentFragment>
 `;
 
-exports[`ONS Panel Test > matches Snapshot a big success icon 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <div
-        class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
-        data-testid="big-icon-panel"
-      >
-        <span
-          class="ons-panel__icon"
-        >
-          <svg
-            aria-hidden="true"
-            class="ons-svg-icon ons-svg-icon--xl"
-            focusable="false"
-            viewBox="0 0 13 10"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
-              transform="translate(-1.51 -3.04)"
-            />
-          </svg>
-        </span>
-        <div
-          class="ons-panel__body ons-svg-icon-margin--xl"
-        >
-          <p>
-            Statusssss
-          </p>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
-      data-testid="big-icon-panel"
+exports[`ONSPanel > Rendering > should match the snapshot for a big icon success panel 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
+    data-testid="test-panel"
+  >
+    <span
+      class="ons-panel__icon"
     >
-      <span
-        class="ons-panel__icon"
-      >
-        <svg
-          aria-hidden="true"
-          class="ons-svg-icon ons-svg-icon--xl"
-          focusable="false"
-          viewBox="0 0 13 10"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
-            transform="translate(-1.51 -3.04)"
-          />
-        </svg>
-      </span>
-      <div
-        class="ons-panel__body ons-svg-icon-margin--xl"
-      >
-        <p>
-          Statusssss
-        </p>
-      </div>
-    </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
-`;
-
-exports[`ONS Panel Test > matches Snapshot for warning panel 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <div
-        class="ons-panel ons-panel--warn ons-panel--no-title ons-u-mt-m"
-      >
-        <span
-          aria-hidden="true"
-          class="ons-panel__icon"
-        >
-          !
-        </span>
-        <span
-          class="ons-u-vh"
-        >
-          Warning: 
-        </span>
-        <div
-          class="ons-panel__body "
-        >
-          <p>
-            Statusssss
-          </p>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="ons-panel ons-panel--warn ons-panel--no-title ons-u-mt-m"
-    >
-      <span
+      <svg
         aria-hidden="true"
-        class="ons-panel__icon"
+        class="ons-svg-icon ons-svg-icon--xl"
+        focusable="false"
+        viewBox="0 0 13 10"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        !
-      </span>
-      <span
-        class="ons-u-vh"
+        <path
+          d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
+          transform="translate(-1.51 -3.04)"
+        />
+      </svg>
+    </span>
+    <div
+      class="ons-panel__body ons-svg-icon-margin--xl"
+    >
+      <p
+        data-testid="panel-child"
       >
-        Warning: 
-      </span>
-      <div
-        class="ons-panel__body "
-      >
-        <p>
-          Statusssss
-        </p>
-      </div>
+        Panel Content
+      </p>
     </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+  </div>
+</DocumentFragment>
 `;
 
-exports[`ONS Panel Test > success panel matches Snapshot 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <div
-        class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
-        data-testid="status-panel"
-      >
-        <span
-          class="ons-panel__icon"
-        >
-          <svg
-            aria-hidden="true"
-            class="ons-svg-icon "
-            focusable="false"
-            viewBox="0 0 13 10"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
-              transform="translate(-1.51 -3.04)"
-            />
-          </svg>
-        </span>
-        <div
-          class="ons-panel__body "
-        >
-          <p>
-            Statusssss
-          </p>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
-      data-testid="status-panel"
+exports[`ONSPanel > Rendering > should match the snapshot for a success status panel 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
+    data-testid="test-panel"
+  >
+    <span
+      class="ons-panel__icon"
     >
-      <span
-        class="ons-panel__icon"
+      <svg
+        aria-hidden="true"
+        class="ons-svg-icon "
+        focusable="false"
+        viewBox="0 0 13 10"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="ons-svg-icon "
-          focusable="false"
-          viewBox="0 0 13 10"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
-            transform="translate(-1.51 -3.04)"
-          />
-        </svg>
-      </span>
-      <div
-        class="ons-panel__body "
+        <path
+          d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
+          transform="translate(-1.51 -3.04)"
+        />
+      </svg>
+    </span>
+    <div
+      class="ons-panel__body "
+    >
+      <p
+        data-testid="panel-child"
       >
-        <p>
-          Statusssss
-        </p>
-      </div>
+        Panel Content
+      </p>
     </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ONSPanel > Rendering > should match the snapshot for a warning status panel 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--warn ons-panel--no-title ons-u-mt-m"
+    data-testid="test-panel"
+  >
+    <span
+      aria-hidden="true"
+      class="ons-panel__icon"
+    >
+      !
+    </span>
+    <span
+      class="ons-u-vh"
+    >
+      Warning: 
+    </span>
+    <div
+      class="ons-panel__body "
+    >
+      <p
+        data-testid="panel-child"
+      >
+        Panel Content
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
 `;

@@ -1,51 +1,67 @@
-import { ComponentProps } from "react";
-import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ONSUpload } from "./ONSUpload";
 
-describe("ONS Upload Test", () => {
-    const Props = {};
-
-    const changeProps = {
+const setup = (overrideProps = {}) => {
+    const props = {
         label: "Upload",
         description: "This is the upload",
         fileName: "file.csv",
         fileID: "file",
-        accept: "yes?",
+        accept: ".csv",
         onChange: vi.fn(),
+        ...overrideProps,
     };
 
-    function wrapper(
-        renderFn: typeof render,
-        props: Partial<ComponentProps<typeof ONSUpload>>,
-    ): RenderResult {
-        return renderFn(
+    return {
+        user: userEvent.setup(),
+        props,
+        ...render(
             <ONSUpload
-                label={props.label as string}
-                description={props.description as string}
-                fileName={props.fileName as string}
-                fileID={props.fileID as string}
-                accept={props.accept as string}
+                label={props.label}
+                description={props.description}
+                fileName={props.fileName}
+                fileID={props.fileID}
+                accept={props.accept}
                 onChange={props.onChange}
             />,
-        );
-    }
+        ),
+    };
+};
 
-    it("matches Snapshot", () => {
-        expect(wrapper(render, Props)).toMatchSnapshot();
+describe("ONSUpload", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
+
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should display the correct label and description", () => {
+            const { props } = setup();
+
+            expect(screen.getByText(props.label)).toBeVisible();
+            expect(screen.getByText(props.description)).toBeVisible();
+        });
+
+        it("should apply the correct 'accept' attribute to the file input", () => {
+            const { props } = setup();
+            const input = screen.getByTestId("upload-input");
+
+            expect(input).toHaveAttribute("accept", props.accept);
+        });
     });
 
-    it("should render correctly", () => {
-        expect(wrapper(render, Props)).toBeDefined();
-    });
+    describe("Interactions", () => {
+        it("should trigger the onChange handler when a file is selected", async () => {
+            const { user, props } = setup();
+            const input = screen.getByTestId("upload-input");
+            const file1 = new File(["(⌐□_□)"], "test1.csv", { type: "text/csv" });
+            const file2 = new File(["(⌐□_□)"], "test2.csv", { type: "text/csv" });
 
-    it("should handle a change", () => {
-        wrapper(render, changeProps);
-        fireEvent.change(screen.getByTestId("upload-input"), {
-            target: { files: [new File(["(⌐□_□)"], "test1.csv", { type: "csv" })] },
+            await user.upload(input, file1);
+            await user.upload(input, file2);
+            expect(props.onChange).toHaveBeenCalledTimes(2);
         });
-        fireEvent.change(screen.getByTestId("upload-input"), {
-            target: { files: [new File(["(⌐□_□)"], "test2.csv", { type: "csv" })] },
-        });
-        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
     });
 });

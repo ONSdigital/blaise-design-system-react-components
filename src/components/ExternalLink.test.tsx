@@ -1,37 +1,55 @@
 import { render, screen } from "@testing-library/react";
+import { ComponentProps } from "react";
 import { ExternalLink } from "./ExternalLink";
 
-describe("External Link Test", () => {
-    const Props = {
+type ExternalLinkProps = ComponentProps<typeof ExternalLink>;
+
+const setup = (overrideProps: Partial<ExternalLinkProps> = {}) => {
+    const props: ExternalLinkProps = {
         text: "Click Me",
         link: "/link",
         ariaLabel: "Aria label description",
+        ...overrideProps,
     };
 
-    it("matches Snapshot", () => {
-        const { asFragment } = render(<ExternalLink {...Props} />);
-        expect(asFragment()).toMatchSnapshot();
-    });
+    return {
+        props,
+        ...render(
+            <ExternalLink
+                text={props.text as string}
+                link={props.link as string}
+                ariaLabel={props.ariaLabel}
+            />,
+        ),
+    };
+};
 
-    it("should render correctly", () => {
-        const { container } = render(<ExternalLink {...Props} />);
-        expect(container).toBeDefined();
-    });
+describe("ExternalLink", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
 
-    it("should render with the correct text displayed", () => {
-        render(<ExternalLink {...Props} />);
-        expect(screen.getByText(/Click Me/i)).toBeVisible();
-    });
+            expect(asFragment()).toMatchSnapshot();
+        });
 
-    it("should render with the correct href passed in", () => {
-        render(<ExternalLink {...Props} />);
-        const linkElement = screen.getByRole("link");
-        expect(linkElement).toHaveAttribute("href", Props.link);
-    });
+        it("should display the correct anchor text", () => {
+            const { props } = setup();
 
-    it("should render with the correct aria label passed in", () => {
-        render(<ExternalLink {...Props} />);
-        const linkElement = screen.getByRole("link");
-        expect(linkElement).toHaveAttribute("aria-label", Props.ariaLabel);
+            expect(screen.getByText(new RegExp(props.text as string, "i"))).toBeVisible();
+        });
+
+        it("should have the correct destination URL mapped to the href attribute", () => {
+            const { props } = setup();
+            const linkElement = screen.getByRole("link");
+
+            expect(linkElement).toHaveAttribute("href", props.link);
+        });
+
+        it("should apply the provided aria-label for accessibility support", () => {
+            const { props } = setup();
+            const linkElement = screen.getByRole("link");
+
+            expect(linkElement).toHaveAttribute("aria-label", props.ariaLabel);
+        });
     });
 });

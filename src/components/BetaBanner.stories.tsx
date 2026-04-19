@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { BetaBanner } from "./BetaBanner";
 
 const meta = {
     title: "Components/Beta Banner",
     component: BetaBanner,
-    tags: ["autodocs"],
 } satisfies Meta<typeof BetaBanner>;
 
 export default meta;

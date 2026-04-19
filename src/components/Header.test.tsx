@@ -1,114 +1,104 @@
-import { fireEvent, render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Header, Props } from "./Header";
 
-const testProps: Props = {
-    title: "ONS Service",
-    navigationLinks: [
-        { id: "home-link", label: "Home", endpoint: "/" },
-        { id: "deploy-questionnaire-link", label: "Deploy a questionnaire", endpoint: "/deploy" },
-        { id: "audit-logs-link", label: "View deployment history", endpoint: "/history" },
-        { id: "blaise-status-link", label: "Check Blaise status", endpoint: "/status" },
-    ],
+const defaultNavigationLinks = [
+    { id: "home", label: "Home", endpoint: "/" },
+    { id: "menu-1", label: "Menu #1", endpoint: "/menu1" },
+    { id: "menu-2", label: "Menu #2", endpoint: "/menu2" },
+    { id: "menu-3", label: "Menu #3", endpoint: "/menu3" },
+];
+
+const setup = (overrideProps: Partial<Props> = {}) => {
+    const props: Props = {
+        title: "ONS Service",
+        ...overrideProps,
+    } as Props;
+
+    return {
+        user: userEvent.setup(),
+        props,
+        ...render(<Header {...props} />),
+    };
 };
 
-describe("Check default Header:", () => {
-    it("matches Snapshot", () => {
-        const wrapper = render(<Header title={testProps.title} />);
-        expect(wrapper).toMatchSnapshot();
+describe("Header", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot with default props", () => {
+            const { asFragment } = setup();
+
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should display the provided title", () => {
+            const { props } = setup();
+
+            expect(screen.getByText(props.title)).toBeVisible();
+        });
+
+        it("should not display the sign-out buttons", () => {
+            setup();
+            expect(screen.queryByText(/Save and sign out/i)).not.toBeInTheDocument();
+            expect(screen.queryByText(/Sign out/i)).not.toBeInTheDocument();
+        });
+
+        it("should not display the navigation block", () => {
+            setup();
+            expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
+        });
+
+        it("should match the snapshot with sign-out functionality", () => {
+            const { asFragment } = setup({ signOutButton: true, signOutFunction: vi.fn() });
+
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should match the snapshot with navigation links", () => {
+            const { asFragment } = setup({
+                navigationLinks: defaultNavigationLinks,
+                currentLocation: "/",
+            });
+
+            expect(asFragment()).toMatchSnapshot();
+        });
     });
 
-    it("should render correctly", () => {
-        const wrapper = render(<Header title={testProps.title} />);
-        expect(wrapper).toBeDefined();
+    describe("Props", () => {
+        it("should display the 'Save and sign out' button when enabled", () => {
+            setup({ signOutButton: true, signOutFunction: vi.fn() });
+            expect(screen.getByText(/Save and sign out/i)).toBeVisible();
+        });
+
+        it("should display 'Sign out' only when noSave is true", () => {
+            setup({ signOutButton: true, noSave: true, signOutFunction: vi.fn() });
+            expect(screen.getByText(/Sign out/i)).toBeVisible();
+            expect(screen.queryByText(/Save and sign out/i)).not.toBeInTheDocument();
+        });
+
+        it("should display navigation block with provided links", () => {
+            setup({ navigationLinks: defaultNavigationLinks, currentLocation: "/" });
+            expect(screen.getByRole("navigation")).toBeInTheDocument();
+            expect(screen.getByRole("link", { name: /Home/i })).toBeVisible();
+            expect(screen.getByRole("link", { name: /Menu #1/i })).toBeVisible();
+            expect(screen.getByRole("link", { name: /Menu #2/i })).toBeVisible();
+            expect(screen.getByRole("link", { name: /Menu #3/i })).toBeVisible();
+        });
+
+        it("should apply the active class modifier to the currently active route", () => {
+            setup({ navigationLinks: defaultNavigationLinks, currentLocation: "/menu1" });
+            const activeLink = screen.getByRole("link", { name: /Menu #1/i });
+
+            expect(activeLink.parentElement).toHaveClass("ons-navigation__item--active");
+        });
     });
 
-    it("should render with the title displayed", () => {
-        const wrapper = render(<Header title={testProps.title} />);
-        expect(wrapper.getByText(testProps.title)).toBeVisible();
-    });
+    describe("Interactions", () => {
+        it("should trigger the sign out function upon click", async () => {
+            const { user, props } = setup({ signOutButton: true, signOutFunction: vi.fn() });
+            const signOutBtn = screen.getByText(/Save and sign out/i);
 
-    it("should not show the signout button by default", () => {
-        const wrapper = render(<Header title={testProps.title} />);
-        expect(wrapper.queryAllByText(/Save and sign out/)).toStrictEqual([]);
-        expect(wrapper.queryAllByText(/Sign out/)).toStrictEqual([]);
-    });
-
-    it("should not show the navigation by default", () => {
-        const wrapper = render(<Header title={testProps.title} />);
-        expect(wrapper.queryByRole("navigation")).toStrictEqual(null);
-    });
-});
-
-describe("Check Header with sign out button:", () => {
-    it("matches Snapshot with sign out button", () => {
-        const wrapper = render(
-            <Header title={testProps.title} signOutButton signOutFunction={vi.fn()} />,
-        );
-        expect(wrapper).toMatchSnapshot();
-    });
-
-    it("shows sign out button", () => {
-        const wrapper = render(
-            <Header title={testProps.title} signOutButton signOutFunction={vi.fn()} />,
-        );
-        expect(wrapper.getByText(/Save and sign out/)).toBeVisible();
-    });
-
-    it("shows sign out button with special text", () => {
-        const wrapper = render(
-            <Header title={testProps.title} signOutButton noSave signOutFunction={vi.fn()} />,
-        );
-        expect(wrapper.getByText(/Sign out/)).toBeDefined();
-        expect(wrapper.queryAllByText(/Save and sign out/)).toStrictEqual([]);
-    });
-
-    it("passes in the sign out function correctly button", () => {
-        const mockFunction = vi.fn();
-        const wrapper = render(
-            <Header title={testProps.title} signOutButton signOutFunction={mockFunction} />,
-        );
-        fireEvent.click(wrapper.getByText(/Save and sign out/));
-        expect(mockFunction).toHaveBeenCalledTimes(1);
-    });
-});
-
-describe("Check Header with navigation bar:", () => {
-    it("matches Snapshot with navigation", () => {
-        const wrapper = render(
-            <Header
-                title={testProps.title}
-                navigationLinks={testProps.navigationLinks}
-                currentLocation="/"
-            />,
-        );
-        expect(wrapper).toMatchSnapshot();
-    });
-
-    it("shows the navigation with links by name", () => {
-        const wrapper = render(
-            <Header
-                title={testProps.title}
-                navigationLinks={testProps.navigationLinks}
-                currentLocation="/"
-            />,
-        );
-        expect(wrapper.queryByRole("navigation")).not.toStrictEqual(null);
-        expect(wrapper.getByRole("link", { name: /Home/ })).toBeVisible();
-        expect(wrapper.getByRole("link", { name: /Deploy a questionnaire/ })).toBeVisible();
-        expect(wrapper.getByRole("link", { name: /View deployment history/ })).toBeVisible();
-        expect(wrapper.getByRole("link", { name: /Check Blaise status/ })).toBeVisible();
-    });
-
-    it("shows active link", () => {
-        const wrapper = render(
-            <Header
-                title={testProps.title}
-                navigationLinks={testProps.navigationLinks}
-                currentLocation="/deploy"
-            />,
-        );
-        expect(
-            wrapper.getByRole("link", { name: /Deploy a questionnaire/ }).parentElement,
-        ).toHaveClass("ons-navigation__item--active");
+            await user.click(signOutBtn);
+            expect(props.signOutFunction).toHaveBeenCalledTimes(1);
+        });
     });
 });

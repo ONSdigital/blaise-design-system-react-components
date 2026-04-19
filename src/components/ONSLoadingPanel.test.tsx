@@ -1,19 +1,38 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import { ComponentProps } from "react";
 import { ONSLoadingPanel } from "./ONSLoadingPanel";
 
-describe("Header Test", () => {
-    it("matches Snapshot", () => {
-        const wrapper = render(<ONSLoadingPanel />);
-        expect(wrapper).toMatchSnapshot();
-    });
+type LoadingPanelProps = ComponentProps<typeof ONSLoadingPanel>;
 
-    it("shows default loading text when no message has been passed through", () => {
-        const wrapper = render(<ONSLoadingPanel />);
-        expect(wrapper.getByText(/Loading/)).toBeDefined();
-    });
+const setup = (overrideProps: Partial<LoadingPanelProps> = {}) => {
+    const props: LoadingPanelProps = {
+        ...overrideProps,
+    };
 
-    it("shows passed in loading text message has been passed through", () => {
-        const wrapper = render(<ONSLoadingPanel message="A different message for loading" />);
-        expect(wrapper.getByText(/A different message for loading/)).toBeDefined();
+    return {
+        props,
+        ...render(<ONSLoadingPanel message={props.message} />),
+    };
+};
+
+describe("ONSLoadingPanel", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
+
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should display the default 'Loading' text when no custom message is provided", () => {
+            setup();
+            expect(screen.getByText(/loading/i)).toBeVisible();
+        });
+
+        it("should display the custom message when provided via props", () => {
+            const customMessage = "Two hours later...";
+
+            setup({ message: customMessage });
+            expect(screen.getByText(new RegExp(customMessage, "i"))).toBeVisible();
+        });
     });
 });

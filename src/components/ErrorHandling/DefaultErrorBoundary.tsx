@@ -41,7 +41,10 @@ export class DefaultErrorBoundary extends Component<Props, State> {
         if (this.state.hasError) {
             return (
                 <div className="ons-container">
-                    <main id="main-content" className="ons-page__main ons-u-mt-l">
+                    <main
+                        id="main-content"
+                        className="ons-page__main ons-u-mt-l"
+                    >
                         <h1>Sorry, there is a problem with the service</h1>
                         <p>Try again later.</p>
                         <p>If you have started a survey, your answers have been saved.</p>

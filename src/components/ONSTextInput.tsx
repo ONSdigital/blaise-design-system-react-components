@@ -58,7 +58,10 @@ export const ONSTextInput = ({
     return (
         <p className="ons-field">
             {label !== undefined && (
-                <label className="ons-label" htmlFor={id}>
+                <label
+                    className="ons-label"
+                    htmlFor={id}
+                >
                     {label}
                 </label>
             )}

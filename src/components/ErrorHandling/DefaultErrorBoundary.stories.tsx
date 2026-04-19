@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DefaultErrorBoundary } from "./DefaultErrorBoundary";
 
 /**
@@ -7,6 +7,7 @@ import { DefaultErrorBoundary } from "./DefaultErrorBoundary";
  */
 const DodgyComponent = () => {
     const [error, setError] = useState(false);
+
     if (error) {
         throw new Error("I crashed!");
     } else {
@@ -25,7 +26,6 @@ const DodgyComponent = () => {
 const meta = {
     title: "Components/Error Boundary/Default",
     component: DefaultErrorBoundary,
-    tags: ["autodocs"],
     argTypes: {
         children: { control: false },
     },

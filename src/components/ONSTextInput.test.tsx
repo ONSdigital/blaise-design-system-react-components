@@ -1,40 +1,26 @@
-import { fireEvent, render, screen, RenderResult } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ComponentProps } from "react";
 import { ONSTextInput } from "./ONSTextInput";
 
-describe("ONS Text Input Test", () => {
-    const Props = {
+type TextInputProps = ComponentProps<typeof ONSTextInput>;
+
+const setup = (overrideProps: Partial<TextInputProps> = {}) => {
+    const props: TextInputProps = {
         id: "file-upload",
-        label: "text",
-    };
-    const changeProps = {
-        id: "file-upload",
-        label: "Upload Label",
+        label: "Default Label",
         onChange: vi.fn(),
-    };
-    const testIdProps = {
-        testId: "test-id",
-    };
-    const passwordProps = {
-        password: true,
-    };
-    const numberProps = {
-        number: true,
-    };
-    const clickProps = {
         onClick: vi.fn(),
-        fit: true,
-        password: true,
+        ...overrideProps,
     };
 
-    function wrapper(
-        renderFn: typeof render,
-        props: Partial<ComponentProps<typeof ONSTextInput>>,
-    ): RenderResult {
-        return renderFn(
+    return {
+        user: userEvent.setup(),
+        props,
+        ...render(
             <ONSTextInput
-                label={props.label}
                 id={props.id}
+                label={props.label}
                 password={props.password}
                 number={props.number}
                 onChange={props.onChange}
@@ -46,52 +32,73 @@ describe("ONS Text Input Test", () => {
                 onClick={props.onClick}
                 testId={props.testId}
             />,
-        );
-    }
+        ),
+    };
+};
 
-    it("matches Snapshot", () => {
-        expect(wrapper(render, Props)).toMatchSnapshot();
+describe("ONSTextInput", () => {
+    describe("Rendering", () => {
+        it("should match the snapshot", () => {
+            const { asFragment } = setup();
+
+            expect(asFragment()).toMatchSnapshot();
+        });
+
+        it("should display the correct label text", () => {
+            const { props } = setup({ label: "Text Label" });
+
+            expect(screen.getByLabelText("Text Label")).toBeVisible();
+        });
+
+        it("should use the default test-id 'text-input' if none is provided", () => {
+            setup();
+            expect(screen.getByTestId("text-input")).toBeInTheDocument();
+        });
+
+        it("should allow overriding the test-id via props", () => {
+            setup({ testId: "test-id" });
+            expect(screen.getByTestId("test-id")).toBeInTheDocument();
+        });
     });
 
-    it("should render correctly", () => {
-        expect(wrapper(render, Props)).toBeDefined();
+    describe("Props", () => {
+        it("should be of type 'text' by default", () => {
+            setup();
+            const input = screen.getByTestId("text-input");
+
+            expect(input).toHaveAttribute("type", "text");
+        });
+
+        it("should be of type 'password' when the password prop is enabled", () => {
+            setup({ password: true });
+            const input = screen.getByTestId("text-input");
+
+            expect(input).toHaveAttribute("type", "password");
+        });
+
+        it("should be of type 'number' when the number prop is enabled", () => {
+            setup({ number: true });
+            const input = screen.getByTestId("text-input");
+
+            expect(input).toHaveAttribute("type", "number");
+        });
     });
 
-    it("should render with the correct label", () => {
-        wrapper(render, Props);
-        expect(screen.getByLabelText(Props.label)).toBeDefined();
-    });
+    describe("Interactions", () => {
+        it("should trigger the onChange handler for every character typed", async () => {
+            const { user, props } = setup();
+            const input = screen.getByTestId("text-input");
 
-    it("simulates change events", () => {
-        wrapper(render, changeProps);
-        fireEvent.change(screen.getByTestId("text-input"), { target: { value: "test1" } });
-        fireEvent.change(screen.getByTestId("text-input"), { target: { value: "test2" } });
-        expect(changeProps.onChange).toHaveBeenCalledTimes(2);
-    });
+            await user.type(input, "abc");
+            expect(props.onChange).toHaveBeenCalledTimes(3);
+        });
 
-    it("should change the test id when given in the props", () => {
-        wrapper(render, testIdProps);
-        expect(screen.getByTestId("test-id")).toBeDefined();
-    });
+        it("should trigger the onClick handler when clicked", async () => {
+            const { user, props } = setup();
+            const input = screen.getByTestId("text-input");
 
-    it("should be text type by default", () => {
-        wrapper(render, Props);
-        expect(screen.getByTestId("text-input")).toHaveProperty("type", "text");
-    });
-
-    it("should be password type when given in Props", () => {
-        wrapper(render, passwordProps);
-        expect(screen.getByTestId("text-input")).toHaveProperty("type", "password");
-    });
-
-    it("should be number type when given in props", () => {
-        wrapper(render, numberProps);
-        expect(screen.getByTestId("text-input")).toHaveProperty("type", "number");
-    });
-
-    it("simulates click events", () => {
-        wrapper(render, clickProps);
-        fireEvent.click(screen.getByTestId("text-input"));
-        expect(clickProps.onClick).toHaveBeenCalledTimes(1);
+            await user.click(input);
+            expect(props.onClick).toHaveBeenCalledTimes(1);
+        });
     });
 });

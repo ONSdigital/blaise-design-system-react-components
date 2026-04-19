@@ -57,7 +57,6 @@ export const StyledFormField = ({
     const { errors } = useFormikContext<Record<string, string>>();
     let newField: ReactElement;
 
-    // Factory logic to determine which specialized field component to use
     if (props.type === "radio") {
         newField = (
             <RadioFieldset

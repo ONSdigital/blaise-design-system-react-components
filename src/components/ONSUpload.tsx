@@ -33,7 +33,10 @@ export const ONSUpload = ({
     return (
         <div className="ons-field">
             <p className="ons-field">
-                <label className="ons-label" htmlFor={fileID}>
+                <label
+                    className="ons-label"
+                    htmlFor={fileID}
+                >
                     {label}
                     <br />
                     <span className="ons-label__description">{description}</span>

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ONSSelect } from "./ONSSelect";
 
 const Selection = [
@@ -11,7 +11,6 @@ const Selection = [
 const meta = {
     title: "Components/Select",
     component: ONSSelect,
-    tags: ["autodocs"],
     argTypes: {
         onChange: { action: "changed" },
     },

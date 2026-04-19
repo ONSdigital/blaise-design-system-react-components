@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { StyledForm } from "./StyledForm";
 
 const meta = {
     title: "Components/Forms/StyledForm",
     component: StyledForm,
-    tags: ["autodocs"],
     argTypes: {
         onSubmitFunction: {
             action: "submitted",

@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ONSPanel } from "./ONSPanel";
 
 const meta = {
     title: "Components/Panel",
     component: ONSPanel,
-    tags: ["autodocs"],
     argTypes: {
         children: { control: false },
     },

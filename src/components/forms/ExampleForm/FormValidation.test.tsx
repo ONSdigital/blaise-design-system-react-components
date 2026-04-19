@@ -7,38 +7,63 @@ import {
 } from "./FormValidation";
 
 describe("FormValidation", () => {
-    test("Instrument name validation", () => {
-        expect(validateInstrumentName("")).toBe("Enter a valid instrument name");
-        expect(validateInstrumentName("OPN2101")).toBe(
-            "Enter a valid instrument name (longer than 7 characters)",
-        );
-        expect(validateInstrumentName("OPN2101A")).toBeUndefined();
+    describe("validateInstrumentName", () => {
+        it.each([
+            { input: "", expected: "Enter a valid instrument name" },
+            {
+                input: "OPN2101",
+                expected: "Enter a valid instrument name (longer than 7 characters)",
+            },
+            { input: "OPN2101A", expected: undefined },
+        ])("should return '$expected' when input is '$input'", ({ input, expected }) => {
+            expect(validateInstrumentName(input)).toBe(expected);
+        });
     });
 
-    test("Name validation", () => {
-        expect(validateName("")).toBe("Enter a name");
-        expect(validateName("Ma")).toBe("Enter a name longer than 2 characters");
-        expect(validateName("Matthew")).toBeUndefined();
+    describe("validateName", () => {
+        it.each([
+            { input: "", expected: "Enter a name" },
+            { input: "Ma", expected: "Enter a name longer than 2 characters" },
+            { input: "Matthew", expected: undefined },
+        ])("should return '$expected' when input is '$input'", ({ input, expected }) => {
+            expect(validateName(input)).toBe(expected);
+        });
     });
 
-    test("Password validation", () => {
-        expect(validatePassword("")).toBe("Enter a password");
-        expect(validatePassword("Passw")).toBe("Enter a password longer than 5 characters");
-        expect(validatePassword("Password")).toBeUndefined();
+    describe("validatePassword", () => {
+        it.each([
+            { input: "", expected: "Enter a password" },
+            { input: "Passw", expected: "Enter a password longer than 5 characters" },
+            { input: "Password", expected: undefined },
+        ])("should return '$expected' when input is '$input'", ({ input, expected }) => {
+            expect(validatePassword(input)).toBe(expected);
+        });
     });
 
-    test("Email validation", () => {
+    describe("validateEmail", () => {
         const invalidEmailMessage =
             "Enter an email address in the correct format, such as name@example.com";
-        expect(validateEmail("")).toBe("Enter an email");
-        expect(validateEmail("matthew")).toBe(invalidEmailMessage);
-        expect(validateEmail("matthew@example")).toBe(invalidEmailMessage);
-        expect(validateEmail("matthew@example.")).toBe(invalidEmailMessage);
-        expect(validateEmail("matthew@example.com")).toBeUndefined();
+
+        it.each([
+            { input: "", expected: "Enter an email" },
+            { input: "matthew", expected: invalidEmailMessage },
+            { input: "matthew@example", expected: invalidEmailMessage },
+            { input: "matthew@example.", expected: invalidEmailMessage },
+            { input: "matthew@example.com", expected: undefined },
+        ])(
+            "should return the correct validation message for email input '$input'",
+            ({ input, expected }) => {
+                expect(validateEmail(input)).toBe(expected);
+            },
+        );
     });
 
-    test("Radio validation", () => {
-        expect(validateRadio("")).toBe("Select an option");
-        expect(validateRadio("Bacon")).toBeUndefined();
+    describe("validateRadio", () => {
+        it.each([
+            { input: "", expected: "Select an option" },
+            { input: "Bacon", expected: undefined },
+        ])("should return '$expected' when input is '$input'", ({ input, expected }) => {
+            expect(validateRadio(input)).toBe(expected);
+        });
     });
 });

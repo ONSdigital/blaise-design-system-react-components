@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ONSUpload } from "./ONSUpload";
 
 const meta = {
     title: "Components/Upload",
     component: ONSUpload,
-    tags: ["autodocs"],
     argTypes: {
         onChange: { action: "changed" },
     },
