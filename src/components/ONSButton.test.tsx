@@ -9,14 +9,8 @@ const setup = (overrideProps: Partial<ButtonProps> = {}) => {
     const props: ButtonProps = {
         label: "Submit",
         onClick: vi.fn(),
-        primary: false,
-        small: false,
-        field: false,
-        loading: false,
-        disabled: false,
-        action: false,
         ...overrideProps,
-    };
+    } as ButtonProps;
 
     return {
         user: userEvent.setup(),

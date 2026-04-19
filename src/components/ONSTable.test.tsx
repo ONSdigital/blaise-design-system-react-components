@@ -16,18 +16,11 @@ const setup = (overrideProps: Partial<TableProps> = {}) => {
             </tr>
         ),
         ...overrideProps,
-    };
+    } as TableProps;
 
     return {
         props,
-        ...render(
-            <ONSTable
-                columns={props.columns}
-                tableID={props.tableID}
-            >
-                {props.children}
-            </ONSTable>,
-        ),
+        ...render(<ONSTable {...props} />),
     };
 };
 
@@ -49,6 +42,7 @@ describe("ONSTable", () => {
 
         it("should display the children rows correctly within the table body", () => {
             setup();
+
             expect(screen.getByText(/Value column 1/i)).toBeVisible();
             expect(screen.getByText(/Value column 2/i)).toBeVisible();
             expect(screen.getByText(/Value column 3/i)).toBeVisible();
@@ -57,7 +51,7 @@ describe("ONSTable", () => {
         it("should apply the correct data-testid to the table element", () => {
             const { props } = setup();
 
-            expect(screen.getByTestId(props.tableID!)).toBeInTheDocument();
+            expect(screen.getByTestId(props.tableID!)).toBeVisible();
         });
     });
 });

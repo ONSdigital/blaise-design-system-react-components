@@ -77,7 +77,7 @@ describe("Header", () => {
 
         it("should display navigation block with provided links", () => {
             setup({ navigationLinks: defaultNavigationLinks, currentLocation: "/" });
-            expect(screen.getByRole("navigation")).toBeInTheDocument();
+            expect(screen.getByRole("navigation")).toBeVisible();
             expect(screen.getByRole("link", { name: /Home/i })).toBeVisible();
             expect(screen.getByRole("link", { name: /Menu #1/i })).toBeVisible();
             expect(screen.getByRole("link", { name: /Menu #2/i })).toBeVisible();

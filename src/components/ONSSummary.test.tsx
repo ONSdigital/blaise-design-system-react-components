@@ -9,11 +9,11 @@ const setupTable = (overrideProps: Partial<SummaryGroupTableProps> = {}) => {
     const props: SummaryGroupTableProps = {
         groupedSummary: new GroupedSummary([{ title: "test", records: { foo: "bar" } }]),
         ...overrideProps,
-    };
+    } as SummaryGroupTableProps;
 
     return {
         props,
-        ...render(<SummaryGroupTable groupedSummary={props.groupedSummary} />),
+        ...render(<SummaryGroupTable {...props} />),
     };
 };
 
@@ -22,18 +22,13 @@ const setupRow = (overrideProps: Partial<SummaryItemRowProps> = {}) => {
         fieldName: "foo",
         fieldValue: "bar",
         ...overrideProps,
-    };
+    } as SummaryItemRowProps;
 
     return {
         props,
         ...render(
             <table>
-                <tbody>
-                    <SummaryItemRow
-                        fieldName={props.fieldName}
-                        fieldValue={props.fieldValue}
-                    />
-                </tbody>
+                <SummaryItemRow {...props} />
             </table>,
         ),
     };
@@ -69,7 +64,6 @@ describe("SummaryItemRow", () => {
             const fieldNameRegex = new RegExp(props.fieldName, "i");
             const fieldValueRegex = new RegExp(props.fieldValue as string, "i");
 
-            // The actual assertion is missing in the original, but for consistency, let's add:
             expect(screen.getByText(fieldNameRegex)).toBeVisible();
             expect(screen.getByText(fieldValueRegex)).toBeVisible();
         });
@@ -77,7 +71,7 @@ describe("SummaryItemRow", () => {
 });
 
 describe("GroupedSummary Logic", () => {
-    describe("Props", () => {
+    describe("Data Formatting", () => {
         it("should flatten multiple summary groups into a single array of record objects", () => {
             const groupedSummary = new GroupedSummary([
                 { title: "Group 1", records: { foo: "bar" } },

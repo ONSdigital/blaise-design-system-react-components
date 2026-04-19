@@ -10,17 +10,11 @@ const setup = (overrideProps: Partial<ExternalLinkProps> = {}) => {
         link: "/link",
         ariaLabel: "Aria label description",
         ...overrideProps,
-    };
+    } as ExternalLinkProps;
 
     return {
         props,
-        ...render(
-            <ExternalLink
-                text={props.text as string}
-                link={props.link as string}
-                ariaLabel={props.ariaLabel}
-            />,
-        ),
+        ...render(<ExternalLink {...props} />),
     };
 };
 

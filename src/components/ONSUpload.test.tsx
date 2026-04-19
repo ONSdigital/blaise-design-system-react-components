@@ -1,9 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { ComponentProps } from "react";
 import { ONSUpload } from "./ONSUpload";
 
-const setup = (overrideProps = {}) => {
-    const props = {
+type UploadProps = ComponentProps<typeof ONSUpload>;
+
+const setup = (overrideProps: Partial<UploadProps> = {}) => {
+    const props: UploadProps = {
         label: "Upload",
         description: "This is the upload",
         fileName: "file.csv",
@@ -11,21 +14,12 @@ const setup = (overrideProps = {}) => {
         accept: ".csv",
         onChange: vi.fn(),
         ...overrideProps,
-    };
+    } as UploadProps;
 
     return {
         user: userEvent.setup(),
         props,
-        ...render(
-            <ONSUpload
-                label={props.label}
-                description={props.description}
-                fileName={props.fileName}
-                fileID={props.fileID}
-                accept={props.accept}
-                onChange={props.onChange}
-            />,
-        ),
+        ...render(<ONSUpload {...props} />),
     };
 };
 
@@ -40,8 +34,8 @@ describe("ONSUpload", () => {
         it("should display the correct label and description", () => {
             const { props } = setup();
 
-            expect(screen.getByText(props.label)).toBeVisible();
-            expect(screen.getByText(props.description)).toBeVisible();
+            expect(screen.getByText(props.label as string)).toBeVisible();
+            expect(screen.getByText(props.description as string)).toBeVisible();
         });
 
         it("should apply the correct 'accept' attribute to the file input", () => {
@@ -56,6 +50,8 @@ describe("ONSUpload", () => {
         it("should trigger the onChange handler when a file is selected", async () => {
             const { user, props } = setup();
             const input = screen.getByTestId("upload-input");
+
+            // Note: Excellent use of the File API mock here
             const file1 = new File(["(⌐□_□)"], "test1.csv", { type: "text/csv" });
             const file2 = new File(["(⌐□_□)"], "test2.csv", { type: "text/csv" });
 

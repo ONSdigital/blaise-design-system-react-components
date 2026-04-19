@@ -24,7 +24,7 @@ describe("Footer", () => {
 
         it("should render as a semantic 'contentinfo' landmark", () => {
             setup();
-            expect(screen.getByRole("contentinfo")).toBeInTheDocument();
+            expect(screen.getByRole("contentinfo")).toBeVisible();
         });
     });
 });

@@ -17,22 +17,7 @@ const setup = (overrideProps: Partial<TextInputProps> = {}) => {
     return {
         user: userEvent.setup(),
         props,
-        ...render(
-            <ONSTextInput
-                id={props.id}
-                label={props.label}
-                password={props.password}
-                number={props.number}
-                onChange={props.onChange}
-                placeholder={props.placeholder}
-                fit={props.fit}
-                autoFocus={props.autoFocus}
-                value={props.value}
-                autoComplete={props.autoComplete}
-                onClick={props.onClick}
-                testId={props.testId}
-            />,
-        ),
+        ...render(<ONSTextInput {...props} />),
     };
 };
 
@@ -47,17 +32,17 @@ describe("ONSTextInput", () => {
         it("should display the correct label text", () => {
             const { props } = setup({ label: "Text Label" });
 
-            expect(screen.getByLabelText("Text Label")).toBeVisible();
+            expect(screen.getByLabelText(props.label as string)).toBeVisible();
         });
 
         it("should use the default test-id 'text-input' if none is provided", () => {
             setup();
-            expect(screen.getByTestId("text-input")).toBeInTheDocument();
+            expect(screen.getByTestId("text-input")).toBeVisible();
         });
 
         it("should allow overriding the test-id via props", () => {
             setup({ testId: "test-id" });
-            expect(screen.getByTestId("test-id")).toBeInTheDocument();
+            expect(screen.getByTestId("test-id")).toBeVisible();
         });
     });
 

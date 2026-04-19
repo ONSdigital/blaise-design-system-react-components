@@ -20,21 +20,12 @@ const setup = (overrideProps: Partial<SelectProps> = {}) => {
         testId: "test-select",
         onChange: vi.fn(),
         ...overrideProps,
-    };
+    } as SelectProps;
 
     return {
         user: userEvent.setup(),
         props,
-        ...render(
-            <ONSSelect
-                id={props.id}
-                label={props.label}
-                onChange={props.onChange}
-                value={props.value as string}
-                options={props.options}
-                testId={props.testId}
-            />,
-        ),
+        ...render(<ONSSelect {...props} />),
     };
 };
 
@@ -49,7 +40,7 @@ describe("ONSSelect", () => {
         it("should display the correct label associated with the select element", () => {
             const { props } = setup();
 
-            expect(screen.getByLabelText(props.label as string)).toBeInTheDocument();
+            expect(screen.getByLabelText(props.label as string)).toBeVisible();
         });
 
         it("should render all provided options in the dropdown", () => {

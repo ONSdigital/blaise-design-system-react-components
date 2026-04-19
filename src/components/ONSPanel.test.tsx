@@ -72,7 +72,7 @@ describe("ONSPanel", () => {
             const panel = screen.getByTestId(props.testID!);
             const iconElement = panel.querySelector(".ons-svg-icon-margin--xl");
 
-            expect(iconElement).toBeInTheDocument();
+            expect(iconElement).toBeVisible();
         });
     });
 });

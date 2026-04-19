@@ -17,15 +17,7 @@ const setup = (overrideProps: Partial<PasswordInputProps> = {}) => {
     return {
         user: userEvent.setup(),
         props,
-        ...render(
-            <ONSPasswordInput
-                value={props.value as string}
-                label={props.label as string}
-                inputId={props.inputId as string}
-                marginTop={props.marginTop}
-                onChange={props.onChange}
-            />,
-        ),
+        ...render(<ONSPasswordInput {...props} />),
     };
 };
 
