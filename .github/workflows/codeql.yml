@@ -21,7 +21,7 @@ jobs:
         uses: github/codeql-action/init@v4
         with:
           languages: javascript-typescript
-          queries: security-and-quality 
+          queries: security-and-quality
       - name: 📦 Autobuild
         uses: github/codeql-action/autobuild@v4
       - name: 🧪 Run CodeQL Analyser

@@ -1,0 +1,102 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LoadingPanel > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
+  >
+    <div
+      class="ons-panel__body "
+    >
+      <div
+        class="ons-u-ta-center"
+      >
+        <div
+          aria-busy="true"
+          aria-label="loading-indicator"
+          class="sc-bdnAzI kiLNmC"
+          data-testid="rotating-lines-loading"
+          role="progressbar"
+        >
+          <svg
+            aria-busy="true"
+            aria-label="loading-indicator"
+            class="sc-dlnkDq iMWqg"
+            data-testid="rotating-lines-svg"
+            height="30"
+            role="progressbar"
+            speed="0.75"
+            stroke="#064868"
+            viewBox="0 0 48 48"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(0, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(30, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(60, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(90, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(120, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(150, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(180, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(210, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(240, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(270, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(300, 24, 24)"
+            />
+            <polyline
+              class="sc-hKFxUR lbuRmC"
+              points="24,12 24,4"
+              transform="rotate(330, 24, 24)"
+            />
+          </svg>
+        </div>
+        <br />
+        Loading
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

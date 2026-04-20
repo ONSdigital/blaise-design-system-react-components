@@ -19,7 +19,7 @@ describe("StyledForm", () => {
             await user.click(submitButton);
             expect(await screen.findByText(/There are 4 problems with your answer/i)).toBeVisible();
             expect(screen.getByText(/Password must be longer than 6 characters/i)).toBeVisible();
-            expect(screen.queryAllByText(/Enter a valid instrument name/i)).toHaveLength(2);
+            expect(screen.queryAllByText(/Enter a valid questionnaire name/i)).toHaveLength(2);
             expect(screen.queryAllByText(/Enter a name/i)).toHaveLength(2);
             expect(screen.queryAllByText(/Enter an email/i)).toHaveLength(2);
             expect(screen.queryAllByText(/Enter a password/i)).toHaveLength(2);
@@ -28,13 +28,13 @@ describe("StyledForm", () => {
         it("should only display a specific error for the incorrect field", async () => {
             const { user } = setup();
 
-            await user.type(screen.getByLabelText(/Instrument/i), "OPN2101A");
+            await user.type(screen.getByLabelText(/Questionnaire/i), "OPN2101A");
             await user.type(screen.getByLabelText(/name/i), "ricer");
             await user.type(screen.getByLabelText(/Email/i), "invalidEmail123");
             await user.type(screen.getByLabelText(/Password/i), "ricer123");
             await user.click(screen.getByRole("button", { name: /create account/i }));
             expect(await screen.findByText(/There is 1 problem with your answer/i)).toBeVisible();
-            expect(screen.queryByText(/Enter a valid instrument name/i)).not.toBeInTheDocument();
+            expect(screen.queryByText(/Enter a valid questionnaire name/i)).not.toBeInTheDocument();
             expect(screen.queryByText(/Enter a name/i)).not.toBeInTheDocument();
             expect(
                 screen.queryAllByText(/Enter an email address in the correct format/i),
@@ -44,7 +44,7 @@ describe("StyledForm", () => {
         it("should trigger the success state and display submission feedback when the form is valid", async () => {
             const { user } = setup();
 
-            await user.type(screen.getByLabelText(/Instrument/i), "OPN2101A");
+            await user.type(screen.getByLabelText(/Questionnaire/i), "OPN2101A");
             await user.type(screen.getByLabelText(/name/i), "ricer");
             await user.type(screen.getByLabelText(/Email/i), "ricer@example.com");
             await user.type(screen.getByLabelText(/Password/i), "ricer123");

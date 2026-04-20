@@ -1,5 +1,5 @@
 import { Form, Formik, FormikValues } from "formik";
-import { ONSButton } from "../ONSButton";
+import { Button } from "../Button";
 import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
 import { StyledFormField } from "./form-elements/StyledFormFields";
 
@@ -86,8 +86,8 @@ export interface StyledFormProps<T extends FormikValues = FormikValues> {
 }
 
 /**
- * A standard ONS Formik wrapper that automatically handles initial values,
- * error summaries, and ONS-styled field layouts.
+ * Creates ONS-styled forms using Formik, automatically handling initial values,
+ * error summaries, and field layouts based on a configuration array.
  */
 export const StyledForm = <T extends FormikValues = FormikValues>({
     fields,
@@ -130,7 +130,7 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
                         );
                     })}
                     <br />
-                    <ONSButton
+                    <Button
                         submit
                         label={submitLabel || "Save and continue"}
                         primary

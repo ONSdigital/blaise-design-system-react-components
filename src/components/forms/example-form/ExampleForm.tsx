@@ -1,7 +1,7 @@
 import { useState, ReactElement } from "react";
 import {
     validateEmail,
-    validateInstrumentName,
+    validateQuestionnaireName,
     validateName,
     validatePassword,
 } from "./FormValidation";
@@ -9,7 +9,7 @@ import { StyledForm, FormFieldObject } from "../StyledForm";
 
 /** Interface representing the values captured by the example form. */
 export interface ExampleFormValues {
-    Instrument: string;
+    Questionnaire: string;
     name: string;
     Email: string;
     Password: string;
@@ -18,10 +18,10 @@ export interface ExampleFormValues {
 /** Configuration for the form elements. */
 const formElements: FormFieldObject[] = [
     {
-        name: "Instrument",
-        description: "Instrument Name must be longer than 7 characters",
+        name: "Questionnaire",
+        description: "Questionnaire Name must be longer than 7 characters",
         type: "text",
-        validate: validateInstrumentName,
+        validate: validateQuestionnaireName,
     },
     {
         name: "name",

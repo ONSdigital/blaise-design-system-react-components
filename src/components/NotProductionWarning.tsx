@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 /**
- * This is not an 'official' ONS component. It is based on the census branded warning panel.
+ * This is not an ONS Design System component. It is based on the ONS 2021 census branded warning panel.
  * Shown at the top of the page above the header, to warn users they are not using a production environment.
  */
 export const NotProductionWarning = (): ReactElement => {

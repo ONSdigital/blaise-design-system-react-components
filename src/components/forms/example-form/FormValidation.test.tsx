@@ -1,22 +1,22 @@
 import {
     validateEmail,
-    validateInstrumentName,
+    validateQuestionnaireName,
     validateName,
     validatePassword,
     validateRadio,
 } from "./FormValidation";
 
 describe("FormValidation", () => {
-    describe("validateInstrumentName", () => {
+    describe("validateQuestionnaireName", () => {
         it.each([
-            { input: "", expected: "Enter a valid instrument name" },
+            { input: "", expected: "Enter a valid questionnaire name" },
             {
                 input: "OPN2101",
-                expected: "Enter a valid instrument name (longer than 7 characters)",
+                expected: "Enter a valid questionnaire name (longer than 7 characters)",
             },
             { input: "OPN2101A", expected: undefined },
         ])("should return '$expected' when input is '$input'", ({ input, expected }) => {
-            expect(validateInstrumentName(input)).toBe(expected);
+            expect(validateQuestionnaireName(input)).toBe(expected);
         });
     });
 

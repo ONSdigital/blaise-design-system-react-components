@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TextInput > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <p
+    class="ons-field"
+  >
+    <label
+      class="ons-label"
+      for="file-upload"
+    >
+      Default Label
+    </label>
+    <input
+      class="ons-input ons-input--text ons-input-type__input"
+      data-testid="text-input"
+      id="file-upload"
+      style="z-index: 0;"
+      type="text"
+      value=""
+    />
+  </p>
+</DocumentFragment>
+`;

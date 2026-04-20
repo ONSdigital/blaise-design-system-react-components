@@ -1,13 +1,13 @@
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 /**
- * Validates the Instrument Name field.
+ * Validates the Questionnaire Name field.
  * @param value - The raw string value from the input.
  * @returns An error message string if invalid, or undefined if valid.
  */
-export function validateInstrumentName(value: string): string | undefined {
-    if (!value) return "Enter a valid instrument name";
-    if (value.length < 8) return "Enter a valid instrument name (longer than 7 characters)";
+export function validateQuestionnaireName(value: string): string | undefined {
+    if (!value) return "Enter a valid questionnaire name";
+    if (value.length < 8) return "Enter a valid questionnaire name (longer than 7 characters)";
 
     return undefined;
 }

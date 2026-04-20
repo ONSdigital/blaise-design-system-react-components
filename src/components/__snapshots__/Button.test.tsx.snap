@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="ons-btn ons-btn--secondary"
+    data-testid="button"
+    type="button"
+  >
+    <span
+      class="ons-btn__inner"
+    >
+      Submit
+    </span>
+  </button>
+</DocumentFragment>
+`;

@@ -12,10 +12,10 @@ interface State {
 }
 
 /**
- * Catches JavaScript errors anywhere in their child component tree, logs those errors,
- * and displays a generic fallback UI instead of the component tree that crashed.
- * This is intended for top-level page wrapping to display the standard
- * 'Sorry, there is a problem with the service' message.
+ * Global error boundary for top-level application or page wrapping.
+ * Catches JavaScript errors anywhere in its child component tree, logs them,
+ * and displays a standard full-page fallback UI with a service error message.
+ * Use this to ensure users always see a helpful message if something goes wrong at the app level.
  */
 export class DefaultErrorBoundary extends Component<Props, State> {
     state: State = {

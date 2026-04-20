@@ -1,0 +1,68 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SummaryGroupTable > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <h3
+    class="ons-summary__group-title"
+  >
+    test
+  </h3>
+  <table
+    class="ons-summary__items"
+  >
+    <tbody
+      class="ons-summary__item"
+    >
+      <tr
+        class="ons-summary__row ons-summary__row--has-values"
+      >
+        <td
+          class="ons-summary__item-title"
+        >
+          <div
+            class="ons-summary__item--text"
+          >
+            Foo
+          </div>
+        </td>
+        <td
+          class="ons-summary__values"
+          colspan="2"
+        >
+          bar
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`SummaryItemRow > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <table>
+    <tbody
+      class="ons-summary__item"
+    >
+      <tr
+        class="ons-summary__row ons-summary__row--has-values"
+      >
+        <td
+          class="ons-summary__item-title"
+        >
+          <div
+            class="ons-summary__item--text"
+          >
+            Foo
+          </div>
+        </td>
+        <td
+          class="ons-summary__values"
+          colspan="2"
+        >
+          bar
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;

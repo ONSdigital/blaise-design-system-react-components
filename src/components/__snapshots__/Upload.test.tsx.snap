@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Upload > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-field"
+  >
+    <p
+      class="ons-field"
+    >
+      <label
+        class="ons-label"
+        for="file"
+      >
+        Upload
+        <br />
+        <span
+          class="ons-label__description"
+        >
+          This is the upload
+        </span>
+      </label>
+      <input
+        accept=".csv"
+        class="ons-input ons-input--text ons-input-type__input ons-input--upload"
+        data-testid="upload-input"
+        id="file"
+        name="file.csv"
+        style="position: static;"
+        type="file"
+      />
+    </p>
+  </div>
+</DocumentFragment>
+`;

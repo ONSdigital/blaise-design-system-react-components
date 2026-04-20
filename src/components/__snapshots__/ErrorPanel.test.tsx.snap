@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ErrorPanel > Rendering > should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--error ons-panel--no-title ons-u-mt-m"
+  >
+    <div
+      class="ons-panel__body "
+    >
+      <p>
+        Sorry, there is a problem with this service. We are working to fix the problem. Please try again later.
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

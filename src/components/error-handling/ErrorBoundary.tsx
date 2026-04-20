@@ -1,8 +1,8 @@
 import { Component, ErrorInfo, ReactNode } from "react";
-import { ONSPanel } from "../ONSPanel";
+import { Panel } from "../Panel";
 
 export interface Props {
-    /** The error message displayed inside the ONSPanel when a child component crashes. */
+    /** The error message displayed inside the Panel when a child component crashes. */
     errorMessageText: string;
     /** The component tree that this boundary should monitor for errors. */
     children: ReactNode;
@@ -14,9 +14,10 @@ interface State {
 }
 
 /**
- * A localised error boundary that displays an ONS error panel if a child component fails to render.
- * This is useful for wrapping specific sections of a page (e.g., a data table),
- * ensuring that if that section fails, the rest of the application remains functional.
+ * Localised error boundary for isolating errors in a specific section or component subtree.
+ * If a child component throws, displays an ONS-styled error panel with a custom message,
+ * allowing the rest of the page or app to remain functional.
+ * Useful for wrapping error-prone widgets, tables, or feature areas.
  */
 export class ErrorBoundary extends Component<Props, State> {
     state: State = {
@@ -38,9 +39,9 @@ export class ErrorBoundary extends Component<Props, State> {
     render(): ReactNode {
         if (this.state.hasError) {
             return (
-                <ONSPanel status="error">
+                <Panel status="error">
                     <p>{this.props.errorMessageText}</p>
-                </ONSPanel>
+                </Panel>
             );
         }
 

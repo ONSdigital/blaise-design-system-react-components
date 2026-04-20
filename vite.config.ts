@@ -13,7 +13,7 @@ export default defineConfig({
       rollupTypes: true,
       exclude: [
         '**/*.test.ts',
-        '**/*.test.tsx',        
+        '**/*.test.tsx',
         '**/*.stories.tsx',
         '**/setupTests.ts'
       ],
