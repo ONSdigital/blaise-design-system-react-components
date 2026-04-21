@@ -1,23 +1,12 @@
 {
   "extends": "./tsconfig.json",
-  "include": [
-    ".storybook/**/*.ts",
-    ".storybook/**/*.tsx",
-    "eslint.config.ts",
-    "src/**/*.stories.tsx",
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "vite.config.ts"
-  ],
-  "exclude": [
-    "build",
-    "docs-build",
-    "node_modules"
-  ],
   "compilerOptions": {
-    "noEmit": true,
-    "allowJs": true
-  }
+    "noEmit": true
+  },
+  "include": [
+    ".storybook",
+    "src",
+    "eslint.config.ts",
+    "vite.config.ts"
+  ]
 }

@@ -4,85 +4,85 @@ import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
 import { StyledFormField } from "./form-elements/StyledFormFields";
 
 export interface RadioSpecifyOption {
-    /** Unique HTML ID for the specify input. */
-    id: string;
-    /** Formik field name for the specify input. */
-    name: string;
-    /** Optional minimum value (for numeric types). */
-    min?: string;
-    /** Label text displayed above the specify input. */
-    description?: string;
-    /** HTML input type (e.g., 'text', 'number'). */
-    type: string;
-    /** Optional Formik validation function for this specific input. */
-    validate?: (value: string) => string | undefined;
+  /** Unique HTML ID for the specify input. */
+  id: string;
+  /** Formik field name for the specify input. */
+  name: string;
+  /** Optional minimum value (for numeric types). */
+  min?: string;
+  /** Label text displayed above the specify input. */
+  description?: string;
+  /** HTML input type (e.g., 'text', 'number'). */
+  type: string;
+  /** Optional Formik validation function for this specific input. */
+  validate?: (value: string) => string | undefined;
 }
 
 export interface RadioFieldsetObject {
-    /** The underlying value for this radio option. */
-    value: string;
-    /** Unique HTML ID for the radio input. */
-    id: string;
-    /** The visible label text for the radio option. */
-    label: string;
-    /** Optional hint text displayed beneath the label. */
-    description?: string;
-    /** Configuration for an 'Other' specify text field attached to this radio. */
-    specifyOption?: RadioSpecifyOption;
+  /** The underlying value for this radio option. */
+  value: string;
+  /** Unique HTML ID for the radio input. */
+  id: string;
+  /** The visible label text for the radio option. */
+  label: string;
+  /** Optional hint text displayed beneath the label. */
+  description?: string;
+  /** Configuration for an 'Other' specify text field attached to this radio. */
+  specifyOption?: RadioSpecifyOption;
 }
 
 export interface CheckboxFieldsetObject {
-    /** The underlying value for this checkbox. */
-    value: string;
-    /** Unique HTML ID for the checkbox input. */
-    id: string;
-    /** The visible label text for the checkbox. */
-    label: string;
-    /** Optional hint text displayed beneath the label. */
-    description?: string;
+  /** The underlying value for this checkbox. */
+  value: string;
+  /** Unique HTML ID for the checkbox input. */
+  id: string;
+  /** The visible label text for the checkbox. */
+  label: string;
+  /** Optional hint text displayed beneath the label. */
+  description?: string;
 }
 
 export interface BaseFormFieldObject<V = string> {
-    /** Formik field name used for state management. */
-    name: string;
-    /** Label text displayed above the field. */
-    description?: string;
-    /** HTML input type or ONS component type. */
-    type: string;
-    /** Optional unique HTML ID. */
-    id?: string;
-    /** Formik validation function. Returns an error string if invalid. */
-    validate?: (value: V) => string | undefined;
-    /** If true, this field will attempt to auto-focus on mount. */
-    autoFocus?: boolean;
-    /** The starting value for the field. */
-    initial_value?: V | V[];
+  /** Formik field name used for state management. */
+  name: string;
+  /** Label text displayed above the field. */
+  description?: string;
+  /** HTML input type or ONS component type. */
+  type: string;
+  /** Optional unique HTML ID. */
+  id?: string;
+  /** Formik validation function. Returns an error string if invalid. */
+  validate?: (value: V) => string | undefined;
+  /** If true, this field will attempt to auto-focus on mount. */
+  autoFocus?: boolean;
+  /** The starting value for the field. */
+  initial_value?: V | V[];
 }
 
 export interface RadioFormFieldObject extends BaseFormFieldObject<string> {
-    type: "radio";
-    /** List of radio options to render. */
-    radioOptions: RadioFieldsetObject[];
+  type: "radio";
+  /** List of radio options to render. */
+  radioOptions: RadioFieldsetObject[];
 }
 
 export interface CheckboxFormFieldObject extends BaseFormFieldObject<string[]> {
-    type: "checkbox";
-    /** List of checkbox options to render. */
-    checkboxOptions: CheckboxFieldsetObject[];
+  type: "checkbox";
+  /** List of checkbox options to render. */
+  checkboxOptions: CheckboxFieldsetObject[];
 }
 
 export type FormFieldObject =
-    | CheckboxFormFieldObject
-    | RadioFormFieldObject
-    | BaseFormFieldObject<string>;
+  | CheckboxFormFieldObject
+  | RadioFormFieldObject
+  | BaseFormFieldObject<string>;
 
 export interface StyledFormProps<T extends FormikValues = FormikValues> {
-    /** Array of field configurations to generate the form. */
-    fields: FormFieldObject[];
-    /** Callback executed on valid form submission. Provides current values and the Formik subitting state setter. */
-    onSubmitFunction: (values: T, setSubmitting: (isSubmitting: boolean) => void) => void;
-    /** Custom text for the submit button. Defaults to "Save and continue". */
-    submitLabel?: string;
+  /** Array of field configurations to generate the form. */
+  fields: FormFieldObject[];
+  /** Callback executed on valid form submission. Provides current values and the Formik subitting state setter. */
+  onSubmitFunction: (values: T, setSubmitting: (isSubmitting: boolean) => void) => void;
+  /** Custom text for the submit button. Defaults to "Save and continue". */
+  submitLabel?: string;
 }
 
 /**
@@ -90,55 +90,55 @@ export interface StyledFormProps<T extends FormikValues = FormikValues> {
  * error summaries, and field layouts based on a configuration array.
  */
 export const StyledForm = <T extends FormikValues = FormikValues>({
-    fields,
-    onSubmitFunction,
-    submitLabel,
+  fields,
+  onSubmitFunction,
+  submitLabel,
 }: StyledFormProps<T>) => {
-    const initialFieldValues = fields.reduce<Record<string, unknown>>((acc, field) => {
-        if (field.initial_value !== undefined) {
-            acc[field.name] = field.initial_value;
-        } else if (field.type === "checkbox") {
-            acc[field.name] = [];
-        } else {
-            acc[field.name] = "";
-        }
+  const initialFieldValues = fields.reduce<Record<string, unknown>>((acc, field) => {
+    if (field.initial_value !== undefined) {
+      acc[field.name] = field.initial_value;
+    } else if (field.type === "checkbox") {
+      acc[field.name] = [];
+    } else {
+      acc[field.name] = "";
+    }
 
-        return acc;
-    }, {});
+    return acc;
+  }, {});
 
-    return (
-        <Formik<T>
-            validateOnBlur={false}
-            validateOnChange={false}
-            initialValues={initialFieldValues as T}
-            onSubmit={(values, { setSubmitting }) => {
-                onSubmitFunction(values, setSubmitting);
-            }}
-        >
-            {({ isValid, isSubmitting }) => (
-                <Form>
-                    <StyledFormErrorSummary />
-                    {fields.map((field, index) => {
-                        const isAutoFocus = isValid && index === 0;
+  return (
+    <Formik<T>
+      validateOnBlur={false}
+      validateOnChange={false}
+      initialValues={initialFieldValues as T}
+      onSubmit={(values, { setSubmitting }) => {
+        onSubmitFunction(values, setSubmitting);
+      }}
+    >
+      {({ isValid, isSubmitting }) => (
+        <Form>
+          <StyledFormErrorSummary />
+          {fields.map((field, index) => {
+            const isAutoFocus = isValid && index === 0;
 
-                        return (
-                            <StyledFormField
-                                key={field.name}
-                                {...field}
-                                autoFocus={isAutoFocus}
-                            />
-                        );
-                    })}
-                    <br />
-                    <Button
-                        submit
-                        label={submitLabel || "Save and continue"}
-                        primary
-                        testid="submit"
-                        loading={isSubmitting}
-                    />
-                </Form>
-            )}
-        </Formik>
-    );
+            return (
+              <StyledFormField
+                key={field.name}
+                {...field}
+                autoFocus={isAutoFocus}
+              />
+            );
+          })}
+          <br />
+          <Button
+            submit
+            label={submitLabel || "Save and continue"}
+            primary
+            testid="submit"
+            loading={isSubmitting}
+          />
+        </Form>
+      )}
+    </Formik>
+  );
 };

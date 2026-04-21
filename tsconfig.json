@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
     "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "lib": [
       "dom",
       "dom.iterable",
@@ -10,29 +18,20 @@
       "vitest/globals",
       "@testing-library/jest-dom/vitest"
     ],
-    "outDir": "build",
+    "declaration": true,
     "sourceMap": true,
-    "rootDir": ".",
-    "allowJs": true,
-    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true,
-    "declaration": true
+    "jsx": "react-jsx"
   },
   "include": [
     "src"
   ],
   "exclude": [
-    "build",
+    "coverage",
+    "dist",
     "docs-build",
     "node_modules"
   ]

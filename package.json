@@ -1,49 +1,36 @@
 {
   "name": "blaise-design-system-react-components",
   "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "type": "module",
-  "main": "build/index.js",
-  "module": "build/index.es.js",
-  "jsnext:main": "build/index.es.js",
-  "types": "build/index.d.ts",
-  "sideEffects": false,
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./build/index.d.ts",
-      "import": "./build/index.es.js",
-      "require": "./build/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js"
     }
   },
   "files": [
-    "build"
+    "dist"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "vite build",
-    "test": "vitest run",
+    "test": "vitest run --coverage",
     "test-watch": "vitest",
     "start-storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o docs-build",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ONSdigital/blaise-design-system-react-components.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ONSdigital/blaise-design-system-react-components/issues"
-  },
-  "homepage": "https://github.com/ONSdigital/blaise-design-system-react-components#readme",
   "peerDependencies": {
     "formik": ">=2.4.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
-  },
-  "engines": {
-    "node": ">=20.0.0"
   },
   "dependencies": {
     "react-csv": "^2.2.2",
@@ -65,23 +52,14 @@
     "@types/react": "^19.2.14",
     "@types/react-csv": "^1.1.10",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.58.1",
-    "@typescript-eslint/parser": "^8.58.1",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.1.4",
-    "@vitest/ui": "^4.1.4",
     "axe-playwright": "^2.2.2",
     "eslint": "^10.2.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-formatter-summary": "^2.0.2",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-prettier": "^5.5.5",
-    "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-storybook": "10.3.5",

@@ -1,21 +1,21 @@
 function replaceUnderscoreWithSpaces(text: string): string {
-    return text.replaceAll("_", " ");
+  return text.replaceAll("_", " ");
 }
 
 function TitleCase(stringToConvert: string): string {
-    if (!stringToConvert) {
-        return "";
-    }
+  if (!stringToConvert) {
+    return "";
+  }
 
-    return stringToConvert.charAt(0).toUpperCase() + stringToConvert.slice(1);
+  return stringToConvert.charAt(0).toUpperCase() + stringToConvert.slice(1);
 }
 
 function FormatTitle(text: string): string {
-    return TitleCase(replaceUnderscoreWithSpaces(text));
+  return TitleCase(replaceUnderscoreWithSpaces(text));
 }
 
 function FormatKey(text: string): string {
-    return text.replaceAll(" ", "-");
+  return text.replaceAll(" ", "-");
 }
 
 export { FormatTitle, TitleCase, FormatKey };

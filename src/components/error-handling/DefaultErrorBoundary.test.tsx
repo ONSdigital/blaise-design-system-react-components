@@ -6,64 +6,64 @@ import { DefaultErrorBoundary } from "./DefaultErrorBoundary";
 type DefaultErrorBoundaryProps = ComponentProps<typeof DefaultErrorBoundary>;
 
 const DodgyComponent = () => {
-    const [shouldCrash, setShouldCrash] = useState(false);
+  const [shouldCrash, setShouldCrash] = useState(false);
 
-    if (shouldCrash) {
-        throw new Error("I intentionally crashed for testing!");
-    }
+  if (shouldCrash) {
+    throw new Error("I intentionally crashed for testing!");
+  }
 
-    return (
-        <button
-            type="button"
-            onClick={() => setShouldCrash(true)}
-        >
-            Click Me
-        </button>
-    );
+  return (
+    <button
+      type="button"
+      onClick={() => setShouldCrash(true)}
+    >
+      Click Me
+    </button>
+  );
 };
 
 const setup = (overrideProps: Partial<DefaultErrorBoundaryProps> = {}) => {
-    const props: DefaultErrorBoundaryProps = {
-        children: <p>Simple text</p>,
-        ...overrideProps,
-    };
+  const props: DefaultErrorBoundaryProps = {
+    children: <p>Simple text</p>,
+    ...overrideProps,
+  };
 
-    return {
-        user: userEvent.setup(),
-        props,
-        ...render(<DefaultErrorBoundary {...props} />),
-    };
+  return {
+    user: userEvent.setup(),
+    props,
+    ...render(<DefaultErrorBoundary {...props} />),
+  };
 };
 
 describe("DefaultErrorBoundary", () => {
-    describe("When there are no rendering errors", () => {
-        it("should render the provided children correctly", () => {
-            setup();
+  describe("When there are no rendering errors", () => {
+    it("should render the provided children correctly", () => {
+      setup();
 
-            expect(screen.getByText(/Simple text/i)).toBeVisible();
-        });
+      expect(screen.getByText(/Simple text/i)).toBeVisible();
+    });
+  });
+
+  describe("When a child component throws an error", () => {
+    let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
+
+    beforeEach(() => {
+      consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
     });
 
-    describe("When a child component throws an error", () => {
-        let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
-
-        beforeEach(() => {
-            consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-        });
-
-        afterEach(() => {
-            consoleErrorSpy.mockRestore();
-        });
-
-        it("should catch the error and display the default fallback message", async () => {
-            const { user } = setup({ children: <DodgyComponent /> });
-
-            const crashButton = screen.getByRole("button", { name: /click me/i });
-
-            await user.click(crashButton);
-
-            expect(screen.getByText(/Sorry, there is a problem with the service/i)).toBeVisible();
-            expect(screen.queryByRole("button", { name: /click me/i })).not.toBeInTheDocument();
-        });
+    afterEach(() => {
+      consoleErrorSpy.mockRestore();
     });
+
+    it("should catch the error and display the default fallback message", async () => {
+      const { user } = setup({ children: <DodgyComponent /> });
+
+      const crashButton = screen.getByRole("button", { name: /click me/i });
+
+      await user.click(crashButton);
+
+      expect(screen.getByText(/Sorry, there is a problem with the service/i)).toBeVisible();
+      expect(screen.queryByRole("button", { name: /click me/i })).not.toBeInTheDocument();
+    });
+  });
 });

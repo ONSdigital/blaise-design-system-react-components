@@ -24,9 +24,9 @@ Release versions can be found on this repos [GitHub releases](https://github.com
 
 This library requires the consuming application to provide its own React engine and Formik context. Ensure you have the following installed in your project's dependencies:
 
-* react (>= 19.0.0)
-* react-dom (>= 19.0.0)
-* formik (>= 2.4.0)
+* react (^19.0.0)
+* react-dom (^19.0.0)
+* formik (>=2.4.0)
 
 ### Global CSS Requirement
 
