@@ -1,7 +1,7 @@
 import { Fragment, ReactElement, InputHTMLAttributes } from "react";
 import { Field, useFormikContext, FieldInputProps } from "formik";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
-import { isObjectWithProperty } from "../../../utilities/Types";
+import { isObjectWithProperty } from "../../../utilities/types";
 
 function toUpperCase(string: string): string {
   return string.trim().replace(/^\w/, (c: string) => c.toUpperCase());

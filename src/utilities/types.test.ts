@@ -1,4 +1,4 @@
-import { isObjectWithProperty } from "./Types";
+import { isObjectWithProperty } from "./types";
 
 describe("isObjectWithProperty", () => {
   describe("When provided with inputs that contain the property", () => {

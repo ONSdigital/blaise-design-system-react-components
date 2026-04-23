@@ -1,4 +1,4 @@
-import { FormatTitle } from "./TextFormatting";
+import { FormatTitle } from "./textFormatting";
 
 describe("FormatTitle", () => {
   describe("When processing snake_case strings", () => {

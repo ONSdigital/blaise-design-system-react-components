@@ -1,1 +1,1 @@
-export * from "./TextFormatting";
+export * from "./textFormatting";
