@@ -17,7 +17,7 @@ import { ErrorBoundary } from "./components/error-handling/ErrorBoundary";
 import { DefaultErrorBoundary } from "./components/error-handling/DefaultErrorBoundary";
 import { Table as ONSTable } from "./components/Table";
 import { SummaryItemRow, SummaryGroupTable, GroupedSummary, Group } from "./components/Summary";
-import { FormatTitle, TitleCase } from "./utilities/text-formatting";
+import { formatTitle, capitaliseFirstLetter } from "./utilities/textFormatting";
 import { Accordion } from "./components/Accordion";
 import { StyledForm, FormFieldObject } from "./components/forms/StyledForm";
 import { StyledFormErrorSummary } from "./components/forms/StyledFormErrorSummary";
@@ -46,8 +46,8 @@ export {
   SummaryItemRow,
   SummaryGroupTable,
   GroupedSummary,
-  FormatTitle,
-  TitleCase,
+  formatTitle,
+  capitaliseFirstLetter,
   Accordion,
   StyledForm,
   StyledFormErrorSummary,

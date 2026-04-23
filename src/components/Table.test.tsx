@@ -53,5 +53,24 @@ describe("Table", () => {
 
       expect(screen.getByTestId(props.tableID!)).toBeVisible();
     });
+
+    describe("Props", () => {
+      it("should display the table caption when provided", () => {
+        const captionText = "Test Table Caption";
+
+        setup({ tableCaption: captionText });
+
+        const caption = screen.getByText(captionText);
+
+        expect(caption).toBeInTheDocument();
+        expect(caption.tagName).toBe("CAPTION");
+        expect(caption).toHaveClass("ons-table__caption");
+      });
+
+      it("should not render a caption element if tableCaption is undefined", () => {
+        setup();
+        expect(screen.queryByRole("caption")).not.toBeInTheDocument();
+      });
+    });
   });
 });

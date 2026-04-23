@@ -1,4 +1,4 @@
-# Blaise Design System React Components
+# Blaise Design System React Components 🧑‍🎨
 
 React implementations of components from the [ONS Design System](https://service-manual.ons.gov.uk/design-system), tailored for Blaise applications.
 

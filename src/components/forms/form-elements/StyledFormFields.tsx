@@ -89,9 +89,11 @@ export const StyledFormField = ({
     );
   }
 
+  const fieldError = errors[name];
+
   return (
     <Fragment>
-      {errors[name] ? StyledFormFieldErrorWrapper(errors[name] || "", name, newField) : newField}
+      {fieldError ? StyledFormFieldErrorWrapper(fieldError, name, newField) : newField}
     </Fragment>
   );
 };

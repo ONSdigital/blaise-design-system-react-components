@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ExampleCheckboxForm } from "./example-form/ExampleCheckboxForm";
 import { StyledForm } from "./StyledForm";
+import { Formik } from "formik";
+import { CheckboxesFieldset } from "./form-elements/Fields";
 
 const setup = (component = <ExampleCheckboxForm />) => {
   return {
@@ -71,6 +73,45 @@ describe("ExampleCheckboxForm", () => {
       expect(await screen.findByText(/There is 1 problem with your answer/i)).toBeVisible();
       expect(screen.queryAllByText(/Select an option/i)).toHaveLength(2);
     });
+
+    it("should physically toggle all checkboxes and dynamically update the button text when the utility button is clicked", async () => {
+      const checkboxFields = [
+        {
+          name: "testCheckboxes",
+          type: "checkbox" as const,
+          checkboxOptions: [
+            { id: "opt1", value: "alpha", label: "Alpha Option" },
+            { id: "opt2", value: "beta", label: "Beta Option" },
+          ],
+        },
+      ];
+
+      const { user } = setup(
+        <StyledForm
+          fields={checkboxFields}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      const toggleButton = screen.getByRole("button", { name: /Select All/i });
+      const optionAlpha = screen.getByLabelText("Alpha Option");
+      const optionBeta = screen.getByLabelText("Beta Option");
+
+      expect(optionAlpha).not.toBeChecked();
+      expect(optionBeta).not.toBeChecked();
+
+      await user.click(toggleButton);
+
+      expect(optionAlpha).toBeChecked();
+      expect(optionBeta).toBeChecked();
+      expect(toggleButton).toHaveTextContent("Unselect All");
+
+      await user.click(toggleButton);
+
+      expect(optionAlpha).not.toBeChecked();
+      expect(optionBeta).not.toBeChecked();
+      expect(toggleButton).toHaveTextContent("Select All");
+    });
   });
 
   describe("Props", () => {
@@ -101,6 +142,27 @@ describe("ExampleCheckboxForm", () => {
         expect.objectContaining({ topping: ["bacon", "pineapple"] }),
         expect.any(Function),
       );
+    });
+  });
+
+  describe("Edge Cases", () => {
+    it("should safely return false and render 'Select All' when the field is missing from Formik state", () => {
+      render(
+        <Formik
+          initialValues={{}}
+          onSubmit={vi.fn()}
+        >
+          <CheckboxesFieldset
+            name="missingCheckboxState"
+            checkboxOptions={[{ id: "test-id", value: "test", label: "Test Label" }]}
+            autoFocus={false}
+          />
+        </Formik>,
+      );
+
+      const button = screen.getByRole("button", { name: /Select All/i });
+
+      expect(button).toBeVisible();
     });
   });
 });

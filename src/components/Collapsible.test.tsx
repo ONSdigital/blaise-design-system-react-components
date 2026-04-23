@@ -61,5 +61,17 @@ describe("Collapsible", () => {
       await user.keyboard(key);
       expect(screen.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "false");
     });
+
+    it("should ignore keyboard events that are not Enter or Space", async () => {
+      const { user } = setup();
+      const heading = screen.getByTestId("collapsible-heading");
+
+      expect(screen.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "true");
+
+      heading.focus();
+      await user.keyboard("A");
+
+      expect(screen.getByTestId("collapsible-content")).toHaveAttribute("aria-hidden", "true");
+    });
   });
 });

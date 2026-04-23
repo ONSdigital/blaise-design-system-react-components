@@ -1,12 +1,8 @@
-export function isObjectWithProperty<Type extends string>(
+export function isObjectWithProperty<K extends PropertyKey>(
   value: unknown,
-  property: Type,
-): value is Record<Type, unknown> {
-  if (typeof value !== "object") {
-    return false;
-  }
-
-  if (value === null) {
+  property: K,
+): value is Record<K, unknown> {
+  if (value === null || (typeof value !== "object" && typeof value !== "function")) {
     return false;
   }
 

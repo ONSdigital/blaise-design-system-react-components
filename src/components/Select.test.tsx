@@ -61,4 +61,30 @@ describe("Select", () => {
       expect(props.onChange).toHaveBeenCalledTimes(2);
     });
   });
+
+  describe("Props", () => {
+    it("should not append data-testid to options when the testId prop is omitted", () => {
+      setup({ testId: undefined });
+
+      const optionElement = screen.getByRole("option", { name: "Option 1" });
+
+      expect(optionElement).not.toHaveAttribute("data-testid");
+    });
+
+    it("should not render the label DOM element if the label prop is undefined", () => {
+      setup({ label: undefined });
+
+      expect(document.querySelector("label")).not.toBeInTheDocument();
+    });
+
+    it("should apply an explicitly provided option ID to the DOM element", () => {
+      setup({
+        options: [{ label: "Custom Option", value: "custom", id: "explicit-option-id" }],
+      });
+
+      const optionElement = screen.getByRole("option", { name: "Custom Option" });
+
+      expect(optionElement).toHaveAttribute("id", "explicit-option-id");
+    });
+  });
 });

@@ -46,6 +46,28 @@ describe("ExampleRadioForm", () => {
       await user.click(screen.getByRole("button", { name: /save and continue/i }));
       expect(await screen.findByText(/Form submitted. Topping: bacon/i)).toBeVisible();
     });
+
+    it("should successfully capture and submit data from the 'other/specify' conditional text input", async () => {
+      const { user } = setup();
+
+      await user.click(screen.getByLabelText(/Bacon/i));
+
+      const otherRadio = screen.getByLabelText(/^Other$/i);
+
+      await user.click(otherRadio);
+
+      const specifyInput = screen.getByLabelText(/Please specify/i);
+
+      expect(specifyInput).toBeVisible();
+
+      await user.type(specifyInput, "Pineapple");
+
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      expect(
+        await screen.findByText(/Form submitted. Topping: bacon. Option: other \(Pineapple\)/i),
+      ).toBeVisible();
+    });
   });
 
   describe("Props", () => {

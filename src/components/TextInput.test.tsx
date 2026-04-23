@@ -35,6 +35,12 @@ describe("TextInput", () => {
       expect(screen.getByLabelText(props.label as string)).toBeVisible();
     });
 
+    it("should not render a label element if the label prop is omitted", () => {
+      setup({ label: undefined });
+
+      expect(document.querySelector("label")).not.toBeInTheDocument();
+    });
+
     it("should use the default test-id 'text-input' if none is provided", () => {
       setup();
       expect(screen.getByTestId("text-input")).toBeVisible();
@@ -67,6 +73,27 @@ describe("TextInput", () => {
 
       expect(input).toHaveAttribute("type", "number");
     });
+
+    it("should render the provided value in the input field", () => {
+      setup({ value: "test value" });
+      const input = screen.getByTestId("text-input");
+
+      expect(input).toHaveValue("test value");
+    });
+
+    it("should apply 'unset' width style when the fit prop is true", () => {
+      setup({ fit: true });
+      const input = screen.getByTestId("text-input");
+
+      expect(input).toHaveAttribute("style", expect.stringContaining("width: unset"));
+    });
+
+    it("should apply the provided zIndex inline style", () => {
+      setup({ zIndex: 99 });
+      const input = screen.getByTestId("text-input");
+
+      expect(input).toHaveStyle({ zIndex: "99" });
+    });
   });
 
   describe("Interactions", () => {
@@ -76,6 +103,13 @@ describe("TextInput", () => {
 
       await user.type(input, "abc");
       expect(props.onChange).toHaveBeenCalledTimes(3);
+    });
+
+    it("should safely handle typing when no onChange handler is provided", async () => {
+      const { user } = setup({ onChange: undefined });
+      const input = screen.getByTestId("text-input");
+
+      await expect(user.type(input, "abc")).resolves.not.toThrow();
     });
 
     it("should trigger the onClick handler when clicked", async () => {

@@ -70,4 +70,29 @@ describe("PasswordInput", () => {
       expect(passwordInput).toHaveAttribute("type", "password");
     });
   });
+
+  describe("Props", () => {
+    it("should apply the correct margin-top inline style when the marginTop prop is provided", () => {
+      setup({ marginTop: 24 });
+
+      const toggleCheckbox = screen.getByTestId("login-password-toggle");
+      const toggleContainer = toggleCheckbox.parentElement;
+
+      expect(toggleContainer).toHaveStyle({ marginTop: "24px" });
+    });
+
+    it("should fallback to the default inputId 'password' when not provided", () => {
+      render(
+        <PasswordInput
+          label="Password"
+          value=""
+          onChange={vi.fn()}
+        />,
+      );
+
+      const inputElement = screen.getByLabelText("Password");
+
+      expect(inputElement).toHaveAttribute("id", "password");
+    });
+  });
 });

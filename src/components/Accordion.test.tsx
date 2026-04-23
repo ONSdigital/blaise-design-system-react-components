@@ -127,5 +127,53 @@ describe("Accordion", () => {
         expectExpandableState("foo", 0, "open");
       });
     });
+
+    describe("when using keyboard navigation", () => {
+      it("should expand the item when 'Enter' is pressed", async () => {
+        const { user } = setup();
+        const summary = screen.getByRole("button", { name: "Foo" });
+
+        summary.focus();
+        await user.keyboard("{Enter}");
+
+        expectExpandableState("foo", 0, "open");
+      });
+
+      it("should expand the item when 'Space' is pressed", async () => {
+        const { user } = setup();
+        const summary = screen.getByRole("button", { name: "Foo" });
+
+        summary.focus();
+        await user.keyboard(" ");
+
+        expectExpandableState("foo", 0, "open");
+      });
+
+      it("should do nothing if a non-trigger key is pressed", async () => {
+        const { user } = setup();
+        const summary = screen.getByRole("button", { name: "Foo" });
+
+        summary.focus();
+        await user.keyboard("{a}");
+
+        expectExpandableState("foo", 0, "closed");
+      });
+    });
+
+    describe("when handling missing content IDs", () => {
+      it("should fallback to generating a safe ID based on the index", async () => {
+        const { user } = setup({
+          Expandables: [{ title: "No ID", content: <p>No ID content</p> }],
+        });
+
+        const expectedFallbackId = "expandable-0";
+        const content = screen.getByTestId(`${expectedFallbackId}-accordion-0-content`);
+
+        expect(content).toHaveAttribute("aria-hidden", "true");
+
+        await user.click(screen.getByText("No ID"));
+        expect(content).toHaveAttribute("aria-hidden", "false");
+      });
+    });
   });
 });

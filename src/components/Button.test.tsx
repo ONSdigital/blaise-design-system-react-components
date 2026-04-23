@@ -81,5 +81,40 @@ describe("Button", () => {
 
       expect(button).toHaveClass("ons-btn--link");
     });
+
+    it("should apply 'display: none' inline style when hidden is true", () => {
+      setup({ hidden: true });
+      const button = screen.getByRole("button", { hidden: true });
+
+      expect(button).toHaveStyle({ display: "none" });
+    });
+
+    it("should apply the correct right margin inline style when marginRight is provided", () => {
+      setup({ marginRight: 24 });
+      const button = screen.getByRole("button");
+
+      expect(button).toHaveStyle({ marginRight: "24px" });
+    });
+
+    it("should append the field class when the field prop is true", () => {
+      setup({ field: true });
+      const button = screen.getByRole("button");
+
+      expect(button).toHaveClass("ons-field");
+    });
+
+    it("should set the button type to 'submit' when submit is true", () => {
+      setup({ submit: true });
+      const button = screen.getByRole("button");
+
+      expect(button).toHaveAttribute("type", "submit");
+    });
+
+    it("should not append the secondary class when primary is true", () => {
+      setup({ primary: true });
+      const button = screen.getByRole("button");
+
+      expect(button).not.toHaveClass("ons-btn--secondary");
+    });
   });
 });

@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, Fragment } from "react";
 import { Data } from "react-csv/lib/core";
-import { FormatTitle, FormatKey } from "../utilities/text-formatting";
+import { formatTitle, formatKey } from "../utilities/textFormatting";
 
 /** Represents a single section within a summary table. */
 export type Group = {
@@ -40,7 +40,7 @@ export function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): Rea
     <tbody className="ons-summary__item">
       <tr className="ons-summary__row ons-summary__row--has-values">
         <td className="ons-summary__item-title">
-          <div className="ons-summary__item--text">{FormatTitle(fieldName)}</div>
+          <div className="ons-summary__item--text">{formatTitle(fieldName)}</div>
         </td>
         <td
           className="ons-summary__values"
@@ -62,12 +62,12 @@ export function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): R
   return (
     <>
       {groupedSummary.groups.map((group) => (
-        <Fragment key={`summary-group-wrapper-${FormatKey(group.title)}`}>
+        <Fragment key={`summary-group-wrapper-${formatKey(group.title)}`}>
           <h3 className="ons-summary__group-title">{group.title}</h3>
           <table className="ons-summary__items">
             {Object.entries(group.records).map(([field, value]) => (
               <SummaryItemRow
-                key={`summary-table-row-${FormatKey(field)}`}
+                key={`summary-table-row-${formatKey(field)}`}
                 fieldName={field}
                 fieldValue={value as ReactNode}
               />

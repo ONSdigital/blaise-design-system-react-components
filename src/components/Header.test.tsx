@@ -96,6 +96,30 @@ describe("Header", () => {
 
       expect(activeLink.parentElement).toHaveClass("ons-navigation__item--active");
     });
+
+    it("should use the provided createNavLink render prop for custom routing", () => {
+      const mockCreateNavLink = vi.fn((id, label, endpoint) => (
+        <span
+          data-testid={`custom-link-${id}`}
+          data-url={endpoint}
+        >
+          {label}
+        </span>
+      ));
+
+      setup({
+        navigationLinks: defaultNavigationLinks,
+        createNavLink: mockCreateNavLink,
+      });
+
+      expect(mockCreateNavLink).toHaveBeenCalledTimes(defaultNavigationLinks.length);
+
+      const customElement = screen.getByTestId("custom-link-home");
+
+      expect(customElement).toBeVisible();
+      expect(customElement).toHaveAttribute("data-url", "/");
+      expect(screen.queryByRole("link", { name: /Home/i })).not.toBeInTheDocument();
+    });
   });
 
   describe("Interactions", () => {
