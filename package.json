@@ -19,6 +19,7 @@
   ],
   "sideEffects": false,
   "scripts": {
+    "prepare": "yarn build",
     "build": "vite build",
     "test": "vitest run --coverage",
     "test-watch": "vitest",
