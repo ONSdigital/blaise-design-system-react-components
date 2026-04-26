@@ -67,6 +67,16 @@ export default tseslint.config(
       "no-unused-vars": "off",
       "no-constant-condition": "error",
       "no-unreachable": "error",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          devDependencies: [
+            "src/**/*.test.ts",
+            "src/**/*.test.tsx",
+            "src/setupTests.ts",
+          ],
+        },
+      ],
     },
   },
 
@@ -83,17 +93,6 @@ export default tseslint.config(
       "react/react-in-jsx-scope": "off",
       "react/require-default-props": "off",
       "react/no-unstable-nested-components": ["error", { allowAsProps: true }],
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          devDependencies: [
-            "src/**/*.test.ts",
-            "src/**/*.test.tsx",
-            "src/**/*.stories.tsx",
-            "src/setupTests.ts",
-          ],
-        },
-      ],
     },
   },
 
