@@ -16,7 +16,6 @@ export default tseslint.config(
   {
     languageOptions: {
       ecmaVersion: "latest",
-      globals: { ...globals.browser, ...globals.node },
     },
     settings: {
       "import/resolver": {
@@ -26,7 +25,17 @@ export default tseslint.config(
   },
 
   {
+    files: ["*.{ts}"],
+    languageOptions: {
+      globals: { ...globals.node },
+    },
+  },
+
+  {
     files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      globals: { ...globals.browser },
+    },
     plugins: {
       import: pluginImport,
       prettier: pluginPrettier,
@@ -74,6 +83,7 @@ export default tseslint.config(
             "src/**/*.test.ts",
             "src/**/*.test.tsx",
             "src/setupTests.ts",
+            "*.config.ts",
           ],
         },
       ],
