@@ -58,7 +58,7 @@ export default tseslint.config(
           jsxSingleQuote: false,
           arrowParens: "always",
           singleAttributePerLine: true,
-          jsxBracketSameLine: false,
+          bracketSameLine: false,
           endOfLine: "lf",
         },
       ],
