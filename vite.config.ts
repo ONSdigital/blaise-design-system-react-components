@@ -11,7 +11,7 @@ export default defineConfig({
     react(),
     dts({
       rollupTypes: true,
-      exclude: ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx", "**/setupTests.ts"],
+      exclude: ["src/mocks/**", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx", "**/setupTests.ts"],
     }),
   ],
   build: {
@@ -23,13 +23,17 @@ export default defineConfig({
       fileName: (format) => `index.${format === "es" ? "es.js" : "js"}`,
     },
     rollupOptions: {
-      external: [...Object.keys(pkg.peerDependencies || {}), "react/jsx-runtime"],
+      external: [
+        ...Object.keys(pkg.peerDependencies || {}),
+        ...Object.keys(pkg.dependencies || {}),
+        "react/jsx-runtime"
+      ],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
-          formik: "Formik",
           "react/jsx-runtime": "jsxRuntime",
+          formik: "Formik",
         },
       },
     },
@@ -43,7 +47,7 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "json", "html"],
       include: ["src/**/*.{ts,tsx}"],
-      exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.stories.tsx", "src/setupTests.ts"],
+      exclude: ["src/mocks/**", "src/**/*.test.{ts,tsx}", "src/**/*.stories.tsx", "src/setupTests.ts"],
     },
     server: {
       deps: {
