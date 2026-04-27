@@ -118,6 +118,7 @@ export function CheckboxesFieldset({
     if (!isObjectWithProperty(values, name)) {
       return false;
     }
+
     const currentValues = values[name] || [];
 
     return allValues.length > 0 && allValues.every((item) => currentValues.includes(item));

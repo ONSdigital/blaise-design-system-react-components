@@ -11,7 +11,13 @@ export default defineConfig({
     react(),
     dts({
       rollupTypes: true,
-      exclude: ["src/mocks/**", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx", "**/setupTests.ts"],
+      exclude: [
+        "src/mocks/**",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/*.stories.tsx",
+        "**/setupTests.ts",
+      ],
     }),
   ],
   build: {
@@ -26,13 +32,14 @@ export default defineConfig({
       external: [
         ...Object.keys(pkg.peerDependencies || {}),
         ...Object.keys(pkg.dependencies || {}),
-        "react/jsx-runtime"
+        "react/jsx-runtime",
       ],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "jsxRuntime",
+          "react-loader-spinner": "Loader",
           formik: "Formik",
         },
       },
@@ -47,7 +54,12 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "json", "html"],
       include: ["src/**/*.{ts,tsx}"],
-      exclude: ["src/mocks/**", "src/**/*.test.{ts,tsx}", "src/**/*.stories.tsx", "src/setupTests.ts"],
+      exclude: [
+        "src/mocks/**",
+        "src/**/*.test.{ts,tsx}",
+        "src/**/*.stories.tsx",
+        "src/setupTests.ts",
+      ],
     },
     server: {
       deps: {
