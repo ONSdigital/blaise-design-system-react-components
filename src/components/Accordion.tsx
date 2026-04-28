@@ -91,7 +91,7 @@ const Expandable = ({
 export interface Props {
   /** Toggles the visibility of the 'Show All' / 'Hide All' button. */
   ShowAllEnabled?: boolean;
-  /** An array of objects containing the title and content for each panel. */
+  /** An array of panel definitions with title and content. */
   Expandables: ExpandableContent[];
   /** A unique ID for the accordion container. */
   ContentId: string;

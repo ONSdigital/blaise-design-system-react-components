@@ -1,7 +1,11 @@
 import { Fragment, ReactElement } from "react";
 import { Field, useFormikContext } from "formik";
-import { TextInputFieldset, RadioFieldset, CheckboxFieldset } from "./Fields";
-import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
+import { RadioFieldset, CheckboxFieldset, TextInputFieldset } from "./Fields";
+
+import type {
+  RadioFieldset as RadioFieldsetType,
+  CheckboxFieldset as CheckboxFieldsetType,
+} from "../StyledForm";
 
 interface Props {
   /** The visible label or legend text for the field. */
@@ -9,9 +13,9 @@ interface Props {
   /** The Formik field name used for state management. */
   name: string;
   /** Configuration array for radio options (only used when type is 'radio'). */
-  radioOptions?: RadioFieldsetObject[];
+  radioOptions?: RadioFieldsetType[];
   /** Configuration array for checkbox options (only used when type is 'checkbox'). */
-  checkboxOptions?: CheckboxFieldsetObject[];
+  checkboxOptions?: CheckboxFieldsetType[];
   /** If true, the input will receive focus on mount. */
   autoFocus?: boolean;
   /** The type of field to render (e.g., 'radio', 'checkbox', 'text', 'date'). */

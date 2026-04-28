@@ -1,6 +1,6 @@
 import { useState, ReactElement } from "react";
 import { validateRadio } from "./FormValidation";
-import { StyledForm, FormFieldObject } from "../StyledForm";
+import { StyledForm, FormField } from "../StyledForm";
 
 /**
  * Interface representing the values captured by the radio form.
@@ -13,7 +13,7 @@ interface RadioFormValues {
 }
 
 /** Configuration for the radio form elements. */
-const formElements: FormFieldObject[] = [
+const formElements: FormField[] = [
   {
     name: "topping",
     description: "Select your favorite topping",

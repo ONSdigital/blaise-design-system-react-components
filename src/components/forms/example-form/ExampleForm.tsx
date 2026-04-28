@@ -5,7 +5,7 @@ import {
   validateName,
   validatePassword,
 } from "./FormValidation";
-import { StyledForm, FormFieldObject } from "../StyledForm";
+import { StyledForm, FormField } from "../StyledForm";
 
 /** Interface representing the values captured by the example form. */
 interface ExampleFormValues {
@@ -16,7 +16,7 @@ interface ExampleFormValues {
 }
 
 /** Configuration for the form elements. */
-const formElements: FormFieldObject[] = [
+const formElements: FormField[] = [
   {
     name: "Questionnaire",
     description: "Questionnaire Name must be longer than 7 characters",

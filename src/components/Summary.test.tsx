@@ -83,7 +83,7 @@ describe("SummaryItemRow", () => {
 
 describe("GroupedSummary Logic", () => {
   describe("Data Formatting", () => {
-    it("should flatten multiple summary groups into a single array of record objects", () => {
+    it("should merge all summary group records into a single object", () => {
       const groupedSummary = new GroupedSummary([
         { title: "Group 1", records: { foo: "bar" } },
         { title: "Group 2", records: { fwibble: "fish" } },

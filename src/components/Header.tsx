@@ -18,7 +18,7 @@ export interface Props {
   noSave?: boolean;
   /** Callback triggered when the sign-out button is clicked. */
   signOutFunction?: () => void;
-  /** Array of navigation link objects to be rendered in the main menu. */
+  /** Array of navigation links to render in the main menu. */
   navigationLinks?: NavigationLinks[];
   /** The current URL endpoint. Used to highlight the active navigation link. */
   currentLocation?: string;

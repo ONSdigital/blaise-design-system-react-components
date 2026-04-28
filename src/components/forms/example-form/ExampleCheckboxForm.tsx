@@ -1,5 +1,5 @@
 import { useState, ReactElement } from "react";
-import { StyledForm, FormFieldObject } from "../StyledForm";
+import { StyledForm, FormField } from "../StyledForm";
 import { validateCheckbox } from "./FormValidation";
 
 /** Type definition for the expected form values. */
@@ -8,7 +8,7 @@ interface CheckboxFormValues {
 }
 
 /** Configuration for the form fields. */
-const formElements: FormFieldObject[] = [
+const formElements: FormField[] = [
   {
     name: "questionnaire",
     description: "Select questionnaires",
@@ -30,7 +30,7 @@ export const ExampleCheckboxForm = (): ReactElement => {
 
   /**
    * Handles the valid form submission.
-   * @param formValues - Object containing the validated questionnaire array.
+   * @param formValues - The validated form values, including the selected questionnaires.
    * @param setSubmitting - Formik utility to toggle the loading state of the submit button.
    */
   const onFormSubmission = (

@@ -18,7 +18,7 @@ interface RadioSpecifyOption {
   validate?: (value: string) => string | undefined;
 }
 
-export interface RadioFieldsetObject {
+export interface RadioFieldset {
   /** The underlying value for this radio option. */
   value: string;
   /** Unique HTML ID for the radio input. */
@@ -31,7 +31,7 @@ export interface RadioFieldsetObject {
   specifyOption?: RadioSpecifyOption;
 }
 
-export interface CheckboxFieldsetObject {
+export interface CheckboxFieldset {
   /** The underlying value for this checkbox. */
   value: string;
   /** Unique HTML ID for the checkbox input. */
@@ -42,7 +42,7 @@ export interface CheckboxFieldsetObject {
   description?: string;
 }
 
-interface BaseFormFieldObject<V = string> {
+interface BaseFormField<V = string> {
   /** Formik field name used for state management. */
   name: string;
   /** Label text displayed above the field. */
@@ -59,22 +59,19 @@ interface BaseFormFieldObject<V = string> {
   initial_value?: V | V[];
 }
 
-interface RadioFormFieldObject extends Omit<BaseFormFieldObject<string>, "type"> {
+interface RadioFormField extends Omit<BaseFormField<string>, "type"> {
   type: "radio";
   /** List of radio options to render. */
-  radioOptions: RadioFieldsetObject[];
+  radioOptions: RadioFieldset[];
 }
 
-interface CheckboxFormFieldObject extends Omit<BaseFormFieldObject<string[]>, "type"> {
+interface CheckboxFormField extends Omit<BaseFormField<string[]>, "type"> {
   type: "checkbox";
   /** List of checkbox options to render. */
-  checkboxOptions: CheckboxFieldsetObject[];
+  checkboxOptions: CheckboxFieldset[];
 }
 
-export type FormField =
-  | CheckboxFormFieldObject
-  | RadioFormFieldObject
-  | BaseFormFieldObject<string>;
+export type FormField = CheckboxFormField | RadioFormField | BaseFormField<string>;
 
 interface StyledFormProps<T extends FormikValues = FormikValues> {
   /** Array of field configurations to generate the form. */

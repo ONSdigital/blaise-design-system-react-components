@@ -7,7 +7,6 @@ export type SummaryGroup = {
   records: Record<string, string | number | boolean | null | undefined>;
 };
 
-
 export class GroupedSummary {
   groups: SummaryGroup[];
 
@@ -49,7 +48,7 @@ export function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): Rea
 }
 
 export interface SummaryGroupTableProps {
-  /** The instantiated GroupedSummary object containing the data to render. */
+  /** The GroupedSummary instance containing all summary groups to display. */
   groupedSummary: GroupedSummary;
 }
 

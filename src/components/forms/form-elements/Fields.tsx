@@ -1,6 +1,6 @@
 import { Fragment, ReactElement, InputHTMLAttributes } from "react";
 import { Field, useFormikContext, FieldInputProps } from "formik";
-import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
+import type { RadioFieldset, CheckboxFieldset } from "../StyledForm";
 import { capitaliseFirstLetter } from "../../../utilities/textFormatting";
 
 interface UnknownProps {
@@ -13,7 +13,7 @@ interface RadioFieldsetProps extends UnknownProps {
   /** Formik field name. */
   name: string;
   /** Configuration array for the radio options. */
-  radioOptions?: RadioFieldsetObject[];
+  radioOptions?: RadioFieldset[];
   /** If true, the first radio option will receive focus on mount. */
   autoFocus: boolean;
 }
@@ -22,7 +22,7 @@ interface CheckboxFieldsetProps extends UnknownProps {
   /** Text displayed in the fieldset legend. */
   description?: string;
   /** Configuration array for the checkbox options. */
-  checkboxOptions?: CheckboxFieldsetObject[];
+  checkboxOptions?: CheckboxFieldset[];
   /** Formik field name. */
   name: string;
   /** If true, the first checkbox option will receive focus on mount. */
@@ -174,7 +174,7 @@ export function CheckboxFieldset({
 }
 
 interface TextInputFieldsetProps extends InputHTMLAttributes<HTMLInputElement> {
-  /** Formik field connection object. */
+  /** Object containing Formik's field input props for this input. */
   field: FieldInputProps<string>;
   /** Optional hint text displayed beneath the label. */
   description?: string;

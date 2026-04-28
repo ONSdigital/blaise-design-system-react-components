@@ -13,7 +13,6 @@ export default meta;
 
 type TableStory = StoryObj<typeof SummaryGroupTable>;
 
-
 const popCultureSummary = new GroupedSummary([
   {
     title: "The Batcave",
