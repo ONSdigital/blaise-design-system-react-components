@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-export interface Props {
+interface Props {
   /** The URL for the feedback link. Defaults to the ONS Service-Now portal. */
   feedbackLink?: string;
 }

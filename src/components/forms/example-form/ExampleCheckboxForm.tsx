@@ -3,7 +3,7 @@ import { StyledForm, FormFieldObject } from "../StyledForm";
 import { validateCheckbox } from "./FormValidation";
 
 /** Type definition for the expected form values. */
-export interface CheckboxFormValues {
+interface CheckboxFormValues {
   questionnaire: string[];
 }
 

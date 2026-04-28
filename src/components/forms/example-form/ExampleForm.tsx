@@ -8,7 +8,7 @@ import {
 import { StyledForm, FormFieldObject } from "../StyledForm";
 
 /** Interface representing the values captured by the example form. */
-export interface ExampleFormValues {
+interface ExampleFormValues {
   Questionnaire: string;
   name: string;
   Email: string;

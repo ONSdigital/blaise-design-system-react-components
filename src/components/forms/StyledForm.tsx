@@ -3,7 +3,7 @@ import { Button } from "../Button";
 import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
 import { StyledFormField } from "./form-elements/StyledFormFields";
 
-export interface RadioSpecifyOption {
+interface RadioSpecifyOption {
   /** Unique HTML ID for the specify input. */
   id: string;
   /** Formik field name for the specify input. */
@@ -42,7 +42,7 @@ export interface CheckboxFieldsetObject {
   description?: string;
 }
 
-export interface BaseFormFieldObject<V = string> {
+interface BaseFormFieldObject<V = string> {
   /** Formik field name used for state management. */
   name: string;
   /** Label text displayed above the field. */
@@ -59,26 +59,26 @@ export interface BaseFormFieldObject<V = string> {
   initial_value?: V | V[];
 }
 
-export interface RadioFormFieldObject extends Omit<BaseFormFieldObject<string>, "type"> {
+interface RadioFormFieldObject extends Omit<BaseFormFieldObject<string>, "type"> {
   type: "radio";
   /** List of radio options to render. */
   radioOptions: RadioFieldsetObject[];
 }
 
-export interface CheckboxFormFieldObject extends Omit<BaseFormFieldObject<string[]>, "type"> {
+interface CheckboxFormFieldObject extends Omit<BaseFormFieldObject<string[]>, "type"> {
   type: "checkbox";
   /** List of checkbox options to render. */
   checkboxOptions: CheckboxFieldsetObject[];
 }
 
-export type FormFieldObject =
+export type FormField =
   | CheckboxFormFieldObject
   | RadioFormFieldObject
   | BaseFormFieldObject<string>;
 
-export interface StyledFormProps<T extends FormikValues = FormikValues> {
+interface StyledFormProps<T extends FormikValues = FormikValues> {
   /** Array of field configurations to generate the form. */
-  fields: FormFieldObject[];
+  fields: FormField[];
   /** Callback executed on valid form submission. Provides current values and the Formik subitting state setter. */
   onSubmitFunction: (values: T, setSubmitting: (isSubmitting: boolean) => void) => void;
   /** Custom text for the submit button. Defaults to "Save and continue". */

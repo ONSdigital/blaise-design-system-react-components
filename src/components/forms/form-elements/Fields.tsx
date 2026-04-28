@@ -7,7 +7,7 @@ interface UnknownProps {
   [key: string]: unknown;
 }
 
-export interface RadioFieldsetProps extends UnknownProps {
+interface RadioFieldsetProps extends UnknownProps {
   /** Text displayed in the fieldset legend. */
   description?: string;
   /** Formik field name. */
@@ -18,7 +18,7 @@ export interface RadioFieldsetProps extends UnknownProps {
   autoFocus: boolean;
 }
 
-export interface CheckboxFieldsetProps extends UnknownProps {
+interface CheckboxFieldsetProps extends UnknownProps {
   /** Text displayed in the fieldset legend. */
   description?: string;
   /** Configuration array for the checkbox options. */

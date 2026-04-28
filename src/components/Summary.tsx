@@ -2,15 +2,16 @@ import { ReactElement, ReactNode } from "react";
 import { Data } from "react-csv/lib/core";
 import { formatTitle, formatKey } from "../utilities/textFormatting";
 
-export type Group = {
+export type SummaryGroup = {
   title: string;
   records: Record<string, string | number | boolean | null | undefined>;
 };
 
-export class GroupedSummary {
-  groups: Group[];
 
-  constructor(groups: Group[]) {
+export class GroupedSummary {
+  groups: SummaryGroup[];
+
+  constructor(groups: SummaryGroup[]) {
     this.groups = groups;
   }
 

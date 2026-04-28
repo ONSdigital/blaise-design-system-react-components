@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from "react";
 
-export interface NavigationLinks {
+interface NavigationLinks {
   /** The unique ID for the navigation item. */
   id: string;
   /** The text displayed to the user. */

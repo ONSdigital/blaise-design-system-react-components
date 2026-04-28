@@ -6,7 +6,7 @@ import { StyledForm, FormFieldObject } from "../StyledForm";
  * Interface representing the values captured by the radio form.
  * Includes the optional 'other-text' for the conditional input.
  */
-export interface RadioFormValues {
+interface RadioFormValues {
   topping: string;
   options: string;
   "other-text"?: string;

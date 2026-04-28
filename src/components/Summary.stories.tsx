@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { GroupedSummary, SummaryGroupTable, SummaryItemRow } from "./Summary";
+import { GroupedSummary, SummaryGroupTable } from "./Summary";
 
 const meta = {
   title: "Components/Summary",
   component: SummaryGroupTable,
-  subcomponents: { SummaryItemRow },
   argTypes: {
     groupedSummary: { control: false },
   },
@@ -13,38 +12,36 @@ const meta = {
 export default meta;
 
 type TableStory = StoryObj<typeof SummaryGroupTable>;
-type RowStory = StoryObj<typeof SummaryItemRow>;
 
-const censusSummary = new GroupedSummary([
+
+const popCultureSummary = new GroupedSummary([
   {
-    title: "Household details",
+    title: "The Batcave",
     records: {
-      Address: "102 Petty France, London",
-      "Property type": "Office block",
-      "Number of residents": "0",
+      Location: "Gotham City",
+      "Primary Resident": "Bruce Wayne (Batman)",
+      "Number of Vehicles": 5,
+      "Secret Entrance": "Grandfather clock in Wayne Manor",
+      "Alfred's Approval": "Required",
+      "Batcomputer Status": "Online",
+      "Villain Alerts": "Joker, Penguin, Riddler",
+    },
+  },
+  {
+    title: "Millennium Falcon",
+    records: {
+      Captain: "Han Solo",
+      CoPilot: "Chewbacca",
+      "Top Speed (MGLT)": 75,
+      "Special Features": "Kessel Run in less than 12 parsecs",
+      "Docked At": "Mos Eisley, Tatooine",
+      Passengers: "Luke Skywalker, Leia Organa, C-3PO, R2-D2",
     },
   },
 ]);
 
 export const Table: TableStory = {
   args: {
-    groupedSummary: censusSummary,
-  },
-};
-
-export const Row: RowStory = {
-  render: (args) => (
-    <table className="ons-summary__table">
-      <tbody className="ons-summary__tbody">
-        <SummaryItemRow {...args} />
-      </tbody>
-    </table>
-  ),
-  argTypes: {
-    fieldValue: { control: false },
-  },
-  args: {
-    fieldName: "Survey",
-    fieldValue: "Labour Force Survey",
+    groupedSummary: popCultureSummary,
   },
 };

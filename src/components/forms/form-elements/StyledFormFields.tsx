@@ -3,7 +3,7 @@ import { Field, useFormikContext } from "formik";
 import { TextInputFieldset, RadioFieldset, CheckboxFieldset } from "./Fields";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 
-export interface Props {
+interface Props {
   /** The visible label or legend text for the field. */
   description?: string;
   /** The Formik field name used for state management. */
