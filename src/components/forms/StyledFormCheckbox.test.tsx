@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { ExampleCheckboxForm } from "./example-form/ExampleCheckboxForm";
 import { StyledForm } from "./StyledForm";
 import { Formik } from "formik";
-import { CheckboxesFieldset } from "./form-elements/Fields";
+import { CheckboxFieldset } from "./form-elements/Fields";
 
 const setup = (component = <ExampleCheckboxForm />) => {
   return {
@@ -121,7 +121,7 @@ describe("ExampleCheckboxForm", () => {
         {
           name: "topping",
           description: "Select your favorite topping",
-          type: "checkbox",
+          type: "checkbox" as const,
           initial_value: ["bacon", "pineapple"],
           checkboxOptions: [
             { id: "bacon", value: "bacon", label: "Bacon" },
@@ -152,7 +152,7 @@ describe("ExampleCheckboxForm", () => {
           initialValues={{}}
           onSubmit={vi.fn()}
         >
-          <CheckboxesFieldset
+          <CheckboxFieldset
             name="missingCheckboxState"
             checkboxOptions={[{ id: "test-id", value: "test", label: "Test Label" }]}
             autoFocus={false}

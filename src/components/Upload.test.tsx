@@ -1,12 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps } from "react";
-import { Upload } from "./Upload";
+import { Upload, type Props } from "./Upload";
 
-type UploadProps = ComponentProps<typeof Upload>;
-
-const setup = (overrideProps: Partial<UploadProps> = {}) => {
-  const props: UploadProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     label: "Upload",
     description: "This is the upload",
     fileName: "file.csv",
@@ -14,7 +11,7 @@ const setup = (overrideProps: Partial<UploadProps> = {}) => {
     accept: ".csv",
     onChange: vi.fn(),
     ...overrideProps,
-  } as UploadProps;
+  };
 
   return {
     user: userEvent.setup(),
@@ -50,8 +47,6 @@ describe("Upload", () => {
     it("should trigger the onChange handler when a file is selected", async () => {
       const { user, props } = setup();
       const input = screen.getByTestId("upload-input");
-
-      // Note: Excellent use of the File API mock here
       const file1 = new File(["(⌐□_□)"], "test1.csv", { type: "text/csv" });
       const file2 = new File(["(⌐□_□)"], "test2.csv", { type: "text/csv" });
 

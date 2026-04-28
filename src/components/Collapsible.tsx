@@ -20,15 +20,14 @@ export const Collapsible = ({ children, title, id }: Props) => {
   };
 
   return (
-    <details
+    <div
       id={componentId}
-      className="ons-collapsible ons-js-collapsible ons-u-mt-l"
+      className={`ons-details ons-details--initialised ons-u-mt-l ${panelOpen ? "ons-details--open" : ""}`}
       data-save-state="true"
       role="group"
-      open={panelOpen}
     >
-      <summary
-        className="ons-collapsible__heading ons-js-collapsible-heading"
+      <div
+        className="ons-details__heading"
         role="button"
         data-testid="collapsible-heading"
         onClick={handleToggle}
@@ -42,32 +41,32 @@ export const Collapsible = ({ children, title, id }: Props) => {
         aria-controls={`${componentId}-content`}
         data-ga-action={`${panelOpen ? "Close" : "Open"} panel`}
       >
-        <div className="ons-collapsible__controls">
-          <h2 className="ons-collapsible__title">{title}</h2>
-          <span className="ons-collapsible__icon">
-            <svg
-              className="ons-svg-icon"
-              viewBox="0 0 7.5 12.85"
-              xmlns="http://www.w3.org/2000/svg"
-              focusable="false"
-              aria-hidden="true"
-            >
-              <path
-                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0-.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
-                transform="translate(-5.02 -1.59)"
-              />
-            </svg>
-          </span>
-        </div>
-      </summary>
+        <h2 className="ons-details__title ons-u-fs-r--b">{title}</h2>
+        <span className="ons-details__icon">
+          <svg
+            className="ons-icon"
+            viewBox="0 0 8 13"
+            xmlns="http://www.w3.org/2000/svg"
+            focusable="false"
+            aria-hidden="true"
+            fill="currentColor"
+            role="img"
+          >
+            <path
+              d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+              transform="translate(-5.02 -1.59)"
+            />
+          </svg>
+        </span>
+      </div>
       <div
         id={`${componentId}-content`}
-        className="ons-collapsible__content ons-js-collapsible-content"
+        className="ons-details__content"
         aria-hidden={!panelOpen}
         data-testid="collapsible-content"
       >
         {children}
       </div>
-    </details>
+    </div>
   );
 };

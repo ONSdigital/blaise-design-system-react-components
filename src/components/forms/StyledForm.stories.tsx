@@ -1,8 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { StyledForm } from "./StyledForm";
+import {
+  validateRadio,
+  validateCheckbox,
+  validateInterviewerID,
+} from "./example-form/FormValidation";
 
 const meta = {
-  title: "Components/Forms/StyledForm",
+  title: "Components/Forms/Styled Form",
   component: StyledForm,
   argTypes: {
     onSubmitFunction: {
@@ -31,6 +36,7 @@ export const Default: Story = {
         description: "Select survey",
         type: "radio",
         initial_value: "undefined",
+        validate: validateRadio,
         radioOptions: [
           { id: "all", value: "undefined", label: "Show all surveys" },
           {
@@ -52,6 +58,7 @@ export const Default: Story = {
         description: "Select questionnaires",
         type: "checkbox",
         initial_value: [],
+        validate: validateCheckbox,
         checkboxOptions: [
           { id: "checkbox_1", value: "lms", label: "LMS" },
           { id: "checkbox_2", value: "opn", label: "OPN" },
@@ -61,6 +68,7 @@ export const Default: Story = {
       {
         name: "Interviewer ID",
         type: "text",
+        validate: validateInterviewerID,
       },
       {
         name: "Start date",

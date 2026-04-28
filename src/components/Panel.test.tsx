@@ -1,11 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import { ComponentProps } from "react";
-import { Panel } from "./Panel";
+import { Panel, type Props } from "./Panel";
 
-type PanelProps = ComponentProps<typeof Panel>;
-
-const setup = (overrideProps: Partial<PanelProps> = {}) => {
-  const props: PanelProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     children: <p data-testid="panel-child">Panel Content</p>,
     testID: "test-panel",
     ...overrideProps,
@@ -50,6 +47,12 @@ describe("Panel", () => {
 
       expect(parentPanel).toContainElement(childElement);
     });
+
+    it("should return null when hidden is true", () => {
+      const { container } = setup({ hidden: true });
+
+      expect(container.firstChild).toBeNull();
+    });
   });
 
   describe("Props", () => {
@@ -70,9 +73,27 @@ describe("Panel", () => {
     it("should render the extra-large margin class on the icon when bigIcon is true", () => {
       const { props } = setup({ status: "success", bigIcon: true });
       const panel = screen.getByTestId(props.testID!);
-      const iconElement = panel.querySelector(".ons-svg-icon-margin--xl");
+      const bodyElement = panel.querySelector(".ons-panel__body.ons-icon-margin--xl");
 
-      expect(iconElement).toBeVisible();
+      expect(bodyElement).toBeVisible();
+      expect(bodyElement).toHaveClass("ons-icon-margin--xl");
+    });
+
+    it("should not render the extra-large margin class when bigIcon is false", () => {
+      const { props } = setup({ status: "success", bigIcon: false });
+      const panel = screen.getByTestId(props.testID!);
+      const bodyElement = panel.querySelector(".ons-panel__body");
+
+      expect(bodyElement).toBeInTheDocument();
+      expect(bodyElement).not.toHaveClass("ons-icon-margin--xl");
+    });
+
+    it("should not render the extra-large margin class when status is not success, even if bigIcon is true", () => {
+      const { props } = setup({ status: "info", bigIcon: true });
+      const panel = screen.getByTestId(props.testID!);
+      const bodyElement = panel.querySelector(".ons-panel__body");
+
+      expect(bodyElement).not.toHaveClass("ons-icon-margin--xl");
     });
   });
 });

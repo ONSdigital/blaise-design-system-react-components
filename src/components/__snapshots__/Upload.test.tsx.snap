@@ -5,31 +5,28 @@ exports[`Upload > Rendering > should match the snapshot 1`] = `
   <div
     class="ons-field"
   >
-    <p
-      class="ons-field"
+    <label
+      aria-describedby="file-hint"
+      class="ons-label ons-label--with-description"
+      for="file"
     >
-      <label
-        class="ons-label"
-        for="file"
-      >
-        Upload
-        <br />
-        <span
-          class="ons-label__description"
-        >
-          This is the upload
-        </span>
-      </label>
-      <input
-        accept=".csv"
-        class="ons-input ons-input--text ons-input-type__input ons-input--upload"
-        data-testid="upload-input"
-        id="file"
-        name="file.csv"
-        style="position: static;"
-        type="file"
-      />
-    </p>
+      Upload
+    </label>
+    <span
+      class="ons-label__description ons-input--with-description"
+      id="file-hint"
+    >
+      This is the upload
+    </span>
+    <input
+      accept=".csv"
+      aria-describedby="file-hint"
+      class="ons-input ons-input--text ons-input-type__input ons-input--upload"
+      data-testid="upload-input"
+      id="file"
+      name="file.csv"
+      type="file"
+    />
   </div>
 </DocumentFragment>
 `;

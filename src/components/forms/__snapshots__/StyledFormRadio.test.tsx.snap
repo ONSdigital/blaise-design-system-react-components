@@ -5,148 +5,174 @@ exports[`ExampleRadioForm > Rendering > should match the snapshot 1`] = `
   <form
     action="#"
   >
-    <fieldset
-      class="ons-fieldset"
+    <div
+      class="ons-field ons-u-mb-m"
     >
-      <legend
-        class="ons-fieldset__legend"
+      <fieldset
+        class="ons-fieldset"
       >
-        Select your favorite topping
-      </legend>
-      <div
-        class="ons-radios__items"
-      >
-        <p
-          class="ons-radios__item"
+        <legend
+          class="ons-fieldset__legend ons-u-fs-r--b"
         >
-          <span
-            class="ons-radio"
-          >
-            <input
-              class="ons-radio__input js-radio"
-              id="bacon"
-              name="topping"
-              type="radio"
-              value="bacon"
-            />
-            <label
-              class="ons-radio__label "
-              for="bacon"
-              id="bacon-label"
-            >
-              Bacon
-            </label>
-          </span>
-        </p>
-        <br />
-        <p
-          class="ons-radios__item"
+          Select your favorite topping
+        </legend>
+        <div
+          class="ons-grid"
         >
-          <span
-            class="ons-radio"
+          <div
+            class="ons-grid__col ons-col-8@m ons-col-6@l"
           >
-            <input
-              class="ons-radio__input js-radio"
-              id="cheese"
-              name="topping"
-              type="radio"
-              value="cheese"
-            />
-            <label
-              class="ons-radio__label ons-label--with-description"
-              for="cheese"
-              id="cheese-label"
+            <div
+              class="ons-input-items"
             >
-              Cheese
-              <span
-                class="ons-label__description ons-radio__label--with-description"
-                id="cheese-description-hint"
+              <div
+                class="ons-radios__items"
               >
-                This includes all types of cheese
-              </span>
-            </label>
-          </span>
-        </p>
-        <br />
-      </div>
-    </fieldset>
-    <fieldset
-      class="ons-fieldset"
+                <span
+                  class="ons-radios__item"
+                >
+                  <span
+                    class="ons-radio"
+                  >
+                    <input
+                      class="ons-radio__input"
+                      id="bacon"
+                      name="topping"
+                      type="radio"
+                      value="bacon"
+                    />
+                    <label
+                      class="ons-radio__label "
+                      for="bacon"
+                    >
+                      Bacon
+                    </label>
+                  </span>
+                </span>
+                <br />
+                <span
+                  class="ons-radios__item"
+                >
+                  <span
+                    class="ons-radio"
+                  >
+                    <input
+                      class="ons-radio__input"
+                      id="cheese"
+                      name="topping"
+                      type="radio"
+                      value="cheese"
+                    />
+                    <label
+                      class="ons-radio__label ons-label--with-description"
+                      for="cheese"
+                    >
+                      Cheese
+                      <span
+                        class="ons-label__description ons-radio__label--with-description"
+                      >
+                        This includes all types of cheese
+                      </span>
+                    </label>
+                  </span>
+                </span>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div
+      class="ons-field ons-u-mb-m"
     >
-      <legend
-        class="ons-fieldset__legend"
+      <fieldset
+        class="ons-fieldset"
       >
-        Select a radio option
-      </legend>
-      <div
-        class="ons-radios__items"
-      >
-        <p
-          class="ons-radios__item"
+        <legend
+          class="ons-fieldset__legend ons-u-fs-r--b"
         >
-          <span
-            class="ons-radio"
-          >
-            <input
-              class="ons-radio__input js-radio"
-              id="firstOption"
-              name="options"
-              type="radio"
-              value="firstOption"
-            />
-            <label
-              class="ons-radio__label "
-              for="firstOption"
-              id="firstOption-label"
-            >
-              First Option
-            </label>
-          </span>
-        </p>
-        <br />
-        <p
-          class="ons-radios__item"
+          Select a radio option
+        </legend>
+        <div
+          class="ons-grid"
         >
-          <span
-            class="ons-radio"
+          <div
+            class="ons-grid__col ons-col-8@m ons-col-6@l"
           >
-            <input
-              class="ons-radio__input js-radio"
-              id="other"
-              name="options"
-              type="radio"
-              value="other"
-            />
-            <label
-              class="ons-radio__label "
-              for="other"
-              id="other-label"
+            <div
+              class="ons-input-items"
             >
-              Other
-            </label>
-            <span
-              class="ons-radio__other ons-radio__other--open"
-              id="other-other-wrap"
-            >
-              <label
-                class="ons-label ons-u-fs-s--b"
-                for="other-text"
-                id="other-text-label"
+              <div
+                class="ons-radios__items"
               >
-                Please specify
-              </label>
-              <input
-                class="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
-                id="other-text"
-                name="other-text"
-                type="text"
-              />
-            </span>
-          </span>
-        </p>
-        <br />
-      </div>
-    </fieldset>
+                <span
+                  class="ons-radios__item"
+                >
+                  <span
+                    class="ons-radio"
+                  >
+                    <input
+                      class="ons-radio__input"
+                      id="firstOption"
+                      name="options"
+                      type="radio"
+                      value="firstOption"
+                    />
+                    <label
+                      class="ons-radio__label "
+                      for="firstOption"
+                    >
+                      First Option
+                    </label>
+                  </span>
+                </span>
+                <br />
+                <span
+                  class="ons-radios__item"
+                >
+                  <span
+                    class="ons-radio"
+                  >
+                    <input
+                      class="ons-radio__input"
+                      id="other"
+                      name="options"
+                      type="radio"
+                      value="other"
+                    />
+                    <label
+                      class="ons-radio__label "
+                      for="other"
+                    >
+                      Other
+                    </label>
+                    <span
+                      class="ons-radio__other ons-radio__other--open"
+                      id="other-other-wrap"
+                    >
+                      <label
+                        class="ons-label ons-u-fs-s--b"
+                        for="other-text"
+                      >
+                        Please specify
+                      </label>
+                      <input
+                        class="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
+                        id="other-text"
+                        name="other-text"
+                        type="text"
+                      />
+                    </span>
+                  </span>
+                </span>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
     <br />
     <button
       class="ons-btn"
@@ -156,7 +182,11 @@ exports[`ExampleRadioForm > Rendering > should match the snapshot 1`] = `
       <span
         class="ons-btn__inner"
       >
-        Save and Continue
+        <span
+          class="ons-btn__text"
+        >
+          Save and Continue
+        </span>
       </span>
     </button>
   </form>

@@ -1,7 +1,8 @@
 .idea/
 .vscode/
+.yarn/
 coverage/
 dist/
-docs-build/
+storybook-static/
 node_modules/
 *.log

@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: "Upload",
-    description: "Upload a file with the following extension: .pdf",
+    description: "Upload a file with the following extension: pdf",
     fileName: "file-upload",
     fileID: "file-upload-input",
     accept: ".pdf",

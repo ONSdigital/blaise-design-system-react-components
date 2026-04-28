@@ -1,9 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps, useState } from "react";
-import { ErrorBoundary } from "./ErrorBoundary";
-
-type ErrorBoundaryProps = ComponentProps<typeof ErrorBoundary>;
+import { useState } from "react";
+import { ErrorBoundary, type Props } from "./ErrorBoundary";
 
 const DodgyComponent = () => {
   const [shouldCrash, setShouldCrash] = useState(false);
@@ -22,8 +20,8 @@ const DodgyComponent = () => {
   );
 };
 
-const setup = (overrideProps: Partial<ErrorBoundaryProps> = {}) => {
-  const props: ErrorBoundaryProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     errorMessageText: "Super dodgy component has failed",
     children: <p>Simple text</p>,
     ...overrideProps,

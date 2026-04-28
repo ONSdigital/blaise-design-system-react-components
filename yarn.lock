@@ -539,22 +539,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/is-prop-valid@npm:1.4.0":
-  version: 1.4.0
-  resolution: "@emotion/is-prop-valid@npm:1.4.0"
-  dependencies:
-    "@emotion/memoize": "npm:^0.9.0"
-  checksum: 10c0/5f857814ec7d8c7e727727346dfb001af6b1fb31d621a3ce9c3edf944a484d8b0d619546c30899ae3ade2f317c76390ba4394449728e9bf628312defc2c41ac3
-  languageName: node
-  linkType: hard
-
-"@emotion/memoize@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "@emotion/memoize@npm:0.9.0"
-  checksum: 10c0/13f474a9201c7f88b543e6ea42f55c04fb2fdc05e6c5a3108aced2f7e7aa7eda7794c56bba02985a46d8aaa914fcdde238727a98341a96e2aec750d372dadd15
-  languageName: node
-  linkType: hard
-
 "@esbuild/aix-ppc64@npm:0.27.7":
   version: 0.27.7
   resolution: "@esbuild/aix-ppc64@npm:0.27.7"
@@ -3400,7 +3384,6 @@ __metadata:
     react: "npm:^19.2.5"
     react-csv: "npm:^2.2.2"
     react-dom: "npm:^19.2.5"
-    react-loader-spinner: "npm:^8.0.2"
     storybook: "npm:^10.3.5"
     typescript: "npm:^6.0.3"
     typescript-eslint: "npm:^8.59.0"
@@ -3551,13 +3534,6 @@ __metadata:
   version: 6.3.0
   resolution: "camelcase@npm:6.3.0"
   checksum: 10c0/0d701658219bd3116d12da3eab31acddb3f9440790c0792e0d398f0a520a6a4058018e546862b6fba89d7ae990efaeb97da71e1913e9ebf5a8b5621a3d55c710
-  languageName: node
-  linkType: hard
-
-"camelize@npm:^1.0.0":
-  version: 1.0.1
-  resolution: "camelize@npm:1.0.1"
-  checksum: 10c0/4c9ac55efd356d37ac483bad3093758236ab686192751d1c9daa43188cc5a07b09bd431eb7458a4efd9ca22424bba23253e7b353feb35d7c749ba040de2385fb
   languageName: node
   linkType: hard
 
@@ -3809,24 +3785,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-color-keywords@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "css-color-keywords@npm:1.0.0"
-  checksum: 10c0/af205a86c68e0051846ed91eb3e30b4517e1904aac040013ff1d742019b3f9369ba5658ba40901dbbc121186fc4bf0e75a814321cc3e3182fbb2feb81c6d9cb7
-  languageName: node
-  linkType: hard
-
-"css-to-react-native@npm:3.2.0":
-  version: 3.2.0
-  resolution: "css-to-react-native@npm:3.2.0"
-  dependencies:
-    camelize: "npm:^1.0.0"
-    css-color-keywords: "npm:^1.0.0"
-    postcss-value-parser: "npm:^4.0.2"
-  checksum: 10c0/fde850a511d5d3d7c55a1e9b8ed26b69a8ad4868b3487e36ebfbfc0b96fc34bc977d9cd1d61a289d0c74d3f9a662d8cee297da53d4433bf2e27d6acdff8e1003
-  languageName: node
-  linkType: hard
-
 "css-tree@npm:^3.0.0, css-tree@npm:^3.2.1":
   version: 3.2.1
   resolution: "css-tree@npm:3.2.1"
@@ -3844,7 +3802,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:3.2.3, csstype@npm:^3.2.2":
+"csstype@npm:^3.2.2":
   version: 3.2.3
   resolution: "csstype@npm:3.2.3"
   checksum: 10c0/cd29c51e70fa822f1cecd8641a1445bed7063697469d35633b516e60fe8c1bde04b08f6c5b6022136bb669b64c63d4173af54864510fbb4ee23281801841a3ce
@@ -7856,13 +7814,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-value-parser@npm:^4.0.2":
-  version: 4.2.0
-  resolution: "postcss-value-parser@npm:4.2.0"
-  checksum: 10c0/f4142a4f56565f77c1831168e04e3effd9ffcc5aebaf0f538eee4b2d465adfd4b85a44257bb48418202a63806a7da7fe9f56c330aebb3cac898e46b4cbf49161
-  languageName: node
-  linkType: hard
-
 "postcss@npm:^8.5.10":
   version: 8.5.12
   resolution: "postcss@npm:8.5.12"
@@ -8056,19 +8007,6 @@ __metadata:
   version: 18.3.1
   resolution: "react-is@npm:18.3.1"
   checksum: 10c0/f2f1e60010c683479e74c63f96b09fb41603527cd131a9959e2aee1e5a8b0caf270b365e5ca77d4a6b18aae659b60a86150bb3979073528877029b35aecd2072
-  languageName: node
-  linkType: hard
-
-"react-loader-spinner@npm:^8.0.2":
-  version: 8.0.2
-  resolution: "react-loader-spinner@npm:8.0.2"
-  dependencies:
-    styled-components: "npm:^6.3.6"
-    tinycolor2: "npm:^1.6.0"
-  peerDependencies:
-    react: ">=17.0.0 <20.0.0"
-    react-dom: ">=17.0.0 <20.0.0"
-  checksum: 10c0/b917fca23fdbdf03901daa4980823710b8e7f082eb36831b6b79c2540ec9d06c66e4f97dae5cebb4eabec83f884d1ba9efe1d4548012e83e5973146a799e5f06
   languageName: node
   linkType: hard
 
@@ -8889,37 +8827,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^6.3.6":
-  version: 6.4.1
-  resolution: "styled-components@npm:6.4.1"
-  dependencies:
-    "@emotion/is-prop-valid": "npm:1.4.0"
-    css-to-react-native: "npm:3.2.0"
-    csstype: "npm:3.2.3"
-    stylis: "npm:4.3.6"
-  peerDependencies:
-    css-to-react-native: ">= 3.2.0"
-    react: ">= 16.8.0"
-    react-dom: ">= 16.8.0"
-    react-native: ">= 0.68.0"
-  peerDependenciesMeta:
-    css-to-react-native:
-      optional: true
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 10c0/33b43f55be02cecc4dd1904f0f4397c8a9f245ee67cd12893c9117651048a442555b527fdd25b4db8a0365701713cb0e91b09df16a4d46e175e3990041b45099
-  languageName: node
-  linkType: hard
-
-"stylis@npm:4.3.6":
-  version: 4.3.6
-  resolution: "stylis@npm:4.3.6"
-  checksum: 10c0/e736d484983a34f7c65d362c67dc79b7bce388054b261c2b7b23d02eaaf280617033f65d44b1ea341854f4331a5074b885668ac8741f98c13a6cfd6443ae85d0
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^5.3.0":
   version: 5.5.0
   resolution: "supports-color@npm:5.5.0"
@@ -9012,13 +8919,6 @@ __metadata:
   version: 2.9.0
   resolution: "tinybench@npm:2.9.0"
   checksum: 10c0/c3500b0f60d2eb8db65250afe750b66d51623057ee88720b7f064894a6cb7eb93360ca824a60a31ab16dab30c7b1f06efe0795b352e37914a9d4bad86386a20c
-  languageName: node
-  linkType: hard
-
-"tinycolor2@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "tinycolor2@npm:1.6.0"
-  checksum: 10c0/9aa79a36ba2c2a87cb221453465cabacd04b9e35f9694373e846fdc78b1c768110f81e581ea41440106c0f24d9a023891d0887e8075885e790ac40eb0e74a5c1
   languageName: node
   linkType: hard
 

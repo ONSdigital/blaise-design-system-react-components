@@ -4,6 +4,8 @@ import {
   validateName,
   validatePassword,
   validateRadio,
+  validateInterviewerID,
+  validateCheckbox,
 } from "./FormValidation";
 
 describe("FormValidation", () => {
@@ -17,6 +19,16 @@ describe("FormValidation", () => {
       { input: "OPN2101A", expected: undefined },
     ])("should return '$expected' when input is '$input'", ({ input, expected }) => {
       expect(validateQuestionnaireName(input)).toBe(expected);
+    });
+  });
+
+  describe("validateInterviewerID", () => {
+    it.each([
+      { input: "", expected: "Enter an Interviewer ID" },
+      { input: "   ", expected: "Enter an Interviewer ID" },
+      { input: "INT123", expected: undefined },
+    ])("should return '$expected' when input is '$input'", ({ input, expected }) => {
+      expect(validateInterviewerID(input)).toBe(expected);
     });
   });
 
@@ -64,6 +76,16 @@ describe("FormValidation", () => {
       { input: "Bacon", expected: undefined },
     ])("should return '$expected' when input is '$input'", ({ input, expected }) => {
       expect(validateRadio(input)).toBe(expected);
+    });
+  });
+
+  describe("validateCheckbox", () => {
+    it.each([
+      { input: [], expected: "Select an option" },
+      { input: ["Option 1"], expected: undefined },
+      { input: ["Option 1", "Option 2"], expected: undefined },
+    ])("should return '$expected' when input is %j", ({ input, expected }) => {
+      expect(validateCheckbox(input as string[])).toBe(expected);
     });
   });
 });

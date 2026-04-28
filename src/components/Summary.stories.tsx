@@ -4,6 +4,7 @@ import { GroupedSummary, SummaryGroupTable, SummaryItemRow } from "./Summary";
 const meta = {
   title: "Components/Summary",
   component: SummaryGroupTable,
+  subcomponents: { SummaryItemRow },
   argTypes: {
     groupedSummary: { control: false },
   },

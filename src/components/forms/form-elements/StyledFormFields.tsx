@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from "react";
 import { Field, useFormikContext } from "formik";
-import { ONSInputField, RadioFieldset, CheckboxesFieldset } from "./Fields";
+import { TextInputFieldset, RadioFieldset, CheckboxFieldset } from "./Fields";
 import { RadioFieldsetObject, CheckboxFieldsetObject } from "../StyledForm";
 
 export interface Props {
@@ -28,10 +28,10 @@ const StyledFormFieldErrorWrapper = (
 ) => {
   return (
     <div
-      className="ons-panel ons-panel--error ons-panel--no-title ons-u-mb-s"
+      className="ons-panel ons-panel--error ons-panel--no-title"
       id={`${fieldName}-error`}
     >
-      <span className="ons-u-vh">Error: </span>
+      <span className="ons-panel__assistive-text ons-u-vh">Error: </span>
       <div className="ons-panel__body">
         <p className="ons-panel__error">
           <strong>{fieldError}</strong>
@@ -69,7 +69,7 @@ export const StyledFormField = ({
     );
   } else if (props.type === "checkbox") {
     newField = (
-      <CheckboxesFieldset
+      <CheckboxFieldset
         description={description}
         name={name}
         checkboxOptions={checkboxOptions}
@@ -84,7 +84,7 @@ export const StyledFormField = ({
         description={description}
         autoFocus={autoFocus}
         {...props}
-        component={ONSInputField}
+        component={TextInputFieldset}
       />
     );
   }

@@ -1,9 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps } from "react";
-import { Select } from "./Select";
-
-type SelectProps = ComponentProps<typeof Select>;
+import { Select, type Props } from "./Select";
 
 const defaultOptions = [
   { label: "Option 1", value: "1" },
@@ -11,8 +8,8 @@ const defaultOptions = [
   { label: "Option 3", value: "3" },
 ];
 
-const setup = (overrideProps: Partial<SelectProps> = {}) => {
-  const props: SelectProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     id: "select-thing",
     label: "Select From",
     value: "",
@@ -20,7 +17,7 @@ const setup = (overrideProps: Partial<SelectProps> = {}) => {
     testId: "test-select",
     onChange: vi.fn(),
     ...overrideProps,
-  } as SelectProps;
+  };
 
   return {
     user: userEvent.setup(),

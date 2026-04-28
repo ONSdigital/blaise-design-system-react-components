@@ -32,7 +32,7 @@
   "exclude": [
     "coverage",
     "dist",
-    "docs-build",
+    "storybook-static",
     "node_modules"
   ]
 }

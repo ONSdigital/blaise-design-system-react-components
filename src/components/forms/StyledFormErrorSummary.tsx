@@ -26,7 +26,7 @@ export const StyledFormErrorSummary = () => {
 
   return (
     <div
-      aria-labelledby="error-summary-title"
+      aria-labelledby="alert"
       role="alert"
       tabIndex={-1}
       ref={errorFocus}
@@ -34,7 +34,7 @@ export const StyledFormErrorSummary = () => {
     >
       <div className="ons-panel__header">
         <h2
-          id="error-summary-title"
+          id="alert"
           data-qa="error-header"
           className="ons-panel__title ons-u-fs-r--b"
         >

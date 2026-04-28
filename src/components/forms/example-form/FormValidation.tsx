@@ -13,6 +13,17 @@ export function validateQuestionnaireName(value: string): string | undefined {
 }
 
 /**
+ * Validates the Interviewer ID field.
+ * @param value - The raw string value from the input.
+ * @returns An error message string if empty, or undefined if valid.
+ */
+export function validateInterviewerID(value: string): string | undefined {
+  if (!value || value.trim() === "") return "Enter an Interviewer ID";
+
+  return undefined;
+}
+
+/**
  * Validates the Name field.
  * @param value - The raw string value from the input.
  * @returns An error message string if invalid, or undefined if valid.

@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
-import { Panel } from "./Panel";
 
-export interface ErrorPanelProps {
+export interface Props {
   /** The error message displayed inside the panel. Defaults to a generic service availability message. */
   text?: string;
   /** If true, hides the panel from the DOM. */
@@ -17,15 +16,19 @@ export const ErrorPanel = ({
   hidden,
   testID,
   id,
-}: ErrorPanelProps): ReactElement => {
+}: Props): ReactElement | null => {
+  if (hidden) return null;
+
   return (
-    <Panel
-      status="error"
-      hidden={hidden}
-      testID={testID}
+    <div
       id={id}
+      data-testid={testID}
+      className="ons-panel ons-panel--error ons-panel--no-title"
     >
-      <p>{text}</p>
-    </Panel>
+      <span className="ons-panel__assistive-text ons-u-vh">Error: </span>
+      <div className="ons-panel__body">
+        <p>{text}</p>
+      </div>
+    </div>
   );
 };

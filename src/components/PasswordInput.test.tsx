@@ -1,12 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps } from "react";
-import { PasswordInput } from "./PasswordInput";
+import { PasswordInput, type Props } from "./PasswordInput";
 
-type PasswordInputProps = ComponentProps<typeof PasswordInput>;
-
-const setup = (overrideProps: Partial<PasswordInputProps> = {}) => {
-  const props: PasswordInputProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     label: "Password",
     inputId: "password-input",
     value: "",

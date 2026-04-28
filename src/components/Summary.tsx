@@ -1,16 +1,12 @@
-import { ReactElement, ReactNode, Fragment } from "react";
+import { ReactElement, ReactNode } from "react";
 import { Data } from "react-csv/lib/core";
 import { formatTitle, formatKey } from "../utilities/textFormatting";
 
-/** Represents a single section within a summary table. */
 export type Group = {
-  /** The heading displayed above this specific group of records. */
   title: string;
-  /** A key-value pair of the data to display in the table rows. */
   records: Record<string, string | number | boolean | null | undefined>;
 };
 
-/** A data structure class that holds multiple summary groups and provides utility methods. */
 export class GroupedSummary {
   groups: Group[];
 
@@ -18,7 +14,6 @@ export class GroupedSummary {
     this.groups = groups;
   }
 
-  /** Flattens the grouped records into a single row format suitable for CSV export. */
   csv(): Data {
     const row = this.groups.reduce((acc, group) => {
       return { ...acc, ...group.records };
@@ -37,19 +32,18 @@ export interface SummaryItemProps {
 
 export function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): ReactElement {
   return (
-    <tbody className="ons-summary__item">
-      <tr className="ons-summary__row ons-summary__row--has-values">
-        <td className="ons-summary__item-title">
-          <div className="ons-summary__item--text">{formatTitle(fieldName)}</div>
-        </td>
-        <td
-          className="ons-summary__values"
-          colSpan={2}
-        >
-          {fieldValue}
-        </td>
-      </tr>
-    </tbody>
+    <div className="ons-summary__item">
+      <dt className="ons-summary__item-title">
+        <div className="ons-summary__item--text">{formatTitle(fieldName)}</div>
+      </dt>
+      <dd className="ons-summary__values">
+        {typeof fieldValue === "string" || typeof fieldValue === "number" ? (
+          <span className="ons-summary__text">{fieldValue}</span>
+        ) : (
+          fieldValue
+        )}
+      </dd>
+    </div>
   );
 }
 
@@ -60,11 +54,14 @@ export interface SummaryGroupTableProps {
 
 export function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): ReactElement {
   return (
-    <>
+    <div className="ons-summary">
       {groupedSummary.groups.map((group) => (
-        <Fragment key={`summary-group-wrapper-${formatKey(group.title)}`}>
-          <h3 className="ons-summary__group-title">{group.title}</h3>
-          <table className="ons-summary__items">
+        <div
+          key={`summary-group-wrapper-${formatKey(group.title)}`}
+          className="ons-summary__group"
+        >
+          <h2 className="ons-summary__group-title">{group.title}</h2>
+          <dl className="ons-summary__items">
             {Object.entries(group.records).map(([field, value]) => (
               <SummaryItemRow
                 key={`summary-table-row-${formatKey(field)}`}
@@ -72,9 +69,9 @@ export function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): R
                 fieldValue={value as ReactNode}
               />
             ))}
-          </table>
-        </Fragment>
+          </dl>
+        </div>
       ))}
-    </>
+    </div>
   );
 }

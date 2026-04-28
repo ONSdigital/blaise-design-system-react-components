@@ -23,10 +23,18 @@ export const Success: Story = {
   args: {
     status: "success",
     bigIcon: true,
+    children: <p>Information has been successfully submitted</p>,
+  },
+};
+
+export const SuccessWithTitleAndSubtext: Story = {
+  args: {
+    status: "success",
+    bigIcon: true,
     children: (
       <div>
-        <h1>Title in a success panel</h1>
-        <p>And then some text</p>
+        <p className="ons-u-fs-r--b ons-u-mb-xs">Title in a success panel</p>
+        <p className="ons-u-mt-no">And then some text</p>
       </div>
     ),
   },

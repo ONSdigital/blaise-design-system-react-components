@@ -1,11 +1,8 @@
 import { ChangeEvent } from "react";
 
 export interface Option {
-  /** The text displayed to the user for this option. */
   label: string;
-  /** The underlying value of the option. */
   value: string;
-  /** Optional custom HTML ID for the option element. */
   id?: string;
 }
 
@@ -14,6 +11,8 @@ export interface Props {
   label?: string;
   /** Custom HTML ID for the select element. */
   id?: string;
+  /** The HTML name attribute for the select element. Defaults to "select". */
+  name?: string;
   /** Callback fired when the user selects a new option. */
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   /** The current selected value (controlled component). */
@@ -24,7 +23,7 @@ export interface Props {
   testId?: string;
 }
 
-export const Select = ({ label, id, onChange, value, options, testId }: Props) => {
+export const Select = ({ label, id, name, onChange, value, options, testId }: Props) => {
   return (
     <div className="ons-field">
       {label !== undefined && (
@@ -37,7 +36,7 @@ export const Select = ({ label, id, onChange, value, options, testId }: Props) =
       )}
       <select
         id={id}
-        name="select"
+        name={name ?? "select"}
         value={value}
         className="ons-input ons-input--select"
         onChange={onChange}

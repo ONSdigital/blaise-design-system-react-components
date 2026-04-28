@@ -1,9 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps, useState } from "react";
-import { DefaultErrorBoundary } from "./DefaultErrorBoundary";
-
-type DefaultErrorBoundaryProps = ComponentProps<typeof DefaultErrorBoundary>;
+import { useState } from "react";
+import { DefaultErrorBoundary, type Props } from "./DefaultErrorBoundary";
 
 const DodgyComponent = () => {
   const [shouldCrash, setShouldCrash] = useState(false);
@@ -22,8 +20,8 @@ const DodgyComponent = () => {
   );
 };
 
-const setup = (overrideProps: Partial<DefaultErrorBoundaryProps> = {}) => {
-  const props: DefaultErrorBoundaryProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     children: <p>Simple text</p>,
     ...overrideProps,
   };

@@ -6,6 +6,11 @@ exports[`Panel > Rendering > should match the snapshot 1`] = `
     class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
     data-testid="test-panel"
   >
+    <span
+      class="ons-panel__assistive-text ons-u-vh"
+    >
+      Important information: 
+    </span>
     <div
       class="ons-panel__body "
     >
@@ -22,15 +27,25 @@ exports[`Panel > Rendering > should match the snapshot 1`] = `
 exports[`Panel > Rendering > should match the snapshot for a big icon success panel 1`] = `
 <DocumentFragment>
   <div
+    aria-labelledby="panel-alert"
     class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
     data-testid="test-panel"
+    role="alert"
+    tabindex="-1"
   >
     <span
-      class="ons-panel__icon"
+      class="ons-panel__assistive-text ons-u-vh"
+      id="panel-alert"
+    >
+      Completed: 
+    </span>
+    <span
+      class="ons-panel__icon ons-u-fs-r"
     >
       <svg
         aria-hidden="true"
-        class="ons-svg-icon ons-svg-icon--xl"
+        class="ons-icon ons-icon--xl"
+        fill="currentColor"
         focusable="false"
         viewBox="0 0 13 10"
         xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +57,7 @@ exports[`Panel > Rendering > should match the snapshot for a big icon success pa
       </svg>
     </span>
     <div
-      class="ons-panel__body ons-svg-icon-margin--xl"
+      class="ons-panel__body ons-icon-margin--xl"
     >
       <p
         data-testid="panel-child"
@@ -57,15 +72,25 @@ exports[`Panel > Rendering > should match the snapshot for a big icon success pa
 exports[`Panel > Rendering > should match the snapshot for a success status panel 1`] = `
 <DocumentFragment>
   <div
+    aria-labelledby="panel-alert"
     class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
     data-testid="test-panel"
+    role="alert"
+    tabindex="-1"
   >
     <span
-      class="ons-panel__icon"
+      class="ons-panel__assistive-text ons-u-vh"
+      id="panel-alert"
+    >
+      Completed: 
+    </span>
+    <span
+      class="ons-panel__icon ons-u-fs-r"
     >
       <svg
         aria-hidden="true"
-        class="ons-svg-icon "
+        class="ons-icon "
+        fill="currentColor"
         focusable="false"
         viewBox="0 0 13 10"
         xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +127,7 @@ exports[`Panel > Rendering > should match the snapshot for a warning status pane
       !
     </span>
     <span
-      class="ons-u-vh"
+      class="ons-panel__assistive-text ons-u-vh"
     >
       Warning: 
     </span>

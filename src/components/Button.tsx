@@ -75,15 +75,16 @@ export const Button = ({
       data-testid={testid ? `${testid}-button` : "button"}
     >
       <span className="ons-btn__inner">
-        {label}
+        <span className="ons-btn__text">{label}</span>
         {loading && (
           <svg
-            className="ons-svg-icon"
+            className="ons-icon ons-u-ml-2xs"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 100 100"
             preserveAspectRatio="xMidYMid"
             aria-hidden="true"
             focusable="false"
+            fill="currentColor"
           >
             <rect
               x="0"
@@ -108,7 +109,7 @@ export const Button = ({
                   from="1"
                   to="0"
                   dur="1s"
-                  begin={`${i * 0.0833}s`}
+                  begin={`${i * 0.08333333333333333}s`}
                   repeatCount="indefinite"
                 />
               </rect>

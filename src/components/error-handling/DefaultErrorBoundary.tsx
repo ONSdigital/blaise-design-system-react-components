@@ -40,19 +40,30 @@ export class DefaultErrorBoundary extends Component<Props, State> {
   render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <div className="ons-container">
-          <main
-            id="main-content"
-            className="ons-page__main ons-u-mt-l"
-          >
-            <h1>Sorry, there is a problem with the service</h1>
-            <p>Try again later.</p>
-            <p>If you have started a survey, your answers have been saved.</p>
-            <p>
-              <a href="https://ons.service-now.com/">Contact us</a> if you need to speak to someone
-              about your survey.
-            </p>
-          </main>
+        <div className="ons-page">
+          <div className="ons-page__content">
+            <a
+              className="ons-skip-to-content ons-u-fs-r--b"
+              href="#main-content"
+            >
+              Skip to main content
+            </a>
+
+            <div className="ons-container">
+              <main
+                id="main-content"
+                className="ons-page__main ons-u-mt-l"
+              >
+                <h1>Sorry, there is a problem with the service</h1>
+                <p>Try again later.</p>
+                <p>If you have started a survey, your answers have been saved.</p>
+                <p>
+                  If you need to speak to someone about your survey,{" "}
+                  <a href="https://ons.service-now.com/">contact us</a>.
+                </p>
+              </main>
+            </div>
+          </div>
         </div>
       );
     }

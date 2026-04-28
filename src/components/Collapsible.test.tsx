@@ -1,12 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps } from "react";
-import { Collapsible } from "./Collapsible";
+import { Collapsible, type Props } from "./Collapsible";
 
-type CollapsibleProps = ComponentProps<typeof Collapsible>;
-
-const setup = (overrideProps: Partial<CollapsibleProps> = {}) => {
-  const props: CollapsibleProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     title: "Collapsible Title",
     children: <p>Collapsible Content</p>,
     ...overrideProps,

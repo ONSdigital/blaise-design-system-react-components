@@ -1,17 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { ComponentProps } from "react";
-import { LoadingPanel } from "./LoadingPanel";
+import { LoadingPanel, type Props } from "./LoadingPanel";
 
-type LoadingPanelProps = ComponentProps<typeof LoadingPanel>;
-
-const setup = (overrideProps: Partial<LoadingPanelProps> = {}) => {
-  const props: LoadingPanelProps = {
-    ...overrideProps,
-  };
-
+const setup = (overrideProps: Partial<Props> = {}) => {
   return {
-    props,
-    ...render(<LoadingPanel message={props.message} />),
+    props: overrideProps,
+    ...render(<LoadingPanel {...overrideProps} />),
   };
 };
 
@@ -25,14 +18,20 @@ describe("LoadingPanel", () => {
 
     it("should display the default 'Loading' text when no custom message is provided", () => {
       setup();
-      expect(screen.getByText(/loading/i)).toBeVisible();
+      expect(screen.getByText("Loading...")).toBeVisible();
     });
 
     it("should display the custom message when provided via props", () => {
       const customMessage = "Two hours later...";
 
       setup({ message: customMessage });
-      expect(screen.getByText(new RegExp(customMessage, "i"))).toBeVisible();
+      expect(screen.getByText(customMessage)).toBeVisible();
+    });
+
+    it("should return null when hidden is true", () => {
+      const { container } = setup({ hidden: true });
+
+      expect(container.firstChild).toBeNull();
     });
   });
 });

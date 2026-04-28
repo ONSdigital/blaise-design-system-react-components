@@ -1,12 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps } from "react";
-import { TextInput } from "./TextInput";
+import { TextInput, type Props } from "./TextInput";
 
-type TextInputProps = ComponentProps<typeof TextInput>;
-
-const setup = (overrideProps: Partial<TextInputProps> = {}) => {
-  const props: TextInputProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     id: "file-upload",
     label: "Default Label",
     onChange: vi.fn(),

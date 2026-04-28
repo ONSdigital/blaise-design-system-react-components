@@ -9,7 +9,7 @@ import pluginPrettier from "eslint-plugin-prettier";
 import configPrettier from "eslint-config-prettier";
 
 export default tseslint.config(
-  { ignores: ["coverage/**", "dist/**", "docs-build/**", "node_modules/**"] },
+  { ignores: ["coverage/**", "dist/**", "storybook-static/**", "node_modules/**"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
 

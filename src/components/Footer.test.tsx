@@ -15,13 +15,16 @@ describe("Footer", () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should display the ONS logo with the correct accessible name", () => {
+    it("should display the ONS logos with the correct accessible name", () => {
       setup();
-      const logo = screen.getByRole("img", {
+
+      const logos = screen.getAllByRole("img", {
         name: /office for national statistics/i,
       });
 
-      expect(logo).toBeVisible();
+      expect(logos).toHaveLength(2);
+      expect(logos[0]).toBeVisible();
+      expect(logos[1]).toBeVisible();
     });
 
     it("should render as a semantic 'contentinfo' landmark", () => {

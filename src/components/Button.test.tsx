@@ -1,16 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps } from "react";
-import { Button } from "./Button";
+import { Button, type Props } from "./Button";
 
-type ButtonProps = ComponentProps<typeof Button>;
-
-const setup = (overrideProps: Partial<ButtonProps> = {}) => {
-  const props: ButtonProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     label: "Submit",
+    primary: true,
     onClick: vi.fn(),
     ...overrideProps,
-  } as ButtonProps;
+  };
 
   return {
     user: userEvent.setup(),
@@ -115,6 +113,13 @@ describe("Button", () => {
       const button = screen.getByRole("button");
 
       expect(button).not.toHaveClass("ons-btn--secondary");
+    });
+
+    it("should append the secondary class when primary is false", () => {
+      setup({ primary: false });
+      const button = screen.getByRole("button");
+
+      expect(button).toHaveClass("ons-btn--secondary");
     });
   });
 });

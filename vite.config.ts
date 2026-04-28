@@ -39,7 +39,6 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "jsxRuntime",
-          "react-loader-spinner": "Loader",
           formik: "Formik",
         },
       },
@@ -60,11 +59,6 @@ export default defineConfig({
         "src/**/*.stories.tsx",
         "src/setupTests.ts",
       ],
-    },
-    server: {
-      deps: {
-        inline: ["react-loader-spinner"],
-      },
     },
   },
 });

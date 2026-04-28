@@ -23,7 +23,7 @@ jobs:
       - name: 🚀 Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: docs
-          folder: docs-build
+          branch: gh-pages
+          folder: storybook-static
           clean: true
           target-folder: /

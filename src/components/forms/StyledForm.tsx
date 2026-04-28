@@ -47,8 +47,8 @@ export interface BaseFormFieldObject<V = string> {
   name: string;
   /** Label text displayed above the field. */
   description?: string;
-  /** HTML input type or ONS component type. */
-  type: string;
+  /** The type of input field to render. */
+  type: "text" | "password" | "number" | "date" | "email";
   /** Optional unique HTML ID. */
   id?: string;
   /** Formik validation function. Returns an error string if invalid. */
@@ -59,13 +59,13 @@ export interface BaseFormFieldObject<V = string> {
   initial_value?: V | V[];
 }
 
-export interface RadioFormFieldObject extends BaseFormFieldObject<string> {
+export interface RadioFormFieldObject extends Omit<BaseFormFieldObject<string>, "type"> {
   type: "radio";
   /** List of radio options to render. */
   radioOptions: RadioFieldsetObject[];
 }
 
-export interface CheckboxFormFieldObject extends BaseFormFieldObject<string[]> {
+export interface CheckboxFormFieldObject extends Omit<BaseFormFieldObject<string[]>, "type"> {
   type: "checkbox";
   /** List of checkbox options to render. */
   checkboxOptions: CheckboxFieldsetObject[];

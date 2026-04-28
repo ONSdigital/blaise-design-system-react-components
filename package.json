@@ -24,8 +24,8 @@
     "build": "vite build",
     "test": "vitest run --coverage",
     "test-watch": "vitest",
-    "start-storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o docs-build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },
@@ -35,8 +35,7 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "react-csv": "^2.2.2",
-    "react-loader-spinner": "^8.0.2"
+    "react-csv": "^2.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -1,15 +1,17 @@
 import { render, screen } from "@testing-library/react";
-import { ComponentProps } from "react";
-import { SummaryGroupTable, SummaryItemRow, GroupedSummary } from "./Summary";
-
-type SummaryGroupTableProps = ComponentProps<typeof SummaryGroupTable>;
-type SummaryItemRowProps = ComponentProps<typeof SummaryItemRow>;
+import {
+  SummaryGroupTable,
+  SummaryItemRow,
+  GroupedSummary,
+  type SummaryGroupTableProps,
+  type SummaryItemProps,
+} from "./Summary";
 
 const setupTable = (overrideProps: Partial<SummaryGroupTableProps> = {}) => {
   const props: SummaryGroupTableProps = {
     groupedSummary: new GroupedSummary([{ title: "test", records: { foo: "bar" } }]),
     ...overrideProps,
-  } as SummaryGroupTableProps;
+  };
 
   return {
     props,
@@ -17,12 +19,12 @@ const setupTable = (overrideProps: Partial<SummaryGroupTableProps> = {}) => {
   };
 };
 
-const setupRow = (overrideProps: Partial<SummaryItemRowProps> = {}) => {
-  const props: SummaryItemRowProps = {
+const setupRow = (overrideProps: Partial<SummaryItemProps> = {}) => {
+  const props: SummaryItemProps = {
     fieldName: "foo",
     fieldValue: "bar",
     ...overrideProps,
-  } as SummaryItemRowProps;
+  };
 
   return {
     props,
@@ -66,6 +68,15 @@ describe("SummaryItemRow", () => {
 
       expect(screen.getByText(fieldNameRegex)).toBeVisible();
       expect(screen.getByText(fieldValueRegex)).toBeVisible();
+    });
+
+    it("should render complex ReactNodes (JSX) directly without wrapping in a span", () => {
+      const customValue = <span data-testid="custom-node">Complex Value</span>;
+
+      setupRow({ fieldValue: customValue });
+
+      expect(screen.getByTestId("custom-node")).toBeVisible();
+      expect(screen.queryByText("Complex Value")).toBeInTheDocument();
     });
   });
 });

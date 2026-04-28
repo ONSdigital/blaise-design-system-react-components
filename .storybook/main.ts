@@ -17,6 +17,15 @@ const config: StorybookConfig = {
       propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },
+  async viteFinal(config) {
+    config.server = config.server || {};
+    config.server.watch = {
+      ...config.server.watch,
+      usePolling: true,
+    };
+
+    return config;
+  },
 };
 
 export default config;

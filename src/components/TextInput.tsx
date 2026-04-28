@@ -56,7 +56,7 @@ export const TextInput = ({
   };
 
   return (
-    <p className="ons-field">
+    <div className="ons-field">
       {label !== undefined && (
         <label
           className="ons-label"
@@ -78,6 +78,6 @@ export const TextInput = ({
         onClick={onClick}
         data-testid={testId}
       />
-    </p>
+    </div>
   );
 };

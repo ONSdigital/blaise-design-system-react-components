@@ -1,16 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import { ComponentProps } from "react";
-import { ExternalLink } from "./ExternalLink";
+import { ExternalLink, type Props } from "./ExternalLink";
 
-type ExternalLinkProps = ComponentProps<typeof ExternalLink>;
-
-const setup = (overrideProps: Partial<ExternalLinkProps> = {}) => {
-  const props: ExternalLinkProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     text: "Click Me",
     link: "/link",
-    ariaLabel: "Aria label description",
     ...overrideProps,
-  } as ExternalLinkProps;
+  };
 
   return {
     props,
@@ -40,10 +36,12 @@ describe("ExternalLink", () => {
     });
 
     it("should apply the provided aria-label for accessibility support", () => {
-      const { props } = setup();
+      const ariaLabel = "Accessible label";
+
+      setup({ ariaLabel });
       const linkElement = screen.getByRole("link");
 
-      expect(linkElement).toHaveAttribute("aria-label", props.ariaLabel);
+      expect(linkElement).toHaveAttribute("aria-label", ariaLabel);
     });
   });
 });

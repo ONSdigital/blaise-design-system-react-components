@@ -16,7 +16,7 @@ export interface Props {
 }
 
 export const PasswordInput = ({
-  label,
+  label = "Password",
   inputId = "password",
   marginTop,
   onChange,
@@ -24,7 +24,9 @@ export const PasswordInput = ({
   autoFocus,
 }: Props) => {
   const [passwordHidden, setPasswordHidden] = useState(true);
+
   const togglePassword = () => setPasswordHidden((prev) => !prev);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(e, e.target.value);
   };
@@ -34,7 +36,7 @@ export const PasswordInput = ({
   };
 
   return (
-    <p className="ons-field">
+    <div className="ons-field">
       <label
         className="ons-label"
         htmlFor={inputId}
@@ -50,7 +52,8 @@ export const PasswordInput = ({
           id={`${inputId}-toggle`}
           className="ons-checkbox__input"
           name="show-password"
-          onClick={togglePassword}
+          checked={!passwordHidden}
+          onChange={togglePassword}
           data-testid="login-password-toggle"
         />
         <label
@@ -63,13 +66,13 @@ export const PasswordInput = ({
       <input
         type={passwordHidden ? "password" : "text"}
         id={inputId}
-        className="ons-input ons-input--text ons-input-type__input ons-u-mt-xs"
+        className="ons-input ons-input--text ons-input-type__input ons-u-mt-2xs"
         value={value}
         onChange={handleChange}
         autoFocus={autoFocus}
         autoComplete="new-password"
         data-testid="login-password-input"
       />
-    </p>
+    </div>
   );
 };

@@ -30,29 +30,36 @@ export const Upload = ({
     onChange?.(e, label);
   };
 
+  const hintId = `${fileID}-hint`;
+
   return (
     <div className="ons-field">
-      <p className="ons-field">
-        <label
-          className="ons-label"
-          htmlFor={fileID}
-        >
-          {label}
-          <br />
-          <span className="ons-label__description">{description}</span>
-        </label>
-        <input
-          style={{ position: "static" }}
-          type="file"
-          id={fileID}
-          className="ons-input ons-input--text ons-input-type__input ons-input--upload"
-          name={fileName}
-          accept={accept}
-          onChange={handleChange}
-          disabled={disabled}
-          data-testid="upload-input"
-        />
-      </p>
+      <label
+        className="ons-label ons-label--with-description"
+        htmlFor={fileID}
+        aria-describedby={hintId}
+      >
+        {label}
+      </label>
+
+      <span
+        id={hintId}
+        className="ons-label__description ons-input--with-description"
+      >
+        {description}
+      </span>
+
+      <input
+        type="file"
+        id={fileID}
+        className="ons-input ons-input--text ons-input-type__input ons-input--upload"
+        name={fileName}
+        accept={accept}
+        onChange={handleChange}
+        disabled={disabled}
+        data-testid="upload-input"
+        aria-describedby={hintId}
+      />
     </div>
   );
 };

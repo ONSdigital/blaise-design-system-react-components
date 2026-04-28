@@ -1,17 +1,10 @@
 import { render } from "@testing-library/react";
-import { ComponentProps } from "react";
-import { ErrorPanel } from "./ErrorPanel";
+import { ErrorPanel, type Props } from "./ErrorPanel";
 
-type ErrorPanelProps = ComponentProps<typeof ErrorPanel>;
-
-const setup = (overrideProps: Partial<ErrorPanelProps> = {}) => {
-  const props: ErrorPanelProps = {
-    ...overrideProps,
-  } as ErrorPanelProps;
-
+const setup = (overrideProps: Partial<Props> = {}) => {
   return {
-    props,
-    ...render(<ErrorPanel {...props} />),
+    props: overrideProps,
+    ...render(<ErrorPanel {...overrideProps} />),
   };
 };
 
@@ -27,6 +20,12 @@ describe("ErrorPanel", () => {
       const { container } = setup();
 
       expect(container).not.toBeEmptyDOMElement();
+    });
+
+    it("should return null when hidden is true", () => {
+      const { container } = setup({ hidden: true });
+
+      expect(container.firstChild).toBeNull();
     });
   });
 });

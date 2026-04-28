@@ -2,7 +2,7 @@
 
 exports[`TextInput > Rendering > should match the snapshot 1`] = `
 <DocumentFragment>
-  <p
+  <div
     class="ons-field"
   >
     <label
@@ -19,6 +19,6 @@ exports[`TextInput > Rendering > should match the snapshot 1`] = `
       type="text"
       value=""
     />
-  </p>
+  </div>
 </DocumentFragment>
 `;

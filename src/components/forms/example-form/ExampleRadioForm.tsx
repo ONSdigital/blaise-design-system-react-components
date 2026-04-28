@@ -79,6 +79,7 @@ export const ExampleRadioForm = (): ReactElement => {
     <>
       {formStatus && (
         <div className="ons-panel ons-panel--info ons-panel--no-title ons-u-mb-m">
+          <span className="ons-panel__assistive-text ons-u-vh">Important information:</span>
           <div className="ons-panel__body">
             <p>{formStatus}</p>
           </div>

@@ -5,84 +5,98 @@ exports[`ExampleCheckboxForm > Rendering > should match the snapshot 1`] = `
   <form
     action="#"
   >
-    <fieldset
-      class="ons-fieldset"
+    <div
+      class="ons-field ons-u-mb-m"
     >
-      <legend
-        class="ons-fieldset__legend"
+      <fieldset
+        class="ons-fieldset"
       >
-        Select questionnaires
-      </legend>
-      <button
-        class="ons-btn ons-u-mb-s js-auto-selector ons-btn--small ons-btn--secondary"
-        type="button"
-      >
-        <span
-          class="ons-btn__inner"
+        <legend
+          class="ons-fieldset__legend ons-u-fs-r--b"
         >
-          <span
-            class="js-button-text"
-          >
-            Select All
-          </span>
-          <span
-            class="ons-u-vh"
-          >
-             following checkboxes
-          </span>
-        </span>
-      </button>
-      <div
-        class="ons-checkboxes__items"
-      >
-        <p
-          class="ons-checkboxes__item"
+          Select questionnaires
+        </legend>
+        <div
+          class="ons-grid"
         >
-          <span
-            class="ons-checkbox"
+          <div
+            class="ons-grid__col ons-col-8@m ons-col-6@l"
           >
-            <input
-              class="ons-checkbox__input js-checkbox"
-              id="lms"
-              name="questionnaire"
-              type="checkbox"
-              value="lms"
-            />
-            <label
-              class="ons-checkbox__label "
-              for="lms"
-              id="lms-label"
+            <button
+              class="ons-btn ons-u-mb-s ons-js-auto-selector ons-btn--small ons-btn--secondary"
+              type="button"
             >
-              LMS
-            </label>
-          </span>
-        </p>
-        <br />
-        <p
-          class="ons-checkboxes__item"
-        >
-          <span
-            class="ons-checkbox"
-          >
-            <input
-              class="ons-checkbox__input js-checkbox"
-              id="opn"
-              name="questionnaire"
-              type="checkbox"
-              value="opn"
-            />
-            <label
-              class="ons-checkbox__label "
-              for="opn"
-              id="opn-label"
+              <span
+                class="ons-btn__inner"
+              >
+                <span
+                  class="ons-js-button-text"
+                >
+                  Select All
+                </span>
+                <span
+                  class="ons-u-vh"
+                >
+                   following checkboxes
+                </span>
+              </span>
+            </button>
+            <div
+              class="ons-input-items"
             >
-              OPN
-            </label>
-          </span>
-        </p>
-        <br />
-      </div>
-    </fieldset>
+              <div
+                class="ons-checkboxes__items"
+              >
+                <span
+                  class="ons-checkboxes__item"
+                >
+                  <span
+                    class="ons-checkbox"
+                  >
+                    <input
+                      class="ons-checkbox__input"
+                      id="lms"
+                      name="questionnaire"
+                      type="checkbox"
+                      value="lms"
+                    />
+                    <label
+                      class="ons-checkbox__label "
+                      for="lms"
+                    >
+                      LMS
+                    </label>
+                  </span>
+                </span>
+                <br />
+                <span
+                  class="ons-checkboxes__item"
+                >
+                  <span
+                    class="ons-checkbox"
+                  >
+                    <input
+                      class="ons-checkbox__input"
+                      id="opn"
+                      name="questionnaire"
+                      type="checkbox"
+                      value="opn"
+                    />
+                    <label
+                      class="ons-checkbox__label "
+                      for="opn"
+                    >
+                      OPN
+                    </label>
+                  </span>
+                </span>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
     <br />
     <button
       class="ons-btn"
@@ -92,7 +106,11 @@ exports[`ExampleCheckboxForm > Rendering > should match the snapshot 1`] = `
       <span
         class="ons-btn__inner"
       >
-        Submit Selection
+        <span
+          class="ons-btn__text"
+        >
+          Submit Selection
+        </span>
       </span>
     </button>
   </form>

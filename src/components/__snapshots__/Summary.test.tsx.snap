@@ -2,67 +2,72 @@
 
 exports[`SummaryGroupTable > Rendering > should match the snapshot 1`] = `
 <DocumentFragment>
-  <h3
-    class="ons-summary__group-title"
+  <div
+    class="ons-summary"
   >
-    test
-  </h3>
-  <table
-    class="ons-summary__items"
-  >
-    <tbody
-      class="ons-summary__item"
+    <div
+      class="ons-summary__group"
     >
-      <tr
-        class="ons-summary__row ons-summary__row--has-values"
+      <h2
+        class="ons-summary__group-title"
       >
-        <td
-          class="ons-summary__item-title"
+        test
+      </h2>
+      <dl
+        class="ons-summary__items"
+      >
+        <div
+          class="ons-summary__item"
         >
-          <div
-            class="ons-summary__item--text"
+          <dt
+            class="ons-summary__item-title"
           >
-            Foo
-          </div>
-        </td>
-        <td
-          class="ons-summary__values"
-          colspan="2"
-        >
-          bar
-        </td>
-      </tr>
-    </tbody>
-  </table>
+            <div
+              class="ons-summary__item--text"
+            >
+              Foo
+            </div>
+          </dt>
+          <dd
+            class="ons-summary__values"
+          >
+            <span
+              class="ons-summary__text"
+            >
+              bar
+            </span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
 </DocumentFragment>
 `;
 
 exports[`SummaryItemRow > Rendering > should match the snapshot 1`] = `
 <DocumentFragment>
-  <table>
-    <tbody
-      class="ons-summary__item"
+  <div
+    class="ons-summary__item"
+  >
+    <dt
+      class="ons-summary__item-title"
     >
-      <tr
-        class="ons-summary__row ons-summary__row--has-values"
+      <div
+        class="ons-summary__item--text"
       >
-        <td
-          class="ons-summary__item-title"
-        >
-          <div
-            class="ons-summary__item--text"
-          >
-            Foo
-          </div>
-        </td>
-        <td
-          class="ons-summary__values"
-          colspan="2"
-        >
-          bar
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        Foo
+      </div>
+    </dt>
+    <dd
+      class="ons-summary__values"
+    >
+      <span
+        class="ons-summary__text"
+      >
+        bar
+      </span>
+    </dd>
+  </div>
+  <table />
 </DocumentFragment>
 `;

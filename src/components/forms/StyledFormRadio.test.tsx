@@ -77,7 +77,7 @@ describe("ExampleRadioForm", () => {
         {
           name: "topping",
           description: "Select your favorite topping",
-          type: "radio",
+          type: "radio" as const,
           validate: validateRadio,
           initial_value: "cheese",
           radioOptions: [

@@ -1,28 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ComponentProps } from "react";
-import { Accordion } from "./Accordion";
+import { Accordion, type Props, type ExpandableContent } from "./Accordion";
 
-type AccordionProps = ComponentProps<typeof Accordion>;
-
-interface ExpandableItem {
-  title: string;
-  content: React.ReactNode;
-  contentId: string;
-}
-
-const defaultExpandables: ExpandableItem[] = [
+const defaultExpandables: ExpandableContent[] = [
   { title: "Foo", content: <p>foo</p>, contentId: "foo" },
   { title: "Bar", content: <p>bar</p>, contentId: "bar" },
 ];
 
-const setup = (overrideProps: Partial<AccordionProps> = {}) => {
-  const props: AccordionProps = {
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
     ContentId: "test",
     ShowAllEnabled: false,
     Expandables: defaultExpandables,
     ...overrideProps,
-  } as AccordionProps;
+  };
 
   return {
     user: userEvent.setup(),
@@ -109,12 +100,12 @@ describe("Accordion", () => {
     });
 
     describe("when ShowAllEnabled is false", () => {
-      it("should not render the 'Show all' button", () => {
+      it("should not display the 'Show all' button", () => {
         setup({ ShowAllEnabled: false });
         expect(screen.queryByTestId("test-accordion-show-all")).not.toBeInTheDocument();
       });
 
-      it("should initialize all items as collapsed", () => {
+      it("should initialise all items as collapsed", () => {
         setup({ ShowAllEnabled: false });
         expectExpandableState("foo", 0, "closed");
         expectExpandableState("bar", 1, "closed");

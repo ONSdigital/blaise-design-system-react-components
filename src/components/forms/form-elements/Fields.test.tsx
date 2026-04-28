@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import { Formik, Field } from "formik";
-import { CheckboxesFieldset, ONSInputField } from "./Fields";
+import { CheckboxFieldset, TextInputFieldset } from "./Fields";
 
 describe("Edge Cases", () => {
-  describe("CheckboxesFieldset", () => {
+  describe("CheckboxFieldset", () => {
     it("should safely handle an undefined checkboxOptions array", () => {
       render(
         <Formik
           initialValues={{ myField: [] }}
           onSubmit={vi.fn()}
         >
-          <CheckboxesFieldset
+          <CheckboxFieldset
             name="myField"
             autoFocus={false}
           />
@@ -26,7 +26,7 @@ describe("Edge Cases", () => {
           initialValues={{ myField: undefined }}
           onSubmit={vi.fn()}
         >
-          <CheckboxesFieldset
+          <CheckboxFieldset
             name="myField"
             checkboxOptions={[{ id: "opt1", value: "alpha", label: "Alpha" }]}
             autoFocus={false}
@@ -43,7 +43,7 @@ describe("Edge Cases", () => {
           initialValues={{ myField: [] }}
           onSubmit={vi.fn()}
         >
-          <CheckboxesFieldset
+          <CheckboxFieldset
             name="myField"
             checkboxOptions={[
               {
@@ -62,7 +62,7 @@ describe("Edge Cases", () => {
     });
   });
 
-  describe("ONSInputField", () => {
+  describe("TextInputFieldset", () => {
     it("should render the text input description when provided", () => {
       render(
         <Formik
@@ -72,7 +72,7 @@ describe("Edge Cases", () => {
           <Field
             name="myTextInput"
             description="Unique text input description"
-            component={ONSInputField}
+            component={TextInputFieldset}
           />
         </Formik>,
       );
@@ -88,7 +88,7 @@ describe("Edge Cases", () => {
         >
           <Field
             name="myTextInput"
-            component={ONSInputField}
+            component={TextInputFieldset}
           />
         </Formik>,
       );
@@ -105,7 +105,7 @@ describe("Edge Cases", () => {
           <Field
             id="custom-explicit-id"
             name="myTextInput"
-            component={ONSInputField}
+            component={TextInputFieldset}
           />
         </Formik>,
       );

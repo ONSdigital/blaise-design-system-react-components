@@ -3,14 +3,18 @@
 exports[`Button > Rendering > should match the snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="ons-btn ons-btn--secondary"
+    class="ons-btn"
     data-testid="button"
     type="button"
   >
     <span
       class="ons-btn__inner"
     >
-      Submit
+      <span
+        class="ons-btn__text"
+      >
+        Submit
+      </span>
     </span>
   </button>
 </DocumentFragment>
