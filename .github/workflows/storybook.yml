@@ -4,7 +4,7 @@ permissions:
   contents: write
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 jobs:
   build-and-deploy-storybook:
     runs-on: ubuntu-latest
@@ -16,8 +16,9 @@ jobs:
         with:
           node-version: 24.x
           cache: yarn
+          cache-dependency-path: yarn.lock
       - name: 📦 Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - name: 🔨 Build Storybook
         run: yarn build-storybook
       - name: 🚀 Deploy to GitHub Pages
@@ -26,4 +27,3 @@ jobs:
           branch: gh-pages
           folder: storybook-static
           clean: true
-          target-folder: /

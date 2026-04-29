@@ -1,23 +1,17 @@
 ---
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "06:00"
-    timezone: "Europe/London"
-    labels:
-      - "dependencies"
-      - "javascript"
-  - package-ecosystem: "github-actions"
-    directory: "/"
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/London
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "06:00"
-    timezone: "Europe/London"
-    labels:
-      - "dependencies"
-      - "github-actions"
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/London
