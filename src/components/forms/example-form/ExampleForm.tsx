@@ -9,16 +9,16 @@ import { StyledForm, FormField } from "../StyledForm";
 
 /** Values for the example account form. */
 interface ExampleFormValues {
-  Questionnaire: string;
+  questionnaire: string;
   name: string;
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
 }
 
 /** Field config for the example account form. */
 const formElements: FormField[] = [
   {
-    name: "Questionnaire",
+    name: "questionnaire",
     description: "Questionnaire Name must be longer than 7 characters",
     type: "text",
     validate: validateQuestionnaireName,
@@ -30,14 +30,14 @@ const formElements: FormField[] = [
     validate: validateName,
   },
   {
-    name: "Email",
+    name: "email",
     id: "email-field",
     description: "This will not be stored and only used once to send your confirmation",
     type: "email",
     validate: validateEmail,
   },
   {
-    name: "Password",
+    name: "password",
     description: "Password must be longer than 6 characters",
     type: "password",
     validate: validatePassword,

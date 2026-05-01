@@ -26,8 +26,8 @@ interface Props {
   [key: string]: unknown;
 }
 
-/** Internal sub-component to wrap fields in an error panel when validation fails. */
-const StyledFormFieldErrorWrapper = (
+/** Wraps a field in an inline error panel when Formik has a validation error for it. */
+const renderFieldError = (
   fieldError: string,
   field: ReactElement,
   baseId: string,
@@ -107,9 +107,7 @@ export const StyledFormField = ({
 
   return (
     <Fragment>
-      {fieldError
-        ? StyledFormFieldErrorWrapper(fieldError, newField, baseId, isExplicitId)
-        : newField}
+      {fieldError ? renderFieldError(fieldError, newField, baseId, isExplicitId) : newField}
     </Fragment>
   );
 };

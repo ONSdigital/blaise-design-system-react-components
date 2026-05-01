@@ -2,7 +2,7 @@ import { Form, Formik, FormikValues } from "formik";
 import { useId } from "react";
 import { Button } from "../Button";
 import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
-import { StyledFormField } from "./form-elements/StyledFormFields";
+import { StyledFormField } from "./form-elements/StyledFormField";
 
 /** Radio follow-up input. */
 interface RadioSpecifyOption {
@@ -61,7 +61,7 @@ interface BaseFormField<V = string> {
   /** Autofocus hint. StyledForm currently ignores this value. */
   autoFocus?: boolean;
   /** Initial value. */
-  initial_value?: V | V[];
+  initialValue?: V | V[];
 }
 
 interface RadioFormField extends Omit<BaseFormField<string>, "type"> {
@@ -104,8 +104,8 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
   const baseId = id || `form-${generatedId}`;
 
   const initialFieldValues = fields.reduce<Record<string, unknown>>((acc, field) => {
-    if (field.initial_value !== undefined) {
-      acc[field.name] = field.initial_value;
+    if (field.initialValue !== undefined) {
+      acc[field.name] = field.initialValue;
     } else if (field.type === "checkbox") {
       acc[field.name] = [];
     } else {

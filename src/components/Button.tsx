@@ -40,10 +40,10 @@ export const Button = ({
   hidden,
   submit,
 }: Props): ReactElement => {
-  const getStyles = (): CSSProperties => ({
+  const styles: CSSProperties = {
     display: hidden ? "none" : undefined,
     marginRight: marginRight ? `${marginRight}px` : undefined,
-  });
+  };
 
   const classNames = [
     "ons-btn",
@@ -59,7 +59,7 @@ export const Button = ({
   return (
     <button
       id={id}
-      style={getStyles()}
+      style={styles}
       type={submit ? "submit" : "button"}
       disabled={loading || disabled}
       className={classNames}
@@ -101,7 +101,7 @@ export const Button = ({
                   from="1"
                   to="0"
                   dur="1s"
-                  begin={`${i * 0.08333333333333333}s`}
+                  begin={`${i * (1 / 12)}s`}
                   repeatCount="indefinite"
                 />
               </rect>

@@ -115,14 +115,14 @@ describe("ExampleCheckboxForm", () => {
   });
 
   describe("props", () => {
-    it("submits the provided initial_value", async () => {
+    it("submits the provided initialValue", async () => {
       const submitFunction = vi.fn();
       const fields = [
         {
           name: "topping",
           description: "Select your favorite topping",
           type: "checkbox" as const,
-          initial_value: ["bacon", "pineapple"],
+          initialValue: ["bacon", "pineapple"],
           checkboxOptions: [
             { id: "bacon", value: "bacon", label: "Bacon" },
             { id: "cheese", value: "cheese", label: "Cheese" },

@@ -1,5 +1,5 @@
-import { useFormikContext } from "formik";
 import { useEffect, useRef, useId } from "react";
+import { useFormikContext } from "formik";
 
 /** Props for StyledFormErrorSummary. */
 export interface Props {
@@ -44,7 +44,7 @@ export const StyledFormErrorSummary = ({ id }: Props) => {
       <div className="ons-panel__header">
         <h2
           id={alertId}
-          data-qa="error-header"
+          data-testid="error-header"
           className="ons-panel__title ons-u-fs-r--b"
         >
           {errorKeys.length === 1

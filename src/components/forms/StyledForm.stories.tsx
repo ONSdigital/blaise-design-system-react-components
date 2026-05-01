@@ -35,7 +35,7 @@ export const Default: Story = {
         name: "Survey TLA",
         description: "Select survey",
         type: "radio",
-        initial_value: "undefined",
+        initialValue: "undefined",
         validate: validateRadio,
         radioOptions: [
           { id: "survey-all", value: "undefined", label: "Show all surveys" },
@@ -57,7 +57,7 @@ export const Default: Story = {
         name: "Questionnaire",
         description: "Select questionnaires",
         type: "checkbox",
-        initial_value: [],
+        initialValue: [],
         validate: validateCheckbox,
         checkboxOptions: [
           { id: "questionnaire-lms", value: "lms", label: "LMS" },

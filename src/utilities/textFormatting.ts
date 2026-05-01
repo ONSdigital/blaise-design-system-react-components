@@ -1,11 +1,4 @@
 /**
- * Replaces underscores with spaces.
- */
-function replaceUnderscoreWithSpaces(text: string): string {
-  return text.replaceAll("_", " ");
-}
-
-/**
  * Capitalises the first character.
  */
 export function capitaliseFirstLetter(text: string): string {
@@ -14,6 +7,13 @@ export function capitaliseFirstLetter(text: string): string {
   }
 
   return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+/**
+ * Replaces underscores with spaces.
+ */
+function replaceUnderscoreWithSpaces(text: string): string {
+  return text.replaceAll("_", " ");
 }
 
 /**

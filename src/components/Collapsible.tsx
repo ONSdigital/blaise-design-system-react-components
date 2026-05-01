@@ -1,4 +1,4 @@
-import { ReactNode, useState, useId, SyntheticEvent } from "react";
+import { ReactNode, useState, useId, SyntheticEvent, KeyboardEvent } from "react";
 
 /** Props for Collapsible. */
 export interface Props {
@@ -21,6 +21,12 @@ export const Collapsible = ({ children, title, id }: Props) => {
     setPanelOpen((prevOpen) => !prevOpen);
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      handleToggle(e);
+    }
+  };
+
   return (
     <div
       id={baseId}
@@ -33,11 +39,7 @@ export const Collapsible = ({ children, title, id }: Props) => {
         role="button"
         data-testid={id ? `${id}-heading` : undefined}
         onClick={handleToggle}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            handleToggle(e);
-          }
-        }}
+        onKeyDown={handleKeyDown}
         tabIndex={0}
         aria-expanded={panelOpen}
         aria-controls={`${baseId}-content`}

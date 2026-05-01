@@ -33,6 +33,19 @@ interface CheckboxFieldsetProps extends UnknownProps {
   autoFocus: boolean;
 }
 
+interface TextInputFieldsetProps extends InputHTMLAttributes<HTMLInputElement> {
+  /** Element ID. */
+  id?: string;
+  /** Field name. */
+  name: string;
+  /** Hint text. */
+  description?: string;
+  /** Input type. */
+  type?: string;
+  /** Validation function. */
+  validate?: (value: string) => string | undefined;
+}
+
 const getOptionId = (baseId: string, index: number, explicitId?: string) =>
   explicitId || `${baseId}-option-${index + 1}`;
 
@@ -133,8 +146,7 @@ export function CheckboxFieldset({
 }: CheckboxFieldsetProps): ReactElement {
   const { values, setFieldValue } = useFormikContext<Record<string, string[]>>();
   const allValues = (checkboxOptions || []).map((o) => o.value);
-  const isAllSelected = () =>
-    allValues.length > 0 && allValues.every((v) => values[name]?.includes(v));
+  const isAllSelected = allValues.length > 0 && allValues.every((v) => values[name]?.includes(v));
   const generatedId = useId();
   const baseId = id || `checkbox-${generatedId}`;
 
@@ -152,11 +164,11 @@ export function CheckboxFieldset({
               data-testid={id ? `${id}-select-all` : undefined}
               type="button"
               className="ons-btn ons-u-mb-s ons-js-auto-selector ons-btn--small ons-btn--secondary"
-              onClick={() => setFieldValue(name, isAllSelected() ? [] : allValues)}
+              onClick={() => setFieldValue(name, isAllSelected ? [] : allValues)}
             >
               <span className="ons-btn__inner">
                 <span className="ons-js-button-text">
-                  {isAllSelected() ? "Unselect All" : "Select All"}
+                  {isAllSelected ? "Unselect All" : "Select All"}
                 </span>
                 <span className="ons-u-vh"> following checkboxes</span>
               </span>
@@ -203,19 +215,6 @@ export function CheckboxFieldset({
       </fieldset>
     </div>
   );
-}
-
-interface TextInputFieldsetProps extends InputHTMLAttributes<HTMLInputElement> {
-  /** Element ID. */
-  id?: string;
-  /** Field name. */
-  name: string;
-  /** Hint text. */
-  description?: string;
-  /** Input type. */
-  type?: string;
-  /** Validation function. */
-  validate?: (value: string) => string | undefined;
 }
 
 /** Renders a text-like input wired to Formik state. */

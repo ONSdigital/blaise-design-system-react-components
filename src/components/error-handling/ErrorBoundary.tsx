@@ -20,14 +20,14 @@ interface State {
  * Renders a fallback panel when children throw.
  */
 export class ErrorBoundary extends Component<Props, State> {
+  static getDerivedStateFromError(_: Error): Partial<State> {
+    return { hasError: true };
+  }
+
   state: State = {
     hasError: false,
     errorInfo: null,
   };
-
-  static getDerivedStateFromError(_: Error): Partial<State> {
-    return { hasError: true };
-  }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({

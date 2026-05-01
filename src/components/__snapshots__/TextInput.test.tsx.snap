@@ -15,7 +15,6 @@ exports[`TextInput > rendering > renders the snapshot 1`] = `
       class="ons-input ons-input--text ons-input-type__input"
       data-testid="text-input-input"
       id="text-input"
-      style="z-index: 0;"
       type="text"
       value=""
     />

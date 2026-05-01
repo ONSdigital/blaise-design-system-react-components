@@ -10,11 +10,31 @@ export type ExpandableContent = {
   title: string;
 };
 
+/** Props for Accordion. */
+export interface Props {
+  /** Whether to show the Show all / Hide all button. */
+  showAllEnabled?: boolean;
+  /** Accordion panels. */
+  expandables: ExpandableContent[];
+  /** Element ID. */
+  id?: string;
+  /** Whether every panel starts expanded. */
+  expanded?: boolean;
+}
+
 interface ExpandableProps extends ExpandableContent {
   panelBaseId: string;
   panelsOpen: boolean[];
   setPanelsOpen: Dispatch<SetStateAction<boolean[]>>;
   index: number;
+  accordionBaseId: string;
+  hasExplicitId: boolean;
+}
+
+interface ShowAllProps {
+  showAllEnabled?: boolean;
+  panelsOpen: boolean[];
+  setPanelsOpen: Dispatch<SetStateAction<boolean[]>>;
   accordionBaseId: string;
   hasExplicitId: boolean;
 }
@@ -94,26 +114,6 @@ const Expandable = ({
     </div>
   );
 };
-
-/** Props for Accordion. */
-export interface Props {
-  /** Whether to show the Show all / Hide all button. */
-  showAllEnabled?: boolean;
-  /** Accordion panels. */
-  expandables: ExpandableContent[];
-  /** Element ID. */
-  id?: string;
-  /** Whether every panel starts expanded. */
-  expanded?: boolean;
-}
-
-interface ShowAllProps {
-  showAllEnabled?: boolean;
-  panelsOpen: boolean[];
-  setPanelsOpen: Dispatch<SetStateAction<boolean[]>>;
-  accordionBaseId: string;
-  hasExplicitId: boolean;
-}
 
 const ShowAll = ({
   showAllEnabled,

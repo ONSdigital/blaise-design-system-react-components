@@ -1,7 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from "react";
 
-let defaultErrorBoundaryInstance = 0;
-
 /** Props for DefaultErrorBoundary. */
 export interface Props {
   /** Wrapped content. */
@@ -16,23 +14,25 @@ interface State {
   errorInfo: ErrorInfo | null;
 }
 
+let defaultErrorBoundaryInstance = 0;
+
 /**
  * Renders the page fallback when children throw.
  */
 export class DefaultErrorBoundary extends Component<Props, State> {
-  private readonly generatedMainContentId = `default-error-boundary-main-content-${++defaultErrorBoundaryInstance}`;
-
-  state: State = {
-    hasError: false,
-    errorInfo: null,
-  };
-
   static getDerivedStateFromError(error: Error): Partial<State> {
     return {
       hasError: true,
       error,
     };
   }
+
+  state: State = {
+    hasError: false,
+    errorInfo: null,
+  };
+
+  private readonly generatedMainContentId = `default-error-boundary-main-content-${++defaultErrorBoundaryInstance}`;
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({

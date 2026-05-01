@@ -17,7 +17,13 @@ export { ExternalLink } from "./components/ExternalLink";
 
 export { Footer } from "./components/Footer";
 
-export { GroupedSummary, SummaryGroupTable, type SummaryGroup } from "./components/Summary";
+export {
+  GroupedSummary,
+  SummaryGroupTable,
+  SummaryItemRow,
+  type SummaryGroup,
+  type SummaryItemProps,
+} from "./components/Summary";
 
 export { Header } from "./components/Header";
 
@@ -35,7 +41,7 @@ export { StyledForm, type FormField } from "./components/forms/StyledForm";
 
 export { StyledFormErrorSummary } from "./components/forms/StyledFormErrorSummary";
 
-export { StyledFormField } from "./components/forms/form-elements/StyledFormFields";
+export { StyledFormField } from "./components/forms/form-elements/StyledFormField";
 
 export { Table, Table as ONSTable } from "./components/Table";
 

@@ -71,7 +71,7 @@ describe("ExampleRadioForm", () => {
   });
 
   describe("props", () => {
-    it("submits the provided initial_value", async () => {
+    it("submits the provided initialValue", async () => {
       const submitFunction = vi.fn();
       const fields = [
         {
@@ -79,7 +79,7 @@ describe("ExampleRadioForm", () => {
           description: "Select your favorite topping",
           type: "radio" as const,
           validate: validateRadio,
-          initial_value: "cheese",
+          initialValue: "cheese",
           radioOptions: [
             { id: "bacon", value: "bacon", label: "Bacon" },
             { id: "cheese", value: "cheese", label: "Cheese" },

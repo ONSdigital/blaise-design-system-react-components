@@ -58,7 +58,7 @@ export const LoadingPanel = ({
                   from="1"
                   to="0"
                   dur="1s"
-                  begin={`${i * 0.08333333333333333}s`}
+                  begin={`${i * (1 / 12)}s`}
                   repeatCount="indefinite"
                 />
               </rect>

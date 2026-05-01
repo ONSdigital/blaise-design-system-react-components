@@ -54,7 +54,7 @@ export const TextInput = ({
 
   const inputStyle: CSSProperties = {
     width: fit ? "unset" : undefined,
-    zIndex: zIndex ?? 0,
+    zIndex,
   };
 
   return (

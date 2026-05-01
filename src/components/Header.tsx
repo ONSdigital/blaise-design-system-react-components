@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from "react";
 
 /** Header navigation item. */
-interface NavigationLinks {
+export interface NavigationLinks {
   /** Element ID. */
   id?: string;
   /** Visible link text. */
