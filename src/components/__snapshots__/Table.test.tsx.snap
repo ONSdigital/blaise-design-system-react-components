@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Table > Rendering > should match the snapshot 1`] = `
+exports[`Table > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ons-table-scrollable ons-table-scrollable--on"
@@ -13,8 +13,8 @@ exports[`Table > Rendering > should match the snapshot 1`] = `
     >
       <table
         class="ons-table"
-        data-testid="my-test-table"
-        id="my-test-table"
+        data-testid="table-table"
+        id="table"
       >
         <thead
           class="ons-table__head"

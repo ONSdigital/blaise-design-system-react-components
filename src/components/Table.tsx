@@ -1,25 +1,30 @@
-import { ReactNode } from "react";
+import { ReactElement, ReactNode, useId } from "react";
 
+/** Props for Table. */
 export interface Props {
-  /** Array of strings representing the table column headers. */
+  /** Column header labels rendered in order. */
   columns: string[];
-  /** The content to render inside the table body (typically <tr> and <td> elements). */
+  /** Table body rows. */
   children: ReactNode;
-  /** Optional custom ID for the table element, also used for the data-testid. */
-  tableID?: string;
-  /** Optional visually accessible title for the table. */
+  /** Element ID. */
+  id?: string;
+  /** Table caption. */
   tableCaption?: string;
-  /** Optional aria-label for the scrollable region. */
+  /** Accessible name for the scroll area. */
   scrollableLabel?: string;
 }
 
+/** Renders a table. */
 export const Table = ({
   columns,
   children,
   tableCaption,
-  tableID,
+  id,
   scrollableLabel = "Table",
-}: Props) => {
+}: Props): ReactElement => {
+  const generatedId = useId();
+  const baseId = id || `table-${generatedId}`;
+
   return (
     <div className="ons-table-scrollable ons-table-scrollable--on">
       <div
@@ -30,8 +35,8 @@ export const Table = ({
       >
         <table
           className="ons-table"
-          data-testid={tableID}
-          id={tableID}
+          data-testid={id ? `${id}-table` : undefined}
+          id={baseId}
         >
           {tableCaption && <caption className="ons-table__caption">{tableCaption}</caption>}
           <thead className="ons-table__head">
@@ -40,7 +45,7 @@ export const Table = ({
                 <th
                   scope="col"
                   className="ons-table__header ons-table__header--top"
-                  key={`${title}-${index}`}
+                  key={`${baseId}-header-${index}`}
                 >
                   <span className="ons-table__header-text">{title}</span>
                 </th>

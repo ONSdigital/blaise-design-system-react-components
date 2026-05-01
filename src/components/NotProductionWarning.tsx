@@ -1,12 +1,21 @@
 import { ReactElement } from "react";
 
+/** Props for NotProductionWarning. */
+export interface Props {
+  /** Element ID. */
+  id?: string;
+}
+
 /**
- * This is not an ONS Design System component. It is based on the ONS 2021 census branded warning panel.
- * Shown at the top of the page above the header, to warn users they are not using a production environment.
+ * Renders the non-production warning banner.
  */
-export const NotProductionWarning = (): ReactElement => {
+export const NotProductionWarning = ({ id }: Props = {}): ReactElement => {
   return (
-    <div style={{ background: "#222", color: "#fff" }}>
+    <div
+      id={id}
+      data-testid={id ? `${id}-warning` : undefined}
+      style={{ background: "#222", color: "#fff" }}
+    >
       <div className="ons-container">
         <div
           className="ons-panel ons-panel--warn-branded ons-panel--no-title"

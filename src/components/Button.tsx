@@ -1,62 +1,54 @@
 import { MouseEventHandler, CSSProperties, ReactElement } from "react";
 
+/** Props for Button. */
 export interface Props {
-  /** The text displayed inside the button. */
+  /** Visible button text. */
   label: string;
-  /** Unique HTML ID for the button element. */
+  /** Element ID. */
   id?: string;
-  /** Determines if the button uses the primary (green) or secondary (grey) styling. */
+  /** Whether to use the primary variant. */
   primary: boolean;
-  /** Reduces the padding and font size of the button. */
+  /** Whether to use the small variant. */
   small?: boolean;
-  /** @deprecated Internal ONS layout property. Applies 'ons-field' spacing if true. */
-  field?: boolean;
-  /** Displays a loading spinner and automatically disables the button to prevent double submissions. */
+  /** Whether to show a loading spinner and disable the button. */
   loading?: boolean;
-  /** Adds specific pixel-based right margin via inline styles. */
+  /** Right margin in pixels. */
   marginRight?: number;
-  /** Callback fired when the button is clicked. */
+  /** Called when the button is clicked. */
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  /** Visually disables the button and prevents interaction. */
+  /** Whether to disable the button. */
   disabled?: boolean;
-  /** Renders the button with a link-style appearance. */
+  /** Whether to use the link-style variant. */
   action?: boolean;
-  /** Optional test ID for automated testing. Appends '-button' to the string provided. */
-  testid?: string;
-  /** Applies 'display: none' via inline styles. */
+  /** Whether to hide the button. */
   hidden?: boolean;
-  /** Changes the HTML type attribute to 'submit' for use inside forms. Defaults to 'button'. */
+  /** Whether to use `type="submit"`. */
   submit?: boolean;
 }
 
+/** Renders a button. */
 export const Button = ({
   label,
   id,
   primary,
   small,
-  field,
   loading,
   marginRight,
   onClick,
   disabled,
   action,
-  testid,
   hidden,
   submit,
 }: Props): ReactElement => {
-  const getStyles = (): CSSProperties => {
-    if (hidden) return { display: "none" };
-
-    return {
-      marginRight: marginRight ? `${marginRight}px` : undefined,
-    };
-  };
+  const getStyles = (): CSSProperties => ({
+    display: hidden ? "none" : undefined,
+    marginRight: marginRight ? `${marginRight}px` : undefined,
+  });
 
   const classNames = [
     "ons-btn",
     action && "ons-btn--link",
     loading && "ons-btn--loader ons-is-loading",
-    field && "ons-field",
     !primary && "ons-btn--secondary",
     small && "ons-btn--small",
     disabled && "ons-btn--disabled",
@@ -72,7 +64,7 @@ export const Button = ({
       disabled={loading || disabled}
       className={classNames}
       onClick={onClick}
-      data-testid={testid ? `${testid}-button` : "button"}
+      data-testid={id ? `${id}-button` : undefined}
     >
       <span className="ons-btn__inner">
         <span className="ons-btn__text">{label}</span>

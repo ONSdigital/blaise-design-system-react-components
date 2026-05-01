@@ -1,11 +1,14 @@
 import { Component, ErrorInfo, ReactNode } from "react";
 import { Panel } from "../Panel";
 
+/** Props for ErrorBoundary. */
 export interface Props {
-  /** The error message displayed inside the Panel when a child component crashes. */
+  /** Fallback message. */
   errorMessageText: string;
-  /** The component tree that this boundary should monitor for errors. */
+  /** Wrapped content. */
   children: ReactNode;
+  /** Element ID. */
+  id?: string;
 }
 
 interface State {
@@ -14,10 +17,7 @@ interface State {
 }
 
 /**
- * Localised error boundary for isolating errors in a specific section or component subtree.
- * If a child component throws, displays an ONS-styled error panel with a custom message,
- * allowing the rest of the page or app to remain functional.
- * Useful for wrapping error-prone widgets, tables, or feature areas.
+ * Renders a fallback panel when children throw.
  */
 export class ErrorBoundary extends Component<Props, State> {
   state: State = {
@@ -37,14 +37,19 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   render(): ReactNode {
+    const { id, children, errorMessageText } = this.props;
+
     if (this.state.hasError) {
       return (
-        <Panel status="error">
-          <p>{this.props.errorMessageText}</p>
+        <Panel
+          id={id}
+          status="error"
+        >
+          <p>{errorMessageText}</p>
         </Panel>
       );
     }
 
-    return this.props.children;
+    return children;
   }
 }

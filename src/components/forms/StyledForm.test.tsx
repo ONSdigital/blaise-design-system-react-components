@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ExampleForm } from "./example-form/ExampleForm";
-import { StyledForm } from "./StyledForm";
+import { StyledForm, type Props } from "./StyledForm";
 
 const setup = (component = <ExampleForm />) => {
   return {
@@ -10,9 +10,11 @@ const setup = (component = <ExampleForm />) => {
   };
 };
 
+const minimalFields = [{ name: "Name", type: "text" as const }];
+
 describe("StyledForm", () => {
-  describe("Interactions", () => {
-    it("should display the summary of all validation errors when submitting an empty form", async () => {
+  describe("interactions", () => {
+    it("shows all validation errors when an empty form is submitted", async () => {
       const { user } = setup();
       const submitButton = screen.getByRole("button", {
         name: /create account/i,
@@ -27,7 +29,7 @@ describe("StyledForm", () => {
       expect(screen.queryAllByText(/Enter a password/i)).toHaveLength(2);
     });
 
-    it("should only display a specific error for the incorrect field", async () => {
+    it("shows only the error for the invalid field", async () => {
       const { user } = setup();
 
       await user.type(screen.getByLabelText(/Questionnaire/i), "OPN2101A");
@@ -35,6 +37,7 @@ describe("StyledForm", () => {
       await user.type(screen.getByLabelText(/Email/i), "invalidEmail123");
       await user.type(screen.getByLabelText(/Password/i), "ricer123");
       await user.click(screen.getByRole("button", { name: /create account/i }));
+
       expect(await screen.findByText(/There is 1 problem with your answer/i)).toBeVisible();
       expect(screen.queryByText(/Enter a valid questionnaire name/i)).not.toBeInTheDocument();
       expect(screen.queryByText(/Enter a name/i)).not.toBeInTheDocument();
@@ -43,7 +46,7 @@ describe("StyledForm", () => {
       );
     });
 
-    it("should trigger the success state and display submission feedback when the form is valid", async () => {
+    it("shows the success message when the form is valid", async () => {
       const { user } = setup();
 
       await user.type(screen.getByLabelText(/Questionnaire/i), "OPN2101A");
@@ -51,14 +54,23 @@ describe("StyledForm", () => {
       await user.type(screen.getByLabelText(/Email/i), "ricer@example.com");
       await user.type(screen.getByLabelText(/Password/i), "ricer123");
       await user.click(screen.getByRole("button", { name: /create account/i }));
+
       expect(await screen.findByText(/Form submitted for user ricer/i)).toBeVisible();
     });
   });
 
-  describe("Props", () => {
-    const minimalFields = [{ name: "Name", type: "text" as const }];
+  describe("props", () => {
+    it("accepts values typed as Props", () => {
+      const props: Props = {
+        fields: [{ name: "Test", type: "text" }],
+        onSubmitFunction: vi.fn(),
+      };
 
-    it("should display a custom label when the submitLabel prop is provided", async () => {
+      render(<StyledForm {...props} />);
+      expect(screen.getByLabelText(/Test/i)).toBeVisible();
+    });
+
+    it("shows a custom submit label when one is provided", async () => {
       const customLabel = "Press for bacon";
 
       setup(
@@ -71,7 +83,7 @@ describe("StyledForm", () => {
       expect(screen.getByRole("button", { name: new RegExp(customLabel, "i") })).toBeVisible();
     });
 
-    it("should fallback to 'Save and continue' when no label is provided", () => {
+    it("uses 'Save and continue' when no submit label is provided", () => {
       setup(
         <StyledForm
           fields={minimalFields}
@@ -80,6 +92,120 @@ describe("StyledForm", () => {
       );
 
       expect(screen.getByRole("button", { name: /save and continue/i })).toBeVisible();
+    });
+  });
+
+  describe("IDs", () => {
+    it("applies the provided ID and data-testid to the form element", () => {
+      setup(
+        <StyledForm
+          id="styled-form-custom"
+          fields={minimalFields}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      const form = screen.getByTestId("styled-form-custom-form");
+
+      expect(form).toHaveAttribute("id", "styled-form-custom");
+    });
+  });
+
+  describe("test IDs", () => {
+    it("does not apply a data-testid to the form when no ID is provided", () => {
+      const { container } = setup(
+        <StyledForm
+          fields={minimalFields}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      const form = container.querySelector("form");
+
+      expect(form).not.toHaveAttribute("data-testid");
+    });
+
+    it("applies an error-summary data-testid when an ID is provided and validation fails", async () => {
+      const { user } = setup(
+        <StyledForm
+          id="styled-form-custom"
+          fields={[
+            {
+              name: "TestField",
+              type: "text",
+              validate: () => "This field is required",
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorPanel = await screen.findByTestId("styled-form-custom-error-summary-panel");
+
+      expect(errorPanel).toBeVisible();
+      expect(errorPanel).toHaveAttribute("id", "styled-form-custom-error-summary");
+    });
+
+    it("applies fieldset data-testids when IDs are provided", () => {
+      setup(
+        <StyledForm
+          onSubmitFunction={vi.fn()}
+          fields={[
+            {
+              name: "RadioGroup",
+              type: "radio",
+              id: "radio-group",
+              radioOptions: [{ id: "radio-option-one", value: "val1", label: "Radio 1" }],
+            },
+            {
+              name: "CheckboxGroup",
+              type: "checkbox",
+              id: "checkbox-group",
+              checkboxOptions: [{ id: "checkbox-option-one", value: "val1", label: "Checkbox 1" }],
+            },
+          ]}
+        />,
+      );
+
+      expect(screen.getByTestId("radio-group-fieldset")).toBeVisible();
+      expect(screen.getByTestId("checkbox-group-fieldset")).toBeVisible();
+      expect(screen.getByTestId("checkbox-group-select-all")).toBeVisible();
+    });
+
+    it("does not apply fieldset data-testids when IDs are omitted", () => {
+      setup(
+        <StyledForm
+          onSubmitFunction={vi.fn()}
+          fields={[
+            {
+              name: "RadioGroup",
+              type: "radio",
+              radioOptions: [{ value: "val2", label: "Radio 2" }],
+            },
+            {
+              name: "CheckboxGroup",
+              type: "checkbox",
+              checkboxOptions: [{ value: "val2", label: "Checkbox 2" }],
+            },
+          ]}
+        />,
+      );
+
+      const radioLabel = screen.getByLabelText("Radio 2");
+      const radioFieldset = radioLabel.closest(".ons-field");
+
+      expect(radioFieldset).not.toHaveAttribute("data-testid");
+
+      const checkboxLabel = screen.getByLabelText("Checkbox 2");
+      const checkboxFieldset = checkboxLabel.closest(".ons-field");
+
+      expect(checkboxFieldset).not.toHaveAttribute("data-testid");
+
+      const selectAllBtn = screen.getByRole("button", { name: /Select All/i });
+
+      expect(selectAllBtn).not.toHaveAttribute("data-testid");
     });
   });
 });

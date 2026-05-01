@@ -1,46 +1,53 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useId } from "react";
 
+/** Select option. */
 interface Option {
+  /** Visible option text. */
   label: string;
+  /** Option value. */
   value: string;
+  /** Element ID. */
   id?: string;
 }
 
+/** Props for Select. */
 export interface Props {
-  /** The text displayed above the select field. */
+  /** Label text. */
   label?: string;
-  /** Custom HTML ID for the select element. */
+  /** Element ID. */
   id?: string;
-  /** The HTML name attribute for the select element. Defaults to "select". */
+  /** Name attribute. */
   name?: string;
-  /** Callback fired when the user selects a new option. */
+  /** Called when the value changes. */
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
-  /** The current selected value (controlled component). */
+  /** Selected value. */
   value: string;
-  /** Array of options to populate the dropdown menu. */
+  /** Select options. */
   options: Option[];
-  /** Optional test ID for automated testing. */
-  testId?: string;
 }
 
-export const Select = ({ label, id, name, onChange, value, options, testId }: Props) => {
+/** Renders a select input. */
+export const Select = ({ label, id, name, onChange, value, options }: Props) => {
+  const generatedId = useId();
+  const baseId = id || `select-${generatedId}`;
+
   return (
     <div className="ons-field">
       {label !== undefined && (
         <label
           className="ons-label"
-          htmlFor={id}
+          htmlFor={baseId}
         >
           {label}
         </label>
       )}
       <select
-        id={id}
+        id={baseId}
         name={name ?? "select"}
         value={value}
         className="ons-input ons-input--select"
         onChange={onChange}
-        data-testid={testId}
+        data-testid={id ? `${id}-input` : undefined}
       >
         <option
           value=""
@@ -48,16 +55,20 @@ export const Select = ({ label, id, name, onChange, value, options, testId }: Pr
         >
           Select an option
         </option>
-        {options.map((option, index) => (
-          <option
-            value={option.value}
-            key={option.id || `${id}-option-${index}`}
-            id={option.id}
-            data-testid={testId ? `option-${testId}-${option.value}` : undefined}
-          >
-            {option.label}
-          </option>
-        ))}
+        {options.map((option, index) => {
+          const optionBaseId = option.id || `${baseId}-option-${index}`;
+
+          return (
+            <option
+              value={option.value}
+              key={optionBaseId}
+              id={option.id}
+              data-testid={id ? `${id}-option-${option.value}` : undefined}
+            >
+              {option.label}
+            </option>
+          );
+        })}
       </select>
     </div>
   );

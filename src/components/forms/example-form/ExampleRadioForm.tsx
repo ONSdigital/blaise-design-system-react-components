@@ -3,8 +3,7 @@ import { validateRadio } from "./FormValidation";
 import { StyledForm, FormField } from "../StyledForm";
 
 /**
- * Interface representing the values captured by the radio form.
- * Includes the optional 'other-text' for the conditional input.
+ * Values for the example radio form.
  */
 interface RadioFormValues {
   topping: string;
@@ -12,7 +11,7 @@ interface RadioFormValues {
   "other-text"?: string;
 }
 
-/** Configuration for the radio form elements. */
+/** Field config for the example radio form. */
 const formElements: FormField[] = [
   {
     name: "topping",
@@ -51,14 +50,13 @@ const formElements: FormField[] = [
 ];
 
 /**
- * An example implementation of a radio form using StyledForm.
- * Demonstrates standard radio groups and the 'Other/Specify' conditional pattern.
+ * Renders the example radio form.
  */
 export const ExampleRadioForm = (): ReactElement => {
   const [formStatus, setFormStatus] = useState<string>("");
 
   /**
-   * Executes once Formik validation passes.
+   * Handles form submit.
    * @param formValues - The captured radio and conditional text values.
    * @param setSubmitting - Formik utility to re-enable the submit button after processing.
    */
@@ -66,8 +64,6 @@ export const ExampleRadioForm = (): ReactElement => {
     formValues: RadioFormValues,
     setSubmitting: (isSubmitting: boolean) => void,
   ): void => {
-    console.warn("Radio Submission:", formValues);
-
     const selectionMsg =
       formValues.options === "other" ? `other (${formValues["other-text"]})` : formValues.options;
 

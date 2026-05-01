@@ -4,7 +4,7 @@ import { TextInput, type Props } from "./TextInput";
 
 const setup = (overrideProps: Partial<Props> = {}) => {
   const props: Props = {
-    id: "file-upload",
+    id: "text-input",
     label: "Default Label",
     onChange: vi.fn(),
     onClick: vi.fn(),
@@ -19,99 +19,82 @@ const setup = (overrideProps: Partial<Props> = {}) => {
 };
 
 describe("TextInput", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
       const { asFragment } = setup();
 
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should display the correct label text", () => {
+    it("shows the label text", () => {
       const { props } = setup({ label: "Text Label" });
 
       expect(screen.getByLabelText(props.label as string)).toBeVisible();
     });
 
-    it("should not render a label element if the label prop is omitted", () => {
+    it("does not render a label when label is undefined", () => {
       setup({ label: undefined });
-
       expect(document.querySelector("label")).not.toBeInTheDocument();
     });
 
-    it("should use the default test-id 'text-input' if none is provided", () => {
-      setup();
-      expect(screen.getByTestId("text-input")).toBeVisible();
+    it("applies the provided ID and data-testid", () => {
+      setup({ id: "text-input-custom" });
+      const input = screen.getByTestId("text-input-custom-input");
+
+      expect(input).toHaveAttribute("id", "text-input-custom");
     });
 
-    it("should allow overriding the test-id via props", () => {
-      setup({ testId: "test-id" });
-      expect(screen.getByTestId("test-id")).toBeVisible();
+    it("does not apply a data-testid when no ID is provided", () => {
+      render(<TextInput label="No ID" />);
+      const input = screen.getByLabelText("No ID");
+
+      expect(input).not.toHaveAttribute("data-testid");
     });
   });
 
-  describe("Props", () => {
-    it("should be of type 'text' by default", () => {
-      setup();
-      const input = screen.getByTestId("text-input");
+  describe("props", () => {
+    it("falls back to a generated ID when no ID is provided", () => {
+      render(<TextInput label="Generated ID" />);
+      const input = screen.getByLabelText("Generated ID");
 
-      expect(input).toHaveAttribute("type", "text");
+      expect(input).toHaveAttribute("id");
+      expect(input.getAttribute("id")).toMatch(/text-input-.*$/);
     });
 
-    it("should be of type 'password' when the password prop is enabled", () => {
+    it("uses type='password' when password is true", () => {
       setup({ password: true });
-      const input = screen.getByTestId("text-input");
+      const input = screen.getByTestId("text-input-input");
 
       expect(input).toHaveAttribute("type", "password");
     });
 
-    it("should be of type 'number' when the number prop is enabled", () => {
+    it("uses type='number' when number is true", () => {
       setup({ number: true });
-      const input = screen.getByTestId("text-input");
+      const input = screen.getByTestId("text-input-input");
 
       expect(input).toHaveAttribute("type", "number");
     });
 
-    it("should render the provided value in the input field", () => {
-      setup({ value: "test value" });
-      const input = screen.getByTestId("text-input");
-
-      expect(input).toHaveValue("test value");
-    });
-
-    it("should apply 'unset' width style when the fit prop is true", () => {
+    it("applies a width of auto when fit is true", () => {
       setup({ fit: true });
-      const input = screen.getByTestId("text-input");
+      const input = screen.getByTestId("text-input-input");
 
-      expect(input).toHaveAttribute("style", expect.stringContaining("width: unset"));
-    });
-
-    it("should apply the provided zIndex inline style", () => {
-      setup({ zIndex: 99 });
-      const input = screen.getByTestId("text-input");
-
-      expect(input).toHaveStyle({ zIndex: "99" });
+      expect(input).toHaveStyle({ width: "auto" });
     });
   });
 
-  describe("Interactions", () => {
-    it("should trigger the onChange handler for every character typed", async () => {
+  describe("interactions", () => {
+    it("calls onChange for every typed character", async () => {
       const { user, props } = setup();
-      const input = screen.getByTestId("text-input");
+      const input = screen.getByTestId("text-input-input");
 
       await user.type(input, "abc");
       expect(props.onChange).toHaveBeenCalledTimes(3);
     });
 
-    it("should safely handle typing when no onChange handler is provided", async () => {
-      const { user } = setup({ onChange: undefined });
-      const input = screen.getByTestId("text-input");
-
-      await expect(user.type(input, "abc")).resolves.not.toThrow();
-    });
-
-    it("should trigger the onClick handler when clicked", async () => {
+    it("calls onClick when clicked", async () => {
       const { user, props } = setup();
-      const input = screen.getByTestId("text-input");
+      const input = screen.getByTestId("text-input-input");
 
       await user.click(input);
       expect(props.onClick).toHaveBeenCalledTimes(1);

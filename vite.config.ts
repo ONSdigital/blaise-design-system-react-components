@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-      rollupTypes: true,
+      bundleTypes: true,
       exclude: [
         "src/mocks/**",
         "**/*.test.ts",

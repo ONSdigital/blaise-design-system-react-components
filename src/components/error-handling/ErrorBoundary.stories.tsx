@@ -35,8 +35,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Panel: Story = {
+export const Default: Story = {
+  render: (args) => <ErrorBoundary {...args} />,
   args: {
+    id: "error-boundary",
     children: <DodgyComponent />,
     errorMessageText: "D'oh! This specific section has failed to load.",
   },

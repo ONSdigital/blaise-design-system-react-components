@@ -1,29 +1,33 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useId } from "react";
 
+/** Props for PasswordInput. */
 export interface Props {
-  /** The text displayed above the input field. */
+  /** Label text. */
   label?: string;
-  /** Custom HTML ID for the input element. Defaults to "password". */
-  inputId?: string;
-  /** Applies a custom top margin in pixels to the toggle checkbox. */
+  /** Element ID. */
+  id?: string;
+  /** Top margin for the toggle, in pixels. */
   marginTop?: number;
-  /** Callback fired when the input value changes. Returns the event and the string value. */
+  /** Called when the value changes. */
   onChange?: (e: ChangeEvent<HTMLInputElement>, value: string) => void;
-  /** The current value of the input (controlled component). */
+  /** Controlled input value. */
   value: string;
-  /** If true, the input will automatically focus on mount. */
+  /** Whether to focus the input on mount. */
   autoFocus?: boolean;
 }
 
+/** Renders a password input. */
 export const PasswordInput = ({
   label = "Password",
-  inputId = "password",
+  id,
   marginTop,
   onChange,
   value,
   autoFocus,
 }: Props) => {
   const [passwordHidden, setPasswordHidden] = useState(true);
+  const generatedId = useId();
+  const baseId = id || `password-input-${generatedId}`;
 
   const togglePassword = () => setPasswordHidden((prev) => !prev);
 
@@ -39,7 +43,7 @@ export const PasswordInput = ({
     <div className="ons-field">
       <label
         className="ons-label"
-        htmlFor={inputId}
+        htmlFor={baseId}
       >
         {label}
       </label>
@@ -49,29 +53,29 @@ export const PasswordInput = ({
       >
         <input
           type="checkbox"
-          id={`${inputId}-toggle`}
+          id={`${baseId}-toggle`}
           className="ons-checkbox__input"
           name="show-password"
           checked={!passwordHidden}
           onChange={togglePassword}
-          data-testid="login-password-toggle"
+          data-testid={id ? `${id}-toggle` : undefined}
         />
         <label
           className="ons-checkbox__label"
-          htmlFor={`${inputId}-toggle`}
+          htmlFor={`${baseId}-toggle`}
         >
           Show password
         </label>
       </span>
       <input
         type={passwordHidden ? "password" : "text"}
-        id={inputId}
+        id={baseId}
         className="ons-input ons-input--text ons-input-type__input ons-u-mt-2xs"
         value={value}
         onChange={handleChange}
         autoFocus={autoFocus}
         autoComplete="new-password"
-        data-testid="login-password-input"
+        data-testid={id ? `${id}-input` : undefined}
       />
     </div>
   );

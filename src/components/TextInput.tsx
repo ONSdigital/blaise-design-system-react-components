@@ -1,34 +1,34 @@
-import { ChangeEvent, MouseEventHandler, CSSProperties } from "react";
+import { ChangeEvent, MouseEventHandler, CSSProperties, useId } from "react";
 
+/** Props for TextInput. */
 export interface Props {
-  /** The text displayed above the input field. */
+  /** Label text. */
   label?: string;
-  /** Custom HTML ID for the input element. */
+  /** Element ID. */
   id?: string;
-  /** If true, renders the input as a password field (obscures text). */
+  /** Whether to use `password` type. Overrides `number`. */
   password?: boolean;
-  /** If true, renders the input as a numeric field. */
+  /** Whether to use `number` type. */
   number?: boolean;
-  /** Callback fired when the input value changes. Returns the event and the label (if provided). */
+  /** Called when the value changes. */
   onChange?: (e: ChangeEvent<HTMLInputElement>, label?: string) => void;
   /** Placeholder text displayed when the input is empty. */
   placeholder?: string;
-  /** If true, removes the default width restriction so the input fits its container. */
+  /** Whether to remove the default width. */
   fit?: boolean;
-  /** If true, the input will automatically focus on mount. */
+  /** Whether to focus the input on mount. */
   autoFocus?: boolean;
-  /** The current value of the input (controlled component). */
+  /** Input value. */
   value?: string;
-  /** Standard HTML autocomplete attribute (e.g., "off", "new-password"). */
+  /** Autocomplete attribute. */
   autoComplete?: string;
-  /** Callback fired when the input is clicked. */
+  /** Called when the input is clicked. */
   onClick?: MouseEventHandler<HTMLInputElement>;
-  /** Custom z-index for the input element. Defaults to 0. */
+  /** Input z-index. */
   zIndex?: number;
-  /** Optional test ID for automated testing. Defaults to "text-input". */
-  testId?: string;
 }
 
+/** Renders a text, password, or number input. */
 export const TextInput = ({
   label,
   id,
@@ -42,8 +42,10 @@ export const TextInput = ({
   autoComplete,
   onClick,
   zIndex,
-  testId = "text-input",
 }: Props) => {
+  const generatedId = useId();
+  const baseId = id || `text-input-${generatedId}`;
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(e, label);
   };
@@ -60,13 +62,13 @@ export const TextInput = ({
       {label !== undefined && (
         <label
           className="ons-label"
-          htmlFor={id}
+          htmlFor={baseId}
         >
           {label}
         </label>
       )}
       <input
-        id={id}
+        id={baseId}
         className="ons-input ons-input--text ons-input-type__input"
         value={value ?? ""}
         type={inputType}
@@ -76,7 +78,7 @@ export const TextInput = ({
         placeholder={placeholder}
         onChange={handleChange}
         onClick={onClick}
-        data-testid={testId}
+        data-testid={id ? `${id}-input` : undefined}
       />
     </div>
   );

@@ -7,95 +7,145 @@ import {
   type SummaryItemProps,
 } from "./Summary";
 
-const setupTable = (overrideProps: Partial<SummaryGroupTableProps> = {}) => {
+const setup = (records: Record<string, string | number | boolean | null | undefined>) => {
+  const summaryGroup = new GroupedSummary([
+    {
+      title: "Test Group",
+      records: records,
+    },
+  ]);
+
   const props: SummaryGroupTableProps = {
-    groupedSummary: new GroupedSummary([{ title: "test", records: { foo: "bar" } }]),
-    ...overrideProps,
+    id: "summary",
+    groupedSummary: summaryGroup,
   };
 
-  return {
-    props,
-    ...render(<SummaryGroupTable {...props} />),
-  };
-};
-
-const setupRow = (overrideProps: Partial<SummaryItemProps> = {}) => {
-  const props: SummaryItemProps = {
-    fieldName: "foo",
-    fieldValue: "bar",
-    ...overrideProps,
-  };
-
-  return {
-    props,
-    ...render(
-      <table>
-        <SummaryItemRow {...props} />
-      </table>,
-    ),
-  };
+  return render(<SummaryGroupTable {...props} />);
 };
 
 describe("SummaryGroupTable", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
-      const { asFragment } = setupTable();
+  describe("rendering", () => {
+    it("renders string and numeric values", () => {
+      setup({
+        Name: "John Doe",
+        Age: 30,
+      });
 
-      expect(asFragment()).toMatchSnapshot();
+      expect(screen.getByText("Name")).toBeVisible();
+      expect(screen.getByText("John Doe")).toBeVisible();
+
+      expect(screen.getByText("Age")).toBeVisible();
+      expect(screen.getByText("30")).toBeVisible();
+    });
+  });
+
+  describe("edge cases", () => {
+    it("renders 'Yes' and 'No' for boolean values", () => {
+      setup({
+        "Is Registered": true,
+        "Is Active": false,
+      });
+
+      expect(screen.getByText("Is Registered")).toBeVisible();
+      expect(screen.getByText("Yes")).toBeVisible();
+
+      expect(screen.getByText("Is Active")).toBeVisible();
+      expect(screen.getByText("No")).toBeVisible();
     });
 
-    it("should display the group title and record values", () => {
-      setupTable();
-      expect(screen.getByText(/test/i)).toBeVisible();
-      expect(screen.getByText(/foo/i)).toBeVisible();
-      expect(screen.getByText(/bar/i)).toBeVisible();
+    it("renders 'Not provided' for null, undefined and empty strings", () => {
+      setup({
+        "Missing Null": null,
+        "Missing Undefined": undefined,
+        "Empty String": "",
+      });
+
+      expect(screen.getByText("Missing Null")).toBeVisible();
+      expect(screen.getByText("Missing Undefined")).toBeVisible();
+      expect(screen.getByText("Empty String")).toBeVisible();
+
+      const fallbackElements = screen.getAllByText("Not provided");
+
+      expect(fallbackElements).toHaveLength(3);
+    });
+  });
+
+  describe("IDs and test IDs", () => {
+    it("applies the provided ID and data-testid to the root container", () => {
+      setup({ Test: "Value" });
+      const table = screen.getByTestId("summary-summary");
+
+      expect(table).toBeInTheDocument();
+      expect(table).toHaveAttribute("id", "summary");
+    });
+
+    it("applies data-testids to rows and values based on the root ID", () => {
+      setup({ "User Role": "Admin" });
+
+      const row = screen.getByTestId("summary-Test-Group-User-Role-row");
+      const value = screen.getByTestId("summary-Test-Group-User-Role-value");
+
+      expect(row).toBeInTheDocument();
+      expect(value).toBeInTheDocument();
+      expect(value).toHaveTextContent("Admin");
+    });
+
+    it("does not apply data-testids when the root ID is omitted", () => {
+      const summaryGroup = new GroupedSummary([{ title: "Group", records: { Key: "Val" } }]);
+      const props: SummaryGroupTableProps = {
+        groupedSummary: summaryGroup,
+      };
+      const { container } = render(<SummaryGroupTable {...props} />);
+
+      const root = container.firstChild as HTMLElement;
+
+      expect(root).not.toHaveAttribute("data-testid");
+
+      const row = document.querySelector(".ons-summary__item");
+
+      expect(row).not.toHaveAttribute("data-testid");
+    });
+  });
+
+  describe("CSV export", () => {
+    it("reduces the groups into a single CSV row", () => {
+      const summary = new GroupedSummary([
+        { title: "Personal", records: { Name: "Alice" } },
+        { title: "Status", records: { Active: true, Notes: null } },
+      ]);
+
+      const csvData = summary.csv();
+
+      expect(csvData).toEqual([
+        {
+          Name: "Alice",
+          Active: true,
+          Notes: null,
+        },
+      ]);
     });
   });
 });
 
 describe("SummaryItemRow", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
-      const { asFragment } = setupRow();
+  it("renders React elements without wrapping them in a text span", () => {
+    const props: SummaryItemProps = {
+      fieldName: "Custom JSX",
+      fieldValue: <strong data-testid="custom-jsx">Complex Data</strong>,
+    };
 
-      expect(asFragment()).toMatchSnapshot();
-    });
+    render(
+      <dl>
+        <SummaryItemRow {...props} />
+      </dl>,
+    );
 
-    it("should display the field name and its corresponding value", () => {
-      const { props } = setupRow();
-      const fieldNameRegex = new RegExp(props.fieldName, "i");
-      const fieldValueRegex = new RegExp(props.fieldValue as string, "i");
+    const customElement = screen.getByTestId("custom-jsx");
 
-      expect(screen.getByText(fieldNameRegex)).toBeVisible();
-      expect(screen.getByText(fieldValueRegex)).toBeVisible();
-    });
-
-    it("should render complex ReactNodes (JSX) directly without wrapping in a span", () => {
-      const customValue = <span data-testid="custom-node">Complex Value</span>;
-
-      setupRow({ fieldValue: customValue });
-
-      expect(screen.getByTestId("custom-node")).toBeVisible();
-      expect(screen.queryByText("Complex Value")).toBeInTheDocument();
-    });
-  });
-});
-
-describe("GroupedSummary Logic", () => {
-  describe("Data Formatting", () => {
-    it("should merge all summary group records into a single object", () => {
-      const groupedSummary = new GroupedSummary([
-        { title: "Group 1", records: { foo: "bar" } },
-        { title: "Group 2", records: { fwibble: "fish" } },
-      ]);
-      const expectedCsv = [
-        {
-          foo: "bar",
-          fwibble: "fish",
-        },
-      ];
-
-      expect(groupedSummary.csv()).toEqual(expectedCsv);
-    });
+    expect(customElement).toBeVisible();
+    expect(customElement).toHaveTextContent("Complex Data");
+    expect(customElement.tagName).toBe("STRONG");
+    expect(customElement.parentElement).toHaveClass("ons-summary__values");
+    expect(customElement.parentElement).not.toHaveClass("ons-summary__text");
   });
 });

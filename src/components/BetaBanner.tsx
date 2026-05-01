@@ -1,19 +1,26 @@
 import { ReactElement } from "react";
 
-interface Props {
-  /** The URL for the feedback link. Defaults to the ONS Service-Now portal. */
+/** Props for BetaBanner. */
+export interface Props {
+  /** Feedback URL. */
   feedbackLink?: string;
+  /** Element ID. */
+  id?: string;
 }
 
 /**
- * The Beta Banner is used to inform users that the service is in a beta phase
- * and to encourage them to provide feedback via a specified link.
+ * Renders a beta banner.
  */
 export const BetaBanner = ({
   feedbackLink = "https://ons.service-now.com/",
+  id,
 }: Props): ReactElement => {
   return (
-    <div className="ons-phase-banner">
+    <div
+      className="ons-phase-banner"
+      id={id}
+      data-testid={id ? `${id}-beta-banner` : undefined}
+    >
       <div className="ons-container">
         <div className="ons-grid ons-grid-flex ons-grid--gutterless ons-grid-flex--vertical-center ons-grid-flex--no-wrap">
           <div className="ons-grid__col ons-col-auto ons-u-flex-no-grow ons-u-flex-no-shrink">

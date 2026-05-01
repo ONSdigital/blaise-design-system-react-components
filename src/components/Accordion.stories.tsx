@@ -5,7 +5,7 @@ const meta = {
   title: "Components/Accordion",
   component: Accordion,
   argTypes: {
-    Expandables: {
+    expandables: {
       control: false,
     },
   },
@@ -17,17 +17,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    ContentId: "example-accordion",
-    ShowAllEnabled: true,
-    Expanded: false,
-    Expandables: [
+    id: "accordion",
+    showAllEnabled: true,
+    expanded: false,
+    expandables: [
       {
-        contentId: "the-hitchhikers-guide-to-the-galaxy",
+        id: "meaning-of-life",
         title: "What is the meaning of life, the universe, and everything?",
         content: <p>42</p>,
       },
       {
-        contentId: "monty-python-and-the-holy-grail",
+        id: "airspeed-velocity",
         title: "What is the airspeed velocity of an unladen swallow?",
         content: <p>African or European?</p>,
       },

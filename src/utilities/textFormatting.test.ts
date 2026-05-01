@@ -1,7 +1,7 @@
 import { formatTitle, capitaliseFirstLetter, formatKey } from "./textFormatting";
 
 describe("formatTitle", () => {
-  describe("When processing snake_case strings", () => {
+  describe("when given snake_case text", () => {
     it.each([
       { input: "call_time", expected: "Call time" },
       {
@@ -14,62 +14,59 @@ describe("formatTitle", () => {
         expected: "Average respondents interviewed per hour",
       },
       { input: "invalid_fields", expected: "Invalid fields" },
-    ])("should format '$input' to '$expected'", ({ input, expected }) => {
+    ])("returns '$expected' for '$input'", ({ input, expected }) => {
       const formattedText = formatTitle(input);
 
       expect(formattedText).toBe(expected);
     });
   });
 
-  describe("When handling edge cases", () => {
-    it("should return an empty string when provided with an empty string", () => {
+  describe("edge cases", () => {
+    it("returns an empty string for an empty string", () => {
       expect(formatTitle("")).toBe("");
     });
   });
 });
 
 describe("capitaliseFirstLetter", () => {
-  describe("When processing standard strings", () => {
+  describe("when given standard text", () => {
     it.each([
       { input: "hello", expected: "Hello" },
       { input: "world", expected: "World" },
       { input: "Already capitalised", expected: "Already capitalised" },
-    ])("should capitalise the first letter of '$input' to '$expected'", ({ input, expected }) => {
+    ])("returns '$expected' for '$input'", ({ input, expected }) => {
       const formattedText = capitaliseFirstLetter(input);
 
       expect(formattedText).toBe(expected);
     });
   });
 
-  describe("When handling edge cases", () => {
-    it("should return an empty string when provided with an empty string", () => {
+  describe("edge cases", () => {
+    it("returns an empty string for an empty string", () => {
       expect(capitaliseFirstLetter("")).toBe("");
     });
   });
 });
 
 describe("formatKey", () => {
-  describe("When processing strings with spaces", () => {
+  describe("when given text with spaces", () => {
     it.each([
       { input: "hello world", expected: "hello-world" },
       { input: "a very long key name", expected: "a-very-long-key-name" },
       { input: " one leading space", expected: "-one-leading-space" },
-    ])(
-      "should replace spaces in '$input' with hyphens resulting in '$expected'",
-      ({ input, expected }) => {
-        const formattedText = formatKey(input);
+    ])("returns '$expected' for '$input'", ({ input, expected }) => {
+      const formattedText = formatKey(input);
 
-        expect(formattedText).toBe(expected);
-      },
-    );
+      expect(formattedText).toBe(expected);
+    });
   });
 
-  describe("When handling edge cases", () => {
-    it("should return the original string if no spaces are present", () => {
+  describe("edge cases", () => {
+    it("returns the original string when no spaces are present", () => {
       expect(formatKey("nospaceshere")).toBe("nospaceshere");
     });
 
-    it("should return an empty string when provided with an empty string", () => {
+    it("returns an empty string for an empty string", () => {
       expect(formatKey("")).toBe("");
     });
   });

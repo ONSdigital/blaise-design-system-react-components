@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Header > Rendering > should match the snapshot with default props 1`] = `
+exports[`Header > rendering > renders the default snapshot 1`] = `
 <DocumentFragment>
   <header
     class="ons-header ons-header--internal"
@@ -54,7 +54,7 @@ exports[`Header > Rendering > should match the snapshot with default props 1`] =
                 class="ons-header__org-logo ons-header__org-logo--large"
               >
                 <svg
-                  aria-labelledby="ons-logo-en-alt"
+                  aria-label="Office for National Statistics logo"
                   class="ons-icon--logo"
                   height="24"
                   role="img"
@@ -62,11 +62,6 @@ exports[`Header > Rendering > should match the snapshot with default props 1`] =
                   width="250"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <title
-                    id="ons-logo-en-alt"
-                  >
-                    Office for National Statistics logo
-                  </title>
                   <g
                     class="ons-icon--logo__group ons-icon--logo__group--secondary"
                     fill="#a8bd3a"
@@ -175,7 +170,7 @@ exports[`Header > Rendering > should match the snapshot with default props 1`] =
                 class="ons-header__org-logo ons-header__org-logo--small"
               >
                 <svg
-                  aria-labelledby="ons-logo-stacked-en-alt"
+                  aria-label="Office for National Statistics logo"
                   class="ons-icon--logo"
                   height="27"
                   role="img"
@@ -183,11 +178,6 @@ exports[`Header > Rendering > should match the snapshot with default props 1`] =
                   width="120"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <title
-                    id="ons-logo-stacked-en-alt"
-                  >
-                    Office for National Statistics logo
-                  </title>
                   <g
                     class="ons-icon--logo__group ons-icon--logo__group--secondary"
                     fill="#a8bd3a"
@@ -234,7 +224,7 @@ exports[`Header > Rendering > should match the snapshot with default props 1`] =
             <div
               class="ons-header__title"
             >
-              ONS Service
+              Awesome React Service Extra
             </div>
           </div>
         </div>
@@ -244,7 +234,7 @@ exports[`Header > Rendering > should match the snapshot with default props 1`] =
 </DocumentFragment>
 `;
 
-exports[`Header > Rendering > should match the snapshot with navigation links 1`] = `
+exports[`Header > rendering > renders the navigation snapshot 1`] = `
 <DocumentFragment>
   <header
     class="ons-header ons-header--internal"
@@ -298,7 +288,7 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
                 class="ons-header__org-logo ons-header__org-logo--large"
               >
                 <svg
-                  aria-labelledby="ons-logo-en-alt"
+                  aria-label="Office for National Statistics logo"
                   class="ons-icon--logo"
                   height="24"
                   role="img"
@@ -306,11 +296,6 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
                   width="250"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <title
-                    id="ons-logo-en-alt"
-                  >
-                    Office for National Statistics logo
-                  </title>
                   <g
                     class="ons-icon--logo__group ons-icon--logo__group--secondary"
                     fill="#a8bd3a"
@@ -419,7 +404,7 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
                 class="ons-header__org-logo ons-header__org-logo--small"
               >
                 <svg
-                  aria-labelledby="ons-logo-stacked-en-alt"
+                  aria-label="Office for National Statistics logo"
                   class="ons-icon--logo"
                   height="27"
                   role="img"
@@ -427,11 +412,6 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
                   width="120"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <title
-                    id="ons-logo-stacked-en-alt"
-                  >
-                    Office for National Statistics logo
-                  </title>
                   <g
                     class="ons-icon--logo__group ons-icon--logo__group--secondary"
                     fill="#a8bd3a"
@@ -478,7 +458,7 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
             <div
               class="ons-header__title"
             >
-              ONS Service
+              Awesome React Service Extra
             </div>
           </div>
         </div>
@@ -494,7 +474,6 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
           aria-label="Main menu"
           class="ons-navigation ons-navigation--main ons-js-navigation"
           data-analytics="header-navigation"
-          id="main-nav"
         >
           <ul
             class="ons-navigation__list"
@@ -505,7 +484,7 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
               <a
                 class="ons-navigation__link"
                 href="/"
-                id="home"
+                id="nav-home"
               >
                 Home
               </a>
@@ -516,7 +495,7 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
               <a
                 class="ons-navigation__link"
                 href="/menu1"
-                id="menu-1"
+                id="nav-menu-one"
               >
                 Menu #1
               </a>
@@ -527,7 +506,7 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
               <a
                 class="ons-navigation__link"
                 href="/menu2"
-                id="menu-2"
+                id="nav-menu-two"
               >
                 Menu #2
               </a>
@@ -538,7 +517,7 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
               <a
                 class="ons-navigation__link"
                 href="/menu3"
-                id="menu-3"
+                id="nav-menu-three"
               >
                 Menu #3
               </a>
@@ -551,7 +530,7 @@ exports[`Header > Rendering > should match the snapshot with navigation links 1`
 </DocumentFragment>
 `;
 
-exports[`Header > Rendering > should match the snapshot with sign-out functionality 1`] = `
+exports[`Header > rendering > renders the sign-out snapshot 1`] = `
 <DocumentFragment>
   <header
     class="ons-header ons-header--internal"
@@ -605,7 +584,7 @@ exports[`Header > Rendering > should match the snapshot with sign-out functional
                 class="ons-header__org-logo ons-header__org-logo--large"
               >
                 <svg
-                  aria-labelledby="ons-logo-en-alt"
+                  aria-label="Office for National Statistics logo"
                   class="ons-icon--logo"
                   height="24"
                   role="img"
@@ -613,11 +592,6 @@ exports[`Header > Rendering > should match the snapshot with sign-out functional
                   width="250"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <title
-                    id="ons-logo-en-alt"
-                  >
-                    Office for National Statistics logo
-                  </title>
                   <g
                     class="ons-icon--logo__group ons-icon--logo__group--secondary"
                     fill="#a8bd3a"
@@ -726,7 +700,7 @@ exports[`Header > Rendering > should match the snapshot with sign-out functional
                 class="ons-header__org-logo ons-header__org-logo--small"
               >
                 <svg
-                  aria-labelledby="ons-logo-stacked-en-alt"
+                  aria-label="Office for National Statistics logo"
                   class="ons-icon--logo"
                   height="27"
                   role="img"
@@ -734,11 +708,6 @@ exports[`Header > Rendering > should match the snapshot with sign-out functional
                   width="120"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <title
-                    id="ons-logo-stacked-en-alt"
-                  >
-                    Office for National Statistics logo
-                  </title>
                   <g
                     class="ons-icon--logo__group ons-icon--logo__group--secondary"
                     fill="#a8bd3a"
@@ -785,7 +754,7 @@ exports[`Header > Rendering > should match the snapshot with sign-out functional
             <div
               class="ons-header__title"
             >
-              ONS Service
+              Awesome React Service Extra
             </div>
           </div>
           <div
@@ -793,8 +762,6 @@ exports[`Header > Rendering > should match the snapshot with sign-out functional
           >
             <button
               class="ons-btn ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link"
-              data-test-id="signout-button"
-              id="signout-button"
               type="button"
             >
               <span

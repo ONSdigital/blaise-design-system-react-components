@@ -11,36 +11,50 @@ const meta = {
 
 export default meta;
 
-type TableStory = StoryObj<typeof SummaryGroupTable>;
+type Story = StoryObj<typeof SummaryGroupTable>;
 
-const popCultureSummary = new GroupedSummary([
+const tmntSummary = new GroupedSummary([
   {
-    title: "The Batcave",
+    title: "Leonardo",
     records: {
-      Location: "Gotham City",
-      "Primary Resident": "Bruce Wayne (Batman)",
-      "Number of Vehicles": 5,
-      "Secret Entrance": "Grandfather clock in Wayne Manor",
-      "Alfred's Approval": "Required",
-      "Batcomputer Status": "Online",
-      "Villain Alerts": "Joker, Penguin, Riddler",
+      Colour: "Blue",
+      Weapon: "Katana",
+      Role: "Leader",
+      Personality: "Disciplined",
     },
   },
   {
-    title: "Millennium Falcon",
+    title: "Michelangelo",
     records: {
-      Captain: "Han Solo",
-      CoPilot: "Chewbacca",
-      "Top Speed (MGLT)": 75,
-      "Special Features": "Kessel Run in less than 12 parsecs",
-      "Docked At": "Mos Eisley, Tatooine",
-      Passengers: "Luke Skywalker, Leia Organa, C-3PO, R2-D2",
+      Colour: "Orange",
+      Weapon: "Nunchaku",
+      Role: "Party Dude",
+      Personality: "Fun-loving",
+    },
+  },
+  {
+    title: "Donatello",
+    records: {
+      Colour: "Purple",
+      Weapon: "Bo Staff",
+      Role: "Technician",
+      Personality: "Intellectual",
+    },
+  },
+  {
+    title: "Raphael",
+    records: {
+      Colour: "Red",
+      Weapon: "Sai",
+      Role: "Enforcer",
+      Personality: "Aggressive",
     },
   },
 ]);
 
-export const Table: TableStory = {
+export const Default: Story = {
   args: {
-    groupedSummary: popCultureSummary,
+    id: "summary",
+    groupedSummary: tmntSummary,
   },
 };

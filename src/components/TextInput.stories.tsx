@@ -9,13 +9,6 @@ const meta = {
     onChange: { action: "changed" },
     onClick: { action: "clicked" },
   },
-} satisfies Meta<typeof TextInput>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
   render: (args) => {
     const [currentValue, setCurrentValue] = useState(args.value || "");
 
@@ -30,10 +23,63 @@ export const Default: Story = {
       />
     );
   },
+} satisfies Meta<typeof TextInput>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {
+    id: "text-input",
     label: "Text Input",
-    placeholder: "Type here",
     autoFocus: true,
     value: "",
+  },
+};
+
+export const Placeholder: Story = {
+  args: {
+    ...Default.args,
+    id: "text-input-placeholder",
+    label: "Name",
+    placeholder: "e.g. John Doe",
+    value: "",
+  },
+};
+
+export const Value: Story = {
+  args: {
+    ...Default.args,
+    id: "text-input-value",
+    label: "Biff",
+    value: "Well, lookee what we have here",
+  },
+};
+
+export const Fit: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <div>
+        <TextInput
+          {...args}
+          id="text-input-fit-false"
+          label="False (Design System default)"
+          fit={false}
+        />
+      </div>
+      <div>
+        <TextInput
+          {...args}
+          id="text-input-fit-true"
+          label="True (browser default)"
+          fit={true}
+        />
+      </div>
+    </div>
+  ),
+  args: {
+    value: "",
+    autoFocus: false,
   },
 };

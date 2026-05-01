@@ -1,32 +1,38 @@
 import { ReactElement, ReactNode } from "react";
 
+/** Header navigation item. */
 interface NavigationLinks {
-  /** The unique ID for the navigation item. */
-  id: string;
-  /** The text displayed to the user. */
+  /** Element ID. */
+  id?: string;
+  /** Visible link text. */
   label: string;
-  /** The URL or path the link points to. */
+  /** Link URL or route. */
   endpoint: string;
 }
 
+/** Props for Header. */
 export interface Props {
-  /** The main title displayed in the header. */
+  /** Element ID. */
+  id?: string;
+  /** Header title. */
   title: string;
-  /** Toggles the visibility of the sign-out button. */
+  /** Whether to show the sign-out button. */
   signOutButton?: boolean;
-  /** If true, changes the button text from 'Save and sign out' to 'Sign out'. */
+  /** Whether to use `Sign out` instead of `Save and sign out`. */
   noSave?: boolean;
-  /** Callback triggered when the sign-out button is clicked. */
+  /** Called when the sign-out button is clicked. */
   signOutFunction?: () => void;
-  /** Array of navigation links to render in the main menu. */
+  /** Navigation items. */
   navigationLinks?: NavigationLinks[];
-  /** The current URL endpoint. Used to highlight the active navigation link. */
+  /** Current URL or route. */
   currentLocation?: string;
-  /** Optional render prop to override default anchor tags (e.g., to use React Router's <Link>). */
-  createNavLink?: (id: string, label: string, endpoint: string) => ReactNode;
+  /** Custom navigation link renderer. */
+  createNavLink?: (id: string | undefined, label: string, endpoint: string) => ReactNode;
 }
 
+/** Renders the header. */
 export const Header = ({
+  id,
   title,
   signOutButton,
   noSave,
@@ -35,15 +41,15 @@ export const Header = ({
   currentLocation,
   createNavLink,
 }: Props): ReactElement => {
-  const createLink = (id: string, label: string, endpoint: string) => {
+  const createLink = (linkId: string | undefined, label: string, endpoint: string) => {
     if (createNavLink) {
-      return createNavLink(id, label, endpoint);
+      return createNavLink(linkId, label, endpoint);
     }
 
     return (
       <a
         className="ons-navigation__link"
-        id={id}
+        id={linkId}
         href={endpoint}
       >
         {label}
@@ -54,7 +60,11 @@ export const Header = ({
   const signOutText = noSave ? "Sign out" : "Save and sign out";
 
   return (
-    <header className="ons-header ons-header--internal">
+    <header
+      className="ons-header ons-header--internal"
+      id={id}
+      data-testid={id ? `${id}-header` : undefined}
+    >
       <div className="ons-browser-banner">
         <div className="ons-container">
           <p className="ons-browser-banner__content">
@@ -91,10 +101,9 @@ export const Header = ({
                     width="250"
                     height="24"
                     viewBox="33 2 552 60"
-                    aria-labelledby="ons-logo-en-alt"
+                    aria-label="Office for National Statistics logo"
                     role="img"
                   >
-                    <title id="ons-logo-en-alt">Office for National Statistics logo</title>
                     <g
                       className="ons-icon--logo__group ons-icon--logo__group--secondary"
                       fill="#a8bd3a"
@@ -148,10 +157,9 @@ export const Header = ({
                     width="120"
                     height="27"
                     viewBox="0 5 595 116"
-                    aria-labelledby="ons-logo-stacked-en-alt"
+                    aria-label="Office for National Statistics logo"
                     role="img"
                   >
-                    <title id="ons-logo-stacked-en-alt">Office for National Statistics logo</title>
                     <g
                       className="ons-icon--logo__group ons-icon--logo__group--secondary"
                       fill="#a8bd3a"
@@ -187,8 +195,6 @@ export const Header = ({
             {signOutButton && (
               <div className="ons-grid__col ons-col-auto ons-u-flex-no-shrink">
                 <button
-                  id="signout-button"
-                  data-test-id="signout-button"
                   className="ons-btn ons-u-d-no@2xs@m ons-btn--ghost ons-btn--link"
                   onClick={() => signOutFunction?.()}
                   type="button"
@@ -225,19 +231,22 @@ export const Header = ({
           <div className="ons-container ons-container--gutterless@xxs@l">
             <nav
               className="ons-navigation ons-navigation--main ons-js-navigation"
-              id="main-nav"
               aria-label="Main menu"
               data-analytics="header-navigation"
             >
               <ul className="ons-navigation__list">
-                {navigationLinks?.map(({ id, label, endpoint }) => (
-                  <li
-                    key={id}
-                    className={`ons-navigation__item ${currentLocation === endpoint ? "ons-navigation__item--active" : ""}`}
-                  >
-                    {createLink(id, label, endpoint)}
-                  </li>
-                ))}
+                {navigationLinks?.map(({ id: linkId, label, endpoint }, index) => {
+                  const itemKey = linkId || `${endpoint}-${index}`;
+
+                  return (
+                    <li
+                      key={itemKey}
+                      className={`ons-navigation__item ${currentLocation === endpoint ? "ons-navigation__item--active" : ""}`}
+                    >
+                      {createLink(linkId, label, endpoint)}
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           </div>

@@ -1,9 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LoadingPanel > Rendering > should match the snapshot 1`] = `
+exports[`LoadingPanel > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
+    id="panel-_r_0_"
   >
     <span
       class="ons-panel__assistive-text ons-u-vh"
@@ -13,11 +14,6 @@ exports[`LoadingPanel > Rendering > should match the snapshot 1`] = `
     <div
       class="ons-panel__body "
     >
-      <span
-        class="ons-panel__assistive-text ons-u-vh"
-      >
-        Loading...:
-      </span>
       <div
         class="ons-panel__body ons-u-pt-xs ons-u-pb-xs"
         style="display: flex; align-items: center;"

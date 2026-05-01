@@ -1,21 +1,24 @@
 import { ReactElement } from "react";
 
+/** Props for ExternalLink. */
 export interface Props {
-  /** The visible text content of the link. */
+  /** Visible link text. */
   text: string;
-  /** The destination URL (should be a full URL for external links). */
+  /** Destination URL for the link. */
   link: string;
-  /** Optional accessibility label. */
+  /** Accessible label override. */
   ariaLabel?: string;
-  /** Optional custom HTML ID for the anchor element. */
+  /** Element ID. */
   id?: string;
 }
 
+/** Renders an external link. */
 export const ExternalLink = ({ text, link, ariaLabel, id }: Props): ReactElement => {
   return (
     <a
       href={link}
       id={id}
+      data-testid={id ? `${id}-external-link` : undefined}
       aria-label={ariaLabel}
       className="ons-external-link"
       target="_blank"

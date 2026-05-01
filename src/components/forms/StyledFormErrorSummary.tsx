@@ -1,16 +1,23 @@
 import { useFormikContext } from "formik";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useId } from "react";
+
+/** Props for StyledFormErrorSummary. */
+export interface Props {
+  /** Element ID. */
+  id?: string;
+}
 
 /**
- * An accessibility-focused error summary list.
- * Automatically displays when form validation fails after a submit attempt.
- * Shifts focus to the summary box to alert screen readers of the errors.
- * Provides anchor links to jump directly to the invalid form fields.
+ * Renders a form error summary.
  */
-export const StyledFormErrorSummary = () => {
+export const StyledFormErrorSummary = ({ id }: Props) => {
   const { errors, isValid, submitCount, isSubmitting } =
     useFormikContext<Record<string, unknown>>();
   const errorFocus = useRef<HTMLDivElement>(null);
+
+  const generatedId = useId();
+  const baseId = id || `error-summary-${generatedId}`;
+  const alertId = `${baseId}-alert`;
 
   useEffect(() => {
     if (!isValid && submitCount > 0 && !isSubmitting) {
@@ -26,15 +33,17 @@ export const StyledFormErrorSummary = () => {
 
   return (
     <div
-      aria-labelledby="alert"
+      id={baseId}
+      aria-labelledby={alertId}
       role="alert"
       tabIndex={-1}
       ref={errorFocus}
       className="ons-panel ons-panel--error"
+      data-testid={id ? `${id}-panel` : undefined}
     >
       <div className="ons-panel__header">
         <h2
-          id="alert"
+          id={alertId}
           data-qa="error-header"
           className="ons-panel__title ons-u-fs-r--b"
         >

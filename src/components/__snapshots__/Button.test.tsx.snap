@@ -1,10 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Button > Rendering > should match the snapshot 1`] = `
+exports[`Button > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <button
     class="ons-btn"
-    data-testid="button"
     type="button"
   >
     <span

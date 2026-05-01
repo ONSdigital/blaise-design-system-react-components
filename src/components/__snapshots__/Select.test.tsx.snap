@@ -1,20 +1,20 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Select > Rendering > should match the snapshot 1`] = `
+exports[`Select > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ons-field"
   >
     <label
       class="ons-label"
-      for="select-thing"
+      for="select"
     >
       Select From
     </label>
     <select
       class="ons-input ons-input--select"
-      data-testid="test-select"
-      id="select-thing"
+      data-testid="select-input"
+      id="select"
       name="select"
     >
       <option
@@ -24,19 +24,19 @@ exports[`Select > Rendering > should match the snapshot 1`] = `
         Select an option
       </option>
       <option
-        data-testid="option-test-select-1"
+        data-testid="select-option-1"
         value="1"
       >
         Option 1
       </option>
       <option
-        data-testid="option-test-select-2"
+        data-testid="select-option-2"
         value="2"
       >
         Option 2
       </option>
       <option
-        data-testid="option-test-select-3"
+        data-testid="select-option-3"
         value="3"
       >
         Option 3

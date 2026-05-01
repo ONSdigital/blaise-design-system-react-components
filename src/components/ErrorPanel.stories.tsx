@@ -16,11 +16,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    id: "error-panel",
+  },
 };
 
 export const CustomMessage: Story = {
   args: {
+    id: "error-panel-survey",
     text: "We could not find the survey data you were looking for. Please check the ID and try again.",
   },
 };

@@ -1,20 +1,19 @@
 import { ReactElement } from "react";
 
+/** Props for ErrorPanel. */
 export interface Props {
-  /** The error message displayed inside the panel. Defaults to a generic service availability message. */
+  /** Error message text. */
   text?: string;
-  /** If true, hides the panel from the DOM. */
+  /** When true, renders nothing. */
   hidden?: boolean;
-  /** Optional test ID for automated testing. */
-  testID?: string;
-  /** Unique HTML ID for the panel element. */
+  /** Element ID. */
   id?: string;
 }
 
+/** Renders an error panel. */
 export const ErrorPanel = ({
   text = "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later.",
   hidden,
-  testID,
   id,
 }: Props): ReactElement | null => {
   if (hidden) return null;
@@ -22,7 +21,7 @@ export const ErrorPanel = ({
   return (
     <div
       id={id}
-      data-testid={testID}
+      data-testid={id ? `${id}-error-panel` : undefined}
       className="ons-panel ons-panel--error ons-panel--no-title"
     >
       <span className="ons-panel__assistive-text ons-u-vh">Error: </span>

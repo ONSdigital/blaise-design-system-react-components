@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ErrorPanel > Rendering > should match the snapshot 1`] = `
+exports[`ErrorPanel > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ons-panel ons-panel--error ons-panel--no-title"

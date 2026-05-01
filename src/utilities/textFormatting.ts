@@ -1,8 +1,14 @@
+/**
+ * Replaces underscores with spaces.
+ */
 function replaceUnderscoreWithSpaces(text: string): string {
   return text.replaceAll("_", " ");
 }
 
-function capitaliseFirstLetter(text: string): string {
+/**
+ * Capitalises the first character.
+ */
+export function capitaliseFirstLetter(text: string): string {
   if (!text) {
     return "";
   }
@@ -10,12 +16,24 @@ function capitaliseFirstLetter(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function formatTitle(text: string): string {
+/**
+ * Formats an underscore-delimited key as a label.
+ */
+export function formatTitle(text: string): string {
+  if (!text) {
+    return "";
+  }
+
   return capitaliseFirstLetter(replaceUnderscoreWithSpaces(text));
 }
 
-function formatKey(text: string): string {
+/**
+ * Replaces spaces with hyphens.
+ */
+export function formatKey(text: string): string {
+  if (!text) {
+    return "";
+  }
+
   return text.replaceAll(" ", "-");
 }
-
-export { formatTitle, capitaliseFirstLetter, formatKey };

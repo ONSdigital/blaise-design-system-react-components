@@ -22,12 +22,12 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof StyledForm>;
 
 export const Default: Story = {
   args: {
+    id: "styled-form",
     onSubmitFunction: (values, setSubmitting) => {
-      console.log("Form Values:", values);
       setSubmitting(false);
     },
     fields: [
@@ -38,15 +38,15 @@ export const Default: Story = {
         initial_value: "undefined",
         validate: validateRadio,
         radioOptions: [
-          { id: "all", value: "undefined", label: "Show all surveys" },
+          { id: "survey-all", value: "undefined", label: "Show all surveys" },
           {
-            id: "lms",
+            id: "survey-lms",
             value: "lms",
             label: "LMS",
             description: "Labour Market Survey",
           },
           {
-            id: "opn",
+            id: "survey-opn",
             value: "opn",
             label: "OPN",
             description: "Opinions and Lifestyle Survey",
@@ -60,9 +60,9 @@ export const Default: Story = {
         initial_value: [],
         validate: validateCheckbox,
         checkboxOptions: [
-          { id: "checkbox_1", value: "lms", label: "LMS" },
-          { id: "checkbox_2", value: "opn", label: "OPN" },
-          { id: "checkbox_3", value: "dst", label: "DST" },
+          { id: "questionnaire-lms", value: "lms", label: "LMS" },
+          { id: "questionnaire-opn", value: "opn", label: "OPN" },
+          { id: "questionnaire-dst", value: "dst", label: "DST" },
         ],
       },
       {

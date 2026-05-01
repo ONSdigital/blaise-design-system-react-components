@@ -15,12 +15,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Info: Story = {
   args: {
+    id: "panel-info",
     children: <p>Some message in an info panel</p>,
   },
 };
 
 export const Success: Story = {
   args: {
+    id: "panel-success",
     status: "success",
     bigIcon: true,
     children: <p>Information has been successfully submitted</p>,
@@ -29,12 +31,13 @@ export const Success: Story = {
 
 export const SuccessWithTitleAndSubtext: Story = {
   args: {
+    id: "panel-success-title",
     status: "success",
     bigIcon: true,
     children: (
       <div>
         <p className="ons-u-fs-r--b ons-u-mb-xs">Title in a success panel</p>
-        <p className="ons-u-mt-no">And then some text</p>
+        <p className="ons-u-mt-no">And then some subtext</p>
       </div>
     ),
   },
@@ -42,6 +45,7 @@ export const SuccessWithTitleAndSubtext: Story = {
 
 export const Error: Story = {
   args: {
+    id: "panel-error",
     status: "error",
     children: <p>Some message in an error panel</p>,
   },
@@ -49,6 +53,7 @@ export const Error: Story = {
 
 export const Warn: Story = {
   args: {
+    id: "panel-warn",
     status: "warn",
     children: <p>{"It's a trap!"}</p>,
   },
@@ -56,6 +61,7 @@ export const Warn: Story = {
 
 export const Spacious: Story = {
   args: {
+    id: "panel-spacious",
     status: "info",
     children: <p>So much room for activities!</p>,
     spacious: true,

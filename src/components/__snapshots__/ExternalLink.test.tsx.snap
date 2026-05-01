@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ExternalLink > Rendering > should match the snapshot 1`] = `
+exports[`ExternalLink > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <a
     class="ons-external-link"

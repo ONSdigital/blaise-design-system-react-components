@@ -1,29 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Upload > Rendering > should match the snapshot 1`] = `
+exports[`Upload > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ons-field"
   >
     <label
-      aria-describedby="file-hint"
       class="ons-label ons-label--with-description"
-      for="file"
+      for="upload"
     >
       Upload
     </label>
     <span
       class="ons-label__description ons-input--with-description"
-      id="file-hint"
+      id="upload-hint"
     >
       This is the upload
     </span>
     <input
       accept=".csv"
-      aria-describedby="file-hint"
+      aria-describedby="upload-hint"
       class="ons-input ons-input--text ons-input-type__input ons-input--upload"
       data-testid="upload-input"
-      id="file"
+      id="upload"
       name="file.csv"
       type="file"
     />

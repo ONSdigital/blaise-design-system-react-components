@@ -1,43 +1,39 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useId } from "react";
 
+/** Props for Upload. */
 export interface Props {
-  /** The main text displayed above the upload field. */
+  /** Label text. */
   label: string;
-  /** Additional instructions or hints for the user (e.g., allowed file types). */
+  /** Hint text. */
   description: string;
-  /** The standard HTML name attribute for the file input element. */
+  /** Name attribute. */
   fileName: string;
-  /** The unique HTML ID for the file input element. */
-  fileID: string;
-  /** A comma-separated list of allowed file extensions or MIME types (e.g., ".pdf, .csv"). */
+  /** Element ID. */
+  id?: string;
+  /** Accepted file types. */
   accept: string;
-  /** Callback fired when a file is selected. Returns the event and the label. */
+  /** Called when the file selection changes. */
   onChange?: (e: ChangeEvent<HTMLInputElement>, label?: string) => void;
-  /** If true, visually and functionally disables the input. */
+  /** Whether to disable the input. */
   disabled?: boolean;
 }
 
-export const Upload = ({
-  label,
-  description,
-  fileName,
-  fileID,
-  accept,
-  onChange,
-  disabled,
-}: Props) => {
+/** Renders a file input. */
+export const Upload = ({ label, description, fileName, id, accept, onChange, disabled }: Props) => {
+  const generatedId = useId();
+  const baseId = id || `upload-${generatedId}`;
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(e, label);
   };
 
-  const hintId = `${fileID}-hint`;
+  const hintId = `${baseId}-hint`;
 
   return (
     <div className="ons-field">
       <label
         className="ons-label ons-label--with-description"
-        htmlFor={fileID}
-        aria-describedby={hintId}
+        htmlFor={baseId}
       >
         {label}
       </label>
@@ -51,13 +47,13 @@ export const Upload = ({
 
       <input
         type="file"
-        id={fileID}
+        id={baseId}
         className="ons-input ons-input--text ons-input-type__input ons-input--upload"
         name={fileName}
         accept={accept}
         onChange={handleChange}
         disabled={disabled}
-        data-testid="upload-input"
+        data-testid={id ? `${id}-input` : undefined}
         aria-describedby={hintId}
       />
     </div>

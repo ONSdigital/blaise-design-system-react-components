@@ -35,15 +35,15 @@ const setup = (overrideProps: Partial<Props> = {}) => {
 };
 
 describe("ErrorBoundary", () => {
-  describe("When there are no rendering errors", () => {
-    it("should render the provided children correctly", () => {
+  describe("when children render without errors", () => {
+    it("renders the children", () => {
       setup();
 
       expect(screen.getByText(/Simple text/i)).toBeVisible();
     });
   });
 
-  describe("When a child component throws an error", () => {
+  describe("when a child throws an error", () => {
     let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
 
     beforeEach(() => {
@@ -54,14 +54,30 @@ describe("ErrorBoundary", () => {
       consoleErrorSpy.mockRestore();
     });
 
-    it("should catch the error and display the fallback error message", async () => {
+    it("shows the error message", async () => {
       const { user, props } = setup({ children: <DodgyComponent /> });
       const crashButton = screen.getByRole("button", { name: /click me/i });
 
       await user.click(crashButton);
 
-      expect(screen.getByText(props.errorMessageText!)).toBeVisible();
+      expect(screen.getByText(props.errorMessageText)).toBeVisible();
       expect(screen.queryByRole("button", { name: /click me/i })).not.toBeInTheDocument();
+
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        "ErrorBoundary caught an error:",
+        expect.any(Error),
+        expect.anything(),
+      );
+    });
+
+    it("passes the provided ID to the error panel", async () => {
+      const { user } = setup({ id: "error-boundary-panel", children: <DodgyComponent /> });
+
+      await user.click(screen.getByRole("button", { name: /click me/i }));
+
+      const panelElement = document.getElementById("error-boundary-panel");
+
+      expect(panelElement).toBeInTheDocument();
     });
   });
 });

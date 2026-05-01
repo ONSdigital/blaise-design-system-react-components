@@ -67,11 +67,19 @@ export const Secondary: Story = {
   },
 };
 
+export const Small: Story = {
+  args: {
+    ...Primary.args,
+    label: "Small Button",
+    small: true,
+  },
+};
+
 export const Loading: Story = {
   args: {
     ...Primary.args,
-    loading: true,
     label: "Loading Button",
+    loading: true,
   },
 };
 ```
@@ -80,15 +88,15 @@ export const Loading: Story = {
 
 Storybook automatically pulls TSDoc comments from your components and props into the Docs tab. For richer documentation:
 
-- Add JSDoc comments above your component and its props:
+- Add TSDoc comments above your component and its props:
 
 ```tsx
 /**
  * A button component for user actions.
  */
-export function Button(props: ButtonProps) { ... }
+export function Button(props: Props) { ... }
 
-export interface ButtonProps {
+export interface Props {
   /**
    * The label to display inside the button.
    */

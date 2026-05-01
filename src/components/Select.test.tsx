@@ -10,11 +10,10 @@ const defaultOptions = [
 
 const setup = (overrideProps: Partial<Props> = {}) => {
   const props: Props = {
-    id: "select-thing",
+    id: "select",
     label: "Select From",
     value: "",
     options: defaultOptions,
-    testId: "test-select",
     onChange: vi.fn(),
     ...overrideProps,
   };
@@ -27,20 +26,20 @@ const setup = (overrideProps: Partial<Props> = {}) => {
 };
 
 describe("Select", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
       const { asFragment } = setup();
 
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should display the correct label associated with the select element", () => {
+    it("shows the label", () => {
       const { props } = setup();
 
       expect(screen.getByLabelText(props.label as string)).toBeVisible();
     });
 
-    it("should render all provided options in the dropdown", () => {
+    it("shows every option", () => {
       setup();
       expect(screen.getByRole("option", { name: "Option 1" })).toBeInTheDocument();
       expect(screen.getByRole("option", { name: "Option 2" })).toBeInTheDocument();
@@ -48,40 +47,61 @@ describe("Select", () => {
     });
   });
 
-  describe("Interactions", () => {
-    it("should trigger the onChange handler when a new option is selected", async () => {
+  describe("interactions", () => {
+    it("calls onChange when a new option is selected", async () => {
       const { user, props } = setup();
-      const selectElement = screen.getByTestId(props.testId as string);
+      const selectElement = screen.getByTestId(`${props.id}-input`);
 
       await user.selectOptions(selectElement, "2");
-      await user.selectOptions(selectElement, "3");
-      expect(props.onChange).toHaveBeenCalledTimes(2);
+      expect(props.onChange).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe("Props", () => {
-    it("should not append data-testid to options when the testId prop is omitted", () => {
-      setup({ testId: undefined });
+  describe("props", () => {
+    it("falls back to a generated ID when no ID is provided", () => {
+      render(
+        <Select
+          label="Default Select"
+          value=""
+          options={defaultOptions}
+          onChange={vi.fn()}
+        />,
+      );
 
-      const optionElement = screen.getByRole("option", { name: "Option 1" });
+      const selectElement = screen.getByLabelText("Default Select");
 
-      expect(optionElement).not.toHaveAttribute("data-testid");
+      expect(selectElement).toHaveAttribute("id");
+      expect(selectElement.getAttribute("id")).toMatch(/select-.*$/);
     });
 
-    it("should not render the label DOM element if the label prop is undefined", () => {
-      setup({ label: undefined });
+    it("does not apply a data-testid when no ID is provided", () => {
+      render(
+        <Select
+          label="No ID Select"
+          value=""
+          options={defaultOptions}
+          onChange={vi.fn()}
+        />,
+      );
 
+      const selectElement = screen.getByLabelText("No ID Select");
+
+      expect(selectElement).not.toHaveAttribute("data-testid");
+    });
+
+    it("does not render a label when label is undefined", () => {
+      setup({ label: undefined });
       expect(document.querySelector("label")).not.toBeInTheDocument();
     });
 
-    it("should apply an explicitly provided option ID to the DOM element", () => {
+    it("applies the provided option ID", () => {
       setup({
-        options: [{ label: "Custom Option", value: "custom", id: "explicit-option-id" }],
+        options: [{ label: "Custom Option", value: "custom", id: "select-option-custom" }],
       });
 
       const optionElement = screen.getByRole("option", { name: "Custom Option" });
 
-      expect(optionElement).toHaveAttribute("id", "explicit-option-id");
+      expect(optionElement).toHaveAttribute("id", "select-option-custom");
     });
   });
 });

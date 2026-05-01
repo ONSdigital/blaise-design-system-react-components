@@ -13,16 +13,16 @@ const setup = (component = <ExampleCheckboxForm />) => {
 };
 
 describe("ExampleCheckboxForm", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
       const { asFragment } = setup();
 
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
-  describe("Interactions", () => {
-    it("should display validation errors upon submitting an empty form", async () => {
+  describe("interactions", () => {
+    it("shows validation errors when an empty form is submitted", async () => {
       const { user } = setup();
       const submitButton = screen.getByRole("button", {
         name: /submit selection/i,
@@ -35,7 +35,7 @@ describe("ExampleCheckboxForm", () => {
       expect(checkboxErrors).toHaveLength(2);
     });
 
-    it("should call the submit function when a single checkbox is selected", async () => {
+    it("submits when one checkbox is selected", async () => {
       const { user } = setup();
 
       await user.click(screen.getByLabelText(/LMS/i));
@@ -43,7 +43,7 @@ describe("ExampleCheckboxForm", () => {
       expect(await screen.findByText(/Form submitted, questionnaires chosen: lms/i)).toBeVisible();
     });
 
-    it("should call the submit function when multiple checkboxes are selected", async () => {
+    it("submits when multiple checkboxes are selected", async () => {
       const { user } = setup();
 
       await user.click(screen.getByLabelText(/LMS/i));
@@ -54,7 +54,7 @@ describe("ExampleCheckboxForm", () => {
       ).toBeVisible();
     });
 
-    it("should select all checkboxes when 'Select all' is clicked", async () => {
+    it("selects every checkbox when 'Select all' is clicked", async () => {
       const { user } = setup();
 
       await user.click(screen.getByRole("button", { name: /select all/i }));
@@ -64,7 +64,7 @@ describe("ExampleCheckboxForm", () => {
       ).toBeVisible();
     });
 
-    it("should deselect all checkboxes when 'Unselect all' is clicked", async () => {
+    it("clears every checkbox when 'Unselect all' is clicked", async () => {
       const { user } = setup();
 
       await user.click(screen.getByRole("button", { name: /select all/i }));
@@ -74,14 +74,14 @@ describe("ExampleCheckboxForm", () => {
       expect(screen.queryAllByText(/Select an option/i)).toHaveLength(2);
     });
 
-    it("should physically toggle all checkboxes and dynamically update the button text when the utility button is clicked", async () => {
+    it("toggles every checkbox and updates the button text", async () => {
       const checkboxFields = [
         {
           name: "testCheckboxes",
           type: "checkbox" as const,
           checkboxOptions: [
-            { id: "opt1", value: "alpha", label: "Alpha Option" },
-            { id: "opt2", value: "beta", label: "Beta Option" },
+            { id: "alpha-option", value: "alpha", label: "Alpha Option" },
+            { id: "beta-option", value: "beta", label: "Beta Option" },
           ],
         },
       ];
@@ -114,8 +114,8 @@ describe("ExampleCheckboxForm", () => {
     });
   });
 
-  describe("Props", () => {
-    it("should submit the correct data array based on the provided initial_value", async () => {
+  describe("props", () => {
+    it("submits the provided initial_value", async () => {
       const submitFunction = vi.fn();
       const fields = [
         {
@@ -145,8 +145,8 @@ describe("ExampleCheckboxForm", () => {
     });
   });
 
-  describe("Edge Cases", () => {
-    it("should safely return false and render 'Select All' when the field is missing from Formik state", () => {
+  describe("edge cases", () => {
+    it("shows 'Select All' when the field is missing from Formik state", () => {
       render(
         <Formik
           initialValues={{}}
@@ -154,7 +154,7 @@ describe("ExampleCheckboxForm", () => {
         >
           <CheckboxFieldset
             name="missingCheckboxState"
-            checkboxOptions={[{ id: "test-id", value: "test", label: "Test Label" }]}
+            checkboxOptions={[{ id: "checkbox-option", value: "test", label: "Test Label" }]}
             autoFocus={false}
           />
         </Formik>,

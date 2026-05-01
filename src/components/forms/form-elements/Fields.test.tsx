@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { Formik, Field } from "formik";
-import { CheckboxFieldset, TextInputFieldset } from "./Fields";
+import { Formik } from "formik";
+import { CheckboxFieldset, RadioFieldset, TextInputFieldset } from "./Fields";
 
-describe("Edge Cases", () => {
-  describe("CheckboxFieldset", () => {
-    it("should safely handle an undefined checkboxOptions array", () => {
+describe("CheckboxFieldset", () => {
+  describe("edge cases", () => {
+    it("renders a fieldset when checkboxOptions is undefined", () => {
       render(
         <Formik
           initialValues={{ myField: [] }}
@@ -20,7 +20,7 @@ describe("Edge Cases", () => {
       expect(screen.getByRole("group")).toBeInTheDocument();
     });
 
-    it("should safely handle undefined values in the Formik state", () => {
+    it("shows the 'Select All' button when the Formik value is undefined", () => {
       render(
         <Formik
           initialValues={{ myField: undefined }}
@@ -28,7 +28,7 @@ describe("Edge Cases", () => {
         >
           <CheckboxFieldset
             name="myField"
-            checkboxOptions={[{ id: "opt1", value: "alpha", label: "Alpha" }]}
+            checkboxOptions={[{ id: "alpha-option", value: "alpha", label: "Alpha" }]}
             autoFocus={false}
           />
         </Formik>,
@@ -37,7 +37,7 @@ describe("Edge Cases", () => {
       expect(screen.getByRole("button", { name: /Select All/i })).toBeVisible();
     });
 
-    it("should render the checkbox option description when provided", () => {
+    it("shows the option description when one is provided", () => {
       render(
         <Formik
           initialValues={{ myField: [] }}
@@ -47,7 +47,7 @@ describe("Edge Cases", () => {
             name="myField"
             checkboxOptions={[
               {
-                id: "opt1",
+                id: "alpha-option",
                 value: "alpha",
                 label: "Alpha",
                 description: "Unique checkbox description text",
@@ -60,19 +60,80 @@ describe("Edge Cases", () => {
 
       expect(screen.getByText("Unique checkbox description text")).toBeVisible();
     });
-  });
 
-  describe("TextInputFieldset", () => {
-    it("should render the text input description when provided", () => {
+    it("generates an ID for a checkbox option when one is omitted", () => {
+      render(
+        <Formik
+          initialValues={{ myField: [] }}
+          onSubmit={vi.fn()}
+        >
+          <CheckboxFieldset
+            name="myField"
+            checkboxOptions={[{ value: "alpha", label: "Alpha" }]}
+            autoFocus={false}
+          />
+        </Formik>,
+      );
+
+      const checkbox = screen.getByRole("checkbox", { name: "Alpha" });
+      const label = screen.getByText("Alpha").closest("label");
+
+      expect(checkbox).toHaveAttribute("id");
+      expect(label).toHaveAttribute("for", checkbox.getAttribute("id"));
+    });
+  });
+});
+
+describe("RadioFieldset", () => {
+  describe("edge cases", () => {
+    it("generates IDs for radio options and follow-up inputs when they are omitted", () => {
+      render(
+        <Formik
+          initialValues={{ myField: "", myFieldSpecify: "" }}
+          onSubmit={vi.fn()}
+        >
+          <RadioFieldset
+            name="myField"
+            radioOptions={[
+              {
+                value: "other",
+                label: "Other",
+                specifyOption: {
+                  name: "myFieldSpecify",
+                  description: "Please specify",
+                  type: "text",
+                },
+              },
+            ]}
+            autoFocus={false}
+          />
+        </Formik>,
+      );
+
+      const radio = screen.getByRole("radio", { name: "Other" });
+      const radioLabel = screen.getByText("Other").closest("label");
+      const specifyInput = screen.getByRole("textbox", { name: "Please specify" });
+      const specifyLabel = screen.getByText("Please specify").closest("label");
+
+      expect(radio).toHaveAttribute("id");
+      expect(radioLabel).toHaveAttribute("for", radio.getAttribute("id"));
+      expect(specifyInput).toHaveAttribute("id");
+      expect(specifyLabel).toHaveAttribute("for", specifyInput.getAttribute("id"));
+    });
+  });
+});
+
+describe("TextInputFieldset", () => {
+  describe("edge cases", () => {
+    it("shows the description when one is provided", () => {
       render(
         <Formik
           initialValues={{ myTextInput: "" }}
           onSubmit={vi.fn()}
         >
-          <Field
+          <TextInputFieldset
             name="myTextInput"
             description="Unique text input description"
-            component={TextInputFieldset}
           />
         </Formik>,
       );
@@ -80,37 +141,33 @@ describe("Edge Cases", () => {
       expect(screen.getByText("Unique text input description")).toBeVisible();
     });
 
-    it("should fallback to an empty string if the Formik state value is undefined", () => {
+    it("uses an empty string when the Formik value is undefined", () => {
       render(
         <Formik
           initialValues={{ myTextInput: undefined }}
           onSubmit={vi.fn()}
         >
-          <Field
-            name="myTextInput"
-            component={TextInputFieldset}
-          />
+          <TextInputFieldset name="myTextInput" />
         </Formik>,
       );
 
       expect(screen.getByRole("textbox")).toHaveValue("");
     });
 
-    it("should use the provided explicit ID instead of falling back to the field name", () => {
+    it("uses the provided ID when one is provided", () => {
       render(
         <Formik
           initialValues={{ myTextInput: "" }}
           onSubmit={vi.fn()}
         >
-          <Field
-            id="custom-explicit-id"
+          <TextInputFieldset
+            id="text-input-custom"
             name="myTextInput"
-            component={TextInputFieldset}
           />
         </Formik>,
       );
 
-      expect(screen.getByRole("textbox")).toHaveAttribute("id", "custom-explicit-id");
+      expect(screen.getByRole("textbox")).toHaveAttribute("id", "text-input-custom");
     });
   });
 });

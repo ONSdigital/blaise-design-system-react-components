@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NotProductionWarning > Rendering > should match the snapshot 1`] = `
+exports[`NotProductionWarning > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <div
     style="background: rgb(34, 34, 34); color: rgb(255, 255, 255);"

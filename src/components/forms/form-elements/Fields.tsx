@@ -1,5 +1,5 @@
-import { Fragment, ReactElement, InputHTMLAttributes } from "react";
-import { Field, useFormikContext, FieldInputProps } from "formik";
+import { Fragment, ReactElement, InputHTMLAttributes, useId } from "react";
+import { Field, FieldInputProps, useFormikContext } from "formik";
 import type { RadioFieldset, CheckboxFieldset } from "../StyledForm";
 import { capitaliseFirstLetter } from "../../../utilities/textFormatting";
 
@@ -8,92 +8,112 @@ interface UnknownProps {
 }
 
 interface RadioFieldsetProps extends UnknownProps {
-  /** Text displayed in the fieldset legend. */
+  /** Element ID. */
+  id?: string;
+  /** Legend text. */
   description?: string;
-  /** Formik field name. */
+  /** Field name. */
   name: string;
-  /** Configuration array for the radio options. */
+  /** Radio options. */
   radioOptions?: RadioFieldset[];
-  /** If true, the first radio option will receive focus on mount. */
+  /** Whether to focus the first option. */
   autoFocus: boolean;
 }
 
 interface CheckboxFieldsetProps extends UnknownProps {
-  /** Text displayed in the fieldset legend. */
+  /** Element ID. */
+  id?: string;
+  /** Legend text. */
   description?: string;
-  /** Configuration array for the checkbox options. */
+  /** Checkbox options. */
   checkboxOptions?: CheckboxFieldset[];
-  /** Formik field name. */
+  /** Field name. */
   name: string;
-  /** If true, the first checkbox option will receive focus on mount. */
+  /** Whether to focus the first option. */
   autoFocus: boolean;
 }
 
-/** A group of ONS-styled radio buttons integrated with Formik. */
+const getOptionId = (baseId: string, index: number, explicitId?: string) =>
+  explicitId || `${baseId}-option-${index + 1}`;
+
+/** Renders a radio group wired to Formik state. */
 export function RadioFieldset({
+  id,
   description,
   name,
   radioOptions,
   ...props
 }: RadioFieldsetProps): ReactElement {
+  const generatedId = useId();
+  const baseId = id || `radio-${generatedId}`;
+
   return (
-    <div className="ons-field ons-u-mb-m">
+    <div
+      id={baseId}
+      data-testid={id ? `${id}-fieldset` : undefined}
+      className="ons-field ons-u-mb-m"
+    >
       <fieldset className="ons-fieldset">
         <legend className="ons-fieldset__legend ons-u-fs-r--b">{description}</legend>
         <div className="ons-grid">
           <div className="ons-grid__col ons-col-8@m ons-col-6@l">
             <div className="ons-input-items">
               <div className="ons-radios__items">
-                {radioOptions?.map((o, i) => (
-                  <Fragment key={o.id}>
-                    <span className="ons-radios__item">
-                      <span className="ons-radio">
-                        <Field
-                          type="radio"
-                          id={o.id}
-                          name={name}
-                          value={o.value}
-                          className="ons-radio__input"
-                          {...props}
-                          autoFocus={props.autoFocus && i === 0}
-                        />
-                        <label
-                          className={`ons-radio__label ${o.description ? "ons-label--with-description" : ""}`}
-                          htmlFor={o.id}
-                        >
-                          {o.label}
-                          {o.description && (
-                            <span className="ons-label__description ons-radio__label--with-description">
-                              {o.description}
+                {radioOptions?.map((o, i) => {
+                  const optionId = getOptionId(baseId, i, o.id);
+                  const specifyId = o.specifyOption?.id || `${optionId}-specify`;
+
+                  return (
+                    <Fragment key={o.id || `${o.value}-${i}`}>
+                      <span className="ons-radios__item">
+                        <span className="ons-radio">
+                          <Field
+                            type="radio"
+                            id={optionId}
+                            name={name}
+                            value={o.value}
+                            className="ons-radio__input"
+                            {...props}
+                            autoFocus={props.autoFocus && i === 0}
+                          />
+                          <label
+                            className={`ons-radio__label ${o.description ? "ons-label--with-description" : ""}`}
+                            htmlFor={optionId}
+                          >
+                            {o.label}
+                            {o.description && (
+                              <span className="ons-label__description ons-radio__label--with-description">
+                                {o.description}
+                              </span>
+                            )}
+                          </label>
+                          {o.specifyOption && (
+                            <span
+                              className="ons-radio__other ons-radio__other--open"
+                              id={`${optionId}-other-wrap`}
+                            >
+                              <label
+                                className="ons-label ons-u-fs-s--b"
+                                htmlFor={specifyId}
+                              >
+                                {o.specifyOption.description}
+                              </label>
+                              <Field
+                                type={o.specifyOption.type}
+                                id={specifyId}
+                                name={o.specifyOption.name}
+                                validate={o.specifyOption.validate}
+                                min={o.specifyOption.min}
+                                className="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
+                              />
                             </span>
                           )}
-                        </label>
-                        {o.specifyOption && (
-                          <span
-                            className="ons-radio__other ons-radio__other--open"
-                            id={`${o.id}-other-wrap`}
-                          >
-                            <label
-                              className="ons-label ons-u-fs-s--b"
-                              htmlFor={o.specifyOption.id}
-                            >
-                              {o.specifyOption.description}
-                            </label>
-                            <Field
-                              type={o.specifyOption.type}
-                              id={o.specifyOption.id}
-                              name={o.specifyOption.name}
-                              validate={o.specifyOption.validate}
-                              min={o.specifyOption.min}
-                              className="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
-                            />
-                          </span>
-                        )}
+                        </span>
                       </span>
-                    </span>
-                    <br />
-                  </Fragment>
-                ))}
+                      <br />
+                    </Fragment>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -103,8 +123,9 @@ export function RadioFieldset({
   );
 }
 
-/** A group of ONS-styled checkboxes with a 'Select All' utility, integrated with Formik. */
+/** Renders a checkbox group. */
 export function CheckboxFieldset({
+  id,
   description,
   checkboxOptions,
   name,
@@ -114,14 +135,21 @@ export function CheckboxFieldset({
   const allValues = (checkboxOptions || []).map((o) => o.value);
   const isAllSelected = () =>
     allValues.length > 0 && allValues.every((v) => values[name]?.includes(v));
+  const generatedId = useId();
+  const baseId = id || `checkbox-${generatedId}`;
 
   return (
-    <div className="ons-field ons-u-mb-m">
+    <div
+      id={baseId}
+      data-testid={id ? `${id}-fieldset` : undefined}
+      className="ons-field ons-u-mb-m"
+    >
       <fieldset className="ons-fieldset">
         <legend className="ons-fieldset__legend ons-u-fs-r--b">{description}</legend>
         <div className="ons-grid">
           <div className="ons-grid__col ons-col-8@m ons-col-6@l">
             <button
+              data-testid={id ? `${id}-select-all` : undefined}
               type="button"
               className="ons-btn ons-u-mb-s ons-js-auto-selector ons-btn--small ons-btn--secondary"
               onClick={() => setFieldValue(name, isAllSelected() ? [] : allValues)}
@@ -135,35 +163,39 @@ export function CheckboxFieldset({
             </button>
             <div className="ons-input-items">
               <div className="ons-checkboxes__items">
-                {checkboxOptions?.map((o, i) => (
-                  <Fragment key={o.id}>
-                    <span className="ons-checkboxes__item">
-                      <span className="ons-checkbox">
-                        <Field
-                          type="checkbox"
-                          id={o.id}
-                          name={name}
-                          value={o.value}
-                          className="ons-checkbox__input"
-                          {...props}
-                          autoFocus={props.autoFocus && i === 0}
-                        />
-                        <label
-                          className={`ons-checkbox__label ${o.description ? "ons-label--with-description" : ""}`}
-                          htmlFor={o.id}
-                        >
-                          {o.label}
-                          {o.description && (
-                            <span className="ons-label__description ons-checkbox__label--with-description">
-                              {o.description}
-                            </span>
-                          )}
-                        </label>
+                {checkboxOptions?.map((o, i) => {
+                  const optionId = getOptionId(baseId, i, o.id);
+
+                  return (
+                    <Fragment key={o.id || `${o.value}-${i}`}>
+                      <span className="ons-checkboxes__item">
+                        <span className="ons-checkbox">
+                          <Field
+                            type="checkbox"
+                            id={optionId}
+                            name={name}
+                            value={o.value}
+                            className="ons-checkbox__input"
+                            {...props}
+                            autoFocus={props.autoFocus && i === 0}
+                          />
+                          <label
+                            className={`ons-checkbox__label ${o.description ? "ons-label--with-description" : ""}`}
+                            htmlFor={optionId}
+                          >
+                            {o.label}
+                            {o.description && (
+                              <span className="ons-label__description ons-checkbox__label--with-description">
+                                {o.description}
+                              </span>
+                            )}
+                          </label>
+                        </span>
                       </span>
-                    </span>
-                    <br />
-                  </Fragment>
-                ))}
+                      <br />
+                    </Fragment>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -174,22 +206,30 @@ export function CheckboxFieldset({
 }
 
 interface TextInputFieldsetProps extends InputHTMLAttributes<HTMLInputElement> {
-  /** Object containing Formik's field input props for this input. */
-  field: FieldInputProps<string>;
-  /** Optional hint text displayed beneath the label. */
+  /** Element ID. */
+  id?: string;
+  /** Field name. */
+  name: string;
+  /** Hint text. */
   description?: string;
-  /** HTML input type. */
+  /** Input type. */
   type?: string;
+  /** Validation function. */
+  validate?: (value: string) => string | undefined;
 }
 
-/** A single ONS-styled text input integrated with Formik. */
+/** Renders a text-like input wired to Formik state. */
 export function TextInputFieldset({
-  field,
+  id,
+  name,
   description,
   type = "text",
+  validate,
   ...props
 }: TextInputFieldsetProps): ReactElement {
-  const id = props.id || field.name;
+  const generatedId = useId();
+  const baseId = id || `input-${generatedId}`;
+  const hintId = `${baseId}-description-hint`;
 
   return (
     <div className="ons-field ons-u-mb-m">
@@ -197,26 +237,36 @@ export function TextInputFieldset({
         <div className="ons-grid__col ons-col-8@m ons-col-6@l">
           <label
             className={`ons-label ${description ? "ons-label--with-description" : ""}`}
-            htmlFor={id}
+            htmlFor={baseId}
           >
-            {capitaliseFirstLetter(field.name.trim())}
+            {capitaliseFirstLetter(name.trim())}
           </label>
           {description && (
             <span
-              id={`${id}-description-hint`}
+              id={hintId}
               className="ons-label__description ons-input--with-description"
             >
               {description}
             </span>
           )}
-          <input
-            id={id}
-            className="ons-input ons-input--text ons-input-type__input"
-            {...field}
-            value={field.value ?? ""}
+          <Field
+            name={name}
             type={type}
-            {...props}
-          />
+            validate={validate}
+          >
+            {({ field }: { field: FieldInputProps<string> }) => (
+              <input
+                id={baseId}
+                className="ons-input ons-input--text ons-input-type__input"
+                {...field}
+                value={field.value ?? ""}
+                type={type}
+                aria-describedby={description ? hintId : undefined}
+                data-testid={id ? `${id}-input` : undefined}
+                {...props}
+              />
+            )}
+          </Field>
         </div>
       </div>
     </div>

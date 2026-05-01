@@ -3,10 +3,5 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "include": [
-    ".storybook",
-    "src",
-    "eslint.config.ts",
-    "vite.config.ts"
-  ]
+  "include": [".storybook", "src", "eslint.config.ts", "vite.config.ts"]
 }

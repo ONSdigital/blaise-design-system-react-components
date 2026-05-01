@@ -17,33 +17,37 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    id: "header",
     title: "Service title",
   },
 };
 
-export const WithSaveSignOut: Story = {
+export const SignOut: Story = {
   args: {
-    title: "Service title",
-    signOutButton: true,
-  },
-};
-
-export const WithSignOut: Story = {
-  args: {
+    id: "header-sign-out",
     title: "Service title",
     noSave: true,
     signOutButton: true,
   },
 };
 
-export const WithNavigation: Story = {
+export const SaveSignOut: Story = {
   args: {
+    id: "header-save-sign-out",
+    title: "Service title",
+    signOutButton: true,
+  },
+};
+
+export const Navigation: Story = {
+  args: {
+    id: "header-nav",
     title: "Service title",
     navigationLinks: [
-      { id: "home", label: "Home", endpoint: "#" },
-      { id: "menu-1", label: "Menu #1", endpoint: "#" },
-      { id: "menu-2", label: "Menu #2", endpoint: "#" },
-      { id: "menu-3", label: "Menu #3", endpoint: "#" },
+      { id: "nav-home", label: "Home", endpoint: "#" },
+      { id: "nav-menu-one", label: "Menu #1", endpoint: "#" },
+      { id: "nav-menu-two", label: "Menu #2", endpoint: "#" },
+      { id: "nav-menu-three", label: "Menu #3", endpoint: "#" },
     ],
     currentLocation: "/deploy",
   },

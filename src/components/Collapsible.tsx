@@ -1,18 +1,20 @@
 import { ReactNode, useState, useId, SyntheticEvent } from "react";
 
+/** Props for Collapsible. */
 export interface Props {
-  /** The content revealed when the collapsible is opened. */
+  /** Panel content. */
   children: ReactNode;
-  /** The text displayed on the clickable summary heading. */
+  /** Panel title. */
   title: string;
-  /** Optional custom ID. If not provided, a unique ID is auto-generated. */
+  /** Element ID. */
   id?: string;
 }
 
+/** Renders a collapsible panel. */
 export const Collapsible = ({ children, title, id }: Props) => {
   const [panelOpen, setPanelOpen] = useState<boolean>(false);
-  const uniqueId = useId();
-  const componentId = id || `collapsible-${uniqueId}`;
+  const generatedId = useId();
+  const baseId = id || `collapsible-${generatedId}`;
 
   const handleToggle = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -21,7 +23,7 @@ export const Collapsible = ({ children, title, id }: Props) => {
 
   return (
     <div
-      id={componentId}
+      id={baseId}
       className={`ons-details ons-details--initialised ons-u-mt-l ${panelOpen ? "ons-details--open" : ""}`}
       data-save-state="true"
       role="group"
@@ -29,7 +31,7 @@ export const Collapsible = ({ children, title, id }: Props) => {
       <div
         className="ons-details__heading"
         role="button"
-        data-testid="collapsible-heading"
+        data-testid={id ? `${id}-heading` : undefined}
         onClick={handleToggle}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -38,7 +40,7 @@ export const Collapsible = ({ children, title, id }: Props) => {
         }}
         tabIndex={0}
         aria-expanded={panelOpen}
-        aria-controls={`${componentId}-content`}
+        aria-controls={`${baseId}-content`}
         data-ga-action={`${panelOpen ? "Close" : "Open"} panel`}
       >
         <h2 className="ons-details__title ons-u-fs-r--b">{title}</h2>
@@ -60,10 +62,10 @@ export const Collapsible = ({ children, title, id }: Props) => {
         </span>
       </div>
       <div
-        id={`${componentId}-content`}
+        id={`${baseId}-content`}
         className="ons-details__content"
         aria-hidden={!panelOpen}
-        data-testid="collapsible-content"
+        data-testid={id ? `${id}-content` : undefined}
       >
         {children}
       </div>

@@ -4,7 +4,7 @@ import { Table, type Props } from "./Table";
 const setup = (overrideProps: Partial<Props> = {}) => {
   const props: Props = {
     columns: ["column1", "column2", "column3"],
-    tableID: "my-test-table",
+    id: "table",
     children: (
       <tr>
         <td>Value column 1</td>
@@ -22,14 +22,14 @@ const setup = (overrideProps: Partial<Props> = {}) => {
 };
 
 describe("Table", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
       const { asFragment } = setup();
 
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should display the provided column headings", () => {
+    it("shows the column headings", () => {
       const { props } = setup();
 
       props.columns.forEach((columnName) => {
@@ -37,37 +37,64 @@ describe("Table", () => {
       });
     });
 
-    it("should display the children rows correctly within the table body", () => {
+    it("shows the rows in the table body", () => {
       setup();
-
       expect(screen.getByText(/Value column 1/i)).toBeVisible();
       expect(screen.getByText(/Value column 2/i)).toBeVisible();
       expect(screen.getByText(/Value column 3/i)).toBeVisible();
     });
+  });
 
-    it("should apply the correct data-testid to the table element", () => {
-      const { props } = setup();
+  describe("props", () => {
+    it("applies the provided ID and data-testid", () => {
+      setup({ id: "table-custom" });
+      const table = screen.getByTestId("table-custom-table");
 
-      expect(screen.getByTestId(props.tableID!)).toBeVisible();
+      expect(table).toHaveAttribute("id", "table-custom");
     });
 
-    describe("Props", () => {
-      it("should display the table caption when provided", () => {
-        const captionText = "Test Table Caption";
+    it("falls back to a generated ID when no ID is provided", () => {
+      render(
+        <Table
+          columns={["col1"]}
+          id={undefined}
+        >
+          <tr>
+            <td>val</td>
+          </tr>
+        </Table>,
+      );
+      const table = screen.getByRole("table");
 
-        setup({ tableCaption: captionText });
+      expect(table).toHaveAttribute("id");
+      expect(table.getAttribute("id")).toMatch(/table-.*$/);
+    });
 
-        const caption = screen.getByText(captionText);
+    it("does not apply a data-testid when no ID is provided", () => {
+      render(
+        <Table
+          columns={["col1"]}
+          id={undefined}
+        >
+          <tr>
+            <td>val</td>
+          </tr>
+        </Table>,
+      );
+      const table = screen.getByRole("table");
 
-        expect(caption).toBeInTheDocument();
-        expect(caption.tagName).toBe("CAPTION");
-        expect(caption).toHaveClass("ons-table__caption");
-      });
+      expect(table).not.toHaveAttribute("data-testid");
+    });
 
-      it("should not render a caption element if tableCaption is undefined", () => {
-        setup();
-        expect(screen.queryByRole("caption")).not.toBeInTheDocument();
-      });
+    it("shows the table caption when it is provided", () => {
+      const captionText = "Test Table Caption";
+
+      setup({ tableCaption: captionText });
+      const caption = screen.getByText(captionText);
+
+      expect(caption).toBeInTheDocument();
+      expect(caption.tagName).toBe("CAPTION");
+      expect(caption).toHaveClass("ons-table__caption");
     });
   });
 });

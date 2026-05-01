@@ -7,7 +7,7 @@ import {
 } from "./FormValidation";
 import { StyledForm, FormField } from "../StyledForm";
 
-/** Interface representing the values captured by the example form. */
+/** Values for the example account form. */
 interface ExampleFormValues {
   Questionnaire: string;
   name: string;
@@ -15,7 +15,7 @@ interface ExampleFormValues {
   Password: string;
 }
 
-/** Configuration for the form elements. */
+/** Field config for the example account form. */
 const formElements: FormField[] = [
   {
     name: "Questionnaire",
@@ -45,14 +45,13 @@ const formElements: FormField[] = [
 ];
 
 /**
- * A comprehensive example of a multi-input form using StyledForm.
- * Demonstrates text, email, and password field validation and submission handling.
+ * Renders the example account form.
  */
 export const ExampleForm = (): ReactElement => {
   const [formStatus, setFormStatus] = useState<string>("");
 
   /**
-   * Executes once Formik validation passes.
+   * Handles form submit.
    * @param formValues - The validated data from the form.
    * @param setSubmitting - Callback to toggle the button loading state.
    */
@@ -60,7 +59,6 @@ export const ExampleForm = (): ReactElement => {
     formValues: ExampleFormValues,
     setSubmitting: (isSubmitting: boolean) => void,
   ): void => {
-    console.warn("Form Submission:", formValues);
     setFormStatus(`Form submitted for user ${formValues.name}`);
     setSubmitting(false);
   };

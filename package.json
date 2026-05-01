@@ -7,6 +7,7 @@
     "node": ">=24.0.0"
   },
   "type": "module",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -14,7 +15,6 @@
       "require": "./dist/index.js"
     }
   },
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -26,8 +26,8 @@
     "test-watch": "vitest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o storybook-static",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint": "eslint . && prettier --check package.json tsconfig.json tsconfig.eslint.json",
+    "lint-fix": "eslint . --fix && prettier --write package.json tsconfig.json tsconfig.eslint.json"
   },
   "peerDependencies": {
     "formik": ">=2.4.0",
@@ -35,22 +35,22 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
+    "@types/react-csv": "^1.1.10",
     "react-csv": "^2.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@storybook/addon-a11y": "^10.3.5",
-    "@storybook/addon-docs": "^10.3.5",
-    "@storybook/addon-links": "^10.3.5",
-    "@storybook/react": "^10.3.5",
-    "@storybook/react-vite": "^10.3.5",
+    "@microsoft/api-extractor": "^7.58.7",
+    "@storybook/addon-a11y": "^10.3.6",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/addon-links": "^10.3.6",
+    "@storybook/react-vite": "^10.3.6",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
-    "@types/react-csv": "^1.1.10",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.1.5",
@@ -61,19 +61,19 @@
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-storybook": "10.3.5",
+    "eslint-plugin-storybook": "10.3.6",
     "formik": "^2.4.9",
     "globals": "^17.5.0",
     "jiti": "^2.6.1",
-    "jsdom": "^29.1.0",
+    "jsdom": "^29.1.1",
     "prettier": "^3.8.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "storybook": "^10.3.5",
+    "storybook": "^10.3.6",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.1",
     "vite": "^8.0.10",
-    "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-dts": "^5.0.0",
     "vitest": "^4.1.5"
   },
   "packageManager": "yarn@4.14.1"

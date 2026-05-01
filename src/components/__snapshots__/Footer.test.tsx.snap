@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Footer > Rendering > should match the snapshot 1`] = `
+exports[`Footer > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <footer
     class="ons-footer"
@@ -32,7 +32,7 @@ exports[`Footer > Rendering > should match the snapshot 1`] = `
                   class="ons-footer__logo-large"
                 >
                   <svg
-                    aria-labelledby="ons-logo-en-footer-alt"
+                    aria-label="Office for National Statistics"
                     class="ons-icon--logo"
                     height="24"
                     role="img"
@@ -40,11 +40,6 @@ exports[`Footer > Rendering > should match the snapshot 1`] = `
                     width="250"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <title
-                      id="ons-logo-en-footer-alt"
-                    >
-                      Office for National Statistics
-                    </title>
                     <g
                       class="ons-icon--logo__group ons-icon--logo__group--secondary"
                       fill="#a8bd3a"
@@ -153,7 +148,7 @@ exports[`Footer > Rendering > should match the snapshot 1`] = `
                   class="ons-footer__logo-small"
                 >
                   <svg
-                    aria-labelledby="ons-logo-stacked-en-footer-alt"
+                    aria-label="Office for National Statistics"
                     class="ons-icon--logo"
                     height="27"
                     role="img"
@@ -161,11 +156,6 @@ exports[`Footer > Rendering > should match the snapshot 1`] = `
                     width="120"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <title
-                      id="ons-logo-stacked-en-footer-alt"
-                    >
-                      Office for National Statistics
-                    </title>
                     <g
                       class="ons-icon--logo__group ons-icon--logo__group--secondary"
                       fill="#a8bd3a"

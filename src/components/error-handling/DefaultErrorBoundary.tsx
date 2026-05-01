@@ -1,8 +1,13 @@
 import { Component, ErrorInfo, ReactNode } from "react";
 
+let defaultErrorBoundaryInstance = 0;
+
+/** Props for DefaultErrorBoundary. */
 export interface Props {
-  /** The components that this boundary should monitor for errors. */
+  /** Wrapped content. */
   children: ReactNode;
+  /** Element ID. */
+  id?: string;
 }
 
 interface State {
@@ -12,12 +17,11 @@ interface State {
 }
 
 /**
- * Global error boundary for top-level application or page wrapping.
- * Catches JavaScript errors anywhere in its child component tree, logs them,
- * and displays a standard full-page fallback UI with a service error message.
- * Use this to ensure users always see a helpful message if something goes wrong at the app level.
+ * Renders the page fallback when children throw.
  */
 export class DefaultErrorBoundary extends Component<Props, State> {
+  private readonly generatedMainContentId = `default-error-boundary-main-content-${++defaultErrorBoundaryInstance}`;
+
   state: State = {
     hasError: false,
     errorInfo: null,
@@ -38,20 +42,27 @@ export class DefaultErrorBoundary extends Component<Props, State> {
   }
 
   render(): ReactNode {
+    const { id, children } = this.props;
+    const mainContentId = id ? `${id}-main-content` : this.generatedMainContentId;
+
     if (this.state.hasError) {
       return (
-        <div className="ons-page">
+        <div
+          className="ons-page"
+          id={id}
+          data-testid={id ? `${id}-boundary` : undefined}
+        >
           <div className="ons-page__content">
             <a
               className="ons-skip-to-content ons-u-fs-r--b"
-              href="#main-content"
+              href={`#${mainContentId}`}
             >
               Skip to main content
             </a>
 
             <div className="ons-container">
               <main
-                id="main-content"
+                id={mainContentId}
                 className="ons-page__main ons-u-mt-l"
               >
                 <h1>Sorry, there is a problem with the service</h1>
@@ -68,6 +79,6 @@ export class DefaultErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.props.children;
+    return children;
   }
 }

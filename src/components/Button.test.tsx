@@ -18,29 +18,36 @@ const setup = (overrideProps: Partial<Props> = {}) => {
 };
 
 describe("Button", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
       const { asFragment } = setup();
 
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should display the correct label text", () => {
+    it("shows the label text", () => {
       const { props } = setup({ label: "Custom Label" });
 
       expect(screen.getByText(props.label as string)).toBeVisible();
     });
 
-    it("should apply the custom data-testid", () => {
-      const { props } = setup({ testid: "custom-btn-id" });
+    it("derives the data-testid from the provided ID", () => {
+      setup({ id: "button-custom" });
       const button = screen.getByRole("button");
 
-      expect(button).toHaveAttribute("data-testid", `${props.testid}-button`);
+      expect(button).toHaveAttribute("data-testid", "button-custom-button");
+    });
+
+    it("does not apply a data-testid when no ID is provided", () => {
+      setup();
+      const button = screen.getByRole("button");
+
+      expect(button).not.toHaveAttribute("data-testid");
     });
   });
 
-  describe("Interactions", () => {
-    it("should trigger the onClick handler when clicked", async () => {
+  describe("interactions", () => {
+    it("calls onClick when clicked", async () => {
       const { user, props } = setup();
       const button = screen.getByRole("button", {
         name: props.label as string,
@@ -51,71 +58,64 @@ describe("Button", () => {
     });
   });
 
-  describe("Props", () => {
-    it("should append the loader class when loading is true", () => {
+  describe("props", () => {
+    it("adds the loader class when loading is true", () => {
       setup({ loading: true });
       const button = screen.getByRole("button");
 
       expect(button).toHaveClass("ons-btn--loader");
     });
 
-    it("should append the small class when small is true", () => {
+    it("adds the small class when small is true", () => {
       setup({ small: true });
       const button = screen.getByRole("button");
 
       expect(button).toHaveClass("ons-btn--small");
     });
 
-    it("should append the disabled class when disabled is true", () => {
+    it("adds the disabled class when disabled is true", () => {
       setup({ disabled: true });
       const button = screen.getByRole("button");
 
       expect(button).toHaveClass("ons-btn--disabled");
     });
 
-    it("should append the link class when action is true", () => {
+    it("adds the link class when action is true", () => {
       setup({ action: true });
       const button = screen.getByRole("button");
 
       expect(button).toHaveClass("ons-btn--link");
     });
 
-    it("should apply 'display: none' inline style when hidden is true", () => {
+    it("applies a 'display: none' style when hidden is true", () => {
       setup({ hidden: true });
       const button = screen.getByRole("button", { hidden: true });
 
       expect(button).toHaveStyle({ display: "none" });
     });
 
-    it("should apply the correct right margin inline style when marginRight is provided", () => {
+    it("applies the right margin style when marginRight is provided", () => {
       setup({ marginRight: 24 });
       const button = screen.getByRole("button");
 
       expect(button).toHaveStyle({ marginRight: "24px" });
     });
 
-    it("should append the field class when the field prop is true", () => {
-      setup({ field: true });
-      const button = screen.getByRole("button");
-
-      expect(button).toHaveClass("ons-field");
-    });
-
-    it("should set the button type to 'submit' when submit is true", () => {
+    it("uses type='submit' when submit is true", () => {
       setup({ submit: true });
       const button = screen.getByRole("button");
 
       expect(button).toHaveAttribute("type", "submit");
     });
 
-    it("should not append the secondary class when primary is true", () => {
+    it("does not add the secondary class when primary is true", () => {
       setup({ primary: true });
       const button = screen.getByRole("button");
 
       expect(button).not.toHaveClass("ons-btn--secondary");
     });
 
-    it("should append the secondary class when primary is false", () => {
+    it("adds the secondary class when primary is false", () => {
       setup({ primary: false });
       const button = screen.getByRole("button");
 

@@ -9,29 +9,46 @@ const setup = (overrideProps: Partial<Props> = {}) => {
 };
 
 describe("LoadingPanel", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
       const { asFragment } = setup();
 
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should display the default 'Loading' text when no custom message is provided", () => {
+    it("shows the default loading text when no custom message is provided", () => {
       setup();
       expect(screen.getByText("Loading...")).toBeVisible();
     });
 
-    it("should display the custom message when provided via props", () => {
+    it("shows the custom message when one is provided", () => {
       const customMessage = "Two hours later...";
 
       setup({ message: customMessage });
       expect(screen.getByText(customMessage)).toBeVisible();
     });
 
-    it("should return null when hidden is true", () => {
+    it("renders nothing when hidden is true", () => {
       const { container } = setup({ hidden: true });
 
       expect(container.firstChild).toBeNull();
+    });
+  });
+
+  describe("props", () => {
+    it("applies the provided ID to the root panel element", () => {
+      const { container } = setup({ id: "loading-panel-custom" });
+      const panel = container.firstChild as HTMLElement;
+
+      expect(panel).toHaveAttribute("id", "loading-panel-custom");
+    });
+
+    it("falls back to a generated ID when no ID is provided", () => {
+      const { container } = setup();
+      const panel = container.firstChild as HTMLElement;
+
+      expect(panel).toHaveAttribute("id");
+      expect(panel.getAttribute("id")).toMatch(/panel-.*$/);
     });
   });
 });

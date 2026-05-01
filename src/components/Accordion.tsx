@@ -1,62 +1,69 @@
-import { ReactNode, useState, MouseEvent, KeyboardEvent, Dispatch, SetStateAction } from "react";
+import { ReactNode, useState, KeyboardEvent, Dispatch, SetStateAction, useId } from "react";
 
+/** Accordion panel. */
 export type ExpandableContent = {
+  /** Panel content. */
   content: ReactNode;
-  contentId?: string;
+  /** Element ID. */
+  id?: string;
+  /** Panel title. */
   title: string;
 };
 
 interface ExpandableProps extends ExpandableContent {
-  expandableIndex: number;
+  panelBaseId: string;
   panelsOpen: boolean[];
   setPanelsOpen: Dispatch<SetStateAction<boolean[]>>;
-  accordionGroupId: string;
+  index: number;
+  accordionBaseId: string;
+  hasExplicitId: boolean;
 }
 
 const Expandable = ({
   title,
   content,
-  contentId,
-  expandableIndex,
+  panelBaseId,
   panelsOpen,
   setPanelsOpen,
-  accordionGroupId,
+  index,
+  accordionBaseId,
+  hasExplicitId,
 }: ExpandableProps) => {
-  const safeId = contentId || `expandable-${expandableIndex}`;
-
-  const togglePanel = (event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>) => {
-    event.preventDefault();
+  const togglePanel = () => {
     setPanelsOpen((prevPanels) => {
       const newPanels = [...prevPanels];
 
-      newPanels[expandableIndex] = !newPanels[expandableIndex];
+      newPanels[index] = !newPanels[index];
 
       return newPanels;
     });
   };
 
-  const panelIsOpen = panelsOpen[expandableIndex];
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      togglePanel();
+    }
+  };
+
+  const panelIsOpen = panelsOpen[index];
 
   return (
     <div
-      id={`${safeId}-accordion-${expandableIndex}`}
+      id={panelBaseId}
+      data-group={accordionBaseId}
       className={`ons-details ons-details--initialised ons-details--accordion ${panelIsOpen ? "ons-details--open" : ""}`}
-      data-group={accordionGroupId}
     >
       <div
         className="ons-details__heading"
         role="button"
-        data-testid={`${safeId}-accordion-${expandableIndex}-heading`}
-        onClick={togglePanel}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            togglePanel(e);
-          }
-        }}
-        aria-expanded={panelIsOpen}
-        aria-controls={`${safeId}-accordion-${expandableIndex}-content`}
-        data-ga-action={panelIsOpen ? "Close panel" : "Open panel"}
         tabIndex={0}
+        data-testid={hasExplicitId ? `${panelBaseId}-heading` : undefined}
+        onClick={togglePanel}
+        onKeyDown={handleKeyDown}
+        aria-expanded={panelIsOpen}
+        aria-controls={`${panelBaseId}-content`}
+        data-ga-action={panelIsOpen ? "Close panel" : "Open panel"}
       >
         <h2 className="ons-details__title ons-u-fs-r--b">{title}</h2>
         <span className="ons-details__icon">
@@ -77,8 +84,8 @@ const Expandable = ({
         </span>
       </div>
       <div
-        id={`${safeId}-accordion-${expandableIndex}-content`}
-        data-testid={`${safeId}-accordion-${expandableIndex}-content`}
+        id={`${panelBaseId}-content`}
+        data-testid={hasExplicitId ? `${panelBaseId}-content` : undefined}
         className="ons-details__content"
         aria-hidden={!panelIsOpen}
       >
@@ -88,40 +95,48 @@ const Expandable = ({
   );
 };
 
+/** Props for Accordion. */
 export interface Props {
-  /** Toggles the visibility of the 'Show All' / 'Hide All' button. */
-  ShowAllEnabled?: boolean;
-  /** An array of panel definitions with title and content. */
-  Expandables: ExpandableContent[];
-  /** A unique ID for the accordion container. */
-  ContentId: string;
-  /** Sets the initial expanded state of all accordion panels. */
-  Expanded?: boolean;
+  /** Whether to show the Show all / Hide all button. */
+  showAllEnabled?: boolean;
+  /** Accordion panels. */
+  expandables: ExpandableContent[];
+  /** Element ID. */
+  id?: string;
+  /** Whether every panel starts expanded. */
+  expanded?: boolean;
 }
 
 interface ShowAllProps {
   showAllEnabled?: boolean;
   panelsOpen: boolean[];
   setPanelsOpen: Dispatch<SetStateAction<boolean[]>>;
-  contentId: string;
+  accordionBaseId: string;
+  hasExplicitId: boolean;
 }
 
-const ShowAll = ({ showAllEnabled, panelsOpen, setPanelsOpen, contentId }: ShowAllProps) => {
+const ShowAll = ({
+  showAllEnabled,
+  panelsOpen,
+  setPanelsOpen,
+  accordionBaseId,
+  hasExplicitId,
+}: ShowAllProps) => {
   if (!showAllEnabled) return null;
 
   const showing = !panelsOpen.includes(false);
 
   return (
     <button
-      data-testid={`${contentId}-accordion-show-all`}
+      data-testid={hasExplicitId ? `${accordionBaseId}-show-all` : undefined}
       type="button"
       className="ons-btn ons-accordion__toggle-all ons-u-mb-s ons-btn--secondary ons-btn--small"
       onClick={() => setPanelsOpen((prev) => new Array(prev.length).fill(!showing))}
-      data-toggle-button={`${contentId}-accordion-toggle-all`}
+      data-toggle-button={`${accordionBaseId}-toggle-all`}
       data-close-all="Hide all"
       data-open-aria-label="Show all sections"
       data-close-aria-label="Hide all sections"
-      data-group={`${contentId}-accordion`}
+      data-group={accordionBaseId}
     >
       <span className="ons-btn__inner ons-accordion__toggle-all-inner">
         <span className="ons-btn__text">{showing ? "Hide all" : "Show all"}</span>
@@ -130,41 +145,47 @@ const ShowAll = ({ showAllEnabled, panelsOpen, setPanelsOpen, contentId }: ShowA
   );
 };
 
-export const Accordion = ({
-  ShowAllEnabled: showAllEnabled,
-  Expandables: expandables,
-  ContentId: contentId,
-  Expanded: expanded,
-}: Props) => {
+/** Renders an accordion. */
+export const Accordion = ({ showAllEnabled, expandables, id, expanded }: Props) => {
+  const generatedId = useId();
+  const baseId = id || `accordion-${generatedId}`;
+  const isParentIdExplicit = Boolean(id);
+
   const [panelsOpen, setPanelsOpen] = useState<boolean[]>(() =>
     new Array(expandables.length).fill(expanded ?? false),
   );
 
-  const accordionGroupId = `${contentId}-accordion`;
-
   return (
     <div
-      id={accordionGroupId}
+      id={baseId}
       className="ons-accordion"
+      data-testid={id ? `${id}-accordion` : undefined}
     >
       <ShowAll
         showAllEnabled={showAllEnabled}
         panelsOpen={panelsOpen}
         setPanelsOpen={setPanelsOpen}
-        contentId={contentId}
+        accordionBaseId={baseId}
+        hasExplicitId={isParentIdExplicit}
       />
-      {expandables.map((expandable: ExpandableContent, index: number) => (
-        <Expandable
-          key={`${expandable.contentId || "item"}-${index}`}
-          content={expandable.content}
-          contentId={expandable.contentId}
-          title={expandable.title}
-          expandableIndex={index}
-          setPanelsOpen={setPanelsOpen}
-          panelsOpen={panelsOpen}
-          accordionGroupId={accordionGroupId}
-        />
-      ))}
+      {expandables.map((expandable: ExpandableContent, index: number) => {
+        const panelBaseId = expandable.id || `${baseId}-panel-${index}`;
+        const panelHasExplicitId = !!expandable.id || isParentIdExplicit;
+
+        return (
+          <Expandable
+            key={panelBaseId}
+            content={expandable.content}
+            title={expandable.title}
+            panelBaseId={panelBaseId}
+            index={index}
+            accordionBaseId={baseId}
+            setPanelsOpen={setPanelsOpen}
+            panelsOpen={panelsOpen}
+            hasExplicitId={panelHasExplicitId}
+          />
+        );
+      })}
     </div>
   );
 };

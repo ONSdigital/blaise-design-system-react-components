@@ -15,15 +15,6 @@ export const Default: Story = {
     text: "Go Bing it!",
     link: "https://bing.com",
     ariaLabel: "Navigate to the Bing homepage",
-    id: "bing-link",
-  },
-};
-
-export const ONS: Story = {
-  args: {
-    text: "Office for National Statistics",
-    link: "https://www.ons.gov.uk",
-    ariaLabel: "Visit the ONS homepage",
-    id: "ons-link",
+    id: "external-link",
   },
 };

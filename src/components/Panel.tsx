@@ -1,31 +1,33 @@
-import { ReactNode } from "react";
+import { ReactElement, ReactNode, useId } from "react";
 
+/** Props for Panel. */
 export interface Props {
-  /** The content to render inside the panel body (typically strings or other React elements). */
+  /** Content rendered inside the panel body. */
   children: ReactNode;
-  /** Determines the visual styling and icon of the panel. Defaults to "info". */
+  /** Panel status. */
   status?: "success" | "error" | "info" | "warn";
-  /** If true, increases the internal padding of the panel. */
+  /** Whether to use the spacious variant. */
   spacious?: boolean;
-  /** Unique HTML ID for the panel element. */
+  /** Element ID. */
   id?: string;
-  /** If true, hides the panel from the DOM. */
+  /** Whether to hide the panel. */
   hidden?: boolean;
-  /** Optional test ID for automated testing. */
-  testID?: string;
-  /** Uses a bigger tick icon. Note: This only applies when status is "success". */
+  /** Whether to enlarge the success icon. */
   bigIcon?: boolean;
 }
 
+/** Renders a panel. */
 export const Panel = ({
   children,
   status = "info",
   spacious,
   id,
   hidden,
-  testID,
   bigIcon,
-}: Props) => {
+}: Props): ReactElement | null => {
+  const generatedId = useId();
+  const baseId = id || `panel-${generatedId}`;
+
   if (hidden) return null;
 
   const className = [
@@ -46,12 +48,12 @@ export const Panel = ({
   };
 
   const isSuccess = status === "success";
-  const alertId = isSuccess ? `${id || "panel"}-alert` : undefined;
+  const alertId = isSuccess ? `${baseId}-alert` : undefined;
 
   return (
     <div
-      data-testid={testID}
-      id={id}
+      data-testid={id ? `${id}-panel` : undefined}
+      id={baseId}
       className={className}
       role={isSuccess ? "alert" : undefined}
       tabIndex={isSuccess ? -1 : undefined}

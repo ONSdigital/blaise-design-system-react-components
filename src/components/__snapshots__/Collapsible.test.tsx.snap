@@ -1,15 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Collapsible > Rendering > should match the snapshot 1`] = `
+exports[`Collapsible > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ons-details ons-details--initialised ons-u-mt-l "
     data-save-state="true"
-    id="collapsible-_r_0_"
+    id="collapsible"
     role="group"
   >
     <div
-      aria-controls="collapsible-_r_0_-content"
+      aria-controls="collapsible-content"
       aria-expanded="false"
       class="ons-details__heading"
       data-ga-action="Open panel"
@@ -45,7 +45,7 @@ exports[`Collapsible > Rendering > should match the snapshot 1`] = `
       aria-hidden="true"
       class="ons-details__content"
       data-testid="collapsible-content"
-      id="collapsible-_r_0_-content"
+      id="collapsible-content"
     >
       <p>
         Collapsible Content

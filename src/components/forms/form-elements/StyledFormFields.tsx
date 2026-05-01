@@ -1,39 +1,43 @@
-import { Fragment, ReactElement } from "react";
-import { Field, useFormikContext } from "formik";
+import { Fragment, ReactElement, useId } from "react";
+import { useFormikContext } from "formik";
 import { RadioFieldset, CheckboxFieldset, TextInputFieldset } from "./Fields";
-
 import type {
   RadioFieldset as RadioFieldsetType,
   CheckboxFieldset as CheckboxFieldsetType,
 } from "../StyledForm";
 
+/** StyledFormField props. */
 interface Props {
-  /** The visible label or legend text for the field. */
+  /** Element ID. */
+  id?: string;
+  /** Hint or legend text. */
   description?: string;
-  /** The Formik field name used for state management. */
+  /** Field name. */
   name: string;
-  /** Configuration array for radio options (only used when type is 'radio'). */
+  /** Radio options. */
   radioOptions?: RadioFieldsetType[];
-  /** Configuration array for checkbox options (only used when type is 'checkbox'). */
+  /** Checkbox options. */
   checkboxOptions?: CheckboxFieldsetType[];
-  /** If true, the input will receive focus on mount. */
+  /** Whether to focus the field. */
   autoFocus?: boolean;
-  /** The type of field to render (e.g., 'radio', 'checkbox', 'text', 'date'). */
+  /** Field type. */
   type?: string;
-  /** Additional props passed down to the underlying ONS input components. */
+  /** Additional field props. */
   [key: string]: unknown;
 }
 
-/** Internal sub-component to wrap fields in an ONS error panel when validation fails. */
+/** Internal sub-component to wrap fields in an error panel when validation fails. */
 const StyledFormFieldErrorWrapper = (
   fieldError: string,
-  fieldName: string,
   field: ReactElement,
+  baseId: string,
+  isExplicitId: boolean,
 ) => {
   return (
     <div
       className="ons-panel ons-panel--error ons-panel--no-title"
-      id={`${fieldName}-error`}
+      id={`${baseId}-error`}
+      data-testid={isExplicitId ? `${baseId}-error-panel` : undefined}
     >
       <span className="ons-panel__assistive-text ons-u-vh">Error: </span>
       <div className="ons-panel__body">
@@ -47,10 +51,10 @@ const StyledFormFieldErrorWrapper = (
 };
 
 /**
- * A factory component that resolves the specific ONS field type to render based on props.
- * Automatically wraps the field in an error state if Formik validation fails.
+ * Renders a field from StyledForm config.
  */
 export const StyledFormField = ({
+  id,
   name,
   description,
   radioOptions = [],
@@ -59,11 +63,16 @@ export const StyledFormField = ({
   ...props
 }: Props): ReactElement => {
   const { errors } = useFormikContext<Record<string, string>>();
+  const generatedId = useId();
+  const baseId = id || `field-${generatedId}`;
+  const isExplicitId = !!id;
+
   let newField: ReactElement;
 
   if (props.type === "radio") {
     newField = (
       <RadioFieldset
+        id={id}
         description={description}
         name={name}
         radioOptions={radioOptions}
@@ -74,6 +83,7 @@ export const StyledFormField = ({
   } else if (props.type === "checkbox") {
     newField = (
       <CheckboxFieldset
+        id={id}
         description={description}
         name={name}
         checkboxOptions={checkboxOptions}
@@ -83,12 +93,12 @@ export const StyledFormField = ({
     );
   } else {
     newField = (
-      <Field
+      <TextInputFieldset
+        id={id}
         name={name}
         description={description}
         autoFocus={autoFocus}
         {...props}
-        component={TextInputFieldset}
       />
     );
   }
@@ -97,7 +107,9 @@ export const StyledFormField = ({
 
   return (
     <Fragment>
-      {fieldError ? StyledFormFieldErrorWrapper(fieldError, name, newField) : newField}
+      {fieldError
+        ? StyledFormFieldErrorWrapper(fieldError, newField, baseId, isExplicitId)
+        : newField}
     </Fragment>
   );
 };

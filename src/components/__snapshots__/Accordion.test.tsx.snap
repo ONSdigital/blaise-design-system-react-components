@@ -1,22 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Accordion > Rendering > should match the snapshot 1`] = `
+exports[`Accordion > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ons-accordion"
-    id="test-accordion"
+    data-testid="accordion-accordion"
+    id="accordion"
   >
     <div
       class="ons-details ons-details--initialised ons-details--accordion "
-      data-group="test-accordion"
-      id="foo-accordion-0"
+      data-group="accordion"
+      id="first-panel"
     >
       <div
-        aria-controls="foo-accordion-0-content"
+        aria-controls="first-panel-content"
         aria-expanded="false"
         class="ons-details__heading"
         data-ga-action="Open panel"
-        data-testid="foo-accordion-0-heading"
+        data-testid="first-panel-heading"
         role="button"
         tabindex="0"
       >
@@ -47,8 +48,8 @@ exports[`Accordion > Rendering > should match the snapshot 1`] = `
       <div
         aria-hidden="true"
         class="ons-details__content"
-        data-testid="foo-accordion-0-content"
-        id="foo-accordion-0-content"
+        data-testid="first-panel-content"
+        id="first-panel-content"
       >
         <p>
           foo
@@ -57,15 +58,15 @@ exports[`Accordion > Rendering > should match the snapshot 1`] = `
     </div>
     <div
       class="ons-details ons-details--initialised ons-details--accordion "
-      data-group="test-accordion"
-      id="bar-accordion-1"
+      data-group="accordion"
+      id="second-panel"
     >
       <div
-        aria-controls="bar-accordion-1-content"
+        aria-controls="second-panel-content"
         aria-expanded="false"
         class="ons-details__heading"
         data-ga-action="Open panel"
-        data-testid="bar-accordion-1-heading"
+        data-testid="second-panel-heading"
         role="button"
         tabindex="0"
       >
@@ -96,8 +97,8 @@ exports[`Accordion > Rendering > should match the snapshot 1`] = `
       <div
         aria-hidden="true"
         class="ons-details__content"
-        data-testid="bar-accordion-1-content"
-        id="bar-accordion-1-content"
+        data-testid="second-panel-content"
+        id="second-panel-content"
       >
         <p>
           bar

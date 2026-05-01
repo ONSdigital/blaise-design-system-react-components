@@ -36,7 +36,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  render: (args) => <DefaultErrorBoundary {...args} />,
   args: {
+    id: "default-error-boundary",
     children: <DodgyComponent />,
   },
 };

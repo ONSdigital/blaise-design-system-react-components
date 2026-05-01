@@ -2,11 +2,15 @@ import { ReactElement, ReactNode } from "react";
 import { Data } from "react-csv/lib/core";
 import { formatTitle, formatKey } from "../utilities/textFormatting";
 
+/** Summary group. */
 export type SummaryGroup = {
+  /** Group title. */
   title: string;
+  /** Group values. */
   records: Record<string, string | number | boolean | null | undefined>;
 };
 
+/** Grouped summary data. */
 export class GroupedSummary {
   groups: SummaryGroup[];
 
@@ -14,6 +18,7 @@ export class GroupedSummary {
     this.groups = groups;
   }
 
+  /** Returns a single CSV row. */
   csv(): Data {
     const row = this.groups.reduce((acc, group) => {
       return { ...acc, ...group.records };
@@ -23,55 +28,95 @@ export class GroupedSummary {
   }
 }
 
+/** Props for SummaryItemRow. */
 export interface SummaryItemProps {
-  /** The label for the data field (left column). */
+  /** Base ID for generated test ids. */
+  id?: string;
+  /** Field name. */
   fieldName: string;
-  /** The value to display (right column). Accepts strings, numbers, or React components. */
+  /** Field value. */
   fieldValue: ReactNode;
 }
 
-export function SummaryItemRow({ fieldName, fieldValue }: SummaryItemProps): ReactElement {
+/** Renders a summary row. */
+export function SummaryItemRow({ id, fieldName, fieldValue }: SummaryItemProps): ReactElement {
+  let displayValue: ReactNode = fieldValue;
+
+  if (typeof fieldValue === "boolean") {
+    displayValue = fieldValue ? "Yes" : "No";
+  } else if (fieldValue === null || fieldValue === undefined || fieldValue === "") {
+    displayValue = "Not provided";
+  }
+
   return (
-    <div className="ons-summary__item">
+    <div
+      className="ons-summary__item"
+      data-testid={id ? `${id}-row` : undefined}
+    >
       <dt className="ons-summary__item-title">
         <div className="ons-summary__item--text">{formatTitle(fieldName)}</div>
       </dt>
       <dd className="ons-summary__values">
-        {typeof fieldValue === "string" || typeof fieldValue === "number" ? (
-          <span className="ons-summary__text">{fieldValue}</span>
+        {typeof displayValue === "string" || typeof displayValue === "number" ? (
+          <span
+            className="ons-summary__text"
+            data-testid={id ? `${id}-value` : undefined}
+          >
+            {displayValue}
+          </span>
         ) : (
-          fieldValue
+          displayValue
         )}
       </dd>
     </div>
   );
 }
 
+/** Props for SummaryGroupTable. */
 export interface SummaryGroupTableProps {
-  /** The GroupedSummary instance containing all summary groups to display. */
+  /** Element ID. */
+  id?: string;
+  /** Summary data. */
   groupedSummary: GroupedSummary;
 }
 
-export function SummaryGroupTable({ groupedSummary }: SummaryGroupTableProps): ReactElement {
+/** Renders grouped summary data. */
+export function SummaryGroupTable({ id, groupedSummary }: SummaryGroupTableProps): ReactElement {
   return (
-    <div className="ons-summary">
-      {groupedSummary.groups.map((group) => (
-        <div
-          key={`summary-group-wrapper-${formatKey(group.title)}`}
-          className="ons-summary__group"
-        >
-          <h2 className="ons-summary__group-title">{group.title}</h2>
-          <dl className="ons-summary__items">
-            {Object.entries(group.records).map(([field, value]) => (
-              <SummaryItemRow
-                key={`summary-table-row-${formatKey(field)}`}
-                fieldName={field}
-                fieldValue={value as ReactNode}
-              />
-            ))}
-          </dl>
-        </div>
-      ))}
+    <div
+      className="ons-summary"
+      id={id}
+      data-testid={id ? `${id}-summary` : undefined}
+    >
+      {groupedSummary.groups.map((group) => {
+        const groupKey = formatKey(group.title);
+
+        return (
+          <div
+            key={`summary-group-wrapper-${groupKey}`}
+            className="ons-summary__group"
+          >
+            <h2 className="ons-summary__group-title">{group.title}</h2>
+            <dl
+              className="ons-summary__items"
+              id={id ? `${id}-${groupKey}-list` : undefined}
+            >
+              {Object.entries(group.records).map(([field, value]) => {
+                const rowKey = formatKey(field);
+
+                return (
+                  <SummaryItemRow
+                    key={`summary-table-row-${rowKey}`}
+                    id={id ? `${id}-${groupKey}-${rowKey}` : undefined}
+                    fieldName={field}
+                    fieldValue={value as ReactNode}
+                  />
+                );
+              })}
+            </dl>
+          </div>
+        );
+      })}
     </div>
   );
 }

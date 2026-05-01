@@ -12,21 +12,21 @@ const setup = (component = <ExampleRadioForm />) => {
 };
 
 describe("ExampleRadioForm", () => {
-  describe("Rendering", () => {
-    it("should match the snapshot", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
       const { asFragment } = setup();
 
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should display the radio option description text", () => {
+    it("shows the radio option description", () => {
       setup();
       expect(screen.getByText(/This includes all types of cheese/i)).toBeVisible();
     });
   });
 
-  describe("Interactions", () => {
-    it("should display validation errors upon submitting an empty form", async () => {
+  describe("interactions", () => {
+    it("shows validation errors when an empty form is submitted", async () => {
       const { user } = setup();
       const submitButton = screen.getByRole("button", {
         name: /save and continue/i,
@@ -39,7 +39,7 @@ describe("ExampleRadioForm", () => {
       expect(radioErrors).toHaveLength(2);
     });
 
-    it("should trigger a success state when a valid option is submitted", async () => {
+    it("shows the success message when a valid option is submitted", async () => {
       const { user } = setup();
 
       await user.click(screen.getByLabelText(/Bacon/i));
@@ -47,7 +47,7 @@ describe("ExampleRadioForm", () => {
       expect(await screen.findByText(/Form submitted. Topping: bacon/i)).toBeVisible();
     });
 
-    it("should successfully capture and submit data from the 'other/specify' conditional text input", async () => {
+    it("submits the value from the conditional text input", async () => {
       const { user } = setup();
 
       await user.click(screen.getByLabelText(/Bacon/i));
@@ -70,8 +70,8 @@ describe("ExampleRadioForm", () => {
     });
   });
 
-  describe("Props", () => {
-    it("should submit the correct data based on the provided initial_value", async () => {
+  describe("props", () => {
+    it("submits the provided initial_value", async () => {
       const submitFunction = vi.fn();
       const fields = [
         {

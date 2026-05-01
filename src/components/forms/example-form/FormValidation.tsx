@@ -1,7 +1,7 @@
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 /**
- * Validates the Questionnaire Name field.
+ * Validates the questionnaire name field.
  * @param value - The raw string value from the input.
  * @returns An error message string if invalid, or undefined if valid.
  */
@@ -13,7 +13,7 @@ export function validateQuestionnaireName(value: string): string | undefined {
 }
 
 /**
- * Validates the Interviewer ID field.
+ * Validates the interviewer ID field.
  * @param value - The raw string value from the input.
  * @returns An error message string if empty, or undefined if valid.
  */
@@ -24,7 +24,7 @@ export function validateInterviewerID(value: string): string | undefined {
 }
 
 /**
- * Validates the Name field.
+ * Validates the name field.
  * @param value - The raw string value from the input.
  * @returns An error message string if invalid, or undefined if valid.
  */
@@ -36,7 +36,7 @@ export function validateName(value: string): string | undefined {
 }
 
 /**
- * Validates the Password field.
+ * Validates the password field.
  * @param value - The raw string value from the input.
  * @returns An error message string if invalid, or undefined if valid.
  */
@@ -48,7 +48,7 @@ export function validatePassword(value: string): string | undefined {
 }
 
 /**
- * Validates the Email field using a standard regex pattern.
+ * Validates the email field using a regular expression.
  * @param value - The raw string value from the input.
  * @returns An error message string if invalid, or undefined if valid.
  */
@@ -61,7 +61,7 @@ export function validateEmail(value: string): string | undefined {
 }
 
 /**
- * Validates a Radio group selection.
+ * Validates a radio group selection.
  * @param value - The selected value string.
  * @returns An error message string if nothing is selected, or undefined if valid.
  */
@@ -72,7 +72,7 @@ export function validateRadio(value: string): string | undefined {
 }
 
 /**
- * Validates a Checkbox group selection.
+ * Validates a checkbox group selection.
  * @param value - An array of selected strings.
  * @returns An error message string if the array is empty, or undefined if valid.
  */

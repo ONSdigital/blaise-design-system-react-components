@@ -1,12 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ExampleCheckboxForm > Rendering > should match the snapshot 1`] = `
+exports[`ExampleCheckboxForm > rendering > renders the snapshot 1`] = `
 <DocumentFragment>
   <form
     action="#"
+    id="form-_r_0_"
+    novalidate=""
   >
     <div
       class="ons-field ons-u-mb-m"
+      id="checkbox-_r_3_"
     >
       <fieldset
         class="ons-fieldset"
@@ -100,7 +103,8 @@ exports[`ExampleCheckboxForm > Rendering > should match the snapshot 1`] = `
     <br />
     <button
       class="ons-btn"
-      data-testid="submit-button"
+      data-testid="form-_r_0_-submit-button"
+      id="form-_r_0_-submit"
       type="submit"
     >
       <span

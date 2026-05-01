@@ -1,32 +1,26 @@
 import { ReactElement } from "react";
 import { Panel } from "./Panel";
 
+/** Props for LoadingPanel. */
 export interface Props {
-  /** If true, the entire panel is removed from the visual flow. */
+  /** When true, renders nothing. */
   hidden?: boolean;
-  /** Optional custom text to display next to the loading spinner. Defaults to "Loading...". */
+  /** Loading message. */
   message?: string;
-  /** Optional test ID for automated testing. */
-  testID?: string;
-  /** Unique HTML ID for the panel element. */
+  /** Element ID. */
   id?: string;
 }
 
+/** Renders a loading panel. */
 export const LoadingPanel = ({
   hidden,
   message = "Loading...",
-  testID,
   id,
 }: Props): ReactElement | null => {
   if (hidden) return null;
 
   return (
-    <Panel
-      testID={testID}
-      id={id}
-    >
-      <span className="ons-panel__assistive-text ons-u-vh">{message}:</span>
-
+    <Panel id={id}>
       <div
         className="ons-panel__body ons-u-pt-xs ons-u-pb-xs"
         style={{ display: "flex", alignItems: "center" }}

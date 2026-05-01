@@ -1,8 +1,19 @@
 import { ReactElement } from "react";
 
-export const Footer = (): ReactElement => {
+/** Props for Footer. */
+export interface Props {
+  /** Element ID. */
+  id?: string;
+}
+
+/** Renders the footer. */
+export const Footer = ({ id }: Props = {}): ReactElement => {
   return (
-    <footer className="ons-footer">
+    <footer
+      className="ons-footer"
+      id={id}
+      data-testid={id ? `${id}-footer` : undefined}
+    >
       <div
         className="ons-footer__body"
         data-analytics="footer"
@@ -23,10 +34,9 @@ export const Footer = (): ReactElement => {
                       width="250"
                       height="24"
                       viewBox="33 2 552 60"
-                      aria-labelledby="ons-logo-en-footer-alt"
+                      aria-label="Office for National Statistics"
                       role="img"
                     >
-                      <title id="ons-logo-en-footer-alt">Office for National Statistics</title>
                       <g
                         className="ons-icon--logo__group ons-icon--logo__group--secondary"
                         fill="#a8bd3a"
@@ -81,12 +91,9 @@ export const Footer = (): ReactElement => {
                       width="120"
                       height="27"
                       viewBox="0 5 595 116"
-                      aria-labelledby="ons-logo-stacked-en-footer-alt"
+                      aria-label="Office for National Statistics"
                       role="img"
                     >
-                      <title id="ons-logo-stacked-en-footer-alt">
-                        Office for National Statistics
-                      </title>
                       <g
                         className="ons-icon--logo__group ons-icon--logo__group--secondary"
                         fill="#a8bd3a"

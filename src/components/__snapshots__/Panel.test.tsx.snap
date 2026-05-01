@@ -1,35 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Panel > Rendering > should match the snapshot 1`] = `
-<DocumentFragment>
-  <div
-    class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
-    data-testid="test-panel"
-  >
-    <span
-      class="ons-panel__assistive-text ons-u-vh"
-    >
-      Important information: 
-    </span>
-    <div
-      class="ons-panel__body "
-    >
-      <p
-        data-testid="panel-child"
-      >
-        Panel Content
-      </p>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Panel > Rendering > should match the snapshot for a big icon success panel 1`] = `
+exports[`Panel > rendering > renders the big-icon success snapshot 1`] = `
 <DocumentFragment>
   <div
     aria-labelledby="panel-alert"
     class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
-    data-testid="test-panel"
+    data-testid="panel-panel"
+    id="panel"
     role="alert"
     tabindex="-1"
   >
@@ -69,12 +46,38 @@ exports[`Panel > Rendering > should match the snapshot for a big icon success pa
 </DocumentFragment>
 `;
 
-exports[`Panel > Rendering > should match the snapshot for a success status panel 1`] = `
+exports[`Panel > rendering > renders the default snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
+    data-testid="panel-panel"
+    id="panel"
+  >
+    <span
+      class="ons-panel__assistive-text ons-u-vh"
+    >
+      Important information: 
+    </span>
+    <div
+      class="ons-panel__body "
+    >
+      <p
+        data-testid="panel-child"
+      >
+        Panel Content
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Panel > rendering > renders the success snapshot 1`] = `
 <DocumentFragment>
   <div
     aria-labelledby="panel-alert"
     class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
-    data-testid="test-panel"
+    data-testid="panel-panel"
+    id="panel"
     role="alert"
     tabindex="-1"
   >
@@ -114,11 +117,12 @@ exports[`Panel > Rendering > should match the snapshot for a success status pane
 </DocumentFragment>
 `;
 
-exports[`Panel > Rendering > should match the snapshot for a warning status panel 1`] = `
+exports[`Panel > rendering > renders the warning snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ons-panel ons-panel--warn ons-panel--no-title ons-u-mt-m"
-    data-testid="test-panel"
+    data-testid="panel-panel"
+    id="panel"
   >
     <span
       aria-hidden="true"

@@ -36,7 +36,7 @@ export const Default: Story = {
     );
   },
   args: {
-    id: "select-survey",
+    id: "select",
     label: "Select survey",
     options: Selection,
     value: Selection[0].value,
