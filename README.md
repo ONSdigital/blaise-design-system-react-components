@@ -40,7 +40,7 @@ Before using components from this library, you must inject the ONS Design System
 />
 ```
 
-Version `60.0.3` is the latest version of the ONS Design System CSS that is fully compatible with these React components. Newer versions of the ONS Design System CSS may introduce breaking changes, and our components would need to be refactored to support them. If you wish to use a newer version, please check the [ONS Design System repository](https://github.com/ONSdigital/design-system) for available releases and review any breaking changes before upgrading.
+New versions of the ONS Design System CSS may introduce breaking changes, and our components would need to be refactored to support them. If you wish to use a newer version, please check the [ONS Design System repository](https://github.com/ONSdigital/design-system) for available releases and review any breaking changes before upgrading.
 
 If this is omitted, the components will render without ONS styling.
 

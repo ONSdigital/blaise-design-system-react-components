@@ -18,6 +18,7 @@ export default defineConfig({
     dts({
       bundleTypes: true,
       exclude: EXCLUDE_PATTERNS,
+      tsconfigPath: "./tsconfig.build.json",
     }),
   ],
   build: {
@@ -41,9 +42,6 @@ export default defineConfig({
     setupFiles: ["./src/setupTests.ts"],
     globals: true,
     clearMocks: true,
-    typecheck: {
-      tsconfig: "./tsconfig.test.json",
-    },
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],

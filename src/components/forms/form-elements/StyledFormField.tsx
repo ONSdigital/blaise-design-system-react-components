@@ -10,6 +10,10 @@ import type {
 interface Props {
   /** Element ID. */
   id?: string;
+  /** Whether field-specific test IDs should be rendered. */
+  includeTestIds?: boolean;
+  /** Initial field value used by StyledForm during setup. */
+  initialValue?: unknown;
   /** Hint or legend text. */
   description?: string;
   /** Field name. */
@@ -31,13 +35,13 @@ const renderFieldError = (
   fieldError: string,
   field: ReactElement,
   baseId: string,
-  isExplicitId: boolean,
+  includeTestIds: boolean,
 ) => {
   return (
     <div
       className="ons-panel ons-panel--error ons-panel--no-title"
       id={`${baseId}-error`}
-      data-testid={isExplicitId ? `${baseId}-error-panel` : undefined}
+      data-testid={includeTestIds ? `${baseId}-error-panel` : undefined}
     >
       <span className="ons-panel__assistive-text ons-u-vh">Error: </span>
       <div className="ons-panel__body">
@@ -55,17 +59,19 @@ const renderFieldError = (
  */
 export const StyledFormField = ({
   id,
+  includeTestIds,
   name,
   description,
   radioOptions = [],
   checkboxOptions = [],
   autoFocus = false,
+  initialValue: _initialValue,
   ...props
 }: Props): ReactElement => {
   const { errors } = useFormikContext<Record<string, string>>();
   const generatedId = useId();
   const baseId = id || `field-${generatedId}`;
-  const isExplicitId = !!id;
+  const shouldIncludeTestIds = includeTestIds ?? Boolean(id);
 
   let newField: ReactElement;
 
@@ -73,6 +79,7 @@ export const StyledFormField = ({
     newField = (
       <RadioFieldset
         id={id}
+        includeTestIds={shouldIncludeTestIds}
         description={description}
         name={name}
         radioOptions={radioOptions}
@@ -84,6 +91,7 @@ export const StyledFormField = ({
     newField = (
       <CheckboxFieldset
         id={id}
+        includeTestIds={shouldIncludeTestIds}
         description={description}
         name={name}
         checkboxOptions={checkboxOptions}
@@ -95,6 +103,7 @@ export const StyledFormField = ({
     newField = (
       <TextInputFieldset
         id={id}
+        includeTestIds={shouldIncludeTestIds}
         name={name}
         description={description}
         autoFocus={autoFocus}
@@ -107,7 +116,7 @@ export const StyledFormField = ({
 
   return (
     <Fragment>
-      {fieldError ? renderFieldError(fieldError, newField, baseId, isExplicitId) : newField}
+      {fieldError ? renderFieldError(fieldError, newField, baseId, shouldIncludeTestIds) : newField}
     </Fragment>
   );
 };

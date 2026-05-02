@@ -86,6 +86,25 @@ describe("CheckboxFieldset", () => {
 
 describe("RadioFieldset", () => {
   describe("edge cases", () => {
+    it("renders the fieldset data-testid when includeTestIds is true", () => {
+      render(
+        <Formik
+          initialValues={{ myField: "" }}
+          onSubmit={vi.fn()}
+        >
+          <RadioFieldset
+            id="my-radio"
+            includeTestIds={true}
+            name="myField"
+            radioOptions={[{ value: "yes", label: "Yes" }]}
+            autoFocus={false}
+          />
+        </Formik>,
+      );
+
+      expect(screen.getByTestId("my-radio-fieldset")).toBeInTheDocument();
+    });
+
     it("generates IDs for radio options and follow-up inputs when they are omitted", () => {
       render(
         <Formik

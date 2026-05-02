@@ -91,6 +91,26 @@ export interface Props<T extends FormikValues = FormikValues> {
   submitLabel?: string;
 }
 
+const getFieldTargetIds = (fields: FormField[], formBaseId: string): Record<string, string> => {
+  return fields.reduce<Record<string, string>>((acc, field) => {
+    const fieldId = field.id || `${formBaseId}-${field.name}`;
+
+    acc[field.name] = fieldId;
+
+    if (field.type === "radio") {
+      field.radioOptions.forEach((option, index) => {
+        if (option.specifyOption) {
+          const optionId = option.id || `${fieldId}-option-${index + 1}`;
+
+          acc[option.specifyOption.name] = option.specifyOption.id || `${optionId}-specify`;
+        }
+      });
+    }
+
+    return acc;
+  }, {});
+};
+
 /**
  * Renders a form from field config.
  */
@@ -102,6 +122,7 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
 }: Props<T>) => {
   const generatedId = useId();
   const baseId = id || `form-${generatedId}`;
+  const fieldTargetIds = getFieldTargetIds(fields, baseId);
 
   const initialFieldValues = fields.reduce<Record<string, unknown>>((acc, field) => {
     if (field.initialValue !== undefined) {
@@ -138,7 +159,10 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
           noValidate
           data-testid={id ? `${id}-form` : undefined}
         >
-          <StyledFormErrorSummary id={id ? `${id}-error-summary` : undefined} />
+          <StyledFormErrorSummary
+            id={id ? `${id}-error-summary` : undefined}
+            fieldTargetIds={fieldTargetIds}
+          />
           {fields.map((field, index) => {
             const isAutoFocus = isValid && index === 0;
 
@@ -146,7 +170,9 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
               <StyledFormField
                 key={field.name}
                 {...field}
+                id={fieldTargetIds[field.name]}
                 autoFocus={isAutoFocus}
+                includeTestIds={Boolean(field.id)}
               />
             );
           })}

@@ -9,7 +9,7 @@ exports[`ExampleCheckboxForm > rendering > renders the snapshot 1`] = `
   >
     <div
       class="ons-field ons-u-mb-m"
-      id="checkbox-_r_3_"
+      id="form-_r_0_-questionnaire"
     >
       <fieldset
         class="ons-fieldset"

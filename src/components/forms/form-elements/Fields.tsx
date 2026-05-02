@@ -10,6 +10,8 @@ interface UnknownProps {
 interface RadioFieldsetProps extends UnknownProps {
   /** Element ID. */
   id?: string;
+  /** Whether field-specific test IDs should be rendered. */
+  includeTestIds?: boolean;
   /** Legend text. */
   description?: string;
   /** Field name. */
@@ -23,6 +25,8 @@ interface RadioFieldsetProps extends UnknownProps {
 interface CheckboxFieldsetProps extends UnknownProps {
   /** Element ID. */
   id?: string;
+  /** Whether field-specific test IDs should be rendered. */
+  includeTestIds?: boolean;
   /** Legend text. */
   description?: string;
   /** Checkbox options. */
@@ -36,6 +40,8 @@ interface CheckboxFieldsetProps extends UnknownProps {
 interface TextInputFieldsetProps extends InputHTMLAttributes<HTMLInputElement> {
   /** Element ID. */
   id?: string;
+  /** Whether field-specific test IDs should be rendered. */
+  includeTestIds?: boolean;
   /** Field name. */
   name: string;
   /** Hint text. */
@@ -52,6 +58,7 @@ const getOptionId = (baseId: string, index: number, explicitId?: string) =>
 /** Renders a radio group wired to Formik state. */
 export function RadioFieldset({
   id,
+  includeTestIds,
   description,
   name,
   radioOptions,
@@ -63,7 +70,7 @@ export function RadioFieldset({
   return (
     <div
       id={baseId}
-      data-testid={id ? `${id}-fieldset` : undefined}
+      data-testid={includeTestIds ? `${baseId}-fieldset` : undefined}
       className="ons-field ons-u-mb-m"
     >
       <fieldset className="ons-fieldset">
@@ -139,6 +146,7 @@ export function RadioFieldset({
 /** Renders a checkbox group. */
 export function CheckboxFieldset({
   id,
+  includeTestIds,
   description,
   checkboxOptions,
   name,
@@ -153,7 +161,7 @@ export function CheckboxFieldset({
   return (
     <div
       id={baseId}
-      data-testid={id ? `${id}-fieldset` : undefined}
+      data-testid={includeTestIds ? `${baseId}-fieldset` : undefined}
       className="ons-field ons-u-mb-m"
     >
       <fieldset className="ons-fieldset">
@@ -161,7 +169,7 @@ export function CheckboxFieldset({
         <div className="ons-grid">
           <div className="ons-grid__col ons-col-8@m ons-col-6@l">
             <button
-              data-testid={id ? `${id}-select-all` : undefined}
+              data-testid={includeTestIds ? `${baseId}-select-all` : undefined}
               type="button"
               className="ons-btn ons-u-mb-s ons-js-auto-selector ons-btn--small ons-btn--secondary"
               onClick={() => setFieldValue(name, isAllSelected ? [] : allValues)}
@@ -220,6 +228,7 @@ export function CheckboxFieldset({
 /** Renders a text-like input wired to Formik state. */
 export function TextInputFieldset({
   id,
+  includeTestIds,
   name,
   description,
   type = "text",
@@ -261,7 +270,7 @@ export function TextInputFieldset({
                 value={field.value ?? ""}
                 type={type}
                 aria-describedby={description ? hintId : undefined}
-                data-testid={id ? `${id}-input` : undefined}
+                data-testid={includeTestIds ? `${baseId}-input` : undefined}
                 {...props}
               />
             )}

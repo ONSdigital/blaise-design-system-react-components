@@ -5,12 +5,14 @@ import { useFormikContext } from "formik";
 export interface Props {
   /** Element ID. */
   id?: string;
+  /** Map of Formik field names to rendered element IDs. */
+  fieldTargetIds?: Record<string, string>;
 }
 
 /**
  * Renders a form error summary.
  */
-export const StyledFormErrorSummary = ({ id }: Props) => {
+export const StyledFormErrorSummary = ({ id, fieldTargetIds }: Props) => {
   const { errors, isValid, submitCount, isSubmitting } =
     useFormikContext<Record<string, unknown>>();
   const errorFocus = useRef<HTMLDivElement>(null);
@@ -60,7 +62,7 @@ export const StyledFormErrorSummary = ({ id }: Props) => {
               className="ons-list__item"
             >
               <a
-                href={`#${field}`}
+                href={`#${fieldTargetIds?.[field] || field}`}
                 className="ons-list__link ons-js-inpagelink"
               >
                 {String(errors[field as keyof typeof errors])}

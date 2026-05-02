@@ -109,6 +109,125 @@ describe("StyledForm", () => {
 
       expect(form).toHaveAttribute("id", "styled-form-custom");
     });
+
+    it("links error summary items to the rendered field IDs", async () => {
+      const { user } = setup(
+        <StyledForm
+          id="styled-form-custom"
+          fields={[
+            {
+              name: "Email",
+              type: "text",
+              validate: () => "Enter an email",
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorLink = await screen.findByRole("link", { name: "Enter an email" });
+      const input = screen.getByLabelText(/Email/i);
+
+      expect(errorLink).toHaveAttribute("href", "#styled-form-custom-Email");
+      expect(input).toHaveAttribute("id", "styled-form-custom-Email");
+    });
+
+    it("links error summary items to an explicit specifyOption ID when one is provided", async () => {
+      const { user } = setup(
+        <StyledForm
+          fields={[
+            {
+              id: "radio-group",
+              name: "RadioGroup",
+              type: "radio",
+              radioOptions: [
+                {
+                  value: "other",
+                  label: "Other",
+                  specifyOption: {
+                    id: "specify-custom-id",
+                    name: "RadioGroupSpecify",
+                    description: "Please specify",
+                    type: "text",
+                    validate: () => "Please specify a value",
+                  },
+                },
+              ],
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("radio", { name: "Other" }));
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorLink = await screen.findByRole("link", { name: "Please specify a value" });
+
+      expect(errorLink).toHaveAttribute("href", "#specify-custom-id");
+    });
+
+    it("links error summary items to the generated specifyOption ID when one is not provided", async () => {
+      const { user } = setup(
+        <StyledForm
+          fields={[
+            {
+              id: "radio-group",
+              name: "RadioGroup",
+              type: "radio",
+              radioOptions: [
+                {
+                  value: "other",
+                  label: "Other",
+                  specifyOption: {
+                    name: "RadioGroupSpecify",
+                    description: "Please specify",
+                    type: "text",
+                    validate: () => "Please specify a value",
+                  },
+                },
+              ],
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("radio", { name: "Other" }));
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorLink = await screen.findByRole("link", { name: "Please specify a value" });
+      const specifyInput = screen.getByRole("textbox", { name: "Please specify" });
+
+      expect(errorLink).toHaveAttribute("href", "#radio-group-option-1-specify");
+      expect(specifyInput).toHaveAttribute("id", "radio-group-option-1-specify");
+    });
+
+    it("links error summary items to an explicit field ID when one is provided", async () => {
+      const { user } = setup(
+        <StyledForm
+          fields={[
+            {
+              id: "email-address",
+              name: "Email",
+              type: "text",
+              validate: () => "Enter an email",
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorLink = await screen.findByRole("link", { name: "Enter an email" });
+      const input = screen.getByLabelText(/Email/i);
+
+      expect(errorLink).toHaveAttribute("href", "#email-address");
+      expect(input).toHaveAttribute("id", "email-address");
+    });
   });
 
   describe("test IDs", () => {

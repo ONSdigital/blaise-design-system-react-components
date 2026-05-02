@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "types": []
+  },
+  "exclude": [
+    "coverage",
+    "dist",
+    "storybook-static",
+    "node_modules",
+    "src/**/*.test.*",
+    "src/setupTests.ts",
+    "src/**/*.stories.*"
+  ],
+  "extends": "./tsconfig.json"
+}
