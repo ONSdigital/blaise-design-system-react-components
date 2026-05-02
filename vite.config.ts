@@ -4,28 +4,28 @@ import dts from "vite-plugin-dts";
 import { resolve } from "path";
 import pkg from "./package.json" with { type: "json" };
 
-const currentDir = import.meta.dirname;
+const EXCLUDE_PATTERNS = [
+  "src/mocks/**",
+  "**/*.test.ts",
+  "**/*.test.tsx",
+  "**/*.stories.tsx",
+  "**/setupTests.ts",
+];
 
 export default defineConfig({
   plugins: [
     react(),
     dts({
       bundleTypes: true,
-      exclude: [
-        "src/mocks/**",
-        "**/*.test.ts",
-        "**/*.test.tsx",
-        "**/*.stories.tsx",
-        "**/setupTests.ts",
-      ],
+      exclude: EXCLUDE_PATTERNS,
     }),
   ],
   build: {
     outDir: "dist",
     sourcemap: true,
     lib: {
-      entry: resolve(currentDir, "src/index.ts"),
-      name: "BlaiseDesignSystem",
+      entry: resolve(import.meta.dirname, "src/index.ts"),
+      formats: ["es", "cjs"],
       fileName: (format) => `index.${format === "es" ? "es.js" : "js"}`,
     },
     rollupOptions: {
@@ -34,14 +34,6 @@ export default defineConfig({
         ...Object.keys(pkg.dependencies || {}),
         "react/jsx-runtime",
       ],
-      output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-          "react/jsx-runtime": "jsxRuntime",
-          formik: "Formik",
-        },
-      },
     },
   },
   test: {
@@ -49,16 +41,14 @@ export default defineConfig({
     setupFiles: ["./src/setupTests.ts"],
     globals: true,
     clearMocks: true,
+    typecheck: {
+      tsconfig: "./tsconfig.test.json",
+    },
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
       include: ["src/**/*.{ts,tsx}"],
-      exclude: [
-        "src/mocks/**",
-        "src/**/*.test.{ts,tsx}",
-        "src/**/*.stories.tsx",
-        "src/setupTests.ts",
-      ],
+      exclude: EXCLUDE_PATTERNS,
     },
   },
 });

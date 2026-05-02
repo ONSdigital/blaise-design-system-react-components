@@ -24,16 +24,20 @@ Release versions can be found on this repos [GitHub releases](https://github.com
 
 This library requires the consuming application to provide its own React engine and Formik context. Ensure you have the following installed in your project's dependencies:
 
-* react (^19.0.0)
-* react-dom (^19.0.0)
-* formik (>=2.4.0)
+- react (^19.0.0)
+- react-dom (^19.0.0)
+- formik (>=2.4.0)
 
 ### Global CSS Requirement
 
 Before using components from this library, you must inject the ONS Design System's global CSS rules. Add the following `<link>` tag within the `<head>` of your React project's `public/index.html` file:
 
 ```html
-<link href="https://cdn.ons.gov.uk/sdc/design-system/60.0.3/css/main.css" rel="stylesheet" type="text/css">
+<link
+  href="https://cdn.ons.gov.uk/sdc/design-system/73.5.0/css/main.css"
+  rel="stylesheet"
+  type="text/css"
+/>
 ```
 
 Version `60.0.3` is the latest version of the ONS Design System CSS that is fully compatible with these React components. Newer versions of the ONS Design System CSS may introduce breaking changes, and our components would need to be refactored to support them. If you wish to use a newer version, please check the [ONS Design System repository](https://github.com/ONSdigital/design-system) for available releases and review any breaking changes before upgrading.
@@ -46,23 +50,38 @@ Example of using several components:
 
 ```tsx
 import { ReactElement } from "react";
-import { Header, ExternalLink, Button, Footer, ErrorBoundary, DefaultErrorBoundary } from "blaise-design-system-react-components";
+import {
+  Header,
+  ExternalLink,
+  Button,
+  Footer,
+  ErrorBoundary,
+  DefaultErrorBoundary,
+} from "blaise-design-system-react-components";
 
 export default function ExampleSite(): ReactElement {
-    function doStuff() {
-        // Do stuff
-    }
+  function doStuff() {
+    // Do stuff
+  }
 
-    return (
-        <DefaultErrorBoundary>
-            <Header title="Example Site" />
-            <ExternalLink text="Home" link="/home" ariaLabel="Return to homepage" />
-            <ErrorBoundary errorMessageText="Something went wrong with the button!">
-                <Button label="Jump over the moon" primary onClick={doStuff} />
-            </ErrorBoundary>
-            <Footer />
-        </DefaultErrorBoundary>
-    );
+  return (
+    <DefaultErrorBoundary>
+      <Header title="Example Site" />
+      <ExternalLink
+        text="Home"
+        link="/home"
+        ariaLabel="Return to homepage"
+      />
+      <ErrorBoundary errorMessageText="Something went wrong with the button!">
+        <Button
+          label="Jump over the moon"
+          primary
+          onClick={doStuff}
+        />
+      </ErrorBoundary>
+      <Footer />
+    </DefaultErrorBoundary>
+  );
 }
 ```
 
