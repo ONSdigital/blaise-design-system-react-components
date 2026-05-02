@@ -25,7 +25,7 @@
     "lint": "yarn typecheck && eslint . && prettier --check . && knip",
     "lint-fix": "eslint . --fix && prettier --write . && knip --fix",
     "prepack": "yarn build",
-    "spellcheck": "cspell \"**/*.{ts,tsx,json,yml,yaml,md}\"",
+    "spellcheck": "cspell \"**/*.{ts,tsx,json,jsonc,yml,yaml,md}\" --no-progress --no-summary",
     "storybook": "storybook dev -p 6006",
     "storybook-wsl": "CHOKIDAR_USEPOLLING=true storybook dev -p 6006",
     "test": "vitest run --coverage",

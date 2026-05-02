@@ -15,7 +15,7 @@ interface RadioFormValues {
 const formElements: FormField[] = [
   {
     name: "topping",
-    description: "Select your favorite topping",
+    description: "Select your favourite topping",
     type: "radio",
     validate: validateRadio,
     radioOptions: [

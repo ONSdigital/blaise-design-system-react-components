@@ -120,7 +120,7 @@ describe("ExampleCheckboxForm", () => {
       const fields = [
         {
           name: "topping",
-          description: "Select your favorite topping",
+          description: "Select your favourite topping",
           type: "checkbox" as const,
           initialValue: ["bacon", "pineapple"],
           checkboxOptions: [
