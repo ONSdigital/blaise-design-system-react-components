@@ -22,14 +22,15 @@
   "scripts": {
     "build": "vite build",
     "build-storybook": "storybook build -o storybook-static",
-    "lint": "tsc --project tsconfig.build.json --noEmit && eslint . && prettier --check . && knip",
+    "lint": "yarn typecheck && eslint . && prettier --check . && knip",
     "lint-fix": "eslint . --fix && prettier --write . && knip --fix",
     "prepack": "yarn build",
     "spellcheck": "cspell \"**/*.{ts,tsx,json,yml,yaml,md}\"",
     "storybook": "storybook dev -p 6006",
     "storybook-wsl": "CHOKIDAR_USEPOLLING=true storybook dev -p 6006",
     "test": "vitest run --coverage",
-    "test-watch": "vitest"
+    "test-watch": "vitest",
+    "typecheck": "tsc --noEmit && tsc --project tsconfig.build.json --noEmit"
   },
   "peerDependencies": {
     "formik": ">=2.4.0",
@@ -46,6 +47,7 @@
     "@storybook/addon-a11y": "^10.3.6",
     "@storybook/addon-docs": "^10.3.6",
     "@storybook/addon-links": "^10.3.6",
+    "@storybook/react": "^10.3.6",
     "@storybook/react-vite": "^10.3.6",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
