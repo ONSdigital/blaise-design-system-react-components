@@ -1,4 +1,4 @@
 {
   "entry": ["src/**/*.stories.{ts,tsx}", "src/**/*.test.{ts,tsx}", ".storybook/preview.{ts,tsx}"],
-  "project": ["src/**/*.{ts,tsx}", ".storybook/**/*.{ts,tsx}", "*.config.ts"],
+  "project": ["src/**/*.{ts,tsx}", ".storybook/**/*.{ts,tsx}", "*.config.ts"]
 }
