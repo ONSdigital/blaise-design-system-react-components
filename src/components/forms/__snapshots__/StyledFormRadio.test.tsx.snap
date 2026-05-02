@@ -17,7 +17,7 @@ exports[`ExampleRadioForm > rendering > renders the snapshot 1`] = `
         <legend
           class="ons-fieldset__legend ons-u-fs-r--b"
         >
-          Select your favorite topping
+          Select your favourite topping
         </legend>
         <div
           class="ons-grid"
