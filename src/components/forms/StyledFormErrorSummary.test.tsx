@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Form, Formik } from "formik";
-import { StyledFormErrorSummary, type Props } from "./StyledFormErrorSummary";
+
+import { type Props, StyledFormErrorSummary } from "./StyledFormErrorSummary";
 
 interface RenderOptions {
   props?: Props;

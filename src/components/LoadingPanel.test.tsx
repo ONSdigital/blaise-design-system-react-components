@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import { LoadingPanel, type Props } from "./LoadingPanel";
 
 const setup = (overrideProps: Partial<Props> = {}) => {

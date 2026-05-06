@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react";
+
 import {
-  SummaryGroupTable,
-  SummaryItemRow,
   GroupedSummary,
+  SummaryGroupTable,
   type SummaryGroupTableProps,
   type SummaryItemProps,
+  SummaryItemRow,
 } from "./Summary";
 
 const setup = (records: Record<string, string | number | boolean | null | undefined>) => {

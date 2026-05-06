@@ -1,6 +1,26 @@
-import { useState, ChangeEvent } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import { type ChangeEvent, useState } from "react";
+
 import { TextInput } from "./TextInput";
+
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import type React from "react";
+
+type TextInputArgs = React.ComponentProps<typeof TextInput>;
+
+const TextInputRender = (args: TextInputArgs) => {
+  const [currentValue, setCurrentValue] = useState(args.value || "");
+
+  return (
+    <TextInput
+      {...args}
+      value={currentValue}
+      onChange={(e: ChangeEvent<HTMLInputElement>, label?: string) => {
+        setCurrentValue(e.target.value);
+        args.onChange?.(e, label);
+      }}
+    />
+  );
+};
 
 const meta = {
   title: "Components/Text Input",
@@ -9,20 +29,7 @@ const meta = {
     onChange: { action: "changed" },
     onClick: { action: "clicked" },
   },
-  render: (args) => {
-    const [currentValue, setCurrentValue] = useState(args.value || "");
-
-    return (
-      <TextInput
-        {...args}
-        value={currentValue}
-        onChange={(e: ChangeEvent<HTMLInputElement>, label?: string) => {
-          setCurrentValue(e.target.value);
-          args.onChange?.(e, label);
-        }}
-      />
-    );
-  },
+  render: (args: TextInputArgs) => <TextInputRender {...args} />,
 } satisfies Meta<typeof TextInput>;
 
 export default meta;

@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { NotProductionWarning } from "./NotProductionWarning";
+
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   title: "Components/Not Production Warning",

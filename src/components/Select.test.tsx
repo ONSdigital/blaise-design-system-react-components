@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Select, type Props } from "./Select";
+
+import { type Props, Select } from "./Select";
 
 const defaultOptions = [
   { label: "Option 1", value: "1" },

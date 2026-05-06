@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import { PasswordInput, type Props } from "./PasswordInput";
 
 const setup = (overrideProps: Partial<Props> = {}) => {

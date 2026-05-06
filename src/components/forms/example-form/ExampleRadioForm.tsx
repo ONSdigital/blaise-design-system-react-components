@@ -1,6 +1,8 @@
-import { useState, ReactElement } from "react";
+import { type ReactElement, useState } from "react";
+
+import { type FormField, StyledForm } from "../StyledForm";
+
 import { validateRadio } from "./FormValidation";
-import { StyledForm, FormField } from "../StyledForm";
 
 /**
  * Values for the example radio form.

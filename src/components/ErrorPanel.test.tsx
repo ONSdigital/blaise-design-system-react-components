@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import { ErrorPanel, type Props } from "./ErrorPanel";
 
 const setup = (overrideProps: Partial<Props> = {}) => {

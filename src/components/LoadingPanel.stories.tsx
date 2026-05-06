@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { LoadingPanel } from "./LoadingPanel";
+
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   title: "Components/Loading Panel",

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useId } from "react";
+import { type ChangeEvent, useId, useState } from "react";
 
 /** Props for PasswordInput. */
 export interface Props {

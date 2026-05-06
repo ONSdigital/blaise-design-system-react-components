@@ -1,4 +1,4 @@
-import { ChangeEvent, useId } from "react";
+import { type ChangeEvent, useId } from "react";
 
 /** Select option. */
 interface Option {

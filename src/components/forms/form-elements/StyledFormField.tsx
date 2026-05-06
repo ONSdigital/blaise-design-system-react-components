@@ -1,9 +1,11 @@
-import { Fragment, ReactElement, useId } from "react";
 import { useFormikContext } from "formik";
-import { RadioFieldset, CheckboxFieldset, TextInputFieldset } from "./Fields";
+import { Fragment, type ReactElement, useId } from "react";
+
+import { CheckboxFieldset, RadioFieldset, TextInputFieldset } from "./Fields";
+
 import type {
-  RadioFieldset as RadioFieldsetType,
   CheckboxFieldset as CheckboxFieldsetType,
+  RadioFieldset as RadioFieldsetType,
 } from "../StyledForm";
 
 /** StyledFormField props. */

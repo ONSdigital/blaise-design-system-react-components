@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Accordion, type Props, type ExpandableContent } from "./Accordion";
+
+import { Accordion, type ExpandableContent, type Props } from "./Accordion";
 
 const defaultExpandables: ExpandableContent[] = [
   { title: "Foo", content: <p>foo</p>, id: "first-panel" },

@@ -1,6 +1,7 @@
-import { ReactElement, ReactNode } from "react";
-import { Data } from "react-csv/lib/core";
-import { formatTitle, formatKey } from "../utilities/textFormatting";
+import { type ReactElement, type ReactNode } from "react";
+import { type Data } from "react-csv/lib/core";
+
+import { formatKey, formatTitle } from "../utilities/textFormatting";
 
 /** Summary group. */
 export type SummaryGroup = {

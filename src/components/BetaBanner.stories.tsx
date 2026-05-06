@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { BetaBanner } from "./BetaBanner";
+
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   title: "Components/Beta Banner",

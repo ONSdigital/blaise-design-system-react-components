@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import { Collapsible, type Props } from "./Collapsible";
 
 const setup = (overrideProps: Partial<Props> = {}) => {
@@ -10,10 +11,12 @@ const setup = (overrideProps: Partial<Props> = {}) => {
     ...overrideProps,
   };
 
+  const { children, ...rest } = props;
+
   return {
     user: userEvent.setup(),
     props,
-    ...render(<Collapsible {...props} />),
+    ...render(<Collapsible {...rest}>{children}</Collapsible>),
   };
 };
 

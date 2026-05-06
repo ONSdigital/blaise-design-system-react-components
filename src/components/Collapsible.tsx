@@ -1,4 +1,4 @@
-import { ReactNode, useState, useId, SyntheticEvent, KeyboardEvent } from "react";
+import { type KeyboardEvent, type ReactNode, type SyntheticEvent, useId, useState } from "react";
 
 /** Props for Collapsible. */
 export interface Props {

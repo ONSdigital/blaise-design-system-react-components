@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import { BetaBanner, type Props } from "./BetaBanner";
 
 const setup = (props: Partial<Props> = {}) => {

@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import { ExternalLink, type Props } from "./ExternalLink";
 
 const setup = (overrideProps: Partial<Props> = {}) => {

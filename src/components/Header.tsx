@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { type ReactElement, type ReactNode } from "react";
 
 /** Header navigation item. */
 interface NavigationLinks {

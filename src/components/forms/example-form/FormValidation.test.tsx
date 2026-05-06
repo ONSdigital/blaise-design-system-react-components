@@ -1,11 +1,11 @@
 import {
+  validateCheckbox,
   validateEmail,
-  validateQuestionnaireName,
+  validateInterviewerID,
   validateName,
   validatePassword,
+  validateQuestionnaireName,
   validateRadio,
-  validateInterviewerID,
-  validateCheckbox,
 } from "./FormValidation";
 
 describe("validateQuestionnaireName", () => {

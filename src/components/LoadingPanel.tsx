@@ -1,4 +1,5 @@
-import { ReactElement } from "react";
+import { type ReactElement } from "react";
+
 import { Panel } from "./Panel";
 
 /** Props for LoadingPanel. */
@@ -42,16 +43,16 @@ export const LoadingPanel = ({
               height="100"
               fill="none"
             />
-            {[...Array(12)].map((_, i) => (
+            {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((rotation, i) => (
               <rect
-                key={i}
+                key={rotation}
                 x="46.5"
                 y="40"
                 width="7"
                 height="20"
                 rx="5"
                 ry="5"
-                transform={`rotate(${i * 30} 50 50) translate(0 -30)`}
+                transform={`rotate(${rotation} 50 50) translate(0 -30)`}
               >
                 <animate
                   attributeName="opacity"

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { TextInput, type Props } from "./TextInput";
+
+import { type Props, TextInput } from "./TextInput";
 
 const setup = (overrideProps: Partial<Props> = {}) => {
   const props: Props = {

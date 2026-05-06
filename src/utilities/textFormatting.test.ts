@@ -1,4 +1,4 @@
-import { formatTitle, capitaliseFirstLetter, formatKey } from "./textFormatting";
+import { capitaliseFirstLetter, formatKey, formatTitle } from "./textFormatting";
 
 describe("formatTitle", () => {
   describe("when given snake_case text", () => {

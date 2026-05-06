@@ -1,11 +1,13 @@
-import { useState, ReactElement } from "react";
+import { type ReactElement, useState } from "react";
+
+import { type FormField, StyledForm } from "../StyledForm";
+
 import {
   validateEmail,
-  validateQuestionnaireName,
   validateName,
   validatePassword,
+  validateQuestionnaireName,
 } from "./FormValidation";
-import { StyledForm, FormField } from "../StyledForm";
 
 /** Values for the example account form. */
 interface ExampleFormValues {

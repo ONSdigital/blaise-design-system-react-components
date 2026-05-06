@@ -1,6 +1,8 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import { DefaultErrorBoundary } from "./DefaultErrorBoundary";
+
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 /**
  * A utility component used to manually trigger an error for testing the boundary.

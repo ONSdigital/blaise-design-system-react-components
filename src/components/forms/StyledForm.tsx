@@ -1,8 +1,10 @@
-import { Form, Formik, FormikValues } from "formik";
+import { Form, Formik, type FormikValues } from "formik";
 import { useId } from "react";
+
 import { Button } from "../Button";
-import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
+
 import { StyledFormField } from "./form-elements/StyledFormField";
+import { StyledFormErrorSummary } from "./StyledFormErrorSummary";
 
 /** Radio follow-up input. */
 interface RadioSpecifyOption {

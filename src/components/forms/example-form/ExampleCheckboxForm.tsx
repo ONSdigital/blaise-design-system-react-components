@@ -1,5 +1,7 @@
-import { useState, ReactElement } from "react";
-import { StyledForm, FormField } from "../StyledForm";
+import { type ReactElement, useState } from "react";
+
+import { type FormField, StyledForm } from "../StyledForm";
+
 import { validateCheckbox } from "./FormValidation";
 
 /** Values for the example checkbox form. */

@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useId } from "react";
+import { type ReactElement, type ReactNode, useId } from "react";
 
 /** Props for Table. */
 export interface Props {
@@ -41,11 +41,11 @@ export const Table = ({
           {tableCaption && <caption className="ons-table__caption">{tableCaption}</caption>}
           <thead className="ons-table__head">
             <tr className="ons-table__row">
-              {columns.map((title: string, index: number) => (
+              {columns.map((title: string) => (
                 <th
                   scope="col"
                   className="ons-table__header ons-table__header--top"
-                  key={`${baseId}-header-${index}`}
+                  key={`${baseId}-header-${title}`}
                 >
                   <span className="ons-table__header-text">{title}</span>
                 </th>

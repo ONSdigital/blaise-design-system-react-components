@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import { Footer, type Props } from "./Footer";
 
 const setup = (props: Partial<Props> = {}) => {

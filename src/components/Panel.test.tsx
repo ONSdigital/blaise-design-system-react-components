@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import { Panel, type Props } from "./Panel";
 
 const setup = (overrideProps: Partial<Props> = {}) => {
@@ -8,9 +9,11 @@ const setup = (overrideProps: Partial<Props> = {}) => {
     ...overrideProps,
   };
 
+  const { children, ...rest } = props;
+
   return {
     props,
-    ...render(<Panel {...props} />),
+    ...render(<Panel {...rest}>{children}</Panel>),
   };
 };
 

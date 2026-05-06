@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { Table, type Props } from "./Table";
+
+import { type Props, Table } from "./Table";
 
 const setup = (overrideProps: Partial<Props> = {}) => {
   const props: Props = {
@@ -15,9 +16,11 @@ const setup = (overrideProps: Partial<Props> = {}) => {
     ...overrideProps,
   };
 
+  const { children, ...rest } = props;
+
   return {
     props,
-    ...render(<Table {...props} />),
+    ...render(<Table {...rest}>{children}</Table>),
   };
 };
 

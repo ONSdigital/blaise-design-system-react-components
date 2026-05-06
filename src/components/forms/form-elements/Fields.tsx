@@ -1,7 +1,9 @@
-import { Fragment, ReactElement, InputHTMLAttributes, useId } from "react";
-import { Field, FieldInputProps, useFormikContext } from "formik";
-import type { RadioFieldset, CheckboxFieldset } from "../StyledForm";
+import { Field, type FieldInputProps, useFormikContext } from "formik";
+import { Fragment, type InputHTMLAttributes, type ReactElement, useId } from "react";
+
 import { capitaliseFirstLetter } from "../../../utilities/textFormatting";
+
+import type { CheckboxFieldset, RadioFieldset } from "../StyledForm";
 
 interface UnknownProps {
   [key: string]: unknown;

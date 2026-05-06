@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEventHandler, CSSProperties, useId } from "react";
+import { type ChangeEvent, type CSSProperties, type MouseEventHandler, useId } from "react";
 
 /** Props for TextInput. */
 export interface Props {

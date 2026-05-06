@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ExampleCheckboxForm } from "./example-form/ExampleCheckboxForm";
-import { StyledForm } from "./StyledForm";
 import { Formik } from "formik";
+
+import { ExampleCheckboxForm } from "./example-form/ExampleCheckboxForm";
 import { CheckboxFieldset } from "./form-elements/Fields";
+import { StyledForm } from "./StyledForm";
 
 const setup = (component = <ExampleCheckboxForm />) => {
   return {

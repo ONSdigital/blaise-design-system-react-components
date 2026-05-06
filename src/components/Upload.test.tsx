@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Upload, type Props } from "./Upload";
+
+import { type Props, Upload } from "./Upload";
 
 const setup = (overrideProps: Partial<Props> = {}) => {
   const props: Props = {

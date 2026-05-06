@@ -1,5 +1,5 @@
-import { useEffect, useRef, useId } from "react";
 import { useFormikContext } from "formik";
+import { useEffect, useId, useRef } from "react";
 
 /** Props for StyledFormErrorSummary. */
 export interface Props {
@@ -15,7 +15,7 @@ export interface Props {
 export const StyledFormErrorSummary = ({ id, fieldTargetIds }: Props) => {
   const { errors, isValid, submitCount, isSubmitting } =
     useFormikContext<Record<string, unknown>>();
-  const errorFocus = useRef<HTMLDivElement>(null);
+  const errorFocusRef = useRef<HTMLDivElement>(null);
 
   const generatedId = useId();
   const baseId = id || `error-summary-${generatedId}`;
@@ -23,7 +23,7 @@ export const StyledFormErrorSummary = ({ id, fieldTargetIds }: Props) => {
 
   useEffect(() => {
     if (!isValid && submitCount > 0 && !isSubmitting) {
-      errorFocus.current?.focus();
+      errorFocusRef.current?.focus();
     }
   }, [submitCount, isValid, isSubmitting]);
 
@@ -39,7 +39,7 @@ export const StyledFormErrorSummary = ({ id, fieldTargetIds }: Props) => {
       aria-labelledby={alertId}
       role="alert"
       tabIndex={-1}
-      ref={errorFocus}
+      ref={errorFocusRef}
       className="ons-panel ons-panel--error"
       data-testid={id ? `${id}-panel` : undefined}
     >

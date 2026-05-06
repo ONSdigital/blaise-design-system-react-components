@@ -1,10 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { StyledForm } from "./StyledForm";
 import {
-  validateRadio,
   validateCheckbox,
   validateInterviewerID,
+  validateRadio,
 } from "./example-form/FormValidation";
+import { StyledForm } from "./StyledForm";
+
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   title: "Components/Forms/Styled Form",

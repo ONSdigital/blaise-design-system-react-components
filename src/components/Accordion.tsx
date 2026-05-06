@@ -1,4 +1,11 @@
-import { ReactNode, useState, KeyboardEvent, Dispatch, SetStateAction, useId } from "react";
+import {
+  type Dispatch,
+  type KeyboardEvent,
+  type ReactNode,
+  type SetStateAction,
+  useId,
+  useState,
+} from "react";
 
 /** Accordion panel. */
 export type ExpandableContent = {

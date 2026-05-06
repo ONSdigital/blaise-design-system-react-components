@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
+
 import { ErrorBoundary, type Props } from "./ErrorBoundary";
 
 const DodgyComponent = () => {
@@ -27,10 +28,12 @@ const setup = (overrideProps: Partial<Props> = {}) => {
     ...overrideProps,
   };
 
+  const { children, ...rest } = props;
+
   return {
     user: userEvent.setup(),
     props,
-    ...render(<ErrorBoundary {...props} />),
+    ...render(<ErrorBoundary {...rest}>{children}</ErrorBoundary>),
   };
 };
 

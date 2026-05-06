@@ -1,4 +1,5 @@
-import { Component, ErrorInfo, ReactNode } from "react";
+import { Component, type ErrorInfo, type ReactNode } from "react";
+
 import { Panel } from "../Panel";
 
 /** Props for ErrorBoundary. */

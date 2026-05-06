@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useId } from "react";
+import { type ReactElement, type ReactNode, useId } from "react";
 
 /** Props for Panel. */
 export interface Props {

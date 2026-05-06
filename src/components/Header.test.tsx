@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Header, Props } from "./Header";
+
+import { Header, type Props } from "./Header";
 
 const defaultNavigationLinks = [
   { id: "nav-home", label: "Home", endpoint: "/" },
