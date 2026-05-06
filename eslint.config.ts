@@ -1,25 +1,27 @@
 import js from "@eslint/js";
-import globals from "globals";
-import tseslint from "typescript-eslint";
-import storybook from "eslint-plugin-storybook";
-import pluginReact from "eslint-plugin-react";
-import pluginReactHooks from "eslint-plugin-react-hooks";
-import pluginImport from "eslint-plugin-import";
+import eslintReact from "@eslint-react/eslint-plugin";
 import configPrettier from "eslint-config-prettier";
+import pluginImportX from "eslint-plugin-import-x";
 import pluginJsonc from "eslint-plugin-jsonc";
+import storybook from "eslint-plugin-storybook";
+import globals from "globals";
 import * as jsoncParser from "jsonc-eslint-parser";
+import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["coverage/**", "dist/**", "storybook-static/**", "node_modules/**"] },
+  {
+    ignores: ["coverage/**", "dist/**", "storybook-static/**", "node_modules/**"],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  eslintReact.configs.recommended,
 
   {
     languageOptions: {
       ecmaVersion: "latest",
     },
     settings: {
-      "import/resolver": {
+      "import-x/resolver": {
         typescript: { project: "./tsconfig.eslint.json" },
       },
     },
@@ -38,7 +40,7 @@ export default tseslint.config(
       globals: { ...globals.browser },
     },
     plugins: {
-      import: pluginImport,
+      "import-x": pluginImportX,
     },
     rules: {
       "padding-line-between-statements": [
@@ -53,36 +55,63 @@ export default tseslint.config(
       ],
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          prefer: "type-imports",
+          fixStyle: "inline-type-imports",
+        },
+      ],
+      "sort-imports": [
+        "error",
+        {
+          ignoreCase: true,
+          ignoreDeclarationSort: true,
+          ignoreMemberSort: false,
+        },
+      ],
+      "import-x/order": [
+        "error",
+        {
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+            "object",
+            "type",
+          ],
+          "newlines-between": "always",
+          alphabetize: { order: "asc", caseInsensitive: true },
+        },
+      ],
       "no-unused-vars": "off",
       "no-constant-condition": "error",
       "no-unreachable": "error",
-      "import/no-extraneous-dependencies": [
+      "import-x/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          js: "never",
+          jsx: "never",
+          ts: "never",
+          tsx: "never",
+        },
+      ],
+      "import-x/no-extraneous-dependencies": [
         "error",
         {
           devDependencies: [
-            "src/**/*.test.ts",
-            "src/**/*.test.tsx",
-            "src/setupTests.ts",
             "*.config.ts",
+            "src/setupTests.ts",
+            "src/**/*.mock.*",
+            "src/**/*.test.*",
+            "src/**/*.stories.*",
           ],
         },
       ],
-    },
-  },
-
-  {
-    files: ["src/**/*.{ts,tsx}"],
-    settings: { react: { version: "19.0.0" } },
-    plugins: {
-      react: pluginReact,
-      "react-hooks": pluginReactHooks,
-    },
-    rules: {
-      ...pluginReact.configs.flat.recommended.rules,
-      ...pluginReactHooks.configs.recommended.rules,
-      "react/react-in-jsx-scope": "off",
-      "react/require-default-props": "off",
-      "react/no-unstable-nested-components": ["error", { allowAsProps: true }],
     },
   },
 
@@ -92,15 +121,21 @@ export default tseslint.config(
   },
 
   ...pluginJsonc.configs["flat/recommended-with-jsonc"],
+
   {
     files: ["**/*.json", "**/*.jsonc"],
     languageOptions: {
       parser: jsoncParser,
     },
     rules: {
-      "jsonc/sort-keys": ["error", { pathPattern: "^$", order: { type: "asc" } }],
+      "jsonc/sort-keys": [
+        "error",
+        { pathPattern: "^$", order: { type: "asc" } },
+        { pathPattern: "^compilerOptions$", order: { type: "asc" } },
+      ],
     },
   },
+
   {
     files: ["package.json"],
     rules: {
@@ -115,10 +150,10 @@ export default tseslint.config(
             "description",
             "author",
             "license",
+            "repository",
             "engines",
             "type",
             "types",
-            "main",
             "exports",
             "files",
             "sideEffects",
@@ -130,7 +165,7 @@ export default tseslint.config(
           ],
         },
         {
-          pathPattern: "^(?:dev|peer|optional|bundled)?[Dd]ependencies$|^scripts$|^exports$",
+          pathPattern: "^(?:dev|peer|optional|bundled)?[Dd]ependencies$|^scripts$",
           order: { type: "asc" },
         },
       ],

@@ -107,7 +107,7 @@ yarn install
 
 Check the [ONS Design System](https://service-manual.ons.gov.uk/design-system) for an existing or similar component. Use their HTML as a reference and convert it into a reusable React/TypeScript component.
 
-Write appropriate tests and Storybook stories. Place stories alongside the component (e.g., `Button.stories.tsx`). See [docs/introduction.mdx](docs/introduction.mdx) for story guidelines.
+Write appropriate tests and Storybook stories. Place stories alongside the component (e.g., `Button.stories.tsx`). See [src/StorybookIntroduction.mdx](src/StorybookIntroduction.mdx) for story guidelines.
 
 To run tests:
 

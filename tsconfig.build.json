@@ -3,13 +3,11 @@
     "types": []
   },
   "exclude": [
-    "coverage",
-    "dist",
-    "storybook-static",
-    "node_modules",
+    "src/**/*.mock.ts",
+    "src/**/*.stories.*",
     "src/**/*.test.*",
-    "src/setupTests.ts",
-    "src/**/*.stories.*"
+    "src/**/*.types.ts",
+    "src/setupTests.ts"
   ],
   "extends": "./tsconfig.json"
 }
