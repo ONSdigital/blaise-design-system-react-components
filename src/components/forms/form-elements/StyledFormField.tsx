@@ -56,9 +56,7 @@ const renderFieldError = (
   );
 };
 
-/**
- * Renders a field from StyledForm config.
- */
+/** Renders a field from StyledForm config. */
 export const StyledFormField = ({
   id,
   includeTestIds,

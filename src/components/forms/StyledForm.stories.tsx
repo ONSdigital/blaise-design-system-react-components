@@ -33,7 +33,7 @@ export const Default: Story = {
     },
     fields: [
       {
-        name: "Survey TLA",
+        name: "Survey",
         description: "Select survey",
         type: "radio",
         initialValue: "undefined",
@@ -61,9 +61,10 @@ export const Default: Story = {
         initialValue: [],
         validate: validateCheckbox,
         checkboxOptions: [
-          { id: "questionnaire-lms", value: "lms", label: "LMS" },
-          { id: "questionnaire-opn", value: "opn", label: "OPN" },
-          { id: "questionnaire-dst", value: "dst", label: "DST" },
+          { id: "questionnaire-lms2601_aa1", value: "lms2601_aa1", label: "LMS2601_AA1" },
+          { id: "questionnaire-lms2602_aa1", value: "lms2602_aa1", label: "LMS2602_AA1" },
+          { id: "questionnaire-opn2601a", value: "opn2601a", label: "OPN2601A" },
+          { id: "questionnaire-opn2602a", value: "opn2602a", label: "OPN2602A" },
         ],
       },
       {

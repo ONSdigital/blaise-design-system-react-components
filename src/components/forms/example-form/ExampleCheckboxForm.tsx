@@ -23,9 +23,7 @@ const formElements: FormField[] = [
   },
 ];
 
-/**
- * Renders the example checkbox form.
- */
+/** Renders the example checkbox form. */
 export const ExampleCheckboxForm = (): ReactElement => {
   const [formStatus, setFormStatus] = useState<string>("");
 

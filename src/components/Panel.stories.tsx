@@ -26,7 +26,7 @@ export const Success: Story = {
     id: "panel-success",
     status: "success",
     bigIcon: true,
-    children: <p>Information has been successfully submitted</p>,
+    children: <p>Some message in a success panel</p>,
   },
 };
 

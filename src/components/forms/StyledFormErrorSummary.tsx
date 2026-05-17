@@ -9,9 +9,7 @@ export interface Props {
   fieldTargetIds?: Record<string, string>;
 }
 
-/**
- * Renders a form error summary.
- */
+/** Renders a form error summary. */
 export const StyledFormErrorSummary = ({ id, fieldTargetIds }: Props) => {
   const { errors, isValid, submitCount, isSubmitting } =
     useFormikContext<Record<string, unknown>>();

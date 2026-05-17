@@ -91,19 +91,13 @@ Storybook automatically pulls TSDoc comments from your components and props into
 - Add TSDoc comments above your component and its props:
 
 ```tsx
-/**
- * A button component for user actions.
- */
+/** A button component for user actions. */
 export function Button(props: Props) { ... }
 
 export interface Props {
-  /**
-   * The label to display inside the button.
-   */
+  /** The label to display inside the button. */
   label: string;
-  /**
-   * Whether the button is styled as primary.
-   */
+  /** Whether the button is styled as primary. */
   primary?: boolean;
   // ...other props
 }

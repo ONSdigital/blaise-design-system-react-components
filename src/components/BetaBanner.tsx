@@ -8,9 +8,7 @@ export interface Props {
   id?: string;
 }
 
-/**
- * Renders a beta banner.
- */
+/** Renders a beta banner. */
 export const BetaBanner = ({
   feedbackLink = "https://ons.service-now.com/",
   id,

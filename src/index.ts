@@ -6,6 +6,8 @@ export { Button } from "./components/Button";
 
 export { Collapsible } from "./components/Collapsible";
 
+export { ComboBox } from "./components/ComboBox";
+
 export { DefaultErrorBoundary } from "./components/error-handling/DefaultErrorBoundary";
 
 export { ErrorBoundary } from "./components/error-handling/ErrorBoundary";

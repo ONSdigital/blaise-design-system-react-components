@@ -46,9 +46,7 @@ const formElements: FormField[] = [
   },
 ];
 
-/**
- * Renders the example account form.
- */
+/** Renders the example account form. */
 export const ExampleForm = (): ReactElement => {
   const [formStatus, setFormStatus] = useState<string>("");
 

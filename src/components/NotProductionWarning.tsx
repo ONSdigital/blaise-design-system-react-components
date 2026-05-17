@@ -6,9 +6,7 @@ export interface Props {
   id?: string;
 }
 
-/**
- * Renders the non-production warning banner.
- */
+/** Renders the non-production warning banner. */
 export const NotProductionWarning = ({ id }: Props = {}): ReactElement => {
   return (
     <div

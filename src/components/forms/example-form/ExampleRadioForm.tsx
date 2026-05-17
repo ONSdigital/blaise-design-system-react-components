@@ -4,9 +4,7 @@ import { type FormField, StyledForm } from "../StyledForm";
 
 import { validateRadio } from "./FormValidation";
 
-/**
- * Values for the example radio form.
- */
+/** Values for the example radio form. */
 interface RadioFormValues {
   topping: string;
   options: string;
@@ -51,9 +49,7 @@ const formElements: FormField[] = [
   },
 ];
 
-/**
- * Renders the example radio form.
- */
+/** Renders the example radio form. */
 export const ExampleRadioForm = (): ReactElement => {
   const [formStatus, setFormStatus] = useState<string>("");
 

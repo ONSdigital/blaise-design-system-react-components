@@ -113,9 +113,7 @@ const getFieldTargetIds = (fields: FormField[], formBaseId: string): Record<stri
   }, {});
 };
 
-/**
- * Renders a form from field config.
- */
+/** Renders a form from field config. */
 export const StyledForm = <T extends FormikValues = FormikValues>({
   id,
   fields,
