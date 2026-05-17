@@ -59,3 +59,33 @@ export const Default: Story = {
     groupedSummary: tmntSummary,
   },
 };
+
+const tmntPreambleSummary = new GroupedSummary([
+  {
+    title: "Leonardo",
+    preamble: <p>Leonardo is the leader of the group. Review his details below.</p>,
+    records: {
+      Colour: "Blue",
+      Weapon: "Katana",
+      Role: "Leader",
+      Personality: "Disciplined",
+    },
+  },
+  {
+    title: "Michelangelo",
+    preamble: <p>Michelangelo is the fun-loving member of the group. Review his details below.</p>,
+    records: {
+      Colour: "Orange",
+      Weapon: "Nunchaku",
+      Role: "Party Dude",
+      Personality: "Fun-loving",
+    },
+  },
+]);
+
+export const Preamble: Story = {
+  args: {
+    id: "summary-preamble",
+    groupedSummary: tmntPreambleSummary,
+  },
+};

@@ -6,6 +6,7 @@ import {
   type SummaryGroupTableProps,
   type SummaryItemProps,
   SummaryItemRow,
+  type SummaryRenderableRecord,
 } from "./Summary";
 
 const setup = (records: Record<string, string | number | boolean | null | undefined>) => {
@@ -37,6 +38,65 @@ describe("SummaryGroupTable", () => {
 
       expect(screen.getByText("Age")).toBeVisible();
       expect(screen.getByText("30")).toBeVisible();
+    });
+
+    it("renders a SummaryRenderableRecord using its display value", () => {
+      const renderable: SummaryRenderableRecord = {
+        display: <strong data-testid="renderable-display">Rich Value</strong>,
+        csv: "Rich Value",
+      };
+
+      const summaryGroup = new GroupedSummary([
+        { title: "Test Group", records: { Label: renderable } },
+      ]);
+
+      render(
+        <SummaryGroupTable
+          id="summary"
+          groupedSummary={summaryGroup}
+        />,
+      );
+
+      expect(screen.getByTestId("renderable-display")).toBeVisible();
+      expect(screen.getByTestId("renderable-display")).toHaveTextContent("Rich Value");
+    });
+
+    it("applies an additional className to the root element", () => {
+      const summaryGroup = new GroupedSummary([{ title: "Test Group", records: { Key: "Val" } }]);
+      const { container } = render(
+        <SummaryGroupTable
+          className="ons-u-mt-m"
+          groupedSummary={summaryGroup}
+        />,
+      );
+
+      expect(container.firstChild).toHaveClass("ons-summary", "ons-u-mt-m");
+    });
+
+    it("uses rowsId as the dl id when provided", () => {
+      const summaryGroup = new GroupedSummary([
+        { title: "Test Group", records: { Key: "Val" }, rowsId: "custom-dl-id" },
+      ]);
+
+      render(
+        <SummaryGroupTable
+          id="summary"
+          groupedSummary={summaryGroup}
+        />,
+      );
+
+      expect(document.getElementById("custom-dl-id")).toBeInTheDocument();
+    });
+
+    it("renders a preamble-only group without a dl", () => {
+      const summaryGroup = new GroupedSummary([
+        { title: "Info", preamble: <p data-testid="preamble-text">Some context.</p> },
+      ]);
+
+      render(<SummaryGroupTable groupedSummary={summaryGroup} />);
+
+      expect(screen.getByTestId("preamble-text")).toBeVisible();
+      expect(document.querySelector("dl")).not.toBeInTheDocument();
     });
   });
 
@@ -124,6 +184,33 @@ describe("SummaryGroupTable", () => {
           Notes: null,
         },
       ]);
+    });
+
+    it("extracts the csv value from a SummaryRenderableRecord", () => {
+      const summary = new GroupedSummary([
+        {
+          title: "Personal",
+          records: {
+            Name: { display: <strong>Alice</strong>, csv: "Alice" },
+            NoExport: { display: <span>hidden</span> },
+          },
+        },
+      ]);
+
+      const csvData = summary.csv();
+
+      expect(csvData).toEqual([{ Name: "Alice", NoExport: undefined }]);
+    });
+
+    it("skips preamble-only groups with no records", () => {
+      const summary = new GroupedSummary([
+        { title: "Intro", preamble: <p>Some context.</p> },
+        { title: "Data", records: { Key: "Value" } },
+      ]);
+
+      const csvData = summary.csv();
+
+      expect(csvData).toEqual([{ Key: "Value" }]);
     });
   });
 });
