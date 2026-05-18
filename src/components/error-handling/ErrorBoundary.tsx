@@ -14,7 +14,6 @@ export interface Props {
 
 interface State {
   hasError: boolean;
-  errorInfo: ErrorInfo | null;
 }
 
 /** Renders a fallback panel when children throw. */
@@ -25,13 +24,9 @@ export class ErrorBoundary extends Component<Props, State> {
 
   state: State = {
     hasError: false,
-    errorInfo: null,
   };
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    this.setState({
-      errorInfo,
-    });
     console.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 

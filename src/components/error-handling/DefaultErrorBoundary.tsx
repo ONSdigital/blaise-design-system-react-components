@@ -10,32 +10,25 @@ export interface Props {
 
 interface State {
   hasError: boolean;
-  error?: Error;
-  errorInfo: ErrorInfo | null;
 }
 
 let defaultErrorBoundaryInstance = 0;
 
 /** Renders the page fallback when children throw. */
 export class DefaultErrorBoundary extends Component<Props, State> {
-  static getDerivedStateFromError(error: Error): Partial<State> {
+  static getDerivedStateFromError(_error: Error): Partial<State> {
     return {
       hasError: true,
-      error,
     };
   }
 
   state: State = {
     hasError: false,
-    errorInfo: null,
   };
 
   private readonly generatedMainContentId = `default-error-boundary-main-content-${++defaultErrorBoundaryInstance}`;
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    this.setState({
-      errorInfo,
-    });
     console.error("DefaultErrorBoundary caught an error:", error, errorInfo);
   }
 
