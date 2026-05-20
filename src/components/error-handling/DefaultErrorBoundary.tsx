@@ -6,13 +6,13 @@ export interface Props {
   children: ReactNode;
   /** Element ID. */
   id?: string;
+  /** Optional error reporter for host applications. */
+  onError?: (error: Error, errorInfo: ErrorInfo) => void;
 }
 
 interface State {
   hasError: boolean;
 }
-
-let defaultErrorBoundaryInstance = 0;
 
 /** Renders the page fallback when children throw. */
 export class DefaultErrorBoundary extends Component<Props, State> {
@@ -26,9 +26,17 @@ export class DefaultErrorBoundary extends Component<Props, State> {
     hasError: false,
   };
 
-  private readonly generatedMainContentId = `default-error-boundary-main-content-${++defaultErrorBoundaryInstance}`;
+  private readonly generatedMainContentId = `default-error-boundary-main-content-${crypto.randomUUID()}`;
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    const { onError } = this.props;
+
+    if (onError) {
+      onError(error, errorInfo);
+
+      return;
+    }
+
     console.error("DefaultErrorBoundary caught an error:", error, errorInfo);
   }
 

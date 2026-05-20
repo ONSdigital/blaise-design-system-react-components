@@ -23,7 +23,7 @@ export const Table = ({
   scrollableLabel = "Table",
 }: Props): ReactElement => {
   const generatedId = useId();
-  const baseId = id || `table-${generatedId}`;
+  const baseId = id ?? `table-${generatedId}`;
 
   return (
     <div className="ons-table-scrollable ons-table-scrollable--on">

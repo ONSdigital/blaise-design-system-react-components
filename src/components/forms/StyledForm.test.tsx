@@ -231,6 +231,14 @@ describe("StyledForm", () => {
     });
   });
 
+  describe("error handling", () => {
+    it("throws when neither onSubmit nor onSubmitFunction is provided", () => {
+      expect(() =>
+        render(<StyledForm {...({ fields: minimalFields } as unknown as Props)} />),
+      ).toThrow("StyledForm requires an onSubmit handler.");
+    });
+  });
+
   describe("test IDs", () => {
     it("does not apply a data-testid to the form when no ID is provided", () => {
       const { container } = setup(

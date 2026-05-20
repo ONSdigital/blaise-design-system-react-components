@@ -11,7 +11,7 @@ export interface Props {
   /** Called when the value changes. */
   onChange?: (e: ChangeEvent<HTMLInputElement>, value: string) => void;
   /** Controlled input value. */
-  value: string;
+  value?: string;
   /** Whether to focus the input on mount. */
   autoFocus?: boolean;
 }
@@ -27,7 +27,7 @@ export const PasswordInput = ({
 }: Props) => {
   const [passwordHidden, setPasswordHidden] = useState(true);
   const generatedId = useId();
-  const baseId = id || `password-input-${generatedId}`;
+  const baseId = id ?? `password-input-${generatedId}`;
 
   const togglePassword = () => setPasswordHidden((prev) => !prev);
 
@@ -71,7 +71,7 @@ export const PasswordInput = ({
         type={passwordHidden ? "password" : "text"}
         id={baseId}
         className="ons-input ons-input--text ons-input-type__input ons-u-mt-2xs"
-        value={value}
+        value={value ?? ""}
         onChange={handleChange}
         autoFocus={autoFocus}
         autoComplete="new-password"

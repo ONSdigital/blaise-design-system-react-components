@@ -41,10 +41,6 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
-  "dependencies": {
-    "@types/react-csv": "^1.1.10",
-    "react-csv": "^2.2.2"
-  },
   "devDependencies": {
     "@eslint-react/eslint-plugin": "^5.8.1",
     "@eslint/js": "^10.0.1",

@@ -82,5 +82,19 @@ describe("ErrorBoundary", () => {
 
       expect(panelElement).toBeInTheDocument();
     });
+
+    it("calls the provided error handler instead of logging to the console", async () => {
+      const onError = vi.fn();
+      const { user } = setup({ children: <DodgyComponent />, onError });
+
+      await user.click(screen.getByRole("button", { name: /click me/i }));
+
+      expect(onError).toHaveBeenCalledWith(expect.any(Error), expect.anything());
+      expect(consoleErrorSpy).not.toHaveBeenCalledWith(
+        "ErrorBoundary caught an error:",
+        expect.any(Error),
+        expect.anything(),
+      );
+    });
   });
 });

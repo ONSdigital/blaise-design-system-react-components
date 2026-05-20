@@ -14,7 +14,7 @@ export interface Props {
 export const Collapsible = ({ children, title, id }: Props) => {
   const [panelOpen, setPanelOpen] = useState<boolean>(false);
   const generatedId = useId();
-  const baseId = id || `collapsible-${generatedId}`;
+  const baseId = id ?? `collapsible-${generatedId}`;
 
   const handleToggle = (event: SyntheticEvent) => {
     event.preventDefault();

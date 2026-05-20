@@ -1,5 +1,7 @@
 import { type ReactElement, type ReactNode } from "react";
 
+import { getSafeHref } from "../utilities/url";
+
 /** Header navigation item. */
 interface NavigationLinks {
   /** Element ID. */
@@ -50,7 +52,7 @@ export const Header = ({
       <a
         className="ons-navigation__link"
         id={linkId}
-        href={endpoint}
+        href={getSafeHref(endpoint)}
       >
         {label}
       </a>

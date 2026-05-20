@@ -58,8 +58,11 @@ describe("ExampleRadioForm", () => {
       await user.click(otherRadio);
 
       const specifyInput = screen.getByLabelText(/Please specify/i);
+      const otherInputWrapper = document.getElementById(
+        `${otherRadio.getAttribute("id")}-other-wrap`,
+      );
 
-      expect(specifyInput).toBeVisible();
+      expect(otherInputWrapper).toHaveClass("ons-radio__other--open");
 
       await user.type(specifyInput, "Pineapple");
 
@@ -68,6 +71,18 @@ describe("ExampleRadioForm", () => {
       expect(
         await screen.findByText(/Form submitted. Topping: bacon. Option: other \(Pineapple\)/i),
       ).toBeVisible();
+    });
+
+    it("keeps the conditional text input collapsed until its radio is selected", () => {
+      setup();
+
+      const otherRadio = screen.getByLabelText(/^Other$/i);
+      const otherInputWrapper = document.getElementById(
+        `${otherRadio.getAttribute("id")}-other-wrap`,
+      );
+
+      expect(otherInputWrapper).not.toHaveClass("ons-radio__other--open");
+      expect(otherInputWrapper).toHaveAttribute("aria-hidden", "true");
     });
   });
 

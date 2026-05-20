@@ -1,16 +1,11 @@
 import { type ReactElement, useState } from "react";
 
-import { type FormField, StyledForm } from "../StyledForm";
+import { type FormField, type FormValuesForFields, StyledForm } from "../StyledForm";
 
 import { validateCheckbox } from "./FormValidation";
 
-/** Values for the example checkbox form. */
-interface CheckboxFormValues {
-  questionnaire: string[];
-}
-
 /** Field config for the example checkbox form. */
-const formElements: FormField[] = [
+const formElements = [
   {
     name: "questionnaire",
     description: "Select questionnaires",
@@ -21,7 +16,10 @@ const formElements: FormField[] = [
       { id: "opn", value: "opn", label: "OPN" },
     ],
   },
-];
+] as const satisfies readonly FormField[];
+
+/** Values for the example checkbox form. */
+type CheckboxFormValues = FormValuesForFields<typeof formElements>;
 
 /** Renders the example checkbox form. */
 export const ExampleCheckboxForm = (): ReactElement => {
@@ -51,9 +49,9 @@ export const ExampleCheckboxForm = (): ReactElement => {
           </div>
         </div>
       )}
-      <StyledForm<CheckboxFormValues>
+      <StyledForm
         fields={formElements}
-        onSubmitFunction={onFormSubmission}
+        onSubmit={onFormSubmission}
         submitLabel="Submit Selection"
       />
     </>

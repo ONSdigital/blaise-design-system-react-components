@@ -1,6 +1,21 @@
-import { type ReactElement } from "react";
+import { type CSSProperties, type ReactElement } from "react";
 
 import { Panel } from "./Panel";
+
+const loadingPanelContentStyles: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+};
+
+const loadingIconWrapperStyles: CSSProperties = {
+  display: "flex",
+  marginRight: "1rem",
+};
+
+const loadingIconStyles: CSSProperties = {
+  width: "30px",
+  height: "30px",
+};
 
 /** Props for LoadingPanel. */
 export interface Props {
@@ -23,12 +38,12 @@ export const LoadingPanel = ({
   return (
     <Panel id={id}>
       <div
-        className="ons-panel__body ons-u-pt-xs ons-u-pb-xs"
-        style={{ display: "flex", alignItems: "center" }}
+        className="ons-u-pt-xs ons-u-pb-xs"
+        style={loadingPanelContentStyles}
       >
-        <div style={{ display: "flex", marginRight: "1rem" }}>
+        <div style={loadingIconWrapperStyles}>
           <svg
-            style={{ width: "30px", height: "30px" }}
+            style={loadingIconStyles}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 100 100"
             preserveAspectRatio="xMidYMid"

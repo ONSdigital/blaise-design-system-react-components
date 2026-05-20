@@ -1,15 +1,13 @@
 import { Field, type FieldInputProps, useFormikContext } from "formik";
-import { Fragment, type InputHTMLAttributes, type ReactElement, useId } from "react";
+import { type InputHTMLAttributes, type ReactElement, useId } from "react";
 
 import { capitaliseFirstLetter } from "../../../utilities/textFormatting";
 
 import type { CheckboxFieldset, RadioFieldset } from "../StyledForm";
 
-interface UnknownProps {
-  [key: string]: unknown;
-}
+type TextLikeFieldType = "text" | "password" | "number" | "date" | "email";
 
-interface RadioFieldsetProps extends UnknownProps {
+interface RadioFieldsetProps {
   /** Element ID. */
   id?: string;
   /** Whether field-specific test IDs should be rendered. */
@@ -19,12 +17,14 @@ interface RadioFieldsetProps extends UnknownProps {
   /** Field name. */
   name: string;
   /** Radio options. */
-  radioOptions?: RadioFieldset[];
+  radioOptions?: readonly RadioFieldset[];
   /** Whether to focus the first option. */
   autoFocus: boolean;
+  /** Validation function. */
+  validate?: (value: string) => string | undefined;
 }
 
-interface CheckboxFieldsetProps extends UnknownProps {
+interface CheckboxFieldsetProps {
   /** Element ID. */
   id?: string;
   /** Whether field-specific test IDs should be rendered. */
@@ -32,11 +32,13 @@ interface CheckboxFieldsetProps extends UnknownProps {
   /** Legend text. */
   description?: string;
   /** Checkbox options. */
-  checkboxOptions?: CheckboxFieldset[];
+  checkboxOptions?: readonly CheckboxFieldset[];
   /** Field name. */
   name: string;
   /** Whether to focus the first option. */
   autoFocus: boolean;
+  /** Validation function. */
+  validate?: (value: string[]) => string | undefined;
 }
 
 interface TextInputFieldsetProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -49,7 +51,7 @@ interface TextInputFieldsetProps extends InputHTMLAttributes<HTMLInputElement> {
   /** Hint text. */
   description?: string;
   /** Input type. */
-  type?: string;
+  type?: TextLikeFieldType;
   /** Validation function. */
   validate?: (value: string) => string | undefined;
 }
@@ -64,10 +66,12 @@ export function RadioFieldset({
   description,
   name,
   radioOptions,
-  ...props
+  autoFocus,
+  validate,
 }: RadioFieldsetProps): ReactElement {
+  const { values } = useFormikContext<Record<string, string>>();
   const generatedId = useId();
-  const baseId = id || `radio-${generatedId}`;
+  const baseId = id ?? `radio-${generatedId}`;
 
   return (
     <div
@@ -81,59 +85,63 @@ export function RadioFieldset({
           <div className="ons-grid__col ons-col-8@m ons-col-6@l">
             <div className="ons-input-items">
               <div className="ons-radios__items">
-                {radioOptions?.map((o, i) => {
-                  const optionId = getOptionId(baseId, i, o.id);
-                  const specifyId = o.specifyOption?.id || `${optionId}-specify`;
+                {radioOptions?.map((option, index) => {
+                  const optionId = getOptionId(baseId, index, option.id);
+                  const specifyId = option.specifyOption?.id || `${optionId}-specify`;
+                  const isSpecifyOptionOpen = values[name] === option.value;
 
                   return (
-                    <Fragment key={o.id || `${o.value}-${i}`}>
-                      <span className="ons-radios__item">
-                        <span className="ons-radio">
-                          <Field
-                            type="radio"
-                            id={optionId}
-                            name={name}
-                            value={o.value}
-                            className="ons-radio__input"
-                            {...props}
-                            autoFocus={props.autoFocus && i === 0}
-                          />
-                          <label
-                            className={`ons-radio__label ${o.description ? "ons-label--with-description" : ""}`}
-                            htmlFor={optionId}
-                          >
-                            {o.label}
-                            {o.description && (
-                              <span className="ons-label__description ons-radio__label--with-description">
-                                {o.description}
-                              </span>
-                            )}
-                          </label>
-                          {o.specifyOption && (
-                            <span
-                              className="ons-radio__other ons-radio__other--open"
-                              id={`${optionId}-other-wrap`}
-                            >
-                              <label
-                                className="ons-label ons-u-fs-s--b"
-                                htmlFor={specifyId}
-                              >
-                                {o.specifyOption.description}
-                              </label>
-                              <Field
-                                type={o.specifyOption.type}
-                                id={specifyId}
-                                name={o.specifyOption.name}
-                                validate={o.specifyOption.validate}
-                                min={o.specifyOption.min}
-                                className="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
-                              />
+                    <div
+                      key={option.id || `${option.value}-${index}`}
+                      className="ons-radios__item"
+                    >
+                      <span className="ons-radio">
+                        <Field
+                          type="radio"
+                          id={optionId}
+                          name={name}
+                          value={option.value}
+                          validate={validate}
+                          className="ons-radio__input"
+                          autoFocus={autoFocus && index === 0}
+                        />
+                        <label
+                          className={`ons-radio__label ${option.description ? "ons-label--with-description" : ""}`}
+                          htmlFor={optionId}
+                        >
+                          {option.label}
+                          {option.description && (
+                            <span className="ons-label__description ons-radio__label--with-description">
+                              {option.description}
                             </span>
                           )}
-                        </span>
+                        </label>
+                        {option.specifyOption && (
+                          <span
+                            className={`ons-radio__other ${isSpecifyOptionOpen ? "ons-radio__other--open" : ""}`}
+                            id={`${optionId}-other-wrap`}
+                            aria-hidden={!isSpecifyOptionOpen}
+                          >
+                            <label
+                              className="ons-label ons-u-fs-s--b"
+                              htmlFor={specifyId}
+                            >
+                              {option.specifyOption.description}
+                            </label>
+                            <Field
+                              type={option.specifyOption.type}
+                              id={specifyId}
+                              name={option.specifyOption.name}
+                              validate={
+                                isSpecifyOptionOpen ? option.specifyOption.validate : undefined
+                              }
+                              min={option.specifyOption.min}
+                              className="ons-input ons-input--text ons-input-type__input ons-input--w-auto"
+                            />
+                          </span>
+                        )}
                       </span>
-                      <br />
-                    </Fragment>
+                    </div>
                   );
                 })}
               </div>
@@ -152,13 +160,14 @@ export function CheckboxFieldset({
   description,
   checkboxOptions,
   name,
-  ...props
+  autoFocus,
+  validate,
 }: CheckboxFieldsetProps): ReactElement {
   const { values, setFieldValue } = useFormikContext<Record<string, string[]>>();
-  const allValues = (checkboxOptions || []).map((o) => o.value);
+  const allValues = (checkboxOptions || []).map((option) => option.value);
   const isAllSelected = allValues.length > 0 && allValues.every((v) => values[name]?.includes(v));
   const generatedId = useId();
-  const baseId = id || `checkbox-${generatedId}`;
+  const baseId = id ?? `checkbox-${generatedId}`;
 
   return (
     <div
@@ -185,37 +194,37 @@ export function CheckboxFieldset({
             </button>
             <div className="ons-input-items">
               <div className="ons-checkboxes__items">
-                {checkboxOptions?.map((o, i) => {
-                  const optionId = getOptionId(baseId, i, o.id);
+                {checkboxOptions?.map((option, index) => {
+                  const optionId = getOptionId(baseId, index, option.id);
 
                   return (
-                    <Fragment key={o.id || `${o.value}-${i}`}>
-                      <span className="ons-checkboxes__item">
-                        <span className="ons-checkbox">
-                          <Field
-                            type="checkbox"
-                            id={optionId}
-                            name={name}
-                            value={o.value}
-                            className="ons-checkbox__input"
-                            {...props}
-                            autoFocus={props.autoFocus && i === 0}
-                          />
-                          <label
-                            className={`ons-checkbox__label ${o.description ? "ons-label--with-description" : ""}`}
-                            htmlFor={optionId}
-                          >
-                            {o.label}
-                            {o.description && (
-                              <span className="ons-label__description ons-checkbox__label--with-description">
-                                {o.description}
-                              </span>
-                            )}
-                          </label>
-                        </span>
+                    <div
+                      key={option.id || `${option.value}-${index}`}
+                      className="ons-checkboxes__item"
+                    >
+                      <span className="ons-checkbox">
+                        <Field
+                          type="checkbox"
+                          id={optionId}
+                          name={name}
+                          value={option.value}
+                          validate={validate}
+                          className="ons-checkbox__input"
+                          autoFocus={autoFocus && index === 0}
+                        />
+                        <label
+                          className={`ons-checkbox__label ${option.description ? "ons-label--with-description" : ""}`}
+                          htmlFor={optionId}
+                        >
+                          {option.label}
+                          {option.description && (
+                            <span className="ons-label__description ons-checkbox__label--with-description">
+                              {option.description}
+                            </span>
+                          )}
+                        </label>
                       </span>
-                      <br />
-                    </Fragment>
+                    </div>
                   );
                 })}
               </div>
@@ -238,7 +247,7 @@ export function TextInputFieldset({
   ...props
 }: TextInputFieldsetProps): ReactElement {
   const generatedId = useId();
-  const baseId = id || `input-${generatedId}`;
+  const baseId = id ?? `input-${generatedId}`;
   const hintId = `${baseId}-description-hint`;
 
   return (

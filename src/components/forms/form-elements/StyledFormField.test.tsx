@@ -24,6 +24,7 @@ const renderComponent = ({
         id={id}
         includeTestIds={includeTestIds}
         name="myField"
+        type="text"
       />
     </Formik>,
   );

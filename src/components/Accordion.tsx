@@ -155,7 +155,7 @@ const ShowAll = ({
 /** Renders an accordion. */
 export const Accordion = ({ showAllEnabled, expandables, id, expanded }: Props) => {
   const generatedId = useId();
-  const baseId = id || `accordion-${generatedId}`;
+  const baseId = id ?? `accordion-${generatedId}`;
   const isParentIdExplicit = Boolean(id);
 
   const [panelsOpen, setPanelsOpen] = useState<boolean[]>(() =>
@@ -176,7 +176,7 @@ export const Accordion = ({ showAllEnabled, expandables, id, expanded }: Props) 
         hasExplicitId={isParentIdExplicit}
       />
       {expandables.map((expandable: ExpandableContent, index: number) => {
-        const panelBaseId = expandable.id || `${baseId}-panel-${index}`;
+        const panelBaseId = expandable.id ?? `${baseId}-panel-${index}`;
         const panelHasExplicitId = !!expandable.id || isParentIdExplicit;
 
         return (

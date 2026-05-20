@@ -31,7 +31,7 @@ exports[`ExampleRadioForm > rendering > renders the snapshot 1`] = `
               <div
                 class="ons-radios__items"
               >
-                <span
+                <div
                   class="ons-radios__item"
                 >
                   <span
@@ -51,9 +51,8 @@ exports[`ExampleRadioForm > rendering > renders the snapshot 1`] = `
                       Bacon
                     </label>
                   </span>
-                </span>
-                <br />
-                <span
+                </div>
+                <div
                   class="ons-radios__item"
                 >
                   <span
@@ -78,8 +77,7 @@ exports[`ExampleRadioForm > rendering > renders the snapshot 1`] = `
                       </span>
                     </label>
                   </span>
-                </span>
-                <br />
+                </div>
               </div>
             </div>
           </div>
@@ -110,7 +108,7 @@ exports[`ExampleRadioForm > rendering > renders the snapshot 1`] = `
               <div
                 class="ons-radios__items"
               >
-                <span
+                <div
                   class="ons-radios__item"
                 >
                   <span
@@ -130,9 +128,8 @@ exports[`ExampleRadioForm > rendering > renders the snapshot 1`] = `
                       First Option
                     </label>
                   </span>
-                </span>
-                <br />
-                <span
+                </div>
+                <div
                   class="ons-radios__item"
                 >
                   <span
@@ -152,7 +149,8 @@ exports[`ExampleRadioForm > rendering > renders the snapshot 1`] = `
                       Other
                     </label>
                     <span
-                      class="ons-radio__other ons-radio__other--open"
+                      aria-hidden="true"
+                      class="ons-radio__other "
                       id="other-other-wrap"
                     >
                       <label
@@ -170,15 +168,13 @@ exports[`ExampleRadioForm > rendering > renders the snapshot 1`] = `
                       />
                     </span>
                   </span>
-                </span>
-                <br />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </fieldset>
     </div>
-    <br />
     <button
       class="ons-btn"
       data-testid="form-_r_0_-submit-button"

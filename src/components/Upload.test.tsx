@@ -7,7 +7,7 @@ const setup = (overrideProps: Partial<Props> = {}) => {
   const props: Props = {
     label: "Upload",
     description: "This is the upload",
-    fileName: "file.csv",
+    name: "file.csv",
     id: "upload",
     accept: ".csv",
     onChange: vi.fn(),
@@ -55,7 +55,7 @@ describe("Upload", () => {
         <Upload
           label="No ID"
           description="desc"
-          fileName="test"
+          name="test"
           accept=".csv"
         />,
       );
@@ -71,7 +71,7 @@ describe("Upload", () => {
         <Upload
           label="Generated ID"
           description="desc"
-          fileName="test"
+          name="test"
           accept=".csv"
         />,
       );
@@ -87,11 +87,37 @@ describe("Upload", () => {
       const { user, props } = setup();
       const input = screen.getByTestId("upload-input");
       const file = new File(["(⌐□_□)"], "test.csv", { type: "text/csv" });
+      const onChange = vi.mocked(props.onChange!);
 
       await user.upload(input, file);
 
-      expect(props.onChange).toHaveBeenCalledTimes(1);
-      expect(props.onChange).toHaveBeenCalledWith(expect.anything(), "Upload");
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.lastCall?.[1]).toContain("test.csv");
+    });
+
+    it("uses fileName as a backward-compatible alias for name", () => {
+      render(
+        <Upload
+          label="Alias"
+          description="desc"
+          fileName="legacy-upload-name"
+          accept=".csv"
+        />,
+      );
+
+      expect(screen.getByLabelText("Alias")).toHaveAttribute("name", "legacy-upload-name");
+    });
+
+    it("falls back to 'file' when neither name nor fileName is provided", () => {
+      render(
+        <Upload
+          label="Default name"
+          description="desc"
+          accept=".csv"
+        />,
+      );
+
+      expect(screen.getByLabelText("Default name")).toHaveAttribute("name", "file");
     });
   });
 });

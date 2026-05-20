@@ -1,9 +1,10 @@
 import { type ReactElement, type ReactNode } from "react";
-import { type Data } from "react-csv/lib/core";
 
 import { formatKey, formatTitle } from "../utilities/textFormatting";
 
 type SummaryCsvValue = string | number | boolean | null | undefined;
+
+export type SummaryCsvData = Array<Record<string, SummaryCsvValue>>;
 
 /**
  * Use this when the rendered value needs to be richer than a primitive,
@@ -30,14 +31,17 @@ export type SummaryGroup = {
 
 /** Grouped summary data. */
 export class GroupedSummary {
-  groups: SummaryGroup[];
+  readonly groups: readonly SummaryGroup[];
 
-  constructor(groups: SummaryGroup[]) {
-    this.groups = groups;
+  constructor(groups: readonly SummaryGroup[]) {
+    this.groups = groups.map((group) => ({
+      ...group,
+      records: group.records ? { ...group.records } : undefined,
+    }));
   }
 
   /** Returns a single CSV row. */
-  csv(): Data {
+  csv(): SummaryCsvData {
     const row = this.groups.reduce<Record<string, SummaryCsvValue>>((acc, group) => {
       if (!group.records) {
         return acc;

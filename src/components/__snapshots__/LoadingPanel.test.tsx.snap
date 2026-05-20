@@ -15,7 +15,7 @@ exports[`LoadingPanel > rendering > renders the snapshot 1`] = `
       class="ons-panel__body "
     >
       <div
-        class="ons-panel__body ons-u-pt-xs ons-u-pb-xs"
+        class="ons-u-pt-xs ons-u-pb-xs"
         style="display: flex; align-items: center;"
       >
         <div

@@ -38,11 +38,11 @@ export { PasswordInput } from "./components/PasswordInput";
 
 export { Select } from "./components/Select";
 
-export { StyledForm, type FormField } from "./components/forms/StyledForm";
-
-export { StyledFormErrorSummary } from "./components/forms/StyledFormErrorSummary";
-
-export { StyledFormField } from "./components/forms/form-elements/StyledFormField";
+export {
+  StyledForm,
+  type FormField,
+  type FormValuesForFields,
+} from "./components/forms/StyledForm";
 
 export { Table } from "./components/Table";
 

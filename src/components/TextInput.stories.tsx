@@ -14,9 +14,9 @@ const TextInputRender = (args: TextInputArgs) => {
     <TextInput
       {...args}
       value={currentValue}
-      onChange={(e: ChangeEvent<HTMLInputElement>, label?: string) => {
-        setCurrentValue(e.target.value);
-        args.onChange?.(e, label);
+      onChange={(e: ChangeEvent<HTMLInputElement>, value: string) => {
+        setCurrentValue(value);
+        args.onChange?.(e, value);
       }}
     />
   );

@@ -10,6 +10,8 @@ export interface Props {
   children: ReactNode;
   /** Element ID. */
   id?: string;
+  /** Optional error reporter for host applications. */
+  onError?: (error: Error, errorInfo: ErrorInfo) => void;
 }
 
 interface State {
@@ -27,6 +29,14 @@ export class ErrorBoundary extends Component<Props, State> {
   };
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    const { onError } = this.props;
+
+    if (onError) {
+      onError(error, errorInfo);
+
+      return;
+    }
+
     console.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 

@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Formik } from "formik";
 
 import { CheckboxFieldset, RadioFieldset, TextInputFieldset } from "./Fields";
@@ -132,13 +133,58 @@ describe("RadioFieldset", () => {
 
       const radio = screen.getByRole("radio", { name: "Other" });
       const radioLabel = screen.getByText("Other").closest("label");
-      const specifyInput = screen.getByRole("textbox", { name: "Please specify" });
+      const specifyInput = document.querySelector<HTMLInputElement>('input[name="myFieldSpecify"]');
       const specifyLabel = screen.getByText("Please specify").closest("label");
+
+      if (!specifyInput) {
+        throw new Error("Expected the generated specify input to be present in the DOM");
+      }
 
       expect(radio).toHaveAttribute("id");
       expect(radioLabel).toHaveAttribute("for", radio.getAttribute("id"));
       expect(specifyInput).toHaveAttribute("id");
       expect(specifyLabel).toHaveAttribute("for", specifyInput.getAttribute("id"));
+    });
+
+    it("only opens the follow-up input when its radio is selected", async () => {
+      const user = userEvent.setup();
+
+      render(
+        <Formik
+          initialValues={{ myField: "", myFieldSpecify: "" }}
+          onSubmit={vi.fn()}
+        >
+          <RadioFieldset
+            name="myField"
+            radioOptions={[
+              { value: "yes", label: "Yes" },
+              {
+                value: "other",
+                label: "Other",
+                specifyOption: {
+                  name: "myFieldSpecify",
+                  description: "Please specify",
+                  type: "text",
+                },
+              },
+            ]}
+            autoFocus={false}
+          />
+        </Formik>,
+      );
+
+      const otherRadio = screen.getByRole("radio", { name: "Other" });
+      const otherInputWrapper = document.getElementById(
+        `${otherRadio.getAttribute("id")}-other-wrap`,
+      );
+
+      expect(otherInputWrapper).not.toHaveClass("ons-radio__other--open");
+      expect(otherInputWrapper).toHaveAttribute("aria-hidden", "true");
+
+      await user.click(otherRadio);
+
+      expect(otherInputWrapper).toHaveClass("ons-radio__other--open");
+      expect(otherInputWrapper).toHaveAttribute("aria-hidden", "false");
     });
   });
 });

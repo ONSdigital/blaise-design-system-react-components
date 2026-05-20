@@ -1,4 +1,4 @@
-import { Form, Formik, type FormikValues } from "formik";
+import { Form, Formik } from "formik";
 import { useId } from "react";
 
 import { Button } from "../Button";
@@ -17,7 +17,7 @@ interface RadioSpecifyOption {
   /** Label text. */
   description?: string;
   /** Input type. */
-  type: string;
+  type: "text" | "password" | "number" | "date" | "email";
   /** Validation function. */
   validate?: (value: string) => string | undefined;
 }
@@ -63,48 +63,101 @@ interface BaseFormField<V = string> {
   /** Autofocus hint. StyledForm currently ignores this value. */
   autoFocus?: boolean;
   /** Initial value. */
-  initialValue?: V | V[];
+  initialValue?: V;
 }
 
 interface RadioFormField extends Omit<BaseFormField<string>, "type"> {
   type: "radio";
   /** Radio options. */
-  radioOptions: RadioFieldset[];
+  radioOptions: readonly RadioFieldset[];
 }
 
 interface CheckboxFormField extends Omit<BaseFormField<string[]>, "type"> {
   type: "checkbox";
   /** Checkbox options. */
-  checkboxOptions: CheckboxFieldset[];
+  checkboxOptions: readonly CheckboxFieldset[];
 }
 
 /** StyledForm field config. */
 export type FormField = CheckboxFormField | RadioFormField | BaseFormField<string>;
 
+type FormFieldValue = string | string[];
+type EmptyRecord = Record<never, never>;
+
+type Simplify<T> = {
+  [K in keyof T]: T[K];
+};
+
+type UnionToIntersection<Union> = (Union extends unknown ? (value: Union) => void : never) extends (
+  value: infer Intersection,
+) => void
+  ? Intersection
+  : never;
+
+type RadioSpecifyValues<Field extends FormField> = Field extends {
+  type: "radio";
+  radioOptions: readonly (infer Option)[];
+}
+  ? UnionToIntersection<
+      Option extends { specifyOption: infer SpecifyOption }
+        ? SpecifyOption extends { name: infer Name extends string }
+          ? Record<Name, string>
+          : EmptyRecord
+        : EmptyRecord
+    >
+  : EmptyRecord;
+
+/** Derived Formik values for a given field config array. */
+export type FormValuesForFields<Fields extends readonly FormField[]> = Simplify<
+  {
+    [Field in Fields[number] as Field["name"]]: Field extends CheckboxFormField ? string[] : string;
+  } & UnionToIntersection<RadioSpecifyValues<Fields[number]>>
+>;
+
+type SubmitHandler<Values> = (
+  values: Values,
+  setSubmitting: (isSubmitting: boolean) => void,
+) => void;
+
+type SubmitProps<Values> =
+  | {
+      /** Called on successful submit. */
+      onSubmit: SubmitHandler<Values>;
+      /** Backward-compatible alias for onSubmit. */
+      onSubmitFunction?: never;
+    }
+  | {
+      /** Standard submit handler alias. */
+      onSubmit?: never;
+      /** Called on successful submit. */
+      onSubmitFunction: SubmitHandler<Values>;
+    };
+
 /** Props for StyledForm. */
-export interface Props<T extends FormikValues = FormikValues> {
+export type Props<Fields extends readonly FormField[] = readonly FormField[]> = {
   /** Element ID. */
   id?: string;
   /** Field config. */
-  fields: FormField[];
-  /** Called on successful submit. */
-  onSubmitFunction: (values: T, setSubmitting: (isSubmitting: boolean) => void) => void;
+  fields: Fields;
   /** Submit button text. */
   submitLabel?: string;
-}
+} & SubmitProps<FormValuesForFields<Fields>>;
 
-const getFieldTargetIds = (fields: FormField[], formBaseId: string): Record<string, string> => {
+const getFieldTargetIds = (
+  fields: readonly FormField[],
+  formBaseId: string,
+): Record<string, string> => {
   return fields.reduce<Record<string, string>>((acc, field) => {
-    const fieldId = field.id || `${formBaseId}-${field.name}`;
+    const fieldId = field.id ?? `${formBaseId}-${field.name}`;
 
     acc[field.name] = fieldId;
 
     if (field.type === "radio") {
       field.radioOptions.forEach((option, index) => {
         if (option.specifyOption) {
-          const optionId = option.id || `${fieldId}-option-${index + 1}`;
+          const optionId = option.id ?? `${fieldId}-option-${index + 1}`;
 
-          acc[option.specifyOption.name] = option.specifyOption.id || `${optionId}-specify`;
+          acc[option.specifyOption.name] = option.specifyOption.id ?? `${optionId}-specify`;
         }
       });
     }
@@ -113,44 +166,58 @@ const getFieldTargetIds = (fields: FormField[], formBaseId: string): Record<stri
   }, {});
 };
 
+const getInitialFieldValue = (field: FormField): FormFieldValue => {
+  if (field.initialValue !== undefined) {
+    return field.initialValue;
+  }
+
+  return field.type === "checkbox" ? [] : "";
+};
+
+const getInitialFieldValues = <const Fields extends readonly FormField[]>(
+  fields: Fields,
+): FormValuesForFields<Fields> => {
+  const initialValues = fields.flatMap<[string, FormFieldValue]>((field) => {
+    const fieldEntries: [string, FormFieldValue][] = [[field.name, getInitialFieldValue(field)]];
+
+    if (field.type !== "radio") {
+      return fieldEntries;
+    }
+
+    const specifyEntries = field.radioOptions.flatMap<[string, FormFieldValue]>((option) => {
+      if (!option.specifyOption) {
+        return [];
+      }
+
+      return [[option.specifyOption.name, ""]];
+    });
+
+    return [...fieldEntries, ...specifyEntries];
+  });
+
+  return Object.fromEntries(initialValues) as FormValuesForFields<Fields>;
+};
+
 /** Renders a form from field config. */
-export const StyledForm = <T extends FormikValues = FormikValues>({
-  id,
-  fields,
-  onSubmitFunction,
-  submitLabel,
-}: Props<T>) => {
+export const StyledForm = <const Fields extends readonly FormField[]>(props: Props<Fields>) => {
+  const { id, fields, submitLabel } = props;
   const generatedId = useId();
-  const baseId = id || `form-${generatedId}`;
+  const baseId = id ?? `form-${generatedId}`;
   const fieldTargetIds = getFieldTargetIds(fields, baseId);
+  const initialFieldValues = getInitialFieldValues(fields);
+  const handleSubmit = props.onSubmit ?? props.onSubmitFunction;
 
-  const initialFieldValues = fields.reduce<Record<string, unknown>>((acc, field) => {
-    if (field.initialValue !== undefined) {
-      acc[field.name] = field.initialValue;
-    } else if (field.type === "checkbox") {
-      acc[field.name] = [];
-    } else {
-      acc[field.name] = "";
-    }
-
-    if (field.type === "radio") {
-      field.radioOptions.forEach((option) => {
-        if (option.specifyOption) {
-          acc[option.specifyOption.name] = "";
-        }
-      });
-    }
-
-    return acc;
-  }, {});
+  if (!handleSubmit) {
+    throw new Error("StyledForm requires an onSubmit handler.");
+  }
 
   return (
-    <Formik<T>
+    <Formik<FormValuesForFields<Fields>>
       validateOnBlur={false}
       validateOnChange={false}
-      initialValues={initialFieldValues as T}
+      initialValues={initialFieldValues}
       onSubmit={(values, { setSubmitting }) => {
-        onSubmitFunction(values, setSubmitting);
+        handleSubmit(values, setSubmitting);
       }}
     >
       {({ isValid, isSubmitting }) => (
@@ -176,7 +243,6 @@ export const StyledForm = <T extends FormikValues = FormikValues>({
               />
             );
           })}
-          <br />
           <Button
             submit
             label={submitLabel || "Save and continue"}

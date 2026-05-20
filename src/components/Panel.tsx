@@ -26,7 +26,7 @@ export const Panel = ({
   bigIcon,
 }: Props): ReactElement | null => {
   const generatedId = useId();
-  const baseId = id || `panel-${generatedId}`;
+  const baseId = id ?? `panel-${generatedId}`;
 
   if (hidden) return null;
 

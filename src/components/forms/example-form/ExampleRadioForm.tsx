@@ -1,18 +1,11 @@
 import { type ReactElement, useState } from "react";
 
-import { type FormField, StyledForm } from "../StyledForm";
+import { type FormField, type FormValuesForFields, StyledForm } from "../StyledForm";
 
 import { validateRadio } from "./FormValidation";
 
-/** Values for the example radio form. */
-interface RadioFormValues {
-  topping: string;
-  options: string;
-  "other-text"?: string;
-}
-
 /** Field config for the example radio form. */
-const formElements: FormField[] = [
+const formElements = [
   {
     name: "topping",
     description: "Select your favourite topping",
@@ -47,7 +40,10 @@ const formElements: FormField[] = [
       },
     ],
   },
-];
+] as const satisfies readonly FormField[];
+
+/** Values for the example radio form. */
+type RadioFormValues = FormValuesForFields<typeof formElements>;
 
 /** Renders the example radio form. */
 export const ExampleRadioForm = (): ReactElement => {
@@ -79,9 +75,9 @@ export const ExampleRadioForm = (): ReactElement => {
           </div>
         </div>
       )}
-      <StyledForm<RadioFormValues>
+      <StyledForm
         fields={formElements}
-        onSubmitFunction={onFormSubmission}
+        onSubmit={onFormSubmission}
         submitLabel="Save and Continue"
       />
     </>

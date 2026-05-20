@@ -7,24 +7,36 @@ export interface Props {
   /** Hint text. */
   description: string;
   /** Name attribute. */
-  fileName: string;
+  name?: string;
+  /** Backward-compatible alias for the name attribute. */
+  fileName?: string;
   /** Element ID. */
   id?: string;
   /** Accepted file types. */
   accept: string;
   /** Called when the file selection changes. */
-  onChange?: (e: ChangeEvent<HTMLInputElement>, label?: string) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>, value: string) => void;
   /** Whether to disable the input. */
   disabled?: boolean;
 }
 
 /** Renders a file input. */
-export const Upload = ({ label, description, fileName, id, accept, onChange, disabled }: Props) => {
+export const Upload = ({
+  label,
+  description,
+  name,
+  fileName,
+  id,
+  accept,
+  onChange,
+  disabled,
+}: Props) => {
   const generatedId = useId();
-  const baseId = id || `upload-${generatedId}`;
+  const baseId = id ?? `upload-${generatedId}`;
+  const inputName = name ?? fileName ?? "file";
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e, label);
+    onChange?.(e, e.target.value);
   };
 
   const hintId = `${baseId}-hint`;
@@ -49,7 +61,7 @@ export const Upload = ({ label, description, fileName, id, accept, onChange, dis
         type="file"
         id={baseId}
         className="ons-input ons-input--text ons-input-type__input ons-input--upload"
-        name={fileName}
+        name={inputName}
         accept={accept}
         onChange={handleChange}
         disabled={disabled}

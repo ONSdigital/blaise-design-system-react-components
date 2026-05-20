@@ -37,6 +37,14 @@ describe("BetaBanner", () => {
 
       expect(link).toHaveAttribute("href", customLink);
     });
+
+    it("falls back to a safe href when the feedback URL uses an unsafe scheme", () => {
+      setup({ feedbackLink: "javascript:alert(1)" });
+
+      const link = screen.getByRole("link", { name: /give feedback/i });
+
+      expect(link).toHaveAttribute("href", "#");
+    });
   });
 
   describe("props", () => {

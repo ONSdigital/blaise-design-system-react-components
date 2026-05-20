@@ -1,5 +1,7 @@
 import { type ReactElement } from "react";
 
+import { getSafeHref } from "../utilities/url";
+
 /** Props for ExternalLink. */
 export interface Props {
   /** Visible link text. */
@@ -16,7 +18,7 @@ export interface Props {
 export const ExternalLink = ({ text, link, ariaLabel, id }: Props): ReactElement => {
   return (
     <a
-      href={link}
+      href={getSafeHref(link)}
       id={id}
       data-testid={id ? `${id}-external-link` : undefined}
       aria-label={ariaLabel}

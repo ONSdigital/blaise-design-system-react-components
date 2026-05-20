@@ -11,7 +11,7 @@ export interface Props {
   /** Whether to use `number` type. */
   number?: boolean;
   /** Called when the value changes. */
-  onChange?: (e: ChangeEvent<HTMLInputElement>, label?: string) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>, value: string) => void;
   /** Placeholder text displayed when the input is empty. */
   placeholder?: string;
   /** Whether to remove the default width. */
@@ -44,10 +44,10 @@ export const TextInput = ({
   zIndex,
 }: Props) => {
   const generatedId = useId();
-  const baseId = id || `text-input-${generatedId}`;
+  const baseId = id ?? `text-input-${generatedId}`;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e, label);
+    onChange?.(e, e.target.value);
   };
 
   const inputType = password ? "password" : number ? "number" : "text";

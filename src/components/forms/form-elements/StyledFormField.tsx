@@ -1,36 +1,19 @@
 import { useFormikContext } from "formik";
-import { Fragment, type ReactElement, useId } from "react";
+import { type ReactElement, useId } from "react";
 
 import { CheckboxFieldset, RadioFieldset, TextInputFieldset } from "./Fields";
 
-import type {
-  CheckboxFieldset as CheckboxFieldsetType,
-  RadioFieldset as RadioFieldsetType,
-} from "../StyledForm";
+import type { FormField } from "../StyledForm";
 
 /** StyledFormField props. */
-interface Props {
+type Props = FormField & {
   /** Element ID. */
   id?: string;
   /** Whether field-specific test IDs should be rendered. */
   includeTestIds?: boolean;
-  /** Initial field value used by StyledForm during setup. */
-  initialValue?: unknown;
-  /** Hint or legend text. */
-  description?: string;
-  /** Field name. */
-  name: string;
-  /** Radio options. */
-  radioOptions?: RadioFieldsetType[];
-  /** Checkbox options. */
-  checkboxOptions?: CheckboxFieldsetType[];
   /** Whether to focus the field. */
   autoFocus?: boolean;
-  /** Field type. */
-  type?: string;
-  /** Additional field props. */
-  [key: string]: unknown;
-}
+};
 
 /** Wraps a field in an inline error panel when Formik has a validation error for it. */
 const renderFieldError = (
@@ -60,63 +43,60 @@ const renderFieldError = (
 export const StyledFormField = ({
   id,
   includeTestIds,
-  name,
-  description,
-  radioOptions = [],
-  checkboxOptions = [],
   autoFocus = false,
-  initialValue: _initialValue,
-  ...props
+  ...field
 }: Props): ReactElement => {
-  const { errors } = useFormikContext<Record<string, string>>();
+  const { errors } = useFormikContext<Record<string, string | undefined>>();
   const generatedId = useId();
-  const baseId = id || `field-${generatedId}`;
+  const baseId = id ?? `field-${generatedId}`;
   const shouldIncludeTestIds = includeTestIds ?? Boolean(id);
 
-  let newField: ReactElement;
+  const renderedField = (() => {
+    switch (field.type) {
+      case "radio":
+        return (
+          <RadioFieldset
+            id={id}
+            includeTestIds={shouldIncludeTestIds}
+            description={field.description}
+            name={field.name}
+            radioOptions={field.radioOptions}
+            autoFocus={autoFocus}
+            validate={field.validate}
+          />
+        );
 
-  if (props.type === "radio") {
-    newField = (
-      <RadioFieldset
-        id={id}
-        includeTestIds={shouldIncludeTestIds}
-        description={description}
-        name={name}
-        radioOptions={radioOptions}
-        autoFocus={autoFocus}
-        {...props}
-      />
-    );
-  } else if (props.type === "checkbox") {
-    newField = (
-      <CheckboxFieldset
-        id={id}
-        includeTestIds={shouldIncludeTestIds}
-        description={description}
-        name={name}
-        checkboxOptions={checkboxOptions}
-        autoFocus={autoFocus}
-        {...props}
-      />
-    );
-  } else {
-    newField = (
-      <TextInputFieldset
-        id={id}
-        includeTestIds={shouldIncludeTestIds}
-        name={name}
-        description={description}
-        autoFocus={autoFocus}
-        {...props}
-      />
-    );
-  }
+      case "checkbox":
+        return (
+          <CheckboxFieldset
+            id={id}
+            includeTestIds={shouldIncludeTestIds}
+            description={field.description}
+            name={field.name}
+            checkboxOptions={field.checkboxOptions}
+            autoFocus={autoFocus}
+            validate={field.validate}
+          />
+        );
 
-  const fieldError = errors[name];
+      default:
+        return (
+          <TextInputFieldset
+            id={id}
+            includeTestIds={shouldIncludeTestIds}
+            name={field.name}
+            description={field.description}
+            autoFocus={autoFocus}
+            type={field.type}
+            validate={field.validate}
+          />
+        );
+    }
+  })();
 
-  return (
-    <Fragment>
-      {fieldError ? renderFieldError(fieldError, newField, baseId, shouldIncludeTestIds) : newField}
-    </Fragment>
-  );
+  const fieldError = errors[field.name];
+
+  return fieldError
+    ? renderFieldError(fieldError, renderedField, baseId, shouldIncludeTestIds)
+    : renderedField;
 };

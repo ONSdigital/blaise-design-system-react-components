@@ -18,7 +18,7 @@ export const Default: Story = {
   args: {
     label: "Upload",
     description: "Upload a file with the following extension: pdf",
-    fileName: "file-upload",
+    name: "file-upload",
     id: "upload",
     accept: ".pdf",
   },
@@ -28,7 +28,7 @@ export const Disabled: Story = {
   args: {
     label: "Upload",
     description: "Go on, try it...",
-    fileName: "file-upload",
+    name: "file-upload",
     id: "upload-disabled",
     accept: ".pdf",
     disabled: true,

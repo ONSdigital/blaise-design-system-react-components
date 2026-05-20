@@ -2,14 +2,13 @@ import {
   type ChangeEvent,
   type CSSProperties,
   type FocusEvent,
-  type ForwardedRef,
   type InputHTMLAttributes,
   type KeyboardEvent,
   type MouseEventHandler,
   type ReactElement,
+  type Ref,
   useEffect,
   useId,
-  useMemo,
   useRef,
   useState,
 } from "react";
@@ -73,11 +72,9 @@ interface ComboBoxProps extends Omit<
   inputClassName?: string;
   /** Results wrapper class name. */
   resultsClassName?: string;
+  /** Input ref. */
+  ref?: Ref<HTMLInputElement>;
 }
-
-type ComboBoxComponentProps = ComboBoxProps & {
-  ref?: ForwardedRef<HTMLInputElement>;
-};
 
 export function ComboBox({
   label,
@@ -113,7 +110,7 @@ export function ComboBox({
   style,
   "aria-describedby": ariaDescribedBy,
   ...inputProps
-}: ComboBoxComponentProps): ReactElement {
+}: ComboBoxProps): ReactElement {
   const generatedId = useId();
   const inputId = id ?? `combobox-${generatedId}`;
   const descriptionId = description ? `${inputId}-description` : undefined;
@@ -127,34 +124,15 @@ export function ComboBox({
   const [showAllOptions, setShowAllOptions] = useState(false);
 
   const inputValue = (isValueControlled ? value : internalValue) ?? "";
-  const hasQuery = normalise(inputValue).length > 0;
-  const selectedOption = useMemo(
-    () => findMatchingOption(inputValue, options),
-    [inputValue, options],
-  );
+  const normalisedInputValue = normalise(inputValue);
+  const hasQuery = normalisedInputValue.length > 0;
+  const selectedOption = findMatchingOptionByNormalisedValue(normalisedInputValue, options);
   const shouldBrowseOptions = showAllOptions && selectedOption !== null;
 
   const visibleDescriptionIds =
     [descriptionId, ariaDescribedBy].filter(Boolean).join(" ") || undefined;
 
-  const filteredOptions = useMemo(() => {
-    if (shouldBrowseOptions) {
-      return options;
-    }
-
-    if (!hasQuery) {
-      return [];
-    }
-
-    const searchValue = normalise(inputValue);
-
-    return options.filter((option) => {
-      const label = normalise(option.label);
-      const optionValue = normalise(option.value);
-
-      return label.includes(searchValue) || optionValue.includes(searchValue);
-    });
-  }, [hasQuery, inputValue, options, shouldBrowseOptions]);
+  const filteredOptions = getFilteredOptions(options, normalisedInputValue, shouldBrowseOptions);
 
   const visibleOptions =
     maxVisibleOptions > 0 ? filteredOptions.slice(0, maxVisibleOptions) : filteredOptions;
@@ -162,12 +140,17 @@ export function ComboBox({
   const showResults = isOpen && (loading || hasQuery);
   const activeOptionIndex = clampActiveIndex(activeIndex, visibleOptions.length);
 
+  const clearPendingBlur = () => {
+    if (blurTimeoutRef.current === null) {
+      return;
+    }
+
+    window.clearTimeout(blurTimeoutRef.current);
+    blurTimeoutRef.current = null;
+  };
+
   useEffect(() => {
-    return () => {
-      if (blurTimeoutRef.current !== null) {
-        window.clearTimeout(blurTimeoutRef.current);
-      }
-    };
+    return clearPendingBlur;
   }, []);
 
   const liveRegionMessage = getLiveRegionMessage({
@@ -200,18 +183,6 @@ export function ComboBox({
   const resultsClassNames = ["ons-autosuggest__results", resultsClassName ?? ""]
     .filter(Boolean)
     .join(" ");
-
-  const setInputRef = (element: HTMLInputElement | null) => {
-    if (typeof ref === "function") {
-      ref(element);
-
-      return;
-    }
-
-    if (ref) {
-      ref.current = element;
-    }
-  };
 
   const setOpen = (nextOpen: boolean) => {
     setIsOpen((currentOpen) => {
@@ -288,10 +259,7 @@ export function ComboBox({
   };
 
   const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
-    if (blurTimeoutRef.current !== null) {
-      window.clearTimeout(blurTimeoutRef.current);
-      blurTimeoutRef.current = null;
-    }
+    clearPendingBlur();
 
     if (selectedOption !== null) {
       setShowAllOptions(true);
@@ -304,9 +272,11 @@ export function ComboBox({
   };
 
   const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    clearPendingBlur();
     blurTimeoutRef.current = window.setTimeout(() => {
       commitBlurValue();
       closeResults();
+      blurTimeoutRef.current = null;
     }, 100);
 
     onBlur?.(event);
@@ -437,7 +407,7 @@ export function ComboBox({
       <div className="ons-autosuggest__combobox">
         <input
           {...inputProps}
-          ref={setInputRef}
+          ref={ref}
           id={inputId}
           name={name}
           type="text"
@@ -504,11 +474,7 @@ export function ComboBox({
                   aria-selected={isSelected}
                   onMouseDown={(event) => {
                     event.preventDefault();
-
-                    if (blurTimeoutRef.current !== null) {
-                      window.clearTimeout(blurTimeoutRef.current);
-                      blurTimeoutRef.current = null;
-                    }
+                    clearPendingBlur();
                   }}
                   onClick={() => selectOption(option)}
                 >
@@ -543,8 +509,13 @@ function normalise(value: string): string {
 }
 
 function findMatchingOption(value: string, options: ComboBoxOption[]): ComboBoxOption | null {
-  const normalisedValue = normalise(value);
+  return findMatchingOptionByNormalisedValue(normalise(value), options);
+}
 
+function findMatchingOptionByNormalisedValue(
+  normalisedValue: string,
+  options: ComboBoxOption[],
+): ComboBoxOption | null {
   if (!normalisedValue) {
     return null;
   }
@@ -556,6 +527,27 @@ function findMatchingOption(value: string, options: ComboBoxOption[]): ComboBoxO
       );
     }) ?? null
   );
+}
+
+function getFilteredOptions(
+  options: ComboBoxOption[],
+  normalisedInputValue: string,
+  shouldBrowseOptions: boolean,
+): ComboBoxOption[] {
+  if (shouldBrowseOptions) {
+    return options;
+  }
+
+  if (!normalisedInputValue) {
+    return [];
+  }
+
+  return options.filter((option) => {
+    const label = normalise(option.label);
+    const optionValue = normalise(option.value);
+
+    return label.includes(normalisedInputValue) || optionValue.includes(normalisedInputValue);
+  });
 }
 
 function areOptionsEqual(left: ComboBoxOption | null, right: ComboBoxOption | null): boolean {

@@ -56,6 +56,13 @@ describe("Select", () => {
       await user.selectOptions(selectElement, "2");
       expect(props.onChange).toHaveBeenCalledTimes(1);
     });
+
+    it("renders an empty value when no value is provided", () => {
+      setup({ value: undefined });
+      const selectElement = screen.getByTestId<HTMLSelectElement>("select-input");
+
+      expect(selectElement).toHaveValue("");
+    });
   });
 
   describe("props", () => {

@@ -21,7 +21,7 @@ export interface Props {
   /** Called when the value changes. */
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   /** Selected value. */
-  value: string;
+  value?: string;
   /** Select options. */
   options: Option[];
 }
@@ -29,7 +29,7 @@ export interface Props {
 /** Renders a select input. */
 export const Select = ({ label, id, name, onChange, value, options }: Props) => {
   const generatedId = useId();
-  const baseId = id || `select-${generatedId}`;
+  const baseId = id ?? `select-${generatedId}`;
 
   return (
     <div className="ons-field">
@@ -44,7 +44,7 @@ export const Select = ({ label, id, name, onChange, value, options }: Props) => 
       <select
         id={baseId}
         name={name ?? "select"}
-        value={value}
+        value={value ?? ""}
         className="ons-input ons-input--select"
         onChange={onChange}
         data-testid={id ? `${id}-input` : undefined}
@@ -56,7 +56,7 @@ export const Select = ({ label, id, name, onChange, value, options }: Props) => 
           Select an option
         </option>
         {options.map((option, index) => {
-          const optionBaseId = option.id || `${baseId}-option-${index}`;
+          const optionBaseId = option.id ?? `${baseId}-option-${index}`;
 
           return (
             <option

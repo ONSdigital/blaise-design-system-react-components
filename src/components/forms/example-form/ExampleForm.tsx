@@ -1,6 +1,6 @@
 import { type ReactElement, useState } from "react";
 
-import { type FormField, StyledForm } from "../StyledForm";
+import { type FormField, type FormValuesForFields, StyledForm } from "../StyledForm";
 
 import {
   validateEmail,
@@ -9,16 +9,8 @@ import {
   validateQuestionnaireName,
 } from "./FormValidation";
 
-/** Values for the example account form. */
-interface ExampleFormValues {
-  questionnaire: string;
-  name: string;
-  email: string;
-  password: string;
-}
-
 /** Field config for the example account form. */
-const formElements: FormField[] = [
+const formElements = [
   {
     name: "questionnaire",
     description: "Questionnaire Name must be longer than 7 characters",
@@ -44,7 +36,10 @@ const formElements: FormField[] = [
     type: "password",
     validate: validatePassword,
   },
-];
+] as const satisfies readonly FormField[];
+
+/** Values for the example account form. */
+type ExampleFormValues = FormValuesForFields<typeof formElements>;
 
 /** Renders the example account form. */
 export const ExampleForm = (): ReactElement => {
@@ -73,9 +68,9 @@ export const ExampleForm = (): ReactElement => {
           </div>
         </div>
       )}
-      <StyledForm<ExampleFormValues>
+      <StyledForm
         fields={formElements}
-        onSubmitFunction={onFormSubmission}
+        onSubmit={onFormSubmission}
         submitLabel="Create Account"
       />
     </>

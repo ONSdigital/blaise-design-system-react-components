@@ -50,7 +50,7 @@ exports[`ExampleCheckboxForm > rendering > renders the snapshot 1`] = `
               <div
                 class="ons-checkboxes__items"
               >
-                <span
+                <div
                   class="ons-checkboxes__item"
                 >
                   <span
@@ -70,9 +70,8 @@ exports[`ExampleCheckboxForm > rendering > renders the snapshot 1`] = `
                       LMS
                     </label>
                   </span>
-                </span>
-                <br />
-                <span
+                </div>
+                <div
                   class="ons-checkboxes__item"
                 >
                   <span
@@ -92,15 +91,13 @@ exports[`ExampleCheckboxForm > rendering > renders the snapshot 1`] = `
                       OPN
                     </label>
                   </span>
-                </span>
-                <br />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </fieldset>
     </div>
-    <br />
     <button
       class="ons-btn"
       data-testid="form-_r_0_-submit-button"

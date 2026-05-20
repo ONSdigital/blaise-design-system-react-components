@@ -96,8 +96,22 @@ describe("DefaultErrorBoundary", () => {
       const boundaryRoot = skipLink.closest(".ons-page");
 
       expect(boundaryRoot).not.toHaveAttribute("data-testid");
-      expect(main.id).toMatch(/^default-error-boundary-main-content-\d+$/);
+      expect(main.id).toMatch(/^default-error-boundary-main-content-[0-9a-f-]{36}$/);
       expect(skipLink).toHaveAttribute("href", `#${main.id}`);
+    });
+
+    it("calls the provided error handler instead of logging to the console", async () => {
+      const onError = vi.fn();
+      const { user } = setup({ children: <DodgyComponent />, onError });
+
+      await user.click(screen.getByRole("button", { name: /click me/i }));
+
+      expect(onError).toHaveBeenCalledWith(expect.any(Error), expect.anything());
+      expect(consoleErrorSpy).not.toHaveBeenCalledWith(
+        "DefaultErrorBoundary caught an error:",
+        expect.any(Error),
+        expect.anything(),
+      );
     });
   });
 });

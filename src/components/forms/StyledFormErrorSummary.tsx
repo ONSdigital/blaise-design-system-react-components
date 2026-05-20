@@ -12,11 +12,11 @@ export interface Props {
 /** Renders a form error summary. */
 export const StyledFormErrorSummary = ({ id, fieldTargetIds }: Props) => {
   const { errors, isValid, submitCount, isSubmitting } =
-    useFormikContext<Record<string, unknown>>();
+    useFormikContext<Record<string, string | undefined>>();
   const errorFocusRef = useRef<HTMLDivElement>(null);
 
   const generatedId = useId();
-  const baseId = id || `error-summary-${generatedId}`;
+  const baseId = id ?? `error-summary-${generatedId}`;
   const alertId = `${baseId}-alert`;
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export const StyledFormErrorSummary = ({ id, fieldTargetIds }: Props) => {
                 href={`#${fieldTargetIds?.[field] || field}`}
                 className="ons-list__link ons-js-inpagelink"
               >
-                {String(errors[field as keyof typeof errors])}
+                {errors[field]}
               </a>
             </li>
           ))}

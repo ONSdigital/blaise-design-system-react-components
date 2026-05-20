@@ -67,6 +67,13 @@ describe("PasswordInput", () => {
       expect(toggleCheckbox.checked).toBe(false);
       expect(passwordInput).toHaveAttribute("type", "password");
     });
+
+    it("renders an empty value when no value is provided", () => {
+      setup({ value: undefined });
+      const input = screen.getByTestId<HTMLInputElement>("password-input-input");
+
+      expect(input).toHaveValue("");
+    });
   });
 
   describe("props", () => {

@@ -36,6 +36,13 @@ describe("ExternalLink", () => {
       expect(linkElement).toHaveAttribute("href", props.link);
     });
 
+    it("falls back to a safe href when the URL uses an unsafe scheme", () => {
+      setup({ link: "javascript:alert(1)" });
+      const linkElement = screen.getByRole("link");
+
+      expect(linkElement).toHaveAttribute("href", "#");
+    });
+
     it("applies the provided aria-label", () => {
       const ariaLabel = "Accessible label";
 

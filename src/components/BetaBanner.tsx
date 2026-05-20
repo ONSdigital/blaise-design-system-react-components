@@ -1,5 +1,7 @@
 import { type ReactElement } from "react";
 
+import { getSafeHref } from "../utilities/url";
+
 /** Props for BetaBanner. */
 export interface Props {
   /** Feedback URL. */
@@ -28,7 +30,7 @@ export const BetaBanner = ({
             <p className="ons-phase-banner__desc ons-u-fs-s ons-u-mb-no">
               This is a new service. To help us improve it,{" "}
               <a
-                href={feedbackLink}
+                href={getSafeHref(feedbackLink)}
                 className="ons-external-link"
                 target="_blank"
                 rel="noopener noreferrer"

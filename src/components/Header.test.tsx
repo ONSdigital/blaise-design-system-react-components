@@ -108,6 +108,16 @@ describe("Header", () => {
       expect(screen.getByRole("link", { name: /Menu #3/i })).toBeVisible();
     });
 
+    it("falls back to a safe href when a navigation endpoint uses an unsafe scheme", () => {
+      setup({
+        navigationLinks: [{ label: "Unsafe link", endpoint: "javascript:alert(1)" }],
+      });
+
+      const unsafeLink = screen.getByRole("link", { name: /unsafe link/i });
+
+      expect(unsafeLink).toHaveAttribute("href", "#");
+    });
+
     it("shows navigation links without applying link IDs when they are omitted", () => {
       setup({ navigationLinks: navigationLinksWithoutIds, currentLocation: "/" });
 

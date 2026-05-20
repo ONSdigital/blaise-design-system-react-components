@@ -88,9 +88,12 @@ describe("TextInput", () => {
     it("calls onChange for every typed character", async () => {
       const { user, props } = setup();
       const input = screen.getByTestId("text-input-input");
+      const onChange = vi.mocked(props.onChange!);
 
       await user.type(input, "abc");
-      expect(props.onChange).toHaveBeenCalledTimes(3);
+
+      expect(onChange).toHaveBeenCalledTimes(3);
+      expect(onChange.mock.calls.map(([, value]) => value)).toEqual(["a", "b", "c"]);
     });
 
     it("calls onClick when clicked", async () => {
