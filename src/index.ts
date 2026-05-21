@@ -44,6 +44,8 @@ export {
   type FormValuesForFields,
 } from "./components/forms/StyledForm";
 
+export { StyledFormField } from "./components/forms/form-elements/StyledFormField";
+
 export { Table } from "./components/Table";
 
 export { TextInput } from "./components/TextInput";
