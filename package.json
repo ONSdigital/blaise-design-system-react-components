@@ -26,7 +26,7 @@
   "scripts": {
     "build": "yarn vite build && yarn publint --pack npm",
     "build-storybook": "storybook build -o storybook-static",
-    "lint": "yarn typecheck && yarn eslint . && yarn prettier --check . && yarn knip",
+    "lint": "yarn typecheck && yarn eslint . --max-warnings 0 && yarn prettier --check . && yarn knip",
     "lint-fix": "yarn eslint . --fix && yarn prettier --write . && yarn knip --fix",
     "prepack": "yarn build",
     "spellcheck": "yarn cspell \"**/*.{ts,tsx,json,jsonc,yml,yaml,md}\" --no-progress --no-summary",
