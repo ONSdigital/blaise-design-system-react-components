@@ -1,0 +1,110 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Accordion > rendering > renders the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-accordion"
+    data-testid="accordion-accordion"
+    id="accordion"
+  >
+    <div
+      class="ons-details ons-details--initialised ons-details--accordion "
+      data-group="accordion"
+      id="first-panel"
+    >
+      <div
+        aria-controls="first-panel-content"
+        aria-expanded="false"
+        class="ons-details__heading"
+        data-ga-action="Open panel"
+        data-testid="first-panel-heading"
+        role="button"
+        tabindex="0"
+      >
+        <h2
+          class="ons-details__title ons-u-fs-r--b"
+        >
+          Foo
+        </h2>
+        <span
+          class="ons-details__icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="ons-icon"
+            fill="currentColor"
+            focusable="false"
+            role="img"
+            viewBox="0 0 8 13"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+              transform="translate(-5.02 -1.59)"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        aria-hidden="true"
+        class="ons-details__content"
+        data-testid="first-panel-content"
+        id="first-panel-content"
+      >
+        <p>
+          foo
+        </p>
+      </div>
+    </div>
+    <div
+      class="ons-details ons-details--initialised ons-details--accordion "
+      data-group="accordion"
+      id="second-panel"
+    >
+      <div
+        aria-controls="second-panel-content"
+        aria-expanded="false"
+        class="ons-details__heading"
+        data-ga-action="Open panel"
+        data-testid="second-panel-heading"
+        role="button"
+        tabindex="0"
+      >
+        <h2
+          class="ons-details__title ons-u-fs-r--b"
+        >
+          Bar
+        </h2>
+        <span
+          class="ons-details__icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="ons-icon"
+            fill="currentColor"
+            focusable="false"
+            role="img"
+            viewBox="0 0 8 13"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+              transform="translate(-5.02 -1.59)"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        aria-hidden="true"
+        class="ons-details__content"
+        data-testid="second-panel-content"
+        id="second-panel-content"
+      >
+        <p>
+          bar
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

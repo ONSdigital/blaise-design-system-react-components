@@ -1,19 +1,51 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
-import NotProductionWarning from "./NotProductionWarning";
 
-describe("ONS Not production warning Test", () => {
-    it("matches Snapshot", () => {
-        expect(render(<NotProductionWarning />)).toMatchSnapshot();
+import { NotProductionWarning, type Props } from "./NotProductionWarning";
+
+const setup = (props: Partial<Props> = {}) => {
+  return {
+    ...render(<NotProductionWarning {...props} />),
+  };
+};
+
+describe("NotProductionWarning", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
+      const { asFragment } = setup();
+
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    it("should render correctly", () => {
-        const { container } = render(<NotProductionWarning />);
-        expect(container).toBeDefined();
+    it("renders the warning container", () => {
+      const { container } = setup();
+
+      expect(container).not.toBeEmptyDOMElement();
     });
 
-    it("should display warning paragraph text", () => {
-        render(<NotProductionWarning />);
-        expect(screen.getByText(/This environment is not a production environment. Do not upload any live data to this service./)).toBeVisible();
+    it("shows the warning text", () => {
+      setup();
+      expect(
+        screen.getByText(
+          /This is not a production environment. Do not upload any production data to this service./i,
+        ),
+      ).toBeVisible();
     });
+  });
+
+  describe("props", () => {
+    it("applies the provided ID and data-testid to the root element", () => {
+      const { container } = setup({ id: "not-production-warning-custom" });
+      const rootDiv = container.firstChild as HTMLElement;
+
+      expect(rootDiv).toHaveAttribute("id", "not-production-warning-custom");
+      expect(screen.getByTestId("not-production-warning-custom-warning")).toBeInTheDocument();
+    });
+
+    it("does not apply a data-testid when no ID is provided", () => {
+      const { container } = setup();
+      const rootDiv = container.firstChild as HTMLElement;
+
+      expect(rootDiv).not.toHaveAttribute("data-testid");
+    });
+  });
 });

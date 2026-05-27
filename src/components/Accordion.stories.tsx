@@ -1,24 +1,37 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
-import Accordion from "./Accordion";
+import { Accordion } from "./Accordion";
 
-export default {
-    component: Accordion,
-    title: "Components/Accordion",
-} as Meta;
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof Accordion> = (args) => <Accordion {...args} />;
+const meta = {
+  title: "Components/Accordion",
+  component: Accordion,
+  argTypes: {
+    expandables: {
+      control: false,
+    },
+  },
+} satisfies Meta<typeof Accordion>;
 
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
+export default meta;
 
-Default.args = {
-    Expandables: [{
-        title: "What is the meaning of life the universe and everything?",
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    id: "accordion",
+    showAllEnabled: true,
+    expanded: false,
+    expandables: [
+      {
+        id: "meaning-of-life",
+        title: "What is the meaning of life, the universe, and everything?",
         content: <p>42</p>,
-    }, {
-        title: "Does dis work?",
-        content: <p>If you can only see this sometimes, probably...</p>,
-    }],
+      },
+      {
+        id: "airspeed-velocity",
+        title: "What is the airspeed velocity of an unladen swallow?",
+        content: <p>African or European?</p>,
+      },
+    ],
+  },
 };

@@ -1,42 +1,55 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
-import Header from "./Header";
+import { Header } from "./Header";
 
-export default {
-    component: Header,
-    title: "Components/Header",
-} as Meta;
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
+const meta = {
+  title: "Components/Header",
+  component: Header,
+  argTypes: {
+    signOutFunction: { action: "signed-out" },
+    navigationLinks: { control: "object" },
+    createNavLink: { control: false },
+  },
+} satisfies Meta<typeof Header>;
 
-export const Default = Template.bind({});
-export const WithSignOut = Template.bind({});
-export const WithSaveSignOut = Template.bind({});
-export const WithNavigation = Template.bind({});
+export default meta;
 
-Default.args = {
-    title: "Yet another secret 🐿️ service being built",
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    id: "header",
+    title: "Service title",
+  },
 };
 
-WithSaveSignOut.args = {
-    title: "Yet another secret 🐿️ service being built",
-    signOutButton: true,
-    signOutFunction: () => console.log("User clicked sign out"),
-};
-
-WithSignOut.args = {
-    title: "Yet another secret 🐿️ service being built",
+export const SignOut: Story = {
+  args: {
+    id: "header-sign-out",
+    title: "Service title",
     noSave: true,
     signOutButton: true,
-    signOutFunction: () => console.log("User clicked sign out"),
+  },
 };
 
-WithNavigation.args = {
-    title: "Yet another secret 🐿️ service being built",
+export const SaveSignOut: Story = {
+  args: {
+    id: "header-save-sign-out",
+    title: "Service title",
+    signOutButton: true,
+  },
+};
+
+export const Navigation: Story = {
+  args: {
+    id: "header-nav",
+    title: "Service title",
     navigationLinks: [
-        { id: "home-link", label: "Home", endpoint: "/" },
-        { id: "deploy-questionnaire-link", label: "Deploy a questionnaire", endpoint: "/deploy" },
-        { id: "audit-logs-link", label: "View deployment history", endpoint: "/history" },
-        { id: "blaise-status-link", label: "Check Blaise status", endpoint: "/status" },
+      { id: "nav-home", label: "Home", endpoint: "#" },
+      { id: "nav-menu-one", label: "Menu #1", endpoint: "#" },
+      { id: "nav-menu-two", label: "Menu #2", endpoint: "#" },
+      { id: "nav-menu-three", label: "Menu #3", endpoint: "#" },
     ],
+    currentLocation: "/deploy",
+  },
 };

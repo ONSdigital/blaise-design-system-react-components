@@ -1,19 +1,25 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
-import Collapsible from "./Collapsible";
+import { Collapsible } from "./Collapsible";
 
-export default {
-    component: Collapsible,
-    title: "Components/Collapsible",
-} as Meta;
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof Collapsible> = (args) => <Collapsible {...args} />;
+const meta = {
+  title: "Components/Collapsible",
+  component: Collapsible,
+  argTypes: {
+    children: {
+      control: false,
+    },
+  },
+} satisfies Meta<typeof Collapsible>;
 
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
+export default meta;
 
-Default.args = {
-    title: "What is the meaning of life the universe and everything?",
-    children: <p>42</p>,
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    id: "collapsible",
+    title: "How much power is required for a single temporal displacement?",
+    children: <p>1.21 Gigawatts! (Great Scott!)</p>,
+  },
 };

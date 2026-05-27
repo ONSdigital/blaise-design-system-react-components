@@ -1,0 +1,31 @@
+---
+name: ✅ Run CI Validation
+permissions:
+  contents: read
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+jobs:
+  run-ci-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout Repository
+        uses: actions/checkout@v6
+      - name: 🔧 Enable Corepack
+        run: corepack enable
+      - name: 🔧 Setup Node and Cache
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: 📦 Install Dependencies
+        run: yarn install --immutable
+      - name: 🧹 Run Linter
+        run: yarn lint
+      - name: 🧪 Run Tests and Generate Coverage
+        run: yarn test
+      - name: 🏗️ Run Build
+        run: yarn build

@@ -1,0 +1,149 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Panel > rendering > renders the big-icon success snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-labelledby="panel-alert"
+    class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
+    data-testid="panel-panel"
+    id="panel"
+    role="alert"
+    tabindex="-1"
+  >
+    <span
+      class="ons-panel__assistive-text ons-u-vh"
+      id="panel-alert"
+    >
+      Completed: 
+    </span>
+    <span
+      class="ons-panel__icon ons-u-fs-r"
+    >
+      <svg
+        aria-hidden="true"
+        class="ons-icon ons-icon--xl"
+        fill="currentColor"
+        focusable="false"
+        viewBox="0 0 13 10"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
+          transform="translate(-1.51 -3.04)"
+        />
+      </svg>
+    </span>
+    <div
+      class="ons-panel__body ons-icon-margin--xl"
+    >
+      <p
+        data-testid="panel-child"
+      >
+        Panel Content
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Panel > rendering > renders the default snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--info ons-panel--no-title ons-u-mt-m"
+    data-testid="panel-panel"
+    id="panel"
+  >
+    <span
+      class="ons-panel__assistive-text ons-u-vh"
+    >
+      Important information: 
+    </span>
+    <div
+      class="ons-panel__body "
+    >
+      <p
+        data-testid="panel-child"
+      >
+        Panel Content
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Panel > rendering > renders the success snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-labelledby="panel-alert"
+    class="ons-panel ons-panel--success ons-panel--no-title ons-u-mt-m"
+    data-testid="panel-panel"
+    id="panel"
+    role="alert"
+    tabindex="-1"
+  >
+    <span
+      class="ons-panel__assistive-text ons-u-vh"
+      id="panel-alert"
+    >
+      Completed: 
+    </span>
+    <span
+      class="ons-panel__icon ons-u-fs-r"
+    >
+      <svg
+        aria-hidden="true"
+        class="ons-icon "
+        fill="currentColor"
+        focusable="false"
+        viewBox="0 0 13 10"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.35,3.9l-.71-.71a.5.5,0,0,0-.71,0h0L5.79,10.34,3.07,7.61a.51.51,0,0,0-.71,0l-.71.71a.51.51,0,0,0,0,.71l3.78,3.78a.5.5,0,0,0,.71,0h0L14.35,4.6A.5.5,0,0,0,14.35,3.9Z"
+          transform="translate(-1.51 -3.04)"
+        />
+      </svg>
+    </span>
+    <div
+      class="ons-panel__body "
+    >
+      <p
+        data-testid="panel-child"
+      >
+        Panel Content
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Panel > rendering > renders the warning snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-panel ons-panel--warn ons-panel--no-title ons-u-mt-m"
+    data-testid="panel-panel"
+    id="panel"
+  >
+    <span
+      aria-hidden="true"
+      class="ons-panel__icon"
+    >
+      !
+    </span>
+    <span
+      class="ons-panel__assistive-text ons-u-vh"
+    >
+      Warning: 
+    </span>
+    <div
+      class="ons-panel__body "
+    >
+      <p
+        data-testid="panel-child"
+      >
+        Panel Content
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

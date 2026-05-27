@@ -1,61 +1,76 @@
-import React, { ReactElement, useState } from "react";
+import { type KeyboardEvent, type ReactNode, type SyntheticEvent, useId, useState } from "react";
 
+/** Props for Collapsible. */
 export interface Props {
-    /**
-     * Render any standard HTML (or other React components) within the Collapsible
-     */
-    children: ReactElement
-    title: string
+  /** Panel content. */
+  children: ReactNode;
+  /** Panel title. */
+  title: string;
+  /** Element ID. */
+  id?: string;
 }
 
-function Collapsible({ children, title }: Props) {
-    const [panelOpen, setPanelOpen] = useState<boolean>(false);
+/** Renders a collapsible panel. */
+export const Collapsible = ({ children, title, id }: Props) => {
+  const [panelOpen, setPanelOpen] = useState<boolean>(false);
+  const generatedId = useId();
+  const baseId = id ?? `collapsible-${generatedId}`;
 
-    return (
-        <details
-            id="collapsible-with-save"
-            className="ons-collapsible ons-js-collapsible ons-u-mt-l"
-            data-save-state="true"
-            role="group"
-        >
-            <summary
-                className="ons-collapsible__heading ons-js-collapsible-heading"
-                role="link"
-                data-testid="collapsible-heading"
-                onClick={() => setPanelOpen(!panelOpen)}
-                onKeyPress={() => setPanelOpen(!panelOpen)}
-                tabIndex={0}
-                aria-expanded={panelOpen ? "true" : "false"}
-                aria-controls="collapsible-with-save"
-                data-ga-action={`${panelOpen ? "Close" : "Open"} panel`}
-            >
-                <div className="ons-collapsible__controls">
-                    <h2 className="ons-collapsible__title">{title}</h2>
-                    <span className="ons-collapsible__icon">
-                        <svg
-                            className="ons-svg-icon"
-                            viewBox="0 0 7.5 12.85"
-                            xmlns="http://www.w3.org/2000/svg"
-                            focusable="false"
-                        >
-                            <path
-                                d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
-                                transform="translate(-5.02 -1.59)"
-                            />
-                        </svg>
-                    </span>
-                </div>
-            </summary>
-            <div
-                id="collapsible-with-save-content"
-                className="ons-collapsible__content ons-js-collapsible-content"
-                aria-hidden={!panelOpen}
-                data-testid="collapsible-content"
-            >
-                {children}
-            </div>
-        </details>
-    );
-}
+  const handleToggle = (event: SyntheticEvent) => {
+    event.preventDefault();
+    setPanelOpen((prevOpen) => !prevOpen);
+  };
 
-export default Collapsible;
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      handleToggle(e);
+    }
+  };
+
+  return (
+    <div
+      id={baseId}
+      className={`ons-details ons-details--initialised ons-u-mt-l ${panelOpen ? "ons-details--open" : ""}`}
+      data-save-state="true"
+      role="group"
+    >
+      <div
+        className="ons-details__heading"
+        role="button"
+        data-testid={id ? `${id}-heading` : undefined}
+        onClick={handleToggle}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        aria-expanded={panelOpen}
+        aria-controls={`${baseId}-content`}
+        data-ga-action={`${panelOpen ? "Close" : "Open"} panel`}
+      >
+        <h2 className="ons-details__title ons-u-fs-r--b">{title}</h2>
+        <span className="ons-details__icon">
+          <svg
+            className="ons-icon"
+            viewBox="0 0 8 13"
+            xmlns="http://www.w3.org/2000/svg"
+            focusable="false"
+            aria-hidden="true"
+            fill="currentColor"
+            role="img"
+          >
+            <path
+              d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+              transform="translate(-5.02 -1.59)"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        id={`${baseId}-content`}
+        className="ons-details__content"
+        aria-hidden={!panelOpen}
+        data-testid={id ? `${id}-content` : undefined}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};

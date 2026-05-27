@@ -1,0 +1,76 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Table > rendering > renders the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ons-table-scrollable ons-table-scrollable--on"
+  >
+    <div
+      aria-label="Table"
+      class="ons-table-scrollable__content"
+      role="region"
+      tabindex="0"
+    >
+      <table
+        class="ons-table"
+        data-testid="table-table"
+        id="table"
+      >
+        <thead
+          class="ons-table__head"
+        >
+          <tr
+            class="ons-table__row"
+          >
+            <th
+              class="ons-table__header ons-table__header--top"
+              scope="col"
+            >
+              <span
+                class="ons-table__header-text"
+              >
+                column1
+              </span>
+            </th>
+            <th
+              class="ons-table__header ons-table__header--top"
+              scope="col"
+            >
+              <span
+                class="ons-table__header-text"
+              >
+                column2
+              </span>
+            </th>
+            <th
+              class="ons-table__header ons-table__header--top"
+              scope="col"
+            >
+              <span
+                class="ons-table__header-text"
+              >
+                column3
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="ons-table__body"
+        >
+          <tr>
+            <td>
+              Value column 1
+            </td>
+            <td>
+              Value column 2
+            </td>
+            <td>
+              Value column 3
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "types": []
+  },
+  "exclude": [
+    "src/**/*.mock.ts",
+    "src/**/*.stories.*",
+    "src/**/*.test.*",
+    "src/**/*.types.ts",
+    "src/setupTests.ts"
+  ],
+  "extends": "./tsconfig.json"
+}

@@ -1,174 +1,132 @@
-# Blaise design system react components
+# Blaise Design System React Components 🧑‍🎨
 
-[![codecov](https://codecov.io/gh/ONSdigital/blaise-design-system-react-components/branch/main/graph/badge.svg)](https://codecov.io/gh/ONSdigital/blaise-design-system-react-components)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/ONSdigital/blaise-design-system-react-components.svg)](https://github.com/ONSdigital/blaise-design-system-react-components/pulls)
-[![Github last commit](https://img.shields.io/github/last-commit/ONSdigital/blaise-design-system-react-components.svg)](https://github.com/ONSdigital/blaise-design-system-react-components/commits)
-[![Github contributors](https://img.shields.io/github/contributors/ONSdigital/blaise-design-system-react-components.svg)](https://github.com/ONSdigital/blaise-design-system-react-components/graphs/contributors)
-<img src="https://img.shields.io/github/release/ONSdigital/blaise-design-system-react-components.svg?style=flat-square" alt="">
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/ONSdigital/blaise-design-system-react-components.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ONSdigital/blaise-design-system-react-components/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/ONSdigital/blaise-design-system-react-components.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ONSdigital/blaise-design-system-react-components/context:javascript)
+React implementations of components from the [ONS Design System](https://service-manual.ons.gov.uk/design-system), tailored for Blaise applications.
 
-React component implementations of the [ONS Design system components](https://ons-design-system.netlify.app).
+## 📖 Documentation
 
-## Documentation
+Component documentation is available in [Storybook](https://onsdigital.github.io/blaise-design-system-react-components), which provides:
 
-[Link to Storybook documentation](https://onsdigital.github.io/blaise-design-system-react-components)
+- A live, interactive catalogue of all available components
+- Usage examples, props, and variants
+- Auto-generated API docs from TSDoc comments
 
-## Usage
+## 📝 Usage
 
-In your own React project add this repository as a dependency, specifying a release version after the # at the end. For example:
+Add this repository to your React project as a dependency, specifying the target release version:
 
 ```shell
-yarn add git+https://github.com/ONSdigital/blaise-design-system-react-components#<RELEASE_TAG>
-```
----
-
-Before using components from this library, add the following code within the `<head>` tags of your React project's `public/index.html` file:
-
-```
-<link href="https://cdn.ons.gov.uk/sdc/design-system/60.0.2/css/main.css" rel="stylesheet" type="text/css">
+yarn add git+https://github.com/ONSdigital/blaise-design-system-react-components#<RELEASE_VERSION>
 ```
 
-The above code implements the ONS Design System's global CSS style rules into your project - if this code is not included, style rules will not be applied to this library's components within your project.
+Release versions can be found on this repos [GitHub releases](https://github.com/ONSdigital/blaise-design-system-react-components/releases).
 
-## Add a component
-With this imported, you can add the components to your page, like the example below, where we use the Header,
-ExternalLink and ONSButton components on the page:
+### Peer Dependencies
+
+This library requires the consuming application to provide its own React engine and Formik context. Ensure you have the following installed in your project's dependencies:
+
+- react (^19.0.0)
+- react-dom (^19.0.0)
+- formik (>=2.4.0)
+
+### Global CSS Requirement
+
+Before using components from this library, you must inject the ONS Design System's global CSS rules. Add the following `<link>` tag within the `<head>` of your React project's `public/index.html` file:
+
+```html
+<link
+  href="https://cdn.ons.gov.uk/sdc/design-system/73.5.0/css/main.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+```
+
+New versions of the ONS Design System CSS may introduce breaking changes, and our components would need to be refactored to support them. If you wish to use a newer version, please check the [ONS Design System repository](https://github.com/ONSdigital/design-system) for available releases and review any breaking changes before upgrading.
+
+If this is omitted, the components will render without ONS styling.
+
+### Using Components
+
+Example of using several components:
 
 ```tsx
-import React from "react";
-import {Header, ExternalLink, ONSButton} from "blaise-design-system-react-components";
+import { ReactElement } from "react";
+import {
+  Header,
+  ExternalLink,
+  Button,
+  Footer,
+  ErrorBoundary,
+  DefaultErrorBoundary,
+} from "blaise-design-system-react-components";
 
+export default function ExampleSite(): ReactElement {
+  function doStuff() {
+    // Do stuff
+  }
 
-function SimplePage(): ReactElement {
-
-    function doStuff() {
-        // Do stuff
-    }
-
-    return (
-        <>
-            <Header title={"Simple site"}/>
-
-            <ExternalLink text={"Home"}
-                          link={"/home"}
-                          ariaLabel={"Return to homepage"}/>
-
-            <ONSButton label="Go to table of questionnaires"
-                       primary={true}
-                       onClick={() => doStuff()}/>
-        </>
-    );
+  return (
+    <DefaultErrorBoundary>
+      <Header title="Example Site" />
+      <ExternalLink
+        text="Home"
+        link="/home"
+        ariaLabel="Return to homepage"
+      />
+      <ErrorBoundary errorMessageText="Something went wrong with the button!">
+        <Button
+          label="Jump over the moon"
+          primary
+          onClick={doStuff}
+        />
+      </ErrorBoundary>
+      <Footer />
+    </DefaultErrorBoundary>
+  );
 }
 ```
 
-## Available components
+To see what components are available refer to the [Storybook documentation](https://onsdigital.github.io/blaise-design-system-react-components).
 
-### Standard design system components
+## 🛠️ Component Development
 
-Components from the design system replicated as React components.
+### Getting Started
 
-| Component             | Link to Design System Component                                                       | Notes                                                                                      |
-|-----------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| BetaBanner            | [Phase banner](https://ons-design-system.netlify.app/components/phase-banner/)        |                                                                                            |
-| ExternalLink          | [Link with external link icon](https://ons-design-system.netlify.app/styles/typography/#link-with-external-link-icon) |                                                                                            |
-| Footer                | [Footer](https://ons-design-system.netlify.app/components/footer/)                    |                                                                                            |
-| Header                | [Internal Header](https://ons-design-system.netlify.app/components/header/#internal)  |                                                                                            |
-| ONSButton             | [Button](https://ons-design-system.netlify.app/components/button/)                    |                                                                                            |
-| ONSPanel              | [Panel](https://ons-design-system.netlify.app/components/panel/)                      |                                                                                            |
-| ONSPasswordInput      | [Password](https://ons-design-system.netlify.app/components/password/)                |                                                                                            |
-| ONSSelect             | [Select](https://ons-design-system.netlify.app/components/select/)                    |                                                                                            |
-| ONSTextInput          | [Input](https://ons-design-system.netlify.app/components/input/)                      |                                                                                            |
-| ONSUpload             | [Upload](https://ons-design-system.netlify.app/components/upload/)                    |                                                                                            |
-| Collapsible           | [Collapsible](https://ons-design-system.netlify.app/components/collapsible/)          |                                                                                            |
-| Accordion           | [Accordion](https://ons-design-system.netlify.app/components/accordion/)          |                                                                                            |
-
-### Custom designed components based off design system
-
-Based off design system components but modified slightly, either to suit our needs or to make a simple reusable
-component for example the `ONSErrorPanel` is simply a ONSPanel with a message already provided.
-
-| Component             | Link to Design System Component                                                       | Notes                                                                                      |
-|-----------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| NoneProductionWarning | [Warning branded Panel](https://ons-design-system.netlify.app/components/panel/#warning-branded) | This one is not an 'Official' component. But is based on the Branded Census warning panel    |
-| ONSErrorPanel         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/)        | This is a Standard Panel with an error status, with a prepared message "Sorry, there is a problem with this service. We are working to fix the problem. Please try again later."  |
-| ONSLoadingPanel       | [Panel](https://ons-design-system.netlify.app/components/panel/)                      | This is a Standard Panel with an info status, with a loading spinner and "Loading" message. Uses [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) for the loading spinner. |
-
-### Custom React designed components
-
-React components to simply development across multiple repositories. These are still based off the design system, for
-example the `StyledForm` is a reusable implementation of [Formik](https://formik.org/) but the fields and errors are set
-up like standard ONS design system fields.
-
-| Component             | Link to Design System Component                                                       | Notes                                                                                      |
-|-----------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| StyledForm            | [Correct errors pattern](https://ons-design-system.netlify.app/patterns/error-validation) | Easily add ONS styled forms to React application. [Detailed documentation and example](documentation/StyledForms.MD) |
-| ErrorBoundary         | [Error Panel Variant](https://ons-design-system.netlify.app/components/panel/) | React render UI error wrapper. [Detailed documentation and examples](documentation/ErrorBoundary.MD) |
-| DefaultErrorBoundary  | [Service unavailable errors](https://ons-design-system.netlify.app/patterns/error-status-pages/#service-unavailable-errors) | React render UI error wrapper. [Detailed documentation and examples](documentation/ErrorBoundary.MD) |
-
-## Component Development
-
-### Setup
-
-First clone the repository to you local machine
+Clone the repository:
 
 ```shell
 git clone https://github.com/ONSdigital/blaise-design-system-react-components.git
 ```
 
-Then open the project in and IDE of your choice and from the terminal run:
-To install required dependencies run:
+Install dependencies:
 
 ```shell
 yarn install
 ```
 
-### Visualise Components using Storybook
+### Creating a New Component
 
-Storybook is like a small UI workshop that allows us to conveniently visualise and manually test each component without needing to spin up a whole separate application.
+Check the [ONS Design System](https://service-manual.ons.gov.uk/design-system) for an existing or similar component. Use their HTML as a reference and convert it into a reusable React/TypeScript component.
 
-To visualise a component, you need to write a [story](https://storybook.js.org/docs/get-started/whats-a-story) for it:
-```tsx
-import type { Meta, StoryObj } from '@storybook/react';
+Write appropriate tests and Storybook stories. Place stories alongside the component (e.g., `Button.stories.tsx`). See [src/StorybookIntroduction.mdx](src/StorybookIntroduction.mdx) for story guidelines.
 
-import { Button } from './Button';
-
-const meta: Meta<typeof Button> = {
-  component: Button,
-};
-
-export default meta;
-type Story = StoryObj<typeof Button>;
-
-export const Primary: Story = {
-  render: () => <Button primary label="Button" />,
-};
-```
-
-Once you've written the stories, you can run Storybook to view the components:
-```shell
-yarn run storybook
-```
-
-For more information, visit the [Storybook documentation](https://storybook.js.org/docs/get-started/install)
-
-### Tests
-
-To run the tests with coverage results run:
+To run tests:
 
 ```shell
-yarn run test
+yarn test
 ```
 
-### Create and release a new version
-
-After making your changes you will need to compile the Typescript components, locally run:
+To check linting:
 
 ```shell
-yarn run build
+yarn lint
 ```
 
-This will add all the exported components into the `build/index.js` file which will be imported by other React projects.
-Commit these changes.
+Some linting issue can be auto fixed:
 
-Once merged into main, [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) and add an appropriate version number.
+```shell
+yarn lint-fix
+```
+
+### Releasing
+
+After merging to main, [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) with appropriate release notes. The `package.json` version is automatically updated via GitHub Actions when a release is published.

@@ -1,81 +1,119 @@
-import React from "react";
-import {
-    fireEvent, render, screen, waitFor,
-} from "@testing-library/react";
-import ExampleRadioForm from "./ExampleForm/ExampleRadioForm";
-import StyledForm from "./StyledForm";
-import { validateRadio } from "./ExampleForm/FormValidation";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-test("it matches snapshots", async () => {
-    const formPage = render(<ExampleRadioForm />);
+import { ExampleRadioForm } from "./example-form/ExampleRadioForm";
+import { validateRadio } from "./example-form/FormValidation";
+import { StyledForm } from "./StyledForm";
 
-    expect(formPage).toMatchSnapshot();
-});
+const setup = (component = <ExampleRadioForm />) => {
+  return {
+    user: userEvent.setup(),
+    ...render(component),
+  };
+};
 
-test("it displays the the radio option description", async () => {
-    render(<ExampleRadioForm />);
+describe("ExampleRadioForm", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
+      const { asFragment } = setup();
 
-    await waitFor(() => {
-        const errorMessage = screen.getByText(/This includes all types of cheese/i);
-        expect(errorMessage).toBeInTheDocument();
+      expect(asFragment()).toMatchSnapshot();
     });
-});
 
-test("error appears on submit of empty form", async () => {
-    render(<ExampleRadioForm />);
-
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-        const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
-        expect(errorMessage).toBeInTheDocument();
-
-        const radioErrorMessage = screen.queryAllByText(/Select an option/i);
-        expect(radioErrorMessage).toHaveLength(2);
+    it("shows the radio option description", () => {
+      setup();
+      expect(screen.getByText(/This includes all types of cheese/i)).toBeVisible();
     });
-});
+  });
 
-test("submit function is called when form is valid", async () => {
-    render(<ExampleRadioForm />);
+  describe("interactions", () => {
+    it("shows validation errors when an empty form is submitted", async () => {
+      const { user } = setup();
+      const submitButton = screen.getByRole("button", {
+        name: /save and continue/i,
+      });
 
-    fireEvent.click(screen.getByLabelText(/Bacon/i));
+      await user.click(submitButton);
+      expect(await screen.findByText(/There is 1 problem with your answer/i)).toBeVisible();
+      const radioErrors = screen.queryAllByText(/Select an option/i);
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-        const successMessage = screen.getByText(/Form submitted, topping chosen bacon/i);
-        expect(successMessage).toBeInTheDocument();
+      expect(radioErrors).toHaveLength(2);
     });
-});
 
-test("setting initial value", async () => {
-    const fields = [
+    it("shows the success message when a valid option is submitted", async () => {
+      const { user } = setup();
+
+      await user.click(screen.getByLabelText(/Bacon/i));
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+      expect(await screen.findByText(/Form submitted. Topping: bacon/i)).toBeVisible();
+    });
+
+    it("submits the value from the conditional text input", async () => {
+      const { user } = setup();
+
+      await user.click(screen.getByLabelText(/Bacon/i));
+
+      const otherRadio = screen.getByLabelText(/^Other$/i);
+
+      await user.click(otherRadio);
+
+      const specifyInput = screen.getByLabelText(/Please specify/i);
+      const otherInputWrapper = document.getElementById(
+        `${otherRadio.getAttribute("id")}-other-wrap`,
+      );
+
+      expect(otherInputWrapper).toHaveClass("ons-radio__other--open");
+
+      await user.type(specifyInput, "Pineapple");
+
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      expect(
+        await screen.findByText(/Form submitted. Topping: bacon. Option: other \(Pineapple\)/i),
+      ).toBeVisible();
+    });
+
+    it("keeps the conditional text input collapsed until its radio is selected", () => {
+      setup();
+
+      const otherRadio = screen.getByLabelText(/^Other$/i);
+      const otherInputWrapper = document.getElementById(
+        `${otherRadio.getAttribute("id")}-other-wrap`,
+      );
+
+      expect(otherInputWrapper).not.toHaveClass("ons-radio__other--open");
+      expect(otherInputWrapper).toHaveAttribute("aria-hidden", "true");
+    });
+  });
+
+  describe("props", () => {
+    it("submits the provided initialValue", async () => {
+      const submitFunction = vi.fn();
+      const fields = [
         {
-            name: "topping",
-            description: "Select your favorite topping",
-            type: "radio",
-            validate: validateRadio,
-            initial_value: "cheese",
-            radioOptions: [
-                { id: "bacon", value: "bacon", label: "Bacon" },
-                { id: "cheese", value: "cheese", label: "Cheese" },
-            ],
+          name: "topping",
+          description: "Select your favourite topping",
+          type: "radio" as const,
+          validate: validateRadio,
+          initialValue: "cheese",
+          radioOptions: [
+            { id: "bacon", value: "bacon", label: "Bacon" },
+            { id: "cheese", value: "cheese", label: "Cheese" },
+          ],
         },
-    ];
+      ];
+      const { user } = setup(
+        <StyledForm
+          fields={fields}
+          onSubmitFunction={submitFunction}
+        />,
+      );
 
-    const submitFunction = jest.fn();
-
-    render(<StyledForm fields={fields} onSubmitFunction={submitFunction} />);
-
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-        expect(submitFunction).toHaveBeenCalledWith(
-            expect.objectContaining({ topping: "cheese" }),
-            expect.any(Function),
-        );
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+      expect(submitFunction).toHaveBeenCalledWith(
+        expect.objectContaining({ topping: "cheese" }),
+        expect.any(Function),
+      );
     });
+  });
 });

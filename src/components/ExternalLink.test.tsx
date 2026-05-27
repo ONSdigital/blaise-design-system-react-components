@@ -1,42 +1,72 @@
-import { cleanup, render, screen } from "@testing-library/react";
-import React from "react";
-import ExternalLink from "./ExternalLink";
+import { render, screen } from "@testing-library/react";
 
-describe("External Link Test", () => {
-    afterEach(() => {
-        cleanup();
+import { ExternalLink, type Props } from "./ExternalLink";
+
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
+    text: "Click Me",
+    link: "/link",
+    ...overrideProps,
+  };
+
+  return {
+    props,
+    ...render(<ExternalLink {...props} />),
+  };
+};
+
+describe("ExternalLink", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
+      const { asFragment } = setup();
+
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    const Props = {
-        text: "Click Me",
-        link: "/link",
-        ariaLabel: "Aria label description",
-    };
+    it("shows the link text", () => {
+      const { props } = setup();
 
-    it("matches Snapshot", () => {
-        const { asFragment } = render(<ExternalLink {...Props} />);
-        expect(asFragment()).toMatchSnapshot();
+      expect(screen.getByText(new RegExp(props.text as string, "i"))).toBeVisible();
     });
 
-    it("should render correctly", () => {
-        const { container } = render(<ExternalLink {...Props} />);
-        expect(container).toBeDefined();
+    it("maps the destination URL to the href attribute", () => {
+      const { props } = setup();
+      const linkElement = screen.getByRole("link");
+
+      expect(linkElement).toHaveAttribute("href", props.link);
     });
 
-    it("should render with the correct text displayed", () => {
-        render(<ExternalLink {...Props} />);
-        expect(screen.getByText(/Click Me/i)).toBeVisible();
+    it("falls back to a safe href when the URL uses an unsafe scheme", () => {
+      setup({ link: "javascript:alert(1)" });
+      const linkElement = screen.getByRole("link");
+
+      expect(linkElement).toHaveAttribute("href", "#");
     });
 
-    it("should render with the correct href passed in", () => {
-        render(<ExternalLink {...Props} />);
-        const linkElement = screen.getByRole("link");
-        expect(linkElement).toHaveAttribute("href", Props.link);
+    it("applies the provided aria-label", () => {
+      const ariaLabel = "Accessible label";
+
+      setup({ ariaLabel });
+      const linkElement = screen.getByRole("link");
+
+      expect(linkElement).toHaveAttribute("aria-label", ariaLabel);
+    });
+  });
+
+  describe("props", () => {
+    it("derives the data-testid from the provided ID", () => {
+      setup({ id: "external-link-custom" });
+
+      const link = screen.getByTestId("external-link-custom-external-link");
+
+      expect(link).toBeInTheDocument();
     });
 
-    it("should render with the correct aria label passed in", () => {
-        render(<ExternalLink {...Props} />);
-        const linkElement = screen.getByRole("link");
-        expect(linkElement).toHaveAttribute("aria-label", Props.ariaLabel);
+    it("does not apply a data-testid when no ID is provided", () => {
+      setup();
+      const link = screen.getByRole("link");
+
+      expect(link).not.toHaveAttribute("data-testid");
     });
+  });
 });

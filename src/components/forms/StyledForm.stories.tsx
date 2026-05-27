@@ -1,59 +1,87 @@
-import React from "react";
-import { ComponentStory, Meta } from "@storybook/react";
-import StyledForm from "./StyledForm";
+import {
+  validateCheckbox,
+  validateInterviewerID,
+  validateRadio,
+} from "./example-form/FormValidation";
+import { type FormField, StyledForm } from "./StyledForm";
 
-export default {
-    component: StyledForm,
-    title: "Components/Forms/StyledForm",
-} as Meta;
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-// 👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof StyledForm> = (args) => <StyledForm {...args} />;
-
-// 👇 Each story then reuses that template
-export const Default = Template.bind({});
-
-Default.args = {
-    fields: [
-        {
-            name: "Survey TLA",
-            description: "Select survey",
-            type: "radio",
-            initial_value: "undefined",
-            radioOptions: [
-                { id: "all", value: "undefined", label: "Show all surveys" },
-                {
-                    id: "lms", value: "lms", label: "LMS", description: "Labour Market Survey",
-                },
-                {
-                    id: "opn", value: "opn", label: "OPN", description: "Opinions and Lifestyle Survey",
-                },
-            ],
-        },
-        {
-            name: "Questionnaire",
-            description: "Select questionnaires",
-            type: "checkbox",
-            initial_value: "undefined",
-            checkboxOptions: [
-                { id: "checkbox_1", value: "lms", label: "LMS" },
-                { id: "checkbox_2", value: "opn", label: "OPN" },
-                { id: "checkbox_3", value: "dst", label: "DST" },
-            ],
-        },
-        {
-            name: "Interviewer ID",
-            type: "text",
-        },
-        {
-            name: "Start date",
-            type: "date",
-        },
-        {
-            name: "End date",
-            type: "date",
-
-        },
+const fields = [
+  {
+    name: "Survey",
+    description: "Select survey",
+    type: "radio",
+    initialValue: "undefined",
+    validate: validateRadio,
+    radioOptions: [
+      { id: "survey-all", value: "undefined", label: "Show all surveys" },
+      {
+        id: "survey-lms",
+        value: "lms",
+        label: "LMS",
+        description: "Labour Market Survey",
+      },
+      {
+        id: "survey-opn",
+        value: "opn",
+        label: "OPN",
+        description: "Opinions and Lifestyle Survey",
+      },
     ],
+  },
+  {
+    name: "Questionnaire",
+    description: "Select questionnaires",
+    type: "checkbox",
+    validate: validateCheckbox,
+    checkboxOptions: [
+      { id: "questionnaire-lms2601_aa1", value: "lms2601_aa1", label: "LMS2601_AA1" },
+      { id: "questionnaire-lms2602_aa1", value: "lms2602_aa1", label: "LMS2602_AA1" },
+      { id: "questionnaire-opn2601a", value: "opn2601a", label: "OPN2601A" },
+      { id: "questionnaire-opn2602a", value: "opn2602a", label: "OPN2602A" },
+    ],
+  },
+  {
+    name: "Interviewer ID",
+    type: "text",
+    validate: validateInterviewerID,
+  },
+  {
+    name: "Start date",
+    type: "date",
+  },
+  {
+    name: "End date",
+    type: "date",
+  },
+] as const satisfies readonly FormField[];
+
+const meta = {
+  title: "Components/Forms/Styled Form",
+  component: StyledForm,
+  argTypes: {
+    onSubmit: {
+      action: "submitted",
+      control: false,
+    },
+    fields: {
+      control: "object",
+    },
+  },
+} satisfies Meta<typeof StyledForm>;
+
+export default meta;
+
+type Story = StoryObj<typeof StyledForm>;
+
+export const Default: Story = {
+  args: {
+    id: "styled-form",
+    onSubmit: (_values, setSubmitting) => {
+      setSubmitting(false);
+    },
+    fields,
     submitLabel: "Submit label",
+  },
 };

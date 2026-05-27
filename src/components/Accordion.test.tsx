@@ -1,151 +1,205 @@
-import React from "react";
-import { render, fireEvent, RenderResult } from "@testing-library/react";
-import Accordion from "./Accordion";
-import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-function renderAccordionWithShowAll(): RenderResult {
-    return render(
-        <Accordion
-            ContentId="test"
-            ShowAllEnabled
-            Expandables={
-                [
-                    { title: "Foo", content: <p>bar</p>, contentId: "test" },
-                    { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
-                ]
-            }
-        />,
-    );
-}
+import { Accordion, type ExpandableContent, type Props } from "./Accordion";
 
-function renderAccordionWithoutShowAll(): RenderResult {
-    return render(
-        <Accordion
-            ContentId="test"
-            Expandables={
-                [
-                    { title: "Foo", content: <p>bar</p>, contentId: "test" },
-                    { title: "Bar", content: <p>bar foo</p>, contentId: "test" },
-                ]
-            }
-        />,
-    );
-}
+const defaultExpandables: ExpandableContent[] = [
+  { title: "Foo", content: <p>foo</p>, id: "first-panel" },
+  { title: "Bar", content: <p>bar</p>, id: "second-panel" },
+];
 
-function clickShowAll(wrapper: RenderResult) {
-    const showAllBtn = wrapper.getByRole("button", { name: "Show all" });
-    fireEvent.click(showAllBtn);
-}
+const setup = (overrideProps: Partial<Props> = {}) => {
+  const props: Props = {
+    id: "accordion",
+    showAllEnabled: false,
+    expandables: defaultExpandables,
+    ...overrideProps,
+  };
 
-function clickHideAll(wrapper: RenderResult) {
-    const hideAllBtn = wrapper.getByRole("button", { name: "Hide all" });
-    fireEvent.click(hideAllBtn);
-}
+  return {
+    user: userEvent.setup(),
+    props,
+    ...render(<Accordion {...props} />),
+  };
+};
 
-function clickOnASingleExpandable(summary: string | RegExp, wrapper: RenderResult) {
-    const expandable = wrapper.getByText(summary);
-    fireEvent.click(expandable);
-}
+const expectShowAllButtonLabel = (text: "Show all" | "Hide all") => {
+  const buttonEl = screen.getByTestId("accordion-show-all");
 
-function expectShowAllButtonToBeVisible(wrapper: RenderResult) {
-    expect(wrapper.getByTestId("test-accordion-show-all")).toBeVisible();
-    expect(wrapper.getByTestId("test-accordion-show-all")).toHaveTextContent("Show all");
-}
+  expect(buttonEl).toBeVisible();
+  expect(buttonEl).toHaveTextContent(text);
+};
 
-function expectShowAllButtonNotToBeDefined(wrapper: RenderResult) {
-    expect(wrapper.queryByTestId("test-accordion-show-all")).toBeFalsy();
-}
+const expectExpandableState = (panelBaseId: string, state: "open" | "closed") => {
+  const isHidden = state === "closed";
+  const content = screen.getByTestId(`${panelBaseId}-content`);
 
-function expectHideAllButtonToBeDefined(wrapper: RenderResult) {
-    expect(wrapper.getByTestId("test-accordion-show-all")).toBeDefined();
-    expect(wrapper.getByTestId("test-accordion-show-all")).toHaveTextContent("Hide all");
-}
+  expect(content).toHaveAttribute("aria-hidden", isHidden.toString());
+};
 
-function expectExpandableToBeClosed(title: string, id: number, wrapper: RenderResult) {
-    expect(wrapper.getByTestId(`test-accordion-${id}-heading`)).toHaveTextContent(title);
-    expect(wrapper.getByTestId(`test-accordion-${id}-content`)).toHaveAttribute("aria-hidden", "true");
-}
+describe("Accordion", () => {
+  describe("rendering", () => {
+    it("renders the snapshot", () => {
+      const { asFragment } = setup();
 
-function expectExpandableToBeOpen(title: string, id: number, wrapper: RenderResult) {
-    expect(wrapper.getByTestId(`test-accordion-${id}-heading`)).toHaveTextContent(title);
-    expect(wrapper.getByTestId(`test-accordion-${id}-content`)).toHaveAttribute("aria-hidden", "false");
-}
+      expect(asFragment()).toMatchSnapshot();
+    });
+  });
 
-describe("Accordion tests", () => {
-    describe("when show all is enabled", () => {
-        let wrapper: RenderResult;
-        beforeEach(() => {
-            wrapper = renderAccordionWithShowAll();
+  describe("show-all button", () => {
+    describe("when it is enabled", () => {
+      it("shows the 'Show all' button", () => {
+        setup({ showAllEnabled: true });
+        expectShowAllButtonLabel("Show all");
+      });
+
+      it("opens only the clicked panel", async () => {
+        const { user } = setup({ showAllEnabled: true });
+
+        expectExpandableState("first-panel", "closed");
+        expectExpandableState("second-panel", "closed");
+        await user.click(screen.getByText("Foo"));
+        expectExpandableState("first-panel", "open");
+        expectExpandableState("second-panel", "closed");
+      });
+
+      describe("when the 'Show all' button is clicked", () => {
+        it("opens every panel", async () => {
+          const { user } = setup({ showAllEnabled: true });
+
+          await user.click(screen.getByRole("button", { name: /show all/i }));
+          expectExpandableState("first-panel", "open");
+          expectExpandableState("second-panel", "open");
         });
 
-        it("displays a 'Show all' button", async () => {
-            expectShowAllButtonToBeVisible(wrapper);
+        it("updates the button label to 'Hide all'", async () => {
+          const { user } = setup({ showAllEnabled: true });
+
+          await user.click(screen.getByRole("button", { name: /show all/i }));
+          expectShowAllButtonLabel("Hide all");
         });
 
-        it("expands a single expandable when that expandable is clicked", async () => {
-            expectExpandableToBeClosed("Foo", 0, wrapper);
-            expectExpandableToBeClosed("Bar", 1, wrapper);
+        it("toggles every panel when clicked twice", async () => {
+          const { user } = setup({ showAllEnabled: true });
+          const toggleBtn = screen.getByTestId("accordion-show-all");
 
-            clickOnASingleExpandable("Foo", wrapper);
-
-            expectExpandableToBeOpen("Foo", 0, wrapper);
-            expectExpandableToBeClosed("Bar", 1, wrapper);
+          await user.click(toggleBtn);
+          await user.click(toggleBtn);
+          expectShowAllButtonLabel("Show all");
+          expectExpandableState("first-panel", "closed");
         });
 
-        describe("and show all is clicked", () => {
-            it("expands all accordions", async () => {
-                clickShowAll(wrapper);
+        it("restores the 'Show all' label when a panel is closed", async () => {
+          const { user } = setup({ showAllEnabled: true });
 
-                expectExpandableToBeOpen("Foo", 0, wrapper);
-                expectExpandableToBeOpen("Bar", 1, wrapper);
-            });
-
-            it("changes 'Show all' to 'Hide all'", async () => {
-                clickShowAll(wrapper);
-                expectHideAllButtonToBeDefined(wrapper);
-            });
-
-            it("toggles between 'Hide all' and 'Show all' when the button is clicked", async () => {
-                clickShowAll(wrapper);
-                expectHideAllButtonToBeDefined(wrapper);
-
-                clickHideAll(wrapper);
-                expectShowAllButtonToBeVisible(wrapper);
-
-                clickShowAll(wrapper);
-                expectHideAllButtonToBeDefined(wrapper);
-            });
-
-            it("hides a single expandable when that expandable is clicked", async () => {
-                expectShowAllButtonToBeVisible(wrapper);
-                clickShowAll(wrapper);
-                expectHideAllButtonToBeDefined(wrapper);
-                clickOnASingleExpandable("Foo", wrapper);
-                expectExpandableToBeClosed("Foo", 0, wrapper);
-                expectShowAllButtonToBeVisible(wrapper);
-            });
+          await user.click(screen.getByRole("button", { name: /show all/i }));
+          await user.click(screen.getByText("Foo"));
+          expectExpandableState("first-panel", "closed");
+          expectShowAllButtonLabel("Show all");
         });
+      });
     });
 
-    describe("when show all is not enabled", () => {
-        let wrapper: RenderResult;
-        beforeEach(() => {
-            wrapper = renderAccordionWithoutShowAll();
-        });
+    describe("when it is disabled", () => {
+      it("does not show the 'Show all' button", () => {
+        setup({ showAllEnabled: false });
+        expect(screen.queryByTestId("accordion-show-all")).not.toBeInTheDocument();
+      });
 
-        it("does not display a 'Show all' button", async () => {
-            expectShowAllButtonNotToBeDefined(wrapper);
-        });
+      it("initialises every panel as collapsed", () => {
+        setup({ showAllEnabled: false });
+        expectExpandableState("first-panel", "closed");
+        expectExpandableState("second-panel", "closed");
+      });
 
-        it("initialises with all expandables closed", async () => {
-            expectExpandableToBeClosed("Foo", 0, wrapper);
-            expectExpandableToBeClosed("Bar", 1, wrapper);
-        });
+      it("opens a panel when it is clicked", async () => {
+        const { user } = setup({ showAllEnabled: false });
 
-        it("expands a single expandable when 'Show' on that expandable is clicked", async () => {
-            expectExpandableToBeClosed("Foo", 0, wrapper);
-            clickOnASingleExpandable("Foo", wrapper);
-            expectExpandableToBeOpen("Foo", 0, wrapper);
-        });
+        await user.click(screen.getByText("Foo"));
+        expectExpandableState("first-panel", "open");
+      });
     });
+  });
+
+  describe("keyboard support", () => {
+    it("opens a panel when Enter is pressed", async () => {
+      const { user } = setup();
+      const summary = screen.getByRole("button", { name: "Foo" });
+
+      summary.focus();
+      await user.keyboard("{Enter}");
+      expectExpandableState("first-panel", "open");
+    });
+
+    it("opens a panel when Space is pressed", async () => {
+      const { user } = setup();
+      const summary = screen.getByRole("button", { name: "Foo" });
+
+      summary.focus();
+      await user.keyboard(" ");
+      expectExpandableState("first-panel", "open");
+    });
+
+    it("does nothing when a different key is pressed", async () => {
+      const { user } = setup();
+      const summary = screen.getByRole("button", { name: "Foo" });
+
+      summary.focus();
+      await user.keyboard("{a}");
+      expectExpandableState("first-panel", "closed");
+    });
+  });
+
+  describe("generated IDs", () => {
+    it("falls back to an ID based on the root ID and index", async () => {
+      const { user } = setup({
+        expandables: [{ title: "No ID", content: <p>No ID content</p> }],
+      });
+      const expectedFallbackId = "accordion-panel-0";
+      const content = screen.getByTestId(`${expectedFallbackId}-content`);
+
+      expect(content).toHaveAttribute("aria-hidden", "true");
+      await user.click(screen.getByText("No ID"));
+      expect(content).toHaveAttribute("aria-hidden", "false");
+    });
+
+    it("falls back to a generated root ID when none is provided", () => {
+      const { container } = render(<Accordion expandables={defaultExpandables} />);
+      const accordionNode = container.firstChild as HTMLElement;
+
+      expect(accordionNode).toHaveAttribute("id");
+      expect(accordionNode.getAttribute("id")).toMatch(/accordion-.*$/);
+    });
+  });
+
+  describe("test IDs", () => {
+    it("does not apply panel data-testids when IDs are omitted", () => {
+      render(<Accordion expandables={[{ title: "No ID", content: "content" }]} />);
+
+      const heading = screen.getByRole("button", { name: /No ID/i });
+      const content = screen.getByText("content").parentElement;
+
+      expect(heading).not.toHaveAttribute("data-testid");
+      expect(content).not.toHaveAttribute("data-testid");
+    });
+
+    it("does not apply a show-all data-testid when the root ID is omitted", () => {
+      render(
+        <Accordion
+          showAllEnabled={true}
+          expandables={defaultExpandables}
+        />,
+      );
+      const showAllBtn = screen.getByRole("button", { name: /Show all/i });
+
+      expect(showAllBtn).not.toHaveAttribute("data-testid");
+    });
+
+    it("applies stable data-testids when IDs are provided", () => {
+      setup({ id: "accordion-custom", showAllEnabled: true });
+      expect(screen.getByTestId("first-panel-heading")).toBeInTheDocument();
+      expect(screen.getByTestId("first-panel-content")).toBeInTheDocument();
+      expect(screen.getByTestId("accordion-custom-show-all")).toBeInTheDocument();
+    });
+  });
 });

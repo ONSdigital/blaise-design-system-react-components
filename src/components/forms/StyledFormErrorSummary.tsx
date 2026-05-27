@@ -1,71 +1,74 @@
-import { useFormikContext, FormikContextType } from "formik";
-import React, { ReactElement, useEffect, useRef } from "react";
+import { useFormikContext } from "formik";
+import { useEffect, useId, useRef } from "react";
 
-/**
- * Error summary list
- *  - Displayed when isValid is false.
- *  - Focuses div when error lists changes.
- *
- */
-function StyledFormErrorSummary(): ReactElement {
-    const { errors, isValid }: FormikContextType<unknown> = useFormikContext();
-
-    const errorFocus = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (!isValid) {
-            errorFocus.current?.focus();
-        }
-    }, [errors, isValid]);
-
-    return (
-        <>
-            {
-                !isValid
-            && (
-                <div
-                    aria-labelledby="error-summary-title"
-                    role="alert"
-                    tabIndex={-1}
-                    ref={errorFocus}
-                    className="ons-panel ons-panel--error"
-                >
-                    <div className="ons-panel__header">
-                        <h2
-                            id="error-summary-title"
-                            data-qa="error-header"
-                            className="ons-panel__title ons-u-fs-r--b"
-                        >
-                            {
-                                (
-                                    Object.keys(errors).length === 1
-                                        ? "There is 1 problem with your answer"
-                                        : `There are ${Object.keys(errors).length} problems with your answer`
-                                )
-                            }
-                        </h2>
-                    </div>
-                    <div className="ons-panel__body">
-                        <ol className="ons-list">
-                            {Object.keys(errors).map((field, index) => (
-                                <li key={index} className="ons-list__item ">
-                                    <a href={`#${field}`} className="ons-list__link ons-js-inpagelink">
-                                        {
-                                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                            // @ts-ignore
-                                            errors[field]
-                                        }
-                                    </a>
-                                </li>
-                            ))}
-
-                        </ol>
-                    </div>
-                </div>
-            )
-            }
-        </>
-    );
+/** Props for StyledFormErrorSummary. */
+export interface Props {
+  /** Element ID. */
+  id?: string;
+  /** Map of Formik field names to rendered element IDs. */
+  fieldTargetIds?: Record<string, string>;
 }
 
-export default StyledFormErrorSummary;
+/** Renders a form error summary. */
+export const StyledFormErrorSummary = ({ id, fieldTargetIds }: Props) => {
+  const { errors, isValid, submitCount, isSubmitting } =
+    useFormikContext<Record<string, string | undefined>>();
+  const errorFocusRef = useRef<HTMLDivElement>(null);
+
+  const generatedId = useId();
+  const baseId = id ?? `error-summary-${generatedId}`;
+  const alertId = `${baseId}-alert`;
+
+  useEffect(() => {
+    if (!isValid && submitCount > 0 && !isSubmitting) {
+      errorFocusRef.current?.focus();
+    }
+  }, [submitCount, isValid, isSubmitting]);
+
+  if (isValid) {
+    return null;
+  }
+
+  const errorKeys = Object.keys(errors);
+
+  return (
+    <div
+      id={baseId}
+      aria-labelledby={alertId}
+      role="alert"
+      tabIndex={-1}
+      ref={errorFocusRef}
+      className="ons-panel ons-panel--error"
+      data-testid={id ? `${id}-panel` : undefined}
+    >
+      <div className="ons-panel__header">
+        <h2
+          id={alertId}
+          data-testid="error-header"
+          className="ons-panel__title ons-u-fs-r--b"
+        >
+          {errorKeys.length === 1
+            ? "There is 1 problem with your answer"
+            : `There are ${errorKeys.length} problems with your answer`}
+        </h2>
+      </div>
+      <div className="ons-panel__body">
+        <ol className="ons-list">
+          {errorKeys.map((field) => (
+            <li
+              key={field}
+              className="ons-list__item"
+            >
+              <a
+                href={`#${fieldTargetIds?.[field] || field}`}
+                className="ons-list__link ons-js-inpagelink"
+              >
+                {errors[field]}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  );
+};

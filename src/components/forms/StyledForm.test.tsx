@@ -1,150 +1,339 @@
-import React from "react";
-import {
-    fireEvent, render, screen, waitFor,
-} from "@testing-library/react";
-import ExampleForm from "./ExampleForm/ExampleForm";
-import StyledForm from "./StyledForm";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-test("error appears on submit of empty form", async () => {
-    render(<ExampleForm />);
+import { ExampleForm } from "./example-form/ExampleForm";
+import { type Props, StyledForm } from "./StyledForm";
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
-    expect(screen.getByText(/Password must be longer than 6 characters/i)).toBeInTheDocument();
+const setup = (component = <ExampleForm />) => {
+  return {
+    user: userEvent.setup(),
+    ...render(component),
+  };
+};
 
-    await waitFor(() => {
-        const errorMessage = screen.getByText(/There are 4 problems with your answer/i);
-        expect(errorMessage).toBeInTheDocument();
+const minimalFields = [{ name: "Name", type: "text" as const }];
 
-        const instrumentErrorMessage = screen.queryAllByText(/Enter a valid instrument name/i);
-        expect(instrumentErrorMessage).toHaveLength(2);
-        const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
-        expect(nameErrorMessage).toHaveLength(2);
-        const emailErrorMessage = screen.queryAllByText(/Enter a email/i);
-        expect(emailErrorMessage).toHaveLength(2);
-        const passwordErrorMessage = screen.queryAllByText(/Enter a password/i);
-        expect(passwordErrorMessage).toHaveLength(2);
-    });
-});
+describe("StyledForm", () => {
+  describe("interactions", () => {
+    it("shows all validation errors when an empty form is submitted", async () => {
+      const { user } = setup();
+      const submitButton = screen.getByRole("button", {
+        name: /create account/i,
+      });
 
-test("only one error appears on submit of one incorrect field", async () => {
-    render(<ExampleForm />);
-
-    fireEvent.input(screen.getByLabelText(/Instrument/i), {
-        target: {
-            value:
-                "OPN2101A",
-        },
+      await user.click(submitButton);
+      expect(await screen.findByText(/There are 4 problems with your answer/i)).toBeVisible();
+      expect(screen.getByText(/Password must be longer than 6 characters/i)).toBeVisible();
+      expect(screen.queryAllByText(/Enter a valid questionnaire name/i)).toHaveLength(2);
+      expect(screen.queryAllByText(/Enter a name/i)).toHaveLength(2);
+      expect(screen.queryAllByText(/Enter an email/i)).toHaveLength(2);
+      expect(screen.queryAllByText(/Enter a password/i)).toHaveLength(2);
     });
 
-    fireEvent.input(screen.getByLabelText(/name/i), {
-        target: {
-            value:
-                "ricer",
-        },
+    it("shows only the error for the invalid field", async () => {
+      const { user } = setup();
+
+      await user.type(screen.getByLabelText(/Questionnaire/i), "OPN2101A");
+      await user.type(screen.getByLabelText(/name/i), "ricer");
+      await user.type(screen.getByLabelText(/Email/i), "invalidEmail123");
+      await user.type(screen.getByLabelText(/Password/i), "ricer123");
+      await user.click(screen.getByRole("button", { name: /create account/i }));
+
+      expect(await screen.findByText(/There is 1 problem with your answer/i)).toBeVisible();
+      expect(screen.queryByText(/Enter a valid questionnaire name/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Enter a name/i)).not.toBeInTheDocument();
+      expect(screen.queryAllByText(/Enter an email address in the correct format/i)).toHaveLength(
+        2,
+      );
     });
 
-    fireEvent.input(screen.getByLabelText(/Email/i), {
-        target: {
-            value:
-                "invalidEmail123",
-        },
+    it("shows the success message when the form is valid", async () => {
+      const { user } = setup();
+
+      await user.type(screen.getByLabelText(/Questionnaire/i), "OPN2101A");
+      await user.type(screen.getByLabelText(/name/i), "ricer");
+      await user.type(screen.getByLabelText(/Email/i), "ricer@example.com");
+      await user.type(screen.getByLabelText(/Password/i), "ricer123");
+      await user.click(screen.getByRole("button", { name: /create account/i }));
+
+      expect(await screen.findByText(/Form submitted for user ricer/i)).toBeVisible();
+    });
+  });
+
+  describe("props", () => {
+    it("accepts values typed as Props", () => {
+      const props: Props = {
+        fields: [{ name: "Test", type: "text" }],
+        onSubmitFunction: vi.fn(),
+      };
+
+      render(<StyledForm {...props} />);
+      expect(screen.getByLabelText(/Test/i)).toBeVisible();
     });
 
-    fireEvent.input(screen.getByLabelText(/Password/i), {
-        target: {
-            value:
-                "ricer123",
-        },
+    it("shows a custom submit label when one is provided", async () => {
+      const customLabel = "Press for bacon";
+
+      setup(
+        <StyledForm
+          fields={minimalFields}
+          onSubmitFunction={vi.fn()}
+          submitLabel={customLabel}
+        />,
+      );
+      expect(screen.getByRole("button", { name: new RegExp(customLabel, "i") })).toBeVisible();
     });
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
+    it("uses 'Save and continue' when no submit label is provided", () => {
+      setup(
+        <StyledForm
+          fields={minimalFields}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
 
-    await waitFor(() => {
-        const errorMessage = screen.getByText(/There is 1 problem with your answer/i);
-        expect(errorMessage).toBeInTheDocument();
-
-        const instrumentNameErrorMessage = screen.queryAllByText(/Enter a valid instrument name/i);
-        expect(instrumentNameErrorMessage).toHaveLength(0);
-        const nameErrorMessage = screen.queryAllByText(/Enter a name/i);
-        expect(nameErrorMessage).toHaveLength(0);
-        const passwordErrorMessage = screen.queryAllByText(/Enter a password/i);
-        expect(passwordErrorMessage).toHaveLength(0);
-
-        const emailErrorMessage = screen.queryAllByText(/Enter an email address in the correct format, such as name@example.com/i);
-        expect(emailErrorMessage).toHaveLength(2);
+      expect(screen.getByRole("button", { name: /save and continue/i })).toBeVisible();
     });
-});
+  });
 
-test("submit function is called when form is valid", async () => {
-    render(<ExampleForm />);
+  describe("IDs", () => {
+    it("applies the provided ID and data-testid to the form element", () => {
+      setup(
+        <StyledForm
+          id="styled-form-custom"
+          fields={minimalFields}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
 
-    fireEvent.input(screen.getByLabelText(/Instrument/i), {
-        target: {
-            value:
-                "OPN2101A",
-        },
+      const form = screen.getByTestId("styled-form-custom-form");
+
+      expect(form).toHaveAttribute("id", "styled-form-custom");
     });
 
-    fireEvent.input(screen.getByLabelText(/name/i), {
-        target: {
-            value:
-                "ricer",
-        },
+    it("links error summary items to the rendered field IDs", async () => {
+      const { user } = setup(
+        <StyledForm
+          id="styled-form-custom"
+          fields={[
+            {
+              name: "Email",
+              type: "text",
+              validate: () => "Enter an email",
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorLink = await screen.findByRole("link", { name: "Enter an email" });
+      const input = screen.getByLabelText(/Email/i);
+
+      expect(errorLink).toHaveAttribute("href", "#styled-form-custom-Email");
+      expect(input).toHaveAttribute("id", "styled-form-custom-Email");
     });
 
-    fireEvent.input(screen.getByLabelText(/Email/i), {
-        target: {
-            value:
-                "ricer@email.com",
-        },
+    it("links error summary items to an explicit specifyOption ID when one is provided", async () => {
+      const { user } = setup(
+        <StyledForm
+          fields={[
+            {
+              id: "radio-group",
+              name: "RadioGroup",
+              type: "radio",
+              radioOptions: [
+                {
+                  value: "other",
+                  label: "Other",
+                  specifyOption: {
+                    id: "specify-custom-id",
+                    name: "RadioGroupSpecify",
+                    description: "Please specify",
+                    type: "text",
+                    validate: () => "Please specify a value",
+                  },
+                },
+              ],
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("radio", { name: "Other" }));
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorLink = await screen.findByRole("link", { name: "Please specify a value" });
+
+      expect(errorLink).toHaveAttribute("href", "#specify-custom-id");
     });
 
-    fireEvent.input(screen.getByLabelText(/Password/i), {
-        target: {
-            value:
-                "ricer123",
-        },
+    it("links error summary items to the generated specifyOption ID when one is not provided", async () => {
+      const { user } = setup(
+        <StyledForm
+          fields={[
+            {
+              id: "radio-group",
+              name: "RadioGroup",
+              type: "radio",
+              radioOptions: [
+                {
+                  value: "other",
+                  label: "Other",
+                  specifyOption: {
+                    name: "RadioGroupSpecify",
+                    description: "Please specify",
+                    type: "text",
+                    validate: () => "Please specify a value",
+                  },
+                },
+              ],
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("radio", { name: "Other" }));
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorLink = await screen.findByRole("link", { name: "Please specify a value" });
+      const specifyInput = screen.getByRole("textbox", { name: "Please specify" });
+
+      expect(errorLink).toHaveAttribute("href", "#radio-group-option-1-specify");
+      expect(specifyInput).toHaveAttribute("id", "radio-group-option-1-specify");
     });
 
-    const submitButton = screen.getByTestId(/submit-button/i);
-    fireEvent.click(submitButton);
+    it("links error summary items to an explicit field ID when one is provided", async () => {
+      const { user } = setup(
+        <StyledForm
+          fields={[
+            {
+              id: "email-address",
+              name: "Email",
+              type: "text",
+              validate: () => "Enter an email",
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
 
-    await waitFor(() => {
-        const successMessage = screen.getByText(/Form submitted for user ricer/i);
-        expect(successMessage).toBeInTheDocument();
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorLink = await screen.findByRole("link", { name: "Enter an email" });
+      const input = screen.getByLabelText(/Email/i);
+
+      expect(errorLink).toHaveAttribute("href", "#email-address");
+      expect(input).toHaveAttribute("id", "email-address");
     });
-});
+  });
 
-test("custom submit button label can be set", async () => {
-    const fields = [
-        {
-            name: "Name",
-            type: "text",
-        },
-    ];
-
-    render(<StyledForm fields={fields} onSubmitFunction={() => console.log("")} submitLabel="Press for bacon" />);
-
-    await waitFor(() => {
-        const successMessage = screen.getByText(/Press for bacon/i);
-        expect(successMessage).toBeInTheDocument();
+  describe("error handling", () => {
+    it("throws when neither onSubmit nor onSubmitFunction is provided", () => {
+      expect(() =>
+        render(<StyledForm {...({ fields: minimalFields } as unknown as Props)} />),
+      ).toThrow("StyledForm requires an onSubmit handler.");
     });
-});
+  });
 
-test("default submit button label is used when no label is passed in", async () => {
-    const fields = [
-        {
-            name: "Name",
-            type: "text",
-        },
-    ];
+  describe("test IDs", () => {
+    it("does not apply a data-testid to the form when no ID is provided", () => {
+      const { container } = setup(
+        <StyledForm
+          fields={minimalFields}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
 
-    render(<StyledForm fields={fields} onSubmitFunction={() => console.log("")} />);
+      const form = container.querySelector("form");
 
-    await waitFor(() => {
-        const successMessage = screen.getByText(/Save and continue/i);
-        expect(successMessage).toBeInTheDocument();
+      expect(form).not.toHaveAttribute("data-testid");
     });
+
+    it("applies an error-summary data-testid when an ID is provided and validation fails", async () => {
+      const { user } = setup(
+        <StyledForm
+          id="styled-form-custom"
+          fields={[
+            {
+              name: "TestField",
+              type: "text",
+              validate: () => "This field is required",
+            },
+          ]}
+          onSubmitFunction={vi.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole("button", { name: /save and continue/i }));
+
+      const errorPanel = await screen.findByTestId("styled-form-custom-error-summary-panel");
+
+      expect(errorPanel).toBeVisible();
+      expect(errorPanel).toHaveAttribute("id", "styled-form-custom-error-summary");
+    });
+
+    it("applies fieldset data-testids when IDs are provided", () => {
+      setup(
+        <StyledForm
+          onSubmitFunction={vi.fn()}
+          fields={[
+            {
+              name: "RadioGroup",
+              type: "radio",
+              id: "radio-group",
+              radioOptions: [{ id: "radio-option-one", value: "val1", label: "Radio 1" }],
+            },
+            {
+              name: "CheckboxGroup",
+              type: "checkbox",
+              id: "checkbox-group",
+              checkboxOptions: [{ id: "checkbox-option-one", value: "val1", label: "Checkbox 1" }],
+            },
+          ]}
+        />,
+      );
+
+      expect(screen.getByTestId("radio-group-fieldset")).toBeVisible();
+      expect(screen.getByTestId("checkbox-group-fieldset")).toBeVisible();
+      expect(screen.getByTestId("checkbox-group-select-all")).toBeVisible();
+    });
+
+    it("does not apply fieldset data-testids when IDs are omitted", () => {
+      setup(
+        <StyledForm
+          onSubmitFunction={vi.fn()}
+          fields={[
+            {
+              name: "RadioGroup",
+              type: "radio",
+              radioOptions: [{ value: "val2", label: "Radio 2" }],
+            },
+            {
+              name: "CheckboxGroup",
+              type: "checkbox",
+              checkboxOptions: [{ value: "val2", label: "Checkbox 2" }],
+            },
+          ]}
+        />,
+      );
+
+      const radioLabel = screen.getByLabelText("Radio 2");
+      const radioFieldset = radioLabel.closest(".ons-field");
+
+      expect(radioFieldset).not.toHaveAttribute("data-testid");
+
+      const checkboxLabel = screen.getByLabelText("Checkbox 2");
+      const checkboxFieldset = checkboxLabel.closest(".ons-field");
+
+      expect(checkboxFieldset).not.toHaveAttribute("data-testid");
+
+      const selectAllBtn = screen.getByRole("button", { name: /Select All/i });
+
+      expect(selectAllBtn).not.toHaveAttribute("data-testid");
+    });
+  });
 });

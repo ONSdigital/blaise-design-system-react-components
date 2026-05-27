@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > rendering > renders the snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="ons-btn"
+    type="button"
+  >
+    <span
+      class="ons-btn__inner"
+    >
+      <span
+        class="ons-btn__text"
+      >
+        Submit
+      </span>
+    </span>
+  </button>
+</DocumentFragment>
+`;

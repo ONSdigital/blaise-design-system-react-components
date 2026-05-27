@@ -1,10 +1,18 @@
-import React from "react";
-import { Meta } from "@storybook/react";
-import NotProductionWarning from "./NotProductionWarning";
+import { NotProductionWarning } from "./NotProductionWarning";
 
-export default {
-    component: NotProductionWarning,
-    title: "Components/Not Production Warning",
-} as Meta;
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-export const Default = () => <NotProductionWarning />;
+const meta = {
+  title: "Components/Not Production Warning",
+  component: NotProductionWarning,
+} satisfies Meta<typeof NotProductionWarning>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    id: "not-production-warning",
+  },
+};

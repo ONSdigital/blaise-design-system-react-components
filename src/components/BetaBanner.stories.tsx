@@ -1,10 +1,26 @@
-import React from "react";
-import { Meta } from "@storybook/react";
-import BetaBanner from "./BetaBanner";
+import { BetaBanner } from "./BetaBanner";
 
-export default {
-    component: BetaBanner,
-    title: "Components/BetaBanner",
-} as Meta;
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-export const Default = () => <BetaBanner />;
+const meta = {
+  title: "Components/Beta Banner",
+  component: BetaBanner,
+} satisfies Meta<typeof BetaBanner>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    id: "beta-banner",
+    feedbackLink: "https://ons.service-now.com/",
+  },
+};
+
+export const CustomLink: Story = {
+  args: {
+    id: "beta-banner-custom-link",
+    feedbackLink: "https://example.com/feedback",
+  },
+};
