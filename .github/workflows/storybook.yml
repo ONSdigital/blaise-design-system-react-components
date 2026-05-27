@@ -20,9 +20,9 @@ jobs:
       - name: 🧶 Enable Corepack
         run: corepack enable
       - name: 📦 Install Dependencies
-        run: yarn install --immutable
+        run: corepack yarn install --immutable
       - name: 🔨 Build Storybook
-        run: yarn build-storybook
+        run: corepack yarn build-storybook
       - name: 🚀 Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
