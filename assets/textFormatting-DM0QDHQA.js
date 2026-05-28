@@ -1,1 +1,0 @@
-import{i as e}from"./preload-helper-xPQekRTU.js";function t(e){return e?e.charAt(0).toUpperCase()+e.slice(1):``}function n(e){return e.replaceAll(`_`,` `)}function r(e){return e?t(n(e)):``}function i(e){return e?e.replaceAll(` `,`-`):``}var a=e((()=>{}));export{a as i,i as n,r,t};
