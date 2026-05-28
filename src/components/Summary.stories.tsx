@@ -1,4 +1,4 @@
-import { GroupedSummary, SummaryGroupTable } from "./Summary";
+import { type SummaryGroup, SummaryGroupTable } from "./Summary";
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
@@ -14,7 +14,7 @@ export default meta;
 
 type Story = StoryObj<typeof SummaryGroupTable>;
 
-const tmntSummary = new GroupedSummary([
+const tmntSummaryGroups: SummaryGroup[] = [
   {
     title: "Leonardo",
     records: {
@@ -51,16 +51,16 @@ const tmntSummary = new GroupedSummary([
       Personality: "Aggressive",
     },
   },
-]);
+];
 
 export const Default: Story = {
   args: {
     id: "summary",
-    groupedSummary: tmntSummary,
+    groupedSummary: tmntSummaryGroups,
   },
 };
 
-const tmntPreambleSummary = new GroupedSummary([
+const tmntPreambleSummaryGroups: SummaryGroup[] = [
   {
     title: "Leonardo",
     preamble: <p>Leonardo is the leader of the group. Review his details below.</p>,
@@ -81,11 +81,11 @@ const tmntPreambleSummary = new GroupedSummary([
       Personality: "Fun-loving",
     },
   },
-]);
+];
 
 export const Preamble: Story = {
   args: {
     id: "summary-preamble",
-    groupedSummary: tmntPreambleSummary,
+    groupedSummary: tmntPreambleSummaryGroups,
   },
 };

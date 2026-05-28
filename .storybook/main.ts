@@ -7,6 +7,13 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  viteFinal: async (config) => ({
+    ...config,
+    build: {
+      ...config.build,
+      minify: false,
+    },
+  }),
   typescript: {
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {

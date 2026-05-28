@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import {
   GroupedSummary,
+  type SummaryGroup,
   SummaryGroupTable,
   type SummaryGroupTableProps,
   type SummaryItemProps,
@@ -27,6 +28,20 @@ const setup = (records: Record<string, string | number | boolean | null | undefi
 
 describe("SummaryGroupTable", () => {
   describe("rendering", () => {
+    it("accepts raw SummaryGroup arrays", () => {
+      const summaryGroups: SummaryGroup[] = [
+        {
+          title: "Test Group",
+          records: { Key: "Val" },
+        },
+      ];
+
+      render(<SummaryGroupTable groupedSummary={summaryGroups} />);
+
+      expect(screen.getByText("Key")).toBeVisible();
+      expect(screen.getByText("Val")).toBeVisible();
+    });
+
     it("renders string and numeric values", () => {
       setup({
         Name: "John Doe",

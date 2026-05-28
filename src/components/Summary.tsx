@@ -130,8 +130,8 @@ export interface SummaryGroupTableProps {
   id?: string;
   /** Optional class name for spacing utilities. */
   className?: string;
-  /** Summary data. */
-  groupedSummary: GroupedSummary;
+  /** Summary data (class instance or raw groups). */
+  groupedSummary: GroupedSummary | SummaryGroup[];
 }
 
 /** Renders grouped summary data. */
@@ -141,6 +141,9 @@ export function SummaryGroupTable({
   groupedSummary,
 }: SummaryGroupTableProps): ReactElement {
   const summaryClassName = ["ons-summary", className].filter(Boolean).join(" ");
+  const normalizedSummary = Array.isArray(groupedSummary)
+    ? new GroupedSummary(groupedSummary)
+    : groupedSummary;
 
   return (
     <div
@@ -148,7 +151,7 @@ export function SummaryGroupTable({
       id={id}
       data-testid={id ? `${id}-summary` : undefined}
     >
-      {groupedSummary.groups.map((group) => {
+      {normalizedSummary.groups.map((group) => {
         const groupKey = formatKey(group.title);
         const rows = Object.entries(group.records ?? {});
 
