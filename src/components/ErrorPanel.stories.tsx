@@ -25,6 +25,6 @@ export const Default: Story = {
 export const CustomMessage: Story = {
   args: {
     id: "error-panel-survey",
-    text: "I'm sorry, Dave. I'm afraid I can't do that",
+    text: "I'm sorry, Dave. I'm afraid I can't do that.",
   },
 };
