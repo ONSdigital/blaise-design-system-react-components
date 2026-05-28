@@ -1,0 +1,1 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";function t(e){let t=e.trim();if(!t)return`#`;if(t.startsWith(`/`)||t.startsWith(`./`)||t.startsWith(`../`)||t.startsWith(`#`)||t.startsWith(`?`))return t;try{let e=new URL(t,`http://localhost`);return n.has(e.protocol)?t:`#`}catch{return`#`}}var n,r=e((()=>{n=new Set([`http:`,`https:`,`mailto:`,`tel:`])}));export{r as n,t};
