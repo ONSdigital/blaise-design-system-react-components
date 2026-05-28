@@ -2,10 +2,11 @@ import { resolve } from "path";
 
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
-import type { LibraryFormats } from "vite";
 import { defineConfig } from "vitest/config";
 
 import rawPkg from "./package.json" with { type: "json" };
+
+import type { LibraryFormats } from "vite";
 
 type PackageJson = {
   dependencies?: Record<string, string>;
