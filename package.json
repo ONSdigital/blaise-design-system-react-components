@@ -62,7 +62,7 @@
     "cspell": "^10.0.0",
     "eslint": "^10.4.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-jsonc": "^3.1.2",
     "eslint-plugin-storybook": "10.4.1",
