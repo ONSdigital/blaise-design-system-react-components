@@ -1,12 +1,12 @@
 ---
 name: ✅ Run CI Validation
-permissions:
-  contents: read
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
+permissions:
+  contents: read
 jobs:
   run-ci-validation:
     runs-on: ubuntu-latest
