@@ -12,7 +12,7 @@ jobs:
       - name: 🛎️ Checkout Repository
         uses: actions/checkout@v6
       - name: 🔧 Setup Node and Cache
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24.x
       - name: 🧶 Enable Corepack
